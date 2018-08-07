@@ -1,0 +1,11 @@
+# [Principes en matière de conception de bots](../bot-service-design-principles.md)
+# [Première interaction](../bot-service-design-first-interaction.md)
+# [Conception et flux de contrôle](../bot-service-design-conversation-flow.md)
+# [Navigation](../bot-service-design-navigation.md)
+# [Éléments d’expérience utilisateur](../bot-service-design-user-experience.md)
+# Modèles
+## [Automatisation des tâches](../bot-service-design-pattern-task-automation.md)
+## [Base de connaissances](../bot-service-design-pattern-knowledge-base.md)
+## [Procédure de transfert aux humains](../bot-service-design-pattern-handoff-human.md)
+## [Bots dans des applications](../bot-service-design-pattern-embed-app.md)
+## [Bots dans des sites Web](../bot-service-design-pattern-embed-web-site.md)

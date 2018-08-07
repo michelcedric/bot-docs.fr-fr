@@ -1,0 +1,17 @@
+- name: Docs
+  href: /
+  homepage: /
+  items:
+    - name: Service de robot
+      tocHref: /Bot-Framework/
+      topicHref: /Bot-Framework/index
+      items:
+        - name: SDK Bot Builder pour .NET
+          tocHref: /Bot-Framework/dotnet
+          topicHref: /Bot-Framework/dotnet/
+        - name: SDK Bot Builder pour Node.js
+          tocHref: /Bot-Framework/nodejs
+          topicHref: /Bot-Framework/nodejs/
+        - name: API REST Bot Framework
+          tocHref: /Bot-Framework/rest-api
+          topicHref: /Bot-Framework/rest-api/
