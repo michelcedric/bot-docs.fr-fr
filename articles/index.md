@@ -8,14 +8,17 @@ ms.topic: landing-page
 layout: LandingPage
 ms.prod: bot-framework
 ms.date: 05/03/2018
-ms.openlocfilehash: 2264f714b28b52691da2ee0d421506b408a43ef3
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 6759a870538265fa9f8ae089486946b8fe648649
+ms.sourcegitcommit: 9a38d76afb0e82fdccc1f36f9b1a65042671e538
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39116416"
+ms.lasthandoff: 08/04/2018
+ms.locfileid: "39514989"
 ---
 ::: moniker range="azure-bot-service-3.0"
+
+> [!NOTE]
+> Cette rubrique s’applique à la version 3 du SDK (stable). La documentation pour la version SDK v4 est disponible [ici.](https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-4.0)
 
 <div class="content">
     <h1>Documentation d’Azure Bot Service</h1>
@@ -90,10 +93,12 @@ ms.locfileid: "39116416"
 
 ::: moniker range="azure-bot-service-4.0"
 
+> [!NOTE] 
+> Cette rubrique est une version préliminaire de la documentation du SDK v4 et est sujet à modification. Le conteneur du SDK v3 est disponible [ici.](https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-3.0)
+
 <div class="content">
     <h1>Documentation d’Azure Bot Service</h1>
     <div class="intro" style="min-width: 200px">
-        <p><b> [Cette rubrique correspond à la version préliminaire et est susceptible d’être modifiée.] </b></p>
         <p>Azure Bot Service fournit un environnement intégré sur mesure pour le développement de bots, vous permettant de créer, connecter, tester, déployer et gérer des bots intelligents, tout cela depuis un seul et même endroit. Azure Bot Service s’appuie sur le SDK Bot Builder avec prise en charge de C#, JavaScript, Python et Java. Découvrez comment utiliser Bot Service avec nos démarrages rapides, nos didacticiels et nos exemples.
 </p>
 </div>
