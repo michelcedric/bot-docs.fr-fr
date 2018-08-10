@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: ec16b89a6c25c4113048a40f6b9b3edb6ce2af5e
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 6a32bc5712937c615962e4f6edfc7ea691d3ec39
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299192"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574975"
 ---
 # <a name="register-a-bot-with-bot-service"></a>Inscrire un bot auprès de Bot Service
+
+[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
+
 Si votre bot est hébergé ailleurs et que vous souhaitez utiliser Bot Service pour le connecter à d’autres canaux, vous devez l’inscrire auprès de Bot Service. Dans cette rubrique, découvrez comment inscrire votre bot auprès de Bot Service en créant un service de bot **Bot Channels Registration**.
 
 > [!IMPORTANT] 
