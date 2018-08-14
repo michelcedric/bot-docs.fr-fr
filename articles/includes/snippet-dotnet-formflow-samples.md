@@ -1,0 +1,2 @@
+Pour obtenir des exemples complets montrant comment implémenter FormFlow en utilisant le kit de développement logiciel (SDK) Bot Builder pour .NET, consultez l’<a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-MultiDialogs" target="_blank">exemple de Multi-Dialog Bot</a> et l’<a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/demo-ContosoFlowers" target="_blank">exemple de Contoso Flowers Bot</a> dans GitHub.
+

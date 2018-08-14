@@ -1,0 +1,1 @@
+Lorsque votre bot reçoit un rappel, il doit vérifier que les informations spécifiées dans le rappel sont valides et confirmer le rappel en envoyant une réponse HTTP. 
