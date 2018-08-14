@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: c8919712331a5f78bdbc35f28adeab966435d737
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 2a5c9dcad0d9fd70caaf28ff7ac95830bd47e2d6
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299540"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574595"
 ---
 # <a name="send-and-receive-activities"></a>Envoyer et recevoir des activités
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 Le connecteur d’infrastructure Bot fournit une API REST unique qui permet à un robot de communiquer sur plusieurs canaux tels que Skype, Email, Slack et bien plus encore. Il facilite la communication entre bot et utilisateur en relayant les messages du bot au canal et du canal au bot. 
 

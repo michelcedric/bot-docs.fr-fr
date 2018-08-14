@@ -8,14 +8,17 @@ ms.topic: get-started-article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 208bd5a49400f9e9ff230dafb6dd20c36d50dfad
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 21186c5d3b0769311e4703ca1dab2f48a0a0081a
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39298801"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574885"
 ---
 # <a name="develop-bots-with-bot-builder"></a>Développer des robots avec Bot Builder
+
+[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
+
 Bot Builder fournit un kit de développement logiciel, des bibliothèques, des exemples et des outils permettant de créer et de déboguer des robots. Lorsque vous créez un robot avec Bot Service, celui-ci est sauvegardé par le kit de développement logiciel Bot Builder. Vous pouvez également vous servir du kit de développement logiciel Bot Builder pour créer un robot en partant de zéro à l’aide de C# ou de Node.js. Bot Builder comprend l’émulateur de Bot Framework permettant de tester les robots et l’inspecteur de canaux permettant de prévisualiser l’expérience utilisateur assurée par le robot sur différents canaux.
 
 Il est possible d’utiliser l’API REST pour créer un robot à l’aide de n’importe quel langage de programmation.

@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 6/22/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: e8c927ce49a2d8aecf0113a09cbedcf1135a8380
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 6154ac5c77f818192503e5586986b37062b105bf
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299656"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574520"
 ---
 # <a name="migrate-your-bot-to-azure"></a>Migrer votre bot vers Azure
+
+[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
 
 Tous les bots **Azure Bot Service (préversion)** créés dans le [portail d’infrastructure Bot](http://dev.botframework.com) doivent migrer vers le nouveau Service Bot dans Azure. Le service a été mis à la disposition générale (GA) en décembre 2017. 
 

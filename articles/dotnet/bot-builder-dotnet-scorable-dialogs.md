@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 7fdcd6e0e56ef11cd887b9d5493fd0b25c23cf89
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 8ba63ad99c772c7cf5884180a62244e0dfe11db2
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39298599"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574905"
 ---
 # <a name="global-message-handlers-using-scorables"></a>Gestionnaires de messages globaux à l’aide de dialogues scorables
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 Les utilisateurs essaient d’accéder à certaines fonctionnalités au sein d’un bot en utilisant des mots tels que « help » (aide), « cancel » (annuler) ou « start over » (recommencer) au milieu d’une conversation alors que le bot attend une réponse différente. Vous pouvez concevoir votre bot pour qu’il traite ces requêtes de manière appropriée à l’aide de dialogues scorables.
 

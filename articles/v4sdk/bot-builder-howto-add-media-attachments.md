@@ -9,12 +9,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 04/03/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: e1b25a3b5c090cbb13b4c27279745a81da64e6c4
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 30a0c463698d9ab7e3b2b0f9ddb0e872f007d1d8
+ms.sourcegitcommit: 9a38d76afb0e82fdccc1f36f9b1a65042671e538
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299553"
+ms.lasthandoff: 08/04/2018
+ms.locfileid: "39515039"
 ---
 # <a name="add-media-to-messages"></a>Ajouter des médias aux messages
 
@@ -79,8 +79,7 @@ Pour envoyer une liste de pièces jointes, empilées les unes sur les autres : 
 
 ```javascript
 // require MessageFactory and CardFactory from botbuilder.
-const {MessageFactory} = require('botbuilder');
-const {CardFactory} = require('botbuilder');
+const {MessageFactory, CardFactory} = require('botbuilder');
 
 let messageWithCarouselOfCards = MessageFactory.list([
     CardFactory.heroCard('title1', ['imageUrl1'], ['button1']),
@@ -161,8 +160,8 @@ Pour fonctionner correctement, assignez un type d’action à chaque élément i
 | type | Valeur |
 | :---- | :---- |
 | openUrl | URL à ouvrir dans le navigateur intégré. Répond à Appuyer ou Cliquer en ouvrant l’URL. |
-| imBack | Texte du message à envoyer au bot (de la part de l’utilisateur qui a cliqué sur le bouton ou appuyé sur la carte). Ce message (de l’utilisateur au bot) sera visible de tous les participants à la conversation par le biais de l’application cliente qui héberge la conversation. |
-| postBack | Texte du message à envoyer au bot (de la part de l’utilisateur qui a cliqué sur le bouton ou appuyé sur la carte). Certaines applications clientes peuvent afficher ce texte dans le flux de messages, où il sera visible de tous les participants à la conversation. |
+| imBack | Texte du message à envoyer au bot (de la part de l’utilisateur qui a cliqué sur le bouton ou appuyé sur la carte). Ce message (de l’utilisateur au bot) sera visible par tous les participants à la conversation par le biais de l’application cliente qui héberge la conversation. |
+| postBack | Texte du message à envoyer au bot (de la part de l’utilisateur qui a cliqué sur le bouton ou appuyé sur la carte). Certaines applications clientes peuvent afficher ce texte dans le flux de messages, où il sera visible par tous les participants à la conversation. |
 | appel | Destination d’un appel téléphonique au format suivant : `tel:123123123123`. Répond à Appuyer ou Cliquer en lançant un appel.|
 | playAudio | URL du fichier audio à lire. Répond à Appuyer ou Cliquer en lisant le fichier audio. |
 | playVideo | URL du fichier vidéo à lire. Répond à Appuyer ou Cliquer en lisant le fichier vidéo. |
@@ -461,8 +460,7 @@ await context.SendActivity(activity);
 
 ```javascript
 // require MessageFactory and CardFactory from botbuilder.
-const {MessageFactory} = require('botbuilder');
-const {CardFactory} = require('botbuilder');
+const {MessageFactory, CardFactory} = require('botbuilder');
 
 //  init message object
 let messageWithCarouselOfCards = MessageFactory.carousel([
@@ -478,6 +476,6 @@ await context.sendActivity(messageWithCarouselOfCards);
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-[Aperçu des fonctionnalités avec l’inspecteur de canaux](../bot-service-channel-inspector.md)
+[Aperçu des fonctionnalités du bot avec l’inspecteur de canaux](../bot-service-channel-inspector.md)
 
 ---
