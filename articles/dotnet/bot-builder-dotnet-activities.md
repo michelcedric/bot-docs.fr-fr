@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 90e53ed5001ce1c91646644bf815bb51b6a843c1
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: f7fe3181a4c361b47a7ef6fbdf815b4c495c6f76
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39300173"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574635"
 ---
 # <a name="activities-overview"></a>Vue d’ensemble des activités
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 [!INCLUDE [Activity concept overview](../includes/snippet-dotnet-concept-activity.md)]
 
@@ -73,7 +75,7 @@ Un robot reçoit une activité **deleteUserData** quand un utilisateur demande l
 
 Un bot reçoit une activité **endOfConversation** pour indiquer que l’utilisateur a mis fin à la conversation. Un bot peut envoyer une activité **endOfConversation** pour informer l’utilisateur que la conversation va se terminer. 
 
-## <a name="event"></a>event
+## <a name="event"></a>événement
 
 Votre bot peut recevoir une activité **event** provenant d’un processus ou d’un service externe qui souhaite lui communiquer des informations, sans que ces informations soient visibles par les utilisateurs. L’expéditeur d’une activité **event** n’attend généralement aucun accusé de réception de la part du robot.
 

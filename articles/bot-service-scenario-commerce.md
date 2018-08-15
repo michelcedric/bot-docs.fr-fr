@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: b809e98ec971abaac98fd33c4fb2c285baca898f
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 15745bc25013df2fd18b0a2045ae2314d6c361e2
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39300168"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574855"
 ---
 # <a name="commerce-bot-scenario"></a>Scénario Robot Commerce
+
+[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
+
 Le scénario [Robot Commerce](bot-service-scenario-commerce.md) décrit un robot qui remplace les interactions par e-mail et par téléphone que les utilisateurs ont généralement avec le service de conciergerie d’un hôtel. Le robot tire parti de Cognitive Services pour mieux traiter les demandes textuelles et vocales des clients avec un contexte obtenu grâce à une intégration avec des services principaux.
 
 ![Diagramme du robot d’application](~/media/scenarios/bot-service-scenario-commerce-bot.png)
