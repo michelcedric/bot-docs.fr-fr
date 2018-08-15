@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 2483366c6d325e5c18a77c2a89b63cc0350aef85
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 049dffd2adc700323bec943e090d369a14ff696b
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299048"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574845"
 ---
 # <a name="cortana-skills-bot-scenario"></a>Scénario de robot Compétence Cortana
+
+[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
+
 Le robot Compétence Cortana étend Cortana pour faciliter la réservation d’un rendez-vous d’entretien auto mobile à l’aide de la voix avec le contexte de votre calendrier.
 
 Cortana est votre assistant personnel. En utilisant l’interface naturelle que constitue votre voix, et un robot Compétence Cortana personnalisé, vous pouvez demander à Cortana de parler à une organisation (par exemple, un atelier automobile), afin de prendre un rendez-vous. Le service peut fournir la liste des services, les heures disponibles et la durée. Cortana peut consulter votre calendrier pour voir s’il y a un éventuel conflit d’heure et, s’il n’y en pas, créer le rendez-vous et l’ajouter à votre calendrier.

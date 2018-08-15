@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 0eb14f4bf52a293d3405762c786259f771aecad6
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 43c178c4bbdf0bb04384bb8ada397066e6f7dd12
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299824"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574615"
 ---
 # <a name="bot-builder-sdk-for-nodejs-samples"></a>Exemples du Kit de développement logiciel (SDK) Bot Builder pour Node.js
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 Ces exemples montrent comment des robots centrés sur les tâches vous aident à tirer parti des fonctionnalités du Kit de développement logiciel (SDK) Bot Builder pour Node.js. Vous pouvez utiliser les exemples pour commencer rapidement à concevoir de puissants robots aux fonctionnalités enrichies.
 

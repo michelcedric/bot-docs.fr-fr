@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: aa56a91d2246b5d81462dbf3483d04252e0ec45b
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: eb99be4699bba71a1fdc55bab19d035e4e31f536
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299412"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574555"
 ---
 # <a name="dialogs-in-the-bot-builder-sdk-for-net"></a>Dialogues dans le Kit de développement (SDK) Bot Builder pour .NET
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-dialogs.md)
 > - [Node.JS](../nodejs/bot-builder-nodejs-dialog-overview.md)
@@ -117,9 +120,9 @@ Si vous pouvez gérer explicitement la pile de dialogues actifs en utilisant `ID
 |  Chain.ContinueWith<T, R>   | Chains  |                      Simple chaînage de dialogues.                       |
 |       Chain.Unwrap<T>       | Chains  |                  Désencapsule un dialogue imbriqué dans un dialogue.                   |
 | Chain.DefaultIfException<T> | Chains  | Ingère une exception du résultat précédent et retourne default(T). |
-|        Chain.Loop<T>        | Branch  |                   Effectue une boucle de la chaîne entière de dialogues.                   |
-|        Chain.Fold<T>        | Branch  |   Incorpore les résultats d’une énumération de dialogues dans un résultat unique.   |
-|     Chain.Switch<T, R>      | Branch  |            Prend en charge la ramification en différentes chaînes de dialogue.            |
+|        Chain.Loop<T>        | Branche  |                   Effectue une boucle de la chaîne entière de dialogues.                   |
+|        Chain.Fold<T>        | Branche  |   Incorpore les résultats d’une énumération de dialogues dans un résultat unique.   |
+|     Chain.Switch<T, R>      | Branche  |            Prend en charge la ramification en différentes chaînes de dialogue.            |
 |     Chain.PostToUser<T>     | Message |                      Publie un message à l’adresse de l’utilisateur.                      |
 |     Chain.WaitToBot<T>      | Message |                    Attend un message adressé au robot.                     |
 |    Chain.PostToChain<T>     | Message |              Commence une chaîne par un message de l’utilisateur.              |
