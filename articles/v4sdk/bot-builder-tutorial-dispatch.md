@@ -9,14 +9,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 04/25/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 6294021355f82ff53a2ea99db4fb19f44cf13029
-ms.sourcegitcommit: f95702d27abbd242c902eeb218d55a72df56ce56
+ms.openlocfilehash: d3c9355a0e87d31029b92614dc182f3d7010c736
+ms.sourcegitcommit: 9a38d76afb0e82fdccc1f36f9b1a65042671e538
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39300588"
+ms.lasthandoff: 08/04/2018
+ms.locfileid: "39514939"
 ---
 ## <a name="integrate-multiple-luis-apps-and-qna-services-with-the-dispatch-tool"></a>Intégrer plusieurs applications LUIS et services QnA à l’outil Dispatch
+
+[!INCLUDE [pre-release-label](~/includes/pre-release-label.md)]
 
 Ce tutoriel montre comment utiliser un modèle LUIS généré par l’outil Dispatch, pour intégrer votre bot à plusieurs applications Language Understanding (LUIS) et services QnAMaker. 
 

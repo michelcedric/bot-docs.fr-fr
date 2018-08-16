@@ -8,20 +8,23 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 06be4330d34068bf86466b04686d6636971d0a5e
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 8d1ae09585898ce8babde6c06e525a0ade46c761
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39300540"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574915"
 ---
 # <a name="bot-scenarios"></a>Scénarios impliquant des bots
+
+[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
+
 Cette rubrique explore les scénarios clés dans lesquels vous pouvez tirer parti de la puissance des bots créés avec Bot Service.
 
 Vous pouvez télécharger ou cloner le code source de tous les exemples de scénarios de bot ici : [Samples for Common Bot Framework Scenarios](https://aka.ms/bot/scenarios).
 
 ## <a name="commerce-bot-scenario"></a>Scénario impliquant le bot Commerce
-Le scénario du [bot Commerce](bot-service-scenario-commerce.md) implique un bot qui remplace les interactions traditionnelles par e-mail et par téléphone que les clients des hôtels ont généralement avec la réception. Le bot utilise Cognitive Services pour mieux traiter les demandes des clients par le texte et la voix avec un contexte résultant de l’intégration de services backend.
+Le scénario [Robot Commerce](bot-service-scenario-commerce.md) décrit un robot qui remplace les interactions par e-mail et par téléphone que les utilisateurs ont généralement avec le service de conciergerie d’un hôtel. Le bot utilise Cognitive Services pour mieux traiter les demandes des clients par le texte et la voix avec un contexte résultant de l’intégration de services backend.
 
 Dans le scénario du bot Commerce, un client peut faire une demande auprès de la réception d’un hôtel. Il est authentifié via un point de terminaison d’authentification Azure Active Directory v2. Le bot peut parcourir les réservations du client et lui fournir différentes options de service. Par exemple, le client peut avoir réservé une cabine près de la piscine. Le bot utilise les services LUIS (Language Understanding Intelligent Services) pour analyser la demande, puis guide l’utilisateur dans la réservation d’une cabine dans le cadre de sa réservation.
 

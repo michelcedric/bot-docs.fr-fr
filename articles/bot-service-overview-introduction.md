@@ -8,18 +8,20 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 05/03/2018
-ms.openlocfilehash: 142d4cbe0c252e88bab800bb3823b70434a65bd6
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: b6326ac152112ff1df01470db1f525d4bf241af4
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39300317"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574605"
 ---
 ::: moniker range="azure-bot-service-3.0"
 
 # <a name="azure-bot-service"></a>Azure Bot Service
 
-Azure Bot Service fournit des outils pour créer, tester, déployer et gérer des bots intelligents, le tout en un même endroit. Dans le framework modulable et extensible fourni par le SDK, les développeurs peuvent utiliser des modèles pour créer des bots qui proposent des fonctionnalités de voix, de reconnaissance vocale, de questions-réponses, et bien plus encore.  
+[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
+
+Azure Bot Service fournit des outils pour créer, tester, déployer et gérer des bots intelligents, le tout en un même endroit. Dans le framework modulable et extensible fourni par le SDK, les développeurs peuvent utiliser des modèles pour créer des bots qui proposent des fonctionnalités de voix, de compréhension du langage naturel, de questions-réponses, et bien plus encore.  
 
 ## <a name="what-is-a-bot"></a>Qu’est-ce qu’un bot ?
 Un bot est une application avec laquelle les utilisateurs interagissent par le biais d’une conversation textuelle, graphique (cartes) ou vocale. Il peut s’agir d’un simple dialogue de questions-réponses, ou d’un bot sophistiqué permettant aux utilisateurs d’interagir avec les services de manière intelligente, à l’aide de critères spéciaux, d’un suivi de l’état et de techniques d’intelligence artificielle bien intégrées aux services professionnels existants. Découvrez des [études de cas](https://azure.microsoft.com/services/bot-service/) sur les bots.  
@@ -71,7 +73,7 @@ Les bots sont des applications complexes composées de nombreux éléments diff�
 > - [Tester le bot avec l’émulateur](bot-service-debug-emulator.md)
 > - [Tester le bot dans Web Chat](bot-service-manage-test-webchat.md)
 
-## <a name="publish"></a>Publier 
+## <a name="publish"></a>Publish 
 Lorsque vous êtes prêt, publiez votre bot dans Azure ou dans votre propre centre de données ou service web. Vous pouvez configurer un déploiement continu pour développer votre bot localement. Un tel déploiement est utile si votre bot est archivé dans un contrôle de code source comme GitHub ou Visual Studio Team Services. Quand vous archivez vos modifications dans votre référentiel source, vos modifications sont automatiquement déployées dans Azure.
 
 > [!Tip]
@@ -151,7 +153,7 @@ Les bots sont des applications complexes composées de nombreux éléments diff�
 
 [Testez le bot avec l’émulateur](bot-service-debug-emulator.md) ou [testez le bot dans Web Chat](bot-service-manage-test-webchat.md).
 
-## <a name="publish"></a>Publier 
+## <a name="publish"></a>Publish 
 Lorsque vous êtes prêt, publiez votre bot dans Azure ou dans votre propre centre de données ou service web. Vous pouvez configurer un déploiement continu pour développer votre bot localement. Un tel déploiement est utile si votre bot est archivé dans un contrôle de code source comme GitHub ou Visual Studio Team Services. Quand vous archivez vos modifications dans votre référentiel source, vos modifications sont automatiquement déployées dans Azure.
 
 [Déployez dans Azure](bot-service-build-continuous-deployment.md) à l’aide d’un déploiement continu.
