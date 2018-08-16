@@ -1,0 +1,1 @@
+La réception d’une activité, puis son traitement par l’intermédiaire de votre bot, s’appelle un **tour** ; il représente un cycle complet du bot. Un tour s’achève lorsque l’exécution est effectuée dans son intégralité, l’activité entièrement traitée et toutes les couches du bot terminées.
