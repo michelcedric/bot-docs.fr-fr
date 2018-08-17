@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 3583c4382a9262b959b31d5a9a1b7b1b97fc8a04
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 3b65f323427760fa43586f471aefb6811ef3e675
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299180"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574518"
 ---
 # <a name="internet-of-things-iot-bot-scenario"></a>Scénario de bot dans l’Internet des objets (IoT)
+
+[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
+
 Ce bot Internet des objets (IoT) vous permet de contrôler facilement les appareils de votre maison, comme l’éclairage Philips Hue, à l’aide de commandes de conversation interactive ou vocales.
 
 Les gens adorent parler à leurs objets. Depuis les jours de la première télécommande TV, ils apprécient de ne pas avoir à se déplacer pour avoir une influence sur leur environnement. Ce bot IoT permet de gérer une ampoule Philips Hue par de simples commandes de conversation ou avec la voix. En outre, lors de l’utilisation de la conversation, une personne peut avoir le choix entre plusieurs couleurs.

@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: a97d21e64ce12f6158f276889762a73ac2aff49b
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 00ea81558bf4b8206dc6142ab26e47e3652be563
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39300457"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574545"
 ---
 # <a name="create-messages"></a>Créer des messages
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 Votre bot enverra des [activités](bot-builder-dotnet-activities.md) de **message** pour communiquer des informations aux utilisateurs et, en retour, recevoir des activités de **message** de la part des utilisateurs. Certains messages peuvent consister simplement en un texte brut, tandis que d’autres peuvent contenir un contenu plus riche, par exemple un [texte à énoncer](bot-builder-dotnet-text-to-speech.md), des [actions suggérées](bot-builder-dotnet-add-suggested-actions.md), des [pièces jointes multimédia](bot-builder-dotnet-add-media-attachments.md), des [cartes riches](bot-builder-dotnet-add-rich-card-attachments.md) et des [données spécifiques du canal](bot-builder-dotnet-channeldata.md). 
 
@@ -43,7 +45,7 @@ La propriété `Entities` d’un message est un tableau d’objets <a href="http
 
 ### <a name="mention-entities"></a>Mentionner des entités
 
-De nombreux canaux permettent à un utilisateur ou un bot de « mentionner » une personne dans le cadre d’une conversation. Pour mentionner un utilisateur dans un message, remplissez la propriété `Entities` du message avec un objet `Mention`. L’objet `Mention` contient les propriétés suivantes : 
+De nombreux canaux permettent à un utilisateur ou un bot de « mentionner » une personne dans le cadre d’une conversation. Pour mentionner un utilisateur dans un message, remplissez la propriété `Entities` du message avec un objet `Mention`. L’objet `Mention` contient les propriétés suivantes : 
 
 | Propriété | Description | 
 |----|----|

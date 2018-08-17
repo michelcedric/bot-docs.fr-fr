@@ -9,18 +9,21 @@ ms.topic: get-started-article
 ms.prod: bot-framework
 ms.date: 04/27/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: fcb21fa38750c09f110a3c71f763a941c4437979
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 16ca658dddbba987545b7aa18c1e8f63f13983f1
+ms.sourcegitcommit: 97bb24f15041caccef4ca5736aa14f144881e0c6
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39300301"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39567568"
 ---
 # <a name="create-a-bot-with-the-bot-builder-sdk-for-net"></a>Créer un bot avec le Kit SDK Bot Builder pour .NET
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-quickstart.md)
 > - [Node.JS](../nodejs/bot-builder-nodejs-quickstart.md)
-> - [Service de bot](../bot-service-quickstart.md)
+> - [Service Bot](../bot-service-quickstart.md)
 > - [REST](../rest-api/bot-framework-rest-connector-quickstart.md)
 
 Le <a href="https://github.com/Microsoft/BotBuilder" target="_blank">Kit SDK Bot Builder pour .NET</a> est une infrastructure facile à utiliser pour développer des bots à l’aide de Visual Studio et Windows. Le SDK s’appuie sur le langage C# pour permettre aux développeurs .NET de créer de puissants bots dans un environnement familier.
