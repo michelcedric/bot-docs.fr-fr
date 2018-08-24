@@ -1,18 +1,18 @@
 # [Gérer un bot](../bot-service-manage-overview.md)
 # Créer
-## [Utiliser l’éditeur de code en ligne](../bot-service-build-online-code-editor.md)
-## [Télécharger le code source du bot](../bot-service-build-download-source-code.md)
+## [Modifier un robot avec l’éditeur de code en ligne](../bot-service-build-online-code-editor.md)
+## [Télécharger et redéployer le code source d’un bot](../bot-service-build-download-source-code.md)
 ## [Configurer un déploiement continu](../bot-service-build-continuous-deployment.md)
-# [Test dans le chat web](../bot-service-manage-test-webchat.md)
-# [Affichage des analyses](../bot-service-manage-analytics.md)
+# [Tester dans la discussion web](../bot-service-manage-test-webchat.md)
+# [Analyse de bot](../bot-service-manage-analytics.md)
 # Canaux
-## [Configurer des canaux](../bot-service-manage-channels.md)
+## [Connecter un bot à des canaux](../bot-service-manage-channels.md)
 ## [Cortana](../bot-service-channel-connect-cortana.md) 
 ## [Skype](../bot-service-channel-connect-skype.md)
 ## [Skype Entreprise](../bot-service-channel-connect-skypeforbusiness.md)
-## [Ligne directe](../bot-service-channel-connect-directline.md)
+## [Direct Line](../bot-service-channel-connect-directline.md)
 ## [Microsoft Teams](https://msdn.microsoft.com/en-us/microsoft-teams/bots)
-## Chat web
+## Discussion Web
 ### [Connecter un bot au chat web](../bot-service-channel-connect-webchat.md)
 ### [Activer la reconnaissance vocale dans le chat web](../bot-service-channel-connect-webchat-speech.md)
 ## [E-mail](../bot-service-channel-connect-email.md)
