@@ -1,9 +1,9 @@
 # [Documentation d’Azure Bot Service](index.md)
 # Vue d’ensemble
-## [Présentation d’Azure Bot Service](bot-service-overview-introduction.md)
+## [About Azure Bot Service](bot-service-overview-introduction.md)
 # Démarrage rapide
-## [Créer un robot avec Service Bot](~/bot-service-quickstart.md)
-## Créer un bot avec le SDK Bot Builder
+## [Créer un bot QnA avec Azure Bot Service](~/bot-service-quickstart.md)
+## Créer un bot localement
 ### [.NET](dotnet/bot-builder-dotnet-quickstart.md)
 ### [.NET](dotnet/bot-builder-dotnet-sdk-quickstart.md)
 ### [Node.JS](nodejs/bot-builder-nodejs-quickstart.md)
