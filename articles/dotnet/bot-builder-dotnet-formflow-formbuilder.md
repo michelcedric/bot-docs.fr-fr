@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: d24e43a3f48db024ab55c2089acbc42edebab929
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 3ad843530b70b75a6db728a399a315534d2234ac
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39300212"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904192"
 ---
 # <a name="customize-a-form-using-formbuilder"></a>Personnaliser un formulaire à l’aide de FormBuilder
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 La section [Fonctionnalités de base de FormFlow](bot-builder-dotnet-formflow.md) décrit une implémentation FormFlow de base offrant une expérience utilisateur assez générique, et la section [Fonctionnalités avancées de FormFlow](bot-builder-dotnet-formflow-advanced.md) explique comment personnaliser l’expérience utilisateur à l’aide d’une logique métier et d’attributs. Cet article décrit comment utiliser [FormBuilder] [ formBuilder] pour personnaliser encore davantage l’expérience utilisateur en spécifiant la séquence dans laquelle le formulaire exécute les étapes et en définissant de façon dynamique les valeurs de champ, les confirmations et les messages. 
 

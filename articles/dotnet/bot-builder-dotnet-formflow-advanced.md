@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 8860c6b3fa0eaaf9f9bfc92984a501c066f2fe5c
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 6637876b016b8680fe722602f530a0c6b0ddfc5a
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39298618"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905403"
 ---
 # <a name="advanced-features-of-formflow"></a>Fonctionnalités avancées de FormFlow
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 L’article sur les [fonctionnalités de base de FormFlow](bot-builder-dotnet-formflow.md) décrit une implémentation de FormFlow simple qui offre une expérience utilisateur plutôt générale. Pour fournir une expérience utilisateur plus personnalisée au moyen de FormFlow, vous pouvez spécifier l’état du formulaire initial, ajouter une logique métier permettant de gérer les interdépendances entre les champs et les entrées utilisateur du processus, et utiliser des attributs pour personnaliser les invites, remplacer les modèles, désigner les champs facultatifs, faire correspondre l’entrée utilisateur et valider l’entrée utilisateur. 
 

@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: ac8e01a81e3f8acca3aa6976eec47017876c3042
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: fcda5bb35712f3a1ec27fba64a492ced911c41db
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299400"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905961"
 ---
 # <a name="define-conversation-steps-with-waterfalls"></a>Définir des étapes de conversation avec des cascades
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 Une conversation se compose d’une série de messages échangés entre un utilisateur et un robot. Quand l’objectif du robot est de guider l’utilisateur dans une série d’étapes, vous pouvez utiliser une cascade pour définir les étapes de la conversation.
 

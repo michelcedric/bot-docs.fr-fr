@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: aed933a6ff8cb393b6c3aaed9cb96cdc0005c2e1
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 52557ed98cefcfcfc9fdc0d29fd4728309cdcc40
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39300088"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904023"
 ---
 # <a name="bot-framework-reference"></a>Référence Bot Framework
+
+[!INCLUDE [pre-release-label](./includes/pre-release-label-v3.md)]
+
 Bot Framework est fourni avec une documentation de référence complète sur le SDK Bot Builder pour .NET, le SDK Bot Builder pour Node.js et les API REST Bot Framework.
 
 ## <a name="bot-builder-sdk-for-net"></a>Kit SDK Bot Builder pour .NET

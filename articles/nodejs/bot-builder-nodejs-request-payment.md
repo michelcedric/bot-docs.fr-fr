@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 1e0c262c3a8dbef6430d51dab79a2d7c3cda938c
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 783d9e1fb3b90f6ba977440b3eefae5c16a1b8ca
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39300364"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905834"
 ---
 # <a name="request-payment"></a>Demander un paiement
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-request-payment.md)
 > - [Node.JS](../nodejs/bot-builder-nodejs-request-payment.md)
@@ -102,7 +105,7 @@ En tant que vendeur, vous devez considérer ces rappels comme statiques ; avec d
 
 ### <a name="payment-complete-callbacks"></a>Rappels de finalisation de paiement
 
-Lors de la réception d’un rappel de finalisation de paiement, votre bot obtient une copie de la demande de paiement initiale, non modifiée, ainsi que les objets de la réponse de paiement dans la propriété `value` de l’événement. L’objet de la réponse de paiement contient les sélections finales effectuées par le client ainsi qu’un jeton de paiement. Votre bot devrait pouvoir recalculer la demande de paiement finale en fonction de la demande de paiement initiale et des sélections finale du client. En supposant que les sélections du client sont définies comme étant valides, le bot doit vérifier le montant et la monnaie locale dans l’en-tête du jeton de paiement pour s’assurer que ces valeurs correspondent à la demande de paiement finale.  Si le bot décide de facturer le client, il doit facturer uniquement le montant figurant dans l’en-tête du jeton de paiement, car il s’agit du prix confirmé par le client. En cas d’incohérence entre les valeurs attendues par le bot et les valeurs qu’il a reçues dans le rappel de finalisation du paiement, il peut annuler la demande de paiement en envoyant le code d’état HTTP `200 OK` et en affichant la valeur `failure` dans le champ de résultat.   
+Lors de la réception d’un rappel de finalisation de paiement, votre bot obtient une copie de la demande de paiement initiale, non modifiée, ainsi que les objets de la réponse de paiement dans la propriété `value` de l’événement. L’objet de la réponse de paiement contient les sélections finales effectuées par le client ainsi qu’un jeton de paiement. Votre bot devrait pouvoir recalculer la demande de paiement finale en fonction de la demande de paiement initiale et des sélections finales du client. En supposant que les sélections du client sont définies comme étant valides, le bot doit vérifier le montant et la monnaie locale dans l’en-tête du jeton de paiement pour s’assurer que ces valeurs correspondent à la demande de paiement finale.  Si le bot décide de facturer le client, il doit facturer uniquement le montant figurant dans l’en-tête du jeton de paiement, car il s’agit du prix confirmé par le client. En cas d’incohérence entre les valeurs attendues par le bot et les valeurs qu’il a reçues dans le rappel de finalisation du paiement, il peut annuler la demande de paiement en envoyant le code d’état HTTP `200 OK` et en affichant la valeur `failure` dans le champ de résultat.   
 
 En plus de vérifier les détails du paiement, le bot doit également vérifier que la commande peut être honorée avant de lancer le traitement du paiement. Par exemple, il peut vérifier si les articles achetés sont toujours en stock. Si les valeurs sont correctes et que votre processeur de paiement a facturé avec succès le jeton de paiement, le bot doit répondre avec le code d’état HTTP `200 OK` en affichant la valeur `success` dans le champ de résultat, afin que l’interface web de paiement affiche la confirmation du paiement. Le jeton de paiement reçu par le bot ne peut être utilisé qu’une seule fois par le vendeur qui l’a demandé, et il doit être soumis à Stripe (le seul processeur de paiement actuellement pris en charge par Bot Framework). L’envoi d’un code d’état HTTP compris entre `400` et `500` entraîne une erreur générique pour le client.
 
@@ -120,6 +123,6 @@ Dans l’exemple <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/m
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-- <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/sample-payments" target="_blank">Exemple Bot de paiement</a>
+- <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/sample-payments" target="_blank">Exemple de bot de paiement</a>
 - [Ajouter des pièces jointes de cartes enrichies aux messages](bot-builder-nodejs-send-rich-cards.md)
 - <a href="http://www.w3.org/Payments/" target="_blank">Paiements web sur W3C</a> 

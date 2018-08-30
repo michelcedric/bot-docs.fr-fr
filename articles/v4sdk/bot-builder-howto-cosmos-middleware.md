@@ -9,14 +9,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 03/21/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 29edff2db0e513a37b8ca8ac0f97e0647282567d
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 3f36b00a91644859445676676374f7d321087800
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299352"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42906100"
 ---
 # <a name="create-middleware-that-logs-in-cosmos-db"></a>Créer un middleware qui se connecte à Cosmos DB
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 Le Kit de développement logiciel (SDK) offre des middleware très utiles. Cependant, dans certaines situations, vous devrez implémenter votre propre middleware pour atteindre l’objectif souhaité.
 

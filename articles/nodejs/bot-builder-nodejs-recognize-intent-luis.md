@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 03/28/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 9c1a0944a24af3f2a51a90818890c50edfe139d4
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 82a4d0843a9aaab25779d833f2b1b1d2ab2516c2
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299768"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905101"
 ---
 # <a name="recognize-intents-and-entities-with-luis"></a>Reconnaître les intentions et les entités avec LUIS 
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 Cet article prend l’exemple d’un robot servant à prendre des notes pour montrer comment le module Language Understanding ([LUIS][LUIS]) permet à votre robot de répondre de manière appropriée aux saisies en langage naturel. Un robot détecte ce qu’un utilisateur veut faire en identifiant son **intention**. Cette intention est déterminée à partir d’entrées orales ou textuelles, ou **énoncés**. L’intention établit la correspondance entre les énoncés et les actions prises par le bot, par exemple l’appel à un dialogue. Un robot peut également avoir besoin d’extraire des **entités** qui correspondent à des mots importants dans les énoncés. Il arrive que les entités doivent respecter une intention. Dans l’exemple d’un robot prenant des notes, l’entité `Notes.Title` identifie le titre de chaque note.
 
@@ -44,7 +46,7 @@ Cet article prend l’exemple d’un robot servant à prendre des notes pour mon
 
 ## <a name="try-the-bot"></a>Essayer le bot
 
-Vérifiez que le bot a été déployé en consultant les **Notifications**. La notification passera de **Déploiement en cours…** à **Déploiement réussi**. Cliquez sur le bouton **Accéder à la ressource** pour ouvrir le panneau des ressources du robot.
+Vérifiez que le bot a été déployé en consultant les **Notifications**. La notification passera de **Déploiement en cours…** à **Déploiement réussi**. Cliquez sur le bouton **Accéder à la ressource** pour ouvrir le panneau des ressources du bot.
 
 Une fois le bot enregistré, cliquez sur **Test dans le chat web** pour ouvrir le volet de chat web. Tapez « Bonjour » dans la Discussion Web.
 
@@ -54,13 +56,13 @@ Le bot répond : « Vous vous trouvez dans l’intention Salutations. Vous avez
 
 ## <a name="modify-the-luis-app"></a>Modifier l’application LUIS
 
-Connectez-vous à [https://www.luis.ai](https://www.luis.ai) avec le même compte que vous utilisez pour vous connecter à Azure. Cliquer sur **Mes applications**. Dans la liste des applications, trouvez l’application commençant par le **nom d’application** indiqué dans le panneau **Bot Service** lorsque vous avez créé le Bot Service. 
+Connectez-vous à [https://www.luis.ai](https://www.luis.ai) avec le même compte que celui que vous utilisez pour vous connecter à Azure. Cliquer sur **Mes applications**. Dans la liste des applications, trouvez l’application commençant par le **nom d’application** indiqué dans le panneau **Bot Service** lorsque vous avez créé le Bot Service. 
 
 L’application LUIS se lance avec 4 intentions : annulation, accueil, aide et aucun. <!-- picture -->
 
 Les étapes suivantes permettent d’ajouter les intentions Note.Create, Note.ReadAloud et Note.Delete : 
 
-1. Cliquez sur **Domaines prédéfinis** dans le coin inférieur gauche de la page. Recherchez le domaine **Note**, puis cliquez sur **Ajouter un domaine**.
+1. Cliquez sur **Prebuilt Domains** (Domaines prédéfinis) dans le coin inférieur gauche de la page. Recherchez le domaine **Note**, puis cliquez sur **Ajouter un domaine**.
 
 2. Ce didacticiel n’utilise pas toutes les intentions comprises dans le domaine prédéfini **Note**. Dans la page des **intentions**, cliquez sur chacun des noms d’intention suivants, puis cliquez sur le bouton **Supprimer l’intention**.
    * Note.ShowNext
@@ -82,7 +84,7 @@ Les étapes suivantes permettent d’ajouter les intentions Note.Create, Note.Re
      ![intentions affichées dans l’application LUIS](../media/bot-builder-nodejs-use-luis/luis-intent-list.png)
 
 
-3.  Cliquez sur le bouton **Entraîner** en haut à droite pour entraîner votre application.
+3.  Cliquez sur le bouton **Former** en haut à droite pour effectuer l’apprentissage de votre application.
 4.  Cliquez sur **PUBLIER** dans la barre de navigation supérieure pour ouvrir la page **Publier**. Cliquez sur le bouton **Publier à l’emplacement de production**. Après avoir effectué une publication, une application LUIS se déploie sur l’URL affichée dans la colonne **Point de terminaison** de la page **Publier l’application** et la ligne qui commence par le nom de la ressource Starter_Key. Le format de l’URL est similaire à l’exemple suivant : `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx?subscription-key=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&timezoneOffset=0&verbose=true&q=`. L’identifiant d’application et la clé d’abonnement dans cette URL sont les mêmes que LuisAppId et LuisAPIKey dans ** Paramètres Azure App Service > Paramètres de l’application > Paramètres d’application > Paramètres d’application**
 
 
@@ -552,8 +554,8 @@ function noteCount(notes) {
 
 ## <a name="test-the-bot"></a>Tester le bot
 
-Dans le portail Azure, cliquez sur **Test dans le chat web** pour tester le robot. Essayez de saisir des messages comme « Créer une note », « Lire mes notes » ou « Effacer des notes » pour appeler les intentions que vous venez d’ajouter.
-   ![Tester le robot de prise de notes dans la Discussion Web](../media/bot-builder-nodejs-use-luis/bot-service-test-notebot.png)
+Dans le Portail Azure, cliquez sur **Test dans le chat web** pour tester le bot. Essayez de saisir des messages comme « Créer une note », « Lire mes notes » ou « Effacer des notes » pour appeler les intentions que vous venez d’ajouter.
+   ![Test du bot de prise de notes dans la Discussion Web](../media/bot-builder-nodejs-use-luis/bot-service-test-notebot.png)
 
 > [!TIP]
 > Si vous trouvez que votre bot ne reconnaît pas toujours la bonne intention ou les bonnes entités, améliorez les performances de votre application LUIS en lui donnant d’autres exemples d’énoncés pour l’entraîner. Ce nouvel apprentissage est possible sans aucune modification du code du bot. Voir [Ajouter des exemples d’énoncés](/azure/cognitive-services/LUIS/add-example-utterances) et [Entraîner et tester votre application LUIS](/azure/cognitive-services/LUIS/train-test).

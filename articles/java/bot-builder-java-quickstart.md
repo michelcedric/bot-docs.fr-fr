@@ -9,12 +9,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 05/02/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ca4714d3b3988fd08021f55a4905d9426996b7eb
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 3b618bfb7cd1a462390aee4d564778c8ec0a7247
+ms.sourcegitcommit: d486dd088b87a44fc8142f7a08877ff993861a42
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299220"
+ms.lasthandoff: 08/26/2018
+ms.locfileid: "42928428"
 ---
 # <a name="create-a-bot-with-the-bot-builder-sdk-for-java"></a>Créer un bot avec le Kit de développement logiciel (SDK) Bot Builder pour Java
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
@@ -153,9 +153,9 @@ Si vous utilisez Maven, vous pouvez copier le fichier pom.xml du dossier d’exe
 À ce stade, votre bot s’exécute localement.
 Démarrez à présent l’émulateur, puis connectez-vous à votre bot dans l’émulateur :
 
-1. Cliquez sur le lien **create a new bot configuration** (créer une configuration de bot) dans l’onglet « Welcome » (Bienvenue) de l’émulateur. 
+1. Cliquez sur le lien **create a new bot configuration** (créer une configuration de bot) sous l’onglet « Welcome » (Bienvenue) de l’émulateur. 
 
-2. Renseignez le champ **Bot name** (Nom de bot) et indiquez le chemin d’accès au répertoire de votre code de bot. Le fichier de configuration du bot y sera enregistré.
+2. Renseignez le champ **Bot name** (Nom du bot) et indiquez le chemin d’accès au répertoire de votre code de bot. Le fichier de configuration du bot y sera enregistré.
 
 3. Tapez `http://localhost:port-number/api/messages` dans le champ **URL du point de terminaison**, où *port-number* correspond au numéro de port affiché dans le navigateur où s’exécute votre application.
 
@@ -166,7 +166,5 @@ Envoyez le mot « Bonjour » à votre bot. Il vous renverra le même message en 
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Passez ensuite aux concepts décrivant un bot et son fonctionnement.
-
 > [!div class="nextstepaction"]
-> [Bots : concepts de base](../v4sdk/bot-builder-basics.md)
+> [Bot : concepts de base](../v4sdk/bot-builder-basics.md)

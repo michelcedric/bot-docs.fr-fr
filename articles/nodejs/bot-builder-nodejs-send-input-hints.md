@@ -1,6 +1,6 @@
 ---
 title: Ajouter des conseils de saisie aux messages | Microsoft Docs
-description: Découvrez comment ajouter des conseils de saisie aux messages à l’aide du kit de développement logiciel (SDK) Bot Builder pour .NET.
+description: Découvrez comment ajouter des conseils de saisie aux messages à l’aide du Kit SDK Bot Builder pour .NET.
 author: v-ducvo
 ms.author: kamrani
 manager: kamrani
@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: b5efb024c01437867b6ab1cf99b2f544077eee0c
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 2bbf75f166a90d2e0a905bd269f51cef4398a2ef
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299660"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904491"
 ---
 # <a name="add-input-hints-to-messages"></a>Ajouter des conseils de saisie aux messages
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-add-input-hints.md)
 > - [Node.JS](../nodejs/bot-builder-nodejs-send-input-hints.md)
@@ -43,15 +46,15 @@ Pour indiquer que votre bot n’est pas prêt à recevoir une entrée de l’uti
 
 ## <a name="default-values-for-input-hint"></a>Valeurs par défaut pour le conseil de saisie
 
-Si vous ne définissez pas de conseil de saisie pour un message, le kit de développement logiciel (SDK) Bot Builder le fera automatiquement pour vous en suivant cette logique : 
+Si vous ne définissez pas de conseil de saisie pour un message, le Kit SDK Bot Builder le fera automatiquement pour vous en suivant cette logique : 
 
 - Si votre bot envoie une invite, le conseil de saisie pour le message spécifie que votre bot **attend une entrée**.</li>
 - Si votre bot envoie un message simple, le conseil de saisie pour le message spécifie que votre bot **accepte une entrée**.</li>
-- Si votre robot envoie une série de messages consécutifs, le conseil de saisie pour tous les messages sauf le dernier de la série spécifiera que votre bot **ignorant les entrées**, et le conseil de saisie pour le message final de la série spécifie que votre bot **accepte une entrée**.
+- Si votre bot envoie une série de messages consécutifs, le conseil de saisie pour tous les messages sauf le dernier de la série spécifiera que votre bot **ignorant les entrées**, et le conseil de saisie pour le message final de la série spécifie que votre bot **accepte une entrée**.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-- [Ajouter de la reconnaissance vocale aux messages](bot-builder-nodejs-text-to-speech.md)
+- [Ajouter la reconnaissance vocale aux messages](bot-builder-nodejs-text-to-speech.md)
 - [Kit de développement logiciel (SDK) Bot Builder pour Node.js][SDKReference]
 
 [SDKReference]: https://docs.botframework.com/en-us/node/builder/chat-reference/modules/_botbuilder_d_.html

@@ -9,14 +9,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 4/25/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a808076e4865a181802b85cfc24ce342dbf23cba
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 3f7e88192d989e79f2124e03571ddba3b5291955
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299013"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904633"
 ---
 # <a name="how-to-run-net-sdk-v3-bots-in-sdk-40"></a>Exécution de bots du Kit de développement logiciel (SDK) .NET V3 dans le Kit SDK 4.0
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 Le package NuGet **Microsoft.Bot.Builder.Classic** facilite la migration de vos bots de la version 3.x vers la version 4.0 de Microsoft Bot Framework.
 

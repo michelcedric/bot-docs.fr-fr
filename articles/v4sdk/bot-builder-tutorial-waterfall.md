@@ -9,16 +9,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 5/10/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a5c55d4437033968f9c08ed49c07b9586cb9b7d8
-ms.sourcegitcommit: 9a38d76afb0e82fdccc1f36f9b1a65042671e538
+ms.openlocfilehash: 7546b46a0bbca86665538b47e8f7b05d5812a920
+ms.sourcegitcommit: 44f100a588ffda19c275b118f4f97029f12d1449
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/04/2018
-ms.locfileid: "39514969"
+ms.lasthandoff: 08/26/2018
+ms.locfileid: "42928317"
 ---
 # <a name="ask-the-user-questions"></a>Poser des questions à l’utilisateur
 
-[!INCLUDE [pre-release-label](~/includes/pre-release-label.md)]
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 Fondamentalement, un bot repose sur la conversation avec un utilisateur. Une conversation peut prendre de [nombreuses formes](bot-builder-conversations.md) ; elle peut être courte ou plus complexe, poser des questions ou répondre à des questions. La forme que prend la conversation dépend de plusieurs facteurs, mais ils impliquent tous une conversation.
 

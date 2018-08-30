@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 1a50bb8af6556830ee9f9b047d7c5a2d3399a6b9
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: e9f07cdd4616a2649dca31f096eca3377cd46b7d
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299485"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904233"
 ---
 # <a name="create-data-driven-experiences-with-azure-search"></a>Créer des expériences pilotées par les données avec Recherche Azure 
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-search-azure.md)
 > - [Node.JS](../nodejs/bot-builder-nodejs-search-azure.md)
@@ -35,7 +38,7 @@ Recherche Azure est un service Azure qui offre des fonctionnalités, telles que 
 ## <a name="prerequisites"></a>Prérequis
 
 Ce qui suit est **obligatoire** : 
-- Avoir un abonnement Azure et une clé primaire de Recherche Azure. Vous trouverez cela sur le portail Azure.
+- Avoir un abonnement Azure et une clé primaire de Recherche Azure. Vous le trouverez sur le portail Azure.
 - Copiez la bibliothèque [SearchDialogLibrary](https://github.com/Microsoft/botBuilder-Samples/tree/master/Node/demo-Search/SearchDialogLibrary) vers le répertoire de projet de votre robot. Cette bibliothèque contient des dialogues généraux dans lesquels l’utilisateur peut chercher, mais peut être personnalisée en fonction des besoins de votre robot. 
 
 - Copiez la bibliothèque [SearchProviders](https://github.com/Microsoft/botBuilder-Samples/tree/master/Node/demo-Search/SearchProviders) vers le répertoire de projet de votre robot. Cette bibliothèque contient tous les composants requis pour créer une demande et l’envoyer à Recherche Azure.

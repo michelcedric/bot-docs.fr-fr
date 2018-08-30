@@ -9,16 +9,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 04/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 48c32a1dd1c43bbb84c0f771be7dff691f0996ec
-ms.sourcegitcommit: f95702d27abbd242c902eeb218d55a72df56ce56
+ms.openlocfilehash: 34564b411f911ae82197d5a34cb954a103abe70b
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39300581"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905413"
 ---
 # <a name="basic-bot-structure"></a>Structure de bot de base
 
-[!INCLUDE [pre-release-label](~/includes/pre-release-label.md)]
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 Azure Bot Service et le SDK Bot Builder fournissent des bibliothèques, des exemples et des outils permettant de générer et de déboguer des bots. Toutefois, avant de nous pencher dessus, vous devez comprendre la structure de base d’un bot et la façon dont tous les éléments fonctionnent ensemble. Ces concepts s’appliquent quel que soit le langage de programmation que vous choisissez. Des liens vers du contenu plus détaillé sont fournis tout au long de cet article, qui fournit une base pour comprendre le fonctionnement d’un bot.
 

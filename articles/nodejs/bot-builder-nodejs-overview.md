@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 41c276186f08e9997497e5649a6566954f0c8079
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 24da2cc90908a1f22bee9d2cd007607b116ac2cc
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39300549"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904202"
 ---
-# <a name="bot-builder-sdk-for-nodejs"></a>Kit SDK Bot Builder pour Node.js
+# <a name="bot-builder-sdk-for-nodejs"></a>kit de développement logiciel Bot Builder pour Node.js
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-overview.md)
@@ -44,7 +46,7 @@ Pour vérifier que votre bot répond aux principaux scénarios utilisateur, pass
 
 ## <a name="get-samples"></a>Obtenir les exemples
 
-Les [exemples du kit SDK Bot Builder pour Node.js](bot-builder-nodejs-samples.md) illustrent les bots centrés sur les tâches qui montrent comment tirer parti des fonctionnalités du kit SDK Bot Builder pour Node.js. Vous pouvez utiliser les exemples pour commencer rapidement à concevoir de puissants bots aux fonctionnalités enrichies.
+Les [exemples du kit SDK Bot Builder pour Node.js](bot-builder-nodejs-samples.md) illustrent les bots centrés sur les tâches qui montrent comment tirer parti des fonctionnalités du kit SDK Bot Builder pour Node.js. Vous pouvez utiliser les exemples pour commencer rapidement à concevoir de puissants robots aux fonctionnalités enrichies.
 
 ## <a name="next-steps"></a>Étapes suivantes
 > [!div class="nextstepaction"]

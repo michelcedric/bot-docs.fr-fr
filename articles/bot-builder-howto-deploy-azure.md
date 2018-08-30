@@ -8,14 +8,16 @@ manager: kamrani
 ms.topic: get-started-article
 ms.prod: bot-framework
 ms.date: 05/14/2018
-ms.openlocfilehash: 70a3b7f093bb80dd16c854c65331c141fbba3725
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: f3e5ed5b14ffb81c597b10aeac45854464bad8b0
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39300177"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905591"
 ---
 # <a name="deploy-your-bot-to-azure"></a>Déployer votre bot sur Azure
+
+[!INCLUDE [pre-release-label](./includes/pre-release-label-v3.md)]
 
 Après avoir créé votre bot et l’avoir vérifié localement, vous pouvez le transmettre à Azure pour le rendre accessible de n’importe quel endroit. Pour ce faire, vous allez d’abord déployer le bot sur Azure dans un service d’application, puis configurer votre bot avec Azure Bot Service à l’aide de l’élément Bot Channels Registration.
 

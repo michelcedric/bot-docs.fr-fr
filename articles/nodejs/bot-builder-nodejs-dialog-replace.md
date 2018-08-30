@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: d1a2eca2ebdfccf6dacdf773c48c8b41444559ca
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 4343e9742d6bfabeab1ccb6a96f0d379d824125e
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299132"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905733"
 ---
 # <a name="replace-dialogs"></a>Remplacer des boîtes de dialogue
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 Il peut être très utile de pouvoir remplacer une boîte de dialogue si vous avez besoin de valider une entrée utilisateur ou de répéter une action au cours d’une conversation. Avec le Kit de développement logiciel (SDK) Bot Builder pour Node.js, vous pouvez remplacer une boîte de dialogue à l’aide de la méthode [`session.replaceDialog`](http://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#replacedialog). Cette méthode vous permet de mettre fin à la boîte de dialogue en cours et de la remplacer par une nouvelle boîte de dialogue sans retour à l’appelant. 
 

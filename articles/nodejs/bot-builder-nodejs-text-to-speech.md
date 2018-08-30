@@ -8,20 +8,23 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 04d1f92687668267ca8226257ee83f993b5d09df
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 58086bfb29846e39a219beb2f7f0e8d977415559
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299657"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904914"
 ---
-# <a name="add-speech-to-messages"></a>Ajouter du discours aux messages
+# <a name="add-speech-to-messages"></a>Ajouter de la reconnaissance vocale aux messages
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-text-to-speech.md)
 > - [Node.JS](../nodejs/bot-builder-nodejs-text-to-speech.md)
 > - [REST](../rest-api/bot-framework-rest-connector-text-to-speech.md)
 
-Si vous générez un bot pour un canal de reconnaissance vocale tel que Cortana, vous pouvez construire des messages qui spécifient le texte à énoncer par votre bot. Vous pouvez également tenter d’influencer l’état du microphone du client en spécifiant un [conseil de saisie](bot-builder-nodejs-send-input-hints.md) pour indiquer si votre bot accepte, attend ou ignore l’entrée de l’utilisateur.
+Si vous générez un bot pour un canal où sont activées les fonctionnalités vocales, tel que Cortana, vous pouvez créer des messages qui spécifient le texte que doit énoncer votre bot. Vous pouvez également tenter d’influencer l’état du microphone du client en spécifiant un [conseil de saisie](bot-builder-nodejs-send-input-hints.md) pour indiquer si votre bot accepte, attend ou ignore l’entrée de l’utilisateur.
 
 ## <a name="specify-text-to-be-spoken-by-your-bot"></a>Spécifier le texte à énoncer par votre bot
 
@@ -64,7 +67,7 @@ Pour spécifier le texte à énoncer par votre bot, vous pouvez utiliser une cha
 
 ## <a name="input-hints"></a>Conseils de saisie
 
-Lorsque vous envoyez un message sur le canal de reconnaissance vocale, vous pouvez tenter d’influencer l’état du microphone du client en spécifiant un conseil de saisie pour indiquer si votre bot accepte, attend ou ignore l’entrée de l’utilisateur. Pour plus d’informations, consultez [Add input hints to messages](bot-builder-nodejs-send-input-hints.md) (ajouter des conseils de saisie à des messages).
+Lorsque vous envoyez un message sur le canal de reconnaissance vocale, vous pouvez tenter d’influencer l’état du microphone du client en spécifiant un conseil de saisie pour indiquer si votre bot accepte, attend ou ignore l’entrée de l’utilisateur. Pour plus d’informations, consultez [Ajouter des conseils de saisie aux messages](bot-builder-nodejs-send-input-hints.md).
 
 ## <a name="sample-code"></a>Exemple de code 
 

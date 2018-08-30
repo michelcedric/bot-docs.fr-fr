@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 255248449ab7adb6512db93ece51389d65c01dee
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: eed4ac20664d15fbc40969551a1f23fc91b4f120
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299248"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42906223"
 ---
 # <a name="real-time-media-calling-with-skype"></a>Appel multimédia en temps réel avec Skype
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 La plateforme multimédia en temps réel pour robots ajoute une dimension à la façon dont les robots peuvent interagir avec des utilisateurs en activant des modalités de voix, de vidéo et de partage d’écran en temps réel. Cela permet de créer des robots de divertissement, éducatifs et d’assistance à la fois captivants et interactifs. Les utilisateurs communiquent avec des robots multimédia en temps réel à l’aide de Skype.
 

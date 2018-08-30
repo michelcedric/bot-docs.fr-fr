@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 04/06/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 7241b67b582b3e31c1b3c15dc5474e750b7cc558
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: e316ff90b68f860274579f06e7196deec364e082
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39300464"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905632"
 ---
 # <a name="translate-from-the-users-language-to-make-your-bot-multilingual"></a>Traduire l’entrée utilisateur pour rendre votre bot multilingue
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 Votre bot peut utiliser [Microsoft Translator](https://www.microsoft.com/en-us/translator/) pour traduire automatiquement des messages dans la langue qu’il comprend et éventuellement retraduire les réponses du bot dans la langue de l’utilisateur.
 <!-- 
@@ -35,18 +37,18 @@ Assurez-vous que vous avez installé les packages nécessaires pour ajouter une 
 
 # <a name="ctabcsrefs"></a>[C#](#tab/csrefs)
 
-[Ajoutez une référence](https://docs.microsoft.com/en-us/nuget/tools/package-manager-ui) à la version préliminaire des packages NuGet suivants :
+[Ajoutez une référence](https://docs.microsoft.com/en-us/nuget/tools/package-manager-ui) à la préversion des packages NuGet suivants :
 
 * `Microsoft.Bot.Builder.Integration.AspNet.Core`
 * `Microsoft.Bot.Builder.Ai` (requis pour la traduction)
 
-Si vous voulez combiner une traduction avec Language Understanding (LUIS), ajoutez également une référence à :
+Si vous voulez combiner une traduction avec Language Understanding (LUIS), ajoutez également une référence à :
 
 * `Microsoft.Bot.Builder.Luis` (requis pour LUIS)
 
 # <a name="javascripttabjsrefs"></a>[JavaScript](#tab/jsrefs)
 
-Un de ces services peut être ajouté à votre bot à l’aide du package botbuilder-ai. Vous pouvez ajouter ce package à votre projet via npm :
+L’un de ces services peut être ajouté à votre bot à l’aide du package botbuilder-ai. Vous pouvez ajouter ce package à votre projet par le biais de npm :
 * `npm install --save botbuilder@preview`
 * `npm install --save botbuilder-ai@preview`
 
@@ -59,7 +61,7 @@ Vous pouvez configurer votre bot afin d’appeler le traducteur pour chaque mess
 
 # <a name="ctabcssetuptranslate"></a>[C#](#tab/cssetuptranslate)
 
-Démarrez avec l’exemple EchoBot du Kit SDK et mettez à jour la méthode `ConfigureServices` de votre fichier `Startup.cs` afin d’ajouter `TranslationMiddleware` au bot. Cela permet de configurer votre bot pour traduire chaque message reçu d’un utilisateur. <!--, by simply adding it to your bot's middleware set. The middleware stores the translation results on the context object. -->
+Démarrez avec l’exemple EchoBot du Kit SDK et mettez à jour la méthode `ConfigureServices` de votre fichier `Startup.cs` afin d’ajouter `TranslationMiddleware` au bot. Cette opération configure votre bot afin que chaque message reçu d’un utilisateur soit traduit. <!--, by simply adding it to your bot's middleware set. The middleware stores the translation results on the context object. -->
 
 **Startup.cs**
 ```csharp
@@ -93,11 +95,11 @@ public void ConfigureServices(IServiceCollection services)
 ```
 
 > [!TIP] 
-> Le Kit SDK Bot Builder détecte automatiquement la langue de l’utilisateur en fonction du message qu’il vient d’envoyer. Pour remplacer cette fonctionnalité, vous pouvez fournir des paramètres de rappel supplémentaires afin d’ajouter votre propre logique de détection et de changement de la langue de l’utilisateur.  
+> Le Kit de développement logiciel (SDK) Bot Builder détecte automatiquement la langue de l’utilisateur en fonction du message que ce dernier vient d’envoyer. Pour remplacer cette fonctionnalité, vous pouvez fournir des paramètres de rappel supplémentaires afin d’ajouter votre propre logique de détection et de changement de la langue de l’utilisateur.  
 
 
 
-Examinons le code de `EchoBot.cs`, qui envoie le texte « You sent » (Vous avez envoyé) suivi du message de l’utilisateur :
+Examinons le code du fichier `EchoBot.cs`, qui envoie le texte « You sent » (Vous avez envoyé) suivi du message de l’utilisateur :
 
 ```cs
 using Microsoft.Bot.Builder;
@@ -146,7 +148,7 @@ Lorsque vous ajoutez un intergiciel (middleware) de traduction, un paramètre fa
 
 # <a name="javascripttabjssetuptranslate"></a>[JavaScript](#tab/jssetuptranslate)
 
-Pour configurer un intergiciel (middleware) de traduction avec un bot d’écho, collez le texte suivant dans app.js.
+Pour configurer un intergiciel (middleware) de traduction avec un bot d’écho, collez le code ci-après dans app.js.
 
 ```javascript
 const { BotFrameworkAdapter, MemoryStorage, ConversationState } = require('botbuilder');
@@ -206,7 +208,7 @@ Exécutez le bot et tapez quelques messages dans d’autres langues. Vous verrez
 
 ## <a name="invoke-logic-in-the-bots-native-language"></a>Appeler une logique dans la langue native du bot
 
-Ajoutez maintenant une logique qui recherche les termes anglais. Si l’utilisateur tape « help » ou « cancel » dans une autre langue, le bot traduit le texte en anglais et la logique qui vérifie les mots anglais « help » ou « cancl » est appelée.
+Maintenant, ajoutez une logique qui recherche les termes anglais. Si l’utilisateur tape « help » ou « cancel » dans une autre langue, le bot traduit le texte en anglais, et la logique qui vérifie les mots anglais « help » ou « cancel » est appelée.
 
 # <a name="ctabcshelp"></a>[C#](#tab/cshelp)
 ```cs
@@ -232,7 +234,7 @@ if (context.activity.type === 'message') {
 
 ---
 
-![Le bot détecte le mot help en français](./media/how-to-bot-translate/bot-detects-help-french.png)
+![Le bot détecte le mot help en français (aide)](./media/how-to-bot-translate/bot-detects-help-french.png)
 
 
 
@@ -276,7 +278,7 @@ Au lieu de laisser le Kit SDK Bot Builder détecter automatiquement la langue de
 > [!TIP] 
 > Consultez l’exemple de traduction du Kit SDK pour obtenir un exemple de bot qui implémente des rappels pour la détection et la modification de la langue de l’utilisateur. 
 
-Dans l’exemple suivant, le rappel `CheckUserChangedLanguage` recherche un message utilisateur spécifique afin de modifier la langue. 
+Dans l’exemple ci-après, le rappel `CheckUserChangedLanguage` recherche un message utilisateur spécifique afin de modifier la langue. 
 
 # <a name="ctabcschangelanguage"></a>[C#](#tab/cschangelanguage)
 ```cs
@@ -382,9 +384,9 @@ server.post('/api/messages', (req, res) => {
 
 ---
 
-## <a name="combining-luis-or-qna-with-translation"></a>Combiner LUIS ou QnA avec une traduction
+## <a name="combining-luis-or-qna-with-translation"></a>Combinaison de LUIS ou QnA avec une traduction
 
-Si vous combinez une traduction avec d’autres services dans votre bot, par exemple LUIS ou QnA, ajoutez d’abord l’intergiciel de traduction afin de traduire les messages avant de les passer à un autre intergiciel qui attend la langue native du bot.
+Si vous combinez une traduction avec d’autres services dans votre bot, par exemple LUIS ou QnA, commencez par ajouter l’intergiciel de traduction afin de traduire les messages avant de les transmettre à un autre intergiciel qui attend la langue native du bot.
 
 # <a name="ctabcslanguageluis"></a>[C#](#tab/cslanguageluis)
 ```cs
@@ -446,7 +448,7 @@ server.post('/api/messages', (req, res) => {
 
 ---
 
-Dans le code de votre bot, les résultats LUIS reposent sur l’entrée qui a déjà été traduite dans la langue native du bot. Essayez de modifier le code du bot pour vérifier les résultats d’une application LUIS :
+Dans le code de votre bot, les résultats LUIS reposent sur l’entrée qui a déjà été traduite dans la langue native du bot. Essayez de modifier le code du bot pour vérifier les résultats d’une application LUIS :
 
 ```cs
 public async Task OnTurn(ITurnContext context)
@@ -476,7 +478,7 @@ public async Task OnTurn(ITurnContext context)
 ```
 
 ## <a name="bypass-translation-for-specified-patterns"></a>Ignorer la traduction pour les modèles spécifiés
-Il existe peut-être des termes que votre bot ne devrait pas traduire, par exemple des noms propres. Vous pouvez fournir des expressions régulières pour indiquer les modèles qui ne doivent pas être traduits. Par exemple, si l’utilisateur saisit « Mon nom est... » dans une langue non native pour votre bot, vous pouvez utiliser un modèle pour éviter que son nom soit traduit.
+Il existe peut-être des termes que votre bot ne devrait pas traduire, par exemple des noms propres. Vous pouvez fournir des expressions régulières pour indiquer les modèles qui ne doivent pas être traduits. Par exemple, si l’utilisateur tape « Mon nom est... » dans une langue non native pour votre bot, vous pouvez utiliser un modèle pour éviter que son nom soit traduit.
 
 # <a name="ctabcsbypass"></a>[C#](#tab/csbypass)
 ```cs
@@ -516,15 +518,15 @@ adapter.use(languageTranslator);
 Si vous devez localiser des dates, vous pouvez ajouter `LocaleConverterMiddleware`. Par exemple, si vous savez que votre bot attend des dates au format `MM/DD/YYYY`, et que les utilisateurs d’autres pays peuvent entrer des dates au format `DD/MM/YYYY`, l’intergiciel de conversion des paramètres régionaux peut convertir automatiquement les dates au format attendu par votre bot.
 
 > [!NOTE]
-> L’intergiciel de conversion des paramètres régionaux est destiné à convertir uniquement des dates. Il n’a aucune connaissance des résultats de l’intergiciel de traduction. Si vous utilisez un intergiciel de traduction, soyez prudent lorsque vous l’associez à un convertisseur de paramètres régionaux. L’intergiciel de traduction traduira certaines dates au format texte et d’autres entrées texte, mais pas les dates
+> L’intergiciel de conversion des paramètres régionaux est uniquement destiné à convertir des dates. Il n’a aucune connaissance des résultats de l’intergiciel de traduction. Si vous utilisez un intergiciel de traduction, soyez prudent lorsque vous l’associez à un convertisseur de paramètres régionaux. L’intergiciel de traduction traduira certaines dates au format texte et d’autres entrées texte, mais non les dates.
 
-Par exemple, l’illustration suivante montre un bot qui renvoie l’entrée utilisateur après l’avoir traduite de l’anglais vers le français. Il utilise `TranslationMiddleware` sans `LocaleConverterMiddleware`.
+Par exemple, l’image ci-après illustre un bot qui renvoie l’entrée utilisateur après l’avoir traduite de l’anglais vers le français. Le bot utilise `TranslationMiddleware`, mais non `LocaleConverterMiddleware`.
 
-![bot traduisant des dates sans les convertir](./media/how-to-bot-translate/locale-date-before.png)
+![Bot traduisant des dates sans les convertir](./media/how-to-bot-translate/locale-date-before.png)
 
-L’exemple suivant montre le même bot si `LocaleConverterMiddleware` est ajouté.
+L’exemple ci-après illustre le même bot si `LocaleConverterMiddleware` est ajouté.
 
-![bot traduisant des dates sans les convertir](./media/how-to-bot-translate/locale-date-after.png)
+![Bot traduisant des dates sans les convertir](./media/how-to-bot-translate/locale-date-after.png)
 
 Les convertisseurs de paramètres régionaux peuvent prendre en charge les paramètres régionaux en anglais, français, allemand et chinois. <!-- TODO: ADD DETAIL ABOUT SUPPORTED LOCALES -->
 

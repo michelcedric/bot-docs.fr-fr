@@ -8,29 +8,33 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: b98eea6bdae097beec85e93301e5380a1de991c3
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: fc260f34f28e406dc88dd5b688d84cd79c7e9449
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299885"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905951"
 ---
 # <a name="recognize-intents-and-entities-with-luis"></a>Reconnaître les intentions et les entités avec LUIS 
 
-Cet article utilise l’exemple d’un bot de prise de notes pour démontrer la manière dont le service Language Understanding ([LUIS][LUIS]) permet à votre bot de répondre de manière appropriée aux entrées en langage naturel. Un bot détecte ce qu’un utilisateur veut faire en identifiant son **intention**. Cette intention est déterminée à partir d’entrées orales/textuelles, ou **énoncés**. L’intention établit une correspondance entre les énoncés et les actions exécutées par le bot. Par exemple, un bot de prise de notes reconnaît une intention `Notes.Create` en appelant la fonctionnalité de création d’une note. Un bot peut également avoir besoin d’extraire des **entités** qui correspondent à des mots importants dans les énoncés. Dans l’exemple de bot de prise de notes, l’entité `Notes.Title` identifie le titre de chaque note.
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
+Cet article prend l’exemple d’un robot servant à prendre des notes pour montrer comment le module Language Understanding ([LUIS][LUIS]) permet à votre robot de répondre de manière appropriée aux saisies en langage naturel. Un robot détecte ce qu’un utilisateur veut faire en identifiant son **intention**. Cette intention est déterminée à partir d’entrées orales/textuelles, ou **énoncés**. L’intention établit une correspondance entre les énoncés et les actions exécutées par le bot. Par exemple, un bot de prise de notes reconnaît une intention `Notes.Create` en appelant la fonctionnalité de création d’une note. Un bot peut également avoir besoin d’extraire des **entités** qui correspondent à des mots importants dans les énoncés. Dans l’exemple d’un robot prenant des notes, l’entité `Notes.Title` identifie le titre de chaque note.
 
 ## <a name="create-a-language-understanding-bot-with-bot-service"></a>Créer un bot Language Understanding avec Bot Service
 
-1. Dans le [Portail Azure](https://portal.azure.com), sélectionnez **Créer une ressource** dans le panneau de menu, puis cliquez sur **Tout afficher**.<!-- Start with the steps in [Create a bot with Bot Service](../bot-service-quickstart.md) to start creating a new bot service.  -->
+1. Sur le [Portail Azure](https://portal.azure.com), sélectionnez **Créer une ressource** dans le panneau de menu, puis cliquez sur **Tout afficher**.
 
-    ![Créer une ressource](../media/bot-builder-dotnet-use-luis/bot-service-creation.png)
+<!-- Start with the steps in [Create a bot with Bot Service](../bot-service-quickstart.md) to start creating a new bot service.  -->
+
+    ![Create new resource](../media/bot-builder-dotnet-use-luis/bot-service-creation.png)
 
 2. Dans la zone de recherche, recherchez **Web App Bot**. 
 
     ![Créer une ressource](../media/bot-builder-dotnet-use-luis/bot-service-selection.png)
 
-3. Dans le panneau **Bot Service** (Service de robot), fournissez les informations requises, puis cliquez sur **Créer**. Le service de bot et l’application LUIS sont alors déployés vers Azure. 
-   * Dans **Nom de l’application**, entrez le nom de votre bot. Il sera utilisé comme sous-domaine lors du déploiement de votre bot sur le cloud (par exemple, mynotesbot.azurewebsites.net). Ce nom sert également de nom pour l’application LUIS associée à votre bot. Copiez-le pour l’utiliser ultérieurement afin de retrouver l’application LUIS associée au bot.
+3. Dans le panneau **Bot Service**, indiquez les informations requises, puis cliquez sur **Créer**. Le service de bot et l’application LUIS sont alors déployés vers Azure. 
+   * Dans **Nom de l’application**, entrez le nom de votre bot. Il sera utilisé comme sous-domaine lors du déploiement de votre bot sur le cloud (par exemple, mynotesbot.azurewebsites.net). Ce nom sert également de nom pour l’application LUIS associée à votre robot. Copiez-le pour l’utiliser ultérieurement afin de retrouver l’application LUIS associée au robot.
    * Sélectionnez l’abonnement, le [groupe de ressources](/azure/azure-resource-manager/resource-group-overview), le plan App Service et [l’emplacement](https://azure.microsoft.com/en-us/regions/).
    * Sélectionnez le modèle **Language Understanding (C#)** pour le champ **Modèle de bot**.
 
@@ -54,15 +58,15 @@ Le bot répond : « Vous vous trouvez dans l’intention Salutations. Vous avez
 
 ## <a name="modify-the-luis-app"></a>Modifier l’application LUIS
 
-Connectez-vous à [https://www.luis.ai](https://www.luis.ai) avec le même compte que celui que vous utilisez pour vous connecter à Azure. Cliquer sur **Mes applications**. Dans la liste des applications, recherchez l’application commençant par le **nom d’application** que vous avez indiqué dans le panneau **Bot Service** (Service de robot) lorsque vous avez créé le service de robot. 
+Connectez-vous à [https://www.luis.ai](https://www.luis.ai) avec le même compte que celui que vous utilisez pour vous connecter à Azure. Cliquer sur **Mes applications**. Dans la liste des applications, trouvez l’application commençant par le **nom d’application** indiqué dans le panneau **Bot Service** lorsque vous avez créé le Bot Service. 
 
-L’application LUIS se lance avec 4 intentions : Cancel, Greeting, Help et None. <!-- picture -->
+L’application LUIS se lance avec 4 intentions : annulation, accueil, aide et aucun. <!-- picture -->
 
-Les étapes ci-après ajoutent les intentions Note.Create, Note.ReadAloud et Note.Delete : 
+Les étapes suivantes permettent d’ajouter les intentions Note.Create, Note.ReadAloud et Note.Delete : 
 
 1. Cliquez sur **Prebuilt Domains** (Domaines prédéfinis) dans le coin inférieur gauche de la page. Recherchez le domaine **Note**, puis cliquez sur **Ajouter un domaine**.
 
-2. Ce didacticiel n’utilise pas toutes les intentions figurant dans le domaine prédéfini **Note**. Dans la page **Intents** (Intentions), cliquez sur chacun des noms d’intention ci-après, puis cliquez sur le bouton **Delete Intent** (Supprimer l’intention).
+2. Ce didacticiel n’utilise pas toutes les intentions comprises dans le domaine prédéfini **Note**. Dans la page des **intentions**, cliquez sur chacun des noms d’intention suivants, puis cliquez sur le bouton **Supprimer l’intention**.
    * Note.ShowNext
    * Note.DeleteNoteItem
    * Note.Confirm
@@ -70,7 +74,7 @@ Les étapes ci-après ajoutent les intentions Note.Create, Note.ReadAloud et Not
    * Note.CheckOffItem
    * Note.AddToNote
 
-   Les seules intentions qui devraient rester dans l’application LUIS sont les suivantes : 
+   Voici les seules intentions qui devraient rester dans l’application LUIS : 
    * Note.ReadAloud
    * Note.Create
    * Note.Delete
@@ -79,7 +83,7 @@ Les étapes ci-après ajoutent les intentions Note.Create, Note.ReadAloud et Not
    * Salutations
    * Annuler 
 
-     ![Intentions affichées dans l’application LUIS](../media/bot-builder-dotnet-use-luis/luis-intent-list.png)
+     ![intentions affichées dans l’application LUIS](../media/bot-builder-dotnet-use-luis/luis-intent-list.png)
 
 3. Cliquez sur le bouton **Former** en haut à droite pour effectuer l’apprentissage de votre application.
 4. Cliquez sur **PUBLIER** dans la barre de navigation supérieure pour ouvrir la page **Publier**. Cliquez sur le bouton **Publish to production slot** (Publier à l’emplacement de production). Après avoir effectué la publication, copiez l’URL affichée dans la colonne **Point de terminaison** de la page **Publier l’application** sur la ligne qui commence par le nom de la ressource Starter_Key. Enregistrez cette URL afin de l’utiliser ultérieurement dans le code de votre bot. Le format de cette URL ressemble à ceci : `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx?subscription-key=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&timezoneOffset=0&verbose=true&q=`
@@ -385,7 +389,7 @@ Le test de votre bot vous permet de comprendre la manière dont les tâches sont
 - [Dialogues](bot-builder-dotnet-dialogs.md)
 - [Gérer un flux de conversation avec des dialogues](bot-builder-dotnet-manage-conversation-flow.md)
 - <a href="https://www.luis.ai" target="_blank">LUIS</a>
-- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Référence sur le Kit SDK Bot Builder pour .NET</a>
+- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Documentation de référence concernant le Kit de développement logiciel (SDK) Bot Builder pour .NET</a>
 
 [LUIS]: https://www.luis.ai/
 [NotesSample]: https://github.com/Microsoft/BotFramework-Samples/tree/master/docs-samples/CSharp/Simple-LUIS-Notes-Sample

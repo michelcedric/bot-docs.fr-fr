@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 1001f1aa2fe76127073551e98548fc20ef9e1bd7
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: cdd35bc5b487b5bf0d49006cf168f2541e17a057
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299668"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904371"
 ---
 # <a name="manage-state-data"></a>Gérer les données d’état
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-state.md)
 > - [Node.JS](../nodejs/bot-builder-nodejs-state.md)
@@ -42,7 +45,7 @@ Vous pouvez utiliser cette méthode pour définir votre propre stockage de donn�
 
 ## <a name="manage-custom-data-storage"></a>Gérer le stockage de données personnalisé
 
-Pour des raisons de performances et de sécurité dans l’environnement de production, vous pouvez implémenter votre propre stockage de données ou envisager d’implémenter l’une des options de stockage de données suivantes :
+Pour des raisons de performances et de sécurité dans l’environnement de production, vous pouvez implémenter votre propre stockage de données ou envisager de mettre en œuvre l’une des options de stockage de données suivantes :
 
 1. [Gérer les données d’état avec Cosmos DB](bot-builder-nodejs-state-azure-cosmosdb.md)
 
@@ -197,7 +200,7 @@ Maintenant que vous savez comment gérer les données d’état utilisateur, voy
 > [Gérer le flux de la conversation](bot-builder-nodejs-dialog-manage-conversation-flow.md)
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
-- [Demander à l’utilisateur d’effectuer une saisie](bot-builder-nodejs-dialog-prompt.md)
+- [Inviter l’utilisateur à effectuer une entrée](bot-builder-nodejs-dialog-prompt.md)
 
 [userDataURL]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html#userdata
 [conversationDataURL]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html#conversationdata

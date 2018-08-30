@@ -8,19 +8,22 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: d6c8ad06b9fb198e684deae26e9cbad05a86a611
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 656b6304a576c553db948a348b1c6d8c3fc5ae71
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39300280"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905663"
 ---
 # <a name="manage-conversation-flow-with-dialogs"></a>Gérer un flux de conversation avec des dialogues
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-manage-conversation-flow.md)
 > - [Node.JS](../nodejs/bot-builder-nodejs-dialog-manage-conversation-flow.md)
 
-La gestion de flux de conversation est une tâche essentielle du processus de création de bots. Un bot doit être en mesure de s’acquitter des tâches principales en finesse et de traiter les interruptions de manière appropriée. Le Kit de développement logiciel (SDK) Bot Builder pour Node.js vous permet de gérer un flux de conversation avec des dialogues.
+La gestion de flux de conversation est une tâche essentielle dans la création de robots. Un bot doit être en mesure de s’acquitter des tâches principales en finesse et de traiter les interruptions de manière appropriée. Le Kit de développement logiciel (SDK) Bot Builder pour Node.js vous permet de gérer un flux de conversation avec des dialogues.
 
 Un dialogue est comparable à une fonction dans un programme. Il est généralement conçu pour effectuer une opération spécifique, et peut être appelé aussi souvent que nécessaire. Vous pouvez enchaîner plusieurs dialogues afin de prendre en charge quasiment tous les flux de conversation que votre bot doit pouvoir traiter. Le Kit de développement logiciel (SDK) Bot Builder pour Node.js intègre différentes fonctionnalités, telles que des [invites](bot-builder-nodejs-dialog-prompt.md) et des [cascades](bot-builder-nodejs-dialog-waterfall.md), conçues pour vous aider à gérer un flux de conversation.
 
@@ -94,7 +97,7 @@ Chaque étape de cet exemple utilise une invite demandant à l’utilisateur de 
 Dans cet exemple, le bot utilise l’élément `Prompts.text()` pour solliciter une réponse en forme libre de la part de l’utilisateur au format texte. L’utilisateur peut répondre par un texte quelconque, et le bot doit décider comment traiter la réponse. `Prompts.time()` utilise la bibliothèque [Chrono](https://github.com/wanasit/chrono) pour analyser les informations de date et d’heure d’une chaîne. Cette approche accroît la quantité de langage naturel en matière de date et d’heure que peut comprendre votre bot. Par exemple : « 6 octobre 2018 à 21:00 », «Aujourd’hui à 19:30 », « lundi prochain à 18:00 », etc.
 
 > [!TIP] 
-> L’heure entrée par l’utilisateur est convertie en heure UTC en fonction du fuseau horaire auquel appartient le serveur qui héberge le bot. Étant donné que le serveur peut se trouver dans un autre fuseau horaire que l’utilisateur, veillez à tenir compte des fuseaux horaires. Pour convertir la date et l’heure en heure locale de l’utilisateur, prévoyez de demander à l’utilisateur le fuseau horaire auquel il appartient.
+> L’heure entrée par l’utilisateur est convertie en heure UTC en fonction du fuseau horaire auquel appartient le serveur qui héberge le bot. Étant donné que le serveur peut se trouver dans un autre fuseau horaire que celui de l’utilisateur, veillez à tenir compte des fuseaux horaires. Pour convertir la date et l’heure en heure locale de l’utilisateur, prévoyez de demander à l’utilisateur le fuseau horaire auquel il appartient.
 
 ## <a name="manage-a-conversation-flow-with-multiple-dialogs"></a>Gérer un flux de conversation avec plusieurs dialogues
 

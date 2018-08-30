@@ -7,14 +7,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: a5936f3a622bdc91084ba9a636d8be3b782f9a11
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: c213c1155b1eef5f5c776ba42a221d95b74f99a5
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39300204"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42906076"
 ---
-# <a name="build-a-speech-enabled-bot-with-cortana-skills"></a>Créer un bot à fonctionnalité vocale avec des compétences Cortana
+# <a name="build-a-speech-enabled-bot-with-cortana-skills"></a>Créer un bot à reconnaissance vocale avec des compétences Cortana
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-cortana-skill.md)
 > - [Node.JS](../nodejs/bot-builder-nodejs-cortana-skill.md)
@@ -31,7 +34,7 @@ La création d’une compétence Cortana avec Bot Framework nécessite très peu
 
 ## <a name="adding-speech-to-your-bot"></a>Ajout de la reconnaissance vocale à votre bot
 
-Les messages parlés à partir de votre bot sont représentés en SSML (Speech Synthesis Markup Language, SSML). Le Kit SDK Bot Builder vous permet d’inclure le SSML dans les réponses de votre bot, afin de contrôler ce qu’il dit, en plus de ce qu’il affiche.
+Les messages parlés à partir de votre bot sont représentés en SSML (Speech Synthesis Markup Language). Le Kit SDK Bot Builder vous permet d’inclure le SSML dans les réponses de votre bot, afin de contrôler ce qu’il dit, en plus de ce qu’il affiche.
 
 ### <a name="sessionsay"></a>session.say
 
@@ -144,7 +147,7 @@ module.exports.speak = function (template, params, options) {
 
 ## <a name="display-cards-in-cortana"></a>Afficher les cartes dans Cortana
 
-Outre les réponses oralisées, Cortana peut également afficher les cartes jointes. Cortana prend en charge les cartes enrichies suivantes :
+En plus des réponses oralisées, Cortana peut également afficher les cartes jointes. Cortana prend en charge les cartes enrichies suivantes :
 * [HeroCard](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.herocard.html)
 * [ReceiptCard](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.receiptcard.html)
 * [ThumbnailCard](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.thumbnailcard.html)
@@ -406,7 +409,7 @@ Si votre bot s’exécute localement ou qu’il est déployé dans le cloud, vou
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 * [Kit de compétences Cortana][CortanaGetStarted]
-* [Ajouter de la reconnaissance vocale aux messages](bot-builder-nodejs-text-to-speech.md)
+* [Ajouter la reconnaissance vocale aux messages](bot-builder-nodejs-text-to-speech.md)
 * [Référence SSML][SSMLRef]
 * [Bonnes pratiques de conception vocale pour Cortana][VoiceDesign]
 * [Bonnes pratiques de conception de cartes pour Cortana][CardDesign]

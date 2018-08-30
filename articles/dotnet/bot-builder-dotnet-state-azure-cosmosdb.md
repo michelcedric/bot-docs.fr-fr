@@ -7,15 +7,18 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: b99dc4cd9011871d52479ade92968ebb29c8c73f
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: cb64d25582589b7bcbbe715cb4288cf56ac93e1c
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39300081"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42906077"
 ---
 # <a name="manage-custom-state-data-with-azure-cosmos-db-for-net"></a>Gérer les données d’état personnalisé avec Azure Cosmos DB pour .NET
-Dans cet article, vous implémentez Azure Cosmos DB pour stocker et gérer les données d’état de votre bot. Le service d’état de connecteur par défaut utilisé par les bots n’est pas destiné à l’environnement de production. Vous devez utiliser les [extensions Azure](https://github.com/Microsoft/BotBuilder-Azure) disponibles sur GitHub, ou implémenter un client de l’état personnalisé par l’intermédiaire de la plateforme de stockage de données de votre choix. Voici quelques-unes des raisons d’utiliser le stockage d’état personnalisé :
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
+Dans cet article, vous implémentez Azure Cosmos DB pour stocker et gérer les données d’état de votre bot. Le service d’état de connecteur par défaut utilisé par les bots n’est pas destiné à l’environnement de production. Vous devez utiliser les [Extensions Azure](https://github.com/Microsoft/BotBuilder-Azure) disponibles sur GitHub ou implémenter un client avec un état personnalisé à l’aide de la plateforme de stockage de données de votre choix. Voici quelques-unes des raisons d’utiliser le stockage d’état personnalisé :
  - Débit d’API d’état plus élevé (meilleur contrôle des performances)
  - Latence inférieure pour la géodistribution
  - Contrôle de l’emplacement où les données sont stockées
@@ -104,7 +107,7 @@ Exécutez votre bot dans Visual Studio, le code que vous avez ajouté crée la t
 
 ## <a name="connect-your-bot-to-the-emulator"></a>Connecter votre bot à l’émulateur
 À ce stade, votre bot s’exécute localement. Démarrez à présent l’émulateur, puis connectez-vous à votre bot dans l’émulateur :
-1. Tapez http://localhost:port-number/api/messages dans la barre d’adresses, où port-number correspond au numéro de port affiché dans le navigateur dans lequel votre application est en cours d’exécution. Vous pouvez laisser les champs <strong>Microsoft App ID</strong> (ID d’application Microsoft) et <strong>Microsoft App Password</strong> (Mot de passe d’application Microsoft) vides pour l’instant. Vous obtiendrez ces informations ultérieurement, lors de l’[inscription du bot](~/bot-service-quickstart-registration.md).
+1. Tapez http://localhost:port-number/api/messages dans la barre d’adresses, où port-number correspond au numéro de port affiché dans le navigateur dans lequel votre application est en cours d’exécution. Vous pouvez laisser les champs <strong>Microsoft App ID</strong> (ID d’application Microsoft) et <strong>Microsoft App Password</strong> (Mot de passe d’application Microsoft) vides pour l’instant. Vous obtiendrez ces informations ultérieurement lors de l’[inscription du bot](~/bot-service-quickstart-registration.md).
 2. Cliquez sur **Connecter**. 
 3. Testez votre bot en entrant quelques messages dans l’émulateur. 
 

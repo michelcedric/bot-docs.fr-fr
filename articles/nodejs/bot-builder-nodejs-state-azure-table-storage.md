@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: c77b07801b8eb0168ac3e09d7b271ddfb17a04ac
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 84fdbecfe59db49e2e88567a6c942c300ea226a2
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299405"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904359"
 ---
 # <a name="manage-custom-state-data-with-azure-table-storage-for-nodejs"></a>Gérer les données d’état personnalisé avec le stockage de table Azure pour Node.js
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 Dans cet article, vous implémentez le stockage de table Azure pour stocker et gérer les données d’état de votre robot. Le service d’état du connecteur par défaut utilisé par les bots n’est pas destiné à l’environnement de production. Vous devez utiliser les [Extensions Azure](https://www.npmjs.com/package/botbuilder-azure) disponibles sur GitHub ou implémenter un client avec un état personnalisé à l’aide de la plateforme de stockage de données de votre choix. Voici quelques-unes des raisons d’utiliser un stockage d’état personnalisé :
 
@@ -24,7 +26,7 @@ Dans cet article, vous implémentez le stockage de table Azure pour stocker et g
 - Contrôle de l’endroit où les données sont stockées (par exemple, USA Ouest ou USA Est)
 - Accès aux données d’état réelles
 - Base de données d’état non partagée avec d’autres robots
-- Stockage de plus de 32 ko
+- Stockage de plus de 32 Ko
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -97,21 +99,21 @@ Pour utiliser votre stockage **Table azure** , ajoutez les lignes de code suivan
    ```
 Vous êtes à présent prêt à tester le robot avec l’émulateur.
 
-## <a name="run-your-bot-app"></a>Exécuter votre application de robot
+## <a name="run-your-bot-app"></a>Exécuter votre application de bot
 
-À partir d’une invite de commande, accédez au répertoire de votre robot et exécutez celui-ci avec la commande suivante :
+À partir d’une invite de commandes, accédez au répertoire de votre bot et exécutez celui-ci avec la commande suivante :
 
 ```nodejs
 node app.js
 ```
 
-## <a name="connect-your-bot-to-the-emulator"></a>Connecter votre robot à l’émulateur
+## <a name="connect-your-bot-to-the-emulator"></a>Connecter votre bot à l’émulateur
 
-À ce stade, votre robot s’exécute localement. Démarrez l’émulateur, puis connectez-vous à votre robot à partir de l’émulateur :
+À ce stade, votre bot s’exécute localement. Démarrez l’émulateur, puis connectez-vous à votre bot à partir de l’émulateur :
 
-1. Tapez  <strong>dans la barre d’adresse de l’émulateur. La section http://localhost:port-number/api/messagesport-number</strong> doit correspondre au numéro de port affiché dans le navigateur où s’exécute votre application. Pour l’instant, vous pouvez laisser vides les champs <strong>ID d’application Microsoft</strong> et <strong>Mot de passe d’application Microsoft</strong>. Vous obtiendrez ces informations ultérieurement, lors de l’[inscription du robot](~/bot-service-quickstart-registration.md).
+1. Tapez <strong>http://localhost:port-number/api/messages</strong> dans la barre d’adresse de l’émulateur, où port-number correspond au numéro de port affiché dans le navigateur où s’exécute votre application. Pour l’instant, vous pouvez laisser vides les champs <strong>ID d’application Microsoft</strong> et <strong>Mot de passe d’application Microsoft</strong>. Vous obtiendrez ces informations ultérieurement lors de l’[inscription du bot](~/bot-service-quickstart-registration.md).
 2. Cliquez sur **Connecter**.
-3. Testez votre robot en lui envoyant un message. Interagissez avec votre robot comme vous le feriez normalement. Lorsque vous avez terminé, accédez à l’**Explorateur Stockage** et affichez vos données d’état enregistrées.
+3. Testez votre bot en lui envoyant un message. Interagissez avec votre bot comme vous le feriez normalement. Lorsque vous avez terminé, accédez à l’**Explorateur Stockage** et affichez vos données d’état enregistrées.
 
 ## <a name="view-data-in-storage-explorer"></a>Afficher les données dans l’Explorateur Stockage
 
@@ -131,7 +133,7 @@ Un enregistrement de la conversation dans la colonne **données** ressemble à c
 
 ## <a name="next-step"></a>Étape suivante
 
-À présent que contrôlez totalement les données d’état de votre robot, voyons comment les utiliser pour mieux gérer le flux de la conversation.
+À présent que vous contrôlez totalement les données d’état de votre bot, voyons comment les utiliser pour mieux gérer le flux de la conversation.
 
 > [!div class="nextstepaction"]
 > [Gérer le flux de la conversation](bot-builder-nodejs-dialog-manage-conversation-flow.md)

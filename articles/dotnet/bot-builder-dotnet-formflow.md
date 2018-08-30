@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f38424c2fa86fd4456ab6f8dee81bde71bfd6753
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: cf3d69f7941d8c3177788bd00e4b58416a71cf5e
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299148"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904623"
 ---
 # <a name="basic-features-of-formflow"></a>Fonctionnalités de base de FormFlow
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 Si les [boîtes de dialogue](bot-builder-dotnet-dialogs.md) sont à la fois flexibles et très puissantes, la gestion d’une conversation guidée, par exemple pour commander un sandwich, peut nécessiter beaucoup d’efforts. Chaque stade de la conversation peut donner lieu à une multitude de possibilités pour la suite. Par exemple, vous devrez peut-être éclaircir une ambiguïté, fournir de l’aide, revenir en arrière ou afficher la progression. En utilisant **FormFlow** dans le Kit de développement logiciel (SDK) Bot Builder pour .NET, vous pouvez considérablement simplifier le processus de gestion d’une conversation guidée de ce type. 
 
@@ -318,9 +320,9 @@ FormFlow simplifie le développement de boîtes de dialogue. Les fonctionnalité
 
 - [Personnaliser un formulaire à l’aide de FormBuilder](bot-builder-dotnet-formflow-formbuilder.md)
 - [Localiser le contenu d’un formulaire](bot-builder-dotnet-formflow-localize.md)
-- [Define a form using JSON schema](bot-builder-dotnet-formflow-json-schema.md) (Définir un formulaire à l’aide d’un schéma JSON)
-- [Customize user experience with pattern language](bot-builder-dotnet-formflow-pattern-language.md) (Personnaliser l’expérience utilisateur avec le langage du modèle)
-- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Bot Builder SDK for .NET Reference</a> (Référence sur le Kit de développement logiciel (SDK) Bot Builder pour .NET)
+- [Définir un formulaire à l’aide d’un schéma JSON](bot-builder-dotnet-formflow-json-schema.md)
+- [Personnaliser l’expérience utilisateur avec le langage du modèle](bot-builder-dotnet-formflow-pattern-language.md)
+- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Référence sur le Kit SDK Bot Builder pour .NET</a>
 
 [LuisDialog]: /dotnet/api/microsoft.bot.builder.dialogs.luisdialog-1
 

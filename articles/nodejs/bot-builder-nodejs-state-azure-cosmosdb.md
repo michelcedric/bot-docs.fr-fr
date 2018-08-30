@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 9d3e1c315399ce3cadc6371ceb93055c836590a6
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: e326147f32161c2e99dacdfa24ff41080a9b33e9
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39300320"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42906233"
 ---
 # <a name="manage-custom-state-data-with-azure-cosmos-db-for-nodejs"></a>Gérer les données d’état personnalisé avec Azure Cosmos DB pour Node.js
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 Dans cet article, vous allez implémenter le stockage Cosmos DB pour stocker et gérer les données d’état de votre bot. La valeur par défaut du service d’état des connecteurs utilisé par les bots n’est pas destinée à l’environnement de production. Vous devez utiliser les [Extensions Azure](https://www.npmjs.com/package/botbuilder-azure) disponibles sur GitHub ou implémenter un client avec un état personnalisé à l’aide de la plateforme de stockage de données de votre choix. Voici quelques-unes des raisons d’utiliser un stockage d’état personnalisé :
 
@@ -23,7 +25,7 @@ Dans cet article, vous allez implémenter le stockage Cosmos DB pour stocker et 
 - Latence inférieure pour la distribution géographique
 - Contrôle de l’endroit où les données sont stockées (par exemple, USA Ouest ou USA Est)
 - Accès aux données d’état réelles
-- Base de données d’état non partagée avec d’autres bots
+- Base de données d’état non partagée avec d’autres robots
 - Stockage de plus de 32 Ko
 
 ## <a name="prerequisites"></a>Prérequis
@@ -44,7 +46,7 @@ Si vous n’avez pas de compte Azure, cliquez [ici](https://azure.microsoft.com/
 
 ## <a name="install-botbuilder-azure-module"></a>Installer le module botbuilder-azure
 
-Pour installer le module `botbuilder-azure` à partir d'une invite de commandes, accédez au répertoire du bot et exécutez la commande npm suivante :
+Pour installer le module `botbuilder-azure` à partir d’une invite de commande, accédez au répertoire du bot, puis exécutez la commande npm suivante :
 
 ```nodejs
 npm install --save botbuilder-azure
@@ -87,7 +89,7 @@ Pour utiliser votre base de données **Azure Cosmos DB**, ajoutez les lignes de 
    .set('storage', cosmosStorage);
    ```
 
-Vous êtes à présent prêt à tester le bot avec l’émulateur.
+Vous êtes à présent prêt à tester le robot avec l’émulateur.
 
 ## <a name="run-your-bot-app"></a>Exécuter votre application de bot
 
