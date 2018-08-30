@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
-ms.openlocfilehash: cf8da2240df7edbb6ea8c858829e71089b7e72cb
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 565f71dee4269ecd67dabe18af57e36defcfb3fc
+ms.sourcegitcommit: e8c513d3af5f0c514cadcbcd0a737a7393405afa
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39300341"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42756587"
 ---
 # <a name="activities-overview"></a>Vue d’ensemble des activités
 
@@ -28,7 +28,6 @@ Les types d’activités suivants sont pris en charge par le service Bot Connect
 | conversationUpdate | Indique que le robot a été ajouté à une conversation, que d’autres membres ont été ajoutés ou supprimés dans la conversation, ou que des métadonnées de la conversation ont changé. |
 | contactRelationUpdate | Indique que le robot a été ajouté ou supprimé dans la liste des contacts d’un utilisateur. |
 | typing | Indique que l’utilisateur ou le robot à l’autre extrémité de la conversation prépare une réponse. | 
-| ping | Représente une tentative de déterminer si le point de terminaison d’un robot est accessible. | 
 | deleteUserData | Indique à un robot qu’un utilisateur lui a demandé de supprimer toutes les données utilisateur qu’il a stockées. |
 | endOfConversation | Indique la fin d’une conversation. |
 
@@ -52,10 +51,6 @@ Un robot reçoit une activité **contactRelationUpdate** chaque fois qu’il est
 ## <a name="typing"></a>typing
 
 Un bot reçoit une activité **typing** pour indiquer que l’utilisateur est en train de saisir une réponse. Un robot peut envoyer une activité **typing** pour indiquer à l’utilisateur qu’il est en train de répondre à une demande ou de préparer une réponse. 
-
-## <a name="ping"></a>ping
-
-Un robot reçoit une activité **ping**pour déterminer si son point de terminaison est accessible. Le robot doit répondre avec le code d’état HTTP 200 (OK), 403 (interdit) ou 401 (non autorisé).
 
 ## <a name="deleteuserdata"></a>deleteUserData
 

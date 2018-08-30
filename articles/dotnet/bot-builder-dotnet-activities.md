@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f7fe3181a4c361b47a7ef6fbdf815b4c495c6f76
-ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
+ms.openlocfilehash: 834702024c99873ca9f0bbedb53a24a16ba55878
+ms.sourcegitcommit: e8c513d3af5f0c514cadcbcd0a737a7393405afa
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39574635"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42756420"
 ---
 # <a name="activities-overview"></a>Vue d’ensemble des activités
 
@@ -31,7 +31,6 @@ Les types d’activités suivants sont pris en charge par le Kit de développeme
 | [conversationUpdate](#conversationupdate) | IConversationUpdateActivity | Indique que le robot a été ajouté à une conversation, que d’autres membres ont été ajoutés ou supprimés dans la conversation, ou que des métadonnées de la conversation ont changé. |
 | [contactRelationUpdate](#contactrelationupdate) | IContactRelationUpdateActivity | Indique que le robot a été ajouté ou supprimé dans la liste des contacts d’un utilisateur. |
 | [typing](#typing) | ITypingActivity | Indique que l’utilisateur ou le robot à l’autre extrémité de la conversation prépare une réponse. | 
-| [ping](#ping) | n/a | Représente une tentative de déterminer si le point de terminaison d’un robot est accessible. | 
 | [deleteUserData](#deleteuserdata) | n/a | Indique à un robot qu’un utilisateur lui a demandé de supprimer toutes les données utilisateur qu’il a stockées. |
 | [endOfConversation](#endofconversation) | IEndOfConversationActivity | Indique la fin d’une conversation. |
 | [event](#event) | IEventActivity | Représente une communication envoyée à un robot non visible par l’utilisateur. |
@@ -63,13 +62,9 @@ Un robot reçoit une activité **contactRelationUpdate** chaque fois qu’il est
 
 Un bot reçoit une activité **typing** pour indiquer que l’utilisateur est en train de saisir une réponse. Un robot peut envoyer une activité **typing** pour indiquer à l’utilisateur qu’il est en train de répondre à une demande ou de préparer une réponse. 
 
-## <a name="ping"></a>ping
-
-Un robot reçoit une activité **ping**pour déterminer si son point de terminaison est accessible. Le robot doit répondre avec le code d’état HTTP 200 (OK), 403 (interdit) ou 401 (non autorisé).
-
 ## <a name="deleteuserdata"></a>deleteUserData
 
-Un robot reçoit une activité **deleteUserData** quand un utilisateur demande la suppression de toutes les données que le robot a précédemment conservées à son sujet. Si votre robot reçoit ce type d’activité, il doit supprimer les informations d’identification personnelle (PII) qu’il a précédemment stockées pour l’utilisateur qui a effectué la demande.
+Un robot reçoit une activité **deleteUserData** quand un utilisateur demande la suppression de toutes les données que le robot a précédemment conservées à son sujet. Si votre robot reçoit ce type d’activité, il doit supprimer les informations d’identification personnelle (PII) qu’il a précédemment stockées pour l’utilisateur qui a effectué la requête.
 
 ## <a name="endofconversation"></a>endOfConversation 
 
