@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
-ms.openlocfilehash: 503e9b2231b198346f5a7cd767a1e6a866e9e5b3
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 3b0032db8e99c75ec8697f79a78cd6b0bd915db9
+ms.sourcegitcommit: e8c513d3af5f0c514cadcbcd0a737a7393405afa
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299205"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42756445"
 ---
 # <a name="bot-analytics"></a>Analyse de bot
 Analytics est une extension d’[Application Insights](/azure/application-insights/app-insights-analytics). Application Insights fournit des données de **niveau de service** et d’instrumentation relatives au trafic, à la latence et aux intégrations. Analytics permet de créer des **rapports de conversation** à partir des données sur les utilisateurs, les messages et les canaux.
@@ -40,7 +40,7 @@ Cliquez sur le menu déroulant, puis sur la période que les graphiques doivent 
 Notez que la modification de l’intervalle de temps global entraîne la modification en conséquence de l’incrément de temps (axe x) sur les graphiques.
 
 ### <a name="grand-totals"></a>Total général
-Le nombre total d’utilisateurs actifs et de messages envoyés et reçus pendant le laps de temps spécifié.
+Il s’agit du nombre total d’utilisateurs actifs et d’activités envoyées et reçues pendant le délai d’exécution spécifié.
 Les tirets `--` indiquent qu’il n’y a aucune activité.
 
 ### <a name="retention"></a>Rétention
@@ -60,14 +60,14 @@ Le graphique des utilisateurs indique le nombre d’utilisateurs ayant accédé 
 * Le graphique linéaire indique le nombre d’utilisateurs qui avaient accès au bot à une heure donnée.
 * La légende du graphique linéaire indique la couleur qui représente chaque canal et le nombre total d’utilisateurs pendant la période spécifiée.
 
-### <a name="messages"></a>Messages
-Le graphique des messages indique le nombre de messages envoyés et reçus dans chaque canal pendant le laps de temps spécifié.
+### <a name="activities"></a>Activités
+Le graphique des activités indique le nombre d’activités envoyées et reçues dans chaque canal au cours du délai d’exécution spécifié.
 
-![Graphique des messages](~/media/analytics-messages.png)
+![Graphique des activités](~/media/analytics-activities.png)
 
-* Le graphique des pourcentages indique quel pourcentage de messages a été communiqué par chaque canal.
-* Le graphique linéaire indique combien de messages ont été envoyés et reçus pendant le laps de temps spécifié.
-* La légende du graphique linéaire indique la couleur de ligne qui représente chaque canal et le nombre total de messages envoyés et reçus sur ce canal pendant la période spécifiée. 
+* Le graphique des pourcentages indique le pourcentage d’activités communiquées par chaque canal.
+* Le graphique linéaire indique le nombre d’activités envoyées et reçues au cours du délai d’exécution spécifié.
+* La légende du graphique linéaire indique la couleur de ligne correspondant à chaque canal et le nombre total d’activités envoyées et reçues sur ces canaux pendant la période spécifiée. 
 
 ## <a name="enable-analytics"></a>Activer l'analyse
 Analytics n’est disponible que lorsqu’Application Insights a été activé et configuré. Application Insights commence à collecter des données dès qu’il est activé. Par exemple, si Application Insights a été activée il y a une semaine pour un bot datant de six mois, il aura collecté les données d’une semaine.

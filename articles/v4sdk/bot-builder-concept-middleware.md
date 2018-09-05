@@ -9,16 +9,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 05/24/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9986ac7d46acfa94694456d653b91dd66c1f55f0
-ms.sourcegitcommit: f95702d27abbd242c902eeb218d55a72df56ce56
+ms.openlocfilehash: d8201da0fb406f30888dfaa4ff6017f125990104
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39300592"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905373"
 ---
 # <a name="middleware"></a>Middlewares
 
-[!INCLUDE [pre-release-label](~/includes/pre-release-label.md)]
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 Les middlewares sont simplement une classe qui se trouve entre l’adaptateur et la logique de votre bot, et qui est ajoutée à la collection de middlewares de votre adaptateur durant l’initialisation. Le SDK vous permet d’écrire vos propres middlewares ou d’ajouter des composants réutilisables de middlewares créés par d’autres. Que pouvez-vous faire dans les middlewares ? Pratiquement tout... Toute activité qui entre dans votre bot ou qui en sort transite par les middlewares.
 
@@ -36,7 +36,7 @@ Nombreux sont les cas où notre bot doit intervenir sur chaque activité, ou sur
 
 ### <a name="modifying-or-enhancing-the-turn-context"></a>Modification ou amélioration du contexte de tour
 
-Certaines conversations peuvent être beaucoup plus fructueuses si le bot a plus d’informations que ce qui est fourni dans l’activité. Dans ce cas, les middlewares peuvent examiner les informations d’état de conversation dont ils disposent jusqu’ici, interroger une source de données externe et les ajouter à l’objet de contexte avant de passer l’exécution à la logique du bot.
+Certaines conversations peuvent être beaucoup plus fructueuses si le bot a plus d’informations que ce qui est fourni dans l’activité. Dans ce cas, les intergiciels peuvent examiner les informations d’état de conversation dont ils disposent jusqu’ici, interroger une source de données externe et l’ajouter à l’objet de [contexte de tour](bot-builder-concept-activity-processing.md#turn-context) avant de transmettre l’exécution à la logique du bot.
 Par exemple, les middlewares peuvent identifier les détails de la conversation, tels que l’ID et l’état de conversation, puis interroger un service d’annuaire pour obtenir des informations. Les middlewares peuvent ajouter l’objet utilisateur reçu de cette requête externe à l’objet de contexte, puis le transmettre, fournissant davantage de données sur l’utilisateur et permettant au bot de mieux gérer la demande.
 
 Les middlewares peuvent parfaitement servir dans les deux utilisations ci-dessus, ou dans une autre utilisation ; tout dépend de la façon dont vous souhaitez que votre bot soit structuré et de la finalité de ce dernier.

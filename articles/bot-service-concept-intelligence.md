@@ -1,5 +1,5 @@
 ---
-title: Ajouter l’intelligence aux bots avec Cognitive Services | Microsoft Docs
+title: Cognitive Services | Microsoft Docs
 description: Découvrez comment ajouter l’intelligence artificielle à vos bots avec Microsoft Cognitive Services, pour les rendre plus utiles et plus attrayants.
 keywords: compréhension du langage naturel, extraction de connaissances, reconnaissance vocale, recherche web
 author: RobStand
@@ -8,14 +8,14 @@ manager: rstand
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/17/2017
-ms.openlocfilehash: 168e538720423721a21b720b811d559d8c811adb
-ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
+ms.openlocfilehash: 85b3c86582ce1d653159e0d36516b4a90f5a3220
+ms.sourcegitcommit: 1abc32353c20acd103e0383121db21b705e5eec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39574575"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42756401"
 ---
-# <a name="add-intelligence-to-bots-with-cognitive-services"></a>Ajouter l’intelligence aux bots avec Cognitive Services
+# <a name="cognitive-services"></a>Cognitive Services
 
 Microsoft Cognitive Services vous permet d’exploiter une gamme de puissants algorithmes d’intelligence artificielle, développée par des experts en vision par ordinateur, reconnaissance vocale, traitement automatique du langage naturel, extraction de connaissances et recherche sur le web. Ces services simplifient de nombreuses tâches basées sur l’intelligence artificielle, et permettent d’ajouter rapidement à vos bots des technologies d’intelligence de pointe, avec seulement quelques lignes de code. Les API sont intégrées dans la plupart des langages et des plateformes modernes. Avec l’apprentissage automatique, les API s’améliorent constamment et deviennent de plus en plus intelligentes. Vous êtes donc toujours à la pointe. 
 

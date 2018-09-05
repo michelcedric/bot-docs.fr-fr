@@ -7,8 +7,8 @@ Cet article explique comment utiliser une propriété `ChannelData` d’activit�
 | Canal | Fonctionnalités |
 |----|----|
 | Email | Envoyer et recevoir un e-mail qui contient un corps, un objet et des métadonnées d’importance |
-| Slack | Envoyer des messages Slack d’une fidélité optimale |
-| Facebook | Envoyer des notifications de Facebook en mode natif |
+| Slack | Envoyer des messages Slack de fidélité |
+| Facebook | Envoyer des notifications Facebook en mode natif |
 | Telegram | Effectuer des actions spécifiques à Telegram, comme le partage d’un mémo vocal ou d’un autocollant |
 | Kik | Envoyer et recevoir des messages Kik natifs | 
 
@@ -123,6 +123,123 @@ Cet extrait de code montre un exemple de la propriété `channelData` dans le me
 Votre bot peut répondre à ce message [normalement](../dotnet/bot-builder-dotnet-connector.md#create-reply), ou il peut publier sa réponse directement sur le point de terminaison spécifié par la propriété `response_url` de l’objet `payload`.
 Pour plus d’informations sur le moment et la façon de publier une réponse sur `response_url`, consultez <a href="https://api.slack.com/docs/message-buttons" target="_blank">Slack Buttons</a>. 
 
+Vous pouvez créer des boutons dynamiques à l’aide du code suivant :
+```cs
+private async Task DemoButtonsAsync(IDialogContext context)
+        {
+            var reply = context.MakeMessage();
+
+            string s = @"{
+                ""text"": ""Would you like to play a game ? "",
+                ""attachments"": [
+                    {
+                        ""text"": ""Choose a game to play!"",
+                        ""fallback"": ""You are unable to choose a game"",
+                        ""callback_id"": ""wopr_game"",
+                        ""color"": ""#3AA3E3"",
+                        ""attachment_type"": ""default"",
+                        ""actions"": [
+                            {
+                                ""name"": ""game"",
+                                ""text"": ""Chess"",
+                                ""type"": ""button"",
+                                ""value"": ""chess""
+                            },
+                            {
+                                ""name"": ""game"",
+                                ""text"": ""Falken's Maze"",
+                                ""type"": ""button"",
+                                ""value"": ""maze""
+                            },
+                            {
+                                ""name"": ""game"",
+                                ""text"": ""Thermonuclear War"",
+                                ""style"": ""danger"",
+                                ""type"": ""button"",
+                                ""value"": ""war"",
+                                ""confirm"": {
+                                    ""title"": ""Are you sure?"",
+                                    ""text"": ""Wouldn't you prefer a good game of chess?"",
+                                    ""ok_text"": ""Yes"",
+                                    ""dismiss_text"": ""No""
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }";
+
+            reply.Text = null;
+            reply.ChannelData = JObject.Parse(s);
+            await context.PostAsync(reply);
+            context.Wait(MessageReceivedAsync);
+        }
+```
+
+Pour créer des menus interactifs, utilisez le code suivant :
+```cs
+private async Task DemoMenuAsync(IDialogContext context)
+        {
+            var reply = context.MakeMessage();
+
+            string s = @"{
+                ""text"": ""Would you like to play a game ? "",
+                ""response_type"": ""in_channel"",
+                ""attachments"": [
+                    {
+                        ""text"": ""Choose a game to play"",
+                        ""fallback"": ""If you could read this message, you'd be choosing something fun to do right now."",
+                        ""color"": ""#3AA3E3"",
+                        ""attachment_type"": ""default"",
+                        ""callback_id"": ""game_selection"",
+                        ""actions"": [
+                            {
+                                ""name"": ""games_list"",
+                                ""text"": ""Pick a game..."",
+                                ""type"": ""select"",
+                                ""options"": [
+                                    {
+                                        ""text"": ""Hearts"",
+                                        ""value"": ""menu_id_hearts""
+                                    },
+                                    {
+                                        ""text"": ""Bridge"",
+                                        ""value"": ""menu_id_bridge""
+                                    },
+                                    {
+                                        ""text"": ""Checkers"",
+                                        ""value"": ""menu_id_checkers""
+                                    },
+                                    {
+                                        ""text"": ""Chess"",
+                                        ""value"": ""menu_id_chess""
+                                    },
+                                    {
+                                        ""text"": ""Poker"",
+                                        ""value"": ""menu_id_poker""
+                                    },
+                                    {
+                                        ""text"": ""Falken's Maze"",
+                                        ""value"": ""menu_id_maze""
+                                    },
+                                    {
+                                        ""text"": ""Global Thermonuclear War"",
+                                        ""value"": ""menu_id_war""
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }";
+
+            reply.Text = null;
+            reply.ChannelData = JObject.Parse(s);
+            await context.PostAsync(reply);
+            context.Wait(MessageReceivedAsync);
+        }
+```
+
 ## <a name="create-a-facebook-notification"></a>Créer une notification Facebook
 
 Pour créer une notification Facebook, définissez la propriété `ChannelData` de l’objet `Activity` sur un objet JSON qui contient ces propriétés : 
@@ -159,7 +276,7 @@ Pour créer un message qui implémente des actions propres à Telegram, tels que
 | method | Méthode de l’API Bot Telegram à appeler. |
 | parameters | Paramètres de la méthode spécifiée. |
 
-Ces méthodes Telegram sont prises en charge : 
+Les méthodes Telegram prises en charge sont les suivantes : 
 
 - answerInlineQuery
 - editMessageCaption
@@ -167,12 +284,12 @@ Ces méthodes Telegram sont prises en charge :
 - editMessageText
 - forwardMessage
 - kickChatMember
-- sendAudio
+- SendVideo
 - sendChatAction
 - sendContact
 - sendDocument
 - sendLocation
-- sendMessage
+- SendMessage
 - sendPhoto
 - sendSticker
 - sendVenue
@@ -183,7 +300,7 @@ Ces méthodes Telegram sont prises en charge :
 Pour plus d’informations sur ces méthodes Telegram et leurs paramètres, consultez la <a href="https://core.telegram.org/bots/api#available-methods" target="_blank">documentation de l’API Bot Telegram</a>.
 
 > [!NOTE]
-> <ul><li>Le paramètre <code>chat_id</code> est commun à toutes les méthodes Telegram. Si vous ne spécifiez pas <code>chat_id</code> en tant que paramètre, le framework fournit l’ID pour vous.</li>
+> <ul><li>Le paramètre <code>chat_id</code> est commun à toutes les méthodes Telegram. Si vous ne spécifiez pas <code>chat_id</code> en tant que paramètre, l’infrastructure fournit l’ID pour vous.</li>
 > <li>Au lieu de passer le contenu de fichier inline, spécifiez le fichier à l’aide d’une URL et d’un type de média, comme indiqué dans l’exemple ci-dessous.</li>
 > <li>Dans chaque message que votre bot reçoit du canal Telegram, la propriété <code>ChannelData</code> inclut le message précédemment envoyé par votre bot.</li></ul>
 
@@ -262,4 +379,4 @@ Cet extrait de code montre un exemple de la propriété `channelData` pour un me
 
 - [Vue d’ensemble des activités](../dotnet/bot-builder-dotnet-activities.md)
 - [Créer des messages](../dotnet/bot-builder-dotnet-create-messages.md)
-- <a href="https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Classe Activity</a>
+- <a href="https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Classe Activité</a>

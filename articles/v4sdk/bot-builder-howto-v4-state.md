@@ -1,5 +1,5 @@
 ---
-title: Enregistrer l’état à l’aide des propriétés de la conversation et de l’utilisateur | Microsoft Docs
+title: Gérer l’état de la conversation et l’état utilisateur | Microsoft Docs
 description: Découvrez comment enregistrer et récupérer des données avec la version 4 du Kit SDK Bot Builder pour .NET.
 keywords: état de la conversation, état utilisateur, intergiciel d’état, flux de la conversation, stockage de fichiers, stockage de table azure
 author: ivorb
@@ -9,14 +9,14 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 05/03/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 16df371b1cabb4b3eb47d1f491a5d45e26627d38
-ms.sourcegitcommit: dcbc8ad992a3e242a11ebcdf0ee99714d919a877
+ms.openlocfilehash: a74c52af0ca56b62491ca3aa39d09885c2540c18
+ms.sourcegitcommit: ee63d9dc1944a6843368bdabf5878950229f61d0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39352848"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42795208"
 ---
-# <a name="save-state-using-conversation-and-user-properties"></a>Enregistrer l’état à l’aide des propriétés de la conversation et de l’utilisateur
+# <a name="manage-conversation-and-user-state"></a>Gérer l’état de la conversation et l’état utilisateur
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
@@ -30,6 +30,16 @@ Dans le Kit SDK, vous devez initialiser l’adaptateur du bot pour utiliser l’
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 Pour voir comment `ConversationState` est initialisé, consultez `Startup.cs` dans l’exemple Microsoft.Bot.Samples.EchoBot-AspNetCore.
+
+Bibliothèques requises pour ce code :
+
+```csharp
+using Microsoft.Bot.Builder.BotFramework;
+using Microsoft.Bot.Builder.Core.Extensions;
+using Microsoft.Bot.Builder.Integration.AspNet.Core;
+```
+
+Initialisation de `ConversationState` :
 
 ```csharp
 services.AddBot<EchoBot>(options =>
@@ -304,7 +314,7 @@ server.post('/api/messages', (req, res) => {
 
 ---
 
-Une alternative consiste à utiliser le modèle _en cascade_ d’un dialogue. Le dialogue suit l’état de la conversation pour vous, ce qui vous évite d’avoir à créer des indicateurs pour suivre votre état. Pour plus d’informations, voir [Gérer une conversation à l’aide de dialogues](bot-builder-dialog-manage-conversation-flow.md).
+Une alternative consiste à utiliser le modèle _en cascade_ d’un dialogue. Le dialogue suit l’état de la conversation pour vous, ce qui vous évite d’avoir à créer des indicateurs pour suivre votre état. Pour plus d’informations, consultez l’article [Gérer un flux de conversation simple avec des dialogues](bot-builder-dialog-manage-conversation-flow.md).
 
 ## <a name="file-storage"></a>Stockage Fichier
 
@@ -465,5 +475,5 @@ Maintenant que vous savez comment utiliser l’état pour vous aider à lire et 
 Pour plus d’informations sur le stockage, voir [Stockage dans le kit SDK Bot Builder](bot-builder-storage-concept.md)
 
 <!-- Links -->
-[AzureStorageEmulator]: https://docs.microsoft.com/en-us/azure/storage/common/storage-use-emulator
-[AzureStorageExplorer]: https://azure.microsoft.com/en-us/features/storage-explorer/
+[AzureStorageEmulator]: https://docs.microsoft.com/azure/storage/common/storage-use-emulator
+[AzureStorageExplorer]: https://azure.microsoft.com/features/storage-explorer/

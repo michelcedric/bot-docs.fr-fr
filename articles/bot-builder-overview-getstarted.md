@@ -8,16 +8,16 @@ ms.topic: get-started-article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 21186c5d3b0769311e4703ca1dab2f48a0a0081a
-ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
+ms.openlocfilehash: 3ee7843e64dfa95427ebcb132740eab3db281ffc
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39574885"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904012"
 ---
 # <a name="develop-bots-with-bot-builder"></a>Développer des robots avec Bot Builder
 
-[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
+
 
 Bot Builder fournit un kit de développement logiciel, des bibliothèques, des exemples et des outils permettant de créer et de déboguer des robots. Lorsque vous créez un robot avec Bot Service, celui-ci est sauvegardé par le kit de développement logiciel Bot Builder. Vous pouvez également vous servir du kit de développement logiciel Bot Builder pour créer un robot en partant de zéro à l’aide de C# ou de Node.js. Bot Builder comprend l’émulateur de Bot Framework permettant de tester les robots et l’inspecteur de canaux permettant de prévisualiser l’expérience utilisateur assurée par le robot sur différents canaux.
 
@@ -55,7 +55,7 @@ Le kit de développement logiciel Bot Builder pour Node.js permet aux développe
 
 Le [démarrage rapide Node.js](~/nodejs/bot-builder-nodejs-quickstart.md) permet de guider dans la création d’un robot avec le kit de développement logiciel Bot Builder pour Node.js. 
 
-Le kit de développement logiciel Bot Builder pour Node.js est disponible sous forme de package npm. Pour installer le kit de développement logiciel pour Node.js et ses dépendances, commencez par créer un dossier pour le robot, accédez à ce dossier, puis exécutez la commande **npm** suivante :
+Le kit de développement logiciel Bot Builder pour Node.js est disponible sous forme de package npm. Pour installer le Kit de développement logiciel (SDK) pour Node.js et ses dépendances, commencez par créer un dossier pour votre bot, accédez à ce dossier, puis exécutez la commande **npm** suivante :
 
 ```nodejs
 npm init

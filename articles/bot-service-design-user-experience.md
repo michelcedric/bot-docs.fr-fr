@@ -7,17 +7,17 @@ ms.author: mateusv
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 12/13/2017
-ms.openlocfilehash: 21f5b35e992f792a5667ef05d2708b5a446f8023
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.date: 08/27/2018
+ms.openlocfilehash: 0bf58773cfbb6c58773cc5c63b735a0099ad569e
+ms.sourcegitcommit: 86ddf3ebe6cc3385d1c4d30b971ac9c3e1fc5a77
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299064"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43056013"
 ---
 # <a name="design-the-user-experience"></a>Concevoir l’expérience utilisateur
 
-Les robots utilisent généralement une combinaison de **contrôles utilisateur riches**, **de reconnaissance vocale** et **synthèse vocale** pour échanger des informations avec les utilisateurs.
+Vous pouvez créer des bots incluant un large éventail de fonctionnalités : texte, boutons, images, cartes enrichies affichées sous forme de carrousel ou de liste, etc. Toutefois, au final, chaque canal (tel que Facebook, Slack, Skype, etc.) contrôle la façon dont ses clients de messagerie affichent les fonctionnalités. Même lorsque plusieurs canaux prennent en charge une fonctionnalité, il est possible que chaque canal affiche cette fonctionnalité de façon légèrement différente. Lorsqu’un message contient des fonctionnalités non prises en charge de façon native par un canal, ce dernier peut tenter d’afficher une version réduite du contenu du message, sous forme de texte ou d’image statique, ce qui peut affecter considérablement l’apparence du message sur le client. Il arrive qu’une fonctionnalité ne soit pas du tout prise en charge par un canal. Par exemple, les clients GroupMe ne peuvent pas afficher d’indicateur de saisie.
 
 ## <a name="rich-user-controls"></a>Contrôles utilisateur riches
 
@@ -44,39 +44,10 @@ Les cartes du service Microsoft Bot sont des objets programmables contenant des 
 | VideoCard | ![Image de carte de vidéo](~/media/video-card.png) | Carte pouvant lire des vidéos. Généralement utilisée pour ouvrir une URL et diffuser en continu une vidéo disponible. |
 | CardCarousel | ![Image de carrousel de cartes](~/media/card-carousel.png) | Collection de cartes à défilement horizontal permettant à l’utilisateur de visualiser facilement une série de choix d’utilisateur possibles.|
 
-Les cartes vous permettent de concevoir votre robot, puis de le faire fonctionner sur différents canaux. Cependant, certains types de cartes ne sont pas totalement pris en charge sur tous les canaux disponibles. Les tableaux suivants présentent un échantillonnage de la prise en charge actuelle des types de cartes sur une sélection de canaux. Pour obtenir les informations les plus récentes sur la prise en charge des canaux, veillez à utiliser l’[inspecteur de canaux](bot-service-channel-inspector.md) pour connaître l’aspect et le fonctionnement de cartes spécifiques sur le canal qui vous intéresse. Pour plus d’informations sur les cartes adaptatives, voir également <a href="http://adaptivecards.io/visualizer/">visualiseur de cartes adaptatives</a>.
-
-Le tableau ci-dessous présente la prise en charge de canal pour les types de cartes généralement utilisés dans un carrousel de cartes.
-
-| Canal | Adaptive | Bannière | Miniature | Carrousel |
-| ---- | ---- | ---- | ---- | ---- |
-| Cortana | ✔ | ✔ | ✔ | ✔ |
-| E-mail O365 | ✔ | ✔ | ✔ | ✔ |
-| Facebook | - | ✔ | ✔ | ✔ |
-| Kik | ✔ | ✔ | ✔ | ✔ |
-| Skype | ✔ | ✔ | ✔ | ✔ |
-| Slack | ✔ | ✔ | ✔ | ✔ |
-| sms | ✔ | ✔ | ✔ | ✔ |
-| Teams | ✔ | ✔ | ✔ | ✔ |
-| Chat web | ✔ | ✔ | ✔ | ✔ |
-
-Le tableau suivant présente la prise en charge de canal pour d’autres types de cartes du service Microsoft Bot.
-
-| Canal | Vidéo | Réception | SignIn | SuggestedAction |
-| ---- | ---- | ---- | ---- | ---- |
-| Cortana | ✔ | ✔ | ✔ | - |
-| E-mail O365 | ✔ | ✔ | ✔ | ✔ |
-| Facebook | ✔ | ✔ | ✔ | ✔ |
-| Kik | ✔ | ✔ | ✔ | ✔ |
-| Skype | ✔ | ✔ | ✔ | ✔ |
-| Slack | ✔ | ✔ | ✔ | ✔ |
-| sms | ✔ | ✔ | - | ✔ |
-| Teams | - | ✔ | ✔ | - |
-| Chat web | ✔ | ✔ | ✔ | ✔ |
-
-✔ = pris en charge
+Les cartes vous permettent de concevoir votre robot, puis de le faire fonctionner sur différents canaux. Cependant, certains types de cartes ne sont pas totalement pris en charge sur tous les canaux disponibles. 
 
 Vous trouverez des instructions détaillées sur l’ajout de cartes à votre robot dans les sections [Ajouter des pièces jointes de média de carte riches](v4sdk/bot-builder-howto-add-media-attachments.md) et [Ajouter des actions suggérées aux messages](v4sdk/bot-builder-howto-add-suggested-actions.md).
+
 
 Lors de la conception de votre robot, n’écartez pas automatiquement les éléments d’interface utilisateur courants comme n’étant pas « suffisamment intelligents ». Comme indiqué [précédemment](~/bot-service-design-principles.md#designing-a-bot), votre robot doit être conçu pour résoudre le problème de l’utilisateur de la manière la meilleure, la plus rapide et la plus simple possible. Ne cédez pas la tentation de commencer par incorporer la compréhension du langage naturel, car elle s’avère souvent superflue et introduit une complexité injustifiée.
 
@@ -129,5 +100,4 @@ Un robot peut utiliser des entrées ou sorties **vocales** pour communiquer avec
 Tout comme les gens communiquent entre eux à l’aide d’une combinaison de gestes, de voix et de symboles, les robots peuvent communiquer avec les utilisateurs à l’aide d’une combinaison de contrôles utilisateur riches, de texte (parfois en langage naturel) et de voix. Ces modes de communication peuvent être utilisés ensemble. Vous n’avez pas besoin d’en choisir un au détriment des autres. 
 
 Par exemple, imaginez un « robot cuisinier » conçu pour aider les utilisateurs à réaliser des recettes, qui soit capable de donner des instructions en lisant des vidéos ou en affichant une série d’images pour expliquer comment procéder. Certains utilisateurs préfèrent tourner les pages de la recette ou poser des questions vocales au robot tandis qu’ils confectionnent leur plat. D’autres préfèrent toucher l’écran d’un appareil au lieu d’interagir vocalement avec le robot. Lors de la conception de votre robot, intégrez des éléments d’expérience utilisateur prenant en charge les manières dont les utilisateurs préféreront probablement interagir avec votre robot, compte tenu des cas d’utilisation spécifiques auxquels il est destiné. 
-
 

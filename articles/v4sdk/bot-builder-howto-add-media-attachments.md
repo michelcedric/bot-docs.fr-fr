@@ -7,14 +7,14 @@ ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 04/03/2018
+ms.date: 08/24/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 30a0c463698d9ab7e3b2b0f9ddb0e872f007d1d8
-ms.sourcegitcommit: 9a38d76afb0e82fdccc1f36f9b1a65042671e538
+ms.openlocfilehash: 5883b31df95da26fa0432f4cfe195f12fc3089ad
+ms.sourcegitcommit: 86ddf3ebe6cc3385d1c4d30b971ac9c3e1fc5a77
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/04/2018
-ms.locfileid: "39515039"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43055993"
 ---
 # <a name="add-media-to-messages"></a>Ajouter des médias aux messages
 
@@ -233,8 +233,13 @@ await context.sendActivity(hero);
 ---
 
 ## <a name="send-an-adaptive-card"></a>Envoyer une carte adaptative
+Vous pouvez utiliser aussi bien les cartes adaptatives que MessageFactory pour envoyer des messages enrichis contenant du texte, des images, des vidéos, du contenu audio et des fichiers afin de communiquer avec les utilisateurs. Toutefois, il existe certaines différences entre ces deux méthodes. 
 
-Vous pouvez également envoyer une carte adaptative en tant que pièce jointe. Actuellement, tous les canaux ne prennent pas en charge les cartes adaptatives. Pour connaître les dernières informations sur la prise en charge par les canaux des cartes adaptatives, consultez <a href="http://adaptivecards.io/visualizer/">Adaptive Cards Visualizer</a>.
+Pour commencer, seuls certains canaux prennent en charge les cartes adaptatives et ne le font parfois que partiellement. Par exemple, si vous envoyez une carte adaptative dans Facebook, les boutons sont inopérants, alors que les textes et images fonctionnent parfaitement. MessageFactory est une simple classe d’assistance au sein du Kit de développement logiciel (SDK) Bot Builder qui est destinée à automatiser la procédure de création à votre intention et est prise en charge par la plupart des canaux. 
+
+Ensuite, les cartes adaptatives remettent les messages au format carte, et le canal détermine la disposition de la carte. Le format des messages remis par MessageFactory dépend du canal et ne correspond pas nécessairement au format carte, sauf si la pièce jointe intègre une carte adaptative. 
+
+Pour connaître les dernières informations sur la prise en charge par les canaux des cartes adaptatives, consultez <a href="http://adaptivecards.io/visualizer/">Adaptive Cards Visualizer</a>.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 Pour utiliser des cartes adaptatives, veillez à ajouter le package NuGet `Microsoft.AdaptiveCards`.
@@ -476,6 +481,6 @@ await context.sendActivity(messageWithCarouselOfCards);
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-[Aperçu des fonctionnalités du bot avec l’inspecteur de canaux](../bot-service-channel-inspector.md)
+[Aperçu des fonctionnalités avec l’inspecteur de canaux](../bot-service-channel-inspector.md)
 
 ---

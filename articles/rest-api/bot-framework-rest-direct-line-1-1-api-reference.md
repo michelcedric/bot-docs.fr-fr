@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
-ms.openlocfilehash: 2f688b9c80e762b93c2eba8f4671ff1760f624f9
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 3569e3bfbb3be51cf9023b4686ed4693e90ed50c
+ms.sourcegitcommit: ee63d9dc1944a6843368bdabf5878950229f61d0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39300061"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42795178"
 ---
 # <a name="api-reference---direct-line-api-11"></a>Informations de référence sur l’API - API Direct Line 1.1
 
@@ -45,17 +45,18 @@ Pour plus d’informations sur l’obtention d’un secret ou d’un jeton que v
 
 ## <a name="http-status-codes"></a>Codes d’état HTTP
 
-Le <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html" target="_blank">code d’état HTTP</a> renvoyé avec chaque réponse indique le résultat de la requête correspondante. 
+Le <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html" target="_blank">code d’état HTTP</a> retourné avec chaque réponse indique le résultat de la requête correspondante. 
 
 | Code d'état HTTP | Signification |
 |----|----|
 | 200 | La requête a réussi. |
-| 204 | La requête a réussi, mais aucun contenu n’a été renvoyé. |
+| 204 | La requête a réussi, mais aucun contenu n’a été retourné. |
 | 400 | La requête présentait un format inadéquat ou était incorrecte. |
 | 401 | Le client n’est pas autorisé à adresser cette requête. Dans la plupart des cas, ce code d’état signale que l’en-tête `Authorization` est manquant ou qu’il présente un format incorrect. |
 | 403 | Le client n’est pas autorisé à effectuer l’opération demandée. Dans la plupart des cas, ce code d’état signale que l’en-tête `Authorization` spécifie un jeton ou un secret non valides. |
 | 404 | La ressource demandée est introuvable. Ce code d’état signale généralement un URI de requête non valide. |
-| 500 | Une erreur de serveur interne s’est produite dans le service Direct Line, ou une défaillance s’est produite au sein du bot. Si vous recevez une erreur 500 lors de la publication d’un message sur un bot par le biais d’une requête POST, il est possible que cette erreur ait été déclenchée par une défaillance du bot. **Ce code d’erreur est courant.** |
+| 500 | Une erreur de serveur interne s’est produite dans le service Direct Line. |
+| 502 | Une défaillance s’est produite dans le bot ; le bot n’est pas disponible ou a renvoyé une erreur.  **Ce code d’erreur est courant.** |
 
 ## <a name="token-operations"></a>Opérations de jeton 
 Utilisez les opérations ci-après pour créer ou actualiser un jeton permettant à un client d’accéder à une conversation spécifique.
@@ -129,7 +130,7 @@ POST /api/conversations/{conversationId}/messages
 | | |
 |----|----|
 | **Corps de la demande** | Objet [Message](#message-object) |
-| **Retourne** | Aucune donnée n’est renvoyée dans le corps de la réponse. Le service répond par un code d’état HTTP 204 si le message a été envoyé avec succès. Le client peut obtenir le message qu’il a envoyé (ainsi que tous les messages qu’il a reçus du bot) en utilisant l’opération [Obtenir les messages](#get-messages). |
+| **Retourne** | Aucune donnée n’est retournée dans le corps de la réponse. Le service répond par un code d’état HTTP 204 si le message a été envoyé avec succès. Le client peut obtenir le message qu’il a envoyé (ainsi que tous les messages qu’il a reçus du bot) en utilisant l’opération [Obtenir les messages](#get-messages). |
 
 ### <a id="upload-send-files"></a> Upload and Send File(s) (Charger et envoyer des fichiers)
 Charge et envoie un ou plusieurs fichiers sous forme de pièces jointes. Définissez le paramètre `userId` dans l’URI de requête pour spécifier l’ID de l’utilisateur envoyant les pièces jointes.
@@ -139,8 +140,8 @@ POST /api/conversations/{conversationId}/upload?userId={userId}
 
 | | |
 |----|----|
-| **Corps de la demande** | Dans le cas d’une pièce jointe unique, remplissez le corps de la requête avec le contenu du fichier. Dans le cas de plusieurs pièces jointes, créez un corps de requête en plusieurs parties, contenant une partie pour chaque pièce jointe, et également (en option) une partie pour l’objet [Message](#message-object) qui doit servir de conteneur pour les pièces jointes spécifiées. Pour plus d’informations, consultez l’article [Envoyer un message au bot](bot-framework-rest-direct-line-1-1-send-message.md). |
-| **Retourne** | Aucune donnée n’est renvoyée dans le corps de la réponse. Le service répond par un code d’état HTTP 204 si le message a été envoyé avec succès. Le client peut obtenir le message qu’il a envoyé (ainsi que tous les messages qu’il a reçus du bot) en utilisant l’opération [Obtenir les messages](#get-messages). | 
+| **Corps de la demande** | Dans le cas d’une pièce jointe unique, remplissez le corps de la requête avec le contenu du fichier. Dans le cas de plusieurs pièces jointes, créez un corps de requête en plusieurs parties, contenant une partie pour chaque pièce jointe, et également (en option) une partie pour l’objet [Message](#message-object) qui doit servir de conteneur pour les pièces jointes spécifiées. Pour plus d’informations, consultez [Envoyer un message au bot](bot-framework-rest-direct-line-1-1-send-message.md). |
+| **Retourne** | Aucune donnée n’est retournée dans le corps de la réponse. Le service répond par un code d’état HTTP 204 si le message a été envoyé avec succès. Le client peut obtenir le message qu’il a envoyé (ainsi que tous les messages qu’il a reçus du bot) en utilisant l’opération [Obtenir les messages](#get-messages). | 
 
 > [!NOTE]
 > Les fichiers chargés sont supprimés au bout de 24 heures.

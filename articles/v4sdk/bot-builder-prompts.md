@@ -1,6 +1,6 @@
 ---
-title: Demander aux utilisateurs d’effectuer une saisie | Microsoft Docs
-description: Découvrez comment demander aux utilisateurs d’effectuer une saisie dans le Kit SDK Bot Builder pour Node.js.
+title: Inviter les utilisateurs à saisir une entrée à l’aide de la bibliothèque Dialogs | Microsoft Docs
+description: Découvrez comment demander aux utilisateurs de saisir une entrée à l’aide de la bibliothèque Dialogs du Kit de développement logiciel (SDK) Bot Builder pour Node.js.
 keywords: invites, dialogues, AttachmentPrompt, ChoicePrompt, ConfirmPrompt, DatetimePrompt, NumberPrompt, TextPrompt, inviter, validation
 author: v-ducvo
 ms.author: v-ducvo
@@ -9,22 +9,22 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 4/10/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b08c087bcce4a3dcee5de20311e2f7b890ea2f6b
-ms.sourcegitcommit: b45e16cac2febb7034da4ccd3af3bd7e6f430c31
+ms.openlocfilehash: 0b238ed510fd1d6fda82734af373f344b0dc28e3
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39469276"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905363"
 ---
-# <a name="prompt-users-for-input"></a>Demander aux utilisateurs d’effectuer une saisie
+# <a name="prompt-users-for-input-using-the-dialogs-library"></a>Inviter les utilisateurs à saisir une entrée à l’aide de la bibliothèque Dialogs
 
-[!INCLUDE [pre-release-label](~/includes/pre-release-label.md)]
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-Souvent, les bots collectent des informations via des questions posées à l’utilisateur. Vous pouvez simplement envoyer à l’utilisateur un message standard via la méthode _send activity_ de l’objet de contexte pour demander une chaîne d’entrée. Toutefois, le Kit SDK Bot Builder fournit une bibliothèque de **dialogues** que vous pouvez utiliser pour demander différents types d’informations. Cette rubrique explique comment utiliser des **invites** pour demander à un utilisateur d’effectuer une saisie.
+Souvent, les bots collectent des informations via des questions posées à l’utilisateur. Vous pouvez simplement envoyer à l’utilisateur un message standard par le biais de la méthode _send activity_ de l’objet de [contexte de tour](bot-builder-concept-activity-processing.md#turn-context) pour demander une entrée sous forme de chaîne. Toutefois, le Kit de développement logiciel (SDK) Bot Builder fournit une bibliothèque de **dialogues** qui vous permet de demander différents types d’informations. Cette rubrique explique comment utiliser des **invites** pour demander à un utilisateur d’effectuer une saisie.
 
-Cet article décrit comment utiliser des invites au sein d’un dialogue. Pour plus d’informations sur l’utilisation des dialogues en général, consultez la rubrique [Utiliser des dialogues pour gérer le flux de la conversation](bot-builder-dialog-manage-conversation-flow.md).
+Cet article décrit comment utiliser des invites au sein d’un dialogue. Pour plus d’informations sur l’utilisation de dialogues en général, consultez l’article [Gérer un flux de conversation simple avec des dialogues](bot-builder-dialog-manage-conversation-flow.md).
 
-## <a name="prompt-types"></a>Types de messages
+## <a name="prompt-types"></a>Types d’invites
 
 La bibliothèque de dialogues propose divers types d’invites, chacun demandant un type de réponse différent.
 
@@ -33,13 +33,13 @@ La bibliothèque de dialogues propose divers types d’invites, chacun demandant
 | **AttachmentPrompt** | Invite l’utilisateur à ajouter une pièce jointe comme un document ou une image. |
 | **ChoicePrompt** | Invite l’utilisateur à choisir parmi un ensemble d’options. |
 | **ConfirmPrompt** | Invite l’utilisateur à confirmer son action. |
-| **DatetimePrompt** | Invite l’utilisateur à saisir une date/heure. Les utilisateurs puissent répondre à l’aide d’un langage naturel, par exemple « demain à 20 h 00 » ou « vendredi à 10 h ». Le Kit SDK Bot Framework utilise l’entité prédéfinie LUIS `builtin.datetimeV2`. Pour plus d’informations, consultez [builtin.datetimev2](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-reference-prebuilt-entities#builtindatetimev2). |
+| **DatetimePrompt** | Invite l’utilisateur à saisir une date/heure. Les utilisateurs puissent répondre à l’aide d’un langage naturel, par exemple « demain à 20 h 00 » ou « vendredi à 10 h ». Le Kit SDK Bot Framework utilise l’entité prédéfinie LUIS `builtin.datetimeV2`. Pour plus d’informations, consultez [builtin.datetimev2](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-entities#builtindatetimev2). |
 | **NumberPrompt** | Invite l’utilisateur à saisir une valeur numérique. L’utilisateur peut répondre par « 10 » ou « dix ». Si la réponse est « dix », par exemple, l’invite convertit la réponse en une valeur numérique et renvoie `10` comme résultat. |
 | **TextPrompt** | Invite l’utilisateur à saisir une chaîne de texte. |
 
 ## <a name="add-references-to-prompt-library"></a>Ajouter des références à la bibliothèque d’invites
 
-Vous pouvez accéder à la bibliothèque de **dialogues** en ajoutant le package **dialogs** à votre bot. Nous aborderons les dialogues à la rubrique [Utiliser des dialogues pour gérer le flux de la conversation](bot-builder-dialog-manage-conversation-flow.md), mais nous allons utiliser des dialogues pour nos invites.
+Vous pouvez accéder à la bibliothèque de **dialogues** en ajoutant le package **dialogs** à votre bot. Nous décrivons les dialogues dans l’article [Gérer un flux de conversation simple avec des dialogues](bot-builder-dialog-manage-conversation-flow.md), mais nous allons utiliser des dialogues pour nos invites.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -75,7 +75,7 @@ public class MyDialog : DialogSet
 Installez le package de dialogues à partir de NPM :
 
 ```cmd
-npm install --save botbuilder-dialogs
+npm install --save botbuilder-dialogs@preview
 ```
 
 Pour utiliser des **dialogues** dans votre bot, incluez-les dans le code de celui-ci.
@@ -93,7 +93,7 @@ const dialogs = new DialogSet();
 
 Pour inviter un utilisateur à effectuer une saisie, vous pouvez ajouter une invite à votre dialogue. Par exemple, vous pouvez définir une invite de type **TextPrompt** et lui attribuer un ID de dialogue de type **textPrompt** :
 
-Quand un dialogue d’invite est ajouté, vous pouvez l’utiliser dans un simple dialogue en cascade à deux étapes, ou utilisez plusieurs invites dans une cascade à plusieurs étapes. Un dialogue *en cascade* est un moyen simple de définir une séquence d’étapes. Pour plus d’informations, consultez la section [Utiliser des dialogues](bot-builder-dialog-manage-conversation-flow.md#using-dialogs-to-guide-the-user-through-steps) de la rubrique [Gérer un flux de la conversation avec des dialogues](bot-builder-dialog-manage-conversation-flow.md).
+Quand un dialogue d’invite est ajouté, vous pouvez l’utiliser dans un simple dialogue en cascade à deux étapes, ou utilisez plusieurs invites dans une cascade à plusieurs étapes. Un dialogue *en cascade* est un moyen simple de définir une séquence d’étapes. Pour plus d’informations, consultez la section [Utilisation de dialogues](bot-builder-dialog-manage-conversation-flow.md#using-dialogs-to-guide-the-user-through-steps) de l’article [Gérer un flux de conversation simple avec des dialogues](bot-builder-dialog-manage-conversation-flow.md).
 
 La première fois, le dialogue invite l’utilisateur à saisir son nom, et la deuxième fois, le dialogue traite l’entrée utilisateur comme une réponse à l’invite.
 
@@ -129,13 +129,13 @@ public class MyDialog : DialogSet
             async (dc, args, next) =>
             {
                 // Prompt for the user's name.
-                await dc.Prompt(Inputs.Text, "What is your name?").ConfigureAwait(false);
+                await dc.Prompt(Inputs.Text, "What is your name?");
             },
             async(dc, args, next) =>
             {
                 var user = (string)args["Text"];
-                await dc.Context.SendActivity($"Hi {user}!").ConfigureAwait(false);
-                await dc.End().ConfigureAwait(false);
+                await dc.Context.SendActivity($"Hi {user}!");
+                await dc.End();
             }
         });
     }
@@ -166,7 +166,7 @@ dialogs.add('greetings', [
 ---
 
 > [!NOTE]
-> Pour démarrer un dialogue, obtenez un contexte de dialogue et utilisez sa méthode _begin_. Pour plus d’informations, consultez la rubrique [Utiliser des dialogues pour gérer le flux de la conversation](./bot-builder-dialog-manage-conversation-flow.md).
+> Pour démarrer un dialogue, obtenez un contexte de dialogue et utilisez sa méthode _begin_. Pour plus d’informations, consultez l’article [Gérer un flux de conversation simple avec des dialogues](./bot-builder-dialog-manage-conversation-flow.md).
 
 ## <a name="reusable-prompts"></a>Invites réutilisables
 
@@ -197,21 +197,21 @@ public class MyDialog : DialogSet
             async (dc, args, next) =>
             {
                 // Prompt for the user's name.
-                await dc.Prompt(Inputs.Text, "What is your name?").ConfigureAwait(false);
+                await dc.Prompt(Inputs.Text, "What is your name?");
             },
             async(dc, args, next) =>
             {
                 var user = (string)args["Text"];
 
                 // Ask them where they work.
-                await dc.Prompt(Inputs.Text, $"Hi {user}! Where do you work?").ConfigureAwait(false);
+                await dc.Prompt(Inputs.Text, $"Hi {user}! Where do you work?");
             },
             async(dc, args, next) =>
             {
                 var workplace = (string)args["Text"];
 
-                await dc.Context.SendActivity($"{workplace} is a cool place!").ConfigureAwait(false);
-                await dc.End().ConfigureAwait(false);
+                await dc.Context.SendActivity($"{workplace} is a cool place!");
+                await dc.End();
             }
         });
     }
@@ -273,21 +273,21 @@ public MyDialog()
         async (dc, args, next) =>
         {
             // Prompt for the user's name.
-            await dc.Prompt(Inputs.Name, "What is your name?").ConfigureAwait(false);
+            await dc.Prompt(Inputs.Name, "What is your name?");
         },
         async(dc, args, next) =>
         {
             var user = (string)args["Text"];
 
             // Ask them where they work.
-            await dc.Prompt(Inputs.Work, $"Hi {user}! Where do you work?").ConfigureAwait(false);
+            await dc.Prompt(Inputs.Work, $"Hi {user}! Where do you work?");
         },
         async(dc, args, next) =>
         {
             var workplace = (string)args["Text"];
 
-            await dc.Context.SendActivity($"{workplace} is a cool place!").ConfigureAwait(false);
-            await dc.End().ConfigureAwait(false);
+            await dc.Context.SendActivity($"{workplace} is a cool place!");
+            await dc.End();
         }
     });
 }
@@ -334,7 +334,7 @@ Au sein d’une étape de dialogue, le code suivant invite l’utilisateur à ef
 await dc.Prompt("numberPrompt", "How many people are in your party?", new PromptOptions()
 {
     RetryPromptString = "Sorry, please specify the number of people in your party."
-}).ConfigureAwait(false);
+});
 ```
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
@@ -405,14 +405,14 @@ public class MyDialog : DialogSet
                     Choices = ChoiceFactory.ToChoices(Colors),
                     RetryPromptActivity =
                         MessageFactory.SuggestedActions(Colors, "Please choose a color.") as Activity
-                }).ConfigureAwait(false);
+                });
             },
             async(dc, args, next) =>
             {
                 var color = (FoundChoice)args["Value"];
 
-                await dc.Context.SendActivity($"You chose {color.Value}.").ConfigureAwait(false);
-                await dc.End().ConfigureAwait(false);
+                await dc.Context.SendActivity($"You chose {color.Value}.");
+                await dc.End();
             }
         });
     }
@@ -482,14 +482,14 @@ public class MyDialog : DialogSet
                 await dc.Prompt(Inputs.Size, "How many people are in your party?", new PromptOptions()
                 {
                     RetryPromptString = "Please specify party size between 6 and 20."
-                }).ConfigureAwait(false);
+                });
             },
             async(dc, args, next) =>
             {
                 var size = (int)args["Value"];
 
-                await dc.Context.SendActivity($"Okay, {size} people!").ConfigureAwait(false);
-                await dc.End().ConfigureAwait(false);
+                await dc.Context.SendActivity($"Okay, {size} people!");
+                await dc.End();
             }
         });
     }
@@ -569,7 +569,7 @@ private static async Task TimeValidator(ITurnContext context, DateTimeResult res
 {
     if (result.Resolution.Count == 0)
     {
-        await context.SendActivity("Sorry, I did not recognize the time that you entered.").ConfigureAwait(false);
+        await context.SendActivity("Sorry, I did not recognize the time that you entered.");
         result.Status = PromptStatus.NotRecognized;
     }
 
@@ -588,7 +588,7 @@ private static async Task TimeValidator(ITurnContext context, DateTimeResult res
     else
     {
         // Otherwise, flag the input as out of range.
-        await context.SendActivity("Please enter a time in the future, such as \"tomorrow at 9am\"").ConfigureAwait(false);
+        await context.SendActivity("Please enter a time in the future, such as \"tomorrow at 9am\"");
         result.Status = PromptStatus.OutOfRange;
     }
 }
@@ -635,5 +635,4 @@ Lorsque vous invitez l’utilisateur à effectuer une saisie, vous pouvez gérer
 
 Maintenant que vous savez comment inviter un utilisateur à effectuer une saisie, améliorons l’expérience utilisateur et le code du bot en gérant les différents flux de conversation via des dialogues.
 
-> [!div class="nextstepaction"]
-> [Gérer un flux de conversation avec des dialogues](bot-builder-dialog-manage-conversation-flow.md)
+

@@ -8,14 +8,17 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 04/25/2018
-ms.openlocfilehash: 7cf05b3396099f1c65fce7abbceb143a3ad43e9a
-ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
+ms.openlocfilehash: 8004389aba58b5cf79f1559b3ce65d1d66c5358c
+ms.sourcegitcommit: 44f100a588ffda19c275b118f4f97029f12d1449
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39574585"
+ms.lasthandoff: 08/26/2018
+ms.locfileid: "42928337"
 ---
 # <a name="create-bots-with-botbuilder-templates"></a>Créer des bots avec des modèles Bot Builder
+
+> [!NOTE]
+> Cet article s’applique aux versions v3 et v4 du Kit de développement logiciel (SDK). Consultez les remarques complémentaires ci-après.
 
 Vous disposez désormais de modèles pour créer des bots dans chacune des plateformes du SDK Bot Builder : 
 
@@ -96,7 +99,7 @@ Pour créer un projet de bot à l’aide du modèle, ouvrez simplement Visual St
 
 ## <a name="store-your-bot-information-with-msbot"></a>Stocker vos informations de bot avec MSBot
 
-Le nouvel outil [MSBot](https://github.com/Microsoft/botbuilder-tools/tree/master/MSBot) vous permet de créer un fichier **.bot** qui stocke dans un seul emplacement les métadonnées relatives aux différents services que votre bot utilise. Ce fichier permet également à votre bot de se connecter à ces services à partir de l’interface CLI. L’outil est disponible en tant que module npm ; pour l’installer, exécutez la commande suivante :
+Le nouvel outil [MSBot](https://github.com/Microsoft/botbuilder-tools/tree/master/MSBot) vous permet de créer un fichier **.bot** qui stocke, dans un même emplacement, les métadonnées relatives aux différents services utilisés par votre bot. Ce fichier permet également à votre bot de se connecter à ces services à partir de l’interface CLI. L’outil est disponible en tant que module npm ; pour l’installer, exécutez la commande suivante :
 
 ```shell
 npm install -g msbot 

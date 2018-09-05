@@ -7,21 +7,19 @@ ms.author: RobStand
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 12/13/2017
-ms.openlocfilehash: 0a9ad7d51234b417d5d0f27dbcffe4ce839ba94a
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.date: 08/16/2018
+ms.openlocfilehash: 7fbff06966ac64260244e8af375aaa6f8f945fcd
+ms.sourcegitcommit: e8c513d3af5f0c514cadcbcd0a737a7393405afa
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39298900"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42756741"
 ---
 # <a name="connect-a-bot-to-facebook-messenger"></a>Connecter un bot à Facebook Messenger
 
 Pour en savoir plus sur le développement pour Facebook Messenger, consultez la [documentation de la plate-forme Messenger](https://developers.facebook.com/docs/messenger-platform). Si vous le souhaitez consultez les [directives de prélancement](https://developers.facebook.com/docs/messenger-platform/product-overview/launch#app_public), le [guide de démarrage rapide](https://developers.facebook.com/docs/messenger-platform/guides/quick-start) et le [guide de configuration](https://developers.facebook.com/docs/messenger-platform/guides/setup) Facebook.
 
 Pour configurer un bot de sorte qu’il communique à l’aide de Facebook Messenger, activez Facebook Messenger sur une page Facebook, puis connectez le bot à l’application.
-
-[!INCLUDE [Channel Inspector intro](~/includes/snippet-channel-inspector.md)]
 
 > [!NOTE]
 > L’interface utilisateur de Facebook peut être légèrement différente selon la version que vous utilisez.
@@ -72,7 +70,7 @@ Cliquez sur **Set up Webhooks** (Configurer des webhooks) pour transférer les �
 
 ## <a name="provide-webhook-callback-url-and-verify-token"></a>Fournir l’URL de rappel du webhook et vérifier le jeton
 
-Revenez au [portail Bot Framework](https://dev.botframework.com/). Ouvrez le bot, cliquez sur l’onglet **Canaux**, puis cliquez sur **Facebook Messenger**.
+Dans le [Portail Azure](https://portal.azure.com/), ouvrez le bot, cliquez sur l’onglet **Canaux**, puis cliquez sur **Facebook Messenger**.
 
 * Copiez les valeurs sous **URL de rappel** et **Vérifier le jeton** dans le portail.
 
@@ -93,9 +91,9 @@ Revenez au [portail Bot Framework](https://dev.botframework.com/). Ouvrez le bot
 
 ## <a name="provide-facebook-credentials"></a>Fournir les informations d’identification Facebook
 
-Dans le portail Bot Framework, collez les valeurs **ID de la page**, **ID d’application**, **Clé secrète d’application** et **Page Access Token** (Jeton d’accès à la page) copiées précédemment à partir de Facebook Messenger.
+Dans le Portail Azure, collez les valeurs des champs **Facebook App ID** (ID d’application Facebook), **Facebook App Secret** (Secret d’application Facebook), **ID de la page** et **Page Access Token** (Jeton d’accès à la page) que vous avez précédemment copiées à partir de Facebook Messenger. Vous pouvez utiliser le même bot sur plusieurs pages Facebook en ajoutant des ID de page et jetons d’accès supplémentaires.
 
-![Saisir les informations d’identification](~/media/channels/fb-credentials2.png)
+![Entrer les informations d’identification](~/media/channels/fb-credentials2.png)
 
 ## <a name="submit-for-review"></a>Envoyer pour vérification
 
@@ -110,3 +108,6 @@ Une fois le bot terminé, Facebook applique son propre [processus de vérificati
 
 Une fois la vérification effectuée, dans le tableau de bord de l’application, sous App Review (Vérification de l’application), définissez l’application sur Publique.
 Assurez-vous que la page Facebook associée à ce bot est publiée. L’état s’affiche dans les paramètres des pages.
+
+> [!NOTE]
+> Vous pouvez également utiliser la plateforme Facebook Workplace. Pour l’activer, créez une [intégration personnalisée](https://developers.facebook.com/docs/workplace/custom-integrations-new) pour votre Workplace et utilisez l’ID d’application, le secret d’application et le jeton d’accès correspondants. Au lieu d’un ID de page traditionnel, utilisez les chiffres qui suivent le nom d’intégration sur la page À propos de. Les Webhooks peuvent être connectés à l’aide des informations d’identification figurant dans Azure.

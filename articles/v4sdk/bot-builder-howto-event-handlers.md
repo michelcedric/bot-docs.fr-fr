@@ -1,5 +1,5 @@
 ---
-title: Gestionnaires d’événements | Microsoft Docs
+title: Utilisation de gestionnaires d’événements | Microsoft Docs
 description: Découvrez comment utiliser les gestionnaires d’événements.
 author: ivorb
 ms.author: v-ivorb
@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 06/14/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 0c054b8f4209004806e4564be45e83bdf3a8ec25
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 36bd2638c599de1662a37dd85790b6126184d51b
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39300085"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905688"
 ---
-# <a name="event-handlers"></a>Gestionnaires d’événements
+# <a name="using-event-handlers"></a>Utilisation de gestionnaires d’événements
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 Les gestionnaires d’événements sont des fonctions que nous pouvons ajouter aux événements des activités futures au sein d’un [tour](bot-builder-basics.md#defining-a-turn). Ces activités sont `SendActivity`, `UpdateActivity` et `DeleteActivity`, chacune ayant son propre gestionnaire. Ces gestionnaires sont utiles quand vous avez besoin de faire quelque chose sur chaque activité future de ce type pour l’objet de contexte actuel.
 

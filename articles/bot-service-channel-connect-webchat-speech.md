@@ -1,5 +1,5 @@
 ---
-title: Activer les fonctions vocales dans le canal Discussion Web | Microsoft Docs
+title: Activer les fonctions vocales dans Discussion Web | Microsoft Docs
 description: Découvrez comment activer les fonctions vocales dans le contrôle de discussion web pour un robot connecté au canal Discussion Web.
 keywords: fonctions vocales, discussion web, voix, microphone, audio
 author: DeniseMak
@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
-ms.openlocfilehash: 37e18f49eb55fcb7d0bf94e96051479753eec8aa
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 2499197d82b618d7a535efca78f98ce260dd15a7
+ms.sourcegitcommit: 1abc32353c20acd103e0383121db21b705e5eec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299057"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42756503"
 ---
-# <a name="how-to-enable-speech-in-web-chat"></a>Comment activer les fonctions vocales dans Discussion Web
+# <a name="enable-speech-in-web-chat"></a>Activer les fonctions vocales dans Discussion Web
 Vous pouvez activer une interface vocale dans le contrôle Discussion Web. Les utilisateurs interagissent avec l’interface vocale à l’aide du microphone dans le contrôle Discussion Web.
 
 ![Exemple de fonction vocale de discussion web](~/media/bot-service-channel-webchat/webchat-sample-speech.png)
@@ -114,6 +114,6 @@ Le code suivant passe les options vocales au contrôle Discussion Web :
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* Vous pouvez [télécharger le code source](https://github.com/Microsoft/BotFramework-WebChat) pour le contrôle de Discussion Web sur GitHub.
+* Vous pouvez [télécharger le code source](https://github.com/Microsoft/BotFramework-WebChat) du contrôle de discussion web sur GitHub.
 * La [documentation de l’API Reconnaissance vocale Bing](https://docs.microsoft.com/azure/cognitive-services/speech/home) fournit des informations sur l’API Reconnaissance vocale Bing.
 

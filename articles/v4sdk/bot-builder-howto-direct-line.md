@@ -1,5 +1,5 @@
 ---
-title: Création d’un bot et d’un client Direct Line | Microsoft Docs
+title: Créer un bot et un client Direct Line | Microsoft Docs
 description: Découvrez comment créer un bot et un client Direct Line avec la version 4 du Kit de développement logiciel (SDK) Bot Builder pour .NET.
 keywords: bot direct line, client direct line, canal personnalisé, application console, publication
 author: v-royhar
@@ -9,14 +9,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 4/16/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ac96e35763d690c91e6584ff9a840b490e0a32cd
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 23380231c15c40875f78921f72bcf9d57effb3bf
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39298741"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905229"
 ---
-# <a name="how-to-create-a-direct-line-bot-and-client"></a>Création d’un bot et d’un client Direct Line
+# <a name="create-a-direct-line-bot-and-client"></a>Créer un bot et un client Direct Line
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 Les bots Direct Line de Microsoft Bot Framework peuvent fonctionner avec un client que vous avez personnalisé. Les bots Direct Line sont très semblables aux bots standard. Ils n’ont simplement pas besoin d’utiliser les canaux fournis.
 
@@ -189,9 +191,6 @@ namespace DirectLineBotSample
                     break;
 
                 case ActivityTypes.Typing:
-                    break;
-
-                case ActivityTypes.Ping:
                     break;
 
                 case ActivityTypes.DeleteUserData:

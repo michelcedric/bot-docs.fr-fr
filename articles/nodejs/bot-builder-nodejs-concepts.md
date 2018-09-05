@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: e276b7f3f4cc46e0978b3ee182b8251e39b86ead
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: fd81b9dfe5d3e16096ffd6ab25c1ee23ff77f79f
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299560"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904927"
 ---
 # <a name="key-concepts-in-the-bot-builder-sdk-for-nodejs"></a>Concepts clés du Kit SDK Bot Builder pour Node.js
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-concepts.md)
 > - [Node.JS](../nodejs/bot-builder-nodejs-concepts.md)
@@ -43,7 +46,8 @@ Pour obtenir un exemple qui illustre comment envoyer une carte graphique enrichi
 Les dialogues vous permettent d’organiser la logique conversationnelle de votre robot. Ils sont essentiels à la [conception du flux de conversation](../bot-service-design-conversation-flow.md). Pour obtenir une présentation des dialogues, consultez [Gérer une conversation à l’aide des dialogues](bot-builder-nodejs-dialog-manage-conversation.md).
 
 ## <a name="actions"></a>Actions
-Vous souhaitez concevoir votre robot de manière à pouvoir gérer les interruptions à tout moment de la conversation, par exemple les requêtes d’annulation ou d’aide. Le kit de développement logiciel Bot Builder pour Node.js met à disposition des gestionnaires généraux de messages qui déclenchent des actions comme l’annulation ou l’appel d’autres dialogues. Consultez <!--[Handling cancel](bot-builder-nodejs-manage-conversation-flow.md#handling-cancel), [Confirming interruptions](bot-builder-nodejs-manage-conversation-flow.md#confirming-interruptions) and-->[Gérer les actions de l’utilisateur](bot-builder-nodejs-dialog-actions.md) pour obtenir des exemples illustrant l’utilisation des gestionnaires [triggerAction][triggerAction].
+Vous souhaitez concevoir votre robot de manière à pouvoir gérer les interruptions à tout moment de la conversation, par exemple les requêtes d’annulation ou d’aide. Le kit de développement logiciel Bot Builder pour Node.js met à disposition des gestionnaires généraux de messages qui déclenchent des actions comme l’annulation ou l’appel d’autres dialogues. Pour découvrir des exemples illustrant l’utilisation des gestionnaires [triggerAction][triggerAction], consultez l’article [Gérer les actions de l’utilisateur](bot-builder-nodejs-dialog-actions.md).
+<!--[Handling cancel](bot-builder-nodejs-manage-conversation-flow.md#handling-cancel), [Confirming interruptions](bot-builder-nodejs-manage-conversation-flow.md#confirming-interruptions) and-->
 
 
 ## <a name="recognizers"></a>Modules de reconnaissance

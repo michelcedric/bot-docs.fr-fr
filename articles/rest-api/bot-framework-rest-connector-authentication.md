@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
-ms.openlocfilehash: 53643f21e2cf1ebdfd84caed38f8f84c330ef71b
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 998586820a0489bc4cca1d25b53cb6ac8162c452
+ms.sourcegitcommit: 0b2be801e55f6baa048b49c7211944480e83ba95
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299676"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43115044"
 ---
 # <a name="authentication"></a>Authentification
 
@@ -24,7 +24,7 @@ Votre robot communique avec le service Bot Connector en utilisant le protocole H
 Si vous utilisez le [kit de développement logiciel pour .NET](../dotnet/bot-builder-dotnet-overview.md) ou le [kit de développement logiciel pour Node.js](../nodejs/index.md), vous n’avez pas besoin d’appliquer les procédures de sécurité décrites dans cet article, car le kit de développement logiciel le fait automatiquement pour vous. Il vous suffit de configurer votre projet avec l’identifiant de l’application et le mot de passe obtenus pour votre robot lors de [l’enregistrement](../bot-service-quickstart-registration.md). Le kit de développement logiciel s’occupe du reste.
 
 > [!WARNING]
-> En décembre 2016, la version 3.1 du protocole de sécurité Bot Framework a modifié plusieurs valeurs utilisées lors de la génération et de la validation des jetons. À la fin de l’automne 2017, la version 3.2 du protocole de sécurité Bot Framework a apporté de nouvelles modifications aux valeurs utilisées lors de la génération et de la validation des jetons.
+> En décembre 2016, la version 3.1 du protocole de sécurité Bot Framework a modifié plusieurs valeurs utilisées lors de la génération et de la validation des jetons. À la fin de l’automne 2017, la version 3.2 du protocole de sécurité Bot Framework a apporté des modifications aux valeurs utilisées lors de la génération et de la validation des jetons.
 > Pour plus d’informations, consultez [Modifications du protocole de sécurité](#security-protocol-changes).
 
 ## <a name="authentication-technologies"></a>Technologies d’authentification

@@ -8,17 +8,13 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 7/2/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 6d2e22bdfaa9fc4e3ce55bc1dd969921e90c87cc
-ms.sourcegitcommit: 97bb24f15041caccef4ca5736aa14f144881e0c6
+ms.openlocfilehash: ca9ccb0f0425bd0cabf1ce7ef236acb7a008aefe
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39567508"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905910"
 ---
-# <a name="add-authentication-to-your-bot-via-azure-bot-service"></a>Ajouter l’authentification à votre bot par le biais d’Azure Bot Service
-
-[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
-
 Ce tutoriel utilise les nouvelles fonctionnalités d’authentification de bot d’Azure Bot Service, facilitant le développement d’un bot qui authentifie les utilisateurs auprès de divers fournisseurs d’identité tels qu’Azure AD (Azure Active Directory), GitHub ou Uber. En outre ces mises à jour favorisent l’amélioration de l’expérience utilisateur en éliminant la _vérification du code magique_ pour certains clients.
 
 Auparavant, votre bot devait inclure des contrôleurs OAuth et des liens de connexion, stocker les ID et secrets clients cibles et effectuer la gestion des jetons d’utilisateur.
@@ -48,7 +44,7 @@ Vous pouvez vous appuyer sur les étapes décrites dans cet article pour ajouter
 > [!NOTE]
 > Les fonctionnalités d’authentification fonctionnent également avec Node.js avec Bot Builder v3. Toutefois, cet article traite uniquement l’exemple de code C#.
 
-Pour obtenir de l’aide ou des informations supplémentaires, reportez-vous à [Ressources supplémentaires sur Bot Framework](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-resources-links-help).
+Pour obtenir de l’aide ou des informations supplémentaires, reportez-vous à [Ressources supplémentaires sur Bot Framework](https://docs.microsoft.com/azure/bot-service/bot-service-resources-links-help).
 
 ## <a name="overview"></a>Vue d’ensemble
 
@@ -90,7 +86,7 @@ Pour plus d’informations sur les différences entre les points de terminaison 
    1. Définissez **Type d’application** sur **Application web/API**.
    1. Définissez **l’URL de connexion** sur `https://token.botframework.com/.auth/web/redirect`.
    1. Cliquez sur **Créer**.
-      - Une fois l’application créée, elle apparaît dans un panneau **Application inscrite**.
+      - Une fois l’application créée, elle apparaît dans un volet **Application inscrite**.
       - Récupérez la valeur **ID de l’application**. Vous la fournirez plus loin en guise _d’ID client_.
 1. Cliquez sur **Paramètres** pour configurer votre application.
 1. Cliquez sur **Clés** pour ouvrir le panneau **Clés**.
@@ -178,7 +174,7 @@ Vous pouvez maintenant utiliser ce nom de connexion dans le code de votre bot po
 
 #### <a name="to-register-an-azure-ad-v2-application"></a>Pour inscrire une application Azure AD v2
 
-1. Accédez au panneau de l’inscription Bot Channels Registration de votre bot sur le [portail Azure](http://portal.azure.com/).
+1. Accédez à la page de l’inscription Bot Channels Registration de votre bot dans le [Portail Azure](http://portal.azure.com/).
 1. Cliquez sur **Settings**.
 1. Sous **Paramètres de connexion OAuth** près du bas de la page, cliquez sur **Ajouter un paramètre**.
 1. Remplissez le formulaire comme suit :
@@ -205,7 +201,7 @@ Vous pouvez maintenant utiliser ce nom de connexion dans le code de votre bot po
 #### <a name="to-test-your-connection"></a>Pour tester votre connexion
 
 1. Ouvrez la connexion que vous venez de créer.
-1. Cliquez sur **Tester la connexion** en haut du panneau **Paramètre de connexion du fournisseur de service**.
+1. En haut du volet **Paramètre de connexion du fournisseur de service**, cliquez sur **Tester la connexion**.
 1. La première fois, cette action doit ouvrir un nouvel onglet de navigateur répertoriant les autorisations que votre application demande et vous invite à accepter.
 1. Cliquez sur **Accepter**.
 1. Cette action doit vous rediriger vers une page indiquant que le **test de la connexion a réussi**.

@@ -6,13 +6,13 @@ ms.author: v-demak
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 05/03/2018
-ms.openlocfilehash: e59f9b10686b10ae821b8c4bf259a1fc301ac702
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.date: 08/28/2018
+ms.openlocfilehash: 63aa65e2591d9f98d763863d8d4d56cd0df185ea
+ms.sourcegitcommit: f667ce3f1635ebb2cb19827016210a88c8e45d58
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39298908"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43142425"
 ---
 # <a name="bot-framework-frequently-asked-questions"></a>Bot Framework : Forum Aux Questions
 
@@ -50,20 +50,34 @@ Chaque bot est un service propre. Dans le cadre du Code de conduite du développ
 
 Pour fournir le service d’E/S, le Bot Framework transmet votre message et le contenu du message (y compris votre ID) du service de conversation utilisé au bot.
 
+### <a name="can-i-host-my-bot-on-my-own-servers"></a>Puis-je héberger mon bot sur mes propres serveurs ?
+Oui. Votre bot peut être hébergé n’importe où sur Internet. Sur vos propres serveurs, dans Azure, ou dans n’importe quel autre centre de données. La seule exigence à respecter réside dans le fait que le bot doit exposer un point de terminaison HTTPS accessible publiquement.
+
 ### <a name="how-do-you-ban-or-remove-bots-from-the-service"></a>Comment excluez-vous ou supprimez-vous des bots du service ?
 
 Les utilisateurs peuvent signaler la présence d’un bot inapproprié en se reportant à la carte de contact du bot dans le répertoire. Les développeurs doivent se conformer aux conditions d’utilisation de Microsoft pour participer au service.
 
-### <a name="which-specific-urls-do-i-need-to-whitelist-in-my-corporate-firewall-to-access-bot-services"></a>Quelles URL dois-je mettre sur la liste verte de mon pare-feu d’entreprise pour accéder aux services de bot ?
-
-Vous devez mettre les URL suivantes sur la liste verte de votre pare-feu d’entreprise :
+### <a name="which-specific-urls-do-i-need-to-whitelist-in-my-corporate-firewall-to-access-bot-framework-services"></a>Quelles URL dois-je mettre sur la liste verte de mon pare-feu d’entreprise pour accéder aux services Bot Framework ?
+Si vous disposez d’un pare-feu pour le trafic sortant qui bloque le trafic vers Internet en provenance de votre bot, vous devrez mettre en liste verte les URL ci-après dans ce pare-feu :
 - login.botframework.com (authentification des bots)
 - login.microsoftonline.com (authentification des bots)
 - westus.api.cognitive.microsoft.com (pour l’intégration du système de traitement du langage naturel Luis.ai)
 - state.botframework.com (stockage de l’état des bots pour le prototypage)
 - cortanabfchanneleastus.azurewebsites.net (canal Cortana)
 - cortanabfchannelwestus.azurewebsites.net (canal Cortana)
-- *.botFramework.com (canaux)
+- *.botframework.com (canaux)
+
+### <a name="can-i-block-all-traffic-to-my-bot-except-traffic-from-the-bot-connector-service"></a>Puis-je bloquer la totalité du trafic en direction de mon bot, à l’exception du trafic émanant du service Bot Connector ?
+Non. Ce type de mise en liste verte d’adresses IP ou de DNS est irréaliste. Le service Bot Framework Connector est hébergé dans les centres de données Azure du monde entier, et la liste des adresses IP Azure évolue constamment. La mise en liste verte de certaine adresses IP peut donc cesser de fonctionner du jour au lendemain lorsque les adresses IP Azure changent.
+ 
+### <a name="what-keeps-my-bot-secure-from-clients-impersonating-the-bot-framework-connector-service"></a>De quelle manière mon bot est-il protégé contre les clients qui empruntent l’identité du service Bot Framework Connector ?
+1. L’URL du service (ServiceUrl) est encodée dans le jeton de sécurité qui accompagne chaque requête adressée à votre bot ; autrement dit, même si un attaquant parvient à accéder au jeton, ils ne peut pas rediriger la conversation vers une nouvelle URL ServiceUrl. Cette approche est appliquée par toutes les implémentations du Kit de développement logiciel (SDK) et documentée dans nos articles de [référence](https://docs.microsoft.com/en-us/azure/bot-service/rest-api/bot-framework-rest-connector-authentication?view=azure-bot-service-3.0#bot-to-connector) concernant l’authentification.
+
+2. Si le jeton entrant est manquant ou incorrect, le Kit de développement logiciel (SDK) Bot Framework ne génère aucun jeton en réponse. Cela limite les dommages potentiels en cas de configuration incorrecte du bot.
+3. À l’intérieur du bot, vous pouvez vérifier manuellement l’URL ServiceUrl fournie dans le jeton. Cette opération fragilise le bot en cas d’apport de modifications à la topologie du service ; elle est donc possible, mais déconseillée.
+
+
+Notez que ceci concerne les connexions sortantes à partir du bot vers Internet. Il n’existe aucune liste d’adresses IP ou de noms DNS destinée à être utilisée par le service Bot Framework Connector pour communiquer avec le bot. La mise en liste verte d’adresses IP entrantes n’est pas prise en charge.
 
 ## <a name="rate-limiting"></a>Limitation du débit
 ### <a name="what-is-rate-limiting"></a>Qu’est-ce que la limitation du débit ?

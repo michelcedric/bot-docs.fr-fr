@@ -1,5 +1,5 @@
 ---
-title: Télécharger et redéployer le code source d’un service de robot | Microsoft Docs
+title: Télécharger et redéployer le code source d’un bot | Microsoft Docs
 description: Découvrez comment télécharger et publier un service de robot.
 keywords: télécharger le code source, redéployer, déployer, fichier zip, publier
 author: v-ducvo
@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 03/08/2018
-ms.openlocfilehash: 6d76388712ffeff94c56ba89b4bf4f4831caf45c
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: b77e096d28f51f605db9c49d36e796553f9293ef
+ms.sourcegitcommit: 1abc32353c20acd103e0383121db21b705e5eec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299925"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42756480"
 ---
-# <a name="download-and-redeploy-bot-service-source-code"></a>Télécharger et redéployer le code source d’un service de robot
+# <a name="download-and-redeploy-bot-source-code"></a>Télécharger et redéployer le code source d’un bot
 
 Le service de robot vous permet de télécharger la totalité du projet source de votre bot. Cette opération vous offre la possibilité de travailler sur votre bot localement à l’aide de l’environnement de développement intégré (IDE) de votre choix. Une fois que vous avez terminé vos modifications, vous pouvez republier ces dernières sur Azure. 
 

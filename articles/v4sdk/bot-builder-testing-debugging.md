@@ -1,5 +1,5 @@
 ---
-title: Tester et déboguer votre robot | Microsoft Docs
+title: Recommandations en matière de test et de débogage | Microsoft Docs
 description: Découvrez comment tester et déboguer votre robot.
 keywords: principes de test, éléments fictifs, faq, niveaux de test
 author: ivorb
@@ -9,16 +9,18 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 04/09/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ea1c458e98f67f76c56fdd70595307a0e0252c1d
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: caa424ed0ea0944805836739ed48a7a61f78d21c
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39298753"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905258"
 ---
-# <a name="testing-and-debugging-your-bot"></a>Test et débogage de votre robot
+# <a name="testing-and-debugging-guidelines"></a>Recommandations en matière de test et de débogage
 
-Les robots sont des applications complexes composées de nombreux éléments différents qui fonctionnent ensemble. Comme pour toutes les applications complexes, des bogues intéressants ou des comportements inattendus peuvent se produire.
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+
+Les bots sont des applications complexes composées de nombreux éléments différents qui fonctionnent ensemble. Comme pour toutes les applications complexes, des bogues intéressants ou des comportements inattendus peuvent se produire.
 
 Il peut parfois s’avérer difficile de tester, puis de déboguer votre robot. Chaque développeur effectue cette tâche comme il le souhaite. Les conseils que nous vous présentons ci-dessous sont des recommandations d’utilisation qui s’appliquent à la plupart des robots.
 

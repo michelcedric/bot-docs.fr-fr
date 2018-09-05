@@ -1,5 +1,5 @@
 ---
-title: Traduire l’entrée utilisateur pour rendre votre bot multilingue | Microsoft Docs
+title: Traduire l’entrée utilisateur | Microsoft Docs
 description: Découvrez comment traduire automatiquement l’entrée utilisateur dans la langue native de votre bot et la retraduire dans la langue de l’utilisateur.
 keywords: traduction, traduire, multilingue, microsoft translator
 author: DeniseMak
@@ -9,14 +9,14 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 04/06/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 13139755989afccd85b2e09267dc42619ec1f83c
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 6304e328e523e73894473620fc1fb7656a8776bf
+ms.sourcegitcommit: 1abc32353c20acd103e0383121db21b705e5eec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299024"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42756429"
 ---
-# <a name="translate-user-input-to-make-your-bot-multilingual"></a>Traduire l’entrée utilisateur pour rendre votre bot multilingue
+# <a name="translate-user-input"></a>Traduire l’entrée utilisateur 
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 

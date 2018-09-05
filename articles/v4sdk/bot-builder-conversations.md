@@ -9,12 +9,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 04/11/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 679109cad2f7b0c0c5826a47884b98e1149cb380
-ms.sourcegitcommit: f95702d27abbd242c902eeb218d55a72df56ce56
+ms.openlocfilehash: 32486cb024dfe852a7478ccba4a0eedc476431b0
+ms.sourcegitcommit: ee63d9dc1944a6843368bdabf5878950229f61d0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39300584"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42795028"
 ---
 # <a name="conversation-flow"></a>Flux de la conversation
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
@@ -52,7 +52,7 @@ The EchoBot sample in the BotBuilder SDK is a single-turn bot. Here are other ex
 
 ![Bot d’informations météorologiques à tour unique](./media/concept-conversation/weather-single-turn.png)
 
-Un bot d’informations météorologiques a un flux à tour unique ; il communique simplement à l’utilisateur un bulletin météorologique, sans lui demander la ville ou la date. Toute la logique d’affichage du bulletin météorologique repose sur le message que le bot vient de recevoir. Dans chaque tour d’une conversation, le bot reçoit un contexte de tour, qui lui permet de déterminer ce qu’il doit faire ensuite et le flux de la conversation. 
+Un bot d’informations météorologiques a un flux à tour unique ; il communique simplement à l’utilisateur un bulletin météorologique, sans lui demander la ville ou la date. Toute la logique d’affichage du bulletin météorologique repose sur le message que le bot vient de recevoir. Dans chaque tour d’une conversation, le bot reçoit un [contexte de tour](bot-builder-concept-activity-processing.md#turn-context), qui lui permet de déterminer ce qu’il doit faire ensuite et le flux de la conversation. 
 
 ## <a name="multiple-turns"></a>Plusieurs tours
 
@@ -84,7 +84,7 @@ Vous pouvez concevoir votre bot pour gérer plusieurs types de tâche. Par exemp
 
 ### <a name="recognize-intent"></a>Reconnaître une intention
 
-Le SDK Bot Builder fournit des _modules de reconnaissance_ qui traitent chaque message entrant pour déterminer l’intention ; votre bot peut donc démarrer le flux conversationnel approprié. Avant le _rappel de réception_, les modules de reconnaissance examinent le contenu du message de l’utilisateur pour déterminer l’intention, puis retournent l’intention au bot en utilisant l’objet de contexte de tour dans le rappel de réception, stockée en tant que **Première intention** sur l’objet de contexte de tour. 
+Le SDK Bot Builder fournit des _modules de reconnaissance_ qui traitent chaque message entrant pour déterminer l’intention ; votre bot peut donc démarrer le flux conversationnel approprié. Avant le _rappel de réception_, les modules de reconnaissance examinent le contenu du message de l’utilisateur pour déterminer l’intention, puis renvoient l’intention au bot à l’aide de l’objet de contexte de tour dans le rappel de réception, en la stockant en tant que **Première intention** sur l’objet de [contexte de tour](bot-builder-concept-activity-processing.md#turn-context). 
 
 Le module de reconnaissance qui détermine la **Première intention** peut simplement utiliser des expressions régulières, Language Understanding (LUIS) ou toute autre logique que vous développez en guise de middleware (intergiciel). Exemples de modules de reconnaissance :
    

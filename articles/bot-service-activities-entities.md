@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 03/01/2018
-ms.openlocfilehash: 984c0d59c0c80bb53c8cef42db79d444d85941f3
-ms.sourcegitcommit: dcbc8ad992a3e242a11ebcdf0ee99714d919a877
+ms.openlocfilehash: 8f4b6c27fc28e4cf3b800dad11c3e6bd58561387
+ms.sourcegitcommit: 0b2be801e55f6baa048b49c7211944480e83ba95
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39352938"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43115064"
 ---
 # <a name="entities-and-activity-types"></a>Entités et types d’activités
 
@@ -63,7 +63,7 @@ entity = [mention];
 
 ---
 
-### <a name="place-objects"></a>Objets Place
+### <a name="place-objects"></a>Placer des objets
 
 Les <a href="https://schema.org/Place" target="_blank">informations liées à l’emplacement</a> peuvent être transmises au sein d’un message en remplissant la propriété des entités du message à l’aide d’un objet *Place* ou *GeoCoordinates*.
 
@@ -165,13 +165,13 @@ Les activités peuvent être de différents types, au-delà du **message** le pl
 | [message](#message) | IMessageActivity (C#) <br> Activité (JS) | Représente une communication entre le bot et l’utilisateur. |
 | [contactRelationUpdate](#contactrelationupdate) | IContactRelationUpdateActivity (C#) <br> Activité (JS) | Indique que le bot a été ajouté ou supprimé de la liste des contacts d’un utilisateur. |
 | [conversationUpdate](#conversationupdate) | IConversationUpdateActivity (C#) <br> Activité (JS) | Indique que le bot a été ajouté à une conversation, que d’autres membres ont été ajoutés ou supprimés de la conversation, ou que les métadonnées de la conversation ont changé. |
-| [deleteUserData](#deleteuserdata) | n/a | Indique à un bot qu’un utilisateur lui a demandé de supprimer toutes les données utilisateur qu’il a stockées. |
+| [deleteUserData](#deleteuserdata) | n/a | Indique à un robot qu’un utilisateur lui a demandé de supprimer toutes les données utilisateur qu’il a stockées. |
 | [endOfConversation](#endofconversation) | IEndOfConversationActivity (C#) <br> Activité (JS) | Indique la fin d’une conversation. |
 | [event](#event) | IEventActivity (C#) <br> Activité (JS) | Représente une communication envoyée à un bot non visible par l’utilisateur. |
 | [installationUpdate](#installationupdate) | IInstallationUpdateActivity (C#) <br> Activité (JS) | Représente une installation ou désinstallation d’un bot au sein d’une unité d’organisation (par exemple un locataire client ou une « équipe ») d’un canal. |
 | [invoke](#invoke) | IInvokeActivity (C#) <br> Activité (JS) | Représente une communication envoyée à un bot pour lui demander d’effectuer une opération spécifique. Ce type d’activité est réservé à un usage interne par Microsoft Bot Framework. |
 | [messageReaction](#messagereaction) | IMessageReactionActivity (C#) <br> Activité (JS) | Indique qu’un utilisateur a réagi à une activité existante. Par exemple, un utilisateur clique sur le bouton « J’aime » sur un message. |
-| [typing](#typing) | ITypingActivity (C#) <br> Activité (JS) | Indique que l’utilisateur ou le bot à l’autre extrémité de la conversation prépare une réponse. |
+| [typing](#typing) | ITypingActivity (C#) <br> Activité (JS) | Indique que l’utilisateur ou le robot à l’autre extrémité de la conversation prépare une réponse. |
 
 ## <a name="message"></a>Message
 
@@ -226,7 +226,7 @@ Ce type d’activité est réservé à un usage interne par Microsoft Bot Framew
 
 ## <a name="messagereaction"></a>messageReaction
 
-Certains canaux enverront des activités de réaction au message à votre bot lorsqu’un utilisateur réagit à une activité existante. Par exemple, un utilisateur clique sur le bouton « J’aime » sur un message. La propriété « reply toId » indiquera à quelle activité l’utilisateur a réagi.
+Certains canaux enverront des activités de réaction au message à votre bot lorsqu’un utilisateur réagit à une activité existante. Par exemple, un utilisateur clique sur le bouton « J’aime » sur un message. La propriété replyToId indiquera l’activité à laquelle l’utilisateur a réagi.
 
 L’activité de réaction à un message peut correspondre à n’importe quel nombre de types de réaction à un message défini par le canal. Par exemple, « Like » (j’aime) ou « PlusOne » (+1) sont des types de réactions qu’un canal peut envoyer.
 
@@ -238,5 +238,5 @@ Un bot peut envoyer une activité de saisie pour indiquer à l’utilisateur qu�
 ::: moniker range="azure-bot-service-3.0"
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-- <a href="https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Classe d’activité</a>
+- <a href="https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Classe Activité</a>
 ::: moniker-end

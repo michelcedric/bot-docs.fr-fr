@@ -1,5 +1,5 @@
 ---
-title: Écrire votre propre intergiciel (middleware) | Microsoft Docs
+title: Créer votre propre intergiciel | Microsoft Docs
 description: Comprenez comment écrire votre propre intergiciel (middleware).
 keywords: intergiciel (middleware), intergiciel (middleware) personnalisé, court-circuit, de secours, gestionnaires d’activités
 author: ivorb
@@ -9,20 +9,22 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 03/21/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 6bc73b2886374fbb50d8257c387df54f21a12ed7
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: b774f2de5856e6001d1b75c47b92aff6399d8fe3
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299864"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904349"
 ---
-# <a name="write-your-own-middleware"></a>Écrire votre propre intergiciel (middleware)
+# <a name="create-your-own-middleware"></a>Créer votre propre intergiciel
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 Un intergiciel (middleware) vous permet d’écrire des plug-ins riches pour vos robots, que d’autres personnes peuvent également utiliser par la suite. Nous allons montrer ici comment ajouter et implémenter un intergiciel (middleware), et comment celui-ci fonctionne. Le Kit de développement logiciel (SDK) v4 fournit un intergiciel (middleware) pour effectuer des opérations telles que la gestion des états, LUIS, QnAMaker et la traduction. Pour plus d’informations, examinons le Kit de développement logiciel (SDK) Bot Builder pour [.NET](https://github.com/Microsoft/botbuilder-dotnet) ou [JavaScript](https://github.com/Microsoft/botbuilder-js).
 
 ## <a name="adding-middleware"></a>Ajout d’un intergiciel (middleware)
 
-Dans l’exemple ci-dessous, basé sur notre exemple HelloBot de base, deux intergiciels (middleware) différents sont ajoutés à nos services avec une nouvelle instance de chacune de ces classes.
+Dans l’exemple ci-après, basé sur notre exemple de bot de base créé dans le cadre de l’expérience de [démarrage rapide](~/bot-service-quickstart.md), deux intergiciels différents sont ajoutés à nos services avec une nouvelle instance de chacune de ces classes.
 
 > [!IMPORTANT]
 > Rappelez-vous que l’ordre dans lequel ils sont ajoutés aux options détermine l’ordre dans lequel ils sont exécutés. Si vous utilisez plus d’un intergiciel (middleware), réfléchissez bien à la manière dont cela fonctionnera.

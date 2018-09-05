@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 04/30/2018
-ms.openlocfilehash: bc1da99c7d0f7a6431ad0c2746b8583ef7bfbd5f
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 2a92281e9bbee09d8dfb00fbbc67fe6ac6b6c69b
+ms.sourcegitcommit: 1abc32353c20acd103e0383121db21b705e5eec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299561"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42756728"
 ---
-# <a name="debug-bots-with-the-bot-framework-emulator"></a>Déboguer des robots avec l’émulateur Bot Framework
+# <a name="debug-with-the-bot-framework-emulator"></a>Déboguer à l’aide de l’émulateur Bot Framework
 
 L’émulateur Bot Framework est une application de bureau qui permet aux développeurs de robots de tester et déboguer leurs créations localement ou à distance. L’émulateur vous permet de converser avec le robot et d’inspecter les messages qu’il envoie et reçoit. L’émulateur affiche les messages tels qu’ils apparaîtraient dans une interface utilisateur de conversation web, et journalise les requêtes et réponses JSON à mesure que vous échangez des messages avec le robot. 
 

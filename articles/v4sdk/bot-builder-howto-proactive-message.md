@@ -1,5 +1,5 @@
 ---
-title: Comment utiliser une messagerie proactive | Microsoft Docs
+title: Envoyer des messages proactifs | Microsoft Docs
 description: Comprendre comment envoyer un message de façon proactive avec votre robot.
 keywords: message proactif
 author: jonathanfingold
@@ -9,14 +9,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 05/01/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: fd53a897d9847432fd337402d40edfcd6f4ff061
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: c22ce6a35d4d49506360a78a439f15137c429d9d
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299829"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905133"
 ---
-# <a name="how-to-use-proactive-messaging"></a>Comment utiliser une messagerie proactive
+# <a name="send-proactive-messages"></a>Envoyer des messages proactifs 
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+
 
 Souvent, les robots envoient des _messages réactifs_ , mais il arrive que nous devions également pouvoir envoyer un [message proactif](bot-builder-proactive-messages.md). 
 
@@ -120,7 +123,7 @@ En réponse, notre robot effectuera les opérations suivantes à chaque tour :
 
 Le travail que nous commençons est un simple minuteur de 5 secondes qui se termine par l’envoi du message proactif.
 - L’appel de la méthode continue conversation de l’adaptateur crée un tour initié par le robot.
-- Ce tour a son propre contexte à partir duquel nous récupérons les informations d’état.
+- Ce tour dispose de son propre [contexte de tour](bot-builder-concept-activity-processing.md#turn-context) à partir duquel nous récupérons les informations d’état.
 - Nous utilisons ce contexte pour envoyer le message proactif à l’utilisateur.
 
 
