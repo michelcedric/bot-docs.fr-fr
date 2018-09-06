@@ -8,13 +8,14 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 7/2/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: ca9ccb0f0425bd0cabf1ce7ef236acb7a008aefe
-ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
+ms.openlocfilehash: 37189bb9efbee5a2ad5f40f58106d4d85eda4473
+ms.sourcegitcommit: bff936a6a3dd5b1bd3ddfeed8bd1023e52929f08
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42905910"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43312473"
 ---
+# <a name="add-authentication-to-your-bot-via-azure-bot-service"></a>Ajouter l’authentification à votre bot par le biais d’Azure Bot Service
 Ce tutoriel utilise les nouvelles fonctionnalités d’authentification de bot d’Azure Bot Service, facilitant le développement d’un bot qui authentifie les utilisateurs auprès de divers fournisseurs d’identité tels qu’Azure AD (Azure Active Directory), GitHub ou Uber. En outre ces mises à jour favorisent l’amélioration de l’expérience utilisateur en éliminant la _vérification du code magique_ pour certains clients.
 
 Auparavant, votre bot devait inclure des contrôleurs OAuth et des liens de connexion, stocker les ID et secrets clients cibles et effectuer la gestion des jetons d’utilisateur.
