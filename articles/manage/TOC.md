@@ -1,9 +1,4 @@
 # [Gérer un bot](../bot-service-manage-overview.md)
-# Créer
-## [Modifier un robot avec l’éditeur de code en ligne](../bot-service-build-online-code-editor.md)
-## [Télécharger et redéployer le code source d’un bot](../bot-service-build-download-source-code.md)
-## [Configurer un déploiement continu](../bot-service-build-continuous-deployment.md)
-# [Tester dans la discussion web](../bot-service-manage-test-webchat.md)
 # [Analyse de bot](../bot-service-manage-analytics.md)
 # Canaux
 ## [Connecter un bot à des canaux](../bot-service-manage-channels.md)
@@ -12,9 +7,8 @@
 ## [Skype Entreprise](../bot-service-channel-connect-skypeforbusiness.md)
 ## [Direct Line](../bot-service-channel-connect-directline.md)
 ## [Microsoft Teams](https://msdn.microsoft.com/en-us/microsoft-teams/bots)
-## Discussion Web
-### [Connecter un bot au chat web](../bot-service-channel-connect-webchat.md)
-### [Activer la reconnaissance vocale dans le chat web](../bot-service-channel-connect-webchat-speech.md)
+## [Connecter un bot au chat web](../bot-service-channel-connect-webchat.md)
+## [Activer la reconnaissance vocale dans le chat web](../bot-service-channel-connect-webchat-speech.md)
 ## [E-mail](../bot-service-channel-connect-email.md)
 ## [GroupMe](../bot-service-channel-connect-groupme.md) 
 ## [Facebook](../bot-service-channel-connect-facebook.md) 
@@ -22,10 +16,7 @@
 ## [Slack](../bot-service-channel-connect-slack.md) 
 ## [Telegram](../bot-service-channel-connect-telegram.md) 
 ## [Twilio](../bot-service-channel-connect-twilio.md)
-## [Aperçu des fonctionnalités du bot](../bot-service-channel-inspector.md)
 # [Configurer les paramètres](../bot-service-manage-settings.md)
 # [Configurer la préparation vocale](../bot-service-manage-speech-priming.md)
 # [Enregistrer un bot avec Azure Bot Service](../bot-service-quickstart-registration.md)
 # [Migrer votre bot](../bot-service-migrate-bot.md)
-# [Déployer votre bot sur Azure](../bot-builder-howto-deploy-azure.md)
-

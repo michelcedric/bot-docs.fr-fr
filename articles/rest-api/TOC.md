@@ -1,6 +1,8 @@
-# [API REST Bot Framework](bot-framework-rest-overview.md)
-# [Créer un bot avec REST](~/rest-api/bot-framework-rest-connector-quickstart.md)
-# [Concepts clés](bot-framework-rest-connector-concepts.md)
+# API REST Bot Framework
+## [Vue d’ensemble](bot-framework-rest-overview.md)
+## [Concepts clés](bot-framework-rest-connector-concepts.md)
+## [Créer un bot avec REST](~/rest-api/bot-framework-rest-connector-quickstart.md)
+## [Informations de référence sur l'API](bot-framework-rest-connector-api-reference.md)
 # Connecteur
 ## [Authentification](bot-framework-rest-connector-authentication.md)
 ## [Vue d’ensemble des activités](bot-framework-rest-connector-activities.md)
@@ -27,5 +29,5 @@
 ## [Authentification](bot-framework-rest-direct-line-1-1-authentication.md)
 ## [Démarrer une conversation](bot-framework-rest-direct-line-1-1-start-conversation.md)
 ## [Envoyer un message au bot](bot-framework-rest-direct-line-1-1-send-message.md)
-## [Recevoir des messages à partir du bot](bot-framework-rest-direct-line-1-1-receive-messages.md)
+## [Recevoir des messages du robot](bot-framework-rest-direct-line-1-1-receive-messages.md)
 ## [Informations de référence sur l'API](bot-framework-rest-direct-line-1-1-api-reference.md)
