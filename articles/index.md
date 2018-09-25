@@ -7,23 +7,23 @@ manager: kamrani
 ms.topic: landing-page
 layout: LandingPage
 ms.prod: bot-framework
-ms.date: 05/03/2018
-ms.openlocfilehash: 6759a870538265fa9f8ae089486946b8fe648649
-ms.sourcegitcommit: 9a38d76afb0e82fdccc1f36f9b1a65042671e538
+ms.date: 09/17/2018
+ms.openlocfilehash: 737cd0f2f39ff512f82d4ea8611098fa265e4776
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/04/2018
-ms.locfileid: "39514989"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46706995"
 ---
 ::: moniker range="azure-bot-service-3.0"
 
 > [!NOTE]
-> Cette rubrique s’applique à la version 3 du SDK (stable). La documentation pour la version SDK v4 est disponible [ici.](https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-4.0)
+> Cette rubrique s’applique à la version précédente du kit de développement logiciel (SDK) (v3). La documentation de la version actuelle du kit de développement logiciel (SDK) (v4) est disponible [ici.](https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-4.0)
 
 <div class="content">
     <h1>Documentation d’Azure Bot Service</h1>
     <div class="intro" style="min-width: 200px">
-        <p>Bot Service fournit un environnement intégré sur mesure pour le développement de bots, vous permettant de créer, connecter, tester, déployer et gérer des bots intelligents, tout cela depuis un seul et même endroit. Bot Service s’appuie sur le SDK Bot Builder avec prise en charge de .NET et Node.js. Découvrez comment utiliser Bot Service avec nos démarrages rapides, nos didacticiels et nos exemples.</p>
+        <p>Bot Service fournit un environnement intégré sur mesure pour le développement de bots, vous permettant de créer, connecter, tester, déployer et gérer des bots intelligents, tout cela depuis un seul et même endroit. Azure Bot Service s’appuie sur le Bot Builder du kit de développement logiciel (SDK) avec une prise en charge de .NET et Node.js. Découvrez comment utiliser Bot Service avec nos démarrages rapides, nos didacticiels et nos exemples.</p>
     </div>
 <h2 style="margin-top: 18px; margin-bottom: 0px;">Démarrages en 5 minutes</h2>
 <div class="ico48Case">
@@ -94,18 +94,24 @@ ms.locfileid: "39514989"
 ::: moniker range="azure-bot-service-4.0"
 
 > [!NOTE] 
-> Cette rubrique est une version préliminaire de la documentation du SDK v4 et est sujet à modification. Le conteneur du SDK v3 est disponible [ici.](https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-3.0)
+> Cette rubrique concerne la version actuelle du kit de développement logiciel (SDK) (v4). La documentation de l’ancienne version du Kit de développement logiciel (SDK) (v3) est disponible [ici.](https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-3.0)
 
 <div class="content">
     <h1>Documentation d’Azure Bot Service</h1>
     <div class="intro" style="min-width: 200px">
-        <p>Azure Bot Service fournit un environnement intégré sur mesure pour le développement de bots, vous permettant de créer, connecter, tester, déployer et gérer des bots intelligents, tout cela depuis un seul et même endroit. Azure Bot Service s’appuie sur le SDK Bot Builder avec prise en charge de C#, JavaScript, Python et Java. Découvrez comment utiliser Bot Service avec nos démarrages rapides, nos didacticiels et nos exemples.
+        <p>Azure Bot Service fournit un environnement intégré sur mesure pour le développement de bots, vous permettant de créer, connecter, tester, déployer et gérer des bots intelligents, tout cela depuis un seul et même endroit. Azure Bot Service s’appuie sur le kit de développement logiciel (SDK) Bot Builder avec une prise en charge de C# et JavaScript. Découvrez comment utiliser Bot Service avec nos démarrages rapides, nos didacticiels et nos exemples.
 </p>
 </div>
 
 <h2 style="margin-top: 18px; margin-bottom: 0px;">Démarrages en 5 minutes</h2>
 <p style="margin-top: 6px; margin-bottom: 6px;"></p>
 <div class="ico48Case">
+    <div class="ico48Link">
+        <a href="/bot-framework/bot-service-quickstart">
+            <img src="v4sdk/media/logo_bot.svg" alt="">
+            <span>Azure</span>
+        </a>
+    </div>
     <div class="ico48Link">
         <a href="/bot-framework/dotnet/bot-builder-dotnet-sdk-quickstart">
             <img src="v4sdk/media/logo_csharp.svg" alt="">
@@ -118,28 +124,10 @@ ms.locfileid: "39514989"
             <span>JavaScript</span>
         </a>
     </div>
-    <div class="ico48Link">
-        <a href="/bot-framework/python/bot-builder-python-quickstart">
-            <img src="v4sdk/media/logo_python.svg" alt="">
-            <span>Python</span>
-        </a>
-    </div>
-    <div class="ico48Link">
-        <a href="/bot-framework/java/bot-builder-java-quickstart">
-            <img src="v4sdk/media/logo_java.svg" alt="">
-            <span>Java</span>
-        </a>
-    </div>
 </div>
- 
+
 <h2 style="margin-top: 36px">Didacticiels pas à pas</h2>
-<p>Développez des bots à l’aide d’Azure Bot Service :</p>
-<ol>
-    <li><a href="/bot-framework/bot-builder-tutorial-waterfall">Poser des questions à l’utilisateur</a></li>
-    <li><a href="/bot-framework/bot-builder-tutorial-persist-user-inputs">Conserver les données utilisateur issues d’une conversation</a></li>
-    <li><a href="/bot-framework/bot-builder-howto-translation">Rendre votre bot multilingue</a></li>
-    <li><a href="/bot-framework/bot-builder-tutorial-dispatch">Intégrer plusieurs applications LUIS et services QnA à l’outil Répartition</a></li>
-</ol>
+<p><a href="/bot-framework/bot-builder-tutorial-dispatch">Intégrer des applications LUIS et des services QnA avec l’outil Dispatch</a></p>
 
 <h2 style="margin-top: 36px">Informations de référence</h2>
 <ul class="panelContent cardsD">
@@ -151,7 +139,6 @@ ms.locfileid: "39514989"
                         <h3>API</h3>
                         <p><a href="https://aka.ms/dotnetsdk4">.NET</a></p>
                         <p><a href="https://aka.ms/jssdk4">JavaScript</a></p>
-                        <p><a href="/bot-framework/rest-api/bot-framework-rest-connector-api-reference">REST</a></p>
                     </div>
                 </div>
             </div>
@@ -165,8 +152,6 @@ ms.locfileid: "39514989"
                         <h3>Kits de développement logiciel (SDK)</h3>
                         <p><a href="https://github.com/Microsoft/botbuilder-dotnet">.NET</a></p>
                         <p><a href="https://github.com/Microsoft/botbuilder-js">JavaScript</a></p>
-                        <p><a href="https://github.com/Microsoft/botbuilder-python">Python</a></p>
-                        <p><a href="https://github.com/Microsoft/botbuilder-java">Java</a></p>
                     </div>
                 </div>
             </div>
