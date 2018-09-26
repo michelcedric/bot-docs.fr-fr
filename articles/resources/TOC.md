@@ -1,3 +1,12 @@
+# Modèle d’entreprise
+## [Introduction](../v4sdk/bot-builder-enterprise-template-overview.md)
+## [Vue d’ensemble](../v4sdk/bot-builder-enterprise-template-overview-detail.md)
+## [Créer un projet](../v4sdk/bot-builder-enterprise-template-create-project.md)
+## [Personnaliser le modèle](../v4sdk/bot-builder-enterprise-template-customize.md)
+## [Déployer un modèle](../v4sdk/bot-builder-enterprise-template-deployment.md)
+## [Analyse](../v4sdk/bot-builder-enterprise-template-powerbi.md)
+# Assistant virtuel 
+## [Vue d’ensemble](../v4sdk/bot-builder-virtual-assistant-introduction.md)
 # [FORUM AUX QUESTIONS](../bot-service-resources-bot-framework-faq.md)
 # [Obtenir de l'aide](../bot-service-resources-links-help.md)
 # [Guide des identificateurs](../bot-service-resources-identifiers-guide.md)
