@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
-ms.openlocfilehash: 2fbff9c6d7fe1e06fa87e5b2695056dbc1414570
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 62088ecdf2f8402ec5456eea758f5db994de0cf9
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39300461"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46707315"
 ---
 # <a name="create-messages"></a>Créer des messages
 
@@ -23,8 +23,6 @@ Votre bot enverra des objets [Activity][Activity] de type **message** pour commu
 Le texte du message peut être mis en forme à l’aide de **brut**, **markdown**, ou **xml**. Le format par défaut de la propriété `textFormat` est **markdown** et interprète le texte à l’aide de normes de mise en forme Markdown. Le niveau de prise en charge du format de texte varie en fonction des canaux. Pour vérifier si une fonctionnalité que vous souhaitez utiliser est prise en charge par le canal ciblé, affichez un aperçu de la fonctionnalité avec [Channel Inspector][ChannelInspector]. 
 
 La propriété `textFormat` d’un objet [Activity][Activity] peut être utilisée pour spécifier le format du texte. Par exemple, pour créer un message de base contenant uniquement du texte brut, définissez la propriété `textFormat` de l’objet [Activity] [ Activity] sur **brut**, définissez la propriété `text` sur les contenus du message et définissez la propriété `locale` sur les paramètres régionaux de l’expéditeur. 
-
-Pour obtenir la liste des mises en forme de texte couramment prises en charge, consultez [Mise en forme du texte](../bot-service-channel-inspector.md#text-formatting).
 
 ## <a name="attachments"></a>Pièces jointes
 

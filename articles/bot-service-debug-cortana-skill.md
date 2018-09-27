@@ -7,14 +7,17 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 05/01/18
-ms.openlocfilehash: 25474f821d64ea50442d9777d8f891124eb27573
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+monikerRange: azure-bot-service-3.0
+ms.openlocfilehash: ceeb854ace1388b6e0435aacc3acf9027763ee73
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299176"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46707965"
 ---
 # <a name="test-a-cortana-skill"></a>Tester une compétence Cortana
+
+[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
  
 Si vous avez créé une compétence Cortana à l’aide du Kit de développement logiciel (SDK) Bot Builder, vous pouvez la tester en l’appelant à partir de Cortana. Les instructions ci-après vous guident tout au long de la procédure requise pour tester votre compétence Cortana.
 
@@ -83,7 +86,6 @@ Une fois que vous avez testé votre compétence Cortana et vérifié qu’elle f
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 * [Kit de compétences Cortana][CortanaGetStarted]
-* [Aperçu des fonctionnalités du bot avec l’inspecteur de canaux](bot-service-channel-inspector.md)
 
 [CortanaGetStarted]: /cortana/getstarted
 
