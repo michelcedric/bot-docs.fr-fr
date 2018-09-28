@@ -7,23 +7,23 @@ manager: kamrani
 ms.topic: landing-page
 layout: LandingPage
 ms.prod: bot-framework
-ms.date: 09/17/2018
-ms.openlocfilehash: 737cd0f2f39ff512f82d4ea8611098fa265e4776
-ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
+ms.date: 09/27/2018
+ms.openlocfilehash: 061354d57fed8863f12a01e976ef0b11faf699c0
+ms.sourcegitcommit: 1ef8f4fd2cb8955270a1bc317c9039e5b8f6bbc4
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/23/2018
-ms.locfileid: "46706995"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47418831"
 ---
 ::: moniker range="azure-bot-service-3.0"
 
 > [!NOTE]
-> Cette rubrique s’applique à la version précédente du kit de développement logiciel (SDK) (v3). La documentation de la version actuelle du kit de développement logiciel (SDK) (v4) est disponible [ici.](https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-4.0)
+> Cette rubrique s’applique à la **version précédente du kit de développement logiciel (SDK) (v3)**. La documentation de la version actuelle du kit de développement logiciel (SDK) (v4) est disponible [ici.](https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-4.0)
 
 <div class="content">
     <h1>Documentation d’Azure Bot Service</h1>
     <div class="intro" style="min-width: 200px">
-        <p>Bot Service fournit un environnement intégré sur mesure pour le développement de bots, vous permettant de créer, connecter, tester, déployer et gérer des bots intelligents, tout cela depuis un seul et même endroit. Azure Bot Service s’appuie sur le Bot Builder du kit de développement logiciel (SDK) avec une prise en charge de .NET et Node.js. Découvrez comment utiliser Bot Service avec nos démarrages rapides, nos didacticiels et nos exemples.</p>
+        <p>Bot Service fournit un environnement intégré sur mesure pour le développement de bots, vous permettant de créer, connecter, tester, déployer et gérer des bots intelligents, tout cela depuis un seul et même endroit. Azure Bot Service s’appuie sur le Bot Builder du kit de développement logiciel (SDK) avec une prise en charge de .NET et Node.js. Découvrez comment utiliser Bot Service avec nos démarrages rapides et nos exemples.</p>
     </div>
 <h2 style="margin-top: 18px; margin-bottom: 0px;">Démarrages en 5 minutes</h2>
 <div class="ico48Case">
@@ -33,31 +33,16 @@ ms.locfileid: "46706995"
             <span>Bot Service</span>
         </a>
     </div>
-    <div class="ico48Link">
-        <a href="/bot-framework/dotnet/bot-builder-dotnet-quickstart">
-            <img src="media/index/logo_csharp.svg" alt="">
-            <span>C&#35;</span>
-        </a>
-    </div>
-    <div class="ico48Link">
-        <a href="/bot-framework/nodejs/bot-builder-nodejs-quickstart">
-            <img src="media/index/logo_nodejs.svg" alt="">
-            <span>Nodejs</span>
-        </a>
-    </div>
 </div>
  
 <h2 style="margin-top: 36px">Exemples</h2>
 <p>Commencez rapidement à concevoir de puissants bots aux fonctionnalités enrichies.</p>
 <ul>
-    <li><a href="/bot-framework/dotnet/bot-builder-dotnet-samples">.NET</a></li>
-    <li><a href="/bot-framework/nodejs/bot-builder-nodejs-samples">Node.JS</a></li>
+    <li><a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp">.NET</a></li>
+    <li><a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/Node">Node.JS</a></li>
 </ul>
 <h2 style="margin-top: 36px">Didacticiels pas à pas</h2>
-<p>Développez des bots à l’aide d’Azure Bot Service :</p>
-<ol>
-    <li><a href="/bot-framework/bot-builder-tutorial-authentication">Ajouter l’authentification à votre bot</a></li>
-</ol>
+<p> <a href="/bot-framework/bot-builder-tutorial-authentication">Ajouter l’authentification à votre bot</a> </p>
 <h2 style="margin-top: 36px">Informations de référence</h2>
 <ul class="panelContent cardsD">
     <li>
@@ -68,18 +53,6 @@ ms.locfileid: "46706995"
                         <h3>Langues</h3>
                         <p><a href="/dotnet/api/?view=botbuilder-3.12.2.4">.NET</a></p>
                         <p><a href="https://docs.botframework.com/en-us/node/builder/chat-reference/modules/_botbuilder_d_.html">Node.JS</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>REST</h3>
-                        <p><a href="/Bot-Framework/rest-api/bot-framework-rest-connector-api-reference">Référence d’API REST</a></p>
                     </div>
                 </div>
             </div>
