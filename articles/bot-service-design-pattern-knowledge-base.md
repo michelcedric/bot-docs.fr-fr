@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
-ms.openlocfilehash: 5b510187f85a5384e976f239bc72c7aabf47f1cb
-ms.sourcegitcommit: f95702d27abbd242c902eeb218d55a72df56ce56
+ms.openlocfilehash: dd8869c26a87718177462db2508e41aa82810e21
+ms.sourcegitcommit: f0b22c6286e44578c11c9f15d22b542c199f0024
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39300600"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47404075"
 ---
 # <a name="design-knowledge-bots"></a>Concevoir des bots de connaissances
 
@@ -136,7 +136,9 @@ Le SDK Bot Builder prend en charge LUIS et QnA Maker. Cela vous permet de décle
 
 ## <a name="sample-code"></a>Exemple de code
 
-- Pour obtenir un exemple qui montre comment créer un bot de connaissances de base en utilisant le SDK Bot Builder pour .NET, consultez <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/sample-KnowledgeBot" target="_blank">l’exemple de bot de connaissances</a> dans GitHub. 
-- Pour obtenir un exemple qui montre comment créer des bots de connaissances plus complexes en utilisant le SDK Bot Builder pour .NET, consultez les <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/demo-Search" target="_blank">exemples de bots reposant sur Recherche</a> dans GitHub.
+- Pour obtenir un exemple qui montre comment créer un bot de connaissances de base en utilisant le SDK Bot Builder pour .NET, consultez <a href="https://aka.ms/qna-with-appinsights" target="_blank">l’exemple de bot de connaissances</a> dans GitHub. 
+<!-- TODO: Do not have a current bot sample to work with this
+- For a sample that shows how to create more complex knowledge bots using the Bot Builder SDK for .NET, see the <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/demo-Search" target="_blank">Search-powered Bots sample</a> in GitHub.
+-->
 
 [qnamakerTemplate]: https://docs.botframework.com/en-us/azure-bot-service/templates/qnamaker/#navtitle

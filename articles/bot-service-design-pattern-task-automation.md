@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 2/13/2018
-ms.openlocfilehash: 60a3796e255611ff09d5418cdeaa6f363ad8da15
-ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
+ms.openlocfilehash: 3bf6bef805e4a86b6e070693660eb5cb20468ffd
+ms.sourcegitcommit: f0b22c6286e44578c11c9f15d22b542c199f0024
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42904965"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47404005"
 ---
 # <a name="create-task-automation-bots"></a>Créer des bots d’automatisation de tâche
 
@@ -92,18 +92,20 @@ Enfin, la spécification fournit l’exemple d’un utilisateur qui communique a
 
 ## <a name="bot-app-or-website"></a>Bot, application ou site web ?
 
-Vous vous demandez peut-être pourquoi ne pas simplement créer une application ou un site web, dans la mesure où un bot d’automatisation de tâche s’y apparente étroitement. Selon votre scénario, il peut être judicieux de créer une application ou un site web plutôt qu’un bot. Vous pouvez même choisir d’incorporer votre bot dans une application en utilisant [l’API Direct Line du Bot Framework][directLineAPI] ou le <a href="https://github.com/Microsoft/BotFramework-WebChat" target="_blank">contrôle Discussion Web</a>. L’implémentation de votre bot dans le contexte d’une application s’avère doublement avantageuse dans la mesure où elle assure à la fois une expérience d’application riche et une expérience de conversation. 
+Vous vous demandez peut-être pourquoi ne pas simplement créer une application ou un site web, dans la mesure où un bot d’automatisation de tâche s’y apparente étroitement. Selon votre scénario, il peut être judicieux de créer une application ou un site web plutôt qu’un bot. Vous pouvez même choisir d’incorporer votre bot dans une application en utilisant [l’API Direct Line du Bot Framework][directLineAPI] ou le <a href="https://aka.ms/BotFramework-WebChat" target="_blank">contrôle Discussion Web</a>. L’implémentation de votre bot dans le contexte d’une application s’avère doublement avantageuse dans la mesure où elle assure à la fois une expérience d’application riche et une expérience de conversation. 
 
 Cependant, dans de nombreux cas, il peut être beaucoup plus complexe et beaucoup plus coûteux de créer une application ou un site web plutôt qu’un bot. Souvent, une application ou un site web doit prendre en charge plusieurs plateformes et clients. Les processus d’empaquetage et de déploiement peuvent être longs et fastidieux. Enfin, la nécessité pour l’utilisateur de télécharger et d’installer une application n’est pas idéale. Par conséquent, un bot peut souvent offrir un moyen beaucoup plus simple de résoudre un problème spécifique. 
 
 En outre, les bots offrent une grande liberté en termes de développement et d’extension. Par exemple, un développeur peut choisir d’ajouter des capacités vocales et de langage naturel au bot de réinitialisation de mot de passe afin de le rendre accessible par appel audio. Il peut également ajouter la prise en prise en charge de messages texte. La société peut configurer des bornes dans l’ensemble du bâtiment et incorporer le bot de réinitialisation de mot de passe dans cette expérience.
 
 ::: moniker range="azure-bot-service-3.0"
-## <a name="sample-code"></a>Exemple de code
+<!-- TODO: SimpleTaskAutomation no longer exists
+## Sample code
 
-Pour obtenir un exemple complet montrant comment implémenter une automatisation de tâche simple en utilisant le Kit de développement logiciel (SDK) Bot Builder pour .NET, consultez <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/capability-SimpleTaskAutomation" target="_blank">l’exemple d’automatisation de tâche simple</a> dans GitHub.
+For a complete sample that shows how to implement simple task automation using the Bot Builder SDK for .NET, see the <a href="https://aka.ms/capability-SimpleTaskAutomation" target="_blank">Simple Task Automation sample</a> in GitHub.
 
-Pour obtenir un exemple complet montrant comment implémenter une automatisation de tâche simple en utilisant le Kit de développement logiciel (SDK) Bot Builder pour Node.js, consultez <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/capability-SimpleTaskAutomation" target="_blank">l’exemple d’automatisation de tâche simple</a> dans GitHub.
+For a complete sample that shows how to implement simple task automation using the Bot Builder SDK for Node.js, see the <a href="https://aka.ms/capability-SimpleTaskAutomation" target="_blank">Simple Task Automation sample</a> in GitHub.
+-->
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

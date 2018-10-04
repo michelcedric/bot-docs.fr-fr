@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
-ms.openlocfilehash: 6aae4e9f6cb6a4e892b8036eafb9489dfaedbb36
-ms.sourcegitcommit: ee63d9dc1944a6843368bdabf5878950229f61d0
+ms.openlocfilehash: a19145c446c74468cef3ae5d9abf6e90e91196ff
+ms.sourcegitcommit: f0b22c6286e44578c11c9f15d22b542c199f0024
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42795095"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47403976"
 ---
 # <a name="embed-a-bot-in-a-website"></a>Incorporer un bot dans un site web
 
@@ -30,7 +30,7 @@ Le contrôle web Skype est essentiellement un client Skype dans un contrôle web
 
 ## <a name="open-source-web-control"></a>Contrôle web open source
 
-Le <a href="https://github.com/Microsoft/BotFramework-WebChat" target="_blank">contrôle de discussion web open source</a> repose sur ReactJS et utilise [l’API Direct Line][directLineAPI] pour communiquer avec le Bot Framework. Le contrôle de discussion web fournit un canevas vide pour l’implémentation de la discussion web, ce qui vous donne un contrôle total sur ses comportements et l’expérience utilisateur qu’il fournit. 
+Le <a href="https://aka.ms/BotFramework-WebChat" target="_blank">contrôle de discussion web open source</a> repose sur ReactJS et utilise [l’API Direct Line][directLineAPI] pour communiquer avec le Bot Framework. Le contrôle de discussion web fournit un canevas vide pour l’implémentation de la discussion web, ce qui vous donne un contrôle total sur ses comportements et l’expérience utilisateur qu’il fournit. 
 
 Grâce au mécanisme *backchannel*, la page web qui héberge le contrôle peut communiquer directement avec le bot, et ce, de façon totalement invisible pour l’utilisateur. Cette fonctionnalité ouvre la voie à de nombreux scénarios utiles : 
 
@@ -46,7 +46,7 @@ Grâce au mécanisme *backchannel*, la page web qui héberge le contrôle peut c
 
 ## <a name="sample-code"></a>Exemple de code
 
-Le <a href="https://github.com/Microsoft/BotFramework-WebChat" target="_blank">contrôle de discussion web open source</a> est disponible dans GitHub. Pour plus d’informations sur la manière d’implémenter le mécanisme de backchannel à l’aide du contrôle de discussion web open source et du Kit de développement logiciel (SDK) Bot Builder pour Node.js, consultez [Utiliser le mécanisme de backchannel](~/nodejs/bot-builder-nodejs-backchannel.md).
+Le <a href="https://aka.ms/BotFramework-WebChat" target="_blank">contrôle de discussion web open source</a> est disponible dans GitHub. Pour plus d’informations sur la manière d’implémenter le mécanisme de backchannel à l’aide du contrôle de discussion web open source et du Kit de développement logiciel (SDK) Bot Builder pour Node.js, consultez [Utiliser le mécanisme de backchannel](~/nodejs/bot-builder-nodejs-backchannel.md).
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
