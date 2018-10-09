@@ -19,7 +19,6 @@
 ## [Accueillir l’utilisateur](v4sdk/bot-builder-welcome-user.md)
 ## [Language Understanding](v4sdk/bot-builder-concept-luis.md)
 ## [Modèles Bot Service](bot-service-concept-templates.md)
-## [Développer avec Bot Builder](bot-builder-overview-getstarted.md)
 ## [Cognitive Services](bot-service-concept-intelligence.md)
 ## [Scénarios clés relatifs aux bots](bot-service-scenario-overview.md)
 ### [Bot commercial](bot-service-scenario-commerce.md)
