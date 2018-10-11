@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f5cc520704c4bebef6250195fd3e6cbdc3b0be3f
-ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
+ms.openlocfilehash: c00913c4e6fa7133dad734e69167d2723257f75a
+ms.sourcegitcommit: 6c2426c43cd2212bdea1ecbbf8ed245145b3c30d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39574955"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48852304"
 ---
 # <a name="send-proactive-messages"></a>Envoyer des messages proactifs
 
@@ -176,7 +176,7 @@ public class SurveyDialog : IDialog<object>
 
 ## <a name="sample-code"></a>Exemple de code
 
-Pour obtenir un exemple complet montrant comment envoyer des messages proactifs à l’aide du Kit de développement logiciel (SDK) Bot Builder pour .NET, voir les <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-proactiveMessages" target="_blank">exemples de messages proactifs</a> dans GitHub. Dans les exemples de messages proactifs, <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-proactiveMessages/simpleSendMessage" target="_blank">simpleSendMessage</a> montre comment envoyer un message proactif ad hoc, et <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-proactiveMessages/startNewDialog" target="_blank"> startNewDialog </a> comment envoyer un message proactif basé sur un dialogue. 
+Pour obtenir un exemple complet montrant comment envoyer des messages proactifs à l’aide du Kit de développement logiciel (SDK) Bot Builder pour .NET, voir les <a href="https://aka.ms/proactive-messaging-cs-v3 " target="_blank">exemples de messages proactifs</a> dans GitHub. Dans les exemples de messages proactifs, <a href="https://aka.ms/proactive-sendmessage-cs-v3 " target="_blank">simpleSendMessage</a> montre comment envoyer un message proactif ad hoc, et <a href="https://aka.ms/proactive-newdialog-cs-v3 " target="_blank"> startNewDialog </a> comment envoyer un message proactif basé sur un dialogue. 
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
