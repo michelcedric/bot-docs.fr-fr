@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 07/13/2018
-ms.openlocfilehash: 5e7fc6fa4fbce9b13d74d5dc7877de44840c51e6
-ms.sourcegitcommit: dcbc8ad992a3e242a11ebcdf0ee99714d919a877
+ms.openlocfilehash: 73cf6cedecd9acaef828bd41f4fccdaad2ae5731
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39352878"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46707165"
 ---
 # <a name="debug-a-bot-service-bot"></a>Déboguer un bot Bot Service
 
@@ -27,7 +27,7 @@ Suivez les étapes décrites dans cette section pour déboguer un bot écrit en 
 
 Avant de pouvoir déboguer votre bot JavaScript, vous devez effectuer ces tâches.
 
-- Téléchargez le code source de votre bot (à partir d’Azure), comme décrit dans [Télécharger le code source du bot](bot-service-build-download-source-code.md?#download-bot-source-code).
+- Téléchargez le code source pour votre bot (à partir d’Azure), comme décrit dans l’article [Télécharger le code source d’un bot](bot-service-build-download-source-code.md).
 - Téléchargez et installez l’[émulateur Bot Framework](https://github.com/Microsoft/BotFramework-Emulator/releases).
 - Téléchargez et installez un éditeur de code tel que <a href="https://code.visualstudio.com" target="_blank">Visual Studio Code</a>.
 
@@ -72,7 +72,7 @@ Suivez les étapes décrites dans cette section pour déboguer un bot écrit en 
 
 Avant de pouvoir déboguer votre bot C# d’application web, vous devez effectuer ces tâches.
 
-- Téléchargez le code source de votre bot (à partir d’Azure), comme décrit dans [Télécharger le code source du bot](bot-service-build-download-source-code.md?#download-bot-source-code).
+- Téléchargez le code source pour votre bot (à partir d’Azure), comme décrit dans l’article [Télécharger le code source d’un bot](bot-service-build-download-source-code.md).
 - Téléchargez et installez l’[émulateur Bot Framework](https://github.com/Microsoft/BotFramework-Emulator/releases).
 - Téléchargez et installez <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a> (Community Edition ou ultérieure).
 
@@ -146,13 +146,6 @@ Une fois que vous avez connecté l’émulateur à votre bot, envoyez un message
 En outre, vous pouvez afficher les détails du journal dans la fenêtre de console.
 
 ![Fenêtre de console](~/media/bot-service-debug-bot/csharp-azureservice-debug-debughostlogging.png)
-
-::: moniker-end
-::: moniker range="azure-bot-service-4.0" 
-
-## <a id="debug-csharp-serverless"></a> Déboguer un bot Plan consommation C\# Functions
-
-Un bot Functions pour le Kit SDK Bot Builder V4 sera bientôt disponible.
 
 ::: moniker-end
 

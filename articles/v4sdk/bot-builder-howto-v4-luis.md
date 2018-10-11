@@ -3,18 +3,18 @@ title: Utilisation de LUIS pour la compréhension langagière | Microsoft Docs
 description: Découvrez comment utiliser LUIS pour la compréhension du langage naturel avec le SDK Bot Builder.
 keywords: Language Understanding, LUIS, intention, module de reconnaissance, entités, middleware (intergiciel)
 author: ivorb
-ms.author: v-demak
+ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 4/30/17
+ms.date: 09/19/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 88651a2c86698d55e3a429d7ea62662976d2115f
-ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
+ms.openlocfilehash: c4a7cfba6f588c95dbebf4886ffd7e432d99c3ae
+ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42906163"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47389798"
 ---
 # <a name="using-luis-for-language-understanding"></a>Utilisation de LUIS pour la compréhension langagière
 
@@ -30,165 +30,196 @@ Tout d’abord, vérifiez que vous avez installé les packages nécessaires pour
 
 # <a name="ctabcs"></a>[C#](#tab/cs)
 
-[Ajoutez une référence](https://docs.microsoft.com/en-us/nuget/tools/package-manager-ui) à la préversion 4 des packages NuGet suivants :
+[Ajoutez une référence](https://docs.microsoft.com/en-us/nuget/tools/package-manager-ui) à la version 4 des packages NuGet suivants :
 
 
-* `Microsoft.Bot.Builder.Ai.LUIS`
+* `Microsoft.Bot.Builder.AI.LUIS`
 
 # <a name="javascripttabjs"></a>[JavaScript](#tab/js)
 
-Vous pouvez ajouter une référence aux packages botbuilder et botbuilder-ai dans votre projet par le biais de npm :
+Installez les packages botbuilder et botbuilder-ai dans votre projet à l’aide de npm :
 
-* `npm install --save botbuilder@preview`
-* `npm install --save botbuilder-ai@preview`
+* `npm install --save botbuilder`
+* `npm install --save botbuilder-ai`
 
 ---
 
+## <a name="set-up-your-luis-app"></a>Configurer votre application LUIS
 
-## <a name="set-up-middleware-to-use-your-luis-app"></a>Configurer des middlewares (intergiciels) pour utiliser votre application LUIS
+Tout d’abord, configurez une _application LUIS_, qui est un service que vous créez à l’emplacement [luis.ai](https://www.luis.ai). Cette application LUIS peut être formée pour certaines intentions qu’elle doit être capable de reconnaître. Vous trouverez plus d’informations sur la création de votre application LUIS sur le site LUIS.
 
-Tout d’abord, configurez une _application LUIS_, service que vous créez sur le site [www.luis.ai](https://www.luis.ai). Cette application LUIS peut être formée pour certaines intentions qu’elle doit être capable de reconnaître. Vous trouverez plus d’informations sur la création de votre application LUIS sur le [site LUIS](https://www.luis.ai).
+Pour cet exemple, vous utiliserez seulement une démonstration de l’application LUIS capable de reconnaître les intentions Aide, Annuler et Météo ; l’ID d’application se trouve déjà dans l’exemple de code. Vous devez disposer d’une clé Cognitive Services que vous pouvez obtenir en vous connectant à [luis.ai](https://www.luis.ai) et en copiant la clé à partir de **Paramètres utilisateur** > **Clé de création**.
 
-Pour cet exemple, vous utiliserez seulement une démonstration de l’application LUIS capable de reconnaître les intentions Aide, Annuler et Météo ; l’ID d’application se trouve déjà dans l’exemple de code. Vous devrez disposer d’une clé Cognitive Services que vous pouvez obtenir en vous connectant au site [www.luis.ai](https://www.luis.ai) et en copiant la clé à partir de **User settings** (Paramètres utilisateur) > **Authoring Key** (Clé de création).
+> [!NOTE]
+> Pour créer votre propre copie de l’application LUIS publique utilisée dans cet exemple, copiez le fichier LUIS [JSON](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/simple-bot-example/FirstSimpleBotExample.json). Ensuite, [importez](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/create-new-app#import-new-app) l’application LUIS, [formez-la](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/luis-how-to-train) et [publiez-la](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/publishapp). Remplacez l’ID d’application publique dans l’exemple de code par l’ID d’application de votre nouvelle application LUIS.
 
-> [!NOTE] 
-> Pour créer votre propre copie de l’application LUIS publique utilisée dans cet exemple, copiez le fichier LUIS [FirstSimpleBotExample.json](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/simple-bot-example/FirstSimpleBotExample.json). Ensuite, [importez l’application LUIS](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/create-new-app#import-new-app), [formez-la](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/luis-how-to-train) et [publiez-la](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/publishapp). Remplacez l’ID d’application publique dans l’exemple de code par l’ID d’application de votre nouvelle application LUIS.
 
-Configurez votre bot afin d’appeler votre application LUIS pour chaque message reçu d’un utilisateur, en l’ajoutant simplement à la pile de middlewares de votre bot. Les middlewares stockent les résultats de reconnaissance sur l’objet de contexte, ce qui les rend accessibles à la logique de votre bot.
+### <a name="configure-your-bot-to-call-your-luis-app"></a>Configurez votre bot pour appeler votre application LUIS.
 
 # <a name="ctabcs"></a>[C#](#tab/cs)
+
+Bien qu’il soit possible de créer et d’appeler votre application LUIS à chaque tour, les meilleures pratiques de codage recommandent d’inscrire votre service LUIS en tant que singleton, puis de le transmettre sous forme de paramètres à votre constructeur de bot. Nous allons présenter cette méthode ici, car elle est légèrement plus complexe.
+
 Commencez avec le modèle d’echo bot, puis ouvrez **Startup.cs**. 
 
-Ajoutez une instruction `using` pour `Microsoft.Bot.Builder.Ai.LUIS`.
+Ajoutez une instruction `using` pour `Microsoft.Bot.Builder.AI.LUIS`.
 
 ```csharp
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Bot.Builder.BotFramework;
-using Microsoft.Bot.Builder.Integration.AspNet.Core;
 // add this
-using Microsoft.Bot.Builder.Ai.LUIS;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using System;
+using Microsoft.Bot.Builder.AI.LUIS;
 ```
 
-Mettez à jour la méthode `ConfigureServices` dans votre fichier `Startup.cs` pour ajouter un objet `LuisRecognizerMiddleware` qui se connecte à votre application LUIS. 
+Ajoutez le code suivant à la fin de `ConfigureServices`, après l’initialisation de l’état. Cela extrait les informations du fichier `appsettings.json`, mais ces chaînes peuvent être extraites à partir de votre fichier `.bot`, comme dans l’exemple associé présent à la fin de cet article, ou codées en dur à des fins de tests.
+
+Le singleton renvoie un nouvel élément `LuisRecognizer` au constructeur.
 
 ```csharp
-// This method gets called by the runtime. Use this method to add services to the container.
-public void ConfigureServices(IServiceCollection services)
-{
-    services.AddBot<EchoBot>(options =>
+    // Create and register a LUIS recognizer.
+    services.AddSingleton(sp =>
     {
-        options.CredentialProvider = new ConfigurationCredentialProvider(Configuration);
-. 
-        options.Middleware.Add(new CatchExceptionMiddleware<Exception>(async (context, exception) =>
+        // Get LUIS information from appsettings.json.
+        var section = this.Configuration.GetSection("Luis");
+        var luisApp = new LuisApplication(
+            applicationId: section["AppId"],
+            endpointKey: section["SubscriptionKey"],
+            azureRegion: section["Region"]);
+
+        // Specify LUIS options. These may vary for your bot.
+        var luisPredictionOptions = new LuisPredictionOptions
         {
-            await context.TraceActivity("EchoBot Exception", exception);
-            await context.SendActivity("Sorry, it looks like something went wrong!");
-        }));
+            IncludeAllIntents = true,
+        };
 
-        // The Memory Storage used here is for local bot debugging only. When the bot
-        // is restarted, anything stored in memory will be gone. 
-        IStorage dataStore = new MemoryStorage();
-
-        options.Middleware.Add(new ConversationState<EchoState>(dataStore));
-
-        // Add LUIS recognizer as middleware
-        options.Middleware.Add(
-            new LuisRecognizerMiddleware(
-                new LuisModel(
-                    // This appID is for a public app that's made available for demo purposes
-                    "eb0bf5e0-b468-421b-9375-fdfb644c512e",
-                    // You can use it by replacing <subscriptionKey> with your Authoring Key
-                    // which you can find at https://www.luis.ai under User settings > Authoring Key
-                    "<subscriptionKey>",
-                    // The location-based URL begins with "https://<region>.api.cognitive.microsoft.com", where region is the region associated with the key you are using. Some examples of regions are `westus`, `westcentralus`, `eastus2`, and `southeastasia`.
-                    new Uri("https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/"))));
+        return new LuisRecognizer(
+            application: luisApp,
+            predictionOptions: luisPredictionOptions,
+            includeApiResults: true);
     });
-}
 ```
 
-<!--TODO: DOES PUBLIC APP WORK WITH KEYS IN DIFFERENT REGIIONS? --> Collez votre clé d’abonnement à partir de [https://www.luis.ai](https://www.luis.ai) à la place de `<subscriptionKey>`.
+Collez votre clé d’abonnement à partir de [luis.ai](https://www.luis.ai) à la place de `<subscriptionKey>`. Pour la trouver plus facilement, vous pouvez cliquer sur le nom de votre compte en haut à droite et accéder à **Paramètres**, où elle est présentée sous le nom **Clé de création**.
 
-> [!NOTE] 
-> Si vous utilisez votre propre application LUIS au lieu de l’application LUIS publique, vous pouvez obtenir l’ID, la clé d’abonnement et l’URL correspondants sur [https://www.luis.ai](https://www.luis.ai). 
+> [!NOTE]
+> Si vous utilisez votre propre application LUIS au lieu de l’application LUIS publique, vous pouvez obtenir l’ID, la clé d’abonnement et l’URL correspondants à partir de [luis.ai](https://www.luis.ai). Vous pouvez trouver ces derniers sous les onglets **Publier** et **Paramètres** de la page de votre application.
 >
->Pour obtenir l’URL de base à utiliser dans votre `LuisModel`, connectez-vous au [site LUIS](https://www.luis.ai), accédez à l’onglet **Publish** (Publier) et examinez la colonne **Endpoint** (Point de terminaison) sous **Resources and Keys** (Ressources et les clés). L’URL de base est la partie de **l’URL du point de terminaison** située avant l’ID d’abonnement et les autres paramètres.
+>Pour obtenir l’URL de base à utiliser dans votre `LuisModel`, connectez-vous à [luis.ai](https://www.luis.ai), accédez à l’onglet **Publier** et examinez la colonne **Point de terminaison** sous **Resources and Keys** (Ressources et clés). L’URL de base est la partie de **l’URL du point de terminaison** située avant l’ID d’abonnement et les autres paramètres.
+
+Ensuite, nous devons donner à votre bot cette instance de LUIS. Ouvrez **EchoBot.cs** et ajoutez le code suivant en haut du fichier. L’en-tête de classe et les éléments d’état sont également inclus à titre de référence, mais ils ne sont pas décrits ici.
+
+```csharp
+public class EchoBot : IBot
+{
+    /// <summary>
+    /// Gets the Echo Bot state.
+    /// </summary>
+    private IStatePropertyAccessor<EchoState> EchoStateAccessor { get; }
+
+    /// <summary>
+    /// Gets the LUIS recognizer.
+    /// </summary>
+    private LuisRecognizer Recognizer { get; } = null;
+
+    public EchoBot(ConversationState state, LuisRecognizer luis)
+    {
+        EchoStateAccessor = state.CreateProperty<EchoState>("EchoBot.EchoState");
+
+        // The incoming luis variable is the LUIS Recognizer we added above.
+        this.Recognizer = luis ?? throw new ArgumentNullException(nameof(luis));
+    }
+
+    /// ...
+```
 
 # <a name="javascripttabjs"></a>[JavaScript](#tab/js)
 
-Tout d’abord, demandez/importez la classe [LuisRecognizer](https://github.com/Microsoft/botbuilder-js/tree/master/doc/botbuilder-ai/classes/botbuilder_ai.luisrecognizer.md) et créez une instance pour votre modèle LUIS :
+Tout d’abord, suivez la procédure dans le [démarrage rapide](../javascript/bot-builder-javascript-quickstart.md) JavaScript pour créer un bot. Ici, nous codons en dur nos informations LUIS dans notre bot, mais elles peuvent être extraites du fichier `.bot`, comme c’est le cas dans l’exemple associé présenté à la fin de l’article.
+
+Dans le nouveau bot, modifiez **app.js** pour demander la classe `LuisRecognizer` et créez une instance de votre modèle LUIS :
 
 ```javascript
+const { ActivityTypes } = require('botbuilder');
 const { LuisRecognizer } = require('botbuilder-ai');
 
-const model = new LuisRecognizer({
+const luisApplication = {
     // This appID is for a public app that's made available for demo purposes
-    // You can use it by providing your LUIS subscription key
-     appId: 'eb0bf5e0-b468-421b-9375-fdfb644c512e',
-    // replace subscriptionKey with your Authoring Key
-    // your key is at https://www.luis.ai under User settings > Authoring Key 
-    subscriptionKey: '<your subscription key>',
-    // The serviceEndpoint URL begins with "https://<region>.api.cognitive.microsoft.com", where region is the region associated with the key you are using. Some examples of regions are `westus`, `westcentralus`, `eastus2`, and `southeastasia`.
-    serviceEndpoint: 'https://westus.api.cognitive.microsoft.com'
-});
+    // You can use it or use your own LUIS "Application ID" at https://www.luis.ai under "App Settings".
+     applicationId: 'eb0bf5e0-b468-421b-9375-fdfb644c512e',
+    // Replace endpointKey with your "Subscription Key"
+    // your key is at https://www.luis.ai under Publish > Resources and Keys, look in the Endpoint column
+    // The "subscription-key" is embeded in the Endpoint link. 
+    endpointKey: '<your subscription key>',
+    // You can find your app's region info embeded in the Endpoint link as well.
+    // Some examples of regions are `westus`, `westcentralus`, `eastus2`, and `southeastasia`.
+    azureRegion: 'westus'
+}
+
+// Create configuration for LuisRecognizer's runtime behavior.
+const luisPredictionOptions = {
+    includeAllIntents: true,
+    log: true,
+    staging: false
+}
+
+// Create the bot that handles incoming Activities.
+const luisBot = new LuisBot(luisApplication, luisPredictionOptions);
 ```
 
-Ajoutez le modèle à la pile de middlewares :
+Ensuite, dans le constructeur de votre bot `LuisBot`, récupérez l’application pour créer l’instance de LuisRecognizer.
 
 ```javascript
-adapter.use(model);
+    /**
+     * The LuisBot constructor requires one argument (`application`) which is used to create an instance of `LuisRecognizer`.
+     * @param {object} luisApplication The basic configuration needed to call LUIS. In this sample the configuration is retrieved from the .bot file.
+     * @param {object} luisPredictionOptions (Optional) Contains additional settings for configuring calls to LUIS.
+     */
+    constructor(application, luisPredictionOptions) {
+        this.luisRecognizer = new LuisRecognizer(application, luisPredictionOptions, true);
+    }
 ```
 
-
 > [!NOTE] 
-> Si vous utilisez votre propre application LUIS au lieu de l’application LUIS publique, vous pouvez obtenir l’ID, l’ID d’abonnement et l’URL correspondants sur [https://www.luis.ai](https://www.luis.ai). 
+> Si vous utilisez votre propre application LUIS au lieu de l’application LUIS publique, vous pouvez obtenir l’ID d’application, la clé d’abonnement et la région correspondants sur [https://www.luis.ai](https://www.luis.ai). Vous pouvez trouver ces derniers sous les onglets Publier et Paramètres de la page de votre application.
 
 ---
 
+La compréhension langagière LUIS est maintenant configurée pour votre bot. Ensuite, examinons la façon dont nous allons obtenir l’intention de LUIS.
 
+## <a name="get-the-intent-by-calling-luis"></a>Obtenir l’intention en appelant LUIS
 
-La compréhension langagière LUIS est maintenant intégrée à votre bot. À présent, examinons comment obtenir l’intention à partir du modèle LUIS stocké sur l’objet de contexte.
-
-
-## <a name="get-the-intent-from-the-turn-context"></a>Obtenir l’intention à partir du contexte de tour
-
-Les résultats de LUIS sont ensuite accessibles à partir de votre bot à l’aide du contexte sur chaque tour conversationnel.
+Votre bot obtient des résultats de LUIS en appelant le module de reconnaissance LUIS.
 
 # <a name="ctabcs"></a>[C#](#tab/cs)
 
-Pour que votre bot envoie simplement une réponse basée sur l’intention que l’application LUIS a détectée, remplacez le code dans `OnTurn` par le code suivant :
+Pour que votre bot envoie simplement une réponse basée sur l’intention que l’application LUIS a détectée, appelez `LuisRecognizer` pour obtenir un élément `RecognizerResult`. Vous pouvez effectuer cette action dans votre code toutes les fois où vous devez obtenir l’intention de LUIS.
 
 ```cs
 using System.Threading.Tasks;
 using Microsoft.Bot;
 using Microsoft.Bot.Builder;
-using Microsoft.Bot.Builder.Ai.LUIS;
 using Microsoft.Bot.Builder.Core.Extensions;
 using Microsoft.Bot.Schema;
+// add this reference
+using Microsoft.Bot.Builder.AI.LUIS;
 
-namespace Bot_Builder_Echo_Bot1
+namespace EchoBot
 {
     public class EchoBot : IBot
     {
         /// <summary>
-        /// Every Conversation turn for our EchoBot will call this method. In here
-        /// the bot checks the Activty type to verify it's a message, checks the /// intent from the LUIS recognizer, and sends a reply based on the recognized intent
+        /// Echo bot turn handler 
         /// </summary>
-        /// <param name="context">Turn-scoped context containing all the data needed
+        /// <param name="context">Turn scoped context containing all the data needed
         /// for processing this conversation turn. </param>        
-        public async Task OnTurn(ITurnContext context)
-        {
+        public async Task OnTurnAsync(ITurnContext context, System.Threading.CancellationToken token)
+        {            
             // This bot is only handling Messages
             if (context.Activity.Type == ActivityTypes.Message)
             {
-
-                var result = context.Services.Get<RecognizerResult>
-                    (LuisRecognizerMiddleware.LuisRecognizerResultKey);
+                // Call LUIS recognizer
+                var result = this.Recognizer.RecognizeAsync(context, System.Threading.CancellationToken.None);
+                
                 var topIntent = result?.GetTopScoringIntent();
+
                 switch ((topIntent != null) ? topIntent.Value.intent : null)
                 {
                     case null:
@@ -205,7 +236,7 @@ namespace Bot_Builder_Echo_Bot1
                         await context.SendActivity("<cancelling the process>");
                         break;
                     case "Weather":
-                        // Cancel the process.
+                        // Report the weather.
                         await context.SendActivity("The weather today is sunny.");
                         break;
                     default:
@@ -220,18 +251,33 @@ namespace Bot_Builder_Echo_Bot1
 
 ```
 
+Les intentions reconnues dans l’énoncé sont retournées sous la forme d’un mappage des noms d’intention avec des scores et sont accessibles à partir `result.Intents`. Une méthode `LuisRecognizer.topIntent()` statique est mise à votre disposition, qui facilite la recherche de l’intention ayant reçu le meilleur score pour un jeu de résultats.
+
+Toutes les entités reconnues sont renvoyées sous la forme d’un mappage de noms d’entité avec des valeurs et sont accessibles par le biais de `results.entities`. Vous pouvez retourner des métadonnées d’entité supplémentaires en passant un paramètre `verbose=true` quand vous créez l’objet LuisRecognizer. Les métadonnées ajoutées sont ensuite accessibles par le biais de `results.entities.$instance`.
+
 # <a name="javascripttabjs"></a>[JavaScript](#tab/js)
 
+Modifiez le code pour écouter l’activité entrante, afin qu’elle appelle `LuisRecognizer` pour obtenir un élément `RecognizerResult`.
+
 ```javascript
-// Listen for incoming activity 
+const { ActivityTypes } = require('botbuilder');
+const { LuisRecognizer } = require('botbuilder-ai');
+
+// Listen for incoming requests 
 server.post('/api/messages', (req, res) => {
-    // Route received activity to adapter for processing
+    // Route received request to adapter for processing
     adapter.processActivity(req, res, async (context) => {
         if (context.activity.type === 'message') {
-            const results = model.get(context);
-            const topIntent = LuisRecognizer.topIntent(results);
-            switch (topIntent) {
+            // Perform a call to LUIS to retrieve results for the user's message.
+            const results = await this.luisRecognizer.recognize(turnContext);
 
+            // Since the LuisRecognizer was configured to include the raw results, get the `topScoringIntent` as specified by LUIS.
+            const topIntent = results.luisResult.topScoringIntent;
+            
+            switch (topIntent) {
+                case 'None':
+                    await context.sendActivity("Sorry, I don't understand.")
+                    break;
                 case 'Cancel':
                     await context.sendActivity("<cancelling the process>")
                     break;
@@ -240,11 +286,8 @@ server.post('/api/messages', (req, res) => {
                     break;
                 case 'Weather':
                     await context.sendActivity("The weather today is sunny.");
-                    break;
-                case 'None':                    
-                    await context.sendActivity("Sorry, I don't understand.")
-                    break;
-                case 'null':                    
+                    break;                        
+                case 'null':
                     await context.sendActivity("Failed to get results from LUIS.")
                     break;
                 default:
@@ -257,605 +300,23 @@ server.post('/api/messages', (req, res) => {
 ```
 
 Les intentions reconnues dans l’énoncé sont retournées sous la forme d’un mappage des noms d’intention avec des scores et sont accessibles à partir `results.intents`. Une méthode `LuisRecognizer.topIntent()` statique est mise à votre disposition, qui facilite la recherche de l’intention ayant reçu le meilleur score pour un jeu de résultats.
-Toutes les entités reconnues sont retournées sous la forme d’un mappage de noms d’entité avec des valeurs et sont accessibles par le biais de `results.entities`. Vous pouvez retourner des métadonnées d’entité supplémentaires en passant un paramètre `verbose=true` quand vous créez l’objet LuisRecognizer. Les métadonnées ajoutées sont ensuite accessibles par le biais de `results.entities.$instance`.
+
 
 ---
 
-<!-- TODO: SHOW RUNNING THE FIRST BOT --> Essayez d’exécuter le bot dans l’émulateur Bot Framework, et dites-lui quelque chose comme « météo », « aide » et « annuler ».
+Essayez d’exécuter le bot dans l’émulateur Bot Framework, et dites-lui quelque chose comme « météo », « aide » et « annuler ».
 
 ![Exécuter le bot](./media/how-to-luis/run-luis-bot.png)
 
-
-## <a name="using-a-luis-recognizer-with-conversation-state"></a>Utilisation d’un module de reconnaissance LUIS avec l’état de la conversation
-<!-- TBD, complete example --> Si votre réponse à l’utilisateur implique plus d’un tour, vous pouvez décider de suivre votre avancement dans la conversation en enregistrant l’état de la conversation. Vous pouvez utiliser l’intention à partir de LUIS pour vous aider à définir les données de l’état de la conversation, telles que le fait qu’un sujet de conversation a été démarré ou clos.
-
-Les middlewares du module de reconnaissance LUIS s’exécutent pour chaque tour de votre bot ; vous pouvez ainsi obtenir une intention pour chaque message reçu par votre utilisateur. Si vous souhaitez démarrer un flux de conversation à plusieurs tours basé sur une intention, vous pouvez ignorer la logique de changement de sujets jusqu’à ce que vous ayez totalement traité le sujet actuel.
-
-# <a name="ctabcs"></a>[C#](#tab/cs)
-
-Dans EchoState.cs, changez EchoState comme suit :
-
-```csharp
-public class ConversationStateInfo 
-{
-    public bool WeatherTopicStarted  { get; set; }
-    public bool HelpTopicStarted  { get; set; }
-    public bool CancelTopicStarted  { get; set; }
-}
-```
-
-Dans Startup.cs, changez l’initialisation de ConversationState de manière à utiliser `ConversationStateInfo`.
-```cs
-    options.Middleware.Add(new ConversationState<ConversationStateInfo>(dataStore));
-```
-
-Dans EchoBot.cs, modifiez `OnTurn` :
-```cs
-public async Task OnTurn(ITurnContext context)
-{
-    // This bot is only handling Messages
-    if (context.Activity.Type == ActivityTypes.Message)
-    {
-        var text = context.Activity.Text;
-        var conversationState = context.GetConversationState<ConversationStateInfo>() ?? new ConversationStateInfo();
-
-        // Here, you can add some other logic based on the topic flags in conversation state
-        // For example, if you know that a particular topic was started in a previous turn,
-        // you can send the reply for that topic and bypass getting the intent from LUIS 
-        if (conversationState.WeatherTopicStarted)
-        {
-            // Set this flag to false since this reply concludes the topic.
-            conversationState.WeatherTopicStarted = false;
-            // Assume that they responded to the prompt with a location.
-            await context.SendActivity($"The weather in {text} is sunny.");
-        }
-        else
-        {
-            var result = context.Services.Get<RecognizerResult>
-            (LuisRecognizerMiddleware.LuisRecognizerResultKey);
-            var topIntent = result?.GetTopScoringIntent();
-            switch ((topIntent != null) ? topIntent.Value.intent : null)
-            {
-                case null:
-                    await context.SendActivity("Failed to get results from LUIS.");
-                    break;
-                case "None":
-                    await context.SendActivity("Sorry, I don't understand.");
-                    break;
-                case "Weather":
-                    conversationState.WeatherTopicStarted = true;
-                    await context.SendActivity($"Looks like you want a weather forecast. What city do you want the forecast for?");
-
-                    break;
-                case "Help":
-                    conversationState.HelpTopicStarted = true;
-                    await context.SendActivity("<here's some help>");
-                    break;
-                case "Cancel":
-                    // Cancel the process.
-                    conversationState.CancelTopicStarted = true;
-                    await context.SendActivity("<cancelling the process>");
-                    break;
-                default:
-                    // Received an intent we didn't expect, so send its name and score.
-                    await context.SendActivity($"Intent: {topIntent.Value.intent} ({topIntent.Value.score}).");
-                    break;
-            }
-        }
-    }
-}
-```
-
-# <a name="javascripttabjs"></a>[JavaScript](#tab/js)
-
-Ajoutez les middlewares d’état de la conversation après avoir ajouté `LuisRecognizer`.
-
-```javascript
-const model = new LuisRecognizer({
-    // This appID is for a public app that's made available for demo purposes
-    // You can use it by providing your LUIS subscription key
-     appId: 'eb0bf5e0-b468-421b-9375-fdfb644c512e',
-    // replace subscriptionKey with your Authoring Key
-    // your key is at https://www.luis.ai under User settings > Authoring Key 
-    subscriptionKey: '<your subscription>',
-    // The serviceEndpoint URL begins with "https://<region>.api.cognitive.microsoft.com", where region is the region associated with the key you are using. Some examples of regions are `westus`, `westcentralus`, `eastus2`, and `southeastasia`.
-    serviceEndpoint: 'https://westus.api.cognitive.microsoft.com'
-});
-adapter.use(model)
-
-// Add conversation state middleware
-const conversationState = new ConversationState(new MemoryStorage());
-adapter.use(conversationState);
-```
-
-Vous pouvez ensuite enregistrer l’état indiquant le sujet qui a été démarré.
-
-```javascript
-// Listen for incoming activities 
-server.post('/api/messages', (req, res) => {
-    // Route received activity to adapter for processing
-    adapter.processActivity(req, res, async(context) => {
-        if (context.activity.type === 'message') {
-            var utterance = context.activity.text;
-            
-            // Check topic flags in conversation state 
-            if (conversationState.weatherTopicStarted) 
-            {
-                // Assume the user's message is a reply to the bot's prompt for a location
-                await context.sendActivity(`The weather in ${utterance} is sunny.`);
-                // This conversation flow is now finished. Set flag to false,
-                // so that on the next turn the user can ask for another weather forecast.
-                conversationState.WeatherTopicStarted = false;
-            }
-            // To add more steps to the other topics
-            // you could check the topic flags here
-            else 
-            {
-                const results = model.get(context);
-                const topIntent = LuisRecognizer.topIntent(results);
-                switch (topIntent) {
-                    case 'None':
-                        //Add app logic when there is no result
-                        await context.sendActivity("<null case>")
-                        break;
-                    case 'Cancel':
-                        conversationState.cancelTopicStarted = true;
-                        await context.sendActivity("<cancelling the process>")
-                        break;
-                    case 'Help':
-                        conversationState.helpTopicStarted = true;
-                        await context.sendActivity("<here's some help>");
-                        break;
-                    case 'Weather':
-                        conversationState.weatherTopicStarted = true;
-                        await context.sendActivity("Looks like you want a weather forecast. What city do you want the forecast for?");
-                        break;
-                    default:
-                        // Add app logic for the recognition results.
-                        await context.sendActivity(`Received this intent: ${topIntent}`);
-                }
-            }
-        }
-    });
-});
-```
-
----
-
-Essayez d’exécuter le bot dans l’émulateur Framework Bot ; vous pouvez constater que « obtenir la météo » est désormais un flux de conversation à deux tours.
-
-![Exécuter le bot](./media/how-to-luis/run-luis-bot-2step-weather.png)
-
-
-## <a name="using-luis-with-dialogs"></a>Utilisation de LUIS avec des dialogues
-
-Si vous utilisez l’intention à partir de LUIS pour déclencher un flux de conversation à plusieurs tours, il peut être utile de recourir à des dialogues pour encapsuler ce flux. Cet exemple de bot utilise une application LUIS qui détecte des intentions permettant de déclencher un dialogue pour une application domotique ou de renseignements météorologiques.
-
-> [!NOTE] 
-> Pour créer votre propre copie de l’application LUIS publique utilisée dans cet exemple, copiez le fichier LUIS [WeatherOrHomeAutomation.json](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/simple-bot-example/WeatherOrHomeAutomation.json). Ensuite, [importez l’application LUIS](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/create-new-app#import-new-app), [formez-la](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/luis-how-to-train) et [publiez-la](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/publishapp). Remplacez l’ID d’application publique dans l’exemple de code par l’ID d’application de votre nouvelle application LUIS.
-
-# <a name="ctabcs"></a>[C#](#tab/cs)
-
-Tout d’abord, modifiez `ConfigureServices` dans Startup.cs pour ajouter les middlewares pour votre application LUIS. Renommez `EchoBot` en `LuisDialogBot`.
-Dans cet exemple, l’application LUIS ajoutée en tant que `LuisRecognizerMiddleware` détecte les intentions `homeautomation` ou `weather`, pour déclencher des dialogues avec ces noms. 
-
-```csharp
-public void ConfigureServices(IServiceCollection services)
-{  
-    // Rename EchoBot to LuisDialogBot
-    services.AddBot<LuisDialogBot>(options =>
-    {
-        options.CredentialProvider = new ConfigurationCredentialProvider(Configuration); 
-        options.Middleware.Add(new CatchExceptionMiddleware<Exception>(async (context, exception) =>
-        {
-            await context.TraceActivity("EchoBot Exception", exception);
-            await context.SendActivity("Sorry, it looks like something went wrong!");
-        }));
-
-        // The Memory Storage used here is for local bot debugging only. When the bot
-        // is restarted, anything stored in memory will be gone. 
-        IStorage dataStore = new MemoryStorage();
-
-        // Use Dictionary<string, object> for the conversation state type
-        options.Middleware.Add(new ConversationState<Dictionary<string, object>>(dataStore));
-
-        // Add LUIS recognizer as middleware
-        options.Middleware.Add(
-            new LuisRecognizerMiddleware(
-                new LuisModel(
-                    // This appID is for a public app that's made available for demo purposes
-                    "428affb6-7650-46ac-9184-68c00a4f1729",
-                    // You can use it by replacing <subscriptionKey> with your Authoring Key
-                    // which you can find at https://www.luis.ai under User settings > Authoring Key
-                    "<subscriptionKey>",
-                    // The location-based URL begins with "https://<region>.api.cognitive.microsoft.com", where region is the region associated with the key you are using. Some examples of regions are `westus`, `westcentralus`, `eastus2`, and `southeastasia`.
-                    new Uri("https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/"))));
-    });
-}
-```
-
-Renommez **EchoBot.cs** en **LuisDialogBot.cs**, et la classe `EchoBot` en `LuisDialogBot`. Ensuite, dans **LuisDialogBot.cs**, ajoutez les instructions `using` suivantes.
-
-```csharp
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Microsoft.Bot.Builder;
-using Microsoft.Bot.Builder.Ai.LUIS;
-using Microsoft.Bot.Builder.Core.Extensions;
-using Microsoft.Bot.Builder.Dialogs;
-using Microsoft.Bot.Builder.Prompts;
-using Microsoft.Bot.Schema;
-```
-
-Dans **LuisDialogBot.cs**, ajoutez le code suivant à la classe `LuisDialogBot`.
-
-```csharp
-    public class LuisDialogBot : IBot
-    {
-        private DialogSet _dialogs;
-
-        public LuisDialogBot()
-        {
-            _dialogs = new DialogSet();
-
-            _dialogs.Add("homeautomation", CreateHomeAutomationWaterfall());
-            _dialogs.Add("weather", CreateWeatherWaterfall());
-            _dialogs.Add("weather_city", new Builder.Dialogs.TextPrompt());
-        }
-
-        // App ID for a separate LUIS app used to tell if the user wants to turn the lights on or off
-        // The `homeautomation` dialogs uses results from this app to determine the "on/off" argument. 
-        private static LuisModel luisHomeAutomation =
-            new LuisModel("76feb726-515b-44c4-acc9-adb216965a58", "SUBSCRIPTION-KEY", new System.Uri("https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/"));
-
-        public async Task OnTurn(ITurnContext context)
-        {
-            // This bot is only handling Messages
-            if (context.Activity.Type == ActivityTypes.Message)
-            {
-
-                // Create a dialog context
-                var state = ConversationState<Dictionary<string, object>>.Get(context);
-                var dc = _dialogs.CreateContext(context, state);
-
-                // Run the next dialog step
-                await dc.Continue();
-                
-                // Check if any dialog has responded on this turn
-                if (!context.Responded)
-                {
-
-                    var luisResult = context.Services.Get<RecognizerResult>(LuisRecognizerMiddleware.LuisRecognizerResultKey);
-                    var topIntent = luisResult?.GetTopScoringIntent();
-                    var utterance = context.Activity.Text;
-                    var dialogArgs = new Dictionary<string, object>();
-
-                    switch ((topIntent != null) ? topIntent.Value.intent.ToLowerInvariant() : null)
-                    {
-                        case "homeautomation":
-                            // The Homeautomation_TurnOn and Homeautomation_TurnOff dialogs 
-                            // use results from a separate LUIS app.
-                            // The results determine the "on/off" argument to pass to the dialog. 
-                            var recognizerHomeAutomation = new LuisRecognizer(luisHomeAutomation);
-                            RecognizerResult recognizerResult = await recognizerHomeAutomation.Recognize(utterance, System.Threading.CancellationToken.None);
-                            var topHomeAutoIntent = recognizerResult.GetTopScoringIntent().intent;
-
-
-                            dialogArgs.Add("IntentFromHomeAuto", "");
-                            switch ((topHomeAutoIntent != null) ? topHomeAutoIntent.ToLowerInvariant() : null)
-                            {
-                                case "homeautomation_turnon":
-                                    dialogArgs["Intent_HomeAutomation"] = "on";
-                                    await dc.Begin("homeautomation", dialogArgs);
-                                    break;
-                                case "homeautomation_turnoff":
-                                    dialogArgs["Intent_HomeAutomation"] = "off";
-                                    await dc.Begin("homeautomation", dialogArgs);
-                                    break;
-                                case null:
-                                    await dc.Begin("homeautomation", null);
-                                    break;
-                                default:
-                                    dialogArgs["Intent_HomeAutomation"] = topHomeAutoIntent;
-                                    await dc.Begin("homeautomation", dialogArgs);
-                                    break;
-                            }
-                            break;
-                        case "weather":
-                            dialogArgs.Add("LuisResult", luisResult);
-                            await dc.Begin("weather", dialogArgs);
-                            break;
-                        case null:
-                            await context.SendActivity($"Couldn't get a result from LUIS. You said: {utterance}");
-                            break;
-                        default:
-                            // The intent didn't match any case, so just display the recognition results.
-                            await context.SendActivity($"you said: {utterance}");
-                            await context.SendActivity($"Recognized intent: {topIntent.Value.intent}.");
-
-                            break;
-
-                    }
-
-                }
-            }
-        }
-
-    }
-
-
-```
-
-Après `OnTurn`, ajoutez du code au sein de la classe `LuisDialogBot` pour implémenter les dialogues.
-
-```csharp
-        // The home automation waterfall has one step
-        private WaterfallStep[] CreateHomeAutomationWaterfall()
-        {
-            return new WaterfallStep[] {
-                TurnLightsOnOrOff
-            };
-        }
-
-        // The weather waterfall has two steps
-        private WaterfallStep[] CreateWeatherWaterfall()
-        {
-            return new WaterfallStep[] {
-                AskWeatherLocation,
-                SendWeatherReport
-            };
-        }
-
-        /// <summary>
-        /// This is the first step and only of the home automation dialog.
-        /// </summary>
-        /// <param name="dc"></param>
-        /// <param name="args">Can be "on", "off", another string for an intent name, or null.
-        /// null indicates that no result was received from which to get an intent name.</param>
-        /// <param name="next"></param>
-        /// <returns></returns>
-        private async Task TurnLightsOnOrOff(DialogContext dc, IDictionary<string, object> args, SkipStepFunction next)
-        {
-            var intentFromHomeAutomation = args["Intent_HomeAutomation"];
-            if (args != null)
-            {
-                switch (intentFromHomeAutomation)
-                {
-                    case "on":
-                    case "off":
-                        await dc.Context.SendActivity($"Turning {intentFromHomeAutomation} your lights!");
-                        break;
-                    default:
-                        await dc.Context.SendActivity($"Intent detected by homeautomation was: {intentFromHomeAutomation}, but the home automation system doesn't support that yet.");
-                        break;
-                }
-
-            }
-            else
-            {
-                await dc.Context.SendActivity($"You said {dc.Context.Activity.AsMessageActivity().Text}. Unable to get a result from which to determine on/off/other operation");
-            }
-
-            await dc.End();
-
-        }
-
-        // This is the first step of the weather dialog
-        private async Task AskWeatherLocation(DialogContext dc, IDictionary<string, object> args, SkipStepFunction next)
-        {
-            var dialogState = dc.ActiveDialog.State as IDictionary<string, object>;
-            
-            if (args["LuisResult"] is RecognizerResult luisResult)
-            {
-                var location = GetEntity<string>(luisResult, "Weather_Location");
-                if (!string.IsNullOrEmpty(location))
-                {
-                    dialogState.Add("Location", location);
-                }
-            }
-
-            // Save info back to the dialog instance
-            dc.ActiveDialog.State = dialogState;
-
-            if (!dialogState.ContainsKey("Location"))
-            {
-                await dc.Prompt("weather_city", "What city do you want the weather for?");
-            }
-            else
-            {
-                // We've set the location parameter for the weather report,
-                // so go to the next step in the waterfall
-                await dc.Continue();
-            }
-        }
-
-        // This the second step of the weather dialog
-        private async Task SendWeatherReport(DialogContext dc, IDictionary<string, object> args, SkipStepFunction next)
-        {
-            var dialogState = dc.ActiveDialog.State as IDictionary<string, object>;
-            if (args != null)
-            {
-                if (!dialogState.ContainsKey("Location"))
-                {   // Interpret args as a reply to prompt only if they didn't give location
-                    TextResult locationResult = (TextResult)args;
-                    dialogState.Add("Location", locationResult.Text);
-                }
-
-            }
-
-            // You can add some logic that uses the location 
-            // to get the weather from a weather service instead of hard-coding it
-            await dc.Context.SendActivity($"The weather forecast for '{dialogState["Location"]}' is sunny and 70 degrees F.");
-
-            dc.ActiveDialog.State = new Dictionary<string, object>(); // clear the dialog state 
-            await dc.End();
-        }
-```
-
-Ajoutez cette fonction d’assistance.
-
-```cs
-private T GetEntity<T>(RecognizerResult luisResult, string entityKey)
-{
-    var data = luisResult.Entities as IDictionary<string, JToken>;
-    if (data.TryGetValue(entityKey, out JToken value))
-    {
-        return value.First.Value<T>();
-    }
-    return default(T);
-}
-```
-
-# <a name="javascripttabjs"></a>[JavaScript](#tab/js)
-
-Vous devrez peut-être installer la bibliothèque de dialogues si ce n’est déjà fait. 
-
-```cmd
-npm install --save botbuilder-dialogs
-```
-
-Tout d’abord, créez une application LUIS et ajoutez-la à votre bot à l’aide de `adapter.use` :
-
-```javascript
-const { BotFrameworkAdapter, ConversationState, MemoryStorage, TurnContext } = require('botbuilder');
-const { LuisRecognizer } = require('botbuilder-ai');
-const { DialogSet } = require('botbuilder-dialogs');
-const restify = require('restify');
-
-// Create server
-let server = restify.createServer();
-server.listen(process.env.port || process.env.PORT || 3978, function () {
-    console.log(`${server.name} listening to ${server.url}`);
-});
-
-// Create adapter
-const adapter = new BotFrameworkAdapter({
-    appId: process.env.MICROSOFT_APP_ID,
-    appPassword: process.env.MICROSOFT_APP_PASSWORD
-});
-
-// Create LuisRecognizer 
-// The LUIS application is public, meaning you can use your own subscription key to test the applications.
-const luisRecognizer = new LuisRecognizer({
-    appId: '1fefd4a7-ae5b-4e63-99f7-0cf499a1423b',
-    subscriptionKey: process.env.LUIS_SUBSCRIPTION_KEY,
-    serviceEndpoint: 'https://westus.api.cognitive.microsoft.com/',
-    verbose: true
-});
-
-// Add the recognizer to your bot
-adapter.use(luisRecognizer);
-
-// create conversation state
-const conversationState = new ConversationState(new MemoryStorage());
-adapter.use(conversationState);
-
-// register some dialogs for usage with the intents detected by the LUIS app
-const dialogs = new DialogSet();
-```
-
-Ensuite, ajoutez les dialogues :
-
-```javascript
-
-dialogs.add('HomeAutomation_TurnOn', [
-    async (dialogContext) => {
-        const state = conversationState.get(dialogContext.context);
-        // state.homeAutomationTurnOn counts how many times this dialog was called 
-        state.homeAutomationTurnOn = state.homeAutomationTurnOn ? state.homeAutomationTurnOn + 1 : 1;
-        await dialogContext.context.sendActivity(`${state.homeAutomationTurnOn}: You reached the "HomeAutomation_TurnOn" dialog.`);
-
-        await dialogContext.end();
-    }
-]);
-
-dialogs.add('Weather_GetForecast', [
-    async (dialogContext) => {
-        const state = conversationState.get(dialogContext.context);
-        // state.weatherGetForecast counts how many times this dialog was called  
-        state.weatherGetForecast = state.weatherGetForecast ? state.weatherGetForecast + 1 : 1;
-        await dialogContext.context.sendActivity(`${state.weatherGetForecast}: You reached the "Weather_GetForecast" dialog.`);
-
-        await dialogContext.end();
-    }
-]);
-
-dialogs.add('None', [
-    async (dialogContext) => {
-        const state = conversationState.get(dialogContext.context);
-        // state.None counts how many times this dialog was called        
-        state.None = state.None ? state.None + 1 : 1;
-        await dialogContext.context.sendActivity(`${state.None}: You reached the "None" dialog.`);
-
-        await dialogContext.end();
-    }
-]);
-```
-
-Dans votre bot, appelez chaque dialogue en fonction de l’intention reconnue :
-```javascript
-server.post('/api/messages', (req, res) => {
-    adapter.processActivity(req, res, async (context) => {
-        if (context.activity.type === 'message') {
-            const state = conversationState.get(context);
-            const dc = dialogs.createContext(context, state);
-
-            // Retrieve the LUIS results from our LUIS application
-            const luisResults = luisRecognizer.get(context);
-
-            // Extract the top intent from LUIS and use it to select which dialog to start
-            // "NotFound" is the intent name for when no top intent can be found.
-            const topIntent = LuisRecognizer.topIntent(luisResults, "NotFound");
-
-            const isMessage = context.activity.type === 'message';
-            if (isMessage) {
-                switch (topIntent) {
-                    case 'homeautomation':                    
-                        await dc.begin("HomeAutomation_TurnOn", luisResults);
-                        break;
-                    case 'weather':                    
-                        await dc.begin("Weather_GetForecast", luisResults);
-                        break;
-                    case 'None':
-                        await dc.begin("None");
-                        break;
-                    case 'NotFound':
-                        await context.sendActivity(`Sorry, I didn't get any results from LUIS.`);
-                        break;
-                    default:
-                        // handle intents for which we have no dialog
-                        await context.sendActivity(`You reached the ${topIntent} intent.`);
-                        break;
-                }
-            }
-            
-            if (!context.responded) {
-                await dc.continue();
-                if (!context.responded && isMessage) {
-                    await dc.context.sendActivity(`Hi! I'm the LUIS dialog bot. Say something and LUIS will decide how the message should be routed.`);
-                }
-            }
-        }
-    });
-});
-```
-
-Essayez d’exécuter le bot dans l’émulateur Bot Framework, et dites-lui quelque chose comme « allumer la lumière » et « obtenir la météo de Seattle ».
-
-![Exécuter le bot](./media/how-to-luis/run-luis-bot-js-single-step-dialog.png)
-
----
-
 ## <a name="extract-entities"></a>Extraire les entités
 
-En plus de reconnaître une intention, une application LUIS peut extraire des entités qui sont des mots importants pour répondre à la demande d’un utilisateur. Ainsi, dans l’exemple de dialogue de renseignements météorologiques, l’application LUIS peut-être en mesure d’extraire du message de l’utilisateur le lieu dont il souhaite connaître le bulletin météorologique. 
+En plus de reconnaître une intention, une application LUIS peut extraire des entités qui sont des mots importants pour répondre à la demande d’un utilisateur. Par exemple, pour un bot de renseignements météorologiques, l’application LUIS peut être en mesure d’extraire du message de l’utilisateur le lieu dont il souhaite connaître le bulletin météorologique.
 
-Une façon courante d’utiliser des dialogues consiste à identifier les entités dans le message de l’utilisateur et à l’inviter à indiquer les entités requises introuvables. Ensuite, l’étape de dialogue suivante traite la réponse à l’invite.
+Une façon courante de structurer votre conversation consiste à identifier les entités dans le message de l’utilisateur et à l’inviter à indiquer les entités requises introuvables. Ensuite, les étapes suivantes traitent la réponse à l’invite.
 
 # <a name="ctabcs"></a>[C#](#tab/cs)
 
-Supposons que le message de l’utilisateur était « Quelle est la météo de Seattle » ? Pour le bot de cet exemple, [LuisRecognizer](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.ai.luis.luisrecognizer) vous donne un [RecognizerResult](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.core.extensions.recognizerresult) avec une [propriété `Entities`](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.core.extensions.recognizerresult#properties-) qui présente la structure suivante :
+Supposons que le message de l’utilisateur était « Quelle est la météo de Seattle » ? L’élément `LuisRecognizer` vous donne un élément `RecognizerResult` avec une propriété `Entities` qui a la structure suivante :
 
 ```json
 {
@@ -875,7 +336,7 @@ Supposons que le message de l’utilisateur était « Quelle est la météo de S
 }
 ```
 
-La fonction d’assistance suivante que vous avez ajoutée à votre classe `LuisDialogBot` obtient des entités de `RecognizerResult` à partir de LUIS.
+La fonction d’assistance suivante peut être ajoutée à votre bot pour obtenir des entités de `RecognizerResult` à partir de LUIS. La bibliothèque `Newtonsoft.Json.Linq` doit être utilisée ; vous devez l’ajouter à vos instructions **using**.
 
 ```cs
 // Get entities from LUIS result
@@ -890,71 +351,11 @@ private T GetEntity<T>(RecognizerResult luisResult, string entityKey)
 }
 ```
 
-Quand vous collectez des informations telles que des entités à partir de plusieurs étapes d’un dialogue, il peut être utile d’enregistrer les informations dont vous avez besoin dans un état propre au dialogue. Par exemple, dans le dialogue `AskWeatherLocation`, les entités sont extraites des résultats LUIS passés au dialogue. Si une entité `Weather_Location` est trouvée, elle est ajoutée à l’état du dialogue.
-
-```cs
-
-        // This is the first step of the weather dialog
-        private async Task AskWeatherLocation(DialogContext dc, IDictionary<string, object> args, SkipStepFunction next)
-        {
-            var dialogState = dc.ActiveDialog.State as IDictionary<string, object>;
-            
-            if (args["LuisResult"] is RecognizerResult luisResult)
-            {
-                var location = GetEntity<string>(luisResult, "Weather_Location");
-                if (!string.IsNullOrEmpty(location))
-                {
-                    dialogState.Add("Location", location);
-                }
-            }
-
-            // Save info back to the dialog instance
-            dc.ActiveDialog.State = dialogState;
-
-            if (!dialogState.ContainsKey("Location"))
-            {
-                await dc.Prompt("weather_city", "What city do you want the weather for?");
-            }
-            else
-            {
-                // We've set the location parameter for the weather report,
-                // so go to the next step in the waterfall
-                await dc.Continue();
-            }
-        }
-```
-
-À la deuxième étape du dialogue, vous pouvez obtenir les informations enregistrées à l’étape précédente de l’état de l’instance de dialogue, ainsi que la réponse de l’utilisateur à l’invite relative au lieu, et les utiliser pour envoyer un bulletin météorologique à l’utilisateur.
-
-```cs
-
-// This the second step of the weather dialog
-private async Task SendWeatherReport(DialogContext dc, IDictionary<string, object> args, SkipStepFunction next)
-{
-    var dialogState = dc.ActiveDialog.State as IDictionary<string, object>;
-    if (args != null)
-    {
-        if (!dialogState.ContainsKey("Location"))
-        {   // Interpret args as a reply to prompt only if they didn't give location
-            TextResult locationResult = (TextResult)args;
-            dialogState.Add("Location", locationResult.Text);
-        }
-
-    }
-
-    // You can add some logic that uses the location and date
-    // to get the weather from a weather service instead of hard-coding it
-    await dc.Context.SendActivity($"The weather forecast for '{dialogState["Location"]}' is sunny and 70 degrees F.");
-    
-    // clear the dialog state 
-    dc.ActiveDialog.State = new Dictionary<string, object>(); 
-    await dc.End();
-}
-```
+Quand vous collectez des informations telles que des entités à partir de plusieurs étapes d’une conversation, il peut être utile d’enregistrer les informations dont vous avez besoin dans un état. Si une entité est trouvée, elle peut être ajoutée au champ d’état approprié. Dans votre conversation, si l’étape actuelle a déjà le champ associé renseigné, l’étape visant à demander ces informations peut être ignorée.
 
 # <a name="javascripttabjs"></a>[JavaScript](#tab/js)
 
-Par exemple, supposons que le message de l’utilisateur était « Quelle est la météo de Seattle » ? Pour le bot de cet exemple, [LuisRecognizer](https://docs.microsoft.com/en-us/javascript/api/botbuilder-ai/luisrecognizer) vous donne un [RecognizerResult](https://docs.microsoft.com/en-us/javascript/api/botbuilder-core-extensions/recognizerresult) avec une propriété `entities` qui présente la structure suivante :
+Supposons que le message de l’utilisateur était « Quelle est la météo de Seattle » ? L’élément `LuisRecognizer` vous donne un élément `RecognizerResult` avec une propriété `entities` qui a la structure suivante :
 
 ```json
 {
@@ -974,9 +375,8 @@ Par exemple, supposons que le message de l’utilisateur était « Quelle est la
 }
 ```
 
-Cette fonction `findEntities` recherche les entités `Weather_Location` reconnues par l’application LUIS.
+Cette fonction `findEntities` recherche les entités reconnues par l’application LUIS qui correspondent à l’élément `entityName` entrant.
 
-<!-- TODO: Turn into a waterfall -->
 
 ```javascript
 // Helper function for finding a specified entity
@@ -992,44 +392,13 @@ function findEntities(entityName, entityResults) {
 }
 ```
 
-Appelez `findEntities` à partir du dialogue `Weather_GetForecast`.
-
-```javascript
-// Pass the LUIS recognizer result to the args parameter
-dialogs.add('Weather_GetForecast', [
-    async (dialogContext, args) => {
-        const locations = findEntities('Weather_Location', args.entities);
-
-        const state = conversationState.get(dialogContext.context);
-        state.weatherGetForecast = state.weatherGetForecast ? state.weatherGetForecast + 1 : 1;
-        await dialogContext.context.sendActivity(`${state.weatherGetForecast}: You reached the "Weather.GetForecast" dialog.`);
-        if (locations) {
-            await dialogContext.context.sendActivity(`Found these "Weather_Location" entities:\n${locations.join(', ')}`);
-        }
-        await dialogContext.end();
-    }
-]);
-```
-
-Les entités sont extraites des résultats LUIS passés à `dc.begin`.
-
-```javascript
-await dc.begin("Weather_GetForecast", luisResults);
-```
----
+Quand vous collectez des informations telles que des entités à partir de plusieurs étapes d’une conversation, il peut être utile d’enregistrer les informations dont vous avez besoin dans un état. Si une entité est trouvée, elle peut être ajoutée au champ d’état approprié. Dans votre conversation, si l’étape actuelle a déjà le champ associé renseigné, l’étape visant à demander ces informations peut être ignorée.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-Pour plus de contexte sur LUIS, voir [Language Understanding](./bot-builder-concept-luis.md).
-
-Pour plus d’informations sur la façon de générer les applications LUIS utilisées dans ces exemples, consultez [Applications LUIS pour Bot Builder](https://aka.ms/luis-bot-examples).
-
-Vous pouvez combiner LUIS à d’autres services Cognitive Services pour rendre votre bot encore plus puissant. Consultez [Combiner des applications LUIS et des services de questions/réponses à l’aide de l’outil Dispatch](./bot-builder-tutorial-dispatch.md) pour apprendre à combiner un service de questions/réponses à Language Understanding (LUIS) dans votre bot.
+Pour obtenir un exemple utilisant LUIS, consultez les projets pour [[C#](https://aka.ms/cs-luis-sample)] ou [[JavaScript](https://aka.ms/js-luis-sample)].
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-
 > [!div class="nextstepaction"]
-> [Générer des résultats LUIS fortement typés](./bot-builder-howto-v4-luisgen.md)
-
-
+> [Combiner des services QnA et LUIS à l’aide de l’outil Dispatch](./bot-builder-tutorial-dispatch.md)

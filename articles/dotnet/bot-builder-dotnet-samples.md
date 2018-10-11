@@ -6,13 +6,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 05/03/2018
-ms.openlocfilehash: 7aff56dfc60d9d5cce42a5b6a2624c1364ff1b72
-ms.sourcegitcommit: 44f100a588ffda19c275b118f4f97029f12d1449
+ms.date: 09/13/2018
+ms.openlocfilehash: 9f80fc551cac2f1994b0d398cd640d2ad3d78e61
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/26/2018
-ms.locfileid: "42928377"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46707375"
 ---
 # <a name="bot-builder-sdk-for-net-samples"></a>Exemples de kit SDK Bot Builder pour .NET
 
@@ -92,17 +92,12 @@ Exemple | Description
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-Ces exemples démontrent la manière dont des bots centrés sur les tâches vous aident à tirer parti des fonctionnalités du Kit de développement logiciel (SDK) Bot Builder v4 pour .NET. Vous pouvez utiliser les exemples pour commencer rapidement à concevoir de puissants robots aux fonctionnalités enrichies. 
+Les exemples du référentiel Bot Builder montrent comment les bots centrés sur les tâches vous aident à tirer parti des fonctionnalités du SDK pour .NET. Vous pouvez utiliser les exemples pour commencer rapidement à concevoir de puissants robots aux fonctionnalités enrichies. Consultez le fichier [Lisez-moi](https://github.com/Microsoft/BotBuilder-Samples/blob/master/README.md) pour obtenir la liste d’exemples et des informations supplémentaires.
 
-Remarque : Le Kit SDK v4 est activement développé et doit donc être utilisé pour l’expérimentation uniquement. 
-
-Pour obtenir les exemples, clonez le référentiel GitHub [botbuilder-dotnet](https://github.com/Microsoft/botbuilder-dotnet) à l’aide de Git.
+Pour obtenir les exemples, clonez le dépôt GitHub [botbuilder-samples](https://github.com/Microsoft/botbuilder-samples) à l’aide de Git.
 ```cmd
 git clone https://github.com/Microsoft/botbuilder-dotnet.git
-cd botbuilder-dotnet\samples-final
 ```
-Les exemples de bots générés avec le Kit SDK Bot Builder pour .NET sont organisés dans le répertoire **samples-final**.
-
 
 ::: moniker-end
 

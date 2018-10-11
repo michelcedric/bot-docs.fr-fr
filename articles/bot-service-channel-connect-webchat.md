@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
-ms.openlocfilehash: b560f9f43fc596bc8062676136819922d227d37b
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: b5a9d20c058fe425d727bf2e39597e7dd29ec077
+ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39298924"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47389628"
 ---
 # <a name="connect-a-bot-to-web-chat"></a>Connecter un bot au canal Discussion Web
 Lorsque vous [créez un bot](bot-service-quickstart.md) avec le service de bot, le canal Discussion Web est automatiquement configuré pour vous. Le canal Discussion Web inclut le contrôle de discussion web, qui offre aux utilisateurs la possibilité d’interagir avec votre bot directement dans une page web.
@@ -52,7 +52,7 @@ Pour échanger votre secret contre un jeton et générer l’incorporation :
 
 2. La réponse à votre requête **GET** contient le jeton (entre guillemets) qui peut être utilisé pour démarrer une conversation en restituant le contrôle de discussion web au sein d’un **iframe**. Un jeton est valide pour une conversation uniquement. Pour démarrer une autre conversation, vous devez générer un nouveau jeton.
 
-3. Dans le **code incorporé** `iframe` que vous avez copié à partir du canal Discussion Web dans le portail Bot Framework (comme décrit à [l’étape 1](#step-1) ci-dessus), remplacez le paramètre `s=` par `t=`et remplacez « YOUR_SECRET_HERE » par votre jeton. 
+3. Dans le **code incorporé** `iframe` que vous avez copié à partir du canal Discussion Web dans le portail Bot Framework (comme décrit à l’étape [Obtenir la clé secrète de votre bot](#step-1) ci-dessus), remplacez le paramètre `s=` par `t=`et remplacez « YOUR_SECRET_HERE » par votre jeton.
 
 > [!NOTE]
 > Les jetons sont automatiquement renouvelés avant leur expiration. 
@@ -109,7 +109,7 @@ Utilisez cette option si vous souhaitez permettre aux autres développeurs d’i
 
 Pour incorporer votre bot dans votre site web en spécifiant le secret dans la balise `iframe` :
 
-1. Copiez le **code incorporé** `iframe` issu du canal Discussion Web, dans le portail Bot Framework (comme décrit à [l’étape 1](#step-1) ci-dessus).
+1. Copiez le **code incorporé** `iframe` issu du canal Discussion Web, dans le portail Bot Framework (comme décrit à l’étape [Obtenir la clé secrète de votre bot](#step-1) ci-dessus).
 
 2. Dans ce **code incorporé**, remplacez « YOUR_SECRET_HERE » par la valeur de la **clé secrète** que vous avez copiée sur la même page.
 

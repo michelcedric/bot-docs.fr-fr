@@ -6,26 +6,21 @@ ms.author: jonathanfingold
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 05/04/2018
+ms.date: 09/13/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 8dc8ed9c57bf09b9f8f0809102d12de888917305
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: da8a38e3959359ad683544f0fe605c8300cdffb2
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299865"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46707695"
 ---
 # <a name="javascript-samples-for-bot-builder-sdk"></a>Exemples JavaScript pour le Kit de développement logiciel (SDK) Bot Builder
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-Ces exemples montrent comment les bots centrés sur les tâches vous aident à tirer parti des fonctionnalités du Kit de développement logiciel (SDK) Bot Builder pour JavaScript. Vous pouvez utiliser les exemples pour commencer rapidement à concevoir de puissants robots aux fonctionnalités enrichies. 
+Les exemples du référentiel Bot Builder montrent comment les bots centrés sur les tâches vous aident à tirer parti des fonctionnalités du SDK pour JavaScript. Vous pouvez utiliser les exemples pour commencer rapidement à concevoir de puissants robots aux fonctionnalités enrichies. Consultez le fichier [Lisez-moi](https://github.com/Microsoft/BotBuilder-Samples/blob/master/README.md) pour obtenir la liste d’exemples et des informations supplémentaires.
 
-Remarque : Le Kit SDK v4 est activement développé et doit donc être utilisé pour l’expérimentation uniquement.
-
-Pour obtenir les exemples, clonez le référentiel GitHub [botbuilder-js](https://github.com/Microsoft/botbuilder-js) à l’aide de Git.
-
+Pour obtenir les exemples, clonez le dépôt GitHub [botbuilder-samples](https://github.com/Microsoft/botbuilder-samples) à l’aide de Git.
 ```cmd
-git clone https://github.com/Microsoft/botbuilder-js.git
-cd samples
+git clone https://github.com/Microsoft/botbuilder-dotnet.git
 ```
-Les exemples de bots générés avec le Kit de développement logiciel (SDK) Bot Builder pour JavaScrip sont organisés dans le répertoire **d’exemples**.

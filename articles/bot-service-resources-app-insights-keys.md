@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
-ms.openlocfilehash: 3d098afd70bef9cf1a3b3fab87455e96ffd9c292
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 07fb6e9630996a61932da99b0575d43f4604141e
+ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39298723"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47389428"
 ---
 # <a name="application-insights-keys"></a>Clés Application Insights
 
@@ -30,12 +30,12 @@ Cette rubrique vous montre comment créer ces clés Application Insights.
 ## <a name="instrumentation-key"></a>Clé d’instrumentation
 
 Pour obtenir la clé d’instrumentation, effectuez les étapes suivantes :
-1. À partir de [portal.azure.com](http://portal.azure.com), sous la section Surveiller, créez une ressource **Application Insights** (ou utilisez-en une existante).
+1. À partir du [portail Azure](http://portal.azure.com), sous la section « Surveiller », créez une ressource **Application Insights** (ou utilisez-en une existante).
 ![Capture d’écran du portail listant les ressources Application Insights](~/media/portal-app-insights-add-new.png)
 
 2. Dans la liste des ressources Application Insights, cliquez sur celle que vous venez de créer.
 
-3. Cliquez sur **Vue d’ensemble**.
+3. Cliquez sur **Overview**.
 
 4. Développez le bloc **Bases** et recherchez la **Clé d’instrumentation**. 
 ![Capture d’écran du portail montrant la clé d’instrumentation](~/media/portal-app-insights-instrumentation-key.png)

@@ -9,12 +9,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 04/09/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: caa424ed0ea0944805836739ed48a7a61f78d21c
-ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
+ms.openlocfilehash: 4195ae016513c809e4677879e0abe1b2bf8d799e
+ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42905258"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47389778"
 ---
 # <a name="testing-and-debugging-guidelines"></a>Recommandations en matière de test et de débogage
 
@@ -50,7 +50,7 @@ Toute une série d’outils est fournie à cette fin. Par exemple, [Azure Bot Fr
 
 ### <a name="level-2-use-a-direct-line-client"></a>Niveau 2 : Utiliser un client Direct Line
 
-Après avoir vérifié que votre robot semble fonctionner comme prévu, l’étape suivante consiste à le connecter à un canal. Pour ce faire, vous pouvez déployer votre robot sur un serveur intermédiaire et créer votre propre client [Direct Line](bot-builder-howto-direct-line.md) sur lequel votre robot peut se connecter.
+Après avoir vérifié que votre robot semble fonctionner comme prévu, l’étape suivante consiste à le connecter à un canal. Pour ce faire, vous pouvez déployer votre bot sur un serveur intermédiaire et créer votre propre client Direct Line <!--IBTODO [Direct Line client](bot-builder-howto-direct-line.md)--> sur lequel votre bot peut se connecter.
 
 La création de votre propre client vous permet de définir le fonctionnement interne du canal et de tester de façon précise la réponse de votre robot à certains échanges d’activités. Une fois que la connexion à votre client est établie, exécutez vos tests pour configurer l’état de votre robot et vérifier vos fonctionnalités. Si votre robot utilise une fonctionnalité comme des données vocales, il est possible de la vérifier à l’aide de ces canaux.
 
@@ -64,7 +64,7 @@ Il existe de nombreuses façons de procéder, de l’utilisation séparée de di
 
 ### <a name="other-testing"></a>Autres tests
 
-Il est possible d’effectuer différents types de tests avec les niveaux ci-dessus ou selon différentes approches, par exemple les tests de stress, les tests de performance ou le profilage de l’activité du robot. Visual Studio fournit des méthodes permettant de les effectuer localement ainsi qu’une [suite d’outils](https://www.visualstudio.com/team-services/testing-tools/) pour tester votre application. Le [portail Azure](https://portal.azure.com) fournit des informations sur le fonctionnement de votre robot.
+Il est possible d’effectuer différents types de tests avec les niveaux ci-dessus ou selon différentes approches, par exemple les tests de stress, les tests de performance ou le profilage de l’activité du robot. Visual Studio fournit des méthodes permettant de les effectuer localement ainsi qu’une [suite d’outils](https://azure.microsoft.com/en-us/solutions/dev-test/) pour tester votre application. Le [portail Azure](https://portal.azure.com) fournit des informations sur le fonctionnement de votre robot.
 
 ## <a name="debugging"></a>Débogage
 
@@ -74,7 +74,17 @@ Les robots suivent un paradigme de programmation par événement qui peut être 
 
 **Comprendre les activités du robot à l’aide de l’émulateur**
 
-Votre robot traite différents types [d’activités](bot-builder-concept-activity-processing.md)en plus de l’activité normale de _message_. L’[émulateur](../bot-service-debug-emulator.md) vous permettra de savoir quelles sont ces activités, quand elles se produisent et quelles sont les informations qu’elles contiennent. Le fait de comprendre ces activités vous aidera à coder votre robot de façon efficace et vous permettra de vérifier que les activités envoyées et reçues par votre robot correspondent bien à ce qu’elles devraient être.
+Votre robot traite différents types [d’activités](bot-builder-basics.md#the-activity-processing-stack)en plus de l’activité normale de _message_. L’[émulateur](../bot-service-debug-emulator.md) vous permettra de savoir quelles sont ces activités, quand elles se produisent et quelles sont les informations qu’elles contiennent. Le fait de comprendre ces activités vous aidera à coder votre robot de façon efficace et vous permettra de vérifier que les activités envoyées et reçues par votre robot correspondent bien à ce qu’elles devraient être.
+
+**Enregistrer et récupérer des interactions utilisateur avec les transcriptions**
+
+Le stockage de transcriptions blob Azure fournit une ressource spécialisée dans laquelle vous pouvez à la fois [stocker et récupérer des transcriptions](bot-builder-howto-v4-storage.md) qui contiennent des interactions entre vos utilisateurs et votre bot.  
+
+De plus, une fois que les interactions d’entrée de l’utilisateur ont été stockées, vous pouvez utiliser l’_explorateur du stockage_ Azure pour afficher manuellement les données contenues dans les transcriptions qui sont stockées dans votre magasin d’objets blob. L’exemple suivant ouvre l’_explorateur du stockage_ à partir des paramètres pour _mynewtestblobstorage_. Pour ouvrir une entrée utilisateur enregistrée, sélectionnez Conteneur d’objets Blob > ChannelId > TranscriptId > ConversationId
+
+![Examine_stored_transcript_text](./media/examine_transcript_text_in_azure.png)
+
+Cette opération ouvre l’entrée de la conversation utilisateur stockée au format JSON. L’entrée de l’utilisateur est conservée avec la clé _texte_.
 
 **Fonctionnement de l’intergiciel**
 
@@ -84,7 +94,7 @@ Si vous utilisez plusieurs intergiciels, le délégué peut transmettre l’exé
 
 Lorsque le délégué `next()` n’est pas appelé, il s’agit d’un [routage en court-circuit ](bot-builder-concept-middleware.md#short-circuiting). Cette situation se produit lorsque l’intergiciel répond à l’activité en cours et détermine qu’il n’est pas nécessaire de transmettre l’exécution. 
 
-Le fait de comprendre quand et pourquoi l’intergiciel effectue des courts-circuits permet de savoir quelle partie de l’intergiciel doit se trouver en premier dans votre pipeline. De plus, il est particulièrement important de savoir à quoi s’attendre avec l’intergiciel intégré fourni par le kit de développement logiciel ou d’autres développeurs. Certaines personnes trouvent qu’il est utile d’essayer [de créer leur propre intergiciel](bot-builder-create-middleware.md) pour expérimenter un peu avant de se lancer avec l’intergiciel intégré.
+Le fait de comprendre quand et pourquoi l’intergiciel effectue des courts-circuits permet de savoir quelle partie de l’intergiciel doit se trouver en premier dans votre pipeline. De plus, il est particulièrement important de savoir à quoi s’attendre avec l’intergiciel intégré fourni par le kit de développement logiciel ou d’autres développeurs. Certaines personnes trouvent utile de créer leur propre intergiciel afin de gagner en pratique avant de se lancer avec l’intergiciel intégré.
 
 Par exemple, [QnA maker](bot-builder-howto-qna.md) est conçu pour gérer certaines interactions et court-circuiter le pipeline à ce moment-là, ce qui peut prêter à confusion lorsqu’on apprend à l’utiliser pour la première fois.
 

@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
-ms.openlocfilehash: a8c3d4fb469ce7c52dfffbcfc3a17e08c167ea66
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 53ad7069f8ec8e7757c7ee4ea1a517d44436b8e9
+ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39300012"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47389668"
 ---
 # <a name="connect-a-bot-to-office-365-email"></a>Connecter un bot au courrier Office 365
 
@@ -67,7 +67,7 @@ Pour plus d’informations sur l’utilisation de `channelData`, consultez l’e
 ::: moniker-end
 
 ::: moniker range="azure-bot-service-4.0"
-Pour plus d’informations sur l’utilisation de `channelData`, consultez l’exemple [Node.js](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-ChannelData) ou la documentation [.NET](~/v4sdk/bot-builder-channeldata.md).
+Pour plus d’informations sur l’utilisation de `channelData`, consultez l’article portant sur [l’implémentation de fonctionnalités spécifiques du canal](~/v4sdk/bot-builder-channeldata.md).
 ::: moniker-end
 
 ## <a name="additional-resources"></a>Ressources supplémentaires

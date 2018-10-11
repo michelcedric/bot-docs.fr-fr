@@ -6,29 +6,29 @@ ms.author: v-demak
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 12/13/2017
-ms.openlocfilehash: 648a2e3be901bfa82d84423358fa7df32d403391
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.date: 09/26/2018
+ms.openlocfilehash: 410f50f02dcea2bb64ccf0389e20f5cb76e2fd6b
+ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299672"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47389838"
 ---
 # <a name="troubleshooting-general-problems"></a>Résolution des problèmes généraux
 Les forums aux questions permettent de résoudre les problèmes les plus courants de développement et de fonctionnement des robots.
 
 ## <a name="how-can-i-troubleshoot-issues-with-my-bot"></a>Comment puis-je résoudre les problèmes de mon robot ?
 
-1. Déboguez le code source de votre robot avec [Visual Studio Code](debug-bots-locally-vscode.md) ou Visual Studio.
+1. Déboguez le code source de votre bot avec [Visual Studio Code](debug-bots-locally-vscode.md) ou [Visual Studio](https://docs.microsoft.com/en-us/visualstudio/debugger/navigating-through-code-with-the-debugger?view=vs-2017).
 2. Testez votre robot à l’aide de l’[émulateur](bot-service-debug-emulator.md) avant de le déployer sur le cloud.
-3. Déployez votre robot sur une plate-forme d’hébergement cloud comme Azure, puis testez la connectivité de votre robot à l’aide du contrôle intégré de la discussion en ligne sur le tableau de bord de votre robot dans le <a href="https://dev.botframework.com" target="_blank">portail Bot Framework</a>. Si vous rencontrez des problèmes avec votre robot après l’avoir déployé sur Azure, pensez à consulter le guide suivant : [Dépanner une application web dans Azure App Service à l’aide de Visual Studio](https://azure.microsoft.com/en-us/documentation/articles/web-sites-dotnet-bot-service-troubleshoot-visual-studio/).
+3. Déployez votre robot sur une plate-forme d’hébergement cloud comme Azure, puis testez la connectivité de votre robot à l’aide du contrôle intégré de la discussion en ligne sur le tableau de bord de votre robot dans le <a href="https://dev.botframework.com" target="_blank">portail Bot Framework</a>. Si vous rencontrez des problèmes avec votre bot après l’avoir déployé sur Azure, pensez à consulter l’article de blog suivant : [Comprendre le support et le dépannage Azure](https://azure.microsoft.com/en-us/blog/understanding-azure-troubleshooting-and-support/).
 4. Écartez l’[authentification][TroubleshootingAuth] comme problème possible.
 5. Testez votre robot sur Skype. Vous pourrez ainsi valider l’expérience utilisateur de bout en bout.
 6. Pensez à tester votre robot sur des canaux ayant des exigences d’authentification supplémentaires, par exemple Direct Line ou Web Chat.
 
 ## <a name="how-can-i-troubleshoot-authentication-issues"></a>Comment puis-je résoudre les problèmes d’authentification ?
 
-Pour en savoir plus sur les problèmes d’authentification de votre robot, consultez [Dépannage de l’authentification Bot Framework][TroubleshootingAuth].
+Pour en savoir plus sur la résolution des problèmes d’authentification de votre bot, consultez l’article sur la [résolution des problèmes][TroubleshootingAuth] d’authentification Bot Framework.
 
 ## <a name="im-using-the-bot-builder-sdk-for-net-how-can-i-troubleshoot-issues-with-my-bot"></a>J’utilise le kit de développement logiciel Bot Builder pour .NET. Comment puis-je résoudre les problèmes de mon robot ?
 
@@ -91,7 +91,7 @@ Cet [exemple](https://github.com/Microsoft/BotBuilder/issues/2258#issuecomment-2
 
 ## <a name="how-do-identifiers-work-in-the-bot-framework"></a>Comment fonctionnent les identificateurs dans Bot Framework ?
 
-Pour en savoir plus sur les identificateurs dans Bot Framework, consultez le [Guide Bot Framework des identificateurs][BotFrameworkIDGuide].
+Pour en savoir plus sur les identificateurs dans Bot Framework, consultez le [guide Bot Framework des identificateurs][BotFrameworkIDGuide].
 
 ## <a name="how-can-i-get-access-to-the-user-id"></a>Comment puis-je accéder à l’identifiant utilisateur ?
 
@@ -107,7 +107,7 @@ Les robots en développement sur Kik ne peuvent compter qu’un maximum de 50 ab
 
 ## <a name="how-can-i-use-authenticated-services-from-my-bot"></a>Comment puis-je utiliser les services authentifiés de mon robot ?
 
-Pour utiliser l’authentification Azure Active Directory, pensez à vous servir de la bibliothèque [BotAuth NuGet](https://www.nuget.org/packages/BotAuth). Pour obtenir des exemples d’authentification Facebook, consultez les [exemples du kit de développement logiciel pour.NET](https://github.com/Microsoft/BotBuilder/tree/master/CSharp/Samples) sur GitHub. 
+Pour l’authentification Azure Active Directory, consultez l’ajout d’authentification [V3](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-authentication?view=azure-bot-service-3.0&tabs=csharp) | [V4](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-authentication?view=azure-bot-service-4.0&tabs=csharp). 
 
 > [!NOTE] 
 > Si vous ajoutez des fonctionnalités d’authentification et de sécurité à votre robot, vous devez vous assurer que les modèles que vous implémentez dans votre code respectent les normes de sécurité appropriées à votre application.
@@ -141,7 +141,7 @@ Du point de vue de votre robot, « réactif » signifie que l’utilisateur la
 
 ## <a name="how-can-i-send-proactive-messages-to-the-user"></a>Comment puis-je envoyer des messages proactifs à l’utilisateur ?
 
-Pour voir comment envoyer des messages proactifs, consultez les exemples [C#](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-proactiveMessages) et [Node.js](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-proactiveMessages) dans le référentiel BotBuilder-Samples sur GitHub.
+Pour voir comment envoyer des messages proactifs, consultez les exemples [C# V4](https://github.com/Microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/16.proactive-messages) et [Node.js V4](https://github.com/Microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/16.proactive-messages) dans le référentiel BotBuilder-Samples sur GitHub.
 
 ## <a name="how-can-i-reference-non-serializable-services-from-my-c-dialogs"></a>Comment puis-je référencer des services non sérialisables à partir de mes dialogues C# ?
 
@@ -151,6 +151,8 @@ Il existe de multiples options :
 * Utiliser les attributs [NonSerialized](https://msdn.microsoft.com/en-us/library/system.nonserializedattribute(v=vs.110).aspx) et [OnDeserialized](https://msdn.microsoft.com/en-us/library/system.runtime.serialization.ondeserializedattribute(v=vs.110).aspx) afin de restaurer la dépendance à la désérialisation. C’est la solution la plus simple.
 * Ne stockez pas cette dépendance de telle sorte qu’elle ne soit pas sérialisée. Cette solution n’est pas recommandée, bien qu’elle soit techniquement réalisable.
 * Utiliser le substitut de sérialisation par réflexion. Cette solution peut ne pas être réalisable dans certains cas et risque une sérialisation excessive.
+
+::: moniker range="azure-bot-service-3.0"
 
 ## <a name="where-is-conversation-state-stored"></a>Où est stocké l’état de la conversation ?
 
@@ -169,7 +171,9 @@ Pour stocker ces données dans vos centres de données, vous pouvez fournir une 
 * Utiliser les interfaces Builder dans la couche de langage (Node.js ou C#).
 
 > [!IMPORTANT]
-> L’API du service Bot Framework State n’est pas recommandée pour les environnements de production et peut être déconseillée dans une version ultérieure. Nous vous recommandons de mettre à jour votre code de robot pour qu’il utilise le stockage en mémoire à des fins de test ou pour qu’il utilise l’une des **extensions Azure** pour les robots de production. Pour plus d’informations, consultez l’article **Gérer les données d’état** de l’implémentation [.NET](~/dotnet/bot-builder-dotnet-state.md) ou [Node](~/nodejs/bot-builder-nodejs-state.md).
+> L’API du service Bot Framework State n’est pas recommandée pour les environnements de production et peut être déconseillée dans une version ultérieure. Nous vous recommandons de mettre à jour le code de votre bot pour qu’il utilise le stockage en mémoire à des fins de test ou pour qu’il utilise l’une des **extensions Azure** pour les bots de production. Pour plus d’informations, consultez l’article **Gérer les données d’état** de l’implémentation [.NET](~/dotnet/bot-builder-dotnet-state.md) ou [Node](~/nodejs/bot-builder-nodejs-state.md).
+
+::: moniker-end
 
 ## <a name="what-is-an-etag--how-does-it-relate-to-bot-data-bag-storage"></a>Qu’est-ce qu’une étiquette d’entité ?  Quel est son rapport avec le stockage des conteneurs de données des robots ?
 
@@ -186,7 +190,11 @@ Le service `IBotState` du connecteur permet de stocker les conteneurs de donnée
 
 ## <a name="how-can-i-fix-precondition-failed-412-or-conflict-409-errors"></a>Comment puis-je corriger les erreurs « Échec de la précondition » (412) ou « Conflit » (409) ?
 
-Ces erreurs indiquent que votre robot a traité plusieurs messages en même temps pour la même conversation. Si votre robot est connecté à des services qui nécessitent des messages ordonnés de façon précise, vous devriez penser à verrouiller l’état de la conversation pour vous assurer que les messages ne sont pas traités en parallèle. Le kit de développement logiciel Bot Builder pour .NET fournit un mécanisme (classe `LocalMutualExclusion` qui implémente `IScope`) permettant de sérialiser de façon pessimiste la gestion d’une seule conversation avec un sémaphore en mémoire. Vous pouvez étendre cette implémentation à l’utilisation d’un bail Redis délimité par l’adresse de la conversation.
+Ces erreurs indiquent que votre robot a traité plusieurs messages en même temps pour la même conversation. Si votre robot est connecté à des services qui nécessitent des messages ordonnés de façon précise, vous devriez penser à verrouiller l’état de la conversation pour vous assurer que les messages ne sont pas traités en parallèle. 
+
+::: moniker range="azure-bot-service-3.0"
+
+Le kit de développement logiciel Bot Builder pour .NET fournit un mécanisme (classe `LocalMutualExclusion` qui implémente `IScope`) permettant de sérialiser de façon pessimiste la gestion d’une seule conversation avec un sémaphore en mémoire. Vous pouvez étendre cette implémentation à l’utilisation d’un bail Redis délimité par l’adresse de la conversation.
 
 Si votre robot n’est pas connecté à des services externes ou si le traitement parallèle des messages d’une même conversation est acceptable, vous pouvez ajouter ce code pour ignorer les conflits qui se produisent dans l’API Bot Stat. La dernière réponse pourra ainsi définir l’état de la conversation.
 
@@ -199,15 +207,18 @@ builder
     .InstancePerLifetimeScope();
 builder.Update(Conversation.Container);
 ```
+::: moniker-end
 
 ## <a name="is-there-a-limit-on-the-amount-of-data-i-can-store-using-the-state-api"></a>Existe-t-il une limite concernant la quantité de données que je peux stocker à l’aide de l’API d’état ?
 
 Oui, chaque magasin d’états (conteneurs de données d’utilisateur, de conversation et de robot privé) peut contenir jusqu’à 64 Ko de données. Pour plus d’informations, consultez [Gérer les données d’état][StateAPI].
 
+::: moniker range="azure-bot-service-3.0"
+
 ## <a name="how-do-i-version-the-bot-data-stored-through-the-state-api"></a>Comment faire pour adapter la version des données de robot stockées par le biais de l’API d’état ?
 
 > [!IMPORTANT]
-> L’API du service Bot Framework State n’est pas recommandée pour les environnements de production et peut être déconseillée dans une version ultérieure. Nous vous recommandons de mettre à jour votre code de robot pour qu’il utilise le stockage en mémoire à des fins de test ou pour qu’il utilise l’une des **extensions Azure** pour les robots de production. Pour plus d’informations, consultez l’article **Gérer les données d’état** de l’implémentation [.NET](~/dotnet/bot-builder-dotnet-state.md) ou [Node](~/nodejs/bot-builder-nodejs-state.md).
+> L’API du service Bot Framework State n’est pas recommandée pour les environnements de production ou les bots v4, et peut être totalement dépréciée dans une version ultérieure. Nous vous recommandons de mettre à jour le code de votre bot pour qu’il utilise le stockage en mémoire à des fins de test ou pour qu’il utilise l’une des **extensions Azure** pour les bots de production. Pour plus d’informations, consultez [Manage state data](v4sdk/bot-builder-howto-v4-state.md) (Gérer les données d’état).
 
 Le service d’état permet d’avancer dans les dialogues d’une conversation de sorte qu’un utilisateur peut revenir ultérieurement dans la conversation avec un robot sans perdre sa position. À cette fin, les conteneurs de propriétés des données de robot qui sont stockés via l’API d’état ne sont pas automatiquement effacés lorsque vous modifiez le code du robot. Vous devez déterminer si les données du robot doivent être effacées ou non selon que votre code modifié est compatible ou non avec les versions antérieures de vos données. 
 
@@ -216,6 +227,8 @@ Le service d’état permet d’avancer dans les dialogues d’une conversation 
 
 > [!NOTE]
 > S’il n’est pas possible de désérialiser correctement la pile de dialogues en raison de modifications dans le format de sérialisation ou parce que le code a été trop modifié, l’état de la conversation est réinitialisé.
+
+::: moniker-end
 
 ## <a name="what-are-the-possible-machine-readable-resolutions-of-the-luis-built-in-date-time-duration-and-set-entities"></a>Quelles sont les résolutions possibles que la machine peut lire pour la date, l’heure, la durée et les entités réglées de LUIS ?
 

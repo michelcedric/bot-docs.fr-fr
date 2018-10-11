@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/17
-ms.openlocfilehash: a64edda73832f4d3fff49b08b5eaf6792c021ece
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 5373b18ce5c11dae4e971cb1a70307ae2901ad36
+ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299933"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47389658"
 ---
 # <a name="troubleshooting-bot-framework-authentication"></a>Résoudre les problèmes d’authentification du Bot Framework
 
@@ -25,10 +25,10 @@ Ce guide peut vous aider à résoudre les problèmes d’authentification rencon
 
 La sécurité du bot est configurée par **l’ID d’application Microsoft** et le **mot de passe d’application Microsoft** que vous obtenez lorsque vous inscrivez votre bot auprès du Bot Framework. Ces valeurs sont généralement spécifiées dans le fichier de configuration du bot et utilisées pour récupérer les jetons d’accès à partir du service de compte Microsoft. 
 
-Si ce n’est déjà fait, [inscrivez votre bot](~/bot-service-quickstart-registration.md) pour obtenir un **ID d’application Microsoft** et un **mot de passe d’application Microsoft** qu’il peut utiliser pour l’authentification. 
+Si ce n’est déjà fait, [déployez votre bot sur Azure](~/bot-builder-howto-deploy-azure.md) pour obtenir un **ID d’application Microsoft** et un **mot de passe d’application Microsoft** qu’il peut utiliser pour l’authentification. 
 
 > [!NOTE]
-> Pour trouver les paramètres **AppID** et **AppPassword** de votre bot, consultez la section [MicrosoftAppID and MicrosoftAppPassword](bot-service-manage-overview.md#microsoftappid-and-microsoftapppassword) (MicrosoftAppID et MicrosoftAppPassword).
+> Pour trouver les paramètres **AppID** et **AppPassword** d’un bot déjà déployé, consultez la rubrique [MicrosoftAppID et MicrosoftAppPassword](bot-service-manage-overview.md#microsoftappid-and-microsoftapppassword).
 
 ## <a name="step-1-disable-security-and-test-on-localhost"></a>Étape 1 : Désactiver la sécurité et tester le bot sur localhost
 
