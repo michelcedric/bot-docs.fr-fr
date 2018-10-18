@@ -9,18 +9,18 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 08/23/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 075e9b3a41462bfbb1398bd72840cc7e50d3cfca
-ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
+ms.openlocfilehash: 5b7faaae63bdc084dac570cb33ebbc755ccbcc19
+ms.sourcegitcommit: aef7d80ceb9c3ec1cfb40131709a714c42960965
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/23/2018
-ms.locfileid: "46707515"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49383114"
 ---
 # <a name="send-text-and-spoken-messages"></a>Envoyer des messages texte et oraux
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-Pour communiquer avec les utilisateurs ainsi que pour recevoir des communications, votre bot aura pour moyen principal les activités de **message**. Certains messages peuvent simplement se composer de texte brut, tandis que d’autres peuvent contenir un contenu plus riche, comme les cartes ou les pièces jointes. Le gestionnaire de tours de votre robot reçoit des messages de l’utilisateur, et vous pouvez envoyer des réponses à l’utilisateur à ce moment. L’objet de [contexte de tour](bot-builder-concept-activity-processing.md#turn-context) fournit des méthodes pour renvoyer des messages à l’utilisateur. Pour plus d’informations sur le traitement de l’activité en général, consultez [Activity processing](bot-builder-concept-activity-processing.md) (traitement de l’activité).
+Pour communiquer avec les utilisateurs ainsi que pour recevoir des communications, votre bot aura pour moyen principal les activités de **message**. Certains messages peuvent simplement se composer de texte brut, tandis que d’autres peuvent contenir un contenu plus riche, comme les cartes ou les pièces jointes. Le gestionnaire de tours de votre robot reçoit des messages de l’utilisateur, et vous pouvez envoyer des réponses à l’utilisateur à ce moment. L’objet de contexte de tour fournit des méthodes pour renvoyer des messages à l’utilisateur. Pour plus d’informations sur le traitement de l’activité en général, consultez [Activity processing](~/v4sdk/bot-builder-basics.md#the-activity-processing-stack) (traitement de l’activité).
 
 Cet article décrit comment envoyer des messages texte et vocaux simples. Pour envoyer des contenus plus riches, voyez comment [ajouter des pièces jointes multimédias enrichies](bot-builder-howto-add-media-attachments.md). Pour plus d’informations sur la façon d’utiliser des objets d’invite, voyez comment [inviter les utilisateurs à entrer des données](bot-builder-prompts.md).
 
