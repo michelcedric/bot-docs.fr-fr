@@ -44,6 +44,7 @@
 ### [Utiliser des boîtes de dialogues pour gérer un flux de la conversation complexe](v4sdk/bot-builder-dialog-manage-complex-conversation-flow.md)
 ### [Gérer les interruptions de l’utilisateur](v4sdk/bot-builder-howto-handle-user-interrupt.md)
 ### [Conserver les données dans les boîtes de dialogues](v4sdk/bot-builder-tutorial-persist-user-inputs.md)
+### [Créer un jeu intégré de boîtes de dialogue](v4sdk/bot-builder-compositcontrol.md)
 ### [Utiliser LUIS pour la compréhension langagière](v4sdk/bot-builder-howto-v4-luis.md)
 ### [Utiliser QnA Maker pour répondre aux questions](v4sdk/bot-builder-howto-qna.md)
 ### [Ajouter l’authentification à votre bot](v4sdk/bot-builder-authentication.md)
