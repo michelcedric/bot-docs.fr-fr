@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 4e0bde9d05ed49f6674b2d721e07235b26c5cea4
-ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
+ms.openlocfilehash: feefa25d0c85c3aa62705b075253372f12e9146e
+ms.sourcegitcommit: b8bd66fa955217cc00b6650f5d591b2b73c3254b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39574754"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49326376"
 ---
 # <a name="enterprise-productivity-bot-scenario"></a>Scénario de robot de productivité d’entreprise
 
@@ -21,7 +21,7 @@ ms.locfileid: "39574754"
 
 Le robot d’entreprise montre comment vous pouvez augmenter votre productivité en intégrant un robot avec votre calendrier Office 365 et d’autres services.
 
-L’accès rapide aux informations client sans avoir à ouvrir un grand nombre de fenêtres est l’objectif du robot de productivité d’entreprise. À l’aide de commandes de conversation simples, un représentant commercial peut rechercher un client et vérifier son prochain rendez-vous via l’API Graph et Office 365. À partir de là, ils peut accéder aux informations spécifiques du client stockées dans Dynamics CRM, par exemple, pour récupérer un cas ou en créer un.
+L’accès rapide aux informations client sans avoir à ouvrir un grand nombre de fenêtres est l’objectif du robot de productivité d’entreprise. À l’aide de commandes de conversation simples, un représentant commercial peut rechercher un client et vérifier son prochain rendez-vous via l’API Graph et Office 365. À partir de là, ils peuvent accéder aux informations spécifiques du client stockées dans Dynamics CRM, par exemple, pour récupérer un cas ou en créer un.
 
 ![Diagramme de robot d’entreprise](~/media/scenarios/bot-service-scenario-enterprise-bot.png)
 
@@ -50,13 +50,13 @@ Le robot de productivité d’entreprise utilise les composants suivants :
 Azure Active Directory (Azure AD) est le service Microsoft de gestion des annuaires et des identités basé sur le cloud mutualisé. En votre qualité de développeur de robots, Azure AD vous permet de vous concentrer sur la génération de votre robot en simplifiant et en accélérant son intégration au sein d’une solution de gestion des identités de classe mondiale utilisée par des millions d’organisations à travers le monde. En définissant une application Azure AD, vous pouvez contrôler qui a accès à votre robot et les données présentées par ce dernier, sans avoir à implémenter votre propre système complexe d’authentification et d’autorisation.
 
 ### <a name="graph-api-to-office-365"></a>API Graph pour Office 365
-Microsoft Graph expose plusieurs API à partir d’Office 365 et d’autres services de cloud computing Microsoft via un point de terminaison unique à l’adresse https://graph.microsoft.com. Microsoft Graph facilite l’exécution de requêtes pour vous et le robot. L’API expose des données de plusieurs services de cloud computing Microsoft, dont Exchange Online dans le cadre d’Office 365, Azure Active Directory, SharePoint, etc. Vous pouvez utiliser l’API pour naviguer entre les entités et relations. Vous pouvez utiliser l’API à partir de vos robots en vous servant des points de terminaison SDK ou REST, ainsi qu’à partir de vos autres applications avec prise en charge en mode natif d’Android, d’iOS, de Ruby, d’UWP, de Xamarin et bien plus.
+Microsoft Graph expose plusieurs API à partir d’Office 365 et d’autres services de cloud computing Microsoft via un point de terminaison unique à l’adresse https://graph.microsoft.com. Microsoft Graph facilite l’exécution de requêtes pour vous et le bot. L’API expose des données de plusieurs services de cloud computing Microsoft, dont Exchange Online dans le cadre d’Office 365, Azure Active Directory, SharePoint, etc. Vous pouvez utiliser l’API pour naviguer entre les entités et relations. Vous pouvez utiliser l’API à partir de vos robots en vous servant des points de terminaison SDK ou REST, ainsi qu’à partir de vos autres applications avec prise en charge en mode natif d’Android, d’iOS, de Ruby, d’UWP, de Xamarin et bien plus.
 
 ### <a name="dynamics-crm"></a>Dynamics CRM
 Dynamics CRM est une plateforme d’engagement client. À l’aide d’API de robots et de CRM, vous pouvez créer des robots interactifs capables d’accéder aux données riches stockées dans CRM. La puissance de Dynamics CRM est à la disposition de votre robot pour créer des cas, vérifier des statuts, des recherches en matière de gestion des connaissances, et bien plus.
 
 ### <a name="application-insights"></a>Application Insights
-Application Insights vous aide à obtenir des informations exploitables grâce à la gestion des performances d’applications et à l’analytique instantanée. Vous bénéficiez de tableaux de bord simples mais complets pour surveiller les performances et gérer les alertes, ce qui vous permet de garantir que votre robot reste disponible et performant. Vous pouvez détecter rapidement les problèmes, puis lancer une analyse de la cause racine afin de les localiser et de les résoudre.
+Application Insights vous aide à obtenir des informations exploitables grâce à la gestion des performances d’applications et à l’analyse instantanée. Vous bénéficiez de tableaux de bord simples mais complets pour surveiller les performances et gérer les alertes, ce qui vous permet de garantir que votre bot reste disponible et performant. Vous pouvez détecter rapidement les problèmes, puis lancer une analyse de la cause racine afin de les localiser et de les résoudre.
 
 ## <a name="next-steps"></a>Étapes suivantes
 Ensuite, découvrez le scénario de robot d’information.

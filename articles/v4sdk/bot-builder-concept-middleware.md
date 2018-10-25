@@ -9,12 +9,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 05/24/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 38f1bced73251eea11be86a76963aeaf1ec0f718
-ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
+ms.openlocfilehash: 20f5387e7c1ea40e6b9848a1071e542dcd1cacaa
+ms.sourcegitcommit: aef7d80ceb9c3ec1cfb40131709a714c42960965
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47389698"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49383164"
 ---
 # <a name="middleware"></a>Middlewares
 
@@ -24,7 +24,7 @@ Les middlewares sont simplement une classe qui se trouve entre l’adaptateur et
 
 L’adaptateur traite les activités entrantes et les dirige via le pipeline de middlewares de bot vers la logique de votre bot et inversement. Comme chaque activité entre et sort du bot, chaque middleware peut effectuer une inspection ou une action sur l’activité, avant comme après l’exécution de la logique de bot.
 
-Avant d’aborder les middlewares, il est important de comprendre les [bots en général](~/v4sdk/bot-builder-basics.md) et [comment ils traitent les activités](~/v4sdk/bot-builder-concept-activity-processing.md).
+Avant d’aborder les middlewares, il est important de comprendre les [bots en général](~/v4sdk/bot-builder-basics.md) et [comment ils traitent les activités](~/v4sdk/bot-builder-basics.md#the-activity-processing-stack).
 
 ## <a name="uses-for-middleware"></a>Utilisations des middlewares
 La question suivante revient souvent : « Quand dois-je implémenter des actions avec mon intergiciel plutôt qu’en utilisant ma logique de bot normale ? » Un intergiciel vous offre des opportunités supplémentaires pour interagir avec le flux de conversation de vos utilisateurs avant et après le traitement de chaque _tour_ de la conversation. Un intergiciel vous permet également de stocker et de récupérer des informations concernant la conversation et d’appeler une logique de traitement supplémentaire quand cela est nécessaire. Vous trouverez ci-dessous des scénarios communs qui présentent les situations où un intergiciel peut être utile.
@@ -33,7 +33,7 @@ La question suivante revient souvent : « Quand dois-je implémenter des actions
 Nombreux sont les cas où votre bot doit intervenir sur chaque activité, ou sur chaque activité d’un certain type. Par exemple, vous souhaitez peut-être journaliser chaque activité de message que votre bot reçoit ou fournir une réponse de repli si le bot n’a pas généré de réponse à l’occasion de ce tour. Avec leur capacité à agir à la fois avant et après l’exécution du reste de la logique de bot, les middlewares sont parfaits pour cela.
 
 ### <a name="modifying-or-enhancing-the-turn-context"></a>Modification ou amélioration du contexte de tour
-Certaines conversations peuvent être beaucoup plus fructueuses si le bot a plus d’informations que ce qui est fourni dans l’activité. Dans ce cas, les intergiciels peuvent examiner les informations d’état de conversation dont ils disposent jusqu’ici, interroger une source de données externe et l’ajouter à l’objet de [contexte de tour](bot-builder-concept-activity-processing.md#turn-context) avant de transmettre l’exécution à la logique du bot. 
+Certaines conversations peuvent être beaucoup plus fructueuses si le bot a plus d’informations que ce qui est fourni dans l’activité. Dans ce cas, les intergiciels peuvent examiner les informations d’état de conversation dont ils disposent jusqu’ici, interroger une source de données externe et l’ajouter à l’objet de [contexte de tour](~/v4sdk/bot-builder-basics.md#defining-a-turn) avant de transmettre l’exécution à la logique du bot. 
 
 Le Kit de développement logiciel (SDK) définit un intergiciel de journalisation qui peut enregistrer des activités entrantes et sortantes, mais vous pouvez également définir votre propre intergiciel.
 
@@ -65,7 +65,7 @@ Les premiers éléments de votre pipeline de middlewares doivent probablement ê
 Les derniers éléments de votre pipeline de middlewares doivent être des middlewares propres au bot, c’est-à-dire des middlewares que vous implémentez pour traiter tout message envoyé à votre bot. Si vos middlewares utilisent des informations d’état ou d’autres informations définies dans le contexte de bot, ajoutez-les au pipeline de middlewares après les middlewares qui modifient l’état ou le contexte.
 
 ## <a name="short-circuiting"></a>Court-circuitage
-Une idée importante au sujet des intergiciels (et des [gestionnaires de réponses](./bot-builder-concept-activity-processing.md#response-event-handlers)) est le _court-circuitage_. Un intergiciel (ou un gestionnaire de réponses) doit transmettre l’exécution en appelant son délégué _next_ si l’exécution doit se poursuivre à travers les couches qui le suivent.  Si le délégué next n’est pas appelé au sein de cet intergiciel (ou gestionnaire de réponses), le pipeline associé est victime d’un court-circuitage, empêchant l’exécution des couches suivantes. Cela signifie que toute la logique de bot et tous les intergiciels dans le pipeline sont ignorés. Il existe une différence subtile entre le court-circuitage d’un tour par votre intergiciel ou par votre gestionnaire de réponses.
+Une idée importante au sujet des intergiciels (et des [gestionnaires de réponses](bot-builder-basics.md#response-event-handlers)) est le _court-circuitage_. Un intergiciel (ou un gestionnaire de réponses) doit transmettre l’exécution en appelant son délégué _next_ si l’exécution doit se poursuivre à travers les couches qui le suivent.  Si le délégué next n’est pas appelé au sein de cet intergiciel (ou gestionnaire de réponses), le pipeline associé est victime d’un court-circuitage, empêchant l’exécution des couches suivantes. Cela signifie que toute la logique de bot et tous les intergiciels dans le pipeline sont ignorés. Il existe une différence subtile entre le court-circuitage d’un tour par votre intergiciel ou par votre gestionnaire de réponses.
 
 Quand l’intergiciel court-circuite un tour, votre gestionnaire de tours de bot n’est pas appelé, mais l’ensemble du code de l’intergiciel exécuté avant ce point dans le pipeline continue d’être exécuté jusqu’à la fin. 
 

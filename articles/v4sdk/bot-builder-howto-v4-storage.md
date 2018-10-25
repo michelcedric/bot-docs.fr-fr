@@ -9,12 +9,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 09/14/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 0bbb507484840ab1fb0dc7c209b5d7ca8e9c9cfb
-ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
+ms.openlocfilehash: 3c28ad1fd14fab90c558ece4736423be2cabd78b
+ms.sourcegitcommit: b8bd66fa955217cc00b6650f5d591b2b73c3254b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/23/2018
-ms.locfileid: "46708145"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49326546"
 ---
 # <a name="write-directly-to-storage"></a>Écrire directement dans le stockage
 
@@ -193,7 +193,7 @@ Exécutez votre bot en local.
 ### <a name="start-the-emulator-and-connect-your-bot"></a>Démarrer l’émulateur et connecter votre robot
 Démarrez à présent l’émulateur, puis connectez-vous à votre bot dans l’émulateur :
 
-1. Cliquez sur le lien **Open Bot** (Ouvrir le bot) de l’onglet « Bienvenue » de l’émulateur. 
+1. Cliquez sur le lien **Ouvrir le bot** de l’onglet de bienvenue de l’émulateur. 
 2. Sélectionnez le fichier .bot situé dans le répertoire de création du projet.
 
 ### <a name="interact-with-your-bot"></a>Interagir avec votre bot
@@ -210,7 +210,7 @@ Pour utiliser Cosmos DB dans votre bot, vous devez configurer certaines choses a
 #### <a name="create-your-database-account"></a>Créer votre compte de base de données
 1. Dans une nouvelle fenêtre du navigateur, connectez-vous au [portail Azure](http://portal.azure.com).
 2. Cliquez sur **Créer une ressource > Bases de données > Azure Cosmos DB**
-3. Sur la **page Nouveau compte**, indiquez un nom unique dans le champ **ID**. Pour **API**, sélectionnez **SQL**et fournissez les informations relatives à **l’abonnement**, **l’emplacement** et au **groupe de ressources**.
+3. Sur la **page Nouveau compte**, indiquez un nom unique dans le champ **ID**. Pour **API**, sélectionnez **SQL**et fournissez les informations relatives à l’**abonnement**, à l’**emplacement** et au **groupe de ressources**.
 4. Cliquez ensuite sur **Créer**.
 
 La création du compte prend quelques minutes. Attendez que le portail affiche la page Congratulations! Your Azure Cosmos DB account was created (Félicitations ! Votre compte Azure Cosmos DB a été créé).
@@ -335,7 +335,7 @@ Exécutez votre bot en local.
 ## <a name="start-the-emulator-and-connect-your-bot"></a>Démarrer l’émulateur et connecter votre robot
 Démarrez à présent l’émulateur, puis connectez-vous à votre bot dans l’émulateur :
 
-1. Cliquez sur le lien **Open Bot** (Ouvrir le bot) de l’onglet « Bienvenue » de l’émulateur. 
+1. Cliquez sur le lien **Ouvrir le bot** de l’onglet de bienvenue de l’émulateur. 
 2. Sélectionnez le fichier .bot situé dans le répertoire de création du projet.
 
 ## <a name="interact-with-your-bot"></a>Interagir avec votre bot
@@ -502,10 +502,11 @@ Nous allons maintenant utiliser deux de ces clés pour fournir à notre code un 
 ```csharp
 using Microsoft.Bot.Builder.Azure;
 ```
-
 Mettez à jour la ligne de code qui pointe « _myStorage_ » vers votre compte Stockage Blob existant.
 
 ```csharp
+
+
 private static readonly AzureBlobStorage _myStorage = new AzureBlobStorage("<your-blob-storage-account-string>", "<your-blob-storage-container-name>");
 ```
 
@@ -527,7 +528,7 @@ Exécutez votre bot en local.
 ## <a name="start-the-emulator-and-connect-your-bot"></a>Démarrer l’émulateur et connecter votre robot
 Démarrez à présent l’émulateur, puis connectez-vous à votre bot dans l’émulateur :
 
-1. Cliquez sur le lien **Open Bot** (Ouvrir le bot) de l’onglet « Bienvenue » de l’émulateur. 
+1. Cliquez sur le lien **Ouvrir le bot** de l’onglet de bienvenue de l’émulateur. 
 2. Sélectionnez le fichier .bot situé dans le répertoire de création du projet.
 
 ## <a name="interact-with-your-bot"></a>Interagir avec votre bot
@@ -544,36 +545,71 @@ Le stockage de transcriptions d’objets blob Azure fournit une option de stocka
 Le stockage de transcriptions d’objets blob Azure peut utiliser le même compte de stockage Blob créé en suivant les étapes détaillées dans les sections « _Créer votre compte de stockage Blob_ » et « _Ajouter des informations de configuration_ ». Pour cette discussion, nous avons ajouté un conteneur d’objets blob, « _mybottranscripts_ ». 
 
 ### <a name="implementation"></a>Implémentation 
-Le code suivant connecte le pointeur du stockage de transcriptions « _myTranscripts_ » à votre nouveau compte de stockage de transcriptions d’objets blob Azure. Ligne unique qui connecte le pointeur de stockage de transcriptions « _myTranscripts_ ».
+Le code suivant connecte le pointeur du stockage de transcriptions « _transcriptStore_ » à votre nouveau compte de stockage de transcriptions d’objets blob Azure. Le code source permettant de stocker les conversations utilisateur indiqué ici se base sur l’exemple [Historique des conversations](https://aka.ms/bot-history-sample-code). 
 
 ```csharp
+// In Startup.cs
 using Microsoft.Bot.Builder.Azure;
-private readonly AzureBlobTranscriptStore _myTranscripts = new AzureBlobTranscriptStore("<your-blob-storage-account-string>", "<your-blob-storage-account-name>");
+
+// Enable the conversation transcript middleware.
+blobStore = new AzureBlobTranscriptStore(blobStorageConfig.ConnectionString, storageContainer);
+var transcriptMiddleware = new TranscriptLoggerMiddleware(blobStore);
+options.Middleware.Add(transcriptMiddleware);
+
+// In ConversationHistoryBot.cs
+using Microsoft.Bot.Builder;
+using Microsoft.Bot.Builder.Azure;
+using Microsoft.Bot.Connector;
+using Microsoft.Bot.Schema;
+
+private readonly AzureBlobTranscriptStore _transcriptStore;
+
+/// <param name="transcriptStore">Injected via ASP.NET dependency injection.</param>
+public ConversationHistoryBot(AzureBlobTranscriptStore transcriptStore)
+{
+    _transcriptStore = transcriptStore ?? throw new ArgumentNullException(nameof(transcriptStore));
+}
+
 ```
 
 ### <a name="store-user-conversations-in-azure-blob-transcripts"></a>Stocker les conversations utilisateur dans les transcriptions d’objets blob Azure
-Une fois qu’un conteneur d’objets blob est disponible pour stocker les transcriptions, vous pouvez commencer à conserver les conversations de vos utilisateurs avec votre bot. Celles-ci peuvent être utilisées plus tard en tant qu’outil de débogage pour observer la façon dont les utilisateurs interagissent avec votre bot. Le code suivant conserve les entrées de conversation utilisateur pour un examen ultérieur.
+Une fois qu’un conteneur d’objets blob est disponible pour stocker les transcriptions, vous pouvez commencer à conserver les conversations de vos utilisateurs avec votre bot. Celles-ci peuvent être utilisées plus tard en tant qu’outil de débogage pour observer la façon dont les utilisateurs interagissent avec votre bot. Le code suivant conserve les entrées des conversations utilisateur lorsque l’élément activity.text reçoit le message d’entrée _!history_.
 
 
 ```csharp
 /// <summary>
 /// Every Conversation turn for our EchoBot will call this method. 
 /// </summary>
-/// <param name="context">Turn scoped context containing all the data needed
+/// <param name="turnContext">A <see cref="ITurnContext"/> containing all the data needed
 /// for processing this conversation turn. </param>        
-public async Task OnTurnAsync(ITurnContext context, CancellationToken cancellationToken = default(CancellationToken))
+public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken = default(CancellationToken))
 {
-    var activityType = context.Activity.Type;
-
-    await context.SendActivityAsync($"Activity type: {context.Activity.Type}.");
-
-    // This bot is processing Messages
-    if (activityType == ActivityTypes.Message)
+    var activity = turnContext.Activity;
+    if (activity.Type == ActivityTypes.Message)
     {
-        // save user input into bot transcript storage for later debugging and review.
-        await _myTranscripts.LogActivityAsync(context.Activity);
-```
+        if (activity.Text == "!history")
+        {
+           // Download the activities from the Transcript (blob store) when a request to upload history arrives.
+           var connectorClient = turnContext.TurnState.Get<ConnectorClient>(typeof(IConnectorClient).FullName);
+           // Get all the message type activities from the Transcript.
+           string continuationToken = null;
+           var count = 0;
+           do
+           {
+               var pagedTranscript = await _transcriptStore.GetTranscriptActivitiesAsync(activity.ChannelId, activity.Conversation.Id);
+               var activities = pagedTranscript.Items
+                  .Where(a => a.Type == ActivityTypes.Message)
+                  .Select(ia => (Activity)ia)
+                  .ToList();
+               
+               var transcript = new Transcript(activities);
 
+               await connectorClient.Conversations.SendConversationHistoryAsync(activity.Conversation.Id, transcript, cancellationToken: cancellationToken);
+
+               continuationToken = pagedTranscript.ContinuationToken;
+           }
+           while (continuationToken != null);
+```
 
 ### <a name="find-all-stored-transcripts-for-your-channel"></a>Rechercher toutes les transcriptions stockées de votre canal
 Pour afficher les données que vous avez stockées, vous pouvez utiliser le code suivant pour rechercher par programme les éléments « _ConversationIDs_ » de toutes les transcriptions que vous avez stockées. Lorsque vous utilisez l’émulateur de bot pour tester votre code, sélectionner « _Start Over_ » (Recommencer) commence une nouvelle transcription avec un nouvel élément « _ConversationID_ ».
@@ -584,7 +620,7 @@ PagedResult<Transcript> pagedResult = null;
 var pageSize = 0;
 do
 {
-    pagedResult = await _myTranscripts.ListTranscriptsAsync("emulator", pagedResult?.ContinuationToken);
+    pagedResult = await _transcriptStore.ListTranscriptsAsync("emulator", pagedResult?.ContinuationToken);
     
     // transcript item contains ChannelId, Created, Id.
     // save the converasationIds (Id) found by "ListTranscriptsAsync" to a local list.
@@ -596,7 +632,6 @@ do
     }
 } while (pagedResult.ContinuationToken != null);
 ```
-
 
 ### <a name="retrieve-user-conversations-from-azure-blob-transcript-storage"></a>Récupérer des conversations utilisateur à partir du stockage de transcriptions d’objets blob Azure
 Une fois que les transcriptions d’interaction de bot ont été stockées dans votre magasin de transcriptions d’objets blob Azure, vous pouvez les récupérer par programme à des fins de test ou de débogage à l’aide de la méthode AzureBlobTranscriptStorage « _GetTranscriptActivities_ ». L’extrait de code suivant récupère toutes les transcriptions d’entrées utilisateur qui ont été reçues et stockées au cours des 24 heures précédentes à partir de chaque transcription stockée.
@@ -635,7 +670,7 @@ for (int i = 0; i < numTranscripts; i++)
    if (i > 0)
    {
        string thisConversationId = storedTranscripts[i];    
-       await _myTranscripts.DeleteTranscriptAsync("emulator", thisConversationId);
+       await _transcriptStore.DeleteTranscriptAsync("emulator", thisConversationId);
     }
 }
 ```

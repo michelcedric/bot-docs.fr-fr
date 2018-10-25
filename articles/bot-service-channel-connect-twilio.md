@@ -7,13 +7,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 12/13/2017
-ms.openlocfilehash: 7e09126d50cfbebfc0aad0ee7fcb71b4e7551a7d
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.date: 10/9/2018
+ms.openlocfilehash: 1c85c59591313f675e53af7cffc4751a05ce4bc4
+ms.sourcegitcommit: 54ed5000c67a5b59e23b667547565dd96c7302f9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39298904"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49315165"
 ---
 # <a name="connect-a-bot-to-twilio"></a>Connecter un bot à Twilio
 
@@ -25,36 +25,43 @@ Si vous n’avez pas de compte Twilio, <a href="https://www.twilio.com/try-twili
 
 ## <a name="create-a-twiml-application"></a>Créer une application TwiML
 
-<a href="https://www.twilio.com/user/account/messaging/dev-tools/twiml-apps/add" target="_blank">Créer une application TwiML</a>
+<a href="https://support.twilio.com/hc/en-us/articles/223180928-How-Do-I-Create-a-TwiML-App-" target="_blank">Créer une application TwiML</a> en suivant les instructions fournies.
 
 ![Créer une application](~/media/channels/twi-StepTwiml.png)
 
- Sous Messaging (Messagerie), l’URL de demande doit être **https://sms.botframework.com/api/sms**.
+Sous **Properties** (Propriétés), entrez un **NOM CONVIVIAL**. Dans ce didacticiel, nous utilisons « Mon application TwiML » comme exemple. L’**URL DE DEMANDE** sous Voice (Voix) peut être laissée vide. Sous **Messaging** (Messagerie), l’**URL de demande** doit être `https://sms.botframework.com/api/sms`.
 
 ## <a name="select-or-add-a-phone-number"></a>Sélectionner ou ajouter un numéro de téléphone
 
-<a href="https://www.twilio.com/user/account/phone-numbers/incoming" target="_blank">Sélectionnez ou ajoutez un numéro de téléphone</a>. Cliquez sur le numéro pour l’ajouter à l’application TwiML que vous avez créée.
+Suivez les instructions indiquées <a href = "https://support.twilio.com/hc/en-us/articles/223180048-Adding-a-Verified-Phone-Number-or-Caller-ID-with-Twilio" target="_blank">ici</a> pour ajouter un ID d’appelant vérifié via le site de la console. Une fois que vous avez terminé, vous verrez votre numéro vérifié dans **Active Numbers** (Numéros actifs) sous **Manage Numbers** (Gestion des numéros).
 
 ![Définir un numéro de téléphone](~/media/channels/twi-StepPhone.png)
 
-## <a name="specify-application-to-use-for-messaging"></a>Spécifier l’application à utiliser pour la messagerie
-Dans la section **Messaging** (Messagerie), indiquez sous **TwiML App** (Application TwiML) le nom de l’application TwiML que vous venez de créer.
-Copiez la valeur du champ **Phone number** (Numéro de téléphone) pour une utilisation ultérieure.
+## <a name="specify-application-to-use-for-voice-and-messaging"></a>Spécifier l’application à utiliser pour la voix et la messagerie
+
+Cliquez sur le numéro et accédez à la configuration (**Configure**). Sous Voice (Voix) et Messaging (Messagerie), définissez les options **CONFIGURE WITH** (Configurer avec) sur l’application TwiML et **TWIML APP** sur My TwiML app (Mon application TwiML). Une fois que vous avez terminé, cliquez sur **Save** (Enregistrer).
 
 ![Spécifier l’application](~/media/channels/twi-StepPhone2.png)
 
+Revenez à la page de gestion des numéros (**Manage Numbers**), et vous verrez que la voix et de la messagerie ont bien été définies sur l’application TwiML.
+
+![Numéro spécifié](~/media/channels/twi-StepPhone3.png)
+
+
 ## <a name="gather-credentials"></a>Collecter les informations d’identification
 
-<a href="https://www.twilio.com/user/account/settings" target="_blank">Collectez les informations d’identification</a>, puis cliquez sur l’icône en forme d’œil pour afficher le jeton d’authentification.
+Revenez à la [page d’accueil de la console](https://www.twilio.com/console/), vous verrez votre SID de compte et un jeton d’authentification sur le tableau de bord du projet, comme indiqué ci-dessous.
 
 ![Collecter les informations d’identification de l’application](~/media/channels/twi-StepAuth.png)
 
 ## <a name="submit-credentials"></a>Envoyer les informations d’identification
 
-Entrez le numéro de téléphone, l’accountSID et le jeton d’authentification que vous avez copiés précédemment, puis cliquez sur **Submit Twilio Credentials** (Envoyer les informations d’identification Twilio).
+Dans une fenêtre distincte, revenez sur le site du Bot Framework à l’adresse https://dev.botframework.com/. 
 
-## <a name="enable-the-bot"></a>Activer le bot
-Cochez la case **Enable this bot on SMS** (Activer ce bot sur SMS). Puis, cliquez sur **I’m done configuring SMS** (J’ai terminé la configuration de SMS).
+- Sélectionnez **My bots** (Mes bots) et choisissez le bot que vous souhaitez connecter à Twilio. Ceci vous dirigera vers le portail Azure.
+- Sélectionnez **Canaux** sous **Gestion du bot**. Cliquez sur l’icône de Twilio (SMS).
+- Entrez le numéro de téléphone, le SID de compte et le jeton d’authentification enregistrés précédemment. Une fois que vous avez terminé, cliquez sur **Save** (Enregistrer).
+
+![Envoyer les informations d’identification](~/media/channels/twi-StepSubmit.png)
 
 Une fois ces étapes effectuées, votre bot est correctement configuré pour communiquer avec les utilisateurs de Twilio.
-

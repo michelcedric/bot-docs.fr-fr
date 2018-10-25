@@ -7,32 +7,33 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 12/13/2017
-ms.openlocfilehash: b5a9d20c058fe425d727bf2e39597e7dd29ec077
-ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
+ms.date: 10/10/2018
+ms.openlocfilehash: 6e81b51243afc15714653aed7b9ca6513314071c
+ms.sourcegitcommit: 54ed5000c67a5b59e23b667547565dd96c7302f9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47389628"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49315155"
 ---
 # <a name="connect-a-bot-to-web-chat"></a>Connecter un bot au canal Discussion Web
+
+[!INCLUDE pre-release-label]
+
 Lorsque vous [créez un bot](bot-service-quickstart.md) avec le service de bot, le canal Discussion Web est automatiquement configuré pour vous. Le canal Discussion Web inclut le contrôle de discussion web, qui offre aux utilisateurs la possibilité d’interagir avec votre bot directement dans une page web.
 
-![Exemple de discussion web](~/media/bot-service-channel-webchat/webchat-sample.png)
+![Exemple de discussion web](./media/bot-service-channel-webchat/create-a-bot.png)
 
 Le canal Discussion Web du portail Bot Framework contient tout ce dont vous avez besoin pour incorporer le contrôle de discussion web dans une page web. Pour utiliser le contrôle de discussion web, il vous suffit d’obtenir la clé secrète de votre bot et d’incorporer le contrôle dans une page web.
-
-[!INCLUDE [Channel Inspector intro](~/includes/snippet-channel-inspector.md)]
 
 ## <a id="step-1"></a> Obtenir la clé secrète de votre bot
 
 1. Ouvrez votre bot dans le [Portail Azure](http://portal.azure.com) et cliquez sur le panneau **Canaux**.
 
 2. Cliquez sur **Modifier** pour le canal **Web Chat** (Discussion Web).  
-![Canal Discussion Web](~/media/bot-service-channel-webchat/bot-service-channel-list.png)
+![Canal Discussion Web](./media/bot-service-channel-webchat/bot-service-channel-list.png)
 
 3. Sous **Secret keys** (Clés secrètes), cliquez sur **Afficher** pour la première clé.  
-![Clé secrète](~/media/bot-service-channel-webchat/secret-key.png)
+![Clé secrète](./media/bot-service-channel-webchat/secret-key.png)
 
 4. Copiez la **clé secrète** et le **code incorporé**.
 
@@ -127,8 +128,8 @@ Vous pouvez modifier la taille du contrôle de discussion web à l’aide de l�
 <iframe style="height:480px; width:402px" src="... SEE ABOVE ..."></iframe>
 ```
 
-![Client de contrôle de conversation](~/media/chatwidget-client.png)
+![Client de contrôle de conversation](./media/chatwidget-client.png)
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-Vous pouvez [télécharger le code source](https://github.com/Microsoft/BotFramework-WebChat) du contrôle de discussion web sur GitHub.
+Vous pouvez [télécharger le code source](https://aka.ms/BotFramework-WebChat-V4) du contrôle de discussion web sur GitHub.

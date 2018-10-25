@@ -9,12 +9,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 5/16/17
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 87ab8d3ceb872cdb0342458b24a9756ccb710fb6
-ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
+ms.openlocfilehash: f0e428ca0aa1b0208538e2de7fc0a293763062a1
+ms.sourcegitcommit: 54ed5000c67a5b59e23b667547565dd96c7302f9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/23/2018
-ms.locfileid: "46706985"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49315205"
 ---
 # <a name="extract-intents-and-entities-using-luisgen"></a>Extraire des intentions et entités à l’aide de LUISGen
 
@@ -23,7 +23,7 @@ ms.locfileid: "46706985"
 En plus de reconnaître une intention, une application LUIS peut extraire des entités qui sont des mots importants pour répondre à la demande d’un utilisateur. Par exemple, dans l’exemple d’une réservation de restaurant, l’application LUIS pourrait extraire le nombre de convives, la date de réservation ou l’emplacement du restaurant du message de l’utilisateur. 
 
 
-L’[outil LUISGen](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUISGen) permet de générer des classes qui facilitent l’extraction d’entités de LUIS dans le code de votre robot.
+L’[outil LUISGen](https://aka.ms/botbuilder-tools-luisgen) permet de générer des classes qui facilitent l’extraction d’entités de LUIS dans le code de votre robot.
 
 À partir d’une ligne de commande Node.js, installez `luisgen` dans le chemin d’accès global.
 ```
@@ -60,7 +60,7 @@ public class _Entities
     public string[] partySize;
 
     // Built-in entities
-    public Microsoft.Bot.Builder.Ai.LUIS.DateTimeSpec[] datetime;
+    public Microsoft.Bot.Builder.Ai.Luis.DateTimeSpec[] datetime;
     public double[] number;
 
     // Lists
@@ -69,10 +69,10 @@ public class _Entities
     // Instance
     public class _Instance
     {
-        public Microsoft.Bot.Builder.Ai.LUIS.InstanceData[] partySize;
-        public Microsoft.Bot.Builder.Ai.LUIS.InstanceData[] datetime;
-        public Microsoft.Bot.Builder.Ai.LUIS.InstanceData[] number;
-        public Microsoft.Bot.Builder.Ai.LUIS.InstanceData[] cafeLocation;
+        public Microsoft.Bot.Builder.Ai.Luis.InstanceData[] partySize;
+        public Microsoft.Bot.Builder.Ai.Luis.InstanceData[] datetime;
+        public Microsoft.Bot.Builder.Ai.Luis.InstanceData[] number;
+        public Microsoft.Bot.Builder.Ai.Luis.InstanceData[] cafeLocation;
     }
     [JsonProperty("$instance")]
     public _Instance _instance;

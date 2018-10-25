@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9636b1c88bd99b94f3bf266a3a321d8f6e2747d4
-ms.sourcegitcommit: 87b5b0ca9b0d5e028ece9f7cc4948c5507062c2b
+ms.openlocfilehash: 5f00dd3666a0ebe300ec7c1e98baae020f603175
+ms.sourcegitcommit: b8bd66fa955217cc00b6650f5d591b2b73c3254b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47029787"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49326436"
 ---
 # <a name="enterprise-bot-template"></a>Modèle de bot d’entreprise 
 
@@ -32,7 +32,7 @@ Configuration pilotée du fichier .bot | Toutes les informations de configuratio
 Intentions conversationnelles de base  | Intentions de base (message d’accueil, d’au revoir, d’aide, d’annulation, etc.) en anglais, français, italien, allemand et espagnol. Ces intentions se trouvent dans les fichiers .LU (Language Understanding) afin de faciliter leur modification.
 Réponses conversationnelles de base  | Réponses aux intentions conversationnelles de base contenues dans des classes d’affichage séparées. Ces réponses seront déplacées dans les nouveaux fichiers LG (Language Generation) à l’avenir.
 Détection de contenu inapproprié ou d’informations d’identification personnelle (PII)  |Détection de données inappropriées ou PII dans les conversations entrantes grâce à l’utilisation de [Content Moderator](https://azure.microsoft.com/en-us/services/cognitive-services/content-moderator/) dans un composant d’intergiciel.
-Transcriptions  | Transcriptions de toutes les conversations stockées dans stockage Azure
+Transcriptions  | Transcriptions de toutes les conversations stockées dans Stockage Azure
 Répartiteur | Tout modèle [Dispatch](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=csaddref%2Ccsbotconfig) intégré pour déterminer si un énoncé donné doit être traité par LUIS + Code ou transféré à QnAMaker.
 Intégration QnAMAker  | Intégration avec [QnAMaker](https://www.qnamaker.ai) pour répondre à des questions générales à partir d’une base de connaissances qui peut exploiter des sources de données existantes (par exemple, des manuels PDF).
 Insights conversationnels  | Intégration avec [Application Insights](https://azure.microsoft.com/en-gb/services/application-insights/) pour collecter la télémétrie de toutes les conversations et un exemple du tableau de bord PowerBI pour vous aider à démarrer avec les insights dans vos expériences conversationnelles.

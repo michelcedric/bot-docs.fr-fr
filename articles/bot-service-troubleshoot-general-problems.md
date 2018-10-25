@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 09/26/2018
-ms.openlocfilehash: 410f50f02dcea2bb64ccf0389e20f5cb76e2fd6b
-ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
+ms.openlocfilehash: 42273044cd1e32a3c78fa7fb1b83beac061ce0b8
+ms.sourcegitcommit: aef7d80ceb9c3ec1cfb40131709a714c42960965
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47389838"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49383174"
 ---
 # <a name="troubleshooting-general-problems"></a>Résolution des problèmes généraux
 Les forums aux questions permettent de résoudre les problèmes les plus courants de développement et de fonctionnement des robots.
@@ -39,10 +39,7 @@ Dans Visual Studio 2017, accédez à **Débogage** > **Windows** > **Paramètres
 Dans Visual Studio, vous pouvez choisir de déboguer [Uniquement mon code](https://msdn.microsoft.com/en-us/library/dn457346.aspx) ou non. L’examen de toute la pile d’appels peut fournir des renseignements supplémentaires sur les problèmes.
 
 **Assurez-vous que toutes les méthodes de dialogue se terminent par un programme de traitement du message suivant.**  
-Toutes les méthodes `IDialog` doivent se terminer par `IDialogStack.Call`, `IDialogStack.Wait` ou `IDialogStack.Done`. Les méthodes `IDialogStack` sont présentées par la `IDialogContext` qui est transmise à chaque méthode `IDialog`. Le fait d’appeler `IDialogStack.Forward` et d’utiliser les invites système par le biais des méthodes statiques `PromptDialog` permet d’appeler l’une de ces méthodes au moment de leur implémentation.
-
-**Assurez-vous que tous les dialogues sont sérialisables.**  
-Il peut suffire d’utiliser l’attribut `[Serializable]` sur vos implémentations `IDialog`. Cependant, sachez que les fermetures de méthodes anonymes ne sont pas sérialisables lorsqu’elles font appel à leur environnement extérieur pour recueillir des variables. Bot Framework prend en charge un substitut de sérialisation basé sur la réflexion pour permettre de sérialiser les types qui ne sont pas marqués comme sérialisables.
+Toutes les étapes du dialogue doivent alimenter l’étape suivante de la cascade ou mettre fin au dialogue actuel pour sortir de la pile. Si une étape n’est pas gérée correctement, la conversation ne continuera pas comme prévu. Consultez l’article de présentation de concept sur les [dialogues](v4sdk/bot-builder-concept-dialog.md) pour en savoir plus à ce sujet.
 
 ## <a name="why-doesnt-the-typing-activity-do-anything"></a>Pourquoi l’activité de saisie ne fait-elle rien ?
 Certains canaux ne prennent pas en charge les mises à jour transitoires de la saisie dans leur client.
@@ -54,7 +51,14 @@ La bibliothèque du connecteur correspond à la présentation de l’API REST. L
 ## <a name="what-causes-an-error-with-http-status-code-429-too-many-requests"></a>Qu’est-ce qui provoque une erreur avec le code d’état HTTP 429 « Trop de requêtes » ?
 
 Une réponse d’erreur avec le code d’état HTTP 429 indique qu’un trop grand nombre de requêtes ont été envoyées dans un laps de temps donné. Le corps de la réponse doit comprendre une explication du problème. Il peut également préciser l’intervalle minimal requis entre les requêtes. Une source possible de cette erreur est [ngrok](https://ngrok.com/). Si vous avez un plan gratuit et que vous rencontrez les limites de ngrok, accédez à la page de la tarification et des limites sur leur site Web pour obtenir davantage d’[options](https://ngrok.com/product#pricing). 
- 
+
+## <a name="why-arent-my-bot-messages-getting-received-by-the-user"></a>Pourquoi les messages de mon bot ne sont pas bien reçus par l’utilisateur ?
+
+L’activité de message générée en réponse doit être adressée correctement, sinon il n’arrivera pas à sa destination prévue. Dans la grande majorité des cas, vous ne devrez pas gérer cette situation explicitement ; le SDK s’occupe d’adresser l’activité de message pour vous. 
+
+L’adressage correct d’une activité implique l’intégration des informations appropriées de *référence Conversation* ainsi que des informations sur l’expéditeur et le destinataire. Dans la plupart des cas, l’activité de message est envoyée en réponse à l’arrivée d’une autre activité. Par conséquent, les informations d’adressage peuvent être récupérées à partir de l’activité entrante. 
+
+Si vous examinez les traces ou les journaux d’audit, vous pouvez vérifier que vos messages sont correctement adressés. Dans le cas contraire, définissez un point d’arrêt dans votre bot et vérifiez où les ID sont définis pour votre message.
 
 ## <a name="how-can-i-run-background-tasks-in-aspnet"></a>Comment puis-je exécuter des tâches en arrière-plan dans ASP.NET ? 
 
@@ -77,7 +81,7 @@ Bot Framework conserve autant que possible l’ordre des messages. Par exemple, 
 
 ## <a name="how-can-i-intercept-all-messages-between-the-user-and-my-bot"></a>Comment puis-je intercepter tous les messages entre l’utilisateur et mon robot ?
 
-Le kit de développement logiciel Bot Builder pour.NET permet de fournir des implémentations des interfaces `IPostToBot` et `IBotToUser` au conteneur d’injection de dépendances `Autofac`. Le kit de développement logiciel Bot Builder pour Node.js permet d’utiliser l’intergiciel pratiquement dans le même but. Le référentiel [BotBuilder-Azure](https://github.com/Microsoft/BotBuilder-Azure) contient des bibliothèques C# et Node.js qui enregistreront ces données dans une table Azure.
+Le kit de développement logiciel Bot Builder pour.NET permet de fournir des implémentations des interfaces `IPostToBot` et `IBotToUser` au conteneur d’injection de dépendances `Autofac`. Le kit de développement logiciel Bot Builder dans toutes les langues permet d’utiliser l’intergiciel pratiquement dans le même but. Le référentiel [BotBuilder-Azure](https://github.com/Microsoft/BotBuilder-Azure) contient des bibliothèques C# et Node.js qui enregistreront ces données dans une table Azure.
 
 ## <a name="why-are-parts-of-my-message-text-being-dropped"></a>Pourquoi certaines parties du texte de mon message sont-elles supprimées ?
 
@@ -127,6 +131,8 @@ Pour corriger cela, définissez la propriété `from` dans chaque message envoy�
 ## <a name="what-causes-the-direct-line-30-service-to-respond-with-http-status-code-502-bad-gateway"></a>Pourquoi le service Direct Line 3.0 retourne le code d’état HTTP 502 « Passerelle incorrecte » ?
 Direct Line 3.0 retourne le code d’état HTTP 502 lorsqu’il essaie de communiquer avec votre robot, mais que la requête n’aboutit pas. Cette erreur indique que le robot a renvoyé une erreur ou que la requête a expiré. Pour plus d’informations sur les erreurs générées par votre robot, accédez au tableau de bord du robot dans le <a href="https://dev.botframework.com" target="_blank">portail Bot Framework</a>, puis cliquez sur le lien « Problèmes » correspondant au canal concerné. Si vous avez configuré Application Insights pour votre robot, vous pouvez également y trouver des informations détaillées concernant les erreurs. 
 
+::: moniker range="azure-bot-service-3.0"
+
 ## <a name="what-is-the-idialogstackforward-method-in-the-bot-builder-sdk-for-net"></a>En quoi consiste la méthode IDialogStack.Forward dans le kit de développement logiciel Bot Builder pour.NET ?
 
 Le but principal de `IDialogStack.Forward` est de réutiliser un dialogue enfant existant qui est souvent « réactif », c’est-à-dire que le dialogue enfant (dans `IDialog.StartAsync`) attend un objet `T` avec un certain gestionnaire `ResumeAfter`. En particulier, si un dialogue enfant attend `IMessageActivity` `T`, vous pouvez transférer le `IMessageActivity` entrant (déjà reçu par certains dialogues parents) à l’aide de la méthode `IDialogStack.Forward`. Par exemple, pour transférer un `IMessageActivity` entrant à un `LuisDialog`, appelez `IDialogStack.Forward` afin de pousser le `LuisDialog` sur la pile de dialogues, exécutez le code dans `LuisDialog.StartAsync` jusqu’à ce qu’il programme une attente pour le message suivant, puis répondez immédiatement à cette attente avec le `IMessageActivity` transféré.
@@ -134,6 +140,8 @@ Le but principal de `IDialogStack.Forward` est de réutiliser un dialogue enfant
 `T` est habituellement un `IMessageActivity`, puisque `IDialog.StartAsync` est typiquement construit en vue d’attendre ce type d’activité. Vous pouvez utiliser `IDialogStack.Forward` vers `LuisDialog` comme mécanisme d’interception des messages de l’utilisateur pour un certain traitement avant de transmettre le message à un `LuisDialog` existant. Sinon, vous pouvez également utiliser `DispatchDialog` avec `ContinueToNextGroup` à cette fin.
 
 Vous devriez vous attendre à trouver l’élément transféré dans le premier gestionnaire `ResumeAfter` (par exemple `LuisDialog.MessageReceived`) qui est programmé par `StartAsync`.
+
+::: moniker-end
 
 ## <a name="what-is-the-difference-between-proactive-and-reactive"></a>Quelle est la différence entre « proactif » et « réactif » ?
 

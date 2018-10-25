@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
-ms.openlocfilehash: dd8869c26a87718177462db2508e41aa82810e21
-ms.sourcegitcommit: f0b22c6286e44578c11c9f15d22b542c199f0024
+ms.openlocfilehash: ab7e6a8e6bbb2cf12fca0371f2de561f4fb47fd8
+ms.sourcegitcommit: b8bd66fa955217cc00b6650f5d591b2b73c3254b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47404075"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49326526"
 ---
 # <a name="design-knowledge-bots"></a>Concevoir des bots de connaissances
 
@@ -129,7 +129,7 @@ Certains bots de connaissances peuvent utiliser QnA Maker pour répondre à des 
 2. Appeler LUIS d’abord, et si aucune intention ne répond à un score d’un seuil spécifique (dans ce cas l’intention « None » (aucune) est déclenchée), appeler QnA Maker. Vous pouvez également créer une intention LUIS pour QnA Maker, en alimentant votre modèle LUIS avec des exemples de question/réponse qui correspondent à « QnAIntent » (intention par rapport à une question/réponse). 
 3. Appeler d’abord QnA Maker et si aucune réponse ne satisfait à un score de seuil spécifique, appeler LUIS. 
 
-Le SDK Bot Builder prend en charge LUIS et QnA Maker. Cela vous permet de déclencher des dialogues ou de répondre automatiquement à des questions à l’aide de LUIS ou QnA Maker sans avoir à implémenter des appels personnalisés pour ces outils. Consultez les [modèles Bot Service](bot-service-concept-templates.md) pour plus d’informations.
+Le SDK Bot Builder prend en charge LUIS et QnA Maker. Cela vous permet de déclencher des dialogues ou de répondre automatiquement à des questions à l’aide de LUIS ou QnA Maker sans avoir à implémenter des appels personnalisés pour ces outils. Consultez le [didacticiel de l’outil Bot Builder Dispatch](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0) pour plus d’informations.
 
 > [!TIP]
 > Quand vous implémentez une combinaison de LUIS, QnA Maker et/ou Recherche Azure, testez les entrées avec chacun des outils afin de déterminer le score de seuil pour chacun de vos modèles. LUIS, QnA Maker et Recherche Azure génèrent chacun des scores en utilisant des critères de notation différents, ce qui empêche de comparer ces scores directement. En outre, LUIS et QnA Maker normalisent les scores. Un score donné peut être considéré comme « bon » dans un modèle LUIS, mais pas dans un autre. 

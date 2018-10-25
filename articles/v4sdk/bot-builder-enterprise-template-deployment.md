@@ -8,17 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a4ac88872e11cd32a9de96d52dcf9e917bb3488f
-ms.sourcegitcommit: 87b5b0ca9b0d5e028ece9f7cc4948c5507062c2b
+ms.openlocfilehash: 0f4c5e0db9dae86f81414ccd9bbb1e5de4dce624
+ms.sourcegitcommit: b8bd66fa955217cc00b6650f5d591b2b73c3254b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47029797"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49326396"
 ---
 # <a name="enterprise-bot-template---deploying-your-bot"></a>Modèle de bot d’entreprise – Déployer votre bot
 
 > [!NOTE]
-> Cet article s’applique à la version v4 du Kit de développement logiciel (SDK). 
+> Cet article s’applique à la version v4 du SDK. 
 
 ## <a name="prerequisites"></a>Prérequis
 

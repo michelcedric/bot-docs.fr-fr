@@ -10,12 +10,12 @@ ms.prod: bot-framework
 ms.date: 09/19/2018
 ms.reviewer: ''
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: af79bb40e3d24557fd898fa0a0ca2ef7b0286af4
-ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
+ms.openlocfilehash: bef0d5f3220cd818767f4eead5c5f4a09d047c26
+ms.sourcegitcommit: aef7d80ceb9c3ec1cfb40131709a714c42960965
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/23/2018
-ms.locfileid: "46707545"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49383154"
 ---
 # <a name="language-understanding"></a>Language Understanding
 
@@ -56,11 +56,11 @@ Les **entités prédéfinies** aide votre bot à reconnaître les types d’info
 
 ## <a name="how-your-bot-gets-messages-from-luis"></a>Comment votre bot obtient des messages à partir de LUIS
 
-Une fois que vous avez configuré et connecté LUIS, votre bot peut envoyer le message à votre application LUIS, qui renvoie une réponse JSON contenant les intentions et les entités. Vous pouvez ensuite utiliser le [contexte de tour](bot-builder-concept-activity-processing.md#turn-context) du _gestionnaire de tours_ de votre bot pour acheminer le flux de conversation en fonction de l’intention dans la réponse LUIS. 
+Une fois que vous avez configuré et connecté LUIS, votre bot peut envoyer le message à votre application LUIS, qui renvoie une réponse JSON contenant les intentions et les entités. Vous pouvez ensuite utiliser le [contexte de tour](~/v4sdk/bot-builder-basics.md#defining-a-turn) du _gestionnaire de tours_ de votre bot pour acheminer le flux de conversation en fonction de l’intention dans la réponse LUIS. 
 
 ![Comment les intentions et les entités sont transmises à votre bot](./media/cognitive-services-add-bot-language/cognitive-services-luis-message-flow-bot-code.png)
 
-Pour commencer à utiliser une application LUIS avec votre bot, consultez [Utilisation de LUIS pour la compréhension langagière][luis-v4-how-to].
+Pour commencer à utiliser une application LUIS avec votre bot, consultez [Utilisation de LUIS pour la compréhension langagière](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-v4-luis?view=azure-bot-service-4.0).
 
 ## <a name="best-practices-for-language-understanding"></a>Meilleures pratiques pour la reconnaissance vocale
 
@@ -99,7 +99,7 @@ L’outil Dispatch vous permet d’intégrer plusieurs applications LUIS et serv
 
 ## <a name="use-luis-to-improve-speech-recognition"></a>Utiliser LUIS pour améliorer la reconnaissance vocale
 
-Dans le cas d’un bot avec lequel les utilisateurs dialogueront, l’intégration avec LUIS permet à votre bot d’identifier les mots qui peuvent être mal compris lorsqu’il convertit la parole en texte.  Par exemple, dans un scénario de jeu d’échecs, un utilisateur peut dire : « Déplacer cavalier en A7 ». Sans contexte concernant l’intention de l’utilisateur, l’énoncé peut être interprété comme : « Déplacer cavalier en ascète ». En créant des entités qui représentent les pièces d’échecs et leurs positions, puis en les étiquetant dans des énoncés, vous fournissez au bot le contexte de reconnaissance vocale qui l’aidera à identifier ces termes. Vous pouvez [préparer la reconnaissance vocale][speechrecognitionpriming] à l’aide de canaux Bot Framework intégrés à la reconnaissance vocale Bing, par exemple Web Chat, l’émulateur Bot Framework et Cortana.  
+Dans le cas d’un bot avec lequel les utilisateurs dialogueront, l’intégration avec LUIS permet à votre bot d’identifier les mots qui peuvent être mal compris lorsqu’il convertit la parole en texte.  Par exemple, dans un scénario de jeu d’échecs, un utilisateur peut dire : « Déplacer cavalier en A7 ». Sans contexte concernant l’intention de l’utilisateur, l’énoncé peut être interprété comme : « Déplacer cavalier en ascète ». En créant des entités qui représentent les pièces d’échecs et leurs positions, puis en les étiquetant dans des énoncés, vous fournissez au bot le contexte de reconnaissance vocale qui l’aidera à identifier ces termes. Vous pouvez [préparer la reconnaissance vocale](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-manage-speech-priming?view=azure-bot-service-4.0) à l’aide de canaux Bot Framework intégrés à l’API Reconnaissance vocale Bing, par exemple Web Chat, l’émulateur Bot Framework et Cortana.  
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 Pour plus d’informations, consultez la documentation dédiée à [Cognitive Services](https://docs.microsoft.com/en-us/azure/cognitive-services/).
