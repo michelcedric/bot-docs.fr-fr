@@ -5,14 +5,15 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 04f70777003ef5298de264f5ee8685b3a5005395
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: e38bb7ca93c5fc4174d67d1c5ebb0655eef68653
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299929"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49997910"
 ---
 # <a name="add-rich-card-attachments-to-messages"></a>Ajouter des pièces jointes de cartes enrichies aux messages
 > [!div class="op_single_selector"]
@@ -20,7 +21,7 @@ ms.locfileid: "39299929"
 > - [Node.JS](../nodejs/bot-builder-nodejs-send-rich-cards.md)
 > - [REST](../rest-api/bot-framework-rest-connector-add-rich-cards.md)
 
-Les bots et les canaux échangent généralement des chaînes de texte, mais certains canaux prennent également en charge l’échange de pièces jointes, ce qui permet à votre bot d’envoyer des messages enrichis aux utilisateurs. Par exemple, votre bot peut envoyer des cartes enrichies et des pièces jointes multimédias (comme des images, des vidéos, des données audio ou des fichiers). Cet article vous expliquer comment ajouter des pièces jointes de cartes enrichies aux messages à l’aide du service Bot Connector.
+Les robots et les canaux échangent généralement des chaînes de texte, mais certains canaux prennent également en charge l’échange de pièces jointes, ce qui permet à votre robot d’envoyer des messages enrichis aux utilisateurs. Par exemple, votre bot peut envoyer des cartes enrichies et des pièces jointes multimédias (comme des images, des vidéos, des données audio ou des fichiers). Cet article vous expliquer comment ajouter des pièces jointes de cartes enrichies aux messages à l’aide du service Bot Connector.
 
 > [!NOTE]
 > Pour plus d’informations sur l’ajout de pièces jointes multimédias aux messages, consultez l’article [Ajouter des pièces jointes multimédia aux messages](bot-framework-rest-connector-add-media-attachments.md).
@@ -35,8 +36,8 @@ Bot Framework prend actuellement en charge huit types de cartes enrichies :
 | <a href="/adaptive-cards/get-started/bots">AdaptiveCard</a> | Carte personnalisable pouvant inclure n’importe quelle combinaison de texte, données vocales, images, boutons et champs d’entrée. Consultez l’article sur la [prise en charge de ces cartes par canal](/adaptive-cards/get-started/bots#channel-status).  |
 | [AnimationCard][animationCard] | Carte pouvant lire des images GIF animées ou de courtes vidéos. |
 | [AudioCard][audioCard] | Carte pouvant lire un fichier audio. |
-| [HeroCard][heroCard] | Carte contenant généralement une image de grande taille, un ou plusieurs boutons, ainsi que du texte. |
-| [ThumbnailCard][thumbnailCard] | Carte contenant généralement une image miniature, un ou plusieurs boutons, ainsi que du texte. |
+| [HeroCard][heroCard] | Carte contenant généralement une grande image, un ou plusieurs boutons et du texte. |
+| [ThumbnailCard][thumbnailCard] | Carte contenant généralement une image miniature, un ou plusieurs boutons et du texte. |
 | [ReceiptCard][receiptCard] | Carte permettant à un bot de fournir un reçu à l’utilisateur. Elle contient généralement la liste des articles à inclure sur le reçu, la taxe et le total, ainsi que du texte. |
 | [SignInCard][signinCard] | Carte permettant à un bot de demander à un utilisateur de se connecter. Elle contient généralement du texte et un ou plusieurs boutons sur lesquels l’utilisateur peut cliquer pour lancer le processus de connexion. |
 | [VideoCard][videoCard] | Carte pouvant lire des vidéos. |
@@ -50,19 +51,19 @@ Pour traiter les événements dans les cartes enrichies, utilisez les objets [Ca
 
 | Propriété | type | Description | 
 |----|----|----|
-| Type | chaîne | type d’action (l’une des valeurs indiquées dans le tableau ci-dessous) |
+| Type | chaîne | type d’action (une des valeurs indiquées dans le tableau ci-dessous) |
 | title | chaîne | titre du bouton |
 | image | chaîne | URL d’image du bouton |
-| value | chaîne | valeur requise pour l’exécution du type d’action spécifié |
+| value | chaîne | valeur nécessaire pour effectuer le type d’action spécifié |
 
 > [!NOTE]
-> Les boutons dans les cartes adaptatives ne sont pas créés à l’aide des objets `CardAction`, mais au moyen du schéma défini par le site <a href="http://adaptivecards.io" target="_blank">Adaptive Cards</a> (Cartes adaptatives). Pour obtenir un exemple illustrant comment ajouter des boutons à une carte adaptative, consultez la section [Ajouter une carte adaptative à un message](#adaptive-card).
+> Les boutons dans les cartes adaptatives ne sont pas créés avec les objets `CardAction`, mais à l’aide du schéma défini par les <a href="http://adaptivecards.io" target="_blank">cartes adaptatives</a>. Pour obtenir un exemple illustrant comment ajouter des boutons à une carte adaptative, consultez la section [Ajouter une carte adaptative à un message](#adaptive-card).
 
 Ce tableau répertorie les valeurs valides pour la propriété `type` d’un objet [CardAction][CardAction] et décrit le contenu attendu de la propriété `value` pour chaque type :
 
 | Type | value | 
 |----|----|
-| openUrl | URL à ouvrir dans le navigateur intégré. |
+| openUrl | URL à ouvrir dans le navigateur intégré |
 | imBack | Texte du message à envoyer au bot (de la part de l’utilisateur qui a cliqué sur le bouton ou appuyé sur la carte). Ce message (de l’utilisateur au bot) sera visible par tous les participants à la conversation par le biais de l’application cliente qui héberge la conversation. |
 | postBack | Texte du message à envoyer au bot (de la part de l’utilisateur qui a cliqué sur le bouton ou appuyé sur la carte). Certaines applications clientes peuvent afficher ce texte dans le flux de messages, où il sera visible par tous les participants à la conversation. |
 | appel | Destination d’un appel téléphonique au format suivant : **tel:123123123123** |

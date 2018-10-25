@@ -5,14 +5,15 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 6e83cc45e925f5d94b70260de6ac54e6f4052ca4
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 4f607050fd891eefe2129973a46d830aa0bab6c7
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299217"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49997616"
 ---
 # <a name="authentication"></a>Authentification
 
@@ -35,33 +36,33 @@ Authorization: BotConnector SECRET_OR_TOKEN
 
 ## <a name="secrets-and-tokens"></a>Secrets et jetons
 
-Un **secret** Direct Line est une clé principale qui peut être utilisée pour accéder à toute conversation appartenant au bot associé. Un **secret** peut également être utilisé pour obtenir un **jeton**. Les secrets n’expirent pas. 
+Un **secret** Direct Line est une clé principale qui peut être utilisée pour accéder à toute conversation appartenant au robot associé. Un **secret** peut également être utilisé pour obtenir un **jeton**. Les secrets n’expirent pas. 
 
 Un **jeton** Direct Line est une clé qui peut être utilisée pour accéder à une seule conversation. Un jeton expire, mais peut être actualisé. 
 
-Si vous créez une application de service à service, l’approche la plus simple peut consister à spécifier le **secret** dans l’en-tête `Authorization` des requêtes d’API Direct Line. Si vous écrivez une application où le client s’exécute dans un navigateur web ou une application mobile, vous souhaiterez peut-être échanger votre secret contre un jeton (qui fonctionne uniquement pour une conversation et expire sauf s’il est actualisé) et spécifier le **jeton** dans l’en-tête `Authorization` des requêtes d’API Direct Line. Choisissez le modèle de sécurité qui vous convient le mieux.
+Si vous créez une application de service à service, l’approche la plus simple peut consister à spécifier le **secret** dans l’en-tête `Authorization` des demandes d’API Direct Line. Si vous écrivez une application où le client s’exécute dans un navigateur web ou une application mobile, vous souhaiterez peut-être échanger votre secret contre un jeton (qui fonctionne uniquement pour une conversation et expire sauf s’il est actualisé) et spécifier le **jeton** dans l’en-tête `Authorization` des demandes d’API Direct Line. Choisissez le modèle de sécurité qui vous convient le mieux.
 
 > [!NOTE]
-> Les informations d’identification de votre client Direct Line sont différentes de celles de votre bot. Cela vous permet de réviser vos clés de manière indépendante et de partager des jetons de client sans révéler le mot de passe de votre bot. 
+> Les informations d’identification de votre client Direct Line sont différentes de celles de votre robot. Cela vous permet de réviser vos clés de manière indépendante et de partager des jetons de client sans révéler le mot de passe de votre robot. 
 
 ## <a name="get-a-direct-line-secret"></a>Obtenir un secret Direct Line
 
-Vous pouvez [obtenir un secret Direct Line](../bot-service-channel-connect-directline.md) à partir de la page de configuration de canal Direct Line pour votre bot dans le <a href="https://dev.botframework.com/" target="_blank">portail Bot Framework</a> :
+Vous pouvez [obtenir un secret Direct Line](../bot-service-channel-connect-directline.md) à partir de la page de configuration de canal Direct Line pour votre robot dans le <a href="https://dev.botframework.com/" target="_blank">portail Bot Framework</a> :
 
 ![Configuration de Direct Line](../media/direct-line-configure.png)
 
 ## <a id="generate-token"></a> Générer un jeton Direct Line
 
-Pour générer un jeton Direct Line qui peut être utilisé pour accéder à une conversation unique, commencez par obtenir le secret Direct Line à partir de la page de configuration de canal Direct Line dans le <a href="https://dev.botframework.com/" target="_blank">portail Bot Framework</a>. Puis, émettez cette requête pour échanger votre secret Direct Line contre un jeton Direct Line :
+Pour générer un jeton Direct Line qui peut être utilisé pour accéder à une conversation unique, commencez par obtenir le secret Direct Line à partir de la page de configuration de canal Direct Line dans le <a href="https://dev.botframework.com/" target="_blank">portail Bot Framework</a>. Ensuite, émettez la demande suivante pour échanger votre secret Direct Line contre un jeton Direct Line :
 
 ```http
 POST https://directline.botframework.com/api/tokens/conversation
 Authorization: Bearer SECRET
 ```
 
-Dans l’en-tête `Authorization` de cette requête, remplacez **SECRET** par la valeur de votre secret Direct Line.
+Dans l’en-tête `Authorization` de cette demande, remplacez **SECRET** par la valeur de votre secret Direct Line.
 
-Les extraits de code suivants illustrent la requête et la réponse dans le cadre de la génération de jeton.
+Les extraits de code suivants illustrent la demande et la réponse dans le cadre de la génération de jeton.
 
 ### <a name="request"></a>Requête
 
@@ -98,7 +99,7 @@ Authorization: Bearer TOKEN_TO_BE_REFRESHED
 
 Dans l’URI de cette requête, remplacez **{conversationId}** par l’ID de la conversation pour lequel le jeton est valide et, dans l’en-tête `Authorization` de cette requête, remplacez **TOKEN_TO_BE_REFRESHED** par le jeton Direct Line que vous souhaitez actualiser.
 
-Les extraits de code suivants illustrent la requête et la réponse dans le cadre de l’actualisation de jeton.
+Les extraits de code suivants illustrent la demande et la réponse dans le cadre de l’actualisation du jeton.
 
 ### <a name="request"></a>Requête
 
@@ -121,4 +122,4 @@ HTTP/1.1 200 OK
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 - [Concepts clés](bot-framework-rest-direct-line-1-1-concepts.md)
-- [Connecter un bot à Direct Line](../bot-service-channel-connect-directline.md)
+- [Connecter un robot à Direct Line](../bot-service-channel-connect-directline.md)

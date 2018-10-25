@@ -5,15 +5,16 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 03/13/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 96f21f02e74c8f7d78a699c37eb8324b4d36139e
-ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
+ms.openlocfilehash: b03003d4822c657f9b606de36087ddf4d5cbee7a
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39574675"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49997647"
 ---
 # <a name="add-suggested-actions-to-messages"></a>Ajouter des actions suggérées aux messages
 
@@ -37,7 +38,7 @@ Cet exemple de code indique comment créer un message qui présente trois action
 
 [!code-csharp[Add suggested actions](../includes/code/dotnet-add-suggested-actions.cs#addSuggestedActions)]
 
-Lorsque l’utilisateur appuie sur l’une des actions suggérées, le bot reçoit un message de l’utilisateur contenant la valeur `Value` de l’action correspondante.
+Lorsque l’utilisateur appuie sur l’une des actions suggérées, le robot reçoit un message de l’utilisateur contenant la valeur `Value` de l’action correspondante.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

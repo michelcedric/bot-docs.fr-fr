@@ -6,14 +6,15 @@ author: matvelloso
 ms.author: mateusv
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 223a822a1a309b8d89f0554eed241a4ae376ea23
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: f2a97b35f7e83a825e533be528951e8c04c521a1
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299189"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49998079"
 ---
 # <a name="design-bot-navigation"></a>Concevoir la navigation d’un bot
 
@@ -37,7 +38,7 @@ Le bot rebelle tient absolument à maintenir le fil de la conversation, même lo
 
 Examinez le scénario suivant : 
 
-![bot](~/media/bot-service-design-navigation/stubborn-bot-new.png)
+![robot](~/media/bot-service-design-navigation/stubborn-bot-new.png)
 
 Les utilisateurs changent souvent d’avis, décident d’annuler, voire souhaitent tout reprendre à zéro. 
 
@@ -54,7 +55,7 @@ Le bot stupide répond de manière absurde lorsqu’il ne comprend pas la tentat
 
 Examinez le scénario suivant : 
 
-![bot](~/media/bot-service-design-navigation/clueless-bot.png)
+![robot](~/media/bot-service-design-navigation/clueless-bot.png)
 
 S’il est tentant de concevoir chaque dialogue du bot de façon à guetter et réagir convenablement à certains mots clés, cette approche est déconseillée. 
 
@@ -71,7 +72,7 @@ Le bot mystérieux n’indique en rien qu’il a reçu l’entrée de l’utilis
 
 Examinez le scénario suivant : 
 
-![bot](~/media/bot-service-design-navigation/mysterious-bot.png)
+![robot](~/media/bot-service-design-navigation/mysterious-bot.png)
 
 Dans certains cas, cette situation est le signe que le bot est en panne. Cependant, il peut simplement s’avérer qu’il est occupé à traiter l’entrée de l’utilisateur et n’a pas encore fini de compiler sa réponse. 
 
@@ -88,7 +89,7 @@ Le bot Captain Obvious donne des informations non sollicitées, complètement �
 
 Examinez le scénario suivant :
 
-![bot](~/media/bot-service-design-navigation/captainobvious-bot.png)
+![robot](~/media/bot-service-design-navigation/captainobvious-bot.png)
 
 > [!TIP]
 > <b>Ce qu’il faut faire</b> : concevoir le bot de façon à donner des informations utiles à l’utilisateur. 
@@ -103,7 +104,7 @@ Le bot qui n’oublie rien intègre à tort des informations issues de conversat
 
 Examinez le scénario suivant :
 
-![bot](~/media/bot-service-design-navigation/rememberall-bot.png)
+![robot](~/media/bot-service-design-navigation/rememberall-bot.png)
 
 > [!TIP]
 > <b>Ce qu’il faut faire</b> : concevoir le bot de façon à rester sur le même sujet de conversation, sauf si/jusqu'à ce que l’utilisateur exprime le désir de revenir à un ancien sujet. 

@@ -5,14 +5,15 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 1557941d4e5413108ea3ce788f7d5d684252b657
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: b0d5ca6893d70a73bc005a949ef6cc2518d3862f
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39298747"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "50000026"
 ---
 # <a name="manage-state-data"></a>Gérer les données d’état
 
@@ -50,7 +51,7 @@ Définissez le corps de la requête sur un objet [BotData][BotData], dans lequel
 
 ### <a name="request"></a>Requête 
 
-L’exemple ci-après présente une requête qui enregistre les données relatives à un utilisateur sur un canal spécifique. Dans cet exemple de requête, `https://smba.trafficmanager.net/apis` représente l’URI de base, qui peut être différent de celui des requêtes émises par votre bot. Pour plus d’informations sur la définition de l’URI de base, consultez l’article [API Reference](bot-framework-rest-connector-api-reference.md#base-uri) (Informations de référence sur l’API).
+L’exemple ci-après présente une requête qui enregistre les données relatives à un utilisateur sur un canal spécifique. Dans cet exemple de requête, `https://smba.trafficmanager.net/apis` représente l’URI de base, qui peut être différent de celui des requêtes émises par votre bot. Pour plus d’informations sur la définition de l’URI de base, voir [Informations de référence sur l’API](bot-framework-rest-connector-api-reference.md#base-uri).
 
 ```http
 POST https://smba.trafficmanager.net/apis/v3/botstate/abcd1234/users/12345678
@@ -92,7 +93,7 @@ Dans cet URI de requête, remplacez **{channelId}** par l’ID du canal et rempl
 
 ### <a name="request"></a>Requête
 
-L’exemple ci-après présente une requête qui obtient les données précédemment enregistrées pour l’utilisateur. Dans cet exemple de requête, `https://smba.trafficmanager.net/apis` représente l’URI de base, qui peut être différent de celui des requêtes émises par votre bot. Pour plus d’informations sur la définition de l’URI de base, consultez l’article [API Reference](bot-framework-rest-connector-api-reference.md#base-uri) (Informations de référence sur l’API).
+L’exemple ci-après présente une requête qui obtient les données précédemment enregistrées pour l’utilisateur. Dans cet exemple de requête, `https://smba.trafficmanager.net/apis` représente l’URI de base, qui peut être différent de celui des requêtes émises par votre bot. Pour plus d’informations sur la définition de l’URI de base, voir [Informations de référence sur l’API](bot-framework-rest-connector-api-reference.md#base-uri).
 
 ```http
 GET https://smba.trafficmanager.net/apis/v3/botstate/abcd1234/users/12345678

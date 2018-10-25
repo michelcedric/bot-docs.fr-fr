@@ -5,14 +5,15 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 3f881f353f04be95ce3785c2fd82b724dd58cb88
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 290a2733b96a458eb3529b0b0854703631e05f22
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299665"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "50000036"
 ---
 # <a name="send-an-activity-to-the-bot"></a>Envoyer une activité au bot
 
@@ -63,9 +64,9 @@ HTTP/1.1 200 OK
 La durée totale de PUBLICATION d’un message à une conversation Direct Line est égale à la somme des éléments suivants :
 
 - Délai de transmission de la requête HTTP du client au service Direct Line
-- Durée de traitement interne au sein de Direct Line (généralement moins de 120 ms)
+- Temps de traitement interne dans Direct Line (généralement inférieur à 120 ms)
 - Délai de transmission entre le service Direct Line et le robot
-- Durée de traitement dans le robot
+- Temps de traitement au sein du robot
 - Délai de transmission de la réponse HTTP au client
 
 ## <a name="send-attachments-to-the-bot"></a>Envoyer des pièces jointes au robot
@@ -78,11 +79,11 @@ Pour envoyer une ou plusieurs pièces jointes faisant partie de l’objet [Activ
 
 ## <a id="upload-attachments"></a>Envoyer une ou des pièces jointes par téléchargement
 
-Il arrive souvent qu’un client ait des images ou des documents sur un périphérique qu’il veut envoyer au bot, mais ne dispose pas des URL correspondant aux fichiers. Dans cette situation, un client peut lancer une requête `POST /v3/directline/conversations/{conversationId}/upload` afin d’envoyer des pièces jointes au robot par téléchargement. Le format et le contenu de la requête dépendent si le client envoie [une seule](#upload-one-attachment) ou [plusieurs](#upload-multiple-attachments) pièces jointes.
+Il arrive souvent qu’un client ait des images ou des documents sur un périphérique qu’il veut envoyer au bot, mais ne dispose pas des URL correspondant aux fichiers. Dans cette situation, un client peut lancer une requête `POST /v3/directline/conversations/{conversationId}/upload` afin d’envoyer des pièces jointes au robot par téléchargement. Le format et le contenu de la demande varient selon que le client [envoie une pièce jointe unique](#upload-one-attachment) ou [envoie plusieurs pièces jointes](#upload-multiple-attachments).
 
 ### <a id="upload-one-attachment"></a>Envoyer une seule pièce jointe par téléchargement
 
-Pour envoyer une seule pièce jointe par téléchargement, envoyez la requête suivante : 
+Pour envoyer une seule pièce jointe par chargement, exécutez la demande suivante : 
 
 ```http
 POST https://directline.botframework.com/v3/directline/conversations/{conversationId}/upload?userId={userId}
@@ -127,11 +128,11 @@ HTTP/1.1 200 OK
 
 ### <a id="upload-multiple-attachments"></a> Envoyer plusieurs pièces jointes par téléchargement
 
-Pour envoyer plusieurs pièces jointes par téléchargement, `POST` effectue une requête en plusieurs parties au point de terminaison `/v3/directline/conversations/{conversationId}/upload`. Définissez l’en-tête `Content-Type` de la requête sur `multipart/form-data` et insérez les en-têtes `Content-Type` et `Content-Disposition` à chaque partie pour indiquer le type et le nom de fichier de chaque pièce jointe. Dans la requête URI, définissez le paramètre `userId` à l’identifiant de l’utilisateur qui envoie le message. 
+Pour envoyer plusieurs pièces jointes par chargement, publiez (`POST`) une demande en plusieurs parties sur le point de terminaison `/v3/directline/conversations/{conversationId}/upload`. Définissez l’en-tête `Content-Type` de la requête sur `multipart/form-data` et insérez les en-têtes `Content-Type` et `Content-Disposition` à chaque partie pour indiquer le type et le nom de fichier de chaque pièce jointe. Dans la requête URI, définissez le paramètre `userId` à l’identifiant de l’utilisateur qui envoie le message. 
 
 Vous pouvez inclure un objet [Activité](bot-framework-rest-connector-api-reference.md#activity-object) dans la requête en ajoutant une partie qui indique la valeur `Content-Type` de l’en-tête `application/vnd.microsoft.activity`. Si la requête comprend une activité, les pièces jointes indiquées par d’autres parties de la charge utile sont ajoutées comme pièces jointes à cette activité avant qu’elle ne soit envoyée. Si la requête n’inclut pas d’activité, une activité vide est créée pour servir de conteneur dans lequel les pièces jointes indiquées sont envoyées.
 
-Les extraits de code suivants montrent la requête et la réponse de l’envoi de plusieurs pièces jointes. Dans cet exemple, la requête envoie un message contenant du texte et une seule image. La requête peut comporter des parties supplémentaires afin d’inclure plusieurs pièces jointes dans le message.
+Les extraits de code suivants montrent la requête et la réponse de l’envoi de plusieurs pièces jointes. Dans cet exemple, la demande envoie un message contenant du texte et une image unique en pièce jointe. La requête peut comporter des parties supplémentaires afin d’inclure plusieurs pièces jointes dans le message.
 
 #### <a name="request"></a>Requête
 

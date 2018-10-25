@@ -5,14 +5,15 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 03/07/2018
-ms.openlocfilehash: 0406d489f7d1e27131b4b01411e86850ca4a17b8
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 06e2289dd0176364467d34846ffa7716483f6578
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39298619"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "50000406"
 ---
 # <a name="bot-framework----activity"></a>Bot Framework -- Activité
 
@@ -828,7 +829,7 @@ Une action `showImage` représente une image qui peut être affichée. Elle util
 
 `R7402` : les récepteurs PEUVENT rejeter une action `showImage` dont le champ `value` est un URI de données, tel que défini dans [RFC 2397](https://tools.ietf.org/html/rfc2397) [[9](#references)].
 
-#### <a name="signin"></a>Connexion
+#### <a name="signin"></a>SignIn
 
 Une action `signin` représente un lien hypertexte devant être géré par le système de connexion du client. Il utilise les champs suivants :
 * `type` ("`signin`")
@@ -944,7 +945,7 @@ Les entités transmettent des métadonnées relatives à une activité ou une co
 
 Nous conseillons aux parties projetant un type d’entité existant dans le format de l’entité d’activité de résoudre les conflits avec le nom de champ `type` et les incompatibilités avec l’exigence de sérialisation `R2001` dans le cadre de la liaison entre l’IRI et le schéma d’entité.
 
-#### <a name="type"></a>Type
+#### <a name="type"></a>type
 
 Le champ `type` est obligatoire. Il définit la signification et la forme de l’entité. `type` est destiné à contenir des [IRI](https://tools.ietf.org/html/rfc3987) [[3](#references)], bien qu’un petit nombre de types d’entités non-IRI soient définis dans l’[Annexe I](#appendix-ii---non-iri-entity-types).
 
@@ -962,7 +963,7 @@ Les actions suggérées peuvent être envoyées dans le contenu du message afin 
 
 `R7701` : les expéditeurs DEVRAIENT omettre le champ `suggestedActions` si le champ `actions` est vide.
 
-#### <a name="to"></a>Destination
+#### <a name="to"></a>À
 
 Le champ `to` contient les ID de compte de canal auxquels les actions suggérées doivent être présentées. Vous pouvez l’utiliser pour filtrer les actions à un sous-ensemble de participants au sein de la conversation.
 
@@ -978,7 +979,7 @@ Le champ `actions` contient une liste plate d’actions à afficher. La valeur d
 
 Les réactions aux messages représentent une interaction sociale (« j’aime », « + 1 », et ainsi de suite). Actuellement, elles ne comportent qu’un seul champ : `type`.
 
-#### <a name="type"></a>Type
+#### <a name="type"></a>type
 
 Le champ `type` décrit le type d’interaction sociale. La valeur du champ `type` est une chaîne, et sa signification est définie par le canal dans lequel l’interaction se produit. `like` et `+1` sont des valeurs courantes, bien qu’elles soient uniformes par convention et non par règle.
 
@@ -1006,11 +1007,11 @@ Le champ `type` décrit le type d’interaction sociale. La valeur du champ `typ
 
 Les [entités](#entity) d’activités communiquent des métadonnées supplémentaires concernant l’activité, telles que l’emplacement d’un utilisateur ou la version de l’application de messagerie qu’il utilise. Les types d’activités sont censés être des IRI, mais quelques noms non-IRI sont couramment utilisés. Cette annexe contient une liste exhaustive des types d’entités non-IRI pris en charge.
 
-| Ttype           | URI équivalent                          | Description               |
+| type           | URI équivalent                          | Description               |
 | -------------- | --------------------------------------- | ------------------------- |
 | GeoCoordinates | https://schema.org/GeoCoordinates       | Géo-coordonnées Schema.org |
 | Mention        | https://botframework.com/schema/mention | @-mention                 |
-| Place          | https://schema.org/Place                | Emplacement Schema.org          |
+| Emplacement          | https://schema.org/Place                | Emplacement Schema.org          |
 | Thing          | https://schema.org/Thing                | Chose Schema.org          |
 | clientInfo     | N/A                                     | Informations sur le client Skype         |
 

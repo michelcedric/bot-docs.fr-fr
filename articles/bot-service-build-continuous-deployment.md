@@ -6,14 +6,14 @@ author: ivorb
 ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
 ms.date: 09/18/2018
-ms.openlocfilehash: 45c89c911106d5b6a1e250f6e6ab3d472c90ab92
-ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
+ms.openlocfilehash: 62cbbcc560e049776b8aa891c167b9a6eaba3264
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/23/2018
-ms.locfileid: "46707985"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49997796"
 ---
 # <a name="set-up-continuous-deployment"></a>Configurer un déploiement continu
 Si votre code est archivé dans **GitHub** ou **Azure DevOps (anciennement Visual Studio Team Services)**, utilisez le déploiement continu pour déployer automatiquement les modifications de code à partir de votre référentiel source vers Azure. Dans cette rubrique, nous parlerons de la configuration du déploiement continu pour **GitHub** et **Azure DevOps**.

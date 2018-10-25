@@ -5,15 +5,16 @@ author: MalarGit
 ms.author: malarch
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/17
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 35aca6f5f50602d0a90c41997eff2e8b1d2cdb4e
-ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
+ms.openlocfilehash: 6ceeca9adc9cad9e60a73c1c7c91bea43b97fdd9
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42905611"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49997918"
 ---
 # <a name="build-a-real-time-media-bot-for-skype"></a>Concevoir un bot multimédia en temps réel pour Skype
 
@@ -34,7 +35,7 @@ Pour pouvoir utiliser la plateforme multimédia en temps réel, les configuratio
 
 * Le Service Bot doit disposer d’un certificat émis par une autorité de certification reconnue. L’empreinte numérique du certificat doit être stockée dans la configuration de Service Cloud du bot et être lu lors du démarrage du service.
 
-* Un <a href="/azure/cloud-services/cloud-services-enable-communication-role-instances#instance-input-endpoint">point de terminaison externe d’instance</a> public doit être approvisionné. Cela assigne un port public unique à chaque instance de machine virtuelle (VM) du service du bot. Ce port est utilisé par la plateforme multimédia en temps réel pour communiquer avec Skype Calling Cloud.
+* Un <a href="/azure/cloud-services/cloud-services-enable-communication-role-instances#instance-input-endpoint">point de terminaison externe d’instance</a> public doit être approvisionné. Cela assigne un port public unique à chaque instance de machine virtuelle (VM) du service du bot. Ce port est utilisé par la plateforme multimédia en temps réel pour communiquer avec Skype Calling Cloud.
   ```xml
   <InstanceInputEndpoint name="InstanceMediaControlEndpoint" protocol="tcp" localPort="20100">
     <AllocatePublicPortFrom>
@@ -65,12 +66,12 @@ Pour pouvoir utiliser la plateforme multimédia en temps réel, les configuratio
   </NetworkConfiguration>
   ```
 
-* Pendant le démarrage de l’instance de service, le script `MediaPlatformStartupScript.bat` (fourni dans le cadre du package Nuget) doit être exécuté en tant que tâche de démarrage avec des privilèges élevés. L’exécution du script doit se terminer avant l’appel de la méthode d’initialisation de la plateforme. 
+* Pendant le démarrage de l’instance de service, le script `MediaPlatformStartupScript.bat` (fourni dans le cadre du package Nuget) doit être exécuté en tant que tâche de démarrage avec des privilèges élevés. L’exécution du script doit se terminer avant l’appel de la méthode d’initialisation de la plateforme. 
 
 ```xml
 <Startup>
-<Task commandLine="MediaPlatformStartupScript.bat" executionContext="elevated" taskType="simple" />      
-</Startup> 
+<Task commandLine="MediaPlatformStartupScript.bat" executionContext="elevated" taskType="simple" />      
+</Startup> 
 ```
 
 ## <a name="initialize-the-media-platform-on-service-startup"></a>Initialiser la plateforme multimédia au démarrage du service
@@ -237,25 +238,25 @@ private Task OnIncomingCallReceived(RealTimeMediaIncomingCallEvent incomingCallE
 `OnAnswerAppHostedMediaCompleted` est déclenché lorsque l’action `AnswerAppHostedMedia` se termine. La propriété `Outcome` dans l’évènement `AnswerAppHostedMediaOutcomeEvent` indique la réussite ou l’échec. Si l’appel ne peut pas être établi, le robot doit supprimer les objets AudioSocket et VideoSocket qu’il a créés pour l’appel.
 
 ## <a name="receive-audio-media"></a>Recevoir des médias audio
-Si `AudioSocket` a été créé avec la possibilité de recevoir les données audio, l’événement `AudioMediaReceived` sera appelé chaque fois qu’une trame audio est reçue. Le robot doit s’attendre à gérer cet événement environ 50 fois par seconde, quel que soit le pair qui pourrait approvisionner le contenu audio (étant donné que des tampons de bruit de confort sont générés localement en l’absence de réception du contenu audio du pair). Chaque paquet de contenu audio est remis dans un objet `AudioMediaBuffer`. Cet objet contient un pointeur vers une mémoire tampon native allouée sur le tas qui contient le contenu audio décodé. 
+Si `AudioSocket` a été créé avec la possibilité de recevoir les données audio, l’événement `AudioMediaReceived` sera appelé chaque fois qu’une trame audio est reçue. Le robot doit s’attendre à gérer cet événement environ 50 fois par seconde, quel que soit le pair qui pourrait approvisionner le contenu audio (étant donné que des tampons de bruit de confort sont générés localement en l’absence de réception du contenu audio du pair). Chaque paquet de contenu audio est remis dans un objet `AudioMediaBuffer`. Cet objet contient un pointeur vers une mémoire tampon native allouée sur le tas qui contient le contenu audio décodé. 
 
 ```cs
 void OnAudioMediaReceived(
-            object sender,
-            AudioMediaReceivedEventArgs args)
+            object sender,
+            AudioMediaReceivedEventArgs args)
 {
-   var buffer = args.Buffer;
+   var buffer = args.Buffer;
 
    // native heap-allocated memory containing decoded content
-   IntPtr rawData = buffer.Data;            
+   IntPtr rawData = buffer.Data;            
 }
 ```
 
-Le Gestionnaire d’événements doit effectuer un retour rapidement. Il est recommandé de traiter de façon asynchrone la file d’attente de l’application de `AudioMediaBuffer`. Les événements `OnAudioMediaReceived` doivent être sérialisés par la plateforme multimédia en temps réel (autrement dit, l’événement suivant n’est pas déclenché avant que celui en cours ait été retourné). Une fois `AudioMediaBuffer` utilisé, l’application doit appeler méthode Dispose de la mémoire tampon afin que la mémoire non managée sous-jacente puisse être récupérée par la plateforme multimédia. 
+Le Gestionnaire d’événements doit effectuer un retour rapidement. Il est recommandé de traiter de façon asynchrone la file d’attente de l’application de `AudioMediaBuffer`. Les événements `OnAudioMediaReceived` doivent être sérialisés par la plateforme multimédia en temps réel (autrement dit, l’événement suivant n’est pas déclenché avant que celui en cours ait été retourné). Une fois `AudioMediaBuffer` utilisé, l’application doit appeler méthode Dispose de la mémoire tampon afin que la mémoire non managée sous-jacente puisse être récupérée par la plateforme multimédia. 
 
 ```cs
-   // release/dispose buffer when done 
-   buffer.Dispose();
+   // release/dispose buffer when done 
+   buffer.Dispose();
 ```
 
 > [!IMPORTANT]
@@ -269,15 +270,15 @@ Si le `AudioSocket` est configuré pour envoyer des média, le robot doit s’in
 
 ```cs
 void AudioSocket_OnSendStatusChanged(
-             object sender,
-             AudioSendStatusChangedEventArgs args)
+             object sender,
+             AudioSendStatusChangedEventArgs args)
 {
     switch (args.MediaSendStatus)
     {
     case MediaSendStatus.Active:
-        // notify bot to begin sending audio 
+        // notify bot to begin sending audio 
         break;
-     
+     
     case MediaSendStatus.Inactive:
         // notify bot to stop sending audio
         break;
@@ -294,19 +295,19 @@ Bien que plusieurs `VideoFormat` sont pris en charge pour l’envoi de vidéos, 
 
 ```cs
 void VideoSocket_OnSendStatusChanged(
-            object sender,
-            VideoSendStatusChangedEventArgs args)
+            object sender,
+            VideoSendStatusChangedEventArgs args)
 {
     VideoFormat preferredVideoFormat;
 
     switch (args.MediaSendStatus)
     {
     case MediaSendStatus.Active:
-        // notify bot to begin sending audio 
+        // notify bot to begin sending audio 
         // bot is recommended to use this format for sourcing video content.
         preferredVideoFormat = args.PreferredVideoSourceFormat;
         break;
-     
+     
     case MediaSendStatus.Inactive:
         // notify bot to stop sending audio
         break;

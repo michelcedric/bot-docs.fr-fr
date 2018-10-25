@@ -5,21 +5,21 @@ author: darrenj
 ms.author: darrenj
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
 ms.date: 13/12/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ddb1a7f8f189705de6b40bf2802a7bc2d1b49135
-ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
+ms.openlocfilehash: dcef01d8ba07d44aebaeeeecb5637af691caccb9
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/23/2018
-ms.locfileid: "46708612"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49997076"
 ---
 ## <a name="custom-assistant-overview"></a>Présentation de l’assistant personnalisé
 
 ## <a name="overview"></a>Vue d’ensemble
 
-Nous avons constaté que nos clients et partenaires souhaitaient ardemment être en mesure de fournir un assistant conversationnel adapté à leur marque et à leurs clients, et disponible sur un large éventail de canevas et d'appareils conversationnels. Dans la continuité de l’approche open source de Microsoft vis-à-vis du SDK Bot Framework, l’assistant personnel personnalisé open source offre un contrôle total sur l’expérience de l’utilisateur final et repose sur un ensemble de fonctionnalités de base. En outre, l’expérience peut être enrichie d’informations sur l’utilisateur final et sur les appareils/écosystèmes pour une expérience véritablement intégrée et intelligente.
+Nous avons constaté que nos clients et partenaires souhaitaient ardemment être en mesure de fournir un assistant conversationnel adapté à leur marque et à leurs clients, et disponible sur un large éventail de canevas et d’appareils conversationnels. Dans la continuité de l’approche open source de Microsoft vis-à-vis du SDK Bot Framework, l’assistant personnel personnalisé open source offre un contrôle total sur l’expérience de l’utilisateur final et repose sur un ensemble de fonctionnalités de base. En outre, l’expérience peut être enrichie d’informations sur l’utilisateur final et sur les appareils/écosystèmes pour une expérience véritablement intégrée et intelligente.
 
 Nous avons la conviction que nos clients doivent entretenir et enrichir leurs relations et leurs insights clients. Par conséquent, tout assistant personnalisé offre à nos clients et partenaires un contrôle complet sur l'expérience utilisateur. Le nom, la voix et la personnalité peuvent être modifiés pour répondre aux besoins de l’organisation. Notre solution d'assistant personnalisé simplifie la création de votre propre assistant et vous permet de démarrer en quelques minutes. 
 
@@ -86,5 +86,5 @@ L’assistant personnalisé couvre un grand nombre de scénarios industriels, do
 
 ## <a name="getting-started"></a>Mise en route
 
-Nous exécutons actuellement une préversion initiale et travaillons en étroite collaboration avec des clients et partenaires initiaux au sein d'un référentiel open source pour créer les premières expériences et proposer cette version à un public plus large dans les mois à venir. Pour faire part de votre intérêt et commencer, veuillez remplir [ce formulaire](https://aka.ms/customassistantpreviewform) pour que nous puissions vous contacter.
+Nous exécutons actuellement une préversion initiale et travaillons en étroite collaboration avec des clients et partenaires initiaux au sein d’un référentiel open source pour créer les premières expériences et proposer cette version à un public plus large dans les mois à venir. Pour faire part de votre intérêt et commencer, veuillez remplir [ce formulaire](https://aka.ms/customassistantpreviewform) pour que nous puissions vous contacter.
 

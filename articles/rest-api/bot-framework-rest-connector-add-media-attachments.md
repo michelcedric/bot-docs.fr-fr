@@ -5,14 +5,15 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 39247ec3be4da7129989041269e930de8fa766ae
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 2a2cc13020c87616799ee768fbab6e72ab81cc8b
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299409"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49997636"
 ---
 # <a name="add-media-attachments-to-messages"></a>Ajouter des pièces jointes multimédia aux messages
 > [!div class="op_single_selector"]
@@ -173,7 +174,7 @@ Le nom de l’événement multimédia **média/pause** s’affiche dans le champ
 
 - [Créer des messages](bot-framework-rest-connector-create-messages.md)
 - [Envoyer et recevoir des messages](bot-framework-rest-connector-send-and-receive-messages.md)
-- [Ajouter des cartes riches aux messages](bot-framework-rest-connector-add-rich-cards.md)
+- [Ajouter des cartes détaillées aux messages](bot-framework-rest-connector-add-rich-cards.md)
 - [Inspecteur de canaux][ChannelInspector]
 
 [ChannelInspector]: ../bot-service-channel-inspector.md

@@ -5,17 +5,18 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 68546a9c46bdeb96d31195800cee8a8253fd207b
-ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
+ms.openlocfilehash: 8fd9b181676eee24b1e9c64c79663d0d0ac8abfa
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39574746"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49997316"
 ---
-# <a name="add-media-attachments-to-messages"></a>Ajouter des pièces jointes multimédias aux messages
+# <a name="add-media-attachments-to-messages"></a>Ajouter des pièces jointes multimédia aux messages
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 

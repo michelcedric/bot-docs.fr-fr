@@ -5,20 +5,21 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 3baf5bde772e67084a6046a8d2a8e7d631b245f6
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 57babac9594118c12805ff9023cf7086e526a273
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299136"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49997937"
 ---
 # <a name="create-a-bot-with-the-bot-connector-service"></a>Créer un bot avec le service Bot Connector
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-quickstart.md)
 > - [Node.JS](../nodejs/bot-builder-nodejs-quickstart.md)
-> - [Service de robot](../bot-service-quickstart.md)
+> - [Service Bot](../bot-service-quickstart.md)
 > - [REST](../rest-api/bot-framework-rest-connector-quickstart.md)
 
 Le service Bot Connector permet à votre bot d’échanger des messages avec des canaux configurés dans le <a href="https://dev.botframework.com/" target="_blank">portail Bot Framework</a> en utilisant les standards REST et JSON sur HTTPS. Ce didacticiel vous guide tout au long des processus d’obtention d’un jeton d’accès à partir de Bot Framework et d’utilisation du service Bot Connecteur pour échanger des messages avec l’utilisateur.

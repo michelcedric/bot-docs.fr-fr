@@ -5,14 +5,15 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: d76daffcfc4661a87d1efaf85e6bb08e3e999988
-ms.sourcegitcommit: e8c513d3af5f0c514cadcbcd0a737a7393405afa
+ms.openlocfilehash: cd4a0dd73feb18aa6f82699a51ab086c55c5d2cf
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42756554"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49998303"
 ---
 # <a name="api-reference"></a>Informations de référence sur l'API
 
@@ -525,7 +526,7 @@ Définit les données d’état pour un utilisateur, pour une conversation, ou p
 
 | Propriété | type | Description |
 |----|----|----|
-| **données** | objet | Dans une requête, objet JSON qui spécifie les propriétés et les valeurs à stocker à l’aide du service Bot State. Dans une réponse, objet JSON qui spécifie les propriétés et les valeurs qui ont été stockées à l’aide du service Bot State. | 
+| **data** | objet | Dans une requête, objet JSON qui spécifie les propriétés et les valeurs à stocker à l’aide du service Bot State. Dans une réponse, objet JSON qui spécifie les propriétés et les valeurs qui ont été stockées à l’aide du service Bot State. | 
 | **eTag** | chaîne | Valeur de l’étiquette d’entité que vous pouvez utiliser pour contrôler l’accès concurrentiel aux données, pour les données que vous stockez à l’aide du service Bot State. Pour plus d’informations, consultez [Gérer les données d’état](bot-framework-rest-state.md). | 
 
 <a href="#objects">Retour au tableau Schéma</a>

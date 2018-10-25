@@ -5,27 +5,28 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 3cb6f552bee4857d3562e637b2a5728b30ac48a5
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: d69013c721552483cfd38b204936cb1c7f508f82
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299060"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49996896"
 ---
 # <a name="implement-channel-specific-functionality"></a>Implémenter une fonctionnalité spécifique du canal
 
 Certains canaux fournissent des fonctionnalités qui ne peuvent pas être implémentées à l’aide uniquement de [texte de messages et de pièces jointes](bot-framework-rest-connector-create-messages.md). Pour implémenter une fonctionnalité spécifique d’un canal, vous pouvez transmettre des métadonnées natives à un canal dans la propriété `channelData` de l’objet [Activité][Activity]. Par exemple, votre robot peut utiliser la propriété `channelData` pour demander à Telegram d’envoyer un autocollant ou demander à Office 365 d’envoyer un e-mail.
 
-Cet article explique comment utiliser une propriété `channelData` d’une activité de message pour implémenter cette fonctionnalité spécifique du canal :
+Cet article explique comment utiliser une propriété `channelData` d’activité de message pour implémenter cette fonctionnalité propre au canal :
 
-| Canal | Fonctionnalité |
+| Canal | Fonctionnalités |
 |----|----|
-| E-mail | Envoyer et recevoir un e-mail contenant un corps, un objet et des métadonnées d’importance |
+| Email | Envoyer et recevoir un e-mail qui contient un corps, un objet et des métadonnées d’importance |
 | Slack | Envoyer des messages Slack de fidélité |
 | Facebook | Envoyer des notifications Facebook en mode natif |
-| Telegram | Effectuer des actions spécifiques de Telegram, telles que le partage d’un mémo vocal ou d’un autocollant |
+| Telegram | Effectuer des actions spécifiques à Telegram, comme le partage d’un mémo vocal ou d’un autocollant |
 | Kik | Envoyer et recevoir des messages Kik natifs | 
 
 > [!NOTE]
@@ -56,7 +57,7 @@ Pour créer un message Slack de fidélité, définissez la propriété `channelD
 > [!NOTE]
 > Pour prendre en charge des boutons dans les messages Slack, vous devez activer **Messages interactifs** lorsque vous [connectez votre robot](../bot-service-manage-channels.md) au canal Slack.
 
-Cet extrait de code présente un exemple de la propriété `channelData` pour un message Slack personnalisé.
+Cet extrait de code montre un exemple de la propriété `channelData` pour un message Slack personnalisé.
 
 ```json
 "channelData": {
@@ -111,9 +112,9 @@ Cet extrait de code présente un exemple de la propriété `channelData` pour un
 }
 ```
 
-Quand un utilisateur clique sur un bouton dans un message Slack, votre robot reçoit un message de réponse dans lequel la propriété `channelData` est renseignée avec un objet JSON `payload`. L’objet `payload` spécifie le contenu du message d’origine, détermine le bouton sur lequel l’utilisateur a cliqué, et identifie ce dernier. 
+Lorsqu’un utilisateur clique sur un bouton dans un message Slack, votre bot reçoit un message de réponse dans lequel la propriété `channelData` est remplie par un objet JSON `payload`. L’objet `payload` précise le contenu du message d’origine, il identifie le bouton qui a été cliqué et identifie l’utilisateur qui a cliqué sur le bouton. 
 
-Cet extrait de code présente un exemple de la propriété `channelData` dans le message qu’un robot reçoit quand un utilisateur clique sur un bouton dans le message Slack.
+Cet extrait de code montre un exemple de la propriété `channelData` dans le message reçu par un bot lorsqu’un utilisateur clique sur un bouton dans le message Slack.
 
 ```json
 "channelData": {
@@ -131,7 +132,7 @@ Cet extrait de code présente un exemple de la propriété `channelData` dans le
 }
 ```
 
-Votre robot peut répondre à ce message [normalement](bot-framework-rest-connector-send-and-receive-messages.md#create-reply), ou publier sa réponse directement sur point le de terminaison spécifié par la propriété `response_url` de l’objet `payload`. Pour plus d’informations sur le moment et la manière de publier une réponse sur `response_url`, voir <a href="https://api.slack.com/docs/message-buttons" target="_blank">Boutons Slack</a>. 
+Votre bot peut répondre à ce message [normalement](bot-framework-rest-connector-send-and-receive-messages.md#create-reply), ou il peut publier sa réponse directement sur le point de terminaison spécifié par la propriété `response_url` de l’objet `payload`. Pour plus d’informations sur le moment et la façon de publier une réponse sur `response_url`, consultez <a href="https://api.slack.com/docs/message-buttons" target="_blank">Slack Buttons</a>. 
 
 ## <a name="create-a-facebook-notification"></a>Créer une notification de Facebook
 
@@ -140,12 +141,12 @@ Pour créer une notification de Facebook, définissez la propriété `channelDat
 | Propriété | Description |
 |----|----|
 | notification_type | Type de notification (par exemple, **REGULAR**, **SILENT_PUSH**, **NO_PUSH**).
-| attachment | Pièce jointe spécifiant une image, une vidéo ou un autre type de contenu multimédia, ou pièce jointe basée sur un modèle, telle qu’un ticket de caisse. |
+| attachment | Pièce jointe qui spécifie une image, une vidéo ou un autre type multimédia, ou encore une pièce jointe basée sur un modèle, comme un accusé de réception. |
 
 > [!NOTE]
-> Pour plus d’informations sur le format et le contenu des propriétés `notification_type` et `attachment`, voir la <a href="https://developers.facebook.com/docs/messenger-platform/send-api-reference#guidelines" target="_blank">documentation de l’API Facebook</a>. 
+> Pour plus d’informations sur le format et le contenu de la propriété `notification_type` et de la propriété `attachment`, consultez la <a href="https://developers.facebook.com/docs/messenger-platform/send-api-reference#guidelines" target="_blank">documentation de l’API Facebook</a>. 
 
-Cet extrait de code présente un exemple de la propriété `channelData` pour une pièce jointe à un ticket de caisse.
+Cet extrait de code montre un exemple de la propriété `channelData` pour une pièce jointe d’accusé de réception de Facebook.
 
 ```json
 "channelData": {
@@ -190,14 +191,14 @@ Les méthodes Telegram prises en charge sont les suivantes :
 - sendVoice
 - unbanChateMember
 
-Pour plus d’informations sur ces méthodes de Telegram et leurs paramètres, voir la <a href="https://core.telegram.org/bots/api#available-methods" target="_blank">documentation de l’API Telegram Bot</a>.
+Pour plus d’informations sur ces méthodes Telegram et leurs paramètres, consultez la <a href="https://core.telegram.org/bots/api#available-methods" target="_blank">documentation de l’API Bot Telegram</a>.
 
 > [!NOTE]
 > <ul><li>Le paramètre <code>chat_id</code> est commun à toutes les méthodes Telegram. Si vous ne spécifiez pas <code>chat_id</code> en tant que paramètre, l’infrastructure fournit l’ID pour vous.</li>
-> <li>Au lieu de passer le contenu d’un fichier en ligne, spécifiez le fichier à l’aide d’une URL et d’un type de média, comme illustré dans l’exemple ci-dessous.</li>
-> <li>Au sein de chaque message que votre robot reçoit du canal Telegram, la propriété <code>channelData</code> inclura le message que votre robot a envoyé précédemment.</li></ul>
+> <li>Au lieu de passer le contenu de fichier inline, spécifiez le fichier à l’aide d’une URL et d’un type de média, comme indiqué dans l’exemple ci-dessous.</li>
+> <li>Dans chaque message que votre bot reçoit du canal Telegram, la propriété <code>channelData</code> inclut le message précédemment envoyé par votre bot.</li></ul>
 
-Cet extrait de code présente un exemple d’une propriété `channelData` qui spécifie une seule méthode Telegram.
+Cet extrait de code montre l’exemple d’une propriété `channelData` qui spécifie une méthode Telegram unique.
 
 ```json
 "channelData": {
@@ -211,7 +212,7 @@ Cet extrait de code présente un exemple d’une propriété `channelData` qui s
 }
 ```
 
-Cet extrait de code présente un exemple d’une propriété `channelData` qui spécifie une série de méthodes Telegram.
+Cet extrait de code montre l’exemple d’une propriété `channelData` qui spécifie un tableau de méthodes Telegram.
 
 ```json
 "channelData": [
@@ -240,9 +241,9 @@ Pour créer un message Kik natif, définissez la propriété `channelData` de l�
 
 | Propriété | Description |
 |----|----|
-| messages | Série de messages Kik. Pour plus d’informations sur le format de message Kik, voir <a href="https://dev.kik.com/#/docs/messaging#message-formats" target="_blank">Formats de message Kik</a>. |
+| Cloud vers appareil | Un tableau de messages Kik. Pour obtenir des informations détaillées sur le format des messages Kik, consultez <a href="https://dev.kik.com/#/docs/messaging#message-formats" target="_blank">Formats des messages Kik</a>. |
 
-Cet extrait de code présente un exemple de la propriété `channelData` pour un message Kik natif.
+Cet extrait de code montre un exemple de la propriété `channelData` pour un message Kik natif.
 
 ```json
 "channelData": {

@@ -5,16 +5,17 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 91385fa3e8ae1410679ca5274e40db7fe38bafea
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 2aac000b7e8dd52b00659ffecde5184df6c29991
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39300376"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49998686"
 ---
-# <a name="add-speech-to-messages"></a>Ajouter des fonctionnalités vocales aux messages
+# <a name="add-speech-to-messages"></a>Ajouter de la reconnaissance vocale aux messages
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-text-to-speech.md)
 > - [Node.JS](../nodejs/bot-builder-nodejs-text-to-speech.md)

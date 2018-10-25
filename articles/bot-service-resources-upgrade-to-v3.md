@@ -5,14 +5,15 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: ca54abf89f8967b2b109895326d13a601030fdec
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 6ee7120536d42257dde2ed1411df32d807268e33
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299401"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "50000016"
 ---
 # <a name="upgrade-your-bot-to-bot-framework-api-v3"></a>Mettre à niveau votre robot vers l’API Bot Framework v3
 
@@ -128,7 +129,7 @@ L’API Bot Framework v3 introduit une implémentation plus robuste des cartes e
 Dans l’API Bot Framework v1, l’API de gestion des données d’état du robot a été intégrée dans l’API de messagerie. Dans l’API Bot Framework v3, ces API sont distinctes. Désormais, vous devez utiliser le service Bot State pour obtenir les données d’état (au lieu de supposer qu’elles seront incluses dans l’objet `Message`) et les stocker (au lieu de le transmettre dans l’objet `Message`). Pour plus d’informations sur la gestion des données d’état du robot à l’aide du service Bot State, voir [Gérer les données d’état](~/dotnet/bot-builder-dotnet-state.md).
 
 > [!IMPORTANT]
-> L’API du service Bot Framework State n’est pas recommandée pour les environnements de production et pourra être déconseillée dans une version ultérieure. Nous vous recommandons de mettre à jour votre code de robot pour qu’il utilise le stockage en mémoire à des fins de test ou pour qu’il utilise l’une des **extensions Azure** pour les robots de production. Pour plus d’informations, voir l’article **Gérer les données d’état** pour l’implémentation [.NET](~/dotnet/bot-builder-dotnet-state.md) ou [Node](~/nodejs/bot-builder-nodejs-state.md).
+> L’API du service Bot Framework State n’est pas recommandée pour les environnements de production et pourra être déconseillée dans une version ultérieure. Nous vous recommandons de mettre à jour le code de votre bot pour qu’il utilise le stockage en mémoire à des fins de test ou pour qu’il utilise l’une des **extensions Azure** pour les bots de production. Pour plus d’informations, voir l’article **Gérer les données d’état** pour l’implémentation [.NET](~/dotnet/bot-builder-dotnet-state.md) ou [Node](~/nodejs/bot-builder-nodejs-state.md).
 
 ### <a name="webconfig-changes"></a>Modifications de Web.config
 

@@ -5,15 +5,16 @@ author: BrianRandell
 ms.author: v-brra
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: cognitive-services
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 049dffd2adc700323bec943e090d369a14ff696b
-ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
+ms.openlocfilehash: 7676b7bd75a45130b62c1a691499095d6ba07291
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39574845"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "50000226"
 ---
 # <a name="cortana-skills-bot-scenario"></a>Scénario de robot Compétence Cortana
 
@@ -48,7 +49,7 @@ Le robot Cortana utilise les composants suivants :
 Vous pouvez maintenant ajouter un support à votre robot en créant une Compétence Cortana. Vous utilisez le kit Compétence Cortana pour créer de nouvelles fonctionnalités (appelées compétences) pour Cortana. Une compétence est une construction qui permet à Cortana d’en faire plus. Vous créez des compétences à intégrer avec vos robots, qui autorisent Cortana à accomplir des tâches. Dans le cadre du processus d’innovation, Cortana peut (avec le consentement de l’utilisateur) transmettre des informations sur l’utilisateur à une compétence au moment du runtime, afin que la compétence puisse personnaliser son expérience en conséquence. La connaissance contextuelle de Cortana permet à votre robot d’être utile, voire plus intelligent pour eux. Une fois invoqués, certains types de compétences peuvent manipuler l’interface de Cortana pour avoir une conversation entre la compétence et l’utilisateur final. Une fois publiés, les utilisateurs peuvent voir et utiliser votre compétence sur Cortana pour Windows 10 Anniversary Update+ (Desktop et Mobile), iOS et Android.
 
 ### <a name="application-insights"></a>Application Insights
-Application Insights vous aide à obtenir des informations exploitables grâce à la gestion des performances d’applications et à l’analytique instantanée. Vous bénéficiez de tableaux de bord simples mais complets pour surveiller les performances et gérer les alertes, ce qui vous permet de garantir que votre robot reste disponible et performant. Vous pouvez détecter rapidement les problèmes, puis lancer une analyse de la cause racine afin de les localiser et de les résoudre.
+Application Insights vous aide à obtenir des informations exploitables grâce à la gestion des performances d’applications et à l’analyse instantanée. Vous bénéficiez de tableaux de bord simples mais complets pour surveiller les performances et gérer les alertes, ce qui vous permet de garantir que votre bot reste disponible et performant. Vous pouvez détecter rapidement les problèmes, puis lancer une analyse de la cause racine afin de les localiser et de les résoudre.
 
 ## <a name="next-steps"></a>Étapes suivantes
 Découvrez ensuite le scénario de robot de productivité d’entreprise.

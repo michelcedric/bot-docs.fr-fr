@@ -5,29 +5,30 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: ead16c0ff41ae93daff8952ca135fa0771bbbe78
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 6754935070fefb890c3d5b7bd90f1c1a4c5d401d
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299360"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "50000296"
 ---
 # <a name="start-a-conversation"></a>Démarrer une conversation
 
-Les conversations Direct Line sont explicitement ouvertes par les clients et peuvent durer tant que le bot et le client y participent et tant que leurs informations d’identification sont valides. La conversation étant ouverte, le bot et le client peuvent envoyer des messages. Plusieurs clients peuvent se connecter à une conversation donnée, et chaque client peut participer pour le compte de plusieurs utilisateurs.
+Les conversations Direct Line sont explicitement ouvertes par les clients et peuvent durer tant que le bot et le client y participent et tant que leurs informations d’identification sont valides. La conversation étant ouverte, le robot et le client peuvent envoyer des messages. Plusieurs clients peuvent se connecter à une conversation donnée, et chaque client peut participer pour le compte de plusieurs utilisateurs.
 
 ## <a name="open-a-new-conversation"></a>Ouvrir une nouvelle conversation
 
-Pour ouvrir une nouvelle conversation avec un bot, émettez cette requête :
+Pour ouvrir une nouvelle conversation avec un robot, émettez la demande suivante :
 
 ```http
 POST https://directline.botframework.com/v3/directline/conversations
 Authorization: Bearer SECRET_OR_TOKEN
 ```
 
-Les extraits de code suivants illustrent la requête et la réponse pour le démarrage d’une conversation.
+Les extraits de code suivants illustrent la demande et la réponse pour le démarrage d’une conversation.
 
 ### <a name="request"></a>Requête
 

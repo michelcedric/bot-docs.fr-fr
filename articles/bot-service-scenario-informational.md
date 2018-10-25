@@ -5,15 +5,15 @@ author: BrianRandell
 ms.author: v-brra
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 43eb8e25e2a17e1d6b1d30e767dd15569fcad78b
-ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
+ms.openlocfilehash: 22902f1f590661c0973d7f0427b13ee45f0d7227
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39574865"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49998986"
 ---
 # <a name="information-bot-scenario"></a>Scénario impliquant le bot Informations
 
@@ -48,7 +48,7 @@ Le bot Informations utilise les composants suivants :
 -   Application Insights
 
 ### <a name="azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD)
-Azure Active Directory (Azure AD) est le service Microsoft de gestion des annuaires et des identités basé sur le cloud mutualisé. En votre qualité de développeur de bots, Azure AD vous permet de vous concentrer sur la génération de votre bot en simplifiant et en accélérant son intégration au sein d’une solution de gestion des identités de classe mondiale utilisée par des millions d’organisations à travers le monde. En définissant une application Azure AD, vous pouvez contrôler qui a accès à votre bot et les données présentées par ce dernier, sans avoir à implémenter votre propre système complexe d’authentification et d’autorisation.
+Azure Active Directory (Azure AD) est le service Microsoft de gestion des annuaires et des identités basé sur le cloud mutualisé. En votre qualité de développeur de robots, Azure AD vous permet de vous concentrer sur la génération de votre robot en simplifiant et en accélérant son intégration au sein d’une solution de gestion des identités de classe mondiale utilisée par des millions d’organisations à travers le monde. En définissant une application Azure AD, vous pouvez contrôler qui a accès à votre bot et les données présentées par ce dernier, sans avoir à implémenter votre propre système complexe d’authentification et d’autorisation.
 
 ### <a name="cognitive-services-qna-maker"></a>Cognitive Services : QnA Maker
 La fonctionnalité QnA Maker de Cognitive Services vous aide à fournir une source de données FAQ que vos utilisateurs peuvent interroger à partir de votre bot. En cas d’utilisation de grandes quantités d’informations stockées dans différents systèmes, il peut être utile d’aider les utilisateurs à filtrer la source et l’ensemble d’informations. Si une base de données SQL comporte d’énormes quantités d’informations, une recherche en forme libre renvoie un volume d’informations excessif. En commençant par utiliser QnA Maker, vous pouvez définir une feuille de route pour les utilisateurs de votre bot afin de leur expliquer comment poser des questions intelligentes qui sont ensuite récupérables par le biais du service Recherche Azure.
@@ -57,7 +57,7 @@ La fonctionnalité QnA Maker de Cognitive Services vous aide à fournir une sour
 Le service Recherche Azure est un service de recherche cloud pour les applications vous permettant de rechercher rapidement les index opérationnels. En l’exécutant sur Microsoft Azure, vous pouvez facilement effectuer une montée ou descente en puissance selon l’évolution de votre utilisation. Vous pouvez connecter les résultats de la recherche aux objectifs métiers en bénéficiant d’un contrôle accru sur le classement des recherches en fonction de la pertinence et en exposant les données cachées dans vos bases de données.
 
 ### <a name="application-insights"></a>Application Insights
-Application Insights vous aide à obtenir des insights actionnables grâce à la gestion des performances d’applications et à l’analytique instantanée. Vous bénéficiez de tableaux de bord simples mais complets pour surveiller les performances et gérer les alertes, ce qui vous permet de garantir que votre bot reste disponible et performant. Vous pouvez déceler rapidement les problèmes, puis lancer une analyse de la cause racine afin de localiser et résoudre les problèmes.
+Application Insights vous aide à obtenir des informations exploitables grâce à la gestion des performances d’applications et à l’analyse instantanée. Vous bénéficiez de tableaux de bord simples mais complets pour surveiller les performances et gérer les alertes, ce qui vous permet de garantir que votre bot reste disponible et performant. Vous pouvez détecter rapidement les problèmes, puis lancer une analyse de la cause racine afin de les localiser et de les résoudre.
 
 ## <a name="next-steps"></a>Étapes suivantes
 Découvrez à présent le scénario impliquant le bot Internet des objets.

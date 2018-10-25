@@ -5,15 +5,16 @@ author: v-ducvo
 ms.author: v-ducvo
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 656b6304a576c553db948a348b1c6d8c3fc5ae71
-ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
+ms.openlocfilehash: 133f085a857d1bb8bf7622e7adab19374902327d
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42905663"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49997766"
 ---
 # <a name="manage-conversation-flow-with-dialogs"></a>Gérer un flux de conversation avec des dialogues
 
@@ -23,7 +24,7 @@ ms.locfileid: "42905663"
 > - [.NET](../dotnet/bot-builder-dotnet-manage-conversation-flow.md)
 > - [Node.JS](../nodejs/bot-builder-nodejs-dialog-manage-conversation-flow.md)
 
-La gestion de flux de conversation est une tâche essentielle dans la création de robots. Un bot doit être en mesure de s’acquitter des tâches principales en finesse et de traiter les interruptions de manière appropriée. Le Kit de développement logiciel (SDK) Bot Builder pour Node.js vous permet de gérer un flux de conversation avec des dialogues.
+La gestion de flux de conversation est une tâche essentielle dans la création de bots. Un bot doit être en mesure de s’acquitter des tâches principales en finesse et de traiter les interruptions de manière appropriée. Le Kit de développement logiciel (SDK) Bot Builder pour Node.js vous permet de gérer un flux de conversation avec des dialogues.
 
 Un dialogue est comparable à une fonction dans un programme. Il est généralement conçu pour effectuer une opération spécifique, et peut être appelé aussi souvent que nécessaire. Vous pouvez enchaîner plusieurs dialogues afin de prendre en charge quasiment tous les flux de conversation que votre bot doit pouvoir traiter. Le Kit de développement logiciel (SDK) Bot Builder pour Node.js intègre différentes fonctionnalités, telles que des [invites](bot-builder-nodejs-dialog-prompt.md) et des [cascades](bot-builder-nodejs-dialog-waterfall.md), conçues pour vous aider à gérer un flux de conversation.
 

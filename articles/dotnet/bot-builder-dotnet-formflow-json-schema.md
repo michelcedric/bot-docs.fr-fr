@@ -5,15 +5,16 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 03478431822c8be0e696577a18a2e693d441509b
-ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
+ms.openlocfilehash: 8bcc957dbe2d69790cdfa7c2d7c377ed28b5fa12
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42904550"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "50000326"
 ---
 # <a name="define-a-form-using-json-schema"></a>Définir un formulaire à l’aide d’un schéma JSON
 
@@ -45,8 +46,8 @@ FormFlow étend le <a href="http://json-schema.org/documentation.html" target="_
 | Propriété | Valeur |
 |----|----|
 | OnCompletion | Script C# avec des arguments `(IDialogContext context, JObject state)` pour compléter le formulaire. |
-| Références | Références à inclure dans les scripts. Par exemple : `[assemblyReference, ...]`. Les chemins d’accès doivent être absolus ou relatifs au répertoire actuel. Par défaut, le script inclut `Microsoft.Bot.Builder.dll`. |
-| Importations | Importations à inclure dans les scripts. Par exemple : `[import, ...]`. Par défaut, le script inclut les espaces de noms `Microsoft.Bot.Builder`, `Microsoft.Bot.Builder.Dialogs`, `Microsoft.Bot.Builder.FormFlow`, `Microsoft.Bot.Builder.FormFlow.Advanced`, `System.Collections.Generic` et `System.Linq`. |
+| Références | Références à inclure dans les scripts. Par exemple : `[assemblyReference, ...]`. Les chemins d’accès doivent être absolus ou relatifs au répertoire actuel. Par défaut, le script inclut `Microsoft.Bot.Builder.dll`. |
+| Importations | Importations à inclure dans les scripts. Par exemple : `[import, ...]`. Par défaut, le script inclut les espaces de noms `Microsoft.Bot.Builder`, `Microsoft.Bot.Builder.Dialogs`, `Microsoft.Bot.Builder.FormFlow`, `Microsoft.Bot.Builder.FormFlow.Advanced`, `System.Collections.Generic` et `System.Linq`. |
 
 ### <a name="additional-properties-at-the-root-of-the-schema-or-as-peers-of-the-type-property"></a>Propriétés supplémentaires à la racine du schéma, ou en tant qu’homologues de la propriété de type
 

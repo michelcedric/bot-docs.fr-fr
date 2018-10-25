@@ -5,14 +5,14 @@ author: matvelloso
 ms.author: mateusv
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: f786f79011da5e50b37f9797dca694f0e132296c
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 6b50df60c3a8165198e8f9a55964f2f596d62406
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299448"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49998726"
 ---
 # <a name="transition-conversations-from-bot-to-human"></a>Conversations de transition de robot à humain
 
@@ -22,11 +22,11 @@ Indépendamment de l’intelligence artificielle qu’un robot possède, il peut
 
 Nombreux sont les scénarios pouvant nécessiter qu’un robot transfère le contrôle de la conversation à un humain. Parmi ces scénarios figurent le *triage*, la *réaffectation* et la *supervision*. 
 
-### <a name="triage"></a>Triage
+### <a name="triage"></a>Tri
 
 Un appel classique au support technique commence par des questions très élémentaires auxquelles un robot peut facilement répondre. En tant que premier intervenant à répondre aux demandes entrantes des utilisateurs, un robot peut collecter le nom, l’adresse, la description du problème ou toute autre information pertinente de l’utilisateur, puis transférer le contrôle de la conversation à un agent. L’utilisation d’un robot pour trier les demandes entrantes permet aux agents de consacrer leur temps à la résolution de problèmes plutôt qu’à la collecte d’informations.
 
-### <a name="escalation"></a>Réaffectation
+### <a name="escalation"></a>Escalade
 
 Dans le cadre de support technique, en plus de collecter des informations, un robot peut être en mesure de répondre à des questions élémentaires ainsi que de résoudre certains problèmes simples, tels que la réinitialisation du mot de passe d’un utilisateur. En revanche, si une conversation indique que le problème d’un utilisateur est suffisamment complexe pour nécessiter une intervention humaine, le robot doit réaffecter le problème à un agent humain. Pour implémenter ce type de scénario, un robot doit être capable de différencier les problèmes qu’il est capable de résoudre de façon autonome de ceux qu’il doit réaffecter à un être humain. Un robot peut déterminer qu’il doit transférer le contrôle de la conversation à un humain de plusieurs façons. 
 

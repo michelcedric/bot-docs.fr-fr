@@ -5,15 +5,15 @@ author: BrianRandell
 ms.author: v-brra
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 15745bc25013df2fd18b0a2045ae2314d6c361e2
-ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
+ms.openlocfilehash: f880bc9a424fd9905f7e4ced25e97e2c37155072
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39574855"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49996826"
 ---
 # <a name="commerce-bot-scenario"></a>Scénario Robot Commerce
 
@@ -51,7 +51,7 @@ Azure Active Directory (Azure AD) est le service Microsoft de gestion des annuai
 En tant que membre de la famille de technologies Cognitive Services, Language Understanding (LUIS) apporte à vos applications la puissance de l’apprentissage automatique. Actuellement, LUIS prend en charge plusieurs langues qui permettent à votre robot de comprendre les attentes d’une personne. Lors de l’intégration avec LUIS, vous exprimez une intention et définissez les entités que votre robot comprend. Vous enseignez ensuite à votre robot comment comprendre ces intentions et entités en l’entraînant avec des exemples d’énoncés. Vous avez la possibilité d’affiner votre intégration à l’aide de listes de phrases et d’expressions régulières afin que votre robot soit aussi fluide que possible pour vos besoins de conversation particuliers.
 
 ### <a name="application-insights"></a>Application Insights
-Application Insights vous aide à obtenir des informations exploitables grâce à la gestion des performances d’applications et à l’analytique instantanée. Vous bénéficiez de tableaux de bord simples mais complets pour surveiller les performances et gérer les alertes, ce qui vous permet de garantir que votre robot reste disponible et performant. Vous pouvez détecter rapidement les problèmes, puis lancer une analyse de la cause racine afin de les localiser et de les résoudre.
+Application Insights vous aide à obtenir des informations exploitables grâce à la gestion des performances d’applications et à l’analyse instantanée. Vous bénéficiez de tableaux de bord simples mais complets pour surveiller les performances et gérer les alertes, ce qui vous permet de garantir que votre bot reste disponible et performant. Vous pouvez détecter rapidement les problèmes, puis lancer une analyse de la cause racine afin de les localiser et de les résoudre.
 
 ## <a name="next-steps"></a>Étapes suivantes
 Ensuite, découvrez le scénario de robot Compétence Cortana.

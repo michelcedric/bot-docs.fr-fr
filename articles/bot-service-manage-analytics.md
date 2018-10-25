@@ -6,14 +6,15 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: abs
 ms.date: 12/13/2017
-ms.openlocfilehash: 3b0032db8e99c75ec8697f79a78cd6b0bd915db9
-ms.sourcegitcommit: e8c513d3af5f0c514cadcbcd0a737a7393405afa
+ms.openlocfilehash: 27dc7786554af14a24fc8d65b2f7ee31bc4864ef
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42756445"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49997914"
 ---
 # <a name="bot-analytics"></a>Analyse de bot
 Analytics est une extension d’[Application Insights](/azure/application-insights/app-insights-analytics). Application Insights fournit des données de **niveau de service** et d’instrumentation relatives au trafic, à la latence et aux intégrations. Analytics permet de créer des **rapports de conversation** à partir des données sur les utilisateurs, les messages et les canaux.

@@ -6,15 +6,16 @@ author: v-ducvo
 ms.author: v-ducvo
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 9/25/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: c70711d747e9646acf63b6ee206d0b8db25ef202
-ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
+ms.openlocfilehash: 07035c8f0dfc7473192d8c51667ed1f5cefbc555
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47389684"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49999394"
 ---
 # <a name="manage-simple-conversation-flow-with-dialogs"></a>Gérer un flux de conversation simple avec des dialogues
 
@@ -48,7 +49,7 @@ Dans cet exemple, nous allons créer un dialogue composé de plusieurs étapes p
 
 ### <a name="create-a-dialog-with-waterfall-steps"></a>Créer un dialogue avec des étapes en cascade
 
-**WaterfallDialog** est une implémentation spécifique d’un dialogue, qui est couramment utilisée pour recueillir des informations auprès de l’utilisateur ou pour le guider dans une série de tâches. Chaque étape de la conversation est implémentée en tant que fonction. À chaque étape, le robot [invite l’utilisateur à effectuer une entrée](bot-builder-prompts.md), attend une réponse, puis passe le résultat à l’étape suivante. Le résultat de la première fonction est transmis en tant qu’argument à la fonction suivante, et ainsi de suite.
+**WaterfallDialog** est une implémentation spécifique d’un dialogue, qui est couramment utilisée pour recueillir des informations auprès de l’utilisateur ou pour le guider dans une série de tâches. Chaque étape de la conversation est implémentée en tant que fonction. À chaque étape, le bot [invite l’utilisateur à effectuer une entrée](bot-builder-prompts.md), attend une réponse, puis passe le résultat à l’étape suivante. Le résultat de la première fonction est transmis en tant qu’argument à la fonction suivante, et ainsi de suite.
 
 L’exemple de code ci-après définit un tableau de délégués qui représente les étapes d’une **cascade**. Après chaque invite, le bot accuse réception de l’entrée utilisateur. De nombreuses méthodes vous permettent de conserver l’entrée que vous avez recueillie dans un dialogue. Consultez [Conserver les données utilisateur](bot-builder-tutorial-persist-user-inputs.md) pour découvrir certaines des options qui s’offrent à vous.
 

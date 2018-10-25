@@ -5,21 +5,22 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: f37d8e9215b0a2cd640431f237d1b8c53fad576b
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: a049d77d506fa3fa678a079de52aa424264847c9
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39298728"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49997046"
 ---
 # <a name="key-concepts-in-direct-line-api-11"></a>Concepts clés de Direct Line API 1.1
 
 Vous pouvez activer la communication entre votre bot et votre propre application cliente à l’aide de l’API Direct Line. 
 
 > [!IMPORTANT]
-> Cet article présente les concepts clés de Direct Line API 1.1 et fournit des informations sur les ressources de développement associées. Si vous créez une connexion entre votre application cliente et votre bot, utilisez plutôt [l’API Direct Line 3.0](bot-framework-rest-direct-line-3-0-concepts.md).
+> Cet article présente les concepts clés de Direct Line API 1.1 et fournit des informations sur les ressources de développement associées. Si vous créez une connexion entre votre application cliente et votre robot, utilisez plutôt [l’API Direct Line 3.0](bot-framework-rest-direct-line-3-0-concepts.md).
 
 ## <a name="authentication"></a>Authentification
 
