@@ -6,14 +6,15 @@ author: ivorb
 ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 09/26/2018
-ms.openlocfilehash: ee7a7a9f1b4c06f8ad762f750099383e218d98f2
-ms.sourcegitcommit: b8bd66fa955217cc00b6650f5d591b2b73c3254b
+ms.openlocfilehash: afb1c4a0e766df7ac2d122b3c7ca4e7959871dbb
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49326426"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49997276"
 ---
 # <a name="download-and-redeploy-bot-code"></a>Télécharger et redéployer le code d’un bot
 Azure Bot Service vous permet de télécharger l’intégralité du projet source de votre bot afin que vous puissiez travailler localement dans l’environnement de développement intégré de votre choix. Une fois que vous avez terminé la mise à jour du code, vous pouvez publier vos modifications dans le portail Azure. Nous allons vous montrer comment télécharger le code à l’aide du portail Azure et de la CLI `az`. Nous expliquerons également comment redéployer le code de votre bot mis à jour à l’aide de Visual Studio et de l’outil CLI `az`. Vous pouvez choisir la méthode qui vous convient le mieux.

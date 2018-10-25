@@ -5,14 +5,14 @@ author: DeniseMak
 ms.author: v-demak
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
 ms.date: 12/13/17
-ms.openlocfilehash: 9e86ea0fb677105be920e031979980baf479e42f
-ms.sourcegitcommit: abde9e0468b722892f94caf2029fae165f96092f
+ms.openlocfilehash: 0fdd196716c0fffb36583c0df894481b032dd83e
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48875726"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49999406"
 ---
 # <a name="troubleshooting-bot-framework-authentication"></a>Résoudre les problèmes d’authentification du Bot Framework
 
