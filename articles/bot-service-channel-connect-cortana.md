@@ -6,14 +6,15 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 04/30/2018
-ms.openlocfilehash: d8239f4139d27fd12507fed2cae45c67849ffe74
-ms.sourcegitcommit: b8bd66fa955217cc00b6650f5d591b2b73c3254b
+ms.openlocfilehash: 9e3f2f19c480a9d2fe6df0baea74d449bb584b4f
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49326357"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49999083"
 ---
 # <a name="connect-a-bot-to-cortana"></a>Connecter un bot à Cortana
 

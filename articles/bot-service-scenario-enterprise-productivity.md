@@ -5,15 +5,15 @@ author: BrianRandell
 ms.author: v-brra
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: feefa25d0c85c3aa62705b075253372f12e9146e
-ms.sourcegitcommit: b8bd66fa955217cc00b6650f5d591b2b73c3254b
+ms.openlocfilehash: 1fe68144662be3de349d05ea861a230641ae1efb
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49326376"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49996707"
 ---
 # <a name="enterprise-productivity-bot-scenario"></a>Scénario de robot de productivité d’entreprise
 
@@ -21,7 +21,7 @@ ms.locfileid: "49326376"
 
 Le robot d’entreprise montre comment vous pouvez augmenter votre productivité en intégrant un robot avec votre calendrier Office 365 et d’autres services.
 
-L’accès rapide aux informations client sans avoir à ouvrir un grand nombre de fenêtres est l’objectif du robot de productivité d’entreprise. À l’aide de commandes de conversation simples, un représentant commercial peut rechercher un client et vérifier son prochain rendez-vous via l’API Graph et Office 365. À partir de là, ils peuvent accéder aux informations spécifiques du client stockées dans Dynamics CRM, par exemple, pour récupérer un cas ou en créer un.
+L’accès rapide aux informations client sans avoir à ouvrir un grand nombre de fenêtres est l’objectif du robot de productivité d’entreprise. À l’aide de commandes de conversation simples, un représentant commercial peut rechercher un client et vérifier son prochain rendez-vous via l’API Graph et Office 365. À partir de là, ils peut accéder aux informations spécifiques du client stockées dans Dynamics CRM, par exemple, pour récupérer un cas ou en créer un.
 
 ![Diagramme de robot d’entreprise](~/media/scenarios/bot-service-scenario-enterprise-bot.png)
 

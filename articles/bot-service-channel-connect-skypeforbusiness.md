@@ -6,21 +6,22 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: f67c7ba658923873470e9653b38cd63fd1068491
-ms.sourcegitcommit: 54ed5000c67a5b59e23b667547565dd96c7302f9
+ms.openlocfilehash: 7af27340f92e3768bc00125205d5040fe3ea4d32
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49315115"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49998226"
 ---
 # <a name="connect-a-bot-to-skype-for-business"></a>Connecter un bot à Skype Entreprise
 
 Skype Entreprise Online est un moyen de rester en contact avec vos collègues et partenaires commerciaux par le biais de la messagerie instantanée, du téléphone et des appels vidéo. Étendez cette fonctionnalité en créant des bots avec lesquels les utilisateurs peuvent interagir dans l’interface de Skype Entreprise.
 
 > [!NOTE]
-> Le canal Bot Framework Skype Entreprise est actuellement pris en charge pour Skype Entreprise Online. Skype for Business Server 2015 n’est pas pris en charge. 
+> Le canal Bot Framework Skype Entreprise est actuellement pris en charge pour Skype Entreprise Online. Skype for Business Server 2015 n’est pas pris en charge. 
 
 ## <a name="enable-the-channel"></a>Activer le canal
 

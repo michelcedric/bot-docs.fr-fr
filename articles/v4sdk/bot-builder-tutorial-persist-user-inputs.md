@@ -6,15 +6,16 @@ author: v-ducvo
 ms.author: v-ducvo
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 09/19/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 61e86ce9536bc5d77dc7bd411054b2f65bce8dd9
-ms.sourcegitcommit: b8bd66fa955217cc00b6650f5d591b2b73c3254b
+ms.openlocfilehash: 36e8efefb276e5b9fb45ba6243b1b472476d5046
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49326556"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49997946"
 ---
 # <a name="persist-user-data"></a>Conserver les données utilisateur
 
@@ -352,7 +353,7 @@ Pour plus d’informations sur le stockage et l’état (de manière générale)
 
 ## <a name="create-a-greeting-dialog"></a>Créer un dialogue d’accueil
 
-Nous utiliserons un dialogue pour recueillir le nom de l’utilisateur. Pour simplifier le scénario, le dialogue renverra le nom de l’utilisateur et le bot gérera l’objet des données utilisateur et son état.
+Nous utiliserons un dialogue pour recueillir le nom de l’utilisateur. Pour simplifier le scénario, le dialogue renverra le nom de l’utilisateur et le bot gèrera l’objet des données utilisateur et son état.
 
 Créez une classe **GreetingsDialog** et incluez le code suivant.
 

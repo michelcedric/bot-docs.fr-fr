@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
-ms.openlocfilehash: 07fb6e9630996a61932da99b0575d43f4604141e
-ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
+ms.openlocfilehash: 1ce24216cfd59259ff4869d4898fb3ad3bbf41c2
+ms.sourcegitcommit: abde9e0468b722892f94caf2029fae165f96092f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47389428"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48875686"
 ---
 # <a name="application-insights-keys"></a>Clés Application Insights
 
@@ -38,6 +38,7 @@ Pour obtenir la clé d’instrumentation, effectuez les étapes suivantes :
 3. Cliquez sur **Overview**.
 
 4. Développez le bloc **Bases** et recherchez la **Clé d’instrumentation**. 
+![Capture d’écran du portail montrant la vue d’ensemble](~/media/portal-app-insights-instrumentation-key-dropdown.png)
 ![Capture d’écran du portail montrant la clé d’instrumentation](~/media/portal-app-insights-instrumentation-key.png)
 
 5. Copiez la **Clé d’instrumentation** et collez-la dans le champ **Clé d’instrumentation Application Insights** des paramètres de votre bot.

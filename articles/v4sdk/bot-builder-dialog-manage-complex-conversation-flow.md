@@ -6,15 +6,16 @@ author: v-ducvo
 ms.author: v-ducvo
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 10/03/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 871bfd9f8d693c5082fe1ccf38349f4d3d46ece2
-ms.sourcegitcommit: b8bd66fa955217cc00b6650f5d591b2b73c3254b
+ms.openlocfilehash: bbb038554801f4585cbc1e3186d139232405b47d
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49326566"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49999826"
 ---
 # <a name="manage-complex-conversation-flows-with-dialogs"></a>Gérer des flux de conversation complexes avec dialogues
 
@@ -581,7 +582,7 @@ this.dialogSet.add(new WaterfallDialog('orderDinner', [
 
 Dans le dialogue du choix du repas, nous présenterons à l’invité une liste d’options incluant les repas qu’il peut commander et les deux requêtes de traitement de commandes. Ce dialogue est en boucle jusqu’à ce que l’invité choisisse de traiter la commande ou annule sa commande.
 
-* Lorsqu’il sélectionne un repas, nous l’ajoutons à son _panier_.
+* Lorsqu’il sélectionner un repas, nous l’ajoutons à son _panier_.
 * Si l’invité choisit de traiter sa commande, nous vérifions d’abord si le panier est vide.
   * S’il est vide, nous envoyons un message d’erreur et la boucle continue.
   * Sinon, nous terminons le dialogue et renvoyons les informations du panier dans le dialogue parent.
