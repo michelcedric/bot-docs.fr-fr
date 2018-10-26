@@ -6,15 +6,16 @@ author: jonathanfingold
 ms.author: jonathanfingold
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 09/27/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ffc733eb42842becf955b912fc6c795d7f3a50d2
-ms.sourcegitcommit: bd4f9669c0d26ac2a4be1ab8e508f163a1f465f3
+ms.openlocfilehash: 032d7027db3ce83c54bbacf913c2021a22c3f356
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47430368"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49997586"
 ---
 # <a name="how-to-use-proactive-messaging"></a>Comment utiliser une messagerie proactive
 
@@ -33,7 +34,7 @@ Lorsque vous implémentez des messages proactifs dans votre bot :
 - N’envoyez pas des messages proactifs aux utilisateurs qui ont n’a pas préalablement interagi avec le bot ou sollicité un contact avec le bot par un autre moyen, tel qu’un message électronique ou un SMS.
 
 Un **message proactif ad hoc** constitue le type de message proactif le plus simple.
-Le bot injecte simplement le message dans la conversation chaque fois qu’il est déclenché, que l’utilisateur soit ou non déjà engagé dans un autre sujet de conversation avec le bot, et ne tentera pas de modifier la conversation d’une quelconque manière.
+Le bot injecte simplement le message dans la conversation chaque fois qu’il est déclenché, que l’utilisateur soit ou non déjà engagé dans une autre sujet de conversation avec le bot, et ne tentera pas de modifier la conversation d’une quelconque manière.
 
 Pour gérer plus facilement les notifications, pensez à d’autres méthodes pour intégrer la notification dans le flux de messages. Par exemple, vous pouvez définir un indicateur dans l’état de la conversation ou ajouter la notification à une file d’attente.
 
