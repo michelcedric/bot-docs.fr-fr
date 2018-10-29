@@ -6,15 +6,16 @@ author: johnataylor
 ms.author: johtaylo
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 9/22/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 2cf5da32b563c310ee201090c938da9ff410a70c
-ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
+ms.openlocfilehash: 45bca42ddce527826d2723bc9a20a3c3e6c5aebe
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/23/2018
-ms.locfileid: "46708697"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49998606"
 ---
 # <a name="dialogs-library"></a>Bibliothèque des dialogues
 
@@ -22,14 +23,14 @@ ms.locfileid: "46708697"
 
 Le concept de gestion des conversations dans le SDK est centré autour des dialogues. Les objets de dialogue traitent les activités entrantes et génèrent des réponses sortantes. La logique métier du bot s’exécute directement ou indirectement dans les classes de dialogue.
 
-Lors de l’exécution, les instances de dialogue sont organisées dans une pile. Le dialogue en haut de la pile est appelé ActiveDialog (dialogue actif). Le dialogue actuellement actif traite l’activité entrante. Entre chaque tour de la conversation (qui n’est pas limitée dans le temps et peut-être de plusieurs jours), la pile est conservée. 
+Lors de l’exécution, les instances de dialogue sont organisées dans une pile. Le dialogue en haut de la pile est appelé ActiveDialog (dialogue actif). Le dialogue actuellement actif traite l’activité entrante. Entre chaque tour de la conversation (qui n’est pas limitée dans le temps et qui peut s’étendre sur plusieurs jours), la pile est conservée. 
 
 Un dialogue implémente trois fonctions principales :
 - BeginDialog
 - ContinueDialog
 - ResumeDialog
 
-Lors de l’exécution, les dialogues et la classe DialogContext déterminent ensemble le dialogue approprié pour gérer l’activité. La classe DialogContext lie la pile de dialogues persistante, l’activité entrante et la classe DialogSet. DialogSet contient des dialogues que le bot peut appeler.
+Lors de l’exécution, les dialogues et les classes DialogContext déterminent ensemble le dialogue approprié pour gérer l’activité. La classe DialogContext lie la pile de dialogues persistante, l’activité entrante et la classe DialogSet. DialogSet contient des dialogues que le bot peut appeler.
 
 L’interface de DialogContext reflète la notion sous-jacente de début et de poursuite du dialogue. Le modèle général pour l’application est de toujours appeler ContinueDialog en premier. S’il n’existe aucune pile et donc aucun ActiveDialog, l’application doit commencer le dialogue qu’elle choisit en appelant BeginDialog sur DialogContext. L’entrée de dialogue correspondante dans DialogSet sera poussée sur la pile (techniquement, il s’agit de l’identifiant du dialogue qui est ajouté à la pile). Ensuite, elle délègue un appel à BeginDialog sur l’objet spécifique de dialogue. Si un ActiveDialog avait existé, il aurait simplement délégué l’appel au ContinueDialog du dialogue et aurait donné à ce dernier les propriétés persistantes associées.
 

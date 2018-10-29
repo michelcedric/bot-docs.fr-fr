@@ -6,15 +6,15 @@ author: ivorb
 ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
 ms.date: 04/09/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4195ae016513c809e4677879e0abe1b2bf8d799e
-ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
+ms.openlocfilehash: 27516a73f625eea9c6d2cf8a09234f4068d380e3
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47389778"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49997456"
 ---
 # <a name="testing-and-debugging-guidelines"></a>Recommandations en matière de test et de débogage
 
@@ -50,7 +50,8 @@ Toute une série d’outils est fournie à cette fin. Par exemple, [Azure Bot Fr
 
 ### <a name="level-2-use-a-direct-line-client"></a>Niveau 2 : Utiliser un client Direct Line
 
-Après avoir vérifié que votre robot semble fonctionner comme prévu, l’étape suivante consiste à le connecter à un canal. Pour ce faire, vous pouvez déployer votre bot sur un serveur intermédiaire et créer votre propre client Direct Line <!--IBTODO [Direct Line client](bot-builder-howto-direct-line.md)--> sur lequel votre bot peut se connecter.
+Après avoir vérifié que votre robot semble fonctionner comme prévu, l’étape suivante consiste à le connecter à un canal. Pour ce faire, vous pouvez déployer votre bot sur un serveur intermédiaire et créer votre propre client DirectLine sur lequel votre bot peut se connecter.
+<!--IBTODO [Direct Line client](bot-builder-howto-direct-line.md)-->
 
 La création de votre propre client vous permet de définir le fonctionnement interne du canal et de tester de façon précise la réponse de votre robot à certains échanges d’activités. Une fois que la connexion à votre client est établie, exécutez vos tests pour configurer l’état de votre robot et vérifier vos fonctionnalités. Si votre robot utilise une fonctionnalité comme des données vocales, il est possible de la vérifier à l’aide de ces canaux.
 

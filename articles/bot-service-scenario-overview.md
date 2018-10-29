@@ -5,15 +5,15 @@ author: BrianRandell
 ms.author: v-brra
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 8d1ae09585898ce8babde6c06e525a0ade46c761
-ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
+ms.openlocfilehash: e195f83eefd5f162b74f8891f3b174efc8934700
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39574915"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49997964"
 ---
 # <a name="bot-scenarios"></a>Scénarios impliquant des bots
 
@@ -44,7 +44,7 @@ Souvent, les informations sont enfouies dans des banques de données structurée
 ## <a name="iot-bot-scenario"></a>Scénario impliquant le bot IoT
 Le [bot IoT](bot-service-scenario-internet-things.md) vous permet de contrôler facilement les appareils de votre maison, comme l’éclairage Philips Hue, à l’aide des commandes de conversation interactive.
 
-Avec ce simple bot et le service gratuit IFTTT, vous pouvez contrôler vos lumières Philips Hue. En tant qu’appareil IoT, Philips Hue peut être contrôlé localement par le biais de son API exposée. Toutefois, cette API n’est pas exposée pour l’accès général en dehors du réseau local. Le service IFTTT est « [compatible avec Hue](http://www2.meethue.com/en-us/friends-of-hue/ifttt/) ». Il a donc exposé plusieurs commandes de contrôle que vous pouvez exécuter, comme allumer et éteindre la lumière, ou régler la couleur ou l’intensité de la lumière.
+Avec ce simple bot et le service gratuit IFTTT, vous pouvez contrôler vos lumières Philips Hue. En tant qu’appareil IoT, Philips Hue peut être contrôlé localement par le biais de son API exposée. Toutefois, cette API n’est pas exposée pour l’accès général en dehors du réseau local. Le service IFTTT est « [compatible avec Hue](http://www2.meethue.com/en-us/friends-of-hue/ifttt/) ». Il a donc exposé plusieurs commandes de contrôle que vous pouvez exécuter, comme allumer et éteindre la lumière, régler la couleur ou l’intensité de la lumière.
 
 ## <a name="next-steps"></a>Étapes suivantes
 Maintenant que vous avez eu une vue d’ensemble des scénarios, vous pouvez approfondir chacun d’eux.

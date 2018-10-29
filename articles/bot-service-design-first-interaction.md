@@ -6,14 +6,15 @@ author: matvelloso
 ms.author: mateusv
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: d36f043ec3e268b7c56abef7253ddf6274a71a7e
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: f59a7acbdb7d580aebeef6ffe81d8b15505aed90
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299525"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49999806"
 ---
 # <a name="design-a-bots-first-user-interaction"></a>Concevoir une première interaction d’utilisateur avec un robot
 
@@ -34,21 +35,21 @@ Considérons les deux conceptions suivantes :
 
 ![robot](~/media/bot-service-design-first-interaction/hello2.png)
 
-Démarrer le robot avec une question ouverte telle que « Comment puis-je vous aider ? » n’est généralement pas recommandé. Si votre robot peut faire une centaine de choses différentes, il y a de fortes chances pour que les utilisateurs ne puissent pas deviner la nature de la plupart d’entre elles. Votre robot ne leur ayant pas dit ce qu’il peut faire, comment pourraient-ils le savoir ?
+Démarrer le bot avec une question ouverte telle que « Comment puis-je vous aider ? » n’est généralement pas recommandé. Si votre robot peut faire une centaine de choses différentes, il y a de fortes chances pour que les utilisateurs ne puissent pas deviner la nature de la plupart d’entre elles. Votre robot ne leur ayant pas dit ce qu’il peut faire, comment pourraient-ils le savoir ?
 
 Les menus offrent une solution simple à ce problème. Tout d’abord, en répertoriant les options disponibles, votre robot informe l’utilisateur de ses capacités. Deuxièmement, les menus évitent à l’utilisateur de devoir trop saisir en lui permettant de simplement cliquer. Enfin, l’utilisation de menus peut simplifier considérablement vos modèles de langage naturel en limitant la portée de l’entrée que le robot peut recevoir de l’utilisateur. 
 
 > [!TIP]
 > Les menus constituent un outil précieux lors de la conception de robots pour une expérience utilisateur exceptionnelle. Ne les écartez pas sous prétexte qu’ils ne sont pas « assez intelligents ». Vous pouvez concevoir votre robot de façon à ce qu’il utilise des menus tout en prenant en charge la saisie sous forme libre. Si un utilisateur répond au menu initial en tapant plutôt qu’en sélectionnant une option de menu, votre robot peut tenter d’analyser l’entrée textuelle de l’utilisateur. 
 
-Vous pouvez également poser des questions plus pointues pour orienter l’utilisateur si le robot a une fonction spécifique. Par exemple, si votre robot est chargé de prendre des commandes de sandwich, votre première interaction pourrait être « Bonjour ! Je suis ici pour prendre votre commande sandwich. Quel type de pain voulez-vous ? Nous avons du pain blanc, de froment, ou du pain de seigle. » De cette manière, l’utilisateur sait comment répondre, et reçoit des repères pour naviguer dans la conversation.
+Vous pouvez également poser des questions plus pointues pour orienter l’utilisateur si le robot a une fonction spécifique. Par exemple, si votre bot est chargé de prendre des commandes de sandwich, votre première interaction pourrait être « Bonjour ! Je suis ici pour prendre la commande de votre sandwich. Quel type de pain voulez-vous ? Nous avons du pain blanc, de froment, ou du pain de seigle. » De cette manière, l’utilisateur sait comment répondre, et reçoit des repères pour naviguer dans la conversation.
 
 ## <a name="other-considerations"></a>Autres points à considérer
 
 En plus de fournir une première interaction intuitive et aisément navigable, un robot bien conçu permet à l’utilisateur d’accéder à des informations sur sa politique de confidentialité et ses conditions d’utilisation. 
 
 > [!TIP]
-> Si votre robot collecte des données personnelles de l’utilisateur, il est important de le faire savoir et de décrire l’usage qui sera fait des ces données.
+> Si votre robot collecte des données personnelles de l’utilisateur, il est important de le faire savoir et de décrire l’usage qui sera fait de ces données.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

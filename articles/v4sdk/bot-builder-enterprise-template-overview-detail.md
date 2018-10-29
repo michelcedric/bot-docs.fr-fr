@@ -1,19 +1,19 @@
 ---
 title: Présentation détaillée du modèle de bot d’entreprise | Microsoft Docs
-description: Obtenez des informations sur la conception du modèle de bot d’entreprise.
+description: Obtenez des informations sur la conception du modèle de bot d’entreprise
 author: darrenj
 ms.author: darrenj
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 6f295794ca7d3cc17688337e70df2a52cdb665ed
-ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
+ms.openlocfilehash: 2ee47d472518e54cf07b86648e270e40f8f015c0
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/23/2018
-ms.locfileid: "46708673"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49997226"
 ---
 # <a name="enterprise-template---detailed-overview"></a>Modèle d’entreprise – Présentation détaillée
 

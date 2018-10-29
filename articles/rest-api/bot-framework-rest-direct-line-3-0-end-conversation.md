@@ -5,18 +5,22 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: ac984609acfdd8f85088bd47ccded1f45e953b2c
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: f0985f28fd1744bcfb6bf5cea1c2230254670e01
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39299677"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "50000206"
 ---
 # <a name="end-a-conversation"></a>Mettre fin à une conversation
 
 Un client ou un robot peut signaler la fin d’une conversation en ligne directe en envoyant une [activité](bot-framework-rest-connector-activities.md) **endOfConversation**. 
+
+> [!NOTE] 
+> L’événement endOfConversation est uniquement pris en charge par le canal Cortana, cette fonctionnalité n’est pas implémentée par les autres canaux. Chaque canal détermine comment réagir à une activité endOfConversation. Si vous concevez un client DirectLine, vous devrez mettre à jour le client pour qu’il se comporte de manière adéquate, en générant par exemple une erreur si le bot a envoyé une activité à une conversation déjà terminée.
 
 ## <a name="send-an-endofconversation-activity"></a>Envoyer une activité endOfConversation
 

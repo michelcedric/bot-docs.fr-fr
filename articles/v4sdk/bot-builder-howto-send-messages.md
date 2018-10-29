@@ -6,15 +6,16 @@ author: ivorb
 ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 08/23/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 5b7faaae63bdc084dac570cb33ebbc755ccbcc19
-ms.sourcegitcommit: aef7d80ceb9c3ec1cfb40131709a714c42960965
+ms.openlocfilehash: 2e2c5f54d4ca077ad2b916787613f782779707ac
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49383114"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49996786"
 ---
 # <a name="send-text-and-spoken-messages"></a>Envoyer des messages texte et oraux
 
@@ -30,10 +31,10 @@ Pour envoyer un message texte simple, spécifiez la chaîne que vous souhaitez e
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-Dans la méthode **OnTurn** du bot, utilisez la méthode **SendActivity** de l’objet de contexte de tour pour envoyer une réponse de message unique. Vous pouvez également utiliser la méthode **SendActivities** de l’objet pour envoyer plusieurs réponses à la fois.
+Dans la méthode **OnTurn** du bot, utilisez la méthode **SendActivityAsync** de l’objet de contexte de tour pour envoyer une réponse de message unique. Vous pouvez également utiliser la méthode **SendActivitiesAsync** de l’objet pour envoyer plusieurs réponses à la fois.
 
 ```cs
-await context.SendActivity("Greetings from sample message.");
+await context.SendActivityAsync("Greetings from sample message.");
 ```
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
@@ -58,7 +59,7 @@ Certains canaux prennent en charge les robots de reconnaissance vocale, ce qui l
 Utilisez le paramètre facultatif **speak** pour fournir le texte à énoncer dans le cadre de la réponse.
 
 ```cs
-await context.SendActivity(
+await context.SendActivityAsync(
     "This is the text to be displayed.",
     "This is the text to be spoken.");
 ```

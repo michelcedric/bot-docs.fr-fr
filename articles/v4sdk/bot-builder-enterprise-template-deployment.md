@@ -5,15 +5,15 @@ author: darrenj
 ms.author: darrenj
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 0f4c5e0db9dae86f81414ccd9bbb1e5de4dce624
-ms.sourcegitcommit: b8bd66fa955217cc00b6650f5d591b2b73c3254b
+ms.openlocfilehash: 32be8e2a4047c3c25dcdf2598eea3a7bbd12fbcc
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49326396"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49999026"
 ---
 # <a name="enterprise-bot-template---deploying-your-bot"></a>Modèle de bot d’entreprise – Déployer votre bot
 
@@ -30,7 +30,7 @@ ms.locfileid: "49326396"
 npm install -g ludown luis-apis qnamaker botdispatch msbot luisgen chatdown
 ```
 
-- Installez les outils de ligne de commande (CLI) Azure [à partir de cette page](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?view=azure-cli-latest).
+- Installez les outils de ligne de commande (CLI) Azure à partir de [cette page](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?view=azure-cli-latest). Si vous avez déjà installé l’outil de ligne de commande (CLI) Azure Bot Service, assurez-vous de le mettre à jour vers la toute dernière version en désinstallant votre version actuelle, puis en installant la nouvelle.
 
 - Installez l’extension AZ pour le service Bot.
 ```shell
@@ -101,6 +101,8 @@ Une fois terminé, exécutez votre projet de bot au sein de votre environnement 
 
 Tapez ```hi``` pour vérifier que tout fonctionne.
 
+En cas de problème avec l’émulateur Bot Framework, vérifiez d’abord que vous disposez de la toute dernière version de l’émulateur. Si votre ancienne version de l’émulateur ne se met pas à jour correctement, désinstallez-la et réinstallez l’émulateur.
+
 ## <a name="deploy-to-azure"></a>Déployer dans Azure
 
 Le test peut être effectué localement de bout en bout. Lorsque vous êtes prêt à déployer votre bot dans Azure pour effectuer des tests supplémentaires, vous pouvez utiliser la commande suivante pour publier le code source. Vous pouvez l’exécuter dès que vous souhaitez envoyer des mises à jour du code source.
@@ -123,7 +125,7 @@ Inscrivez `SignInDialog` dans le constructeur MainDialog :
 
 Ajoutez les éléments suivants dans votre code, à l’emplacement souhaité, pour tester un flux de connexion simple :
     
-`var signInResult = await dc.BeginAsync(SignInDialog.Name);`
+`var signInResult = await dc.BeginDialogAsync(nameof(SignInDialog));`
 
 ### <a name="content-moderation"></a>Modération du contenu
 

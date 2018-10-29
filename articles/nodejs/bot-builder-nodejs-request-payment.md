@@ -5,15 +5,16 @@ author: v-ducvo
 ms.author: v-ducvo
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 783d9e1fb3b90f6ba977440b3eefae5c16a1b8ca
-ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
+ms.openlocfilehash: 5bdb699e242784883f7c1a5dda895a31ff80efb1
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42905834"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49999159"
 ---
 # <a name="request-payment"></a>Demander un paiement
 
@@ -101,7 +102,8 @@ Des rappels HTTP seront envoyés à votre bot pour indiquer qu’il doit effectu
 ### <a name="shipping-address-update-and-shipping-option-update-callbacks"></a>Rappels de mise à jour de l’adresse de livraison et de mise à jour de l’option de livraison
 
 Lors de la réception d’un rappel de mise à jour de l’adresse de livraison ou de mise à jour de l’option de livraison, votre bot reçoit l’état actuel des détails de paiement du client dans la propriété `value` de l’événement.
-En tant que vendeur, vous devez considérer ces rappels comme statiques ; avec des détails de paiement d’entrée, vous allez calculer des détails de paiement de sortie et échouer si l’état de l’entrée fourni par le client n’est pas valide pour une raison quelconque. Si le bot détermine que les informations données sont valides en l’état, envoyez simplement le code d’état HTTP `200 OK` ainsi que les détails de paiement non modifiés. Le bot peut également envoyer le code d’état HTTP `200 OK` avec des détails de paiement mis à jour qui doivent être appliqués avant de pouvoir traiter la commande. Dans certains cas, votre bot peut déterminer que les informations mises à jour ne sont pas valides et que la commande ne peut pas être traitée telle quelle. Par exemple, l’adresse de livraison de l’utilisateur peut spécifier un pays dans lequel le fournisseur du produit ne livre pas. Dans ce cas, le bot peut envoyer le code d’état HTTP `200 OK` et un message pour renseigner la propriété d’erreur de l’objet des détails de paiement. L’envoi d’un code d’état HTTP compris entre `400` et `500` entraîne une erreur générique pour le client.
+En tant que vendeur, vous devez considérer ces rappels comme statiques ; avec des détails de paiement d’entrée, vous allez calculer des détails de paiement de sortie et échouer si l’état de l’entrée fourni par le client n’est pas valide pour une raison quelconque. 
+Si le bot détermine que les informations données sont valides en l’état, envoyez simplement le code d’état HTTP `200 OK` ainsi que les détails de paiement non modifiés. Le bot peut également envoyer le code d’état HTTP `200 OK` avec des détails de paiement mis à jour qui doivent être appliqués avant de pouvoir traiter la commande. Dans certains cas, votre bot peut déterminer que les informations mises à jour ne sont pas valides et que la commande ne peut pas être traitée telle quelle. Par exemple, l’adresse de livraison de l’utilisateur peut spécifier un pays dans lequel le fournisseur du produit ne livre pas. Dans ce cas, le bot peut envoyer le code d’état HTTP `200 OK` et un message pour renseigner la propriété d’erreur de l’objet des détails de paiement. L’envoi d’un code d’état HTTP compris entre `400` et `500` entraîne une erreur générique pour le client.
 
 ### <a name="payment-complete-callbacks"></a>Rappels de finalisation de paiement
 
