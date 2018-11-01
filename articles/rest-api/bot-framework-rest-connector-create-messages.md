@@ -23,7 +23,7 @@ Votre bot enverra des objets [Activity][Activity] de type **message** pour commu
 
 Le texte du message peut être mis en forme à l’aide de **brut**, **markdown**, ou **xml**. Le format par défaut de la propriété `textFormat` est **markdown** et interprète le texte à l’aide de normes de mise en forme Markdown. Le niveau de prise en charge du format de texte varie en fonction des canaux. Pour vérifier si une fonctionnalité que vous souhaitez utiliser est prise en charge par le canal ciblé, affichez un aperçu de la fonctionnalité avec [Channel Inspector][ChannelInspector]. 
 
-La propriété `textFormat` d’un objet [Activity][Activity] peut être utilisée pour spécifier le format du texte. Par exemple, pour créer un message de base contenant uniquement du texte brut, définissez la propriété `textFormat` de l’objet [Activity] [ Activity] sur **brut**, définissez la propriété `text` sur les contenus du message et définissez la propriété `locale` sur les paramètres régionaux de l’expéditeur. 
+La propriété `textFormat` d’un objet [Activity][Activity] peut être utilisée pour spécifier le format du texte. Par exemple, pour créer un message de base contenant uniquement du texte brut, définissez la propriété `textFormat` de l’objet [Activity][Activity] sur **brut**, définissez la propriété `text` sur les contenus du message et définissez la propriété `locale` sur les paramètres régionaux de l’expéditeur. 
 
 ## <a name="attachments"></a>Pièces jointes
 

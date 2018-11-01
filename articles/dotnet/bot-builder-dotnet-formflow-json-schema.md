@@ -56,7 +56,7 @@ FormFlow étend le <a href="http://json-schema.org/documentation.html" target="_
 | Modèles | `{ TemplateUsage: { Patterns: [string, ...], <args> }, ...}` |
 | Prompt | `{ Patterns:[string, ...] <args>}` |
 
-Pour spécifier des modèles et des invites dans le schéma JSON, utilisez le même vocabulaire tel que défini par [TemplateAttribute] [ templateAttribute] et [PromptAttribute] [ promptAttribute]. Les noms et valeurs du schéma doivent correspondre aux noms et valeurs de la propriété dans l’énumération C# sous-jacente. Par exemple, cet extrait de schéma définit un modèle qui remplace le modèle `TemplateUsage.NotUnderstood` et spécifie un `TemplateBaseAttribute.ChoiceStyle` : 
+Pour spécifier des modèles et des invites dans le schéma JSON, utilisez le même vocabulaire tel que défini par [TemplateAttribute][templateAttribute] et [PromptAttribute][promptAttribute]. Les noms et valeurs du schéma doivent correspondre aux noms et valeurs de la propriété dans l’énumération C# sous-jacente. Par exemple, cet extrait de schéma définit un modèle qui remplace le modèle `TemplateUsage.NotUnderstood` et spécifie un `TemplateBaseAttribute.ChoiceStyle` : 
 
 ```json
 "Templates":{ "NotUnderstood": { "Patterns": ["I don't get it"], "ChoiceStyle":"Auto"}}
