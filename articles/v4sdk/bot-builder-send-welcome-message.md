@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 09/23/2018
+ms.date: 10/31/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 09ace7b625fe0c66b3ba853249ef5bfc9c32084b
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: f5549385106cab890269e9a5fafacc00dc331520
+ms.sourcegitcommit: a496714fb72550a743d738702f4f79e254c69d06
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998526"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50736607"
 ---
 # <a name="send-welcome-message-to-users"></a>Envoyer un message de bienvenue aux utilisateurs
 
@@ -26,6 +26,8 @@ Notre article précédent sur la conception de l’interface [d’accueil de l�
 ## <a name="same-welcome-for-different-channels"></a>Accueil similaire pour les différents canaux
 
 L’exemple suivant surveille les nouvelles activités de _mise à jour de la conversation_, envoie un seul message de bienvenue lorsque l’utilisateur rejoint la conversation, et définit un indicateur d’état Invite pour ignorer l’entrée de conversation initiale de l’utilisateur. Le code ci-dessous se sert de l’exemple d’accueil de l’utilisateur du référentiel GitHub pour les codes [C#](https://aka.ms/bot-welcome-sample-cs) et [JS](https://aka.ms/bot-welcome-sample-js).
+
+[!INCLUDE [alert-await-send-activity](../includes/alert-await-send-activity.md)]
 
 ## <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
