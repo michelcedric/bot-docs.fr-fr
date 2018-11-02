@@ -20,7 +20,7 @@ ms.locfileid: "49997696"
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
-La section [Fonctionnalités de base de FormFlow](bot-builder-dotnet-formflow.md) décrit une implémentation FormFlow de base offrant une expérience utilisateur assez générique, et la section [Fonctionnalités avancées de FormFlow](bot-builder-dotnet-formflow-advanced.md) explique comment personnaliser l’expérience utilisateur à l’aide d’une logique métier et d’attributs. Cet article décrit comment utiliser [FormBuilder] [ formBuilder] pour personnaliser encore davantage l’expérience utilisateur en spécifiant la séquence dans laquelle le formulaire exécute les étapes et en définissant de façon dynamique les valeurs de champ, les confirmations et les messages. 
+La section [Fonctionnalités de base de FormFlow](bot-builder-dotnet-formflow.md) décrit une implémentation FormFlow de base offrant une expérience utilisateur assez générique, et la section [Fonctionnalités avancées de FormFlow](bot-builder-dotnet-formflow-advanced.md) explique comment personnaliser l’expérience utilisateur à l’aide d’une logique métier et d’attributs. Cet article décrit comment utiliser [FormBuilder][formBuilder] pour personnaliser encore davantage l’expérience utilisateur en spécifiant la séquence dans laquelle le formulaire exécute les étapes et en définissant de façon dynamique les valeurs de champ, les confirmations et les messages. 
 
 ## <a name="dynamically-define-field-values-confirmations-and-messages"></a>Définir de façon dynamique des valeurs de champ, des confirmations et des messages
 
