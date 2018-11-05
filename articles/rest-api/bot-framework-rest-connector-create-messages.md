@@ -43,7 +43,7 @@ Pour transmettre des <a href="https://schema.org/Place" target="_blank">informat
 
 ## <a name="channel-data"></a>Données de canal
 
-La propriété `channelData` de l’objet [Activity] [ Activity] peut être utilisée pour implémenter les fonctionnalités spécifiques au canal. Pour plus d’informations, consultez [Implémenter une fonctionnalité spécifique au canal](bot-framework-rest-connector-channeldata.md).
+La propriété `channelData` de l’objet [Activity][Activity] peut être utilisée pour implémenter les fonctionnalités spécifiques au canal. Pour plus d’informations, consultez [Implémenter une fonctionnalité spécifique au canal](bot-framework-rest-connector-channeldata.md).
 
 ## <a name="text-to-speech"></a>Synthèse vocale
 
