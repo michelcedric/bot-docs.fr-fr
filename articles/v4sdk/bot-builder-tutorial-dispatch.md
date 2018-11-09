@@ -1,5 +1,5 @@
 ---
-title: Intégrer plusieurs services LUIS et QnA avec l’outil Dispatch | Microsoft Docs
+title: Utiliser les services LUIS et QnA avec l’outil Dispatch | Microsoft Docs
 description: Découvrez comment utiliser LUIS et QnA Maker dans votre bot.
 keywords: Luis, QnA, outil Dispatch, services multiples
 author: DeniseMak
@@ -8,16 +8,16 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 10/09/2018
+ms.date: 10/31/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: e59a7fd86e3802ea23d59a439165a194314639f8
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 4d029dc7361ac8a7fadb61141faf60d8a62eab3c
+ms.sourcegitcommit: a496714fb72550a743d738702f4f79e254c69d06
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997396"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50736677"
 ---
-# <a name="integrate-multiple-luis-and-qna-services-with-the-dispatch-tool"></a>Intégrer plusieurs services LUIS et QnA avec l’outil Dispatch
+# <a name="use-luis-and-qna-services-with-the-dispatch-tool"></a>Utiliser les services LUIS et QnA avec l’outil Dispatch
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
@@ -31,7 +31,9 @@ Ce tutoriel montre comment utiliser un modèle LUIS généré par l’outil Disp
 | Application LUIS | Météo | Reconnaît les intentions Weather.GetForecast et Weather.GetCondition avec les données de localisation.|
 | Service QnAMaker | Forum Aux Questions  | Fournit des réponses à certaines questions simples concernant le bot. |
 
-Le code présenté dans cet article est extrait de l’exemple **Traitement du langage naturel avec Dispatch** [[C#](https://aka.ms/dispatch-sample-cs)<!-- | [JS](https://aka.ms/dispatch-sample-js)-->].
+Le code présenté dans cet article est extrait de l’exemple **Traitement du langage naturel avec Dispatch** [[C#](https://aka.ms/dispatch-sample-cs)].
+
+<!-- | [JS](https://aka.ms/dispatch-sample-js)-->
 
 Consultez la section [Language Understanding](bot-builder-concept-luis.md) pour une vue d’ensemble des services de langage. Consultez les articles sur [LUIS](bot-builder-howto-v4-luis.md) et [QnA Maker](bot-builder-howto-qna.md) pour obtenir des instructions sur l’implémentation de ces applications et services dans un bot.
 

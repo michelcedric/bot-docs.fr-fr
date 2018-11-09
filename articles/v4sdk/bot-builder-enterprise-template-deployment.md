@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 32be8e2a4047c3c25dcdf2598eea3a7bbd12fbcc
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 06e91d4b7d320078e83c3523e1326b82ee3fe759
+ms.sourcegitcommit: 49a76dd34d4c93c683cce6c2b8b156ce3f53280e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999026"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50134699"
 ---
 # <a name="enterprise-bot-template---deploying-your-bot"></a>Modèle de bot d’entreprise – Déployer votre bot
 
@@ -21,6 +21,8 @@ ms.locfileid: "49999026"
 > Cet article s’applique à la version v4 du SDK. 
 
 ## <a name="prerequisites"></a>Prérequis
+
+- Vérifiez que vous avez mis [.NET Core](https://www.microsoft.com/net/download) au niveau de la dernière version.
 
 - Vérifiez que le [gestionnaire de package Node](https://nodejs.org/en/) est installé.
 
@@ -40,7 +42,7 @@ az extension add -n botservice
 ## <a name="configuration"></a>Configuration
 
 - Récupérer votre clé de création LUIS
-   - Consultez [cette page](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-reference-regions) de documentation pour connaître le portail LUIS correspondant à la région de votre déploiement. 
+   - Consultez [cette page](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-reference-regions) de documentation pour connaître le portail LUIS correspondant à la région de votre déploiement. Notez que www.luis.ai fait référence à la région des États-Unis et qu’une clé de création récupérée sur ce portail ne fonctionnera pas pour un déploiement en Europe.
    - Une fois connecté, cliquez sur votre nom dans l’angle supérieur droit.
    - Cliquez sur Paramètres et prenez note de la clé de création pour l’étape suivante.
 
@@ -68,13 +70,13 @@ Avec la configuration du déploiement de votre nouveau projet de bot, la command
 
 > Après le déploiement, vérifiez les niveaux tarifaires pour les services créés et ajustez-les en fonction de votre scénario.
 
-Dans le projet que vous avez créé, le fichier README.md contient un exemple de ligne de commande de services de clonage msbot qui est mis à jour avec le nom du bot créé. Une version générique est indiquée ci-dessous. Veillez à mettre à jour la clé de création de l’étape précédente et choisissez l’emplacement de centre de données Azure que vous souhaitez utiliser (par exemple : westus ou westeurope).
-
-> Vérifiez que la clé de création LUIS récupérée à l’étape précédente correspond bien à la région spécifiée ci-dessous.
+Dans le projet que vous avez créé, le fichier README.md contient un exemple de ligne de commande de services de clonage msbot qui est mis à jour avec le nom du bot créé. Une version générique est indiquée ci-dessous. Veillez à mettre à jour la clé de création de l’étape précédente et choisissez l’emplacement de centre de données Azure que vous souhaitez utiliser (par exemple : westus ou westeurope). Vérifiez que la clé de création LUIS récupérée à l’étape précédente correspond bien à la région spécifiée ci-dessous (par exemple, Ouest des États-Unis pour luis.ai ou Europe de l’Ouest pour eu.luis.ai).
 
 ```shell
-msbot clone services --name "YOUR_BOT_NAME" --luisAuthoringKey "YOUR_AUTHORING_KEY" --folder "DeploymentScripts\msbotClone" --location "westus"
+msbot clone services --name "YOUR_BOT_NAME" --luisAuthoringKey "YOUR_AUTHORING_KEY" --folder "DeploymentScripts\msbotClone" --location "YOUR_REGION"
 ```
+
+> Certains utilisateurs peuvent rencontrer un problème connu, dans lequel l’erreur suivante apparaît lors du déploiement `ERROR: Unable to provision MSA id automatically. Please pass them in as parameters and try again`. Dans ce cas, accédez à https://apps.dev.microsoft.com et créez manuellement une nouvelle application pour récupérer l’ID d’application et le mot de passe/secret. Exécutez la commande msbot clone services ci-dessus, mais indiquez les deux nouveaux arguments `appId` et `appSecret` avec les valeurs que vous venez de récupérer.
 
 L’outil msbot décrit le plan de déploiement, notamment l’emplacement et le SKU. Vérifiez ces informations avec de continuer.
 

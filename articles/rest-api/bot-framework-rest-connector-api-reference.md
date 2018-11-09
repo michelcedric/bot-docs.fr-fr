@@ -1,19 +1,19 @@
 ---
 title: Informations de référence sur l’API | Microsoft Docs
 description: Découvrez les en-têtes, les opérations, les objets et les erreurs associés aux services Bot Connector et Bot State.
-author: RobStand
-ms.author: kamrani
+author: ivorb
+ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/13/2017
-ms.openlocfilehash: cd4a0dd73feb18aa6f82699a51ab086c55c5d2cf
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.date: 10/24/2018
+ms.openlocfilehash: 18f353ce6535dd56ca7a581776fdfab822555f2d
+ms.sourcegitcommit: 49a76dd34d4c93c683cce6c2b8b156ce3f53280e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998303"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50134739"
 ---
 # <a name="api-reference"></a>Informations de référence sur l'API
 
@@ -130,6 +130,7 @@ Utilisez ces opérations pour créer des conversations, envoyer des messages (ac
 | [Envoyer vers la conversation](#send-to-conversation) | Envoie une activité (message) à la fin de la conversation spécifiée. | 
 | [Répondre à l’activité](#reply-to-activity) | Envoie une activité (message) à la conversation spécifiée, en réponse à l’activité spécifiée. | 
 | [Obtenir les membres de la conversation](#get-conversation-members) | Obtient les membres de la conversation spécifiée. |
+| [Obtenir les membres paginés de la conversation](#get-conversation-paged-members) | Obtient les membres de la conversation spécifiée, une page à la fois. |
 | [Obtenir les membres de l’activité](#get-activity-members) | Obtient les membres de l’activité spécifiée dans la conversation spécifiée. | 
 | [Mettre à jour l’activité](#update-activity) | Met à jour une activité existante. | 
 | [Supprimer l’activité](#delete-activity) | Supprime une activité existante. | 
@@ -178,6 +179,17 @@ GET /v3/conversations/{conversationId}/members
 |----|----|
 | **Corps de la demande** | n/a |
 | **Retourne** | Tableau d’objets [ChannelAccount](#channelaccount-object) | 
+
+### <a name="get-conversation-paged-members"></a>Obtenir les membres paginés de la conversation
+Obtient les membres de la conversation spécifiée, une page à la fois.
+```http
+GET /v3/conversations/{conversationId}/pagedmembers
+```
+
+| | |
+|----|----|
+| **Corps de la demande** | n/a |
+| **Retourne** | Un tableau d’objets [ChannelAccount](#channelaccount-object) et un jeton de liaison qui peut être utilisé pour obtenir plus de valeurs|
 
 ### <a name="get-activity-members"></a>Obtenir les membres de l’activité
 Obtient les membres de l’activité spécifiée dans la conversation spécifiée.
@@ -386,7 +398,7 @@ Le schéma définit l’objet (et ses propriétés) que votre bot peut utiliser 
 | [Objet ThumbnailCard](#thumbnailcard-object) | Définit une carte avec une miniature, un titre, du texte et des boutons d’action. |
 | [Objet ThumbnailUrl](#thumbnailurl-object) | Définit l’URL de la source d’une image. |
 | [Objet VideoCard](#videocard-object) | Définit une carte pouvant lire des vidéos. |
-
+| [Objet SemanticAction](#semanticaction-object) | Définit une référence à une action de programmation. |
 
 ### <a name="activity-object"></a>Objet Activity
 Définit un message qui est échangé entre le bot et l’utilisateur.<br/><br/> 
@@ -423,6 +435,7 @@ Définit un message qui est échangé entre le bot et l’utilisateur.<br/><br/>
 | **topicName** | chaîne | Sujet de la conversation à laquelle appartient l’activité. |
 | **type** | chaîne | Type de l’activité. Peut prendre l’une des valeurs suivantes : **contactRelationUpdate**, **conversationUpdate**, **deleteUserData**, **message**, **typing**, **endOfConversation**. Pour plus d’informations sur les types d’activités, consultez [Vue d’ensemble des activités](bot-framework-rest-connector-activities.md). |
 | **value** | objet | Valeur à durée indéterminée. |
+| **semanticAction** |[SemanticAction](#semanticaction-object) | Un objet **SemanticAction** qui représente une référence à une action de programmation. |
 
 <a href="#objects">Retour au tableau Schéma</a>
 
@@ -852,5 +865,15 @@ Définit une carte pouvant lire des vidéos.<br/><br/>
 | **text** | chaîne | Description ou invitation à afficher sous le titre ou le sous-titre de la carte. |
 | **title** | chaîne | Titre de la carte. |
 | **value** | objet | Paramètre supplémentaire de cette carte|
+
+<a href="#objects">Retour au tableau Schéma</a>
+
+### <a name="semanticaction-object"></a>Objet SemanticAction
+Définit une référence à une action de programmation.<br/><br/>
+
+| Propriété | type | Description |
+|----|----|----|
+| **id** | chaîne | ID de cette action |
+| **entities** | [Entité](#entity-object) | Entités associées à cette action |
 
 <a href="#objects">Retour au tableau Schéma</a>

@@ -7,20 +7,22 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/13/2017
+ms.date: 11/02/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: dbf2fd06d76b3e79fbcdd30891807ea71329bffd
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 914c33033be3fe35db7cae6d54b5835cb032a5fd
+ms.sourcegitcommit: 984705927561cc8d6a84f811ff24c8c71b71c76b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999056"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50965687"
 ---
 # <a name="localize-form-content"></a>Localiser le contenu d’un formulaire
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
-La langue de localisation d’un formulaire est déterminée par les valeurs [CurrentUICulture](https://msdn.microsoft.com/en-us/library/system.threading.thread.currentuiculture(v=vs.110).aspx) et [CurrentCulture](https://msdn.microsoft.com/en-us/library/system.threading.thread.currentculture(v=vs.110).aspx) du thread actuel. Par défaut, la culture est dérivée du champ des **paramètres régionaux** du message actuel, mais vous pouvez remplacer ce comportement par défaut. Selon la façon dont votre bot est construit, les informations localisées peuvent provenir de trois sources différentes :
+La langue de localisation d’un formulaire est déterminée par les valeurs [CurrentUICulture](https://msdn.microsoft.com/library/system.threading.thread.currentuiculture(v=vs.110).aspx) et [CurrentCulture](https://msdn.microsoft.com/library/system.threading.thread.currentculture(v=vs.110).aspx) du thread actuel.
+Par défaut, la culture est dérivée du champ des **paramètres régionaux** du message actuel, mais vous pouvez remplacer ce comportement par défaut.
+Selon la façon dont votre bot est construit, les informations localisées peuvent provenir de trois sources différentes :
 
 - la localisation intégrée pour les valeurs **PromptDialog** et **FormFlow**
 - un fichier de ressources que vous générez pour les chaînes statiques de votre formulaire
@@ -28,7 +30,10 @@ La langue de localisation d’un formulaire est déterminée par les valeurs [Cu
 
 ## <a name="generate-a-resource-file-for-the-static-strings-in-your-form"></a>Générer un fichier de ressources pour les chaînes statiques dans votre formulaire
 
-Les chaînes statiques d’un formulaire incluent les chaînes permettant de générer le formulaire à partir des informations de votre classe C#, et les chaînes que vous spécifiez en tant qu’invites, modèles, messages ou confirmations. Les chaînes générées à partir de modèles intégrés ne sont pas considérées comme des chaînes statiques, car ces chaînes sont déjà localisées. Comme la plupart des chaînes d’un formulaire sont automatiquement générées, vous ne pouvez pas utiliser directement des chaînes de ressources C# standard. Au lieu de cela, vous pouvez générer un fichier de ressources pour les chaînes statiques de votre formulaire en appelant `IFormBuilder.SaveResources` ou à l’aide de l’outil **RView** inclus avec le Kit SDK Bot Builder pour .NET.
+Les chaînes statiques d’un formulaire incluent les chaînes permettant de générer le formulaire à partir des informations de votre classe C#, et les chaînes que vous spécifiez en tant qu’invites, modèles, messages ou confirmations.
+Les chaînes générées à partir de modèles intégrés ne sont pas considérées comme des chaînes statiques, car ces chaînes sont déjà localisées.
+Comme la plupart des chaînes d’un formulaire sont automatiquement générées, vous ne pouvez pas utiliser directement des chaînes de ressources C# standard.
+Au lieu de cela, vous pouvez générer un fichier de ressources pour les chaînes statiques de votre formulaire en appelant `IFormBuilder.SaveResources` ou à l’aide de l’outil **RView** inclus avec le Kit SDK Bot Builder pour .NET.
 
 ### <a name="use-iformbuildersaveresources"></a>Utiliser IFormBuilder.SaveResources
 
@@ -36,7 +41,9 @@ Vous pouvez générer un fichier de ressources en appelant [IFormBuilder.SaveRes
 
 ### <a name="use-rview"></a>Utiliser RView
 
-Vous pouvez également générer un fichier de ressources qui dépend de votre fichier .dll ou .exe à l’aide de l’outil <a href="https://github.com/Microsoft/BotBuilder/tree/master/CSharp/Tools/RView" target="_blank">RView</a> inclus dans le Kit SDK Bot Builder pour .NET. Pour générer le fichier .resx, exécutez **rview** et spécifiez l’assembly qui contient votre méthode de création de formulaires statiques ainsi que le chemin d’accès à cette méthode. Cet extrait de code montre comment générer le fichier de ressources `Microsoft.Bot.Sample.AnnotatedSandwichBot.SandwichOrder.resx` à l’aide de l’outil **RView**. 
+Vous pouvez également générer un fichier de ressources qui dépend de votre fichier .dll ou .exe à l’aide de l’outil <a href="https://aka.ms/v3-cs-RView-library" target="_blank">RView</a> inclus dans le Kit SDK Bot Builder pour .NET.
+Pour générer le fichier .resx, exécutez **rview** et spécifiez l’assembly qui contient votre méthode de création de formulaires statiques ainsi que le chemin d’accès à cette méthode.
+Cet extrait de code montre comment générer le fichier de ressources `Microsoft.Bot.Sample.AnnotatedSandwichBot.SandwichOrder.resx` à l’aide de l’outil **RView**.
 
 ```csharp
 rview -g Microsoft.Bot.Sample.AnnotatedSandwichBot.dll Microsoft.Bot.Sample.AnnotatedSandwichBot.SandwichOrder.BuildForm
@@ -83,7 +90,7 @@ Lors de la création de votre formulaire, la méthode [IFormBuilder.Build] [ bui
 
 ### <a name="localize-resource-files"></a>Localiser des fichiers de ressources 
 
-Une fois que vous avez ajouté des fichiers de ressources à votre projet, vous pouvez les localiser à l’aide de l’outil <a href="https://developer.microsoft.com/en-us/windows/develop/multilingual-app-toolkit" target="_blank">Multilingual App Toolkit (MAT)</a>. Installez **MAT**, puis activez-le pour votre projet en procédant comme suit :
+Une fois que vous avez ajouté des fichiers de ressources à votre projet, vous pouvez les localiser à l’aide de l’outil <a href="https://developer.microsoft.com/windows/develop/multilingual-app-toolkit" target="_blank">Multilingual App Toolkit (MAT)</a>. Installez **MAT**, puis activez-le pour votre projet en procédant comme suit :
 
 1. Sélectionnez votre projet dans l’Explorateur de solutions Visual Studio.
 2. Cliquez sur **Outils**, **Multilingual App Toolkit**, puis **Activer**.

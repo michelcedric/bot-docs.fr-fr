@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 9/26/2018
+ms.date: 10/31/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: fde88929c688c25d473ce8242ebfd5d44dc3a22f
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: f86c666b7a8ff754681a7eca7005fc42676705fc
+ms.sourcegitcommit: a496714fb72550a743d738702f4f79e254c69d06
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998126"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50736707"
 ---
 # <a name="understanding-how-bots-work"></a>Comprendre le fonctionnement des bots
 
@@ -41,7 +41,7 @@ Le protocole ne spécifie pas l’ordre dans lequel ces demandes POST et leurs a
 
 ### <a name="defining-a-turn"></a>Définition d’un tour
 
-Un tour, en ce qui concerne nos bots, est utilisé pour décrire tout le traitement associé à l’arrivée d’une activité. 
+Dans une conversation, les gens parlent un à la fois, tour à tour. En général, un bot réagit à l’entrée utilisateur. Dans le kit de développement logiciel (SDK) Bot Builder, un _tour_ désigne l’activité entrante de l’utilisateur dans le bot et l’activité que le bot renvoie à l’utilisateur comme réponse immédiate. Imaginez un tour comme le traitement associé à l’arrivée d’une activité donnée.
 
 L’objet de *contexte de tour* fournit des informations sur l’activité, comme l’expéditeur et le destinataire, le canal, et d’autres données nécessaires pour traiter l’activité. Il permet également d’ajouter des informations pendant le tour entre les différentes couches du bot.
 
@@ -75,8 +75,7 @@ Chaque méthode de réponse s’exécute dans un processus asynchrone. Quand ell
 
 Cela signifie également que l’ordre de vos réponses n’est pas garanti pour les appels d’activités indépendantes, en particulier quand une tâche est plus complexe qu’une autre. Si votre bot peut générer plusieurs réponses à une activité entrante, vérifiez qu’elles ont du sens quel que soit l’ordre dans lequel l’utilisateur les reçoit. La seule exception est la méthode *send activities*, qui vous permet d’envoyer un ensemble ordonné d’activités.
 
-> [!IMPORTANT]
-> Le thread qui traite le tour de bot principal se charge de supprimer l’objet de contexte quand il prend fin. **Veillez à exécuter une opération `await` sur tous les appels d’activité** afin que le thread principal attende l’activité générée avant de terminer son traitement et de supprimer le contexte de tour. Sinon, si une réponse (y compris ses gestionnaires) prend un certain temps et essaie d’agir sur l’objet de contexte, elle risque de recevoir une erreur `Context was disposed`. 
+[!INCLUDE [alert-await-send-activity](../includes/alert-await-send-activity.md)]
 
 ## <a name="response-event-handlers"></a>Gestionnaires d’événements de réponse
 
@@ -92,6 +91,8 @@ Les gestionnaires inscrits sur un objet de contexte sont traités de façon trè
 ## <a name="bot-structure"></a>Structure du bot
 
 Examinons l’exemple de bot d’écho avec compteur [[C#](https://aka.ms/EchoBotWithStateCSharp) | [JS](https://aka.ms/EchoBotWithStateJS)] et ses composants clés.
+
+[!INCLUDE [alert-await-send-activity](../includes/alert-await-send-activity.md)]
 
 # <a name="ctabcs"></a>[C#](#tab/cs)
 

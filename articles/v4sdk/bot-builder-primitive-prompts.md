@@ -1,5 +1,5 @@
 ---
-title: Gérer un flux de conversation avec invites primitives | Microsoft Docs
+title: Créer vos propres invites pour collecter des entrées utilisateur | Microsoft Docs
 description: Découvrez comment gérer un flux de conversation avec des invites primitives dans le Kit de développement logiciel (SDK) Bot Builder.
 keywords: flux de conversation, invites
 author: v-ducvo
@@ -8,16 +8,16 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 7/20/2018
+ms.date: 10/20/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 0b563197c111a37cf2f0f14fef183d52f38cca66
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 019902cbb42d8a583e9912804684d1d9a6539a59
+ms.sourcegitcommit: a496714fb72550a743d738702f4f79e254c69d06
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999160"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50736637"
 ---
-# <a name="prompt-users-for-input-using-your-own-prompts"></a>Demander aux utilisateurs des entrées en utilisant vos propres invites
+# <a name="create-your-own-prompts-to-gather-user-input"></a>Créer vos propres invites pour collecter des entrées utilisateur
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 

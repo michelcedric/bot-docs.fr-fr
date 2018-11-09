@@ -1,6 +1,6 @@
 ---
-title: Inviter les utilisateurs à saisir une entrée à l’aide de la bibliothèque de dialogues | Microsoft Docs
-description: Découvrez comment demander aux utilisateurs de saisir une entrée à l’aide de la bibliothèque Dialogs du Kit de développement logiciel (SDK) Bot Builder pour Node.js.
+title: Utiliser une bibliothèque de dialogues pour collecter des entrées utilisateur |Microsoft Docs
+description: Découvrez comment demander aux utilisateurs de saisir une entrée à l’aide de la bibliothèque de dialogues du kit de développement logiciel (SDK) Bot Builder.
 keywords: invites, dialogues, AttachmentPrompt, ChoicePrompt, ConfirmPrompt, DatetimePrompt, NumberPrompt, TextPrompt, inviter, validation
 author: v-ducvo
 ms.author: v-ducvo
@@ -8,20 +8,20 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 9/25/2018
+ms.date: 10/25/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: bd1fe8516cddaf2b75d3c11b469e372265b59be3
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 9b668ed67c34dcd0f8618852375e684b23e34408
+ms.sourcegitcommit: a496714fb72550a743d738702f4f79e254c69d06
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997626"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50736687"
 ---
-# <a name="prompt-users-for-input-using-the-dialogs-library"></a>Inviter les utilisateurs à saisir une entrée à l’aide de la bibliothèque Dialogs
+# <a name="use-dialog-library-to-gather-user-input"></a>Utiliser la bibliothèque de diaglogues pour collecter des entrées utilisateur
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-Pour interagir avec les utilisateurs, un bot collecte généralement des informations à travers des questions. Pour ce faire, vous pouvez utiliser directement la méthode d’_envoi d’activité_ de l’objet [contexte de tour](~/v4sdk/bot-builder-basics.md#defining-a-turn), puis traiter le message entrant suivant en tant que réponse. Toutefois, le SDK Bot Builder offre une bibliothèque de **dialogues** qui fournit des méthodes permettant poser des questions plus facilement et de s’assurer que la réponse correspond à un type de données spécifique ou respecte des règles de validation personnalisées. Cette rubrique explique comment y parvenir à l’aide des **invites** pour demander à un utilisateur d’effectuer une saisie.
+Pour interagir avec les utilisateurs, un bot collecte généralement des informations à travers des questions. Pour ce faire, vous pouvez utiliser directement la méthode d’_envoi d’activité_ de l’objet [contexte de tour](~/v4sdk/bot-builder-basics.md#defining-a-turn), puis traiter le message entrant suivant en tant que réponse. Toutefois, le SDK Bot Builder offre une bibliothèque de **dialogues** qui fournit des méthodes permettant de poser des questions plus facilement et de s’assurer que la réponse correspond à un type de données spécifique ou respecte des règles de validation personnalisées. Cette rubrique explique comment y parvenir à l’aide des **invites** pour demander à un utilisateur d’effectuer une saisie.
 
 Cet article décrit comment utiliser des invites au sein d’un dialogue. Pour plus d’informations sur l’utilisation de dialogues en général, consultez l’article [Gérer un flux de conversation simple avec des dialogues](bot-builder-dialog-manage-conversation-flow.md).
 
@@ -34,7 +34,7 @@ La bibliothèque de dialogues propose divers types d’invites, chacune étant u
 | **AttachmentPrompt** | Invite l’utilisateur à ajouter une pièce jointe comme un document ou une image. |
 | **ChoicePrompt** | Invite l’utilisateur à choisir parmi un ensemble d’options. |
 | **ConfirmPrompt** | Invite l’utilisateur à confirmer son action. |
-| **DatetimePrompt** | Invite l’utilisateur à saisir une date/heure. Les utilisateurs puissent répondre à l’aide d’un langage naturel, par exemple « demain à 20 h 00 » ou « vendredi à 10 h ». Le Kit SDK Bot Framework utilise l’entité prédéfinie LUIS `builtin.datetimeV2`. Pour plus d’informations, consultez [builtin.datetimev2](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-entities#builtindatetimev2). |
+| **DatetimePrompt** | Invite l’utilisateur à saisir une date/heure. Les utilisateurs peuvent répondre à l’aide d’un langage naturel, par exemple « demain à 20 h 00 » ou « vendredi à 10 h ». Le Kit SDK Bot Framework utilise l’entité prédéfinie LUIS `builtin.datetimeV2`. Pour plus d’informations, consultez [builtin.datetimev2](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-entities#builtindatetimev2). |
 | **NumberPrompt** | Invite l’utilisateur à saisir une valeur numérique. L’utilisateur peut répondre par « 10 » ou « dix ». Si la réponse est « dix », par exemple, l’invite convertit la réponse en une valeur numérique et renvoie `10` comme résultat. |
 | **TextPrompt** | Invite l’utilisateur à saisir une chaîne de texte. |
 

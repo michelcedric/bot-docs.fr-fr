@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 09/18/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 972df2a12ffa7901ed4e4ecf14ce99233293c5a2
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 2a3709111b048730805b5578306c669591122dda
+ms.sourcegitcommit: 633008f8db06f1bb5be7bacdb7dd8de6f8165328
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997706"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50753607"
 ---
 # <a name="manage-conversation-and-user-state"></a>Gérer l’état de la conversation et l’état utilisateur
 
@@ -63,8 +63,6 @@ La classe `EchoBotAccessors` de notre exemple est créée en tant que singleton,
 
 Mise à jour du constructeur afin d’inclure `UserState` comme indiqué ci-dessous :
 ```csharp
-using EchoBotWithCounter;
-
 public EchoBotAccessors(ConversationState conversationState, UserState userState)
 {
     ConversationState = conversationState ?? throw new ArgumentNullException(nameof(conversationState));
@@ -138,8 +136,6 @@ L’état de la conversation et l’état utilisateur sont liés à un singleton
 Dans le gestionnaire `OnTurnAsync` de la classe `EchoWithCounterBot : IBot`, modifiez le code pour demander à l’utilisateur son nom d’utilisateur et numéro de téléphone. Pour savoir là où nous nous trouvons dans la conversation, nous utilisons la propriété d’invite définie dans TopicState (état du sujet). Cette propriété était initialisée sur « askName ». Une fois que nous obtenons le nom d’utilisateur, nous définissons la propriété sur « askNumber » et récupérons le nom que l’utilisateur a saisi. Une fois que vous avez reçu le numéro de téléphone, vous envoyez un message de confirmation et définissez l’invite sur « confirmation », car vous touchez à la fin de la conversation.
 
 ```csharp
-using EchoBotWithCounter;
-
 if (turnContext.Activity.Type == ActivityTypes.Message)
 {
     // Get the conversation state from the turn context.
@@ -305,7 +301,7 @@ if (turnContext.activity.type === 'message') {
     
 }
 else {
-    await turnContext.sendActivity(`[${context.activity.type} event detected]`);
+    await turnContext.sendActivity(`[${turnContext.activity.type} event detected]`);
 }
 ```
 
@@ -322,8 +318,9 @@ Démarrez à présent l’émulateur, puis connectez-vous à votre bot dans l’
 
 ### <a name="interact-with-your-bot"></a>Interagir avec votre bot
 
-Envoyez un message à votre bot, et le bot vous enverra un message à son tour.
-![Émulateur en cours d’exécution](../media/emulator-v4/emulator-running.png)
+Envoyez un message « Salut » à votre bot, lequel vous demande votre nom et numéro de téléphone. Dès que vous avez fourni ces informations, le bot vous renvoie un message de confirmation. Si vous continuez, le bot reprend le cycle au début.
+
+![Émulateur en cours d’exécution](../media/emulator-v4/emulator-running-manage-state.png)
 
 Si vous décidez de gérer l’état vous-même, consultez l’article relatif à la [gestion du flux de conversation en utilisant vos propres invites](bot-builder-primitive-prompts.md). Une alternative consiste à utiliser le dialogue en cascade. Le dialogue suit l’état de la conversation pour vous, ce qui vous évite d’avoir à créer des indicateurs pour suivre votre état. Pour plus d’informations, consultez l’article [Gérer un flux de conversation simple avec des dialogues](bot-builder-dialog-manage-conversation-flow.md).
 

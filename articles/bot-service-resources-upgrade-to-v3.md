@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 6ee7120536d42257dde2ed1411df32d807268e33
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 3e99828e7c26b10c39bef4c8db79f92ff5f2b30c
+ms.sourcegitcommit: 49a76dd34d4c93c683cce6c2b8b156ce3f53280e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000016"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50134709"
 ---
 # <a name="upgrade-your-bot-to-bot-framework-api-v3"></a>Mettre à niveau votre robot vers l’API Bot Framework v3
 
@@ -23,53 +23,73 @@ En juillet 2016, l’API Bot Framework v3 a été publiée et l’API Bot Framew
 
 ## <a name="step-1-get-your-app-id-and-password-from-the-bot-framework-portal"></a>Étape 1 : obtenir les identifiant et mot de passe de votre application sur le portail Bot Framework
 
-Connectez-vous au [portail Bot Framework](https://dev.botframework.com/), cliquez sur **My bots** (Mes robots), puis sélectionnez votre robot pour ouvrir son tableau de bord. Cliquez ensuite sur le lien **SETTINGS** (PARAMÈTRES) dans l’angle supérieur droit de la page. 
+Connectez-vous au [portail Bot Framework](https://dev.botframework.com/), cliquez sur **My bots** (Mes robots), puis sélectionnez votre robot pour ouvrir son tableau de bord. Ensuite, cliquez sur le lien **SETTINGS** (PARAMÈTRES) qui se trouve à gauche de la page sous **Bot Management** (Gestion des bots). 
 
-Dans la section **Configuration** de la page des paramètres, examinez le contenu du champ **App ID** (Identifiant de l’application), puis passez aux étapes suivantes selon que le champ **App ID** est ou non déjà renseigné.
+Dans la section **Configuration** (Configuration) de la page des paramètres, examinez le contenu du champ **Microsoft App ID** (ID de l’application Microsoft), puis passez aux étapes suivantes.
 
-### <a name="case-1-app-id-field-is-already-populated"></a>Cas 1 : champ App ID (ID de l’application) déjà renseigné
+<!-- TODO: Remove this 
+### Case 1: App ID field is already populated
 
-Si le champ **App ID** (ID de l’application) est déjà renseigné, procédez comme suit :
+If the **App ID** field is already populated, complete these steps:
+-->
 
 1. Cliquez sur **Manage Microsoft App ID and password** (gérer l’ID et le mot de passe de de l’application Microsoft).  
-![Configuration](~/media/upgrade/manage-app-id.png)
+![Configuration](./media/upgrade/manage-app-id.png)
 
 2. Cliquez sur **Generate New Password** (Générer un nouveau mot de passe).  
-![Générer un nouveau mot de passe](~/media/upgrade/generate-new-password.png)
+![Générer un nouveau mot de passe](./media/upgrade/generate-new-password.png)
 
 3. Copiez et enregistrez le nouveau mot de passe, ainsi que l’ID d’application MSA. Vous en aurez besoin par la suite.  
-![Nouveau mot de passe](~/media/upgrade/new-password-generated.png)
+![Nouveau mot de passe](./media/upgrade/new-password-generated.png)
 
-### <a name="case-2-app-id-field-is-empty"></a>Cas 2 : le champ App ID (ID de l’application) est vide
+Vous pouvez également récupérer vos **ID et mot de passe de l’application Microsoft** en suivant ces [instructions](https://blog.botframework.com/2018/07/03/find-your-azure-bots-appid-and-appsecret/).
 
-Si le champ **App ID** (ID de l’application) est vide, procédez comme suit :
+<!-- TODO: These steps are no longer valid. AppID will always be generated, confirmed with Support Engineers
+### Case 2: App ID field is empty
 
-1. Cliquez sur **Create Microsoft App ID and password** (Créer l’ID et le mot de passe de l’application Microsoft).  
-   ![Create Microsoft App ID and password](~/media/upgrade/generate-appid-and-password.png) (Créer l’ID et le mot de passe de l’application)
+If the **App ID** field is empty, complete these steps:
+
+1. Click **Create Microsoft App ID and password**.  
+   ![Create App ID and password](~/media/upgrade/generate-appid-and-password.png)
    > [!IMPORTANT]
-   > N’activez pas encore la case d’option **Version 3.0**. Vous le ferez plus tard, après avoir [mis à jour le code de votre robot](#update-code).</div>
+   > Do not select the **Version 3.0** radio button yet. You will do this later, after you have [updated your bot code](#update-code).</div>
 
-2. Cliquez sur **Generate a password to continue** (Générer un mot de passe pour continuer).  
-   ![Générer le mot de passe de l’application](~/media/upgrade/generate-a-password-to-continue.png)
+2. Click **Generate a password to continue**.  
+   ![Generate app password](~/media/upgrade/generate-a-password-to-continue.png)
 
-3. Copiez et enregistrez le nouveau mot de passe, ainsi que l’ID d’application MSA. Vous en aurez besoin par la suite.  
-   ![Nouveau mot de passe](~/media/upgrade/new-password-generated.png)
+3. Copy and save the new password along with the MSA App Id; you will need these values in the future.  
+   ![New password](~/media/upgrade/new-password-generated.png)
 
-4. Cliquez sur **Finish and go back to Bot Framework** (Terminer et revenir à Bot Framework).  
-   ![Terminer et revenir au portail](~/media/upgrade/finish-and-go-back-to-bot-framework.png)
+4. Click **Finish and go back to Bot Framework**.  
+   ![Finish and go back to Portal](~/media/upgrade/finish-and-go-back-to-bot-framework.png)
 
-5. De retour à la page des paramètres du robot dans le portail Bot Framework, faites défiler vers le bas de la page, puis cliquez sur **Save changes** (Enregistrer les modifications).  
-   ![Enregistrer les modifications](~/media/upgrade/save-changes.png)
+5. Back on the bot settings page in the Bot Framework Portal, scroll to the bottom of the page and click **Save changes**.  
+   ![Save changes](~/media/upgrade/save-changes.png)
+-->
 
-## <a id="update-code"></a> Étape 2 : mettre à jour le code de votre robot vers la version 3.0
+## <a id="update-code"></a> Étape 2 : Mettre à jour le code de votre bot à la version 4.0
 
-Pour mettre à jour le code de votre robot vers la version 3.0, procédez comme suit :
+Les bots v1 ne sont plus compatibles. Pour mettre à jour votre bot, vous devrez en créer un nouveau au niveau de version V3. Si vous souhaitez conserver votre ancien code, vous devrez le migrer manuellement.
 
-1. Mettez à jour vers la dernière version du [Kit de développement logiciel (SDK) Bot Builder](https://github.com/Microsoft/BotBuilder) le langage de votre robot.
-2. Mettez à jour votre code pour appliquer les modifications nécessaires, en suivant les instructions ci-dessous.
-3. Utilisez l’[émulateur Bot Framework](~/bot-service-debug-emulator.md) pour tester votre robot localement, puis dans le cloud.
+La solution la plus simple consiste à recréer votre bot avec le nouveau [kit de développement logiciel (SDK)](https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-4.0) et à le déployer. 
 
-Les sections suivantes décrivent les principales différences entre les API v1 et v3. Une fois votre code mis à jour vers l’API v3, vous pouvez terminer le processus de mise à niveau en [mettant à jour les paramètres de votre robot](#step-3) sur le portail Bot Framework.
+Si vous souhaitez conserver votre ancien code, suivez les étapes ci-dessous :
+
+1. Créez une application de bot.
+2. Copiez votre ancien code dans votre nouvelle application de bot.
+3. Mettez le kit de développement logiciel (SDK) au niveau de la dernière version à l’aide du Gestionnaire de package Nuget.
+4. Corrigez les erreurs qui s’affichent et faites référence au nouveau [kit de développement logiciel (SDK)](https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-4.0).
+5. Déployez votre bot dans Azure en suivant ces [instructions](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-deploy-azure?view=azure-bot-service-4.0).
+
+<!-- TODO: Remove outdated code 
+To update your bot code to version 3.0, complete these steps:
+
+1. Update to the latest version of the [Bot Builder SDK](https://github.com/Microsoft/BotBuilder) for your bot's language.
+2. Update your code to apply the necessary changes, according the guidance below.
+3. Use the [Bot Framework Emulator](~/bot-service-debug-emulator.md) to test your bot locally and then in the cloud.
+
+The following sections describe the key differences between API v1 and API v3. After you have updated your code to API v3, you can finish the upgrade process by [updating your bot settings](#step-3) in the Bot Framework Portal.
+-->
 
 ### <a name="botbuilder-and-connector-are-now-one-sdk"></a>BotBuilder et le connecteur font désormais partie d’un même Kit de développement logiciel (SDK)
 
@@ -143,21 +163,23 @@ L’API Bot Framework v3 stocke les propriétés d’authentification avec ces c
 - `MicrosoftAppID`
 - `MicrosoftAppPassword`
 
-## <a id="step-3"></a> Étape 3 : mettre à jour les paramètres de votre robot dans le portail Bot Framework
+## <a id="step-3"></a> Étape 3 : Déployer votre bot de mise à jour dans Azure.
 
-Après avoir mis à niveau le code de votre robot vers l’API v3 et l’avoir déployé dans le cloud, achevez le processus de mise à niveau en procédant comme suit : 
+Après avoir mis à niveau le code votre bot vers l’API v3, déployez le bot dans Azure en suivant ces [instructions](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-deploy-azure?view=azure-bot-service-4.0). Comme V1 n’est plus pris en charge, tous les bots utilisent automatiquement l’API V3 lors du déploiement sur les services Azure.
 
-1. Connectez-vous au [portail Bot Framework](https://dev.botframework.com/).
+<!-- TODO: Documentation set for removal 
+1. Sign in to the [Bot Framework Portal](https://dev.botframework.com/).
 
-2. Cliquez sur **My bots** (Mes robots), puis sélectionnez votre robot pour ouvrir son tableau de bord. 
+2. Click **My bots** and select your bot to open its dashboard. 
 
-3. Cliquez sur le lien **SETTINGS** (PARAMÈTRES) à proximité de l’angle supérieur droit de la page. 
+3. Click the **SETTINGS** link that is located near the top-right corner of the page. 
 
-4. Dans la section **Configuration**, sous **Version 3.0**, collez le point de terminaison de votre robot dans le champ **Messaging endpoint** (Point de terminaison de messagerie).  
-![Configuration de la version 3](~/media/upgrade/paste-new-v3-enpoint-url.png)
+4. Under **Version 3.0** within the **Configuration** section, paste your bot's endpoint into the **Messaging endpoint** field.  
+![Version 3 configuration](~/media/upgrade/paste-new-v3-enpoint-url.png)
 
-5. Activez la case d’option **Version 3.0**.  
-![Sélectionner la version 3.0](~/media/upgrade/switch-to-v3-endpoint.png)
+5. Select the **Version 3.0** radio button.  
+![Select version 3.0](~/media/upgrade/switch-to-v3-endpoint.png)
 
-6. Faites défiler vers le bas de la page, puis cliquez sur **Enregistrer les modifications**.  
-![Enregistrer les modifications](~/media/upgrade/save-changes.png)
+6. Scroll to the bottom of the page and click **Save changes**.  
+![Save changes](~/media/upgrade/save-changes.png)
+-->
