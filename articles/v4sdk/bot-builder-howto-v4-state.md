@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 09/18/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 30ce9c9ff5c458758a4cc9612b8f9947fa12734c
-ms.sourcegitcommit: 782b3a2e788c25effd7d150a070bd2819ea92dad
+ms.openlocfilehash: 2a3709111b048730805b5578306c669591122dda
+ms.sourcegitcommit: 633008f8db06f1bb5be7bacdb7dd8de6f8165328
 ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/01/2018
-ms.locfileid: "50743653"
+ms.locfileid: "50753607"
 ---
 # <a name="manage-conversation-and-user-state"></a>Gérer l’état de la conversation et l’état utilisateur
 
@@ -319,7 +319,8 @@ Démarrez à présent l’émulateur, puis connectez-vous à votre bot dans l’
 ### <a name="interact-with-your-bot"></a>Interagir avec votre bot
 
 Envoyez un message « Salut » à votre bot, lequel vous demande votre nom et numéro de téléphone. Dès que vous avez fourni ces informations, le bot vous renvoie un message de confirmation. Si vous continuez, le bot reprend le cycle au début.
-![Émulateur en cours d’exécution](../media/emulator-v4/emulator-running.png)
+
+![Émulateur en cours d’exécution](../media/emulator-v4/emulator-running-manage-state.png)
 
 Si vous décidez de gérer l’état vous-même, consultez l’article relatif à la [gestion du flux de conversation en utilisant vos propres invites](bot-builder-primitive-prompts.md). Une alternative consiste à utiliser le dialogue en cascade. Le dialogue suit l’état de la conversation pour vous, ce qui vous évite d’avoir à créer des indicateurs pour suivre votre état. Pour plus d’informations, consultez l’article [Gérer un flux de conversation simple avec des dialogues](bot-builder-dialog-manage-conversation-flow.md).
 
