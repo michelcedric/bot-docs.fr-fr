@@ -31,12 +31,12 @@
 <!-- ## [Best practice for welcoming the user](v4sdk/bot-builder-welcome-user.md) -->
 ### [Envoyer et recevoir des SMS](v4sdk/bot-builder-howto-send-messages.md)
 ### [Ajouter des médias aux messages](v4sdk/bot-builder-howto-add-media-attachments.md)
-### [Utilisez le bouton pour saisir une entrée](v4sdk/bot-builder-howto-add-suggested-actions.md)
+### [Ajouter des boutons pour guider l’action de l’utilisateur](v4sdk/bot-builder-howto-add-suggested-actions.md)
+### [Enregistrer les données d’utilisateur et de conversation](v4sdk/bot-builder-howto-v4-state.md) 
+### [Inviter l’utilisateur à effectuer une entrée](v4sdk/bot-builder-primitive-prompts.md) 
 ### [Envoyer un message de bienvenue aux utilisateurs](v4sdk/bot-builder-send-welcome-message.md)
 <!-- ## [Add input hints to messages](v4sdk/bot-builder-howto-add-input-hints.md) -->
 ### [Recevoir les notifications d’un bot](v4sdk/bot-builder-howto-proactive-message.md)
-<!-- ## [Save user input](v4sdk/bot-builder-primitive-prompts.md) -->
-### [Enregistrer les données d’utilisateur et de conversation](v4sdk/bot-builder-howto-v4-state.md) 
 ### [Ajouter la compréhension du langage naturel à votre bot](v4sdk/bot-builder-howto-v4-luis.md)
 ### [Répondre aux questions de l’utilisateur à l’aide de QnA Maker](v4sdk/bot-builder-howto-qna.md)
 ### Gérer les conversations à l’aide de la bibliothèque de boîtes de dialogue 
