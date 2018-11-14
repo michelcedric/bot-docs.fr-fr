@@ -1,5 +1,5 @@
 ---
-title: Déployer votre bot sur Azure | Microsoft Docs
+title: Déployer votre bot C# sur Azure | Microsoft Docs
 description: Déployez votre bot sur le cloud Azure.
 keywords: déployer bot, azure déployer, inscription canal bot, publication visual studio
 author: ivorb
@@ -8,22 +8,24 @@ manager: kamrani
 ms.topic: get-started-article
 ms.service: bot-service
 ms.subservice: abs
-ms.date: 09/19/2018
-ms.openlocfilehash: 5f3fc43bed16d50c347d4e07a9154dfd307f0dc0
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.date: 11/05/2018
+ms.openlocfilehash: f30a038c6bc5e435ade421e24b05d0b31a143538
+ms.sourcegitcommit: 9acac75f85d36c81b8bf4edec916dd0b52a4a5c7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999366"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51028736"
 ---
-# <a name="deploy-your-bot-to-azure"></a>Déployer votre bot sur Azure
+# <a name="deploy-your-c-bot-to-azure"></a>Déployer votre bot C# sur Azure
 
 [!INCLUDE [pre-release-label](./includes/pre-release-label.md)]
 
-Après avoir créé votre bot et l’avoir vérifié localement, vous pouvez le transmettre à Azure pour le rendre accessible de n’importe quel endroit. Pour le bot C#, vous pouvez utiliser Visual Studio ou Azure CLI afin de publier votre bot sur Azure. 
+Après avoir créé votre bot et l’avoir testé localement, vous pouvez le transmettre à Azure pour le rendre accessible de n’importe quel endroit.
 
 ## <a name="publish-from-visual-studio"></a>Publier à partir de Visual Studio
 Vous allez tout d’abord déployer le bot sur Azure App Service à partir de Visual Studio. Ensuite, vous allez configurer votre bot avec Azure Bot Service à l’aide de Bot Channels Registration.
+
+**Remarque : si le nom de votre projet Visual Studio comporte des espaces, les étapes de déploiement décrites ci-dessous ne fonctionnent pas.**
 
 Dans la fenêtre de l’Explorateur de solutions, cliquez avec le bouton droit sur le nœud de votre projet, puis sélectionnez Publier.
 

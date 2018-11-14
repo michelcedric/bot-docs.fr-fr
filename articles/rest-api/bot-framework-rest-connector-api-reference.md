@@ -7,13 +7,13 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 10/24/2018
-ms.openlocfilehash: 18f353ce6535dd56ca7a581776fdfab822555f2d
-ms.sourcegitcommit: 49a76dd34d4c93c683cce6c2b8b156ce3f53280e
+ms.date: 10/25/2018
+ms.openlocfilehash: 81192c9b5806d467c2a1fd292ee3d5db539e9ead
+ms.sourcegitcommit: 15f7fa40b7e0a05507cdc66adf75bcfc9533e781
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50134739"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50916866"
 ---
 # <a name="api-reference"></a>Informations de référence sur l'API
 
@@ -447,6 +447,7 @@ Définit une carte pouvant lire des images GIF animées ou de courtes vidéos.<b
 | **autoloop** | booléenne | Indicateur qui indique s’il faut relire la liste des images GIF animées lorsque la dernière est terminée. Définissez cette propriété sur **true** pour relire automatiquement l’animation ; sinon, définissez-la sur **false**. La valeur par défaut est **true**. |
 | **autostart** | booléenne | Indicateur qui indique s’il faut lire automatiquement l’animation lorsque la carte s’affiche. Définissez cette propriété sur **true** pour lire automatiquement l’animation ; sinon, définissez-la sur **false**. La valeur par défaut est **true**. |
 | **buttons** | [CardAction](#cardaction-object)[] | Tableau d’objets **CardAction** qui permettent à l’utilisateur d’effectuer une ou plusieurs actions. Le canal détermine le nombre de boutons que vous pouvez spécifier. |
+| **duration** | chaîne | La longueur du contenu du média, au [format de durée ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html). |
 | **image** | [ThumbnailUrl](#thumbnailurl-object) | Objet **ThumbnailUrl** qui spécifie l’image à afficher sur la carte. |
 | **media** | [MediaUrl](#mediaurl-object)[] | Tableau d’objets **MediaUrl** qui spécifie la liste des images GIF animées à lire. |
 | **shareable** | booléenne | Indicateur qui indique si l’animation peut être partagée avec d’autres utilisateurs. Définissez cette propriété sur **true** si l’animation peut être partagée ; sinon, sur **false**. La valeur par défaut est **true**. |
@@ -523,6 +524,7 @@ Définit une carte qui peut lire un fichier audio.<br/><br/>
 | **autoloop** | booléenne | Indicateur qui indique s’il faut relire la liste des fichiers audio lorsque le dernier est terminé. Définissez cette propriété sur **true** pour relire automatiquement les fichiers audio ; sinon, définissez-la sur **false**. La valeur par défaut est **true**. |
 | **autostart** | booléenne | Indicateur qui indique s’il faut lire automatiquement le fichier audio lorsque la carte s’affiche. Définissez cette propriété sur **true** pour relire automatiquement les fichiers audio ; sinon, définissez-la sur **false**. La valeur par défaut est **true**. |
 | **buttons** | [CardAction](#cardaction-object)[] | Tableau d’objets **CardAction** qui permettent à l’utilisateur d’effectuer une ou plusieurs actions. Le canal détermine le nombre de boutons que vous pouvez spécifier. |
+| **duration** | chaîne | La longueur du contenu du média, au [format de durée ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html). |
 | **image** | [ThumbnailUrl](#thumbnailurl-object) | Objet **ThumbnailUrl** qui spécifie l’image à afficher sur la carte. |
 | **media** | [MediaUrl](#mediaurl-object)[] | Tableau d’objets **MediaUrl** qui spécifie la liste des fichiers audio à lire. |
 | **shareable** | booléenne | Indicateur qui indique si les fichiers audio peuvent être partagés avec d’autres utilisateurs. Définissez cette propriété sur **true** si les fichiers audio peuvent être partagés ; sinon, sur **false**. La valeur par défaut est **true**. |
@@ -858,6 +860,7 @@ Définit une carte pouvant lire des vidéos.<br/><br/>
 | **autoloop** | booléenne | Indicateur qui indique s’il faut relire la liste des vidéos lorsque la dernière est terminée. Définissez cette propriété sur **true** pour relire automatiquement les vidéos ; sinon, définissez-la sur **false**. La valeur par défaut est **true**. |
 | **autostart** | booléenne | Indicateur qui indique s’il faut lire automatiquement les vidéos lorsque la carte s’affiche. Définissez cette propriété sur **true** pour lire automatiquement les vidéos ; sinon, définissez-la sur **false**. La valeur par défaut est **true**. |
 | **buttons** | [CardAction](#cardaction-object)[] | Tableau d’objets **CardAction** qui permettent à l’utilisateur d’effectuer une ou plusieurs actions. Le canal détermine le nombre de boutons que vous pouvez spécifier. |
+| **duration** | chaîne | La longueur du contenu du média, au [format de durée ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html). |
 | **image** | [ThumbnailUrl](#thumbnailurl-object) | Objet **ThumbnailUrl** qui spécifie l’image à afficher sur la carte. |
 | **media** | [MediaUrl](#mediaurl-object)[] | Tableau d’objets **MediaUrl** qui spécifie la liste des vidéos à lire. |
 | **shareable** | booléenne | Indicateur qui indique si les vidéos peuvent être partagées avec d’autres utilisateurs. Définissez cette propriété sur **true** si les vidéos peuvent être partagées ; sinon, sur **false**. La valeur par défaut est **true**. |

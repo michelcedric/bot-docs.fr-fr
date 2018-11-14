@@ -7,13 +7,13 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/13/2017
-ms.openlocfilehash: 2a2cc13020c87616799ee768fbab6e72ab81cc8b
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.date: 10/25/2018
+ms.openlocfilehash: eb08ca3b560f5058526387c71eca4b790d033a1e
+ms.sourcegitcommit: 15f7fa40b7e0a05507cdc66adf75bcfc9533e781
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997636"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50916806"
 ---
 # <a name="add-media-attachments-to-messages"></a>Ajouter des pièces jointes multimédia aux messages
 > [!div class="op_single_selector"]
@@ -24,7 +24,7 @@ ms.locfileid: "49997636"
 Les robots et les canaux échangent généralement des chaînes de texte, mais certains canaux prennent également en charge l’échange de pièces jointes, ce qui permet à votre robot d’envoyer des messages enrichis aux utilisateurs. Par exemple, votre robot peut envoyer des [cartes riches](bot-framework-rest-connector-add-rich-cards.md) et des pièces jointes multimédias (comme des images, des vidéos, des données audio ou des fichiers). Cet article décrit comment ajouter des pièces jointes multimédia à des messages à l’aide du service Bot Connector.
 
 > [!TIP]
-> Pour déterminer le type et le nombre de pièces jointes qu’un canal prend en charge, et la manière dont le canal effectue le rendu des pièces jointes, voir [Inspecteur de canaux][ChannelInspector].
+> Pour déterminer le type et le nombre de pièces jointes qu’un canal prend en charge, et la manière dont le canal effectue le rendu des pièces jointes, voir [Inspecteur de canaux][Inspecteur de canaux].
 
 ## <a name="add-a-media-attachment"></a>Ajouter une pièce jointe multimédia  
 
@@ -126,6 +126,7 @@ L’ajout d’une pièce jointe [AudioCard](bot-framework-rest-connector-api-ref
         "title": "Allegro in C Major",
         "subtitle": "Allegro Duet",
         "text": "No Image, No Buttons, Autoloop, Autostart, Sharable",
+        "duration": "PT2M55S",
         "media": [
           {
             "url": "https://contoso.com/media/AllegrofromDuetinCMajor.mp3"
@@ -175,9 +176,7 @@ Le nom de l’événement multimédia **média/pause** s’affiche dans le champ
 - [Créer des messages](bot-framework-rest-connector-create-messages.md)
 - [Envoyer et recevoir des messages](bot-framework-rest-connector-send-and-receive-messages.md)
 - [Ajouter des cartes détaillées aux messages](bot-framework-rest-connector-add-rich-cards.md)
-- [Inspecteur de canaux][ChannelInspector]
-
-[ChannelInspector]: ../bot-service-channel-inspector.md
+- [Schéma de carte Bot Framework](https://aka.ms/botSpecs-cardSchema)
 
 [Activity]: bot-framework-rest-connector-api-reference.md#activity-object
 [Attachment]: bot-framework-rest-connector-api-reference.md#attachment-object
