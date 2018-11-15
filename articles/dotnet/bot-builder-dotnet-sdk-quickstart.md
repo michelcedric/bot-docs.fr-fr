@@ -8,28 +8,28 @@ manager: kamrani
 ms.topic: get-started-article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 09/23/2018
+ms.date: 11/13/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 32743e895f2390fe018dc3801ed5b8a67b32a8cc
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 77e24d58fb377ec2390671517204526bf076f78e
+ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999376"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51645539"
 ---
 # <a name="create-a-bot-with-the-bot-builder-sdk-for-net"></a>Créer un bot avec le Kit SDK Bot Builder pour .NET
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-Ce guide de démarrage rapide vous oriente tout au long de la création d’un bot à l’aide du modèle C#, puis lors du test avec Bot Framework Emulator. 
+Ce guide de démarrage rapide vous oriente tout au long de la création d’un bot à l’aide du modèle C#, puis lors du test avec Bot Framework Emulator.
 
 ## <a name="prerequisites"></a>Prérequis
 - Visual Studio [2017](https://www.visualstudio.com/downloads)
 - Modèle Bot Builder SDK v4 pour [C#](https://botbuilder.myget.org/feed/aitemplates/package/vsix/BotBuilderV4.fbe0fc50-a6f1-4500-82a2-189314b7bea2)
-- Bot Framework [Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases)
+- Bot Framework [Emulator](https://aka.ms/Emulator-wiki-getting-started)
 - Connaissances d’[ASP.Net Core](https://docs.microsoft.com/aspnet/core/) et de la programmation asynchrone en [C#](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/index)
 
 ## <a name="create-a-bot"></a>Créer un bot
-Installez le modèle BotBuilderVSIX.vsix que vous avez téléchargé à la section des prérequis. 
+Installez le modèle BotBuilderVSIX.vsix que vous avez téléchargé à la section des prérequis.
 
 Dans Visual Studio, créez un nouveau projet de bot en utilisant le modèle Bot Builder Echo Bot V4.
 

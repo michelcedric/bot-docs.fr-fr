@@ -7,20 +7,20 @@ ms.author: v-demak
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 09/20/2018
-ms.openlocfilehash: b1a20875eb25cbf4a07d8a96d79eed665b26157b
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.date: 11/13/2018
+ms.openlocfilehash: f3a6a57a5fd01061493e5c216875f0c4210483f6
+ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49996796"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51645609"
 ---
 # <a name="debug-with-the-emulator"></a>Déboguer avec l’émulateur
 
 L’émulateur Bot Framework est une application de bureau qui permet aux développeurs de robots de tester et déboguer leurs créations localement ou à distance. L’émulateur vous permet de converser avec le robot et d’inspecter les messages qu’il envoie et reçoit. L’émulateur affiche les messages tels qu’ils apparaîtraient dans une interface utilisateur de conversation web, et journalise les requêtes et réponses JSON à mesure que vous échangez des messages avec le robot. Avant de déployer votre robot dans le cloud, exécutez-le et testez-le localement à l’aide de l’émulateur. Vous pouvez tester votre bot à l’aide de l’émulateur, même si vous ne l’avez pas encore [créé](./bot-service-quickstart.md) avec Azure Bot Service ou configuré pour s’exécuter sur des canaux.
 
 ## <a name="prerequisites"></a>Prérequis
-- Installer [l’émulateur](https://github.com/Microsoft/BotFramework-Emulator/releases)
+- Installer [l’émulateur](https://aka.ms/Emulator-wiki-getting-started)
 - Installer le logiciel de tunnelling [ngrok][ngrokDownload]
 
 ## <a name="connect-to-a-bot-running-on-localhost"></a>Se connecter à un bot s’exécutant sur un hôte local

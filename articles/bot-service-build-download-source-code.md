@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 09/26/2018
-ms.openlocfilehash: afb1c4a0e766df7ac2d122b3c7ca4e7959871dbb
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 19dd474c16224cc811a214acea6e9cb51da95b3f
+ms.sourcegitcommit: cb0b70d7cf1081b08eaf1fddb69f7db3b95b1b09
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997276"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51332763"
 ---
 # <a name="download-and-redeploy-bot-code"></a>Télécharger et redéployer le code d’un bot
 Azure Bot Service vous permet de télécharger l’intégralité du projet source de votre bot afin que vous puissiez travailler localement dans l’environnement de développement intégré de votre choix. Une fois que vous avez terminé la mise à jour du code, vous pouvez publier vos modifications dans le portail Azure. Nous allons vous montrer comment télécharger le code à l’aide du portail Azure et de la CLI `az`. Nous expliquerons également comment redéployer le code de votre bot mis à jour à l’aide de Visual Studio et de l’outil CLI `az`. Vous pouvez choisir la méthode qui vous convient le mieux.
@@ -39,14 +39,14 @@ Si vous avez un bot C#, mettez à jour le fichier `appsettings.json` pour y incl
   "botFileSecret": "ukxxxxxxxxxxxs="
 }
 ```
-`botFilePath` fait référence au nom de votre bot. Remplacez simplement « yourbasicBot.bot » par le nom de votre propre bot. Pour obtenir la clé `botFileSecret`, reportez-vous à l’article sur le [chiffrement des fichiers Bot](https://aka.ms/bot-file-encryption) qui explique comment générer une clé pour votre bot.
-
 
 Si vous avez un bot node.js, ajoutez un fichier `.env` avec les entrées suivantes :
 ```
 botFilePath=yourbasicBot.bot
 botFileSecret=ukxxxxxxxxxxxxs=
 ```
+
+`botFilePath` fait référence au nom de votre bot. Remplacez simplement « yourbasicBot.bot » par le nom de votre propre bot. Pour obtenir la clé `botFileSecret`, reportez-vous à l’article sur le [chiffrement des fichiers Bot](https://aka.ms/bot-file-encryption) qui explique comment générer une clé pour votre bot.
 
 Ensuite, modifiez vos sources en apportant des modifications aux fichiers source existants ou ajoutez-en des nouveaux à votre projet. Testez votre code à l’aide de l’émulateur. Lorsque vous êtes prêt à redéployer le code modifié sur le portail Azure, suivez les instructions ci-dessous.
 
