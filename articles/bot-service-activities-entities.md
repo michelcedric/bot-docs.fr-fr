@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 03/01/2018
-ms.openlocfilehash: d2f4692580843f530641827707d250fa726830e3
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: d329fcbe5b4a34cb3e9c1fbf0160c5248020a508
+ms.sourcegitcommit: cb0b70d7cf1081b08eaf1fddb69f7db3b95b1b09
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000396"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51332963"
 ---
 # <a name="entities-and-activity-types"></a>Entités et types d’activités
 
@@ -177,13 +177,19 @@ Les activités peuvent être de différents types, au-delà du **message** le pl
 ## <a name="message"></a>Message
 
 <!-- Only the last link is different. -->
+
 ::: moniker range="azure-bot-service-3.0"
+
 Votre bot enverra des activités de message pour communiquer des informations et recevoir des activités de message de la part des utilisateurs.
-Certains messages peuvent consister simplement en un texte brut, tandis que d’autres peuvent contenir un contenu plus riche, par exemple un [texte à énoncer](v4sdk/bot-builder-howto-send-messages.md#send-a-spoken-message), des [actions suggérées](v4sdk/bot-builder-howto-add-suggested-actions.md), des [pièces jointes multimédia](v4sdk/bot-builder-howto-add-media-attachments.md), des [cartes riches](v4sdk/bot-builder-howto-add-media-attachments.md#send-a-hero-card) et des [données spécifiques au canal](~/dotnet/bot-builder-dotnet-channeldata.md).
+Certains messages peuvent consister simplement en un texte brut, tandis que d’autres peuvent avoir un contenu plus riche, par exemple un texte à énoncer, des [actions suggérées](v4sdk/bot-builder-howto-add-suggested-actions.md), des [pièces jointes multimédias](v4sdk/bot-builder-howto-add-media-attachments.md), des [cartes riches](v4sdk/bot-builder-howto-add-media-attachments.md#send-a-hero-card) et des [données spécifiques du canal](~/dotnet/bot-builder-dotnet-channeldata.md).
+
 ::: moniker-end
+
 ::: moniker range="azure-bot-service-4.0"
+
 Votre bot enverra des activités de message pour communiquer des informations et recevoir des activités de message de la part des utilisateurs.
-Certains messages peuvent consister simplement en un texte brut, tandis que d’autres peuvent contenir un contenu plus riche, par exemple un [texte à énoncer](v4sdk/bot-builder-howto-send-messages.md#send-a-spoken-message), des [actions suggérées](v4sdk/bot-builder-howto-add-suggested-actions.md), des [pièces jointes multimédia](v4sdk/bot-builder-howto-add-media-attachments.md), des [cartes riches](v4sdk/bot-builder-howto-add-media-attachments.md#send-a-hero-card) et des [données spécifiques au canal](~/v4sdk/bot-builder-channeldata.md).
+Certains messages peuvent consister simplement en un texte brut, tandis que d’autres peuvent contenir un contenu plus riche, par exemple un texte à énoncer, des [actions suggérées](v4sdk/bot-builder-howto-add-suggested-actions.md), des [pièces jointes multimédias](v4sdk/bot-builder-howto-add-media-attachments.md), des [cartes riches](v4sdk/bot-builder-howto-add-media-attachments.md#send-a-hero-card) et des [données spécifiques du canal](~/v4sdk/bot-builder-channeldata.md).
+
 ::: moniker-end
 
 ## <a name="contactrelationupdate"></a>contactRelationUpdate
@@ -237,6 +243,7 @@ Un bot reçoit une activité de saisie pour indiquer que l’utilisateur saisit 
 Un bot peut envoyer une activité de saisie pour indiquer à l’utilisateur qu’il est en train de répondre à une demande ou de formuler une réponse.
 
 ::: moniker range="azure-bot-service-3.0"
+
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 - <a href="https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Classe Activité</a>

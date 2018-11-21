@@ -8,24 +8,38 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 10/31/2018
+ms.date: 11/08/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b3582d962911b6024062942a6d9f6ff1efab4022
-ms.sourcegitcommit: a54a70106b9fdf278fd7270b25dd51c9bd454ab1
+ms.openlocfilehash: 25745d380e53173c4dc67d280c120ced5845078b
+ms.sourcegitcommit: cb0b70d7cf1081b08eaf1fddb69f7db3b95b1b09
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51273086"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51332913"
 ---
 # <a name="send-welcome-message-to-users"></a>Envoyer un message de bienvenue aux utilisateurs
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-Notre article précédent sur la conception de l’interface [d’accueil de l’utilisateur](./bot-builder-welcome-user.md) décrivait quelques-unes des meilleures pratiques à implémenter pour que l’interaction initiale de l’utilisateur avec votre bot soit positive. Cet article approfondit le sujet à l’aide de courts exemples de code qui vous permettent d’accueillir les utilisateurs sur votre bot.
+L’objectif principal lors de la création d’un bot est d’impliquer votre utilisateur dans une conversation utile. Pour atteindre cet objectif, l’une des meilleures méthodes consiste à s’assurer qu’à partir du moment où un utilisateur se connecte pour la première fois, il comprenne les fonctionnalités et l’utilité principales de votre bot, c’est-à-dire la raison pour laquelle il a été créé. Cet article fournit des exemples de code qui vous permettent d’accueillir les utilisateurs sur votre bot.
 
 ## <a name="same-welcome-for-different-channels"></a>Accueil similaire pour les différents canaux
+Un message de bienvenue doit être généré lors de la première interaction de vos utilisateurs avec votre bot. Pour ce faire, vous pouvez surveiller les types d’activité de votre bot et observer les nouvelles connexions. Chaque nouvelle connexion peut générer jusqu’à deux activités de mise à jour de conversation selon le canal.
 
-L’exemple suivant surveille les nouvelles activités de _mise à jour de la conversation_, envoie un seul message de bienvenue lorsque l’utilisateur rejoint la conversation, et définit un indicateur d’état Invite pour ignorer l’entrée de conversation initiale de l’utilisateur. Le code ci-dessous se sert de l’exemple d’accueil de l’utilisateur du référentiel GitHub pour les codes [C#](https://aka.ms/bot-welcome-sample-cs) et [JS](https://aka.ms/bot-welcome-sample-js).
+- Une lorsque le bot de l’utilisateur est connecté à la conversation.
+- Une lorsque l’utilisateur rejoint la conversation.
+
+Il est tentant de simplement générer un message de bienvenue chaque fois qu’une nouvelle mise à jour de conversation est détectée, mais cela peut produire des résultats inattendus lorsque l’accès à votre bot se fait par divers canaux.
+
+Certains canaux créent une mise à jour de conversation lorsqu’un utilisateur se connecte initialement à ce canal et une mise à jour de conversation distincte uniquement après réception d’un message d’entrée initial de l’utilisateur. Les autres canaux génèrent ces deux activités lorsque l’utilisateur se connecte initialement au canal. Si vous surveillez simplement un événement de mise à jour de conversation et l’affichage d’un message de bienvenue sur un canal avec deux activités de mise à jour de conversation, votre utilisateur peut recevoir les éléments suivants :
+
+![Message de bienvenue en double](./media/double_welcome_message.png)
+
+Ce message en double peut être évité en générant un message de bienvenue initial pour le deuxième événement de mise à jour de conversation uniquement. Le deuxième événement peut être détecté quand :
+- un événement de mise à jour de conversation s’est produit
+- et quand un nouveau membre (utilisateur) a été ajouté à la conversation.
+
+L’exemple suivant surveille les nouvelles activités de *mise à jour de la conversation*, envoie un seul message de bienvenue lorsque l’utilisateur rejoint la conversation, et définit un indicateur d’état Invite pour ignorer l’entrée de conversation initiale de l’utilisateur. Vous pouvez télécharger le code source complet en [[ C# ](https://aka.ms/bot-welcome-sample-cs) ou [JS](https://aka.ms/bot-welcome-sample-js)] à partir de GitHub.
 
 [!INCLUDE [alert-await-send-activity](../includes/alert-await-send-activity.md)]
 
@@ -231,8 +245,7 @@ module.exports = MainDialog;
 ---
 
 ## <a name="discard-initial-user-input"></a>Ignorer l’entrée utilisateur initiale
-
-Pour garantir une expérience utilisateur optimale sur tous les canaux possibles, nous évitons de traiter les données de réponse non valides en donnant l’invite initiale et en configurant les mots clés à rechercher dans les réponses de l’utilisateur.
+Il est également important de déterminer si l’entrée utilisateur contient des informations utiles, ce qui peut également varier en fonction des canaux. Pour garantir une expérience utilisateur optimale sur tous les canaux possibles, nous évitons de traiter les données de réponse non valides en donnant l’invite initiale et en configurant les mots clés à rechercher dans les réponses de l’utilisateur.
 
 ## <a name="ctabcsharpmulti"></a>[C#](#tab/csharpmulti)
 
@@ -363,12 +376,12 @@ private static async Task SendIntroCardAsync(ITurnContext turnContext, Cancellat
 }
 ```
 
-Ensuite, nous pouvons envoyer la carte à l’aide de la commande await ci-après. Entrons ce qui suit dans les bots : _switch (text)_ _case "hel
+Ensuite, nous pouvons envoyer la carte à l’aide de la commande await ci-après. Entrons ce qui suit dans les bots : _switch (text) case "help"_.
 
 ```csharp
 switch (text)
 {
-    case "hello":
+    case "hello":"
     case "hi":
         await turnContext.SendActivityAsync($"You said {text}.", cancellationToken: cancellationToken);
         break;

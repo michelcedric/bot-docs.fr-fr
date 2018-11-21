@@ -8,17 +8,17 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b9c8a0bc04cfcf96f6c81b624464e9698eab1699
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: ea507bbdf916ff1955aea0db17b765791432f430
+ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998954"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51645579"
 ---
 # <a name="enterprise-bot-template---customize-your-bot"></a>Modèle de bot d’entreprise - Personnaliser votre bot
 
 > [!NOTE]
-> Cet article s’applique à la version v4 du SDK. 
+> Cet article s’applique à la version v4 du Kit de développement logiciel (SDK). 
 
 ## <a name="net"></a>.NET
 Après avoir déployé le modèle de bot d’entreprise et vérifié qu’il fonctionne complètement, comme indiqué dans les instructions [ici](bot-builder-enterprise-template-deployment.md), vous pouvez facilement personnaliser votre bot en fonction de votre scénario et de vos besoins. L’objectif du modèle consiste à fournir une base solide sur laquelle créer votre expérience de conversation.
@@ -108,7 +108,28 @@ Dans les scénarios où vous souhaitez ajouter un modèle LUIS à votre projet, 
     dispatch refresh -bot "YOURBOT.bot" -secret YOURSECRET
 ```
 
-## <a name="adding-a-new-dialog"></a>Ajout d’un dialogue 
+### <a name="adding-an-additional-qnamaker-knowledgebase"></a>Ajout d’une base de connaissances QnAMaker supplémentaire
+
+Dans certains scénarios, vous souhaiterez ajouter une base de connaissances QnAMaker supplémentaire à votre bot. Cette opération peut être effectuée en suivant la procédure ci-après.
+
+1. Créer une base de connaissances QnAMaker à partir d’un fichier JSON à l’aide de la commande suivante, exécutée dans le répertoire de votre assistant
+```shell
+qnamaker create kb --in <KB.json> --msbot | msbot connect qna --stdin --bot "YOURBOT.bot" --secret YOURSECRET
+```
+2. Exécuter la commande suivante pour mettre à jour votre modèle Dispatch pour qu’il reflète vos modifications
+```shell
+dispatch refresh --bot "YOURBOT.bot" --secret YOURSECRET
+```
+3. Mettre à jour la classe Dispatch fortement typée pour refléter la nouvelle source de QnA
+```shell
+msbot get dispatch --bot "YOURBOT.bot" | luis export version --stdin > dispatch.json
+luisgen dispatch.json -cs Dispatch -o Dialogs\Shared
+```
+4.  Mettez à jour le fichier `Dialogs\Main\MainDialog.cs` pour inclure l’intention Dispatch correspondant à votre nouvelle source QnA en suivant l’exemple fourni.
+
+Vous devez maintenant être en mesure d’utiliser plusieurs sources QnA dans votre bot.
+
+## <a name="adding-a-new-dialog"></a>Ajout d’un dialogue
 
 Pour ajouter un dialogue à votre bot, vous devez d’abord créer un dossier sous Dialogues et vous assurer que cette classe dérive de `EnterpriseDialog`. Vous devez ensuite raccorder l’infrastructure Dialogue. Le dialogue Mise en route est un exemple simple auquel vous pouvez vous référer, et vous en trouverez un extrait ci-après avec une présentation des étapes.
 

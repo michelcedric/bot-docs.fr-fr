@@ -1,79 +1,68 @@
 ---
-title: Envoyer des messages | Microsoft Docs
-description: Découvrez comment envoyer des messages dans le Kit de développement logiciel Bot Builder.
-keywords: envoi de messages, activités de message, message texte simple, discours, message parlé
+title: Envoyer et recevoir des SMS | Microsoft Docs
+description: Découvrez comment envoyer des SMS dans le Kit de développement logiciel (SDK) Bot Builder.
+keywords: envoi de messages, activités de messagerie, SMS simple, message, SMS, recevoir des messages
 author: ivorb
 ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 08/23/2018
+ms.date: 11/08/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 2e2c5f54d4ca077ad2b916787613f782779707ac
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: a01a64e032acfde2b3711e3efbb3886439888c42
+ms.sourcegitcommit: 5c40e2e21adb3a779022d45704c29cf11ed7f4a6
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49996786"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51506194"
 ---
-# <a name="send-text-and-spoken-messages"></a>Envoyer des messages texte et oraux
+# <a name="send-and-receive-text-message"></a>Envoyer et recevoir des SMS 
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-Pour communiquer avec les utilisateurs ainsi que pour recevoir des communications, votre bot aura pour moyen principal les activités de **message**. Certains messages peuvent simplement se composer de texte brut, tandis que d’autres peuvent contenir un contenu plus riche, comme les cartes ou les pièces jointes. Le gestionnaire de tours de votre robot reçoit des messages de l’utilisateur, et vous pouvez envoyer des réponses à l’utilisateur à ce moment. L’objet de contexte de tour fournit des méthodes pour renvoyer des messages à l’utilisateur. Pour plus d’informations sur le traitement de l’activité en général, consultez [Activity processing](~/v4sdk/bot-builder-basics.md#the-activity-processing-stack) (traitement de l’activité).
+Pour communiquer avec les utilisateurs ainsi que pour recevoir des communications, votre bot aura pour moyen principal les activités de **message**. Certains messages peuvent simplement se composer de texte brut, tandis que d’autres peuvent contenir un contenu plus riche, comme les cartes ou les pièces jointes. Le gestionnaire de tours de votre robot reçoit des messages de l’utilisateur, et vous pouvez envoyer des réponses à l’utilisateur à ce moment. L’objet de contexte de tour fournit des méthodes pour renvoyer des messages à l’utilisateur. Cet article décrit comment envoyer des SMS simples.
 
-Cet article décrit comment envoyer des messages texte et vocaux simples. Pour envoyer des contenus plus riches, voyez comment [ajouter des pièces jointes multimédias enrichies](bot-builder-howto-add-media-attachments.md). Pour plus d’informations sur la façon d’utiliser des objets d’invite, voyez comment [inviter les utilisateurs à entrer des données](bot-builder-prompts.md).
-
-## <a name="send-a-simple-text-message"></a>Envoyer un message texte simple
+## <a name="send-a-text-message"></a>Envoyer un message texte
 
 Pour envoyer un message texte simple, spécifiez la chaîne que vous souhaitez envoyer en tant qu’activité :
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-Dans la méthode **OnTurn** du bot, utilisez la méthode **SendActivityAsync** de l’objet de contexte de tour pour envoyer une réponse de message unique. Vous pouvez également utiliser la méthode **SendActivitiesAsync** de l’objet pour envoyer plusieurs réponses à la fois.
+Dans la méthode `OnTurnAsync` du bot, utilisez la méthode `SendActivityAsync` de l’objet de contexte de tour pour envoyer une réponse de message unique. Vous pouvez également utiliser la méthode `SendActivitiesAsync` de l’objet pour envoyer plusieurs réponses à la fois.
 
 ```cs
-await context.SendActivityAsync("Greetings from sample message.");
+await turnContext.SendActivityAsync($"Welcome!");
 ```
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Dans le gestionnaire de tour du bot, utilisez la méthode **SendActivity** de l’objet de contexte de tour pour envoyer une réponse de message unique. Vous pouvez également utiliser la méthode **SendActivities** de l’objet pour envoyer plusieurs réponses à la fois.
+Dans le gestionnaire `onTurn` du bot, utilisez la méthode `sendActivity` de l’objet de contexte de tour pour envoyer une réponse de message unique. Vous pouvez également utiliser la méthode `sendActivities` de l’objet pour envoyer plusieurs réponses à la fois.
 
 ```javascript
-await context.sendActivity("Greetings from sample message.");
+await context.sendActivity("Welcome!");
 ```
-
 ---
+## <a name="receive-a-text-message"></a>Recevoir un message texte
 
-## <a name="send-a-spoken-message"></a>Envoyer un message parlé
-
-Certains canaux prennent en charge les robots de reconnaissance vocale, ce qui leur permet de parler à l’utilisateur. Le contenu d’un message peut être à la fois écrit et parlé.
-
-> [!NOTE]
-> Pour les canaux qui ne prennent pas en charge le discours, le contenu vocal est ignoré.
+Pour recevoir un SMS simple, utilisez la propriété *texte* de l’objet *activité*. 
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-Utilisez le paramètre facultatif **speak** pour fournir le texte à énoncer dans le cadre de la réponse.
+Dans la méthode `OnTurnAsync` du bot, utilisez le code suivant pour recevoir un message. 
 
 ```cs
-await context.SendActivityAsync(
-    "This is the text to be displayed.",
-    "This is the text to be spoken.");
+var responseMessage = turnContext.Activity.Text;
 ```
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Pour ajouter le discours, vous aurez besoin de `Microsoft.Bot.Builder.MessageFactory` afin de générer le message. `MessageFactory` est plutôt utilisé avec [les médias enrichis](bot-builder-howto-add-media-attachments.md). Vous trouverez un peu plus d’explications sur cette page, mais pour le moment nous allons simplement l’utiliser ici selon les besoins.
-
+Dans la méthode `OnTurnAsync` du bot, utilisez le code suivant pour recevoir un message. 
 ```javascript
-// Require MessageFactory from botbuilder
-const {MessageFactory} = require('botbuilder');
-
-const basicMessage = MessageFactory.text('This is the text that will be displayed.', 'This is the text that will be spoken.');
-await context.sendActivity(basicMessage);
+let text = turnContext.activity.text;
 ```
-
 ---
+
+
+## <a name="additional-resources"></a>Ressources supplémentaires
+Pour plus d’informations sur le traitement de l’activité en général, consultez l’article dédié au [traitement d’activité](~/v4sdk/bot-builder-basics.md#the-activity-processing-stack). Pour envoyer des contenus plus riches, découvrez comment ajouter des pièces jointes [multimédias enrichies](bot-builder-howto-add-media-attachments.md).

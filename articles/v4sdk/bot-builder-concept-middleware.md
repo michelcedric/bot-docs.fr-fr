@@ -8,20 +8,20 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 05/24/2018
+ms.date: 11/8/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 38d876e11d00a5471f2dcbfca44eb23290b7476c
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 713a53947a8ea6681f1793f9796a86c6d8014e29
+ms.sourcegitcommit: cb0b70d7cf1081b08eaf1fddb69f7db3b95b1b09
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997976"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51332923"
 ---
 # <a name="middleware"></a>Middlewares
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-Les middlewares sont simplement une classe qui se trouve entre l’adaptateur et la logique de votre bot, et qui est ajoutée à la collection de middlewares de votre adaptateur durant l’initialisation. Le SDK vous permet d’écrire vos propres middlewares ou d’ajouter des composants réutilisables de middlewares créés par d’autres. Toute activité qui entre dans votre bot ou qui en sort transite par votre intergiciel.
+Les middlewares sont simplement une classe qui se trouve entre l’adaptateur et la logique de votre bot, et qui est ajoutée à la collection de middlewares de votre adaptateur durant l’initialisation. Le Kit de développement logiciel (SDK) vous permet d’écrire vos propres intergiciels ou d’ajouter des intergiciels créés par d’autres. Toute activité qui entre dans votre bot ou qui en sort transite par votre intergiciel.
 
 L’adaptateur traite les activités entrantes et les dirige via le pipeline de middlewares de bot vers la logique de votre bot et inversement. Comme chaque activité entre et sort du bot, chaque middleware peut effectuer une inspection ou une action sur l’activité, avant comme après l’exécution de la logique de bot.
 
@@ -66,7 +66,7 @@ Les premiers éléments de votre pipeline de middlewares doivent probablement ê
 Les derniers éléments de votre pipeline de middlewares doivent être des middlewares propres au bot, c’est-à-dire des middlewares que vous implémentez pour traiter tout message envoyé à votre bot. Si vos middlewares utilisent des informations d’état ou d’autres informations définies dans le contexte de bot, ajoutez-les au pipeline de middlewares après les middlewares qui modifient l’état ou le contexte.
 
 ## <a name="short-circuiting"></a>Court-circuitage
-Une idée importante au sujet des intergiciels (et des [gestionnaires de réponses](bot-builder-basics.md#response-event-handlers)) est le _court-circuitage_. Un intergiciel (ou un gestionnaire de réponses) doit transmettre l’exécution en appelant son délégué _next_ si l’exécution doit se poursuivre à travers les couches qui le suivent.  Si le délégué next n’est pas appelé au sein de cet intergiciel (ou gestionnaire de réponses), le pipeline associé est victime d’un court-circuitage, empêchant l’exécution des couches suivantes. Cela signifie que toute la logique de bot et tous les intergiciels dans le pipeline sont ignorés. Il existe une différence subtile entre le court-circuitage d’un tour par votre intergiciel ou par votre gestionnaire de réponses.
+Une idée importante au sujet des intergiciels et des gestionnaires de réponses est le _court-circuitage_. Un intergiciel (ou un gestionnaire de réponses) doit transmettre l’exécution en appelant son délégué _next_ si l’exécution doit se poursuivre à travers les couches qui le suivent.  Si le délégué next n’est pas appelé au sein de cet intergiciel (ou gestionnaire de réponses), le pipeline associé est victime d’un court-circuitage, empêchant l’exécution des couches suivantes. Cela signifie que toute la logique de bot et tous les intergiciels dans le pipeline sont ignorés. Il existe une différence subtile entre le court-circuitage d’un tour par votre intergiciel ou par votre gestionnaire de réponses.
 
 Quand l’intergiciel court-circuite un tour, votre gestionnaire de tours de bot n’est pas appelé, mais l’ensemble du code de l’intergiciel exécuté avant ce point dans le pipeline continue d’être exécuté jusqu’à la fin. 
 
@@ -75,5 +75,14 @@ Pour les gestionnaires d’événements, le fait de ne pas appeler _next_ signif
 > [!TIP]
 > Si vous court-circuitez un événement de réponse, tel que `SendActivities`, assurez-vous qu’il s’agit du comportement que vous envisagez. Sinon, cela peut compliquer la correction des bogues.
 
+## <a name="response-event-handlers"></a>Gestionnaires d’événements de réponse
+En plus de la logique d’application et d’intergiciel, vous pouvez ajouter des gestionnaires de réponse (parfois également appelés gestionnaires d’événements ou gestionnaires d’événements d’activité) à l’objet de contexte. Ces gestionnaires sont appelés quand la réponse associée se produit sur l’objet de contexte actuel, avant l’exécution de la réponse proprement dite. Ces gestionnaires sont utiles quand vous savez que vous souhaitez faire quelque chose, avant ou après l’événement réel, pour toute activité de ce type pour le reste de la réponse actuelle.
+
+> [!WARNING] 
+> Veillez à ne pas appeler une méthode de réponse d’activité à partir de son propre gestionnaire d’événements de réponse, par exemple, en appelant la méthode d’envoi d’activité depuis un gestionnaire écoutant les envois d’activité. Cela peut générer une boucle infinie.
+
+Rappelez-vous que chaque nouvelle activité obtient un nouveau thread sur lequel s’exécuter. Quand le thread destiné à traiter l’activité est créé, la liste des gestionnaires de cette activité est copiée sur ce nouveau thread. Aucun gestionnaire ajouté après ce point n’est exécuté pour cet événement d’activité spécifique.
+Les gestionnaires inscrits sur un objet de contexte sont traités de façon très semblable à celle dont l’adaptateur gère le pipeline d’intergiciels. Concrètement, les gestionnaires sont appelés dans l’ordre dans lequel ils sont ajoutés, et l’appel du délégué suivant transmet le contrôle au gestionnaire d’événements inscrit suivant. Si un gestionnaire n’appelle pas le délégué suivant, aucun des gestionnaires d’événements suivants n’est appelé ; l’événement est victime d’un court-circuitage, ce qui empêche l’adaptateur d’envoyer la réponse au canal.
+
 ## <a name="additional-resources"></a>Ressources supplémentaires
-Vous pouvez observer l’intergiciel d’enregistreur d’événements de transcription, tel qu’implémenté dans le Kit de développement logiciel (SDK) Bot Builder [[C#](https://github.com/Microsoft/botbuilder-dotnet/blob/master/libraries/Microsoft.Bot.Builder/TranscriptLoggerMiddleware.cs)|[JS](https://github.com/Microsoft/botbuilder-js/blob/master/libraries/botbuilder-core/src/transcriptLogger.ts)].
+Vous pouvez observer l’intergiciel d’enregistreur d’événements de transcription, tel qu’implémenté dans le Kit de développement logiciel (SDK) Bot Builder [[C#](https://github.com/Microsoft/botbuilder-dotnet/blob/master/libraries/Microsoft.Bot.Builder/TranscriptLoggerMiddleware.cs) | [JS](https://github.com/Microsoft/botbuilder-js/blob/master/libraries/botbuilder-core/src/transcriptLogger.ts)].

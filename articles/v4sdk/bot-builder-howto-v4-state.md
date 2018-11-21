@@ -1,5 +1,5 @@
 ---
-title: Gérer l’état de la conversation et l’état utilisateur | Microsoft Docs
+title: Enregistrer les données d’utilisateur et de conversation | Microsoft Docs
 description: Découvrez comment enregistrer et récupérer des données d’état avec le Kit de développement logiciel (SDK) Bot Builder pour .NET.
 keywords: état de la conversation, état utilisateur, flux de la conversation
 author: ivorb
@@ -8,16 +8,16 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 09/18/18
+ms.date: 11/14/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 2a3709111b048730805b5578306c669591122dda
-ms.sourcegitcommit: 633008f8db06f1bb5be7bacdb7dd8de6f8165328
+ms.openlocfilehash: 5698c50b167e7162ef6910b7c428dab5ceb51d0e
+ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50753607"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51645639"
 ---
-# <a name="manage-conversation-and-user-state"></a>Gérer l’état de la conversation et l’état utilisateur
+# <a name="save-user-and-conversation-data"></a>Enregistrer les données d’utilisateur et de conversation
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
@@ -308,7 +308,9 @@ else {
 ---
 
 ## <a name="start-your-bot"></a>Démarrer votre robot
-Exécutez votre bot en local.
+- Pour un bot JavaScript : dans un terminal ou une invite de commandes, remplacez les répertoires par celui créé pour votre bot, puis démarrez-le avec `npm start`. À ce stade, votre bot s’exécute localement.
+
+- Pour un bot C# : exécutez votre bot localement avec Visual Studio. Cliquez sur le bouton d’exécution, Visual Studio génère l’application, la déploie sur localhost et lance le navigateur web pour afficher la page ``default.htm`` des applications. À ce stade, votre bot s’exécute localement.
 
 ### <a name="start-the-emulator-and-connect-your-bot"></a>Démarrer l’émulateur et connecter votre robot
 Démarrez à présent l’émulateur, puis connectez-vous à votre bot dans l’émulateur :

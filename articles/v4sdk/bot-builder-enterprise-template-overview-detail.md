@@ -8,17 +8,17 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 2ee47d472518e54cf07b86648e270e40f8f015c0
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 3b4c16478e9d6f4f1c1a33315fb8c6c772c37b71
+ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997226"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51645619"
 ---
 # <a name="enterprise-template---detailed-overview"></a>Modèle d’entreprise – Présentation détaillée
 
 > [!NOTE]
-> Cet article s’applique à la version v4 du SDK. 
+> Cet article s’applique à la version v4 du Kit de développement logiciel (SDK). 
 
 Le modèle de bot d’entreprise permet de rassembler un certain nombre de meilleures pratiques que nous avons identifiées lors de la création d’expériences conversationnelles. En outre, il automatise l’intégration des composants, ce qui est particulièrement avantageux pour les développeurs Azure Bot Service. Dans cette section, vous découvrirez dans quel contexte les décisions clés ont été prises afin de mieux comprendre le fonctionnement du modèle.
 

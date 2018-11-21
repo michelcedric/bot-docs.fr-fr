@@ -1,5 +1,5 @@
 ---
-title: Ajouter des actions suggérées aux messages | Microsoft Docs
+title: Utiliser un bouton pour fournir une entrée | Microsoft Docs
 description: Découvrez comment envoyer des actions suggérées au sein des messages à l’aide du Kit SDK Bot Builder pour JavaScript.
 keywords: actions suggérées, boutons, entrée supplémentaire
 author: Kaiqb
@@ -8,24 +8,24 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 03/13/2018
+ms.date: 11/08/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 88186d3c6c925220fba099a5983c86b305f2dcae
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 5e97bc4a991a9c9b27e9c14eb44f5fd1e230985f
+ms.sourcegitcommit: cb0b70d7cf1081b08eaf1fddb69f7db3b95b1b09
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997097"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51332785"
 ---
-# <a name="add-suggested-actions-to-messages"></a>Ajouter des actions suggérées aux messages
+# <a name="use-button-for-input"></a>Utiliser un bouton pour fournir une entrée
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-[!include[Introduction to suggested actions](../includes/snippet-suggested-actions-intro.md)] 
+Vous pouvez permettre à votre bot de proposer des boutons sur lesquels l’utilisateur peut appuyer afin de fournir une entrée. Les boutons améliorent l’expérience utilisateur en lui permettant de répondre à une question ou d’effectuer une sélection en appuyant simplement sur un bouton, plutôt que d’avoir à taper une réponse avec un clavier. Contrairement aux boutons qui apparaissent dans les cartes enrichies (qui restent visibles et accessibles à l’utilisateur même après être touchées), les boutons qui apparaissent dans les volets des actions suggérées disparaissent une fois que l’utilisateur effectue une sélection. Cela empêche que l’utilisateur appuie sur les boutons périmés lors d’une conversation et simplifie le développement du bot (dans la mesure où il est inutile de prendre en compte ce scénario). 
 
-## <a name="send-suggested-actions"></a>Envoyer des actions suggérées
+## <a name="suggest-action-using-button"></a>Suggérer l’action d’utiliser un bouton
 
-Vous pouvez créer une liste d’actions suggérées (également appelée « réponses rapides ») qui s’affichera à l’utilisateur une seule fois pendant la conversation : 
+Les *actions suggérées* permettent à votre bot de présenter des boutons. Vous pouvez créer une liste d’actions suggérées (également appelée « réponses rapides ») qui s’affichera à l’utilisateur une seule fois pendant la conversation : 
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 

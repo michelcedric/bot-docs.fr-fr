@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9c5a156ff949c4014b69638e9cd5abb4b0ede149
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 73e19047ea64839f52bb20ea1eceee93803210bc
+ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999388"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51645482"
 ---
 # <a name="enterprise-bot-template---conversational-analytics-using-powerbi-dashboard-and-application-insights"></a>Modèle de bot d’entreprise - analyse de conversation à l’aide du tableau de bord PowerBI et d’Application Insights
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
 ms.date: 12/13/2017
-ms.openlocfilehash: c1d8adef58c688b3678af7a80964021292d0b1d0
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: e68db6c1fe9d3d136a8643652df034fb6df2858f
+ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997606"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51645599"
 ---
 # <a name="manage-a-bot"></a>Gérer un robot
 
@@ -50,7 +50,7 @@ Le panneau **Paramètres de l’application** contient des informations détaill
 
 ### <a name="microsoftappid-and-microsoftapppassword"></a>MicrosoftAppID et MicrosoftAppPassword
 
-Vous pouvez trouver **MicrosoftAppID** et **MicrosoftAppPassword** pour votre robot dans le panneau **Paramètres de l’application**.
+Vous pouvez trouver l’élément **MicrosoftAppID** de votre bot dans le panneau **Paramètres**. L’élément **MicrosoftAppPassword** de votre bot s’affiche uniquement lorsque vous créez votre bot.
 
 ![ID et mot de passe d’application Microsoft](~/media/azure-manage-a-bot/app-settings.png)
 

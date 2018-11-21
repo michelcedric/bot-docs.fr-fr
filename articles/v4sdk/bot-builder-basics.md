@@ -1,5 +1,5 @@
 ---
-title: Activités du bot dans le SDK Bot Builder | Microsoft Docs
+title: Fonctionnement des bots | Microsoft Docs
 description: Décrit le fonctionnement des activités et du http dans le SDK Bot Builder.
 keywords: flux de conversation, tour, conversation du bot, dialogues, invites, cascades, jeu de dialogues
 author: johnataylor
@@ -8,16 +8,16 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 10/31/2018
+ms.date: 11/08/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: f86c666b7a8ff754681a7eca7005fc42676705fc
-ms.sourcegitcommit: a496714fb72550a743d738702f4f79e254c69d06
+ms.openlocfilehash: 852740695f4d5719ba4dc4cc3d49c6820d95b3ef
+ms.sourcegitcommit: cb0b70d7cf1081b08eaf1fddb69f7db3b95b1b09
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50736707"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51333003"
 ---
-# <a name="understanding-how-bots-work"></a>Comprendre le fonctionnement des bots
+# <a name="how-bots-work"></a>Fonctionnement des bots
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
@@ -55,38 +55,13 @@ Nous allons explorer le diagramme précédent en nous concentrant sur l’arriv�
 
 Dans l’exemple ci-dessus, le bot a répondu à l’activité de message avec une autre activité de message contenant le même message texte. Le traitement commence par la requête HTTP POST. Les informations de l’activité sont transportées sous la forme d’une charge JSON arrivant sur le serveur Web. En C#, il s’agit généralement d’un projet ASP.NET. Dans un projet JavaScript Node.js, il s’agit souvent d’une infrastructure populaire comme Express ou Restify.
 
-L’*adaptateur*, un composant intégré du SDK, sert de conducteur de l’infrastructure. Le service utilise les informations de l’activité pour créer un objet d’activité, puis il appelle la méthode *process activity* de l’adaptateur, tout en passant l’objet et les informations d’authentification de l’activité (cet appel est encapsulé dans les bibliothèques en C#, mais il est visible en JavaScript). Lors de la réception de l’activité, l’adaptateur crée un objet de contexte de tour et appelle l’[intergiciel](#middleware). Le traitement se poursuit de l’intergiciel vers la logique du bot, le pipeline se termine et l’adaptateur supprime l’objet de contexte de tour.
-
-Le *gestionnaire de tour* du bot, qui constitue la majeure partie de la logique d’application, prend le contexte de tour comme argument. Le gestionnaire de tour traite généralement le contenu de l’activité entrante et génère une ou plusieurs activités pour y répondre, puis elle les envoie à l’aide de la méthode *send activity* du contexte. L’appel de la méthode send activity envoie une activité au canal de l’utilisateur, sauf si le traitement est interrompu. L’activité passe dans tous les [gestionnaires d’événements](#response-event-handlers) inscrits avant d’être envoyée au canal.
-
-## <a name="middleware"></a>Middlewares
-
-L’intergiciel est un ensemble linéaire de composants qui sont tous ajoutés et exécutés dans l’ordre, afin que chacun puisse intervenir sur l’activité avant et après le gestionnaire de tour du bot, et que chacun puisse accéder au contexte de tour de cette activité. À moins que l’intergiciel ne soit [interrompu](~/v4sdk/bot-builder-concept-middleware.md#short-circuiting), la dernière étape de son pipeline est un rappel du gestionnaire de tour du bot, avant de retourner en haut de la pile. Pour plus d’informations sur les intergiciels, consultez [la rubrique consacrée aux intergiciels](~/v4sdk/bot-builder-concept-middleware.md).
-
-## <a name="generating-responses"></a>Génération de réponses
-
-Le contexte de tour fournit des méthodes de réponse aux activités pour permettre au code de répondre à une activité :
-
-* Les méthodes _d’envoi d’une activité_ et _d’envoi d’activités_ envoient une ou plusieurs activités à la conversation.
-* Si le canal la prend en charge, la méthode de _mise à jour d’une activité_ met à jour une activité au sein de la conversation.
-* Si le canal la prend en charge, la méthode de _suppression d’une activité_ supprime une activité de la conversation.
-
-Chaque méthode de réponse s’exécute dans un processus asynchrone. Quand elle est appelée, la méthode de réponse à une activité clone la liste de [gestionnaires d’événements](#response-event-handlers) associée avant de commencer à appeler les gestionnaires, ce qui signifie qu’elle contient chaque gestionnaire ajouté à ce stade, mais rien qui est ajouté après le démarrage du processus.
-
-Cela signifie également que l’ordre de vos réponses n’est pas garanti pour les appels d’activités indépendantes, en particulier quand une tâche est plus complexe qu’une autre. Si votre bot peut générer plusieurs réponses à une activité entrante, vérifiez qu’elles ont du sens quel que soit l’ordre dans lequel l’utilisateur les reçoit. La seule exception est la méthode *send activities*, qui vous permet d’envoyer un ensemble ordonné d’activités.
+L’*adaptateur*, un composant intégré du Kit de développement logiciel (SDK), est l’élément central du runtime du Kit de développement logiciel (SDK). L’activité est transmise sous forme de code JSON dans le corps HTTP POST. Ce code JSON est désérialisé pour créer l’objet d’activité qui est ensuite transmis à l’adaptateur en appelant la méthode de *traitement d’activité*. Lors de la réception de l’activité, l’adaptateur crée un *contexte de tour* et appelle l’intergiciel. Le nom *contexte de tour* utilise le terme « tour » pour décrire l’ensemble du traitement associé à l’arrivée d’une activité. Le contexte de tour est l’une des abstractions les plus importantes dans le Kit de développement logiciel (SDK), puisqu’il transfère non seulement l’activité entrante à tous les composants d’intergiciel et à la logique d’application, mais il fournit également le mécanisme nécessaire aux composants d’intergiciel et à la logique d’application pour envoyer des activités sortantes. Le contexte de tour fournit des méthodes de réponse _d’envoi, de mise à jour et de suppression d’activité_ pour répondre à une activité. Chaque méthode de réponse s’exécute dans un processus asynchrone. 
 
 [!INCLUDE [alert-await-send-activity](../includes/alert-await-send-activity.md)]
 
-## <a name="response-event-handlers"></a>Gestionnaires d’événements de réponse
 
-En plus de la logique d’application et d’intergiciel, vous pouvez ajouter des gestionnaires de réponse (parfois également appelés gestionnaires d’événements ou gestionnaires d’événements d’activité) à l’objet de contexte. Ces gestionnaires sont appelés quand la [réponse](#generating-responses) associée se produit sur l’objet de contexte actuel, avant l’exécution de la réponse proprement dite. Ces gestionnaires sont utiles quand vous savez que vous souhaitez faire quelque chose, avant ou après l’événement réel, pour toute activité de ce type pour le reste de la réponse actuelle.
-
-> [!WARNING]
-> Veillez à ne pas appeler une méthode de réponse d’activité à partir de son propre gestionnaire d’événements de réponse, par exemple, en appelant la méthode d’envoi d’activité depuis un gestionnaire _écoutant les envois d’activité_. Cela peut générer une boucle infinie.
-
-Rappelez-vous que chaque nouvelle activité obtient un nouveau thread sur lequel s’exécuter. Quand le thread destiné à traiter l’activité est créé, la liste des gestionnaires de cette activité est copiée sur ce nouveau thread. Aucun gestionnaire ajouté après ce point n’est exécuté pour cet événement d’activité spécifique.
-
-Les gestionnaires inscrits sur un objet de contexte sont traités de façon très semblable à la façon dont l’adaptateur gère le [pipeline d’intergiciels](~/v4sdk/bot-builder-concept-middleware.md#the-bot-middleware-pipeline). Concrètement, les gestionnaires sont appelés dans l’ordre dans lequel ils sont ajoutés, et l’appel du délégué _next_ transmet le contrôle au gestionnaire d’événements inscrit suivant. Si un gestionnaire n’appelle pas le délégué next, aucun des gestionnaires d’événements suivants n’est appelé ; l’événement est victime d’un [court-circuitage](~/v4sdk/bot-builder-concept-middleware.md#short-circuiting), ce qui empêche l’adaptateur d’envoyer la réponse au canal.
+## <a name="middleware"></a>Middlewares
+Les intergiciels sont très similaires à n’importe quel autre intergiciel de messagerie, et comprennent un ensemble linéaire de composants qui sont exécutés dans un ordre précis, ce qui donne à chacun une chance d’agir sur l’activité. La dernière étape du pipeline d’intergiciels est un rappel destiné à la fonction du gestionnaire de tours (`OnTurnAsync` dans C# et `onTurn` dans JS) sur la classe du bot sur laquelle l’application est inscrite avec l’adaptateur. Le gestionnaire de tours prend un contexte de tour comme argument, en général la logique d’application s’exécutant sur la fonction du gestionnaire de tours traite le contenu de l’activité entrante et génère une ou plusieurs activités en réponse, en les envoyant via la fonction *d’envoi d’activité* sur le contexte de tour. Appelez l’*envoi d’activité* sur le contexte de tour entraîne l’appel des composants des intergiciels sur les activités sortantes. Les composants des intergiciels s’exécutent avant et après la fonction du gestionnaire de tours du bot. Par nature, l’exécution est imbriquée, à l’image d’une poupée russe. Pour plus d’informations sur les intergiciels, consultez [la rubrique consacrée aux intergiciels](~/v4sdk/bot-builder-concept-middleware.md).
 
 ## <a name="bot-structure"></a>Structure du bot
 
@@ -96,7 +71,7 @@ Examinons l’exemple de bot d’écho avec compteur [[C#](https://aka.ms/EchoBo
 
 # <a name="ctabcs"></a>[C#](#tab/cs)
 
-Un bot est un type d’application web [ASP.NET Core](https://docs.microsoft.com/aspnet/core/?view=aspnetcore-2.1). Si vous étudiez les notions de base d’[ASP.NET](https://docs.microsoft.com/aspnet/core/fundamentals/index?view=aspnetcore-2.1&tabs=aspnetcore2x), vous découvrirez qu’il existe un code similaire dans les fichiers tels que Program.cs et Startup.cs. Ces fichiers sont requis pour toutes les applications web et ne sont pas propres à un bot. Le code de certains de ces fichiers ne sera pas copié ici, mais vous pouvez vous référer à l’exemple de bot d’écho avec compteur.
+Un bot est un type d’application web [ASP.NET Core](https://docs.microsoft.com/aspnet/core/?view=aspnetcore-2.1). Si vous étudiez les notions de base [d’ASP.NET](https://docs.microsoft.com/aspnet/core/fundamentals/index?view=aspnetcore-2.1&tabs=aspnetcore2x), vous découvrez qu’il existe un code similaire dans les fichiers tels que **Program.cs** et **Startup.cs**. Ces fichiers sont requis pour toutes les applications web et ne sont pas propres à un bot. Le code de certains de ces fichiers ne sera pas copié ici, mais vous pouvez vous référer à l’exemple [C# echobot-with-counter](https://aka.ms/EchoBot-With-Counter).
 
 ### <a name="echowithcounterbotcs"></a>EchoWithCounterBot.cs
 
@@ -245,7 +220,7 @@ public class EchoBotAccessors
 
 # <a name="javascripttabjs"></a>[JavaScript](#tab/js)
 
-La section système contient principalement les fichiers **package.json**, **.env**, **index.js** et **README.md**. Le code de certains fichiers n’est pas copié ici, mais vous le verrez lorsque vous exécuterez le bot.
+Le générateur Yeoman crée un type d’application web [restify](http://restify.com/). Si vous consultez le démarrage rapide dédié à restify dans la documentation, vous pouvez voir une application similaire au fichier **index.js** généré. Cette section décrit principalement les fichiers **package.json**, **.env**, **index.js**, **bot.js** et **echobot-with-counter.bot**. Le code de certains fichiers n’est pas copié ici, mais vous pouvez le voir en exécutant le bot ; vous pouvez également consulter l’exemple [Node.js echobot-with-counter](https://aka.ms/js-echobot-with-counter).
 
 ### <a name="packagejson"></a>package.json
 

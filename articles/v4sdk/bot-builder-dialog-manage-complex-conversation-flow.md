@@ -1,5 +1,5 @@
 ---
-title: Gérer un flux de conversation complexe avec des dialogues | Microsoft Docs
+title: Créer des flux de conversation avancés à l’aide de branches et de boucles | Microsoft Docs
 description: Découvrez comment gérer un flux de conversation complexe avec des dialogues dans le Kit de développement logiciel (SDK) Bot Builder pour Node.js.
 keywords: flux de conversation complexe, répétition, boucle, menu, dialogues, invites, cascades, jeu de dialogues
 author: v-ducvo
@@ -8,24 +8,24 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 10/03/2018
+ms.date: 11/03/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: bbb038554801f4585cbc1e3186d139232405b47d
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 9605a2f078be753023e6d178247a211ace107873
+ms.sourcegitcommit: cb0b70d7cf1081b08eaf1fddb69f7db3b95b1b09
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999826"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51333023"
 ---
-# <a name="manage-complex-conversation-flows-with-dialogs"></a>Gérer des flux de conversation complexes avec dialogues
+# <a name="create-advance-conversation-flow-using-branches-and-loops"></a>Créer des flux de conversation avancés à l’aide de branches et de boucles
 
 [!INCLUDE [pre-release-label](~/includes/pre-release-label.md)]
 
-Dans le dernier article, nous avons expliqué comment utiliser la bibliothèque des dialogues pour gérer des conversations simples. Dans des [flux de conversation simples](bot-builder-dialog-manage-conversation-flow.md), l’utilisateur commence à la première étape d’une *cascade*, continue jusqu’à la dernière étape où se termine l’échange conversationnel. Dans cet article, nous allons utiliser des dialogues pour gérer plus de conversations complexes avec des sections en branche ou en boucle. Pour ce faire, nous allons utiliser différentes méthodes définies sur le contexte des dialogues et le contexte des étapes de cascade, et nous allons passer des arguments entre les différentes parties du dialogue.
+Dans le dernier article, nous avons expliqué comment utiliser la bibliothèque des dialogues pour gérer des conversations simples. Dans des [flux de conversation séquentiels](bot-builder-dialog-manage-conversation-flow.md), l’utilisateur commence à la première étape d’une *cascade*, continue jusqu’à la dernière étape où se termine l’échange conversationnel. Dans cet article, nous allons utiliser des dialogues pour gérer plus de conversations complexes avec des sections en branche ou en boucle. Pour ce faire, nous allons utiliser différentes méthodes définies sur le contexte des dialogues et le contexte des étapes de cascade, et nous allons passer des arguments entre les différentes parties du dialogue.
 
 Consultez la section [Bibliothèque des dialogues](bot-builder-concept-dialog.md) pour plus d’informations sur les dialogues.
 
-Pour vous offrir plus de contrôle sur la *pile de dialogue*, la bibliothèque **Dialogues** fournit une méthode _replace dialog_. Cette méthode vous permet d’échanger le dialogue actif avec un autre tout en conservant l’état et le flux de la conversation. Les méthodes _begin dialog_ et _replace dialog_ vous permettent de créer autant de branches et de boucles que nécessaire pour créer des interactions plus complexes. Si votre conversation devient si complexe que les dialogues en cascade deviennent difficiles à gérer, envisagez d’utiliser un [dialogue composant](bot-builder-compositcontrol.md) ou de créer une classe de gestion de dialogue personnalisée s’appuyant sur la classe `Dialog` de base.
+Pour vous offrir plus de contrôle sur la *pile de dialogue*, la bibliothèque **Dialogues** fournit une méthode _replace dialog_. Cette méthode vous permet d’échanger le dialogue actif avec un autre tout en conservant l’état et le flux de la conversation. Les méthodes _begin dialog_ et _replace dialog_ vous permettent de créer autant de branches et de boucles que nécessaire pour créer des interactions plus complexes. Si votre conversation devient si complexe que les dialogues en cascade deviennent difficiles à gérer, recherchez une [réutilisation de dialogue](bot-builder-compositcontrol.md) ou créer une classe de gestion de dialogue personnalisée s’appuyant sur la classe `Dialog` de base.
 
 Dans cet article, nous allons créer des exemples de dialogues pour un bot de concierge d’hôtel qu’un client pourrait utiliser pour accéder à des services courants : réserver une table dans le restaurant de l’hôtel et commander un repas au room service.  Chacun de ces composants, ainsi qu’un menu les reliant, sont créés sous forme de dialogues dans un jeu de dialogues.
 

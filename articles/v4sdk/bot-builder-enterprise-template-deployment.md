@@ -8,17 +8,17 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 06e91d4b7d320078e83c3523e1326b82ee3fe759
-ms.sourcegitcommit: 49a76dd34d4c93c683cce6c2b8b156ce3f53280e
+ms.openlocfilehash: a286d9d77869899854cebde38483026475c5e622
+ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50134699"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51645589"
 ---
 # <a name="enterprise-bot-template---deploying-your-bot"></a>Modèle de bot d’entreprise – Déployer votre bot
 
 > [!NOTE]
-> Cet article s’applique à la version v4 du SDK. 
+> Cet article s’applique à la version v4 du Kit de développement logiciel (SDK). 
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -76,7 +76,7 @@ Dans le projet que vous avez créé, le fichier README.md contient un exemple de
 msbot clone services --name "YOUR_BOT_NAME" --luisAuthoringKey "YOUR_AUTHORING_KEY" --folder "DeploymentScripts\msbotClone" --location "YOUR_REGION"
 ```
 
-> Certains utilisateurs peuvent rencontrer un problème connu, dans lequel l’erreur suivante apparaît lors du déploiement `ERROR: Unable to provision MSA id automatically. Please pass them in as parameters and try again`. Dans ce cas, accédez à https://apps.dev.microsoft.com et créez manuellement une nouvelle application pour récupérer l’ID d’application et le mot de passe/secret. Exécutez la commande msbot clone services ci-dessus, mais indiquez les deux nouveaux arguments `appId` et `appSecret` avec les valeurs que vous venez de récupérer.
+> Certains utilisateurs peuvent rencontrer un problème connu, dans lequel l’erreur suivante apparaît lors du déploiement `ERROR: Unable to provision MSA id automatically. Please pass them in as parameters and try again`. Dans ce cas, accédez à https://apps.dev.microsoft.com et créez manuellement une nouvelle application pour récupérer l’ID d’application et le mot de passe/secret. Exécutez la commande msbot clone services ci-dessus, mais indiquez les deux nouveaux arguments `appId` et `appSecret` avec les valeurs que vous venez de récupérer. Vérifiez que vous placez le secret entre guillemets pour éviter les problèmes d’analyse, par exemple : `-appSecret "YOUR_SECRET"`
 
 L’outil msbot décrit le plan de déploiement, notamment l’emplacement et le SKU. Vérifiez ces informations avec de continuer.
 
@@ -87,7 +87,7 @@ L’outil msbot décrit le plan de déploiement, notamment l’emplacement et le
 - Mettez votre fichier `appsettings.json` à jour avec le nom du nouveau fichier .bot et le secret du fichier .bot.
 - Exécutez la commande suivante, récupérez la clé d’instrumentation pour votre instance Application Insights et mettez à jour la clé d’instrumentation dans votre fichier `appsettings.json`.
 
-`msbot list --bot YOURBOTFILE.bot --secret YOUR_BOT_SECRET`
+`msbot list --bot YOURBOTFILE.bot --secret "YOUR_BOT_SECRET"`
 
         {
           "botFilePath": ".\\YOURBOTFILE.bot",

@@ -1,22 +1,18 @@
 ---
-title: Accueillir l’utilisateur | Microsoft Docs
-description: Découvrez comment concevoir votre bot pour offrir une expérience utilisateur conviviale.
-keywords: vue d’ensemble, concevoir, expérience utilisateur, Accueil, expérience personnalisée
-author: dashel
-ms.author: dashel
-manager: kamrani
-ms.topic: article
-ms.service: bot-service
-ms.subservice: sdk
-ms.date: 8/30/2018
-monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: f9c58762e0733fbb379b43375710e651424095fc
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+redirect_url: /bot-framework/bot-builder-send-welcome-message
+ms.openlocfilehash: ef281fd1b6539484c06f68caffbd4e87ec8acc2b
+ms.sourcegitcommit: cb0b70d7cf1081b08eaf1fddb69f7db3b95b1b09
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998746"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51332903"
 ---
+<a name="--"></a><!--
+---
+titre : Accueillir l’utilisateur | Microsoft Docs description : Découvrir comment concevoir votre bot pour qu’il propose une expérience utilisateur accueillante.
+mots clés : vue d’ensemble, expérience utilisateur, Accueil, expérience personnalisée author: dashel ms.author: dashel manager: kamrani ms.topic: article ms.service: bot-service ms.subservice: sdk ms.date: 8/30/2018 monikerRange: « azure-bot-service-4.0 »
+---
+
 # <a name="welcoming-the-user"></a>Accueillir l’utilisateur
 
 L’objectif principal lors de la création d’un bot est d’impliquer votre utilisateur dans une conversation utile. Pour atteindre cet objectif, l’une des meilleures méthodes consiste à s’assurer qu’à partir du moment où un utilisateur se connecte pour la première fois, il comprenne les fonctionnalités et l’utilité principales de votre bot, c’est-à-dire la raison pour laquelle il a été créé.
@@ -74,3 +70,5 @@ Proposer des interactions rapides et en adéquation avec la conversation permet 
 ## <a name="next-steps"></a>Étapes suivantes
 > [!div class="nextstepaction"]
 > [Envoyer un message de bienvenue aux utilisateurs](bot-builder-send-welcome-message.md)
+
+-->

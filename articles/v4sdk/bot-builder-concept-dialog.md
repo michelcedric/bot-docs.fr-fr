@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 9/22/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 97f280d1698e8670be81572a2891c18bc7bf47ab
-ms.sourcegitcommit: a496714fb72550a743d738702f4f79e254c69d06
+ms.openlocfilehash: 88022c387d5f9ef7f645be74010aba3c676efadc
+ms.sourcegitcommit: cb0b70d7cf1081b08eaf1fddb69f7db3b95b1b09
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50736667"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51332933"
 ---
 # <a name="dialogs-library"></a>Bibliothèque des dialogues
 
@@ -24,6 +24,8 @@ ms.locfileid: "50736667"
 La gestion des conversations grâce à une boîte de dialogue est une fonction centrale du kit de développement logiciel (SDK). Les objets de dialogue traitent les activités entrantes et génèrent des réponses sortantes. La logique métier du bot s’exécute directement ou indirectement dans les classes de dialogue.
 
 Lors de l’exécution, les instances de dialogue sont organisées dans une pile. Le dialogue en haut de la pile est appelé ActiveDialog (dialogue actif). Le dialogue actuellement actif traite l’activité entrante. Entre chaque tour de la conversation (qui n’est pas limitée dans le temps et qui peut s’étendre sur plusieurs jours), la pile est conservée. 
+
+## <a name="dialog-lifecycle"></a>Cycle de vie des dialogues
 
 Un dialogue implémente trois fonctions principales :
 - BeginDialog
