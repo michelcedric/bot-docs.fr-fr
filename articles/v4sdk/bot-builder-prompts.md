@@ -8,26 +8,29 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/02/2018
+ms.date: 11/21/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ec0cc5e942ed66c8683f8b0cc92ba7df2e36db42
-ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
+ms.openlocfilehash: 1c69b438c739ac9c47d40e53f1300a4773fc1a1d
+ms.sourcegitcommit: 6cb37f43947273a58b2b7624579852b72b0e13ea
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51645669"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52288788"
 ---
 # <a name="gather-user-input-using-a-dialog-prompt"></a>Collecter les entrées utilisateur avec une invite de dialogue
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-Pour interagir avec les utilisateurs, un bot collecte généralement des informations à travers des questions. Pour ce faire, vous pouvez utiliser directement la méthode d’_envoi d’activité_ de l’objet [contexte de tour](~/v4sdk/bot-builder-basics.md#defining-a-turn), puis traiter le message entrant suivant en tant que réponse. Toutefois, le SDK Bot Builder offre une bibliothèque de [dialogues](bot-builder-concept-dialog.md) qui fournit des méthodes permettant de poser des questions plus facilement et de s’assurer que la réponse correspond à un type de données spécifique ou respecte des règles de validation personnalisées. Cette rubrique explique comment y parvenir à l’aide d’objets d’invite pour demander à un utilisateur d’effectuer une saisie.
+Pour interagir avec les utilisateurs, un bot collecte généralement des informations en posant des questions. La bibliothèque de *boîtes de dialogue* vous permet de poser des questions facilement et de valider la réponse pour vous assurer qu’elle correspond à un type de données spécifique ou répond aux règles de validation personnalisées. Cette rubrique décrit en détail comment créer et appeler des invites à partir d’une boîte de dialogue en cascade.
 
-## <a name="prompt-types"></a>Types d’invites
+## <a name="prerequisites"></a>Prérequis
+- Le code dans cet article est basé sur l’exemple d’invite de boîte de dialogue. Vous aurez besoin d’une copie de l’exemple en [ C# ](https://aka.ms/dialog-prompt-cs) ou en [JS](https://aka.ms/dialog-prompt-js).
+- Une connaissance élémentaire de la [bibliothèque de boîtes de dialogue](bot-builder-concept-dialog.md) et de la façon de [gérer les conversations](bot-builder-dialog-manage-conversation-flow.md) est nécessaire. 
+- [Émulateur Bot Framework](https://github.com/Microsoft/BotFramework-Emulator) pour le test.
 
-Dans les coulisses, les invites constituent une boîte de dialogue en deux étapes. Tout d’abord, l’invite demande une entrée. Ensuite, elle retourne la valeur valide, ou redémarre depuis le début avec une nouvelle invite.
+## <a name="about-prompt-types"></a>À propos des types d’invites
 
-La bibliothèque de dialogues propose diverses invites de base, chacune étant utilisée pour recueillir un type de réponse différent.
+Dans les coulisses, les invites constituent une boîte de dialogue en deux étapes. Tout d’abord, l’invite demande une entrée. Ensuite, elle retourne la valeur valide, ou redémarre depuis le début avec une nouvelle invite. La bibliothèque de dialogues propose diverses invites de base, chacune étant utilisée pour recueillir un type de réponse différent. Les invites de base peuvent interpréter une entrée de langage naturel, comme « dix » ou « une dizaine » pour un nombre, ou « demain » ou un « vendredi à 10 h » pour une date-heure.
 
 | Prompt | Description | Retours |
 |:----|:----|:----|
@@ -38,158 +41,258 @@ La bibliothèque de dialogues propose diverses invites de base, chacune étant u
 | _Invite de nombre_ | Demande un nombre. | Une valeur numérique. |
 | _Invite de texte_ | Demande une saisie de texte générale. | Une chaîne. |
 
-La bibliothèque inclut également une _invite OAuth_ pour obtenir un _jeton OAuth_ permettant d’accéder à une autre application pour le compte de l’utilisateur. Pour plus d’informations sur l’authentification, consultez Comment [ajouter l’authentification à votre bot](bot-builder-authentication.md).
+Pour inviter un utilisateur à saisir une entrée, définissez une invite à l’aide de l’une des classes intégrées, _text prompt_, par exemple, et ajoutez-la à votre ensemble de dialogues. Les invites ont des ID fixes devant être uniques au sein d’un ensemble de boîte de dialogue. Vous pouvez avoir un validateur personnalisé pour chaque invite, et pour certaines d’entre elles, vous pouvez spécifier des _paramètres régionaux par défaut_. 
 
-Les invites de base peuvent interpréter une entrée de langage naturel, comme « dix » ou « une dizaine » pour un nombre, ou « demain » ou un « vendredi à 10 h » pour une date-heure.
+### <a name="prompt-locale"></a>Paramètres régionaux d’invite
+
+Les paramètres régionaux sont utilisés pour déterminer le comportement spécifique à la langue des invites **choix**, **confirmer**, **date-heure**, et **nombre**. Pour toute entrée donnée de l’utilisateur, si le canal fournit une propriété _paramètres régionaux_ dans le message de l’utilisateur, elle est utilisée. Sinon, les _paramètres régionaux par défaut_ de l’invite sont utilisés s’ils sont définis, soit en les fournissant lors de l’appel du constructeur de l’invite ou bien en les définissant ultérieurement. Si aucun paramètre n’est fourni, l’anglais (« en-us ») est utilisé. Remarque : Les paramètres régionaux sont des codes ISO 639 de 2, 3 ou 4 caractères qui représentent une langue ou une famille de langues.
 
 ## <a name="using-prompts"></a>Utilisation des invites
 
-Une boîte de dialogue peut utiliser une invite de commandes uniquement si la boîte de dialogue et l’invite de commandes se situent dans le même ensemble de boîte de dialogue.
+Une boîte de dialogue peut utiliser une invite de commandes uniquement si la boîte de dialogue et l’invite de commandes se situent dans le même ensemble de boîte de dialogue. Vous pouvez utiliser la même invite à plusieurs étapes au sein d’une boîte de dialogue et dans plusieurs boîtes de dialogue au sein du même ensemble de boîte de dialogue. Toutefois, vous associez une validation personnalisée à une invite de commandes au moment de l’initialisation. Pour utiliser une validation différente pour le même type d’invite, vous avez besoin de plusieurs instances du type d’invite, chacun avec son propre code de validation.
 
-1. Définissez un accesseur de propriété d’état pour l’état de votre boîte de dialogue.
-1. Créez un jeu de dialogues.
-1. Créez vos invites et ajoutez-les à l’ensemble de boîte de dialogue.
-1. Créez un dialogue utilisant vos invites, puis ajoutez-le à l’ensemble de dialogues.
-1. Dans la boîte de dialogue, ajoutez les appels pour les invites et pour récupérer les résultats des invites.
-
-Cet article explique comment créer vos invites et comment les appeler à partir d’une boîte de dialogue en cascade.
-Pour plus d’informations sur les boîtes de dialogue en général, consultez l’article [Bibliothèque de boîtes de dialogue](bot-builder-concept-dialog.md).
-Pour une description d’un bot complet utilisant des invites et des boîtes de dialogue, consultez comment [utiliser des boîtes de dialogue pour gérer des flux de conversations simples](bot-builder-dialog-manage-conversation-flow.md).
-
-Vous pouvez utiliser la même invite à plusieurs étapes au sein d’une boîte de dialogue et dans plusieurs boîtes de dialogue au sein du même ensemble de boîte de dialogue.
-Toutefois, vous associez une validation personnalisée à une invite de commandes au moment de l’initialisation.
-Par conséquent, si vous avez besoin d’une validation différente pour le même type d’invite, vous avez besoin de plusieurs instances du type d’invite, chacun avec son propre code de validation.
-
-### <a name="create-a-prompt"></a>Créer une invite
-
-Pour inviter un utilisateur à saisir une entrée, définissez une invite à l’aide de l’une des classes intégrées, _text prompt_, par exemple, et ajoutez-la à votre ensemble de dialogues.
-
-* L’invite a un ID fixe. (Les identificateurs doivent être uniques au sein d’un ensemble de boîte de dialogue.)
-* L’invite peut avoir un validateur personnalisé. (Voir [validation personnalisée](#custom-validation).)
-* Pour certaines invites, vous pouvez spécifier des _paramètres régionaux par défaut_.
-
-En règle générale, créez et ajoutez des invites et des boîtes de dialogue à votre ensemble de boîte de dialogue lorsque vous initialisez votre bot. L’ensemble de boîte de dialogue peut ensuite résoudre les ID de l’invite lorsque le bot reçoit une entrée de la part de l’utilisateur.
-
-Par exemple, le code suivant crée deux invites de texte et les ajoute à un ensemble de boîte de dialogue existant. La seconde invite de texte fait référence à une méthode de validation qui n’est pas affichée ici.
+### <a name="define-a-state-property-accessor-for-the-dialog-state"></a>Définissez un accesseur de propriété d’état pour l’état de la boîte de dialogue
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-Ici, `_dialogs` contient un ensemble existant de boîte de dialogue, et `NameValidator` est une méthode de validation.
+L’exemple d’invite de boîte de dialogue utilisé dans cet article demande des informations de réservation à l’utilisateur. Pour gérer la date et la taille d’un tiers, nous définissons une classe interne pour les informations de réservation dans le fichier DialogPromptBot.cs.
 
 ```csharp
-_dialogs.Add(new TextPrompt("nickNamePrompt"));
-_dialogs.Add(new TextPrompt("namePrompt", NameValidator));
+public class Reservation
+{
+    public int Size { get; set; }
+
+    public string Date { get; set; }
+}
+```
+
+Ensuite, nous ajoutons un accesseur de propriété d’état pour les données de réservation.
+
+```csharp
+public class DialogPromptBotAccessors
+{
+    public DialogPromptBotAccessors(ConversationState conversationState)
+    {
+        ConversationState = conversationState ?? throw new ArgumentNullException(nameof(conversationState));
+    }
+
+    public static string DialogStateAccessorKey { get; } = "DialogPromptBotAccessors.DialogState";
+    public static string ReservationAccessorKey { get; } = "DialogPromptBotAccessors.Reservation";
+
+    public IStatePropertyAccessor<DialogState> DialogStateAccessor { get; set; }
+    public IStatePropertyAccessor<DialogPromptBot.Reservation> ReservationAccessor { get; set; }
+
+    public ConversationState ConversationState { get; }
+}
+```
+
+Dans Startup.cs, nous mettons à jour la méthode `ConfigureServices` pour définir les accesseurs.
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    // ...
+
+    // Create and register state accesssors.
+    // Acessors created here are passed into the IBot-derived class on every turn.
+    services.AddSingleton<BotAccessors>(sp =>
+    {
+        // ...
+
+        // Create the custom state accessor.
+        // State accessors enable other components to read and write individual properties of state.
+        var accessors = new BotAccessors(conversationState)
+        {
+            DialogStateAccessor = conversationState.CreateProperty<DialogState>(DialogPromptBotAccessors.DialogStateAccessorKey),
+            ReservationAccessor = conversationState.CreateProperty<DialogPromptBot.Reservation>(DialogPromptBotAccessors.ReservationAccessorKey),
+        };
+
+        return accessors;
+    });
+}
 ```
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Ici, `this.dialogs` contient un ensemble existant de boîte de dialogue, et `NameValidator` est une fonction de validation.
+Aucune modification du code du service HTTP n’est exigée pour JavaScript, nous pouvons laisser notre fichier index.js en l’état.
+
+Dans bot.js, nous incluons les instructions `require` nécessaires pour le bot d’invite de boîte de dialogue. 
+```javascript
+const { ActivityTypes } = require('botbuilder');
+const { DialogSet, WaterfallDialog, NumberPrompt, DateTimePrompt, ChoicePrompt, DialogTurnStatus } = require('botbuilder-dialogs');
+```
+
+Ajoutez des identificateurs pour les accesseurs de propriété d’état, les boîtes de dialogue et les invites.
 
 ```javascript
-this.dialogs.add(new TextPrompt('nickNamePrompt'));
-this.dialogs.add(new TextPrompt('namePrompt', NameValidator));
+// Define identifiers for state property accessors.
+const DIALOG_STATE_ACCESSOR = 'dialogStateAccessor';
+const RESERVATION_ACCESSOR = 'reservationAccessor';
+
+// Define identifiers for dialogs and prompts.
+const RESERVATION_DIALOG = 'reservationDialog';
+const PARTY_SIZE_PROMPT = 'partySizePrompt';
+const LOCATION_PROMPT = 'locationPrompt';
+const RESERVATION_DATE_PROMPT = 'reservationDatePrompt';
 ```
 
 ---
 
-#### <a name="locales"></a>Locales
+### <a name="create-a-dialog-set-and-prompts"></a>Créer un jeu de dialogues et des invites
 
-Les paramètres régionaux sont utilisés pour déterminer le comportement spécifique à la langue des invites **choix**, **confirmer**, **date-heure**, et **nombre**. Pour une entrée venant de l’utilisateur :
-
-* Si le canal fournit une propriété _paramètres régionaux_ dans le message de l’utilisateur, elle est utilisée.
-* Sinon, les _paramètres régionaux par défaut_ de l’invite sont utilisés s’ils sont définis, soit en les fournissant lors de l’appel du constructeur de l’invite ou bien en les définissant ultérieurement.
-* Sinon, l’anglais (« en-us ») est utilisé comme paramètre régional.
-
-> [!NOTE]
-> Les paramètres régionaux sont des codes ISO 639 de 2, 3 ou 4 caractères qui représentent une langue ou une famille de langues.
-
-### <a name="call-a-prompt-from-a-waterfall-dialog"></a>Appeler une invite de commandes à partir d’une boîte de dialogue en cascade
-
-Une fois qu’une invite est ajoutée, appelez-la dans une seule étape d’une boîte de dialogue en cascade et obtenez le résultat de l’invite à l’étape suivante de la boîte de dialogue.
-Pour appeler une invite à partir d’une étape en cascade, appelez la méthode _invite_ du _contexte de l’étape en cascade_ de l’objet. Le premier paramètre est l’ID de l’invite à utiliser, et le deuxième paramètre contient les options pour l’invite, comme le texte utilisé pour demander une entrée à l’utilisateur.
-
-Supposons que l’utilisateur interagit avec un bot, le bot possède une boîte de dialogue en cascade active, et l’étape suivante dans la boîte de dialogue utilise une invite.
-
-1. Lorsque l’utilisateur envoie un message au bot, il effectue les opérations suivantes :
-   1. Le gestionnaire de tour du bot crée le contexte d’une boîte de dialogue et appelle sa méthode _continue_.
-   1. Le contrôle passe à l’étape suivante dans la boîte de dialogue active, votre boîte de dialogue en cascade dans ce cas précis.
-   1. L’étape appelle la méthode _prompt_ du contexte d’étape en cascade pour demander une entrée à l’utilisateur.
-   1. Le contexte d’étape en cascade pousse l’invite dans la pile et la démarre.
-   1. L’invite envoie une activité à l’utilisateur pour demander son entrée.
-1. Lorsque l’utilisateur envoie son prochain message au bot, il effectue les opérations suivantes :
-   1. Le gestionnaire de tour du bot crée le contexte d’une boîte de dialogue et appelle sa méthode _continue_.
-   1. Le contrôle passe à l’étape suivante dans la boîte de dialogue active, le second tour de l’invite.
-   1. L’invite valide l’entrée de l’utilisateur.
-      * Si son entrée n’est pas valide, l’invite est redémarrée, provoquant une nouvelle demande d’entrée, et cet ensemble d’étapes se répète au prochain tour.
-      * Sinon, l’invite se termine et retourne un objet _dialog turn result_ à la boîte de dialogue parente. Le contrôle passe à l’étape suivante de votre boîte de dialogue en cascade, avec le résultat de l’invite de commandes disponible dans la propriété _résultat_ du contexte d’étape en cascade.
-
-<!--
-> [!NOTE]
-> A waterfall step delegate takes a _waterfall step context_ parameter and returns a _dialog turn result_.
-> A prompt's result is contained within the prompt's return value (a dialog turn result object) when it ends.
-> The waterfall dialog provides the return value in the waterfall step context parameter when it calls the next waterfall step.
--->
-
-Quand une invite de commandes est retournée, la propriété _résultat_ du contexte d’étape en cascade est définie sur la valeur renvoyée de l’invite.
-
-Cet exemple illustre les parties de deux étapes consécutives en cascade. La première utilise l’invite pour demander le nom de l’utilisateur. La seconde obtient la valeur renvoyée de l’invite.
+En règle générale, vous créez et ajoutez des invites et des boîtes de dialogue à votre ensemble de boîte de dialogue lorsque vous initialisez votre bot. L’ensemble de boîte de dialogue peut ensuite résoudre les ID de l’invite lorsque le bot reçoit une entrée de la part de l’utilisateur.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-Ici, `name` est l’ID d’une invite de texte, `NameStepAsync` et `GreetingStepAsync` sont deux délégués d’étapes consécutives d’une boîte de dialogue en cascade.
+Dans la classe `DialogPromptBot`, définissez des identificateurs pour les boîtes de dialogue, les invites et l’ensemble de boîte de dialogue.
+```csharp
+private const string ReservationDialog = "reservationDialog";
+private const string PartySizePrompt = "partyPrompt";
+private const string LocationPrompt = "locationPrompt";
+private const string ReservationDatePrompt = "reservationDatePrompt";
+
+private readonly DialogSet _dialogSet;
+```
+
+Dans le constructeur du bot, créez l’ensemble de boîte de dialogue, ajoutez les invites et ajoutez la boîte de dialogue de réservation. Nous incluons la validation personnalisée lorsque nous créons les invites, et nous appliquons les fonctions de validation plus tard.
 
 ```csharp
-private static async Task<DialogTurnResult> NameStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
-{
-    // ...
+// The following code creates prompts and adds them to an existing dialog set. The DialogSet contains all the dialogs that can 
+// be used at runtime. The prompts also references a validation method is not shown here.
 
-    // Prompt for the user's name.
+public DialogPromptBot(DialogPromptBotAccessors accessors, ILoggerFactory loggerFactory)
+{
+   // ...
+
+    // Create the dialog set and add the prompts, including custom validation.
+    _dialogSet = new DialogSet(_accessors.DialogStateAccessor);
+    _dialogSet.Add(new NumberPrompt<int>(PartySizePrompt, PartySizeValidatorAsync));
+    _dialogSet.Add(new ChoicePrompt(LocationPrompt));
+    _dialogSet.Add(new DateTimePrompt(ReservationDatePrompt, DateValidatorAsync));
+
+    // Define the steps of the waterfall dialog and add it to the set.
+    WaterfallStep[] steps = new WaterfallStep[]
+    {
+        PromptForPartySizeAsync,
+        PromptForLocationAsync,
+        PromptForReservationDateAsync,
+        AcknowledgeReservationAsync,
+    };
+    _dialogSet.Add(new WaterfallDialog(ReservationDialog, steps));
+
+
+}
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Dans le constructeur, créez des accesseurs de propriété d’état. 
+
+```javascript
+constructor(conversationState) {
+    // Creates our state accessor properties.
+    this.dialogStateAccessor = conversationState.createProperty(DIALOG_STATE_ACCESSOR);
+    this.reservationAccessor = conversationState.createProperty(RESERVATION_ACCESSOR);
+    this.conversationState = conversationState;
+    // ...
+    }
+```
+
+Ensuite, créez l’ensemble de boîte de dialogue et ajoutez les invites, notamment la validation personnalisée.
+
+```javascript
+    // ...
+    this.dialogSet = new DialogSet(this.dialogStateAccessor);
+    this.dialogSet.add(new NumberPrompt(PARTY_SIZE_PROMPT, this.partySizeValidator));
+    this.dialogSet.add(new ChoicePrompt (LOCATION_PROMPT));
+    this.dialogSet.add(new DateTimePrompt(RESERVATION_DATE_PROMPT, this.dateValidator));
+    // ...
+```
+
+Définissez ensuite les étapes de la boîte de dialogue en cascade, puis ajoutez-les à l’ensemble.
+```javascript
+    // ...
+    this.dialogSet.add(new WaterfallDialog(RESERVATION_DIALOG, [
+    this.promptForPartySize.bind(this),
+    this.promptForLocation.bind(this),
+    this.promptForReservationDate.bind(this),
+    this.acknowledgeReservation.bind(this),
+ ]));
+}
+```
+
+---
+
+### <a name="implement-dialog-steps"></a>Implémenter des étapes de boîte de dialogue
+
+Dans le fichier principal du bot, nous implémentons chacune de ses étapes de la boîte de dialogue en cascade. Une fois qu’une invite est ajoutée, nous l’appelons dans une seule étape d’une boîte de dialogue en cascade et obtenons le résultat de l’invite à l’étape suivante de la boîte de dialogue. Pour appeler une invite à partir d’une étape en cascade, appelez la méthode _invite_ du _contexte de l’étape en cascade_ de l’objet. Le premier paramètre est l’ID de l’invite à utiliser, et le deuxième paramètre contient les options pour l’invite, comme le texte utilisé pour demander une entrée à l’utilisateur.     
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Dans le fichier DialogPromptBot.cs, nous implémentons les étapes `PromptForPartySizeAsync`, `PromptForLocationAsync`, `PromptForReservationDateAsync`, et `AcknowledgeReservationAsync` de la boîte de dialogue en cascade.
+
+Ici, nous présentons uniquement `PromptForPartySizeAsync` et `PromptForLocationAsync` qui sont deux étapes consécutives déléguées d’une boîte de dialogue en cascade.
+
+```csharp
+private async Task<DialogTurnResult> PromptForPartySizeAsync(WaterfallStepContext stepContext)
+{
+    // Prompt for the party size. The result of the prompt is returned to the next step of the waterfall.
+    // If the input is not valid, the prompt is restarted, causing it to reprompt for input
+    // and this set of steps is repeated next turn. Otherwise, the prompt ends and returns a _dialog turn result_ object 
+    // to the parent dialog. Control passes to the next step of your waterfall dialog, with the result of the prompt 
+    // available in the waterfall step context's _result_ property.
     return await stepContext.PromptAsync(
-        "name",
-         new PromptOptions { Prompt = MessageFactory.Text("Please enter your name.") },
-         cancellationToken);
+        PartySizePrompt,
+        new PromptOptions
+        {
+            Prompt = MessageFactory.Text("How many people is the reservation for?"),
+            RetryPrompt = MessageFactory.Text("How large is your party?"),
+        },
+        cancellationToken);
 }
 
-private static async Task<DialogTurnResult> GreetingStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
+private async Task<DialogTurnResult> PromptForLocationAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
 {
-    // Get the user's name from the prompt result.
-    string name = (string)stepContext.Result;
-    await stepContext.Context.SendActivityAsync(
-        MessageFactory.Text($"Pleased to meet you, {name}."),
-         cancellationToken);
+    // Record the party size information in the current dialog state.
+    int size = (int)stepContext.Result;
+    stepContext.Values["size"] = size;
 
-    // ...
+    return await stepContext.PromptAsync(
+        "locationPrompt",
+        new PromptOptions
+        {
+            Prompt = MessageFactory.Text("Please choose a location."),
+            RetryPrompt = MessageFactory.Text("Sorry, please choose a location from the list."),
+            Choices = ChoiceFactory.ToChoices(new List<string> { "Redmond", "Bellevue", "Seattle" }),
+        },
+        cancellationToken);
 }
 ```
+L’exemple ci-dessus montre comment utiliser une invite de choix, en fournissant les trois propriétés. La méthode `PromptForLocationAsync` est utilisée comme une étape dans une boîte de dialogue en cascade et notre ensemble de boîte de dialogue contient la boîte de dialogue en cascade et une invite de choix avec un ID de `locationPrompt`.
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Ici, `name` est l’ID d’une invite de texte, `nameStep` et `greetingStep` sont deux fonctions d’étapes consécutives d’une boîte de dialogue en cascade.
+Ici, `PARTY_SIZE_PROMPT` et `LOCATION_PROMPT` sont les ID des invites, et `promptForPartySize` et `promptForLocation` sont deux fonctions d’étapes consécutives d’une boîte de dialogue en cascade.
 
 ```javascript
-async nameStep(step) {
-    // ...
-
-    return await step.prompt('name', 'Please enter your name.');
+async promptForPartySize(stepContext) {
+    // Prompt for the party size. The result of the prompt is returned to the next step of the waterfall.
+    return await stepContext.prompt(
+        PARTY_SIZE_PROMPT, {
+            prompt: 'How many people is the reservation for?',
+            retryPrompt: 'How large is your party?'
+        });
 }
 
-async greetingStep(step) {
-    // Get the user's name from the prompt result.
-    const name = step.result;
-    await step.context.sendActivity(`Pleased to meet you, ${name}.`);
-
-    // ...
+async promptForLocation(stepContext) {
+    // Prompt for location
+    return await stepContext.prompt(
+        LOCATION_PROMPT, 'Select a location.', ['Redmond', 'Bellevue', 'Seattle']
+    );
 }
 ```
 
 ---
-
-### <a name="call-a-prompt-from-the-bots-turn-handler"></a>Appeler une invite de commandes à partir du gestionnaire de tour du bot
-
-Il est possible d’appeler une invite directement à partir de votre gestionnaire de tour, à l’aide de la méthode _prompt_ de contexte de boîte de dialogue.
-Vous devez appeler la méthode _continue dialog_ de contexte de boîte de dialogue lors du prochain tour et examiner sa valeur renvoyée, un objet _dialog turn result_. Pour obtenir un exemple de la procédure à suivre, consultez l’exemple de validations d’invite ([C#](https://aka.ms/cs-prompt-validation-sample) | [JS](https://aka.ms/js-prompt-validation-sample)), ou examinez comment [demander à l’utilisateur d’effectuer une saisie à l’aide de vos propres invites](bot-builder-primitive-prompts.md) pour une autre approche.
-
-## <a name="prompt-options"></a>Options d’invite
 
 Le deuxième paramètre de la méthode _prompt_ prend un objet _prompt options_, qui a les propriétés suivantes.
 
@@ -203,47 +306,11 @@ En règle générale, les propriétés prompt et retry prompt sont des activité
 
 Vous devez toujours spécifier l’activité prompt initiale à envoyer à l’utilisateur.
 
-Spécifier une nouvelle invite est utile lorsque l’entrée de l’utilisateur est incapable de valider, soit parce que son format ne peut pas être analysé par l’invite, par exemple « demain » en réponse à une invite numérique, ou parce que l’entrée ne remplit pas un critère de validation. Dans ce cas, si aucune nouvelle invite n’a été fournie, l’invite utilisera l’activité prompt initiale pour redemander une saisie à l’utilisateur.
+Spécifier une nouvelle invite est utile lorsque l’entrée de l’utilisateur est incapable de valider, soit parce que son format ne peut pas être analysé par l’invite, par exemple « demain » en réponse à une invite numérique, ou parce que l’entrée ne remplit pas un critère de validation. Dans ce cas, si aucune nouvelle invite n’a été fournie, l’invite utilisera l’activité prompt initiale pour redemander une saisie à l’utilisateur.
 
 Pour une invite de choix, vous devez toujours fournir la liste des choix disponibles.
 
-Cet exemple montre comment utiliser une invite de choix, en fournissant les trois propriétés. La méthode _favorite color_ est utilisée comme une étape dans une boîte de dialogue en cascade et notre ensemble de boîte de dialogue contient la boîte de dialogue en cascade et une invite de choix avec un ID de `colorChoice`.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-
-```csharp
-private static async Task<DialogTurnResult> FavoriteColorAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
-{
-    // ...
-
-    return await stepContext.PromptAsync(
-        "colorChoice",
-        new PromptOptions {
-            Prompt = MessageFactory.Text("Please choose a color."),
-            RetryPrompt = MessageFactory.Text("Sorry, please choose a color from the list."),
-            Choices = ChoiceFactory.ToChoices(new List<string> { "blue", "green", "red" }),
-        },
-        cancellationToken);
-}
-```
-
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-
-Dans le kit de développement logiciel (SDK) JavaScript, vous pouvez fournir une chaîne pour les propriétés `prompt` et `retryPrompt`. L’invite les convertit en activités de message pour vous.
-
-```javascript
-async favoriteColor(step) {
-    // ...
-
-    return await step.prompt('colorChoice', {
-        prompt: 'Please choose a color:',
-        retryPrompt: 'Sorry, please choose a color from the list.',
-        choices: [ 'red', 'green', 'blue' ]
-    });
-}
-```
-
----
 
 ## <a name="custom-validation"></a>Validation personnalisée
 
@@ -263,166 +330,11 @@ Le résultat du module de reconnaissance de l’invite a les propriétés suivan
 | _Réussi_ | Indique si le module de reconnaissance a été en mesure d’analyser l’entrée. |
 | _Valeur_ | La valeur renvoyée du module de reconnaissance. Si nécessaire, le code de validation peut modifier cette valeur. |
 
-### <a name="setup"></a>Paramétrage
-
-Nous devons faire une légère configuration avant d’ajouter notre code de validation.
-
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-
-Dans le fichier **.cs** de votre bot, définissez une classe interne pour les informations de réservation.
-
-```csharp
-public class Reservation
-{
-    public int Size { get; set; }
-
-    public string Date { get; set; }
-}
-```
-
-Dans **BotAccessors.cs**, ajoutez un accesseur de propriété d’état pour les données de réservation.
-
-```csharp
-public class BotAccessors
-{
-    public BotAccessors(ConversationState conversationState)
-    {
-        ConversationState = conversationState ?? throw new ArgumentNullException(nameof(conversationState));
-    }
-
-    public static string DialogStateAccessorKey { get; } = "BotAccessors.DialogState";
-    public static string ReservationAccessorKey { get; } = "BotAccessors.Reservation";
-
-    public IStatePropertyAccessor<DialogState> DialogStateAccessor { get; set; }
-    public IStatePropertyAccessor<ReservationBot.Reservation> ReservationAccessor { get; set; }
-
-    public ConversationState ConversationState { get; }
-}
-```
-
-Dans **Startup.cs**, mettez à jour `ConfigureServices` pour définir les accesseurs.
-
-```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-    // ...
-
-    // Create and register state accesssors.
-    // Acessors created here are passed into the IBot-derived class on every turn.
-    services.AddSingleton<BotAccessors>(sp =>
-    {
-        // ...
-
-        // Create the custom state accessor.
-        // State accessors enable other components to read and write individual properties of state.
-        var accessors = new BotAccessors(conversationState)
-        {
-            DialogStateAccessor = conversationState.CreateProperty<DialogState>(BotAccessors.DialogStateAccessorKey),
-            ReservationAccessor = conversationState.CreateProperty<ReservationBot.Reservation>(BotAccessors.ReservationAccessorKey),
-        };
-
-        return accessors;
-    });
-}
-```
-
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-
-Aucune modification du code du service HTTP n’est exigée pour JavaScript, nous pouvons laisser notre fichier **index.js** en l’état.
-
-Dans **bot.js**, mettez à jour les instructions obligatoires et ajoutez des identificateurs pour les accesseurs de la propriété d’état.
-
-```javascript
-const { ActivityTypes } = require('botbuilder');
-const { DialogSet, WaterfallDialog, NumberPrompt, DateTimePrompt, DialogTurnStatus } = require('botbuilder-dialogs');
-
-// Define identifiers for our state property accessors.
-const DIALOG_STATE_ACCESSOR = 'dialogStateAccessor';
-const RESERVATION_ACCESSOR = 'reservationAccessor';
-```
-
----
-
-Dans le fichier de votre bot, ajoutez des identificateurs pour nos boîtes de dialogue et nos invites.
-
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-
-```csharp
-// Define identifiers for our dialogs and prompts.
-private const string ReservationDialog = "reservationDialog";
-private const string PartySizePrompt = "partyPrompt";
-private const string ReservationDatePrompt = "reservationDatePrompt";
-```
-
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-
-```javascript
-// Define identifiers for our dialogs and prompts.
-const RESERVATION_DIALOG = 'reservationDialog';
-const PARTY_SIZE_PROMPT = 'partySizePrompt';
-const RESERVATION_DATE_PROMPT = 'reservationDatePrompt';
-```
-
----
-
-### <a name="define-the-prompts-and-dialogs"></a>Définir les invites et les boîtes de dialogue
-
-Dans le code du constructeur du bot, créez l’ensemble de boîte de dialogue, ajoutez les invites et ajoutez la boîte de dialogue de réservation.
-Nous incluons la validation personnalisée lorsque nous créons les invites. Nous implémenterons ensuite les fonctions de validation.
-
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-
-```csharp
-public ReservationBot(BotAccessors accessors, ILoggerFactory loggerFactory)
-{
-    // ...
-    _accessors = accessors ?? throw new System.ArgumentNullException(nameof(accessors));
-
-    // Create the dialog set and add the prompts, including custom validation.
-    _dialogSet = new DialogSet(_accessors.DialogStateAccessor);
-    _dialogSet.Add(new NumberPrompt<int>(PartySizePrompt, PartySizeValidatorAsync));
-    _dialogSet.Add(new DateTimePrompt(ReservationDatePrompt, DateValidatorAsync));
-
-    // Define the steps of the waterfall dialog and add it to the set.
-    WaterfallStep[] steps = new WaterfallStep[]
-    {
-        PromptForPartySizeAsync,
-        PromptForReservationDateAsync,
-        AcknowledgeReservationAsync,
-    };
-    _dialogSet.Add(new WaterfallDialog(ReservationDialog, steps));
-}
-```
-
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-
-```javascript
-constructor(conversationState) {
-    // Creates our state accessor properties.
-    // See https://aka.ms/about-bot-state-accessors to learn more about the bot state and state accessors.
-    this.dialogStateAccessor = conversationState.createProperty(DIALOG_STATE_ACCESSOR);
-    this.reservationAccessor = conversationState.createProperty(RESERVATION_ACCESSOR);
-    this.conversationState = conversationState;
-
-    // Create the dialog set and add the prompts, including custom validation.
-    this.dialogSet = new DialogSet(this.dialogStateAccessor);
-    this.dialogSet.add(new NumberPrompt(PARTY_SIZE_PROMPT, partySizeValidator));
-    this.dialogSet.add(new DateTimePrompt(RESERVATION_DATE_PROMPT, dateValidator));
-
-    // Define the steps of the waterfall dialog and add it to the set.
-    this.dialogSet.add(new WaterfallDialog(RESERVATION_DIALOG, [
-        this.promptForPartySize.bind(this),
-        this.promptForReservationDate.bind(this),
-        this.acknowledgeReservation.bind(this),
-    ]));
-}
-```
-
----
-
 ### <a name="implement-validation-code"></a>Implémenter le code de validation
 
-Implémentez le validateur de taille de tiers. Nous allons limiter les réservations aux parties de 6 à 20 personnes.
+**Validateur de taille de tiers**
+
+Nous limitons les réservations aux parties de 6 à 20 personnes.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -458,7 +370,7 @@ private async Task<bool> PartySizeValidatorAsync(
 
 ```javascript
 async partySizeValidator(promptContext) {
-    // Check whether the input could be recognized as date.
+    // Check whether the input could be recognized as an integer.
     if (!promptContext.recognized.succeeded) {
         await promptContext.context.sendActivity(
             "I'm sorry, I do not understand. Please enter the number of people in your party.");
@@ -483,11 +395,9 @@ async partySizeValidator(promptContext) {
 
 ---
 
-L’invite de date-heure retourne une liste ou un tableau des _résolutions de date-heure_ possibles correspondant à l’entrée de l’utilisateur. Par exemple, 9:00 peut vouloir dire 9 h 00 ou 21 h 00, et dimanche est également ambigu. En outre, une résolution de date-heure peut représenter une date, une heure, une date-heure ou une plage. L’invite de date-heure utilise [Microsoft/Recognizers-Text](https://github.com/Microsoft/Recognizers-Text) pour analyser l’entrée de l’utilisateur.
+**Validation de date et heure**
 
-Implémentez le validateur de date de réservation. Nous allons limiter les réservations à une heure ou plus à partir de l’heure actuelle. Nous gardons la première résolution correspondant à nos critères et nous effaçons le reste.
-
-Ce code de validation n’est pas exhaustif. Il convient mieux pour l’entrée qui analyse à une date et une heure. Il montre certaines des options pour la validation d’une invite de date-heure, et votre implémentation dépendra des informations que vous essayez de collecter par l’intermédiaire de l’utilisateur.
+Dans le validateur de date de réservation, nous limitons les réservations à une heure ou plus à partir de l’heure actuelle. Nous gardons la première résolution correspondant à nos critères et nous effaçons le reste. Le code de validation ci-dessous n’est pas exhaustif, et il convient mieux pour l’entrée qui analyse à une date et une heure précises. Il montre certaines des options pour la validation d’une invite de date-heure, et votre implémentation dépendra des informations que vous essayez de collecter par l’intermédiaire de l’utilisateur.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -530,148 +440,62 @@ private async Task<bool> DateValidatorAsync(
 
 ```javascript
 async dateValidator(promptContext) {
-// Check whether the input could be recognized as an integer.
-if (!promptContext.recognized.succeeded) {
+    // Check whether the input could be recognized as an integer.
+    if (!promptContext.recognized.succeeded) {
+        await promptContext.context.sendActivity(
+            "I'm sorry, I do not understand. Please enter the date or time for your reservation.");
+        return false;
+    }
+
+    // Check whether any of the recognized date-times are appropriate,
+    // and if so, return the first appropriate date-time.
+    const earliest = Date.now() + (60 * 60 * 1000);
+    let value = null;
+    promptContext.recognized.value.forEach(candidate => {
+        // TODO: update validation to account for time vs date vs date-time vs range.
+        const time = new Date(candidate.value || candidate.start);
+        if (earliest < time.getTime()) {
+            value = candidate;
+        }
+    });
+    if (value) {
+        promptContext.recognized.value = [value];
+        return true;
+    }
+
     await promptContext.context.sendActivity(
-        "I'm sorry, I do not understand. Please enter the date or time for your reservation.");
+        "I'm sorry, we can't take reservations earlier than an hour from now.");
     return false;
 }
-
-// Check whether any of the recognized date-times are appropriate,
-// and if so, return the first appropriate date-time.
-const earliest = Date.now() + (60 * 60 * 1000);
-let value = null;
-promptContext.recognized.value.forEach(candidate => {
-    // TODO: update validation to account for time vs date vs date-time vs range.
-    const time = new Date(candidate.value || candidate.start);
-    if (earliest < time.getTime()) {
-        value = candidate;
-    }
-});
-if (value) {
-    promptContext.recognized.value = [value];
-    return true;
-}
-
-await promptContext.context.sendActivity(
-    "I'm sorry, we can't take reservations earlier than an hour from now.");
-return false;
-}
 ```
 
 ---
 
-### <a name="implement-the-dialog-steps"></a>Implémenter les étapes de boîte de dialogue
-
-Utilisez les invites que nous avons ajoutées à l’ensemble de boîte de dialogue. Nous avons ajouté la validation aux invites quand nous les avons créées dans le constructeur du bot. La première fois que l’invite demande une saisie de l’utilisateur, il envoie l’activité _prompt_ parmi les options fournies. Si la validation échoue, il envoie l’activité _retry prompt_ pour demander une entrée différente à l’utilisateur.
-
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-
-```csharp
-// First step of the main dialog: prompt for party size.
-private async Task<DialogTurnResult> PromptForPartySizeAsync(
-    WaterfallStepContext stepContext,
-    CancellationToken cancellationToken = default(CancellationToken))
-{
-    // Prompt for the party size. The result of the prompt is returned to the next step of the waterfall.
-    return await stepContext.PromptAsync(
-        PartySizePrompt,
-        new PromptOptions
-        {
-            Prompt = MessageFactory.Text("How many people is the reservation for?"),
-            RetryPrompt = MessageFactory.Text("How large is your party?"),
-        },
-        cancellationToken);
-}
-
-// Second step of the main dialog: record the party size and prompt for the
-// reservation date.
-private async Task<DialogTurnResult> PromptForReservationDateAsync(
-    WaterfallStepContext stepContext,
-    CancellationToken cancellationToken = default(CancellationToken))
-{
-    // Record the party size information in the current dialog state.
-    int size = (int)stepContext.Result;
-    stepContext.Values["size"] = size;
-
-    // Prompt for the reservation date. The result of the prompt is returned to the next step of the waterfall.
-    return await stepContext.PromptAsync(
-        ReservationDatePrompt,
-        new PromptOptions
-        {
-            Prompt = MessageFactory.Text("Great. When will the reservation be for?"),
-            RetryPrompt = MessageFactory.Text("What time should we make your reservation for?"),
-        },
-        cancellationToken);
-}
-
-// Third step of the main dialog: return the collected party size and reservation date.
-private async Task<DialogTurnResult> AcknowledgeReservationAsync(
-    WaterfallStepContext stepContext,
-    CancellationToken cancellationToken = default(CancellationToken))
-{
-    // Retrieve the reservation date.
-    DateTimeResolution resolution = (stepContext.Result as IList<DateTimeResolution>).First();
-    string time = resolution.Value ?? resolution.Start;
-
-    // Send an acknowledgement to the user.
-    await stepContext.Context.SendActivityAsync(
-        "Thank you. We will confirm your reservation shortly.",
-        cancellationToken: cancellationToken);
-
-    // Return the collected information to the parent context.
-    Reservation reservation = new Reservation
-    {
-        Date = time,
-        Size = (int)stepContext.Values["size"],
-    };
-    return await stepContext.EndDialogAsync(reservation, cancellationToken);
-}
-```
-
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-
-```javascript
-async promptForPartySize(stepContext) {
-    // Prompt for the party size. The result of the prompt is returned to the next step of the waterfall.
-    return await stepContext.prompt(
-        PARTY_SIZE_PROMPT, {
-            prompt: 'How many people is the reservation for?',
-            retryPrompt: 'How large is your party?'
-        });
-}
-
-async promptForReservationDate(stepContext) {
-    // Record the party size information in the current dialog state.
-    stepContext.values.size = stepContext.result;
-
-    // Prompt for the reservation date. The result of the prompt is returned to the next step of the waterfall.
-    return await stepContext.prompt(
-        RESERVATION_DATE_PROMPT, {
-            prompt: 'Great. When will the reservation be for?',
-            retryPrompt: 'What time should we make your reservation for?'
-        });
-}
-
-async acknowledgeReservation(stepContext) {
-    // Retrieve the reservation date.
-    const resolution = stepContext.result[0];
-    const time = resolution.value || resolution.start;
-
-    // Send an acknowledgement to the user.
-    await stepContext.context.sendActivity(
-        'Thank you. We will confirm your reservation shortly.');
-
-    // Return the collected information to the parent context.
-    return await stepContext.endDialog({ date: time, size: stepContext.values.size });
-}
-```
-
----
+L’invite de date-heure retourne une liste ou un tableau des _résolutions de date-heure_ possibles correspondant à l’entrée de l’utilisateur. Par exemple, 9:00 peut vouloir dire 9 h 00 ou 21 h 00, et dimanche est également ambigu. En outre, une résolution de date-heure peut représenter une date, une heure, une date-heure ou une plage. L’invite de date-heure utilise [Microsoft/Recognizers-Text](https://github.com/Microsoft/Recognizers-Text) pour analyser l’entrée de l’utilisateur.
 
 ### <a name="update-the-turn-handler"></a>Mettre à jour le gestionnaire de tour
 
-Mettez à jour le gestionnaire de tour du bot pour démarrer la boîte de dialogue et acceptez une valeur renvoyée à partir de la boîte de dialogue lorsqu’elle est terminée.
+Mettez à jour le gestionnaire de tour du bot pour démarrer la boîte de dialogue et acceptez une valeur renvoyée à partir de la boîte de dialogue lorsqu’elle est terminée. Ici, nous supposons que l’utilisateur interagit avec un bot, le bot possède une boîte de dialogue en cascade active, et l’étape suivante dans la boîte de dialogue utilise une invite.
+
+1. Lorsque l’utilisateur envoie un message au bot, il effectue les opérations suivantes :
+   1. Le gestionnaire de tour du bot crée le contexte d’une boîte de dialogue et appelle sa méthode _continue_.
+   1. Le contrôle passe à l’étape suivante dans la boîte de dialogue active, votre boîte de dialogue en cascade dans ce cas précis.
+   1. L’étape appelle la méthode _prompt_ du contexte d’étape en cascade pour demander une entrée à l’utilisateur.
+   1. Le contexte d’étape en cascade pousse l’invite dans la pile et la démarre.
+   1. L’invite envoie une activité à l’utilisateur pour demander son entrée.
+1. Lorsque l’utilisateur envoie son prochain message au bot, il effectue les opérations suivantes :
+   1. Le gestionnaire de tour du bot crée le contexte d’une boîte de dialogue et appelle sa méthode _continue_.
+   1. Le contrôle passe à l’étape suivante dans la boîte de dialogue active, le second tour de l’invite.
+   1. L’invite valide l’entrée de l’utilisateur.
+
+      
+**Gestion des résultats des invites**
+
+L’action que vous effectuez avec le résultat de l’invite dépend de la raison pour laquelle vous avez demandé les informations à l’utilisateur. Options disponibles :
+
+* Utilisez les informations pour contrôler le flux de votre boîte de dialogue, par exemple lorsque l’utilisateur répond à une invite de confirmation ou de choix.
+* Mettez en cache les informations contenues dans l’état de la boîte de dialogue, comme la définition d’une valeur dans la propriété _valeurs_ du contexte d’étape en cascade, puis renvoyez ensuite les informations collectées lorsque la boîte de dialogue se termine.
+* Enregistrez les informations dans l’état du bot. Cela vous oblige à concevoir votre boîte de dialogue de façon à avoir accès aux accesseurs de la propriété d’état du bot. 
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -783,6 +607,9 @@ async onTurn(turnContext) {
             // Save the updated dialog state into the conversation state.
             await this.conversationState.saveChanges(turnContext, false);
             break;
+        case ActivityTypes.EndOfConversation:
+        case ActivityTypes.DeleteUserData:
+            break;
         default:
             break;
     }
@@ -791,20 +618,22 @@ async onTurn(turnContext) {
 
 ---
 
+
+
 Vous pouvez utiliser des techniques similaires pour valider les réponses à tout type d’invite.
 
-## <a name="handling-prompt-results"></a>Gestion des résultats des invites
+## <a name="test-your-bot"></a>Tester votre robot
+1. Exécutez l’exemple en local sur votre machine. Si vous avez besoin d’instructions, consultez le fichier LISEZ-MOI pour [ C# ](https://aka.ms/dialog-prompt-cs) ou [JS](https://aka.ms/dialog-prompt-js).
+2. Démarrez l’émulateur, envoyez des messages comme indiqué ci-dessous pour tester le bot.
 
-L’action que vous effectuez avec le résultat de l’invite dépend de la raison pour laquelle vous avez demandé les informations à l’utilisateur. Options disponibles :
-
-* Utilisez les informations pour contrôler le flux de votre boîte de dialogue, par exemple lorsque l’utilisateur répond à une invite de confirmation ou de choix.
-* Mettez en cache les informations contenues dans l’état de la boîte de dialogue, comme la définition d’une valeur dans la propriété _valeurs_ du contexte d’étape en cascade, puis renvoyez ensuite les informations collectées lorsque la boîte de dialogue se termine.
-* Enregistrez les informations dans l’état du bot. Cela vous oblige à concevoir votre boîte de dialogue de façon à avoir accès aux accesseurs de la propriété d’état du bot.
+![exemple d’invite de boîte de dialogue de test](~/media/emulator-v4/test-dialog-prompt.png)
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
-Pour en savoir plus sur les invites multiples, consultez les exemples en [[C#](https://aka.ms/cs-multi-prompts-sample) ou [JS](https://aka.ms/js-multi-prompts-sample)].
+Pour appeler une invite de commandes directement à partir de votre gestionnaire de tour, consultez l’exemple de _validations d’invite_ pour [ C# ](https://aka.ms/cs-prompt-validation-sample) ou [JS](https://aka.ms/js-prompt-validation-sample).
+
+La bibliothèque de boîte de dialogue inclut également une _invite OAuth_ pour obtenir un _jeton OAuth_ permettant d’accéder à une autre application pour le compte de l’utilisateur. Pour plus d’informations sur l’authentification, consultez comment [ajouter l’authentification](bot-builder-authentication.md) à votre bot.
 
 ## <a name="next-steps"></a>Étapes suivantes
 
 > [!div class="nextstepaction"]
-> [Implémenter des flux de conversation séquentiels de base](bot-builder-dialog-manage-conversation-flow.md)
+> [Créer des flux de conversation avancés à l’aide des branches et boucles](bot-builder-dialog-manage-complex-conversation-flow.md)

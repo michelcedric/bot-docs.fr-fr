@@ -1,29 +1,25 @@
 ---
-title: Poser des questions à l’utilisateur | Microsoft Docs
-description: Découvrez comment utiliser le modèle en cascade pour demander à utilisateur plusieurs entrées dans le kit de développement logiciel (SDK) Bot Builder.
-keywords: cascades, boîtes de dialogue, poser une question, invites
-author: v-ducvo
-ms.author: v-ducvo
-manager: kamrani
-ms.topic: article
-ms.service: bot-service
-ms.subservice: sdk
-ms.date: 5/10/2018
-monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 84c86e9cc295cd2a1dce0857fa7ab629c219dab1
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+redirect_url: /bot-framework/bot-builder-prompts
+ms.openlocfilehash: e7cfbad19290b3ef61d40dc90493db8f530a9a4e
+ms.sourcegitcommit: 4661b9bb31d74731dbbb16e625be088b44ba5899
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997472"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51826936"
 ---
+<a name="--"></a><!--
+---
+titre: Poser des questions à l’utilisateur | Description Microsoft Docs : Découvrez comment utiliser le modèle en cascade pour demander à utilisateur plusieurs entrées dans le kit de développement logiciel (SDK) Bot Builder.
+mots clés : cascade, boîtes de dialogue, poser une question, invites auteur : v-ducvo ms.auteur : v-ducvo responsable : kamrani ms.rubrique : article ms.service: bot-service ms.sous-service : sdk ms.date : 5/10/2018 monikerRange: 'azure-bot-service-4.0'
+---
+
 # <a name="ask-the-user-questions"></a>Poser des questions à l’utilisateur
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 Fondamentalement, un bot repose sur la conversation avec un utilisateur. Une conversation peut prendre de [nombreuses formes](bot-builder-conversations.md) ; elle peut être courte ou plus complexe, poser des questions ou répondre à des questions. La forme que prend la conversation dépend de plusieurs facteurs, mais ils impliquent tous une conversation.
 
-Ce tutoriel vous guide tout au long de la création d’une conversation, d’une simple question posée à un bot à plusieurs tours. Notre exemple concernera la réservation d’une table, mais vous pouvez imaginer une conversation à plusieurs tours où un bot fait des choses variées, comme par exemple passer une commande, répondre à des questions dans une FAQ, faire des réservations, etc.
+Ce tutoriel vous guide tout au long de la création d’une conversation, d’une simple question posée à un bot à plusieurs tours. Notre exemple concernera la réservation d’une table, mais vous pouvez imaginer une conversation à plusieurs tours où un bot fait des choses variées, par exemple passer une commande, répondre à des questions dans une FAQ, faire des réservations, etc.
 
 Un bot conversationnel interactif peut répondre à une entrée utilisateur ou lui demander une entrée spécifique. Ce tutoriel vous explique comment poser une question à un utilisateur à l’aide de la bibliothèque `Prompts`, qui fait partie de `Dialogs`. Les [boîtes de dialogue](../bot-service-design-conversation-flow.md) peuvent être considérées comme le conteneur qui définit la structure d’une conversation, et les invites des boîtes de dialogue sont traitées plus en détail dans leur propre [article de procédure](bot-builder-prompts.md).
 
@@ -500,3 +496,5 @@ Dans ce tutoriel, le bot enregistre l’entrée de l’utilisateur dans des vari
 
 > [!div class="nextstepaction"]
 > [Conserver les données utilisateur](bot-builder-tutorial-persist-user-inputs.md)
+
+-->

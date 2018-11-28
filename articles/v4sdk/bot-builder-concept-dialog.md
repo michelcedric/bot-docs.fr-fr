@@ -1,21 +1,21 @@
 ---
 title: Dialogues dans le SDK Bot Builder | Microsoft Docs
 description: Découvrez ce qu’est un dialogue et comment il fonctionne dans le SDK Bot Builder.
-keywords: flux de conversation, reconnaître l’intention, tour unique, plusieurs tours, conversation de bot, dialogues, invites, cascades, ensemble de dialogues
+keywords: flux de conversation, invite, état de dialogue, reconnaître l’intention, tour unique, plusieurs tours, conversation de bot, dialogues, invites, cascades, ensemble de dialogues
 author: johnataylor
 ms.author: johtaylo
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 9/22/2018
+ms.date: 11/22/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 88022c387d5f9ef7f645be74010aba3c676efadc
-ms.sourcegitcommit: cb0b70d7cf1081b08eaf1fddb69f7db3b95b1b09
+ms.openlocfilehash: 52a2867f4d62be4969ed77d8d83e1e752edd7f92
+ms.sourcegitcommit: 6cb37f43947273a58b2b7624579852b72b0e13ea
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51332933"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52288838"
 ---
 # <a name="dialogs-library"></a>Bibliothèque des dialogues
 
@@ -38,9 +38,9 @@ L’interface de DialogContext reflète la notion sous-jacente de début et de p
 
 Sachez que **BeginDialog du dialogue** correspond au code d’initialisation qui utilise les propriétés d’initialisation (appelées « options » dans le code). Par ailleurs, **ContinueDialog du dialogue** correspond au code qui est appliqué pour maintenir l’exécution lors de l’arrivée d’une activité après la persistance. Par exemple, imaginons un dialogue qui pose une question à l’utilisateur. La question est posée dans BeginDialog et la réponse est attendue dans ContinueDialog.
 
-Pour prendre en charge l’imbrication des dialogues (quand un dialogue a des dialogues enfant), il existe un autre type de continuation qui s’appelle la reprise. DialogContext appelle la méthode ResumeDialog sur un dialogue parent lorsqu’un dialogue enfant est terminé.
+Pour prendre en charge l’imbrication des dialogues (quand un dialogue a des dialogues enfants), il existe un autre type de continuation qui s’appelle la reprise. DialogContext appelle la méthode ResumeDialog sur un dialogue parent lorsqu’un dialogue enfant est terminé.
 
-Les invites et les cascades sont deux exemples concrets de dialogues fournis par le SDK. De nombreux scénarios sont créés en composant à l’aide de ces abstractions. Toutefois, en arrière-plan, la logique exécutée se base toujours sur le même début, c’est-à-dire sur le modèle de continuation et de reprise décrit ici. L’implémentation d’une classe de dialogue à partir de zéro est une opération assez avancée. Néanmoins, un exemple est inclus dans les [exemples](https://github.com/Microsoft/BotBuilder-samples).
+Les invites et les cascades sont deux exemples concrets de dialogues fournis par le SDK. De nombreux scénarios sont créés en composant à l’aide de ces abstractions. Toutefois, en arrière-plan, la logique exécutée se base toujours sur le même début, c’est-à-dire sur le modèle de continuation et de reprise décrit ici. 
 
 La bibliothèque des **dialogues** du SDK Bot Builder contient des fonctionnalités intégrées comme les _invites_, les _dialogues en cascade_ et les _dialogues composants_ afin de vous aider à gérer la conversation de votre bot. Vous pouvez utiliser les invites pour demander aux utilisateurs différents types d’informations, une cascade pour combiner plusieurs étapes en une séquence, et les dialogues composants pour empaqueter votre logique de dialogue dans des classes séparées qui peuvent ensuite être intégrées dans d’autres bots.
 ## <a name="waterfall-dialogs-and-prompts"></a>Dialogues en cascade et invites
@@ -63,6 +63,18 @@ Une valeur renvoyée par un dialogue peut-être gérée au sein d’une étape e
 Dans une étape en cascade, le dialogue fournit la valeur renvoyée dans la propriété _résultat_ du contexte de l’étape en cascade.
 En général, vous n’avez qu’à vérifier l’état du résultat du tour de dialogue dans la logique de tour de votre bot.
 
+## <a name="dialog-state"></a>État de dialogue
+
+Les dialogues constituent une approche pour l’implémentation de conversation à plusieurs tours. En ce sens, il s’agit d’une fonctionnalité du Kit de développement logiciel (SDK) qui repose sur un état persistant à plusieurs tours. Sans état dans les boîtes de dialogue, votre bot ne saura pas où il se trouve dans l’ensemble de boîte de dialogue ou les informations qu’il a déjà recueillies.
+
+Un bot basé sur des dialogues comporte généralement une collection d’ensemble de boîtes de dialogue en tant que variable de membre dans son implémentation de bot. Cet ensemble de boîtes de dialogue est créé avec un descripteur vers un objet nommé accesseur qui fournit un accès à l’état persistant. Pour plus d’informations sur l’état au sein des bots, consultez [gestion de l’état](bot-builder-concept-state.md). 
+
+![état de dialogue](media/bot-builder-dialog-state.png)
+
+Lors de l’appel du descripteur OnTurn, le bot initialise le sous-système de dialogue en appelant *CreateContext* sur l’ensemble de boîtes de dialogue, qui retourne le *contexte de boîte de dialogue*. La création d’un contexte de boîte de dialogue requiert que l’état, accessible avec l’accesseur fourni lors de la création de l’ensemble de boîtes de dialogue. Avec cet accesseur, l’ensemble de boîtes de dialogue peut obtenir le JSON approprié d’état de boîte de dialogue. Ce contexte de boîte de dialogue contient les informations nécessaires à la boîte de dialogue.
+
+Vous trouverez plus d’informations sur les accesseurs d’état dans [Enregistrer les données de la conversation et de l’utilisateur](bot-builder-howto-v4-state.md).
+
 ## <a name="repeating-a-dialog"></a>Répéter un dialogue
 
 Pour répéter un dialogue, utilisez la méthode de *remplacement de dialogue*. La méthode de *remplacement de dialogue* du contexte de dialogue fait sortir le dialogue actuel de la pile, puis envoie le dialogue de remplacement en haut de la pile et démarre ce dialogue. Vous pouvez utiliser cette méthode pour créer une boucle en remplaçant un dialogue par lui-même. Notez que si vous avez besoin de conserver l’état interne du dialogue actuel, vous devez transmettre les informations à la nouvelle instance du dialogue lors de l’appel à la méthode de _remplacement de dialogue_. Ensuite, vous devez initialiser le dialogue de manière appropriée. Les options transférées dans le nouveau dialogue sont accessibles via la propriété _options_ du contexte de n’importe quelle étape du dialogue. Il s’agit là d’un excellent moyen de traiter les flux de conversation complexes et de gérer les menus.
@@ -78,7 +90,7 @@ Ainsi, vous pouvez créer une branche au sein de votre flux de conversation en i
 ## <a name="component-dialog"></a>Dialogue composant
 Il se peut que vous souhaitiez écrire un dialogue réutilisable dans différents scénarios. Par exemple, un dialogue relatif à l’adresse qui demande à l’utilisateur des informations telles que sa rue, sa ville et son code postal. 
 
-Le type ComponentDialog (dialogue composant) fournit un certain niveau d’isolation, car il possède un DialogSet (ensemble de dialogues) séparé. Grâce à cet ensemble séparé, il évite les collisions de nom avec le parent contenant le dialogue. Par ailleurs, il crée son propre runtime de dialogue indépendant et interne (en créant son propre DialogContext), et il répartit l’activité sur ce runtime. Cette répartition secondaire signifie qu’il a eu l’opportunité d’intercepter l’activité. Cela peut être très utile si vous souhaitez implémenter des fonctionnalités telles que « aide » et « annuler ».  Consultez l’exemple de modèle de bot d’entreprise. 
+Le type ComponentDialog (dialogue composant) fournit un certain niveau d’isolation, car il possède un DialogSet (ensemble de dialogues) séparé. Grâce à cet ensemble séparé, il évite les collisions de nom avec le parent contenant le dialogue. Par ailleurs, il crée son propre runtime de dialogue indépendant et interne (en créant son propre DialogContext), et il répartit l’activité sur ce runtime. Cette répartition secondaire signifie qu’il a eu l’opportunité d’intercepter l’activité. Cela peut être très utile si vous souhaitez implémenter des fonctionnalités telles que « aide » et « annuler ».  Consultez l’exemple de [modèle de bot d’entreprise](https://aka.ms/abs/templates/cabot). 
 
 ## <a name="next-steps"></a>Étapes suivantes
 

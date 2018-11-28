@@ -8,20 +8,24 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/08/2018
+ms.date: 11/15/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 25745d380e53173c4dc67d280c120ced5845078b
-ms.sourcegitcommit: cb0b70d7cf1081b08eaf1fddb69f7db3b95b1b09
+ms.openlocfilehash: eb62df9bd1f74ab6de9b67fe352b1af4620a6bc6
+ms.sourcegitcommit: d92fd6233295856052305e0d9e3cba29c9ef496e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51332913"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51715103"
 ---
 # <a name="send-welcome-message-to-users"></a>Envoyer un message de bienvenue aux utilisateurs
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-L’objectif principal lors de la création d’un bot est d’impliquer votre utilisateur dans une conversation utile. Pour atteindre cet objectif, l’une des meilleures méthodes consiste à s’assurer qu’à partir du moment où un utilisateur se connecte pour la première fois, il comprenne les fonctionnalités et l’utilité principales de votre bot, c’est-à-dire la raison pour laquelle il a été créé. Cet article fournit des exemples de code qui vous permettent d’accueillir les utilisateurs sur votre bot.
+L’objectif principal lors de la création d’un bot est d’impliquer votre utilisateur dans une conversation utile. Pour atteindre cet objectif, l’une des meilleures méthodes consiste à s’assurer qu’à partir du moment où un utilisateur se connecte pour la première fois, il comprend les fonctionnalités et l’utilité principales de votre bot, c’est-à-dire la raison pour laquelle il a été créé. Cet article fournit des exemples de code qui vous permettent d’accueillir les utilisateurs sur votre bot.
+
+## <a name="prerequisites"></a>Prérequis
+- Comprendre les [concepts de base des bots](bot-builder-basics.md). 
+- Une copie de **l’exemple de bienvenue à l’utilisateur** en [C#](https://aka.ms/proactive-sample-cs) ou [JS](https://aka.ms/proactive-sample-js). Le code de l’exemple est utilisé pour expliquer comment envoyer des messages de bienvenue.
 
 ## <a name="same-welcome-for-different-channels"></a>Accueil similaire pour les différents canaux
 Un message de bienvenue doit être généré lors de la première interaction de vos utilisateurs avec votre bot. Pour ce faire, vous pouvez surveiller les types d’activité de votre bot et observer les nouvelles connexions. Chaque nouvelle connexion peut générer jusqu’à deux activités de mise à jour de conversation selon le canal.
@@ -39,25 +43,13 @@ Ce message en double peut être évité en générant un message de bienvenue in
 - un événement de mise à jour de conversation s’est produit
 - et quand un nouveau membre (utilisateur) a été ajouté à la conversation.
 
-L’exemple suivant surveille les nouvelles activités de *mise à jour de la conversation*, envoie un seul message de bienvenue lorsque l’utilisateur rejoint la conversation, et définit un indicateur d’état Invite pour ignorer l’entrée de conversation initiale de l’utilisateur. Vous pouvez télécharger le code source complet en [[ C# ](https://aka.ms/bot-welcome-sample-cs) ou [JS](https://aka.ms/bot-welcome-sample-js)] à partir de GitHub.
+L’exemple suivant surveille les nouvelles activités de *mise à jour de la conversation*, envoie un seul message de bienvenue lorsque l’utilisateur rejoint la conversation, et définit un indicateur d’état Invite pour ignorer l’entrée de conversation initiale de l’utilisateur. 
 
 [!INCLUDE [alert-await-send-activity](../includes/alert-await-send-activity.md)]
 
 ## <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-Cet ensemble de bibliothèques est utilisé pour prendre en charge l’intégralité de l’exemple de code C# suivant
-
-```csharp
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.Bot.Builder;
-using Microsoft.Bot.Builder.Dialogs;
-using Microsoft.Bot.Schema;
-```
-
-Nous devons maintenant créer un objet d’état pour un utilisateur donné dans une conversation et son accesseur.
+Nous devons créer un objet d’état pour un utilisateur donné dans une conversation et son accesseur.
 
 ```csharp
 /// The state object is used to keep track of various state related to a user in a conversation.
@@ -428,6 +420,8 @@ switch (text)
 }
 ```
 ---
+## <a name="test-the-bot"></a>Tester le bot
+Reportez-vous au fichier [LISEZ-MOI](https://github.com/Microsoft/BotBuilder-Samples/blob/master/samples/csharp_dotnetcore/03.welcome-user/readme.md) pour obtenir des instructions sur l’exécution et le test du bot. 
 
 ## <a name="next-steps"></a>Étapes suivantes
 > [!div class="nextstepaction"]

@@ -8,45 +8,30 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/13/2018
+ms.date: 11/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 06eb7d80ca8baa91c619b31dc61c7f78856a3b7c
-ms.sourcegitcommit: 873361802bd1802f745544ba903aecf658cce639
+ms.openlocfilehash: e774d6360968e5059588dbdb476cfd1f35fb464e
+ms.sourcegitcommit: 6cb37f43947273a58b2b7624579852b72b0e13ea
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51611046"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52288828"
 ---
 # <a name="implement-sequential-conversation-flow"></a>Implémenter des flux de conversation séquentiels
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-Vous pouvez gérer des flux de conversation simples et complexes avec la bibliothèque de dialogues.
+Vous pouvez gérer des flux de conversation simples et complexes avec la bibliothèque de dialogues. Dans une interaction simple, le bot s’exécute via une séquence fixe d’étapes, et la conversation se termine. Dans cet article, nous utilisons un _dialogue en cascade_, quelques _invites_ et un _ensemble de dialogues_ pour créer une interaction simple qui pose à l’utilisateur une série de questions.
 
-Dans une interaction simple, le bot s’exécute via une séquence fixe d’étapes, et la conversation se termine.
-Dans cet article, nous utilisons un _dialogue en cascade_, quelques _invites_ et un _ensemble de dialogues_ pour créer une interaction simple qui pose à l’utilisateur une série de questions.
-Nous nous appuyons sur le code de l’exemple de l’**invite à plusieurs tours** [[C#](https://aka.ms/cs-multi-prompts-sample) | [JS](https://aka.ms/js-multi-prompts-sample)].
+## <a name="prerequisites"></a>Prérequis
+- [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/blob/master/README.md#download)
+- Le code dans cet article est basé sur l’exemple d’**invite à plusieurs tours**. Vous aurez besoin d’une copie de l’exemple en [C# ](https://aka.ms/cs-multi-prompts-sample) ou en [JS](https://aka.ms/js-multi-prompts-sample).
+- Connaissances des [concepts de base des bots](bot-builder-basics.md), de la [bibliothèque de boîtes de dialogue](bot-builder-concept-dialog.md), de [l’état de boîte de dialogue](bot-builder-dialog-state.md), et du fichier [.bot](bot-file-basics.md).
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-Généralement, pour utiliser des dialogues, vous avez besoin du package NuGet `Microsoft.Bot.Builder.Dialogs` pour votre projet ou solution.
-
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-
-Généralement, pour utiliser des dialogues, vous avez besoin de la bibliothèque `botbuilder-dialogs`, que vous pouvez télécharger via npm.
-
-Pour installer ce package et l’enregistrer en tant que dépendance, accédez au répertoire de votre projet et utiliser cette commande.
-
-```shell
-npm install botbuilder-dialogs --save
-```
-
----
 Les sections suivantes reflètent les étapes que vous devez suivre pour implémenter des dialogues simples pour la plupart des bots :
 
 ## <a name="configure-your-bot"></a>Configurer votre bot
-
-Nous allons avoir besoin d’un accesseur de propriété d’état assigné à l’ensemble de dialogues que le bot peut utiliser pour gérer l’[état du dialogue](bot-builder-dialog-state.md).
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -132,13 +117,13 @@ Le constructeur du bot va créer les accesseurs de propriété d’état pour le
 
 ## <a name="update-the-bot-turn-handler-to-call-the-dialog"></a>Mettre à jour le gestionnaire de tours du bot pour qu’il appelle le dialogue
 
-Pour exécuter le dialogue, le gestionnaire de tours du bot doit créer un contexte de dialogue pour l’ensemble de dialogues qui contient les dialogues du bot. (Un bot peut définir plusieurs ensembles de dialogues, mais en règle générale, vous devez simplement en définir un pour votre bot. La [bibliothèque des dialogues](bot-builder-concept-dialog.md) décrit les principaux aspects des dialogues.)
+Pour exécuter le dialogue, le gestionnaire de tours du bot doit créer un contexte de dialogue pour l’ensemble de dialogues qui contient les dialogues du bot. Un bot peut définir plusieurs ensembles de boîtes de dialogue, mais en règle générale, vous devez simplement en définir un pour votre bot. 
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Le dialogue est exécuté depuis le gestionnaire de tours du bot. Le gestionnaire commence par créer un élément `DialogContext` et continue le dialogue actif ou débute un nouveau dialogue selon ce qui est nécessaire. Le gestionnaire enregistre ensuite la conversation et l’état de l’utilisateur à la fin du tour.
 
-Dans la classe `MultiTurnPromptsBot`, nous avons défini une propriété `_dialogs` qui contient l’ensemble de dialogues à partir duquel nous générons un contexte de dialogue. Ici encore, nous affichons uniquement une partie du code gestionnaire de tours.
+Dans la classe `MultiTurnPromptsBot`, nous avons défini une propriété `_dialogs` qui contient l’ensemble de dialogues à partir duquel nous générons un contexte de dialogue. Ici encore, nous affichons uniquement une partie du code du gestionnaire de tours.
 
 ```csharp
 public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken = default(CancellationToken))
@@ -228,8 +213,6 @@ Dans ce bot, nous avons défini deux accesseurs de propriété d’état :
 
 Les méthodes _obtenir_ et _définir_ d’un accesseur de propriété d’état obtiennent et définissent la valeur de la propriété dans le cache de l’objet de gestion d’états. Le cache est rempli la première fois que la valeur d’une propriété d’état est demandée dans un tour, mais il doit être conservé explicitement. Afin de conserver les modifications apportées à ces propriétés d’état, nous appelons la méthode _enregistrer les modifications_ de l’objet de gestion d’états correspondant.
 
-Pour plus d’informations, consultez l’article dédié à [l’état du dialogue](bot-builder-dialog-state.md).
-
 ## <a name="initialize-your-bot-and-define-your-dialog"></a>Initialiser votre bot et définir votre dialogue
 
 Notre conversation simple est modélisée sous la forme d’une série de questions posées à l’utilisateur. Les versions C# et JavaScript ont des étapes légèrement différentes :
@@ -260,7 +243,7 @@ Pour le dialogue `hello_user` :
 Voici quelques points à retenir lorsque vous définissez vos étapes en cascade.
 
 * Chaque tour de bot reflète une entrée de l’utilisateur suivie d’une réponse du bot. Par conséquent, vous demandez une entrée à l’utilisateur à la fin d’une étape en cascade et vous demandez sa réponse dans l’étape en cascade suivante.
-* Chaque invite est effectivement un dialogue en deux étapes qui présente son invite et effectue une boucle jusqu’à ce qu’il reçoive une entrée « valide ». (Vous pouvez compter sur la validation intégrée de chaque type d’invite de commandes, ou vous pouvez ajouter votre validation personnalisée à l’invite. Pour plus d’informations, consultez l’article dédié à [l’obtention de l’entrée utilisateur](bot-builder-prompts.md).)
+* Chaque invite est effectivement un dialogue en deux étapes qui présente son invite et effectue une boucle jusqu’à ce qu’il reçoive une entrée « valide ». 
 
 Dans cet exemple, le dialogue est défini dans le fichier de bot et initialisé dans le constructeur du bot.
 
@@ -528,7 +511,7 @@ Il existe différentes options pour séparer les étapes de dialogue de l’éta
 
 ## <a name="test-your-dialog"></a>Tester votre dialogue
 
-Générez et exécutez votre bot localement, puis interagissez avec votre bot à l’aide de [l’émulateur](../bot-service-debug-emulator.md).
+Générez et exécutez votre bot en local, puis interagissez avec votre bot à l’aide de l’émulateur.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -551,6 +534,9 @@ Générez et exécutez votre bot localement, puis interagissez avec votre bot à
    * Le bot démarre le dialogue `hello_user` en une seule étape, qui affiche des informations à partir des données collectées et se termine immédiatement.
 
 ---
+
+## <a name="additional-resources"></a>Ressources supplémentaires
+Vous pouvez compter sur la validation intégrée de chaque type d’invite de commandes comme indiqué ici, ou vous pouvez ajouter votre validation personnalisée à l’invite. Pour plus d’informations, consultez [Collecter les entrées utilisateur avec une invite de dialogue](bot-builder-prompts.md).
 
 ## <a name="next-steps"></a>Étapes suivantes
 

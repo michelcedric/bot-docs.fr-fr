@@ -1,21 +1,21 @@
 ---
 title: Utiliser QnA Maker pour répondre aux questions | Microsoft Docs
 description: Découvrez comment utiliser QnA Maker dans votre bot.
-keywords: questions et réponses, QnA, FAQ, intergiciel (middleware)
+keywords: questions et réponses, QnA, FAQ, QnA Maker
 author: ivorb
 ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: cognitive-services
-ms.date: 10/08/2018
+ms.date: 11/19/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4558a90b7d205d416657450224e2ab4892586b25
-ms.sourcegitcommit: 6ed90a4c90add925a0a865be1127041b7775fd3d
+ms.openlocfilehash: 984032373ce2b156c71dc39631838ed67b128a10
+ms.sourcegitcommit: 392c581aa2f59cd1798ee2136b6cfee56aa3ee6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50234462"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52156688"
 ---
 # <a name="use-qna-maker-to-answer-questions"></a>Utiliser QnA Maker pour répondre aux questions
 
@@ -23,73 +23,41 @@ ms.locfileid: "50234462"
 
 Vous pouvez utiliser le service QnA Maker pour ajouter une prise en charge des questions et des réponses à votre bot. Une des exigences de base de la création de votre propre service QnA Maker est à l’amorçage des questions et des réponses. Très souvent, les questions et les réponses existent déjà dans des contenus comme une FAQ ou d’autres documents. Mais vous voudrez parfois personnaliser vos réponses aux questions afin de leur donner un ton plus naturel, comme dans une véritable conversation.
 
+Dans cette rubrique, nous allons créer une base de connaissances et l’utiliser dans un bot.
+
 ## <a name="prerequisites"></a>Prérequis
-- Créer un compte [QnA Maker](https://www.qnamaker.ai/)
-- Télécharger l’exemple QnA Maker [[C#](https://aka.ms/cs-qna) | [JavaScript](https://aka.ms/js-qna-sample)]
+- Compte [QnA Maker](https://www.qnamaker.ai/)
+- Le code de cet article est basé sur l’exemple **QnA Maker**. Vous aurez besoin d’une copie de l’exemple en [C# ](https://aka.ms/cs-qna) ou en [JS](https://aka.ms/js-qna-sample).
+- [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/blob/master/README.md#download)
+- Connaissances des [concepts de base des bots](bot-builder-basics.md), de [QnA Maker](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/overview/overview), et du fichier [.bot](bot-file-basics.md).
 
 ## <a name="create-a-qna-maker-service-and-publish-a-knowledge-base"></a>Créer un service QnA Maker et publier une base de connaissances
+1. Tout d’abord, vous devez créer un [service QnA Maker](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/how-to/set-up-qnamaker-service-azure).
+1. Ensuite, vous allez créer une base de connaissances à l’aide du fichier `smartLightFAQ.tsv` situé dans le dossier CognitiveModels du projet. Les étapes permettant de créer, de former et de publier votre [base de connaissances](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base) QnA Maker sont répertoriés dans la documentation de QnA Maker. Pendant que vous suivez ces étapes, nommez votre base de connaissances `qna`et utilisez le fichier `smartLightFAQ.tsv` pour la remplir.
 
-Après avoir créé le compte QnA Maker, suivez les instructions de création du [service QnA Maker](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/how-to/set-up-qnamaker-service-azure) et de la [base de connaissances](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base). 
-
-Après la publication de votre base de connaissances, vous devez enregistrer les valeurs suivantes par programme pour y connecter votre bot.
-- Sur le site [QnA Maker](https://www.qnamaker.ai/), sélectionnez votre base de connaissances.
-- Ouvrez votre base de connaissances et sélectionnez **Settings** (Paramètres). Enregistrez la valeur indiquée pour _service name_ (nom du service) en tant que <your_kb_name>.
-- Faites défiler la page jusqu’à la section **Deployment details** (Informations sur le déploiement) et enregistrez les valeurs suivantes :
+## <a name="obtain-values-to-connect-to-your-connect-your-bot-to-the-knowledge-base"></a>Obtenir les valeurs pour connecter votre robot à la base de connaissances
+1. Sur le site [QnA Maker](https://www.qnamaker.ai/), sélectionnez votre base de connaissances.
+1. Ouvrez votre base de connaissances et sélectionnez **Settings** (Paramètres). Enregistrez la valeur indiquée pour _service name_ (nom du service) en tant que <your_kb_name>.
+1. Faites défiler la page jusqu’à la section **Deployment details** (Informations sur le déploiement) et enregistrez les valeurs suivantes :
    - POST /knowledgebases/<your_knowledge_base_id>/generateAnswer
    - Host: https://<you_hostname>.azurewebsites.net/qnamaker
    - Authorization: EndpointKey <your_endpoint_key>
 
-## <a name="installing-packages"></a>Installation des packages
-
-Avant de passer au codage, assurez-vous que vous avez installé les packages nécessaires pour QnA Maker.
-
-# <a name="ctabcs"></a>[C#](#tab/cs)
-
-Installez le [package NuGet](https://docs.microsoft.com/en-us/nuget/tools/package-manager-ui) suivant dans votre bot.
-
-* `Microsoft.Bot.Builder.AI.QnA`
-
-# <a name="javascripttabjs"></a>[JavaScript](#tab/js)
-
-Les fonctionnalités QnA Maker se trouvent dans le package `botbuilder-ai`. Vous pouvez ajouter ce package à votre projet par le biais de npm :
-
-```shell
-npm install --save botbuilder-ai
-```
-
----
-
-## <a name="using-cli-tools-to-update-your-bot-configuration"></a>Utilisation des outils d’interface de ligne de commande pour mettre à jour votre fichier de configuration .bot
-
-Une autre méthode permettant d’obtenir les valeurs d’accès à votre base de connaissances consiste à utiliser les outils CLI BotBuilder [qnamaker](https://aka.ms/botbuilder-tools-qnaMaker) et [msbot](https://aka.ms/botbuilder-tools-msbot-readme) pour obtenir ses métadonnées et les ajouter à votre fichier .bot.
-
-1. Ouvrez un terminal ou une invite de commandes et accédez au répertoire racine du projet de votre bot.
-2. Exécutez `qnamaker init` pour créer un fichier de ressources QnA Maker (**.qnamakerrc**). Vous êtes invité à fournir votre clé d’abonnement QnA Maker.
-3. Exécutez la commande suivante pour télécharger vos métadonnées et les ajouter au fichier de configuration de votre bot.
-
-    ```shell
-    qnamaker get kb --kbId <your-kb-id> --msbot | msbot connect qna --stdin [ --secret <your-secret>]
-    ```
-Si vous avez chiffré votre fichier de configuration, vous devrez fournir votre clé secrète pour mettre à jour le fichier.
-
-## <a name="using-qna-maker"></a>Utilisation de QnA Maker
-Une référence à QnA Maker est d’abord ajoutée lors de l’initialisation du bot. Nous pouvons ensuite l’appeler dans la logique de notre bot.
-
-# <a name="ctabcs"></a>[C#](#tab/cs)
-Ouvrez l’exemple QnA Maker que vous avez téléchargé précédemment. Nous allons modifier ce code en fonction de nos besoins.
-Tout d’abord, ajoutez les informations requises pour accéder à votre base de connaissances, notamment le nom d’hôte,la clé de point de terminaison et l’ID de la base de connaissances (KbId) dans `BotConfiguration.bot`. Il s’agit des valeurs que vous avez enregistrées à partir des paramètres (**Settings**) de votre base de connaissances dans QnA Maker.
+## <a name="update-the-bot-file"></a>Mettre à jour le fichier bot
+Tout d’abord, ajoutez les informations requises pour accéder à votre base de connaissances, notamment le nom d’hôte,la clé de point de terminaison et l’ID de la base de connaissances (KbId) dans `qnamaker.bot`. Il s’agit des valeurs que vous avez enregistrées à partir des paramètres (**Settings**) de votre base de connaissances dans QnA Maker.
 
 ```json
 {
-  "name": "QnABotSample",
+  "name": "qnamaker",
   "services": [
     {
       "type": "endpoint",
       "name": "development",
       "endpoint": "http://localhost:3978/api/messages",
       "appId": "",
-      "id": "1",
       "appPassword": ""
+      "id": "25",
+    
     },
     {
       "type": "qna",
@@ -97,14 +65,16 @@ Tout d’abord, ajoutez les informations requises pour accéder à votre base de
       "KbId": "<YOUR_KNOWLEDGE_BASE_ID>",
       "Hostname": "https://<YOUR_HOSTNAME>.azurewebsites.net/qnamaker",
       "EndpointKey": "<YOUR_ENDPOINT_KEY>"
+      "id": "117"
     }
   ],
-  "version": "2.0",
-  "padlock": ""
+  "padlock": "",
+   "version": "2.0"
 }
 ```
 
-Ensuite, nous allons créer une instance de QnA Maker dans `Startup.cs`. Elle va récupérer les informations mentionnées ci-dessus dans le fichier `BotConfiguration.bot`. Ces chaînes peuvent également être codées en dur pour les tests.
+# <a name="ctabcs"></a>[C#](#tab/cs)
+Ensuite, nous allons initialiser une nouvelle instance de la classe BotService dans BotServices.cs, qui extrait les informations ci-dessus à partir de votre fichier bot. Le service externe est configuré à l’aide de la classe BotConfiguration.
 
 ```csharp
 private static BotServices InitBotServices(BotConfiguration config)
@@ -157,7 +127,7 @@ private static BotServices InitBotServices(BotConfiguration config)
 }
 ```
 
-Ensuite, nous devons donner à votre bot cette instance de QnA Maker. Ouvrez `QnABot.cs` et ajoutez le code suivant au début du fichier. Si vous accédez à votre propre base de connaissances, modifiez le message _welcome_ (bienvenue) ci-dessous pour fournir des instructions initiales utiles à vos utilisateurs.
+Ensuite, dans QnABot.cs, nous donnons cette instance de QnAMaker au bot. Si vous accédez à votre propre base de connaissances, modifiez le message _welcome_ (bienvenue) ci-dessous pour fournir des instructions initiales utiles à vos utilisateurs.
 
 ```csharp
 public class QnABot : IBot
@@ -179,37 +149,8 @@ public class QnABot : IBot
 ```
 
 # <a name="javascripttabjs"></a>[JavaScript](#tab/js)
-Ouvrez l’exemple QnA Maker que vous avez téléchargé précédemment. Nous allons modifier ce code en fonction de nos besoins.
+
 Dans notre exemple, le code de démarrage se trouve dans un fichier **index.js**, le code de la logique du bot se trouve dans un fichier **bot.js**, et les informations de configuration supplémentaires se trouvent dans le fichier **qnamaker.bot**.
-
-Une fois les instructions de création de votre base de connaissances et de mise à jour de votre fichier **.bot** suivies, votre fichier **qnamaker.bot** devrait inclure une entrée de service correspondant à votre base de connaissances QnA Maker.
-
-```json
-{
-    "name": "qnamaker",
-    "description": "",
-    "services": [
-        {
-            "type": "endpoint",
-            "name": "development",
-            "id": "1",
-            "appId": "",
-            "appPassword": "",
-            "endpoint": "http://localhost:3978/api/messages"
-        },
-        {
-            "type": "qna",
-            "name": "<YOUR_KB_NAME>",
-            "kbId": "<YOUR_KNOWLEDGE_BASE_ID>",
-            "endpointKey": "<YOUR_ENDPOINT_KEY>",
-            "hostname": "https://<YOUR_HOSTNAME>.azurewebsites.net/qnamaker",
-            "id": "221"
-        }
-    ],
-    "padlock": "",
-    "version": "2.0"
-}
-```
 
 Dans le fichier **index.js**, lisons les informations de configuration servant à générer le service QnA Maker et à initialiser le bot.
 
@@ -344,7 +285,14 @@ module.exports.QnAMakerBot = QnAMakerBot;
 
 ---
 
-Posez des questions à votre bot pour afficher les réponses de votre service QnA Maker. Pour plus d’informations sur le test et la publication de votre service QnA, consultez l’article QnA Maker sur le [test d’une base de connaissances](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/how-to/test-knowledge-base).
+## <a name="test-the-bot"></a>Tester le bot
+
+Exécutez l’exemple en local sur votre machine. Si vous avez besoin d’instructions, consultez le fichier Lisez-moi pour l’exemple [ C# ](https://github.com/Microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/11.qnamaker) ou [JS](https://github.com/Microsoft/BotBuilder-Samples/blob/master/samples/javascript_nodejs/11.qnamaker/README.md).
+
+Dans l’émulateur, envoyer un message au bot comme indiqué ci-dessous.
+
+![exemple de qna test](~/media/emulator-v4/qna-test-bot.png)
+
 
 ## <a name="next-steps"></a>Étapes suivantes
 

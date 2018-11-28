@@ -8,13 +8,13 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
-ms.date: 09/18/2018
-ms.openlocfilehash: b5b02773ab71801132f2a73f81123588e7ddfcdb
-ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
+ms.date: 11/15/2018
+ms.openlocfilehash: 3c5b12bb804477ae41cf70d2ce955066801f5916
+ms.sourcegitcommit: d92fd6233295856052305e0d9e3cba29c9ef496e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51645689"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51715133"
 ---
 ::: moniker range="azure-bot-service-3.0"
 
@@ -85,17 +85,17 @@ Cet article vous a appris à créer un bot Web App Bot/Functions Bot **De base**
 
 Azure Bot Service fournit les principaux composants pour la création de bots, notamment le Kit de développement logiciel (SDK) Bot Builder pour le développement de bots, ainsi que Bot Service pour la connexion des bots aux canaux. Dans cet article, vous serez en mesure de choisir le modèle .NET ou Node.js pour créer un bot à l’aide du Kit de développement logiciel (SDK) Bot Builder v4.
 
-## <a name="log-in-to-azure"></a>Connexion à Azure
-Connectez-vous au [portail Azure](http://portal.azure.com).
+## <a name="prerequisites"></a>Prérequis
+- Compte [Azure](http://portal.azure.com)
 
-> [!TIP]
-> Si vous n’avez pas encore d’abonnement, vous pouvez vous inscrire pour un <a href="https://azure.microsoft.com/en-us/free/" target="_blank">compte gratuit</a>.
+### <a name="create-a-new-bot-service"></a>Créer un service de robot
 
-## <a name="create-a-new-bot-service"></a>Créer un service de robot
+1. Connectez-vous au [portail Azure](http://portal.azure.com/).
+1. Cliquez sur le lien **Créer une ressource** dans le coin supérieur gauche du Portail Azure, puis sélectionnez **IA + Machine Learning** > **Web App Bot**. 
 
-1. Cliquez sur le lien **Créer une ressource** dans le coin supérieur gauche du Portail Azure, puis sélectionnez **IA + Machine Learning > Web App bot (Web App Bot)**. 
+![créer un bot](~/media/azure-bot-quickstarts/abs-create-blade.png)
 
-2. Cette opération affiche un nouveau panneau fournissant des informations sur l’offre **Web App Bot**.  
+2. Cette opération affiche un *nouveau panneau* fournissant des informations sur l’offre **Web App Bot**.  
 
 3. Dans le panneau **Bot Service** (Service de robot), indiquez les informations demandées concernant votre bot, comme spécifié dans le tableau figurant sous l’image.  <br/>
  ![Panneau de création d’un bot Web App Bot](~/media/azure-bot-quickstarts/sdk-create-bot-service-blade.png)
@@ -132,6 +132,6 @@ Entrez un message ; votre bot devrait répondre.
 Dans cet article, vous avez appris à créer un bot d’application web **Écho** en utilisant Azure Bot Service et à vérifier le bon fonctionnement du bot à l’aide du contrôle Discussion Web. À présent, découvrez comment gérer votre bot et commencer à utiliser son code source.
 
 > [!div class="nextstepaction"]
-> [Gérer un bot](bot-service-manage-overview.md)
+> [Fonctionnement des bots](~/v4sdk/bot-builder-basics.md)
 
 ::: moniker-end

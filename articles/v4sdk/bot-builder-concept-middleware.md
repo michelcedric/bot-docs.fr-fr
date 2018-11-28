@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/8/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 713a53947a8ea6681f1793f9796a86c6d8014e29
-ms.sourcegitcommit: cb0b70d7cf1081b08eaf1fddb69f7db3b95b1b09
+ms.openlocfilehash: bd431da58d13f3024617900bbeabd8007a2e3bb8
+ms.sourcegitcommit: 6cb37f43947273a58b2b7624579852b72b0e13ea
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51332923"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52288799"
 ---
 # <a name="middleware"></a>Middlewares
 
@@ -83,6 +83,16 @@ En plus de la logique d’application et d’intergiciel, vous pouvez ajouter de
 
 Rappelez-vous que chaque nouvelle activité obtient un nouveau thread sur lequel s’exécuter. Quand le thread destiné à traiter l’activité est créé, la liste des gestionnaires de cette activité est copiée sur ce nouveau thread. Aucun gestionnaire ajouté après ce point n’est exécuté pour cet événement d’activité spécifique.
 Les gestionnaires inscrits sur un objet de contexte sont traités de façon très semblable à celle dont l’adaptateur gère le pipeline d’intergiciels. Concrètement, les gestionnaires sont appelés dans l’ordre dans lequel ils sont ajoutés, et l’appel du délégué suivant transmet le contrôle au gestionnaire d’événements inscrit suivant. Si un gestionnaire n’appelle pas le délégué suivant, aucun des gestionnaires d’événements suivants n’est appelé ; l’événement est victime d’un court-circuitage, ce qui empêche l’adaptateur d’envoyer la réponse au canal.
+
+## <a name="handling-state-in-middleware"></a>Gestion de l’état dans le middleware
+
+Une méthode courante pour enregistrer l’état consiste à appeler la méthode Enregistrer les modifications à la fin du gestionnaire de tour. Voici un graphique, avec un zoom sur l’appel.
+
+![problèmes d’état dans le middleware](media/bot-builder-dialog-state-problem.png)
+
+Le problème avec cette approche est que les états mis à jour à partir d’un middleware personnalisé après le retour du gestionnaire de tour du bot ne sont pas enregistrés dans un stockage durable. La solution consiste à déplacer l’appel vers la méthode Enregistrer les modifications une fois que le middleware personnalisé a terminé en ajoutant AutoSaveChangesMiddleware au début de la pile du middleware, ou au moins avant toute partie du middleware pouvant mettre l’état à jour. L’exécution est illustrée ci-dessous.
+
+![solution pour l’état dans le middleware](media/bot-builder-dialog-state-solution.png)
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 Vous pouvez observer l’intergiciel d’enregistreur d’événements de transcription, tel qu’implémenté dans le Kit de développement logiciel (SDK) Bot Builder [[C#](https://github.com/Microsoft/botbuilder-dotnet/blob/master/libraries/Microsoft.Bot.Builder/TranscriptLoggerMiddleware.cs) | [JS](https://github.com/Microsoft/botbuilder-js/blob/master/libraries/botbuilder-core/src/transcriptLogger.ts)].
