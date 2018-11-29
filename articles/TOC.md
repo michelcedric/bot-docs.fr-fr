@@ -43,7 +43,7 @@
 ### Gérer les conversations à l’aide de la bibliothèque de boîtes de dialogue 
 #### [Implémenter des flux de conversation séquentiels](v4sdk/bot-builder-dialog-manage-conversation-flow.md)
 #### [Collecter les entrées utilisateur avec une invite de boîte de dialogue](v4sdk/bot-builder-prompts.md)
-#### [Créer des flux de conversation avancés à l’aide des branches et boucles](v4sdk/bot-builder-dialog-manage-complex-conversation-flow.md)
+#### [Créer des flux de conversation avancés à l’aide de branches et de boucles](v4sdk/bot-builder-dialog-manage-complex-conversation-flow.md)
 #### [Gérer les interruptions de l’utilisateur](v4sdk/bot-builder-howto-handle-user-interrupt.md)
 #### [Conserver les données utilisateur](v4sdk/bot-builder-tutorial-persist-user-inputs.md)
 #### [Réutiliser des boîtes de dialogue](v4sdk/bot-builder-compositcontrol.md)
