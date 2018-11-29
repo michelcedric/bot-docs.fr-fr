@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/22/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 52a2867f4d62be4969ed77d8d83e1e752edd7f92
-ms.sourcegitcommit: 6cb37f43947273a58b2b7624579852b72b0e13ea
+ms.openlocfilehash: 964d4a0344df595630f5b38fa32b3cc3a526ed5c
+ms.sourcegitcommit: bbfb171f515c50a3c8bba5ca898daf25cf764378
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52288838"
+ms.lasthandoff: 11/23/2018
+ms.locfileid: "52293591"
 ---
 # <a name="dialogs-library"></a>Bibliothèque des dialogues
 
@@ -38,7 +38,7 @@ L’interface de DialogContext reflète la notion sous-jacente de début et de p
 
 Sachez que **BeginDialog du dialogue** correspond au code d’initialisation qui utilise les propriétés d’initialisation (appelées « options » dans le code). Par ailleurs, **ContinueDialog du dialogue** correspond au code qui est appliqué pour maintenir l’exécution lors de l’arrivée d’une activité après la persistance. Par exemple, imaginons un dialogue qui pose une question à l’utilisateur. La question est posée dans BeginDialog et la réponse est attendue dans ContinueDialog.
 
-Pour prendre en charge l’imbrication des dialogues (quand un dialogue a des dialogues enfants), il existe un autre type de continuation qui s’appelle la reprise. DialogContext appelle la méthode ResumeDialog sur un dialogue parent lorsqu’un dialogue enfant est terminé.
+Pour prendre en charge l’imbrication des dialogues (quand un dialogue a des dialogues enfant), il existe un autre type de continuation qui s’appelle la reprise. DialogContext appelle la méthode ResumeDialog sur un dialogue parent lorsqu’un dialogue enfant est terminé.
 
 Les invites et les cascades sont deux exemples concrets de dialogues fournis par le SDK. De nombreux scénarios sont créés en composant à l’aide de ces abstractions. Toutefois, en arrière-plan, la logique exécutée se base toujours sur le même début, c’est-à-dire sur le modèle de continuation et de reprise décrit ici. 
 
@@ -62,6 +62,25 @@ Un dialogue en cascade est composé d’une séquence d’étapes en cascade. Ch
 Une valeur renvoyée par un dialogue peut-être gérée au sein d’une étape en cascade dans un dialogue, ou depuis le gestionnaire de tour de votre bot.
 Dans une étape en cascade, le dialogue fournit la valeur renvoyée dans la propriété _résultat_ du contexte de l’étape en cascade.
 En général, vous n’avez qu’à vérifier l’état du résultat du tour de dialogue dans la logique de tour de votre bot.
+
+## <a name="about-prompt-types"></a>À propos des types d’invites
+
+Dans les coulisses, les invites constituent une boîte de dialogue en deux étapes. Tout d’abord, l’invite demande une entrée. Ensuite, elle retourne la valeur valide, ou redémarre depuis le début avec une nouvelle invite. La bibliothèque de dialogues propose diverses invites de base, chacune étant utilisée pour recueillir un type de réponse différent. Les invites de base peuvent interpréter une entrée de langage naturel, comme « dix » ou « une dizaine » pour un nombre, ou « demain » ou un « vendredi à 10 h » pour une date-heure.
+
+| Prompt | Description | Retours |
+|:----|:----|:----|
+| _Invite de pièce jointe_ | Demande une ou plusieurs pièces jointes, un document ou une image par exemple. | Une collection d’objets _Pièce jointe_. |
+| _Invite de choix_ | Demande un choix à partir d’un ensemble d’options. | Un objet de _choix trouvé_. |
+| _Invite de confirmation_ | Demande une confirmation. | Valeur booléenne. |
+| _Invite de date et d’heure_ | Demande une date et une heure. | Une collection d’objets de _résolution de date / heure_. |
+| _Invite de nombre_ | Demande un nombre. | Une valeur numérique. |
+| _Invite de texte_ | Demande une saisie de texte générale. | Une chaîne. |
+
+Pour inviter un utilisateur à saisir une entrée, définissez une invite à l’aide de l’une des classes intégrées, _text prompt_, par exemple, et ajoutez-la à votre ensemble de dialogues. Les invites ont des ID fixes devant être uniques au sein d’un ensemble de boîte de dialogue. Vous pouvez avoir un validateur personnalisé pour chaque invite, et pour certaines d’entre elles, vous pouvez spécifier des _paramètres régionaux par défaut_. 
+
+### <a name="prompt-locale"></a>Paramètres régionaux d’invite
+
+Les paramètres régionaux sont utilisés pour déterminer le comportement spécifique à la langue des invites **choix**, **confirmer**, **date-heure**, et **nombre**. Pour toute entrée donnée de l’utilisateur, si le canal fournit une propriété _paramètres régionaux_ dans le message de l’utilisateur, elle est utilisée. Sinon, les _paramètres régionaux par défaut_ de l’invite sont utilisés s’ils sont définis, soit en les fournissant lors de l’appel du constructeur de l’invite ou bien en les définissant ultérieurement. Si aucun paramètre n’est fourni, l’anglais (« en-us ») est utilisé. Remarque : Les paramètres régionaux sont des codes ISO 639 de 2, 3 ou 4 caractères qui représentent une langue ou une famille de langues.
 
 ## <a name="dialog-state"></a>État de dialogue
 
