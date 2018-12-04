@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: e774d6360968e5059588dbdb476cfd1f35fb464e
-ms.sourcegitcommit: 6cb37f43947273a58b2b7624579852b72b0e13ea
+ms.openlocfilehash: 2264b6927ccb863f153f2feb829cc0fb99c711f7
+ms.sourcegitcommit: 6c719b51c9e4e84f5642100a33fe346b21360e8a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52288828"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52452081"
 ---
 # <a name="implement-sequential-conversation-flow"></a>Implémenter des flux de conversation séquentiels
 
@@ -240,7 +240,7 @@ Pour le dialogue `hello_user` :
 
 ---
 
-Voici quelques points à retenir lorsque vous définissez vos étapes en cascade.
+Voici quelques points à retenir quand vous définissez vos propres étapes en cascade.
 
 * Chaque tour de bot reflète une entrée de l’utilisateur suivie d’une réponse du bot. Par conséquent, vous demandez une entrée à l’utilisateur à la fin d’une étape en cascade et vous demandez sa réponse dans l’étape en cascade suivante.
 * Chaque invite est effectivement un dialogue en deux étapes qui présente son invite et effectue une boucle jusqu’à ce qu’il reçoive une entrée « valide ». 

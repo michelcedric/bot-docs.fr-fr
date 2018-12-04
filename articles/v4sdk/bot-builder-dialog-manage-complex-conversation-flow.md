@@ -1,1017 +1,632 @@
 ---
 title: Créer des flux de conversation avancés à l’aide de branches et de boucles | Microsoft Docs
-description: Découvrez comment gérer un flux de conversation complexe avec des dialogues dans le Kit de développement logiciel (SDK) Bot Builder pour Node.js.
+description: Découvrez comment gérer un flux de conversation complexe avec des dialogues dans le SDK Bot Builder.
 keywords: flux de conversation complexe, répétition, boucle, menu, dialogues, invites, cascades, jeu de dialogues
-author: v-ducvo
-ms.author: v-ducvo
+author: JonathanFingold
+ms.author: v-jofing
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/03/2018
+ms.date: 11/28/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9605a2f078be753023e6d178247a211ace107873
-ms.sourcegitcommit: cb0b70d7cf1081b08eaf1fddb69f7db3b95b1b09
+ms.openlocfilehash: da891fad019fc1725242404905565bb1072f8540
+ms.sourcegitcommit: 4db09039effc5259feba163128f4e9a3ccdd3d0d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51333023"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52585890"
 ---
-# <a name="create-advance-conversation-flow-using-branches-and-loops"></a>Créer des flux de conversation avancés à l’aide de branches et de boucles
+# <a name="create-advanced-conversation-flow-using-branches-and-loops"></a>Créer des flux de conversation avancés à l’aide de branches et de boucles
 
 [!INCLUDE [pre-release-label](~/includes/pre-release-label.md)]
 
-Dans le dernier article, nous avons expliqué comment utiliser la bibliothèque des dialogues pour gérer des conversations simples. Dans des [flux de conversation séquentiels](bot-builder-dialog-manage-conversation-flow.md), l’utilisateur commence à la première étape d’une *cascade*, continue jusqu’à la dernière étape où se termine l’échange conversationnel. Dans cet article, nous allons utiliser des dialogues pour gérer plus de conversations complexes avec des sections en branche ou en boucle. Pour ce faire, nous allons utiliser différentes méthodes définies sur le contexte des dialogues et le contexte des étapes de cascade, et nous allons passer des arguments entre les différentes parties du dialogue.
+Dans cet article, nous allons vous montrer comment gérer des conversations complexes qui forment des branches et des boucles. Nous vous montrerons également comment passer des arguments entre différentes parties du dialogue.
 
-Consultez la section [Bibliothèque des dialogues](bot-builder-concept-dialog.md) pour plus d’informations sur les dialogues.
+## <a name="prerequisites"></a>Prérequis
 
-Pour vous offrir plus de contrôle sur la *pile de dialogue*, la bibliothèque **Dialogues** fournit une méthode _replace dialog_. Cette méthode vous permet d’échanger le dialogue actif avec un autre tout en conservant l’état et le flux de la conversation. Les méthodes _begin dialog_ et _replace dialog_ vous permettent de créer autant de branches et de boucles que nécessaire pour créer des interactions plus complexes. Si votre conversation devient si complexe que les dialogues en cascade deviennent difficiles à gérer, recherchez une [réutilisation de dialogue](bot-builder-compositcontrol.md) ou créer une classe de gestion de dialogue personnalisée s’appuyant sur la classe `Dialog` de base.
+- [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/blob/master/README.md#download)
+- Le code dans cet article est basé sur l’exemple de **dialogue complexe**. Vous aurez besoin d’une copie de l’exemple en [C# ](https://aka.ms/cs-complex-dialog-sample) ou en [JS](https://aka.ms/js-complex-dialog-sample).
+- Connaissances des [concepts de base des bots](bot-builder-basics.md), de la [bibliothèque de dialogues](bot-builder-concept-dialog.md), de [l’état de dialogue](bot-builder-dialog-state.md) et des fichiers [.bot](bot-file-basics.md).
 
-Dans cet article, nous allons créer des exemples de dialogues pour un bot de concierge d’hôtel qu’un client pourrait utiliser pour accéder à des services courants : réserver une table dans le restaurant de l’hôtel et commander un repas au room service.  Chacun de ces composants, ainsi qu’un menu les reliant, sont créés sous forme de dialogues dans un jeu de dialogues.
+## <a name="about-the-sample"></a>À propos de l’exemple
 
-Le dialogue de niveau supérieur du bot propose ces deux options au client. Si le client souhaite réserver une table, le dialogue de niveau supérieur utilise la méthode async _begin dialog_ pour commencer le dialogue de réservation de table. Si le client souhaite commander un repas au room service, le dialogue de niveau supérieur démarre un dialogue de commande de repas.
+Dans cet exemple, un bot inscrit des utilisateurs qui sont ensuite invités à évaluer jusqu’à deux entreprises parmi celles figurant dans une liste.
 
-Le dialogue de commande de repas demande d’abord au client de sélectionner les plats depuis un menu, puis d’indiquer son numéro de chambre. La sélection des produits s’effectue _également_ via un dialogue qui réapparaît plusieurs fois pour laisser le client faire son choix dans le menu avant d’envoyer sa commande de repas.
+- Le bot demande le nom et l’âge de l’utilisateur, puis _choisit une branche_ en fonction de l’âge de l’utilisateur.
+  - Si l’utilisateur est trop jeune, il ne lui demande pas d’évaluer une entreprise.
+  - Si l’utilisateur a l’âge minimum, il commence à collecter les préférences d’évaluation de l’utilisateur.
+    - Il autorise l’utilisateur à sélectionner une entreprise à évaluer.
+    - Si l’utilisateur choisit une entreprise, le bot _effectue une boucle_ pour lui permettre de choisir une autre entreprise.
+- Enfin, il remercie l’utilisateur pour sa participation.
 
-Ce diagramme illustre les dialogues que nous allons créer dans cet article, et les relations qu’ils entretiennent entre eux.
+Le bot utilise deux dialogues en cascade et quelques invites pour gérer une conversation complexe.
 
-![Illustration des dialogues utilisés dans cet article](~/media/complex-conversation-flows.png)
-
-## <a name="how-to-branch"></a>Créer une branche
-
-Le contexte du dialogue maintient une _pile de dialogue_, et suit l’étape suivante de chaque dialogue sur la pile. Sa méthode de _démarrage de dialogue_ envoie un dialogue par push sur le dessus de la pile, et sa méthode _fin de dialogue_ fait sortir le dialogue du dessus de la pile.
-
-Pour créer une branche, choisissez un élément à partir d’un jeu de dialogues enfants pour commencer. Pour plus d’informations sur ce concept, consultez la section [Créer une branche de conversation](bot-builder-concept-dialog.md#branch-a-conversation).
-
-## <a name="how-to-loop"></a>Créer une boucle
-
-La méthode _replace dialog_ du contexte de dialogue vous permet de remplacer le dialogue du dessus de la pile. L’état de l’ancien dialogue est abandonné et le nouveau dialogue commence du début. Vous pouvez utiliser cette méthode pour créer une boucle en remplaçant un dialogue par lui-même. Toutefois, pour [conserver les informations que le bot a déjà collectées](bot-builder-howto-v4-state.md), vous devrez passer ces informations à une nouvelle instance du dialogue dans l’appel de la méthode _replace dialog_.
-
-Dans l’exemple suivant, vous verrez que la commande au room service est stockée dans l’état du dialogue, et lorsque le dialogue `orderPrompt` est répété, l’état actuel est passé pour que le nouvel état du dialogue puisse continuer à ajouter des éléments. Si vous préférez stocker ces informations dans un état de bot hors dialogue, consultez la section expliquant comment [Conserver les données utilisateur](bot-builder-tutorial-persist-user-inputs.md).
-
-## <a name="create-the-dialogs-for-the-hotel-bot"></a>Créer des dialogues pour le bot d’hôtel
-
-Dans cette section, nous allons créer des dialogues pour gérer une conversation pour le bot d’hôtel que nous avons décrit.
-
-### <a name="install-the-dialogs-library"></a>Installer la bibliothèque de dialogues
+## <a name="configure-state-for-your-bot"></a>Configurer l’état de votre bot
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-Nous allons partir d’un modèle EchoBot de base. Pour obtenir des instructions, consultez le [démarrage rapide pour .NET](../dotnet/bot-builder-dotnet-sdk-quickstart.md).
-
-Pour utiliser des dialogues, vous devez installer le package NuGet `Microsoft.Bot.Builder.Dialogs` pour votre projet ou solution.
-Référencez ensuite la bibliothèque de dialogues dans les instructions d’utilisation de vos fichiers de code.
+Définissez les informations utilisateur à collecter.
 
 ```csharp
-using Microsoft.Bot.Builder.Dialogs;
-```
-
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-
-Nous allons partir d’un modèle EchoBot. Pour obtenir des instructions, consultez le [démarrage rapide pour JavaScript](../javascript/bot-builder-javascript-quickstart.md).
-
-
-
-Vous pouvez télécharger la bibliothèque `botbuilder-dialogs` à partir de npm. Pour installer la bibliothèque `botbuilder-dialogs`, exécutez la commande npm suivante :
-
-```cmd
-npm install --save botbuilder-dialogs
-```
-
-Pour utiliser des **dialogues** dans votre bot, incluez-les dans le code de celui-ci. Par exemple, ajoutez ce qui suit à votre fichier **index.js** :
-
-```javascript
-const { DialogSet } = require('botbuilder-dialogs');
-```
-
-Et ceci à votre fichier **bot.js** :
-
-```javascript
-const { DialogSet, NumberPrompt, ChoicePrompt, WaterfallDialog } = require('botbuilder-dialogs');
-```
-
----
-
-### <a name="create-a-dialog-set"></a>Créer un jeu de dialogues
-
-Créez un _jeu de dialogues_ auquel nous ajouterons tous les dialogues de cet exemple.
-
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-
-Créez une classe **HotelDialogs**, puis ajoutez les instructions d’utilisation dont nous aurons besoin.
-
-```csharp
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.Bot.Builder;
-using Microsoft.Bot.Builder.Dialogs;
-using Microsoft.Bot.Builder.Dialogs.Choices;
-using Microsoft.Bot.Schema;
-```
-
-Dérivez la classe de **DialogSet**. Incluez un constructeur qui accepte un paramètre `IStatePropertyAccessor<DialogState>` à utiliser pour gérer l’état interne d’une instance du jeu de dialogues. Définissez également les ID et les clés que nous utiliserons pour identifier les dialogues, les invites et les informations d’état de ce jeu de dialogues.
-
-```csharp
-/// <summary>Contains the set of dialogs and prompts for the hotel bot.</summary>
-public class HotelDialogs : DialogSet
+public class UserProfile
 {
-    /// <summary>The ID of the top-level dialog.</summary>
-    public const string MainMenu = "mainMenu";
-
-    public HotelDialogs(IStatePropertyAccessor<DialogState> dialogStateAccessor)
-        : base(dialogStateAccessor)
-    {
-    }
-
-    /// <summary>Contains the IDs for the other dialogs in the set.</summary>
-    private static class Dialogs
-    {
-        public const string OrderDinner = "orderDinner";
-        public const string OrderPrompt = "orderPrompt";
-        public const string ReserveTable = "reserveTable";
-    }
-
-    /// <summary>Contains the IDs for the prompts used by the dialogs.</summary>
-    private static class Inputs
-    {
-        public const string Choice = "choicePrompt";
-        public const string Number = "numberPrompt";
-    }
-
-    /// <summary>Contains the keys used to manage dialog state.</summary>
-    private static class Outputs
-    {
-        public const string OrderCart = "orderCart";
-        public const string OrderTotal = "orderTotal";
-        public const string RoomNumber = "roomNumber";
-    }
-}
-```
-
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-
-Dans le fichier **index.js**, ajoutez du code pour créer un accesseur de propriété d’état pour la gestion de l’état du dialogue, et utilisez-le pour créer le jeu de dialogues que nous utiliserons pour le bot.
-
-```javascript
-// Create conversation state with in-memory storage provider.
-const conversationState = new ConversationState(memoryStorage);
-const dialogStateAccessor = conversationState.createProperty('dialogState');
-
-// Create a dialog set for the bot.
-const dialogSet = new DialogSet(dialogStateAccessor);
-
-// Create the bot.
-const bot = new MyBot(conversationState, dialogSet)
-```
-
-Mettez ensuite à jour l’appel de traitement de l’activité pour qu’il utilise l’objet de bot.
-
-```javascript
-// Listen for incoming requests.
-server.post('/api/messages', (req, res) => {
-    adapter.processActivity(req, res, async (context) => {
-        // Route to the bot's turn handler.
-        await bot.onTurn(context);
-    });
-});
-```
-
----
-
-### <a name="add-the-prompts-to-the-set"></a>Ajouter les invites au jeu
-
-Nous allons utiliser une invite **ChoicePrompt** pour demander aux invités s’ils souhaitent commander ou réserver une table, et pour leur fournir les options du menu à sélectionner. Nous utiliserons une invite **NumberPrompt** pour demander leur numéro de chambre s’ils commandent.
-
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-
-Dans le constructeur **HotelDialogs**, ajoutez les deux invites.
-
-```csharp
-// Add the prompts.
-Add(new ChoicePrompt(Inputs.Choice));
-Add(new NumberPrompt<int>(Inputs.Number));
-```
-
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-
-Mettez à jour le constructeur du bot, et ajoutez deux invites au jeu de dialogues.
-
-```javascript
-constructor(conversationState, dialogSet) {
-    // Creates a new state accessor property.
-    // See https://aka.ms/about-bot-state-accessors to learn more about the bot state and state accessors.
-    this.countProperty = conversationState.createProperty(TURN_COUNTER_PROPERTY);
-    this.conversationState = conversationState;
-    this.dialogSet = dialogSet;
-
-    this.dialogSet.add(new ChoicePrompt('choicePrompt'));
-    this.dialogSet.add(new NumberPrompt('numberPrompt'));
-}
-```
-
----
-
-### <a name="define-some-of-the-supporting-information"></a>Définir certaines informations de support
-
-Étant donné que nous aurons besoin d’informations sur chaque option du menu, définissons-les maintenant.
-
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-
-Créez une classe statique interne **Lists** pour contenir les informations. Nous créerons également des classes internes **WelcomeChoice** et **MenuChoice** pour contenir les informations de chaque option.
-
-Tant que nous y sommes, nous ajouterons des informations pour la liste des options du dialogue d’accueil supérieur, et nous créerons aussi des listes de support que nous utiliserons plus tard lorsque nous demanderons ces informations aux invités. C’est du travail en plus fait en avance, mais cela simplifiera le code du dialogue.
-
-```csharp
-/// <summary>Describes an option for the top-level dialog.</summary>
-private class WelcomeChoice
-{
-    /// <summary>Gets or sets the text to show the guest for this option.</summary>
-    public string Description { get; set; }
-
-    /// <summary>Gets or sets the ID of the associated dialog for this option.</summary>
-    public string DialogName { get; set; }
-}
-
-/// <summary>Describes an option for the food-selection dialog.</summary>
-/// <remarks>We have two types of options. One represents meal items that the guest
-/// can add to their order. The other represents a request to process or cancel the
-/// order.</remarks>
-private class MenuChoice
-{
-    /// <summary>The request text for cancelling the meal order.</summary>
-    public const string Cancel = "Cancel order";
-
-    /// <summary>The request text for processing the meal order.</summary>
-    public const string Process = "Process order";
-
-    /// <summary>Gets or sets the name of the meal item or the request.</summary>
     public string Name { get; set; }
+    public int Age { get; set; }
 
-    /// <summary>Gets or sets the price of the meal item; or NaN for a request.</summary>
-    public double Price { get; set; }
-
-    /// <summary>Gets the text to show the guest for this option.</summary>
-    public string Description => double.IsNaN(Price) ? Name : $"{Name} - ${Price:0.00}";
+    //The list of companies the user wants to review.
+    public List<string> CompaniesToReview { get; set; } = new List<string>();
 }
 ```
 
+Définissez la classe pour héberger les objets de gestion d’état et les accesseurs de propriété d’état pour le bot.
+
 ```csharp
-/// <summary>Contains the lists used to present options to the guest.</summary>
-private static class Lists
+public class ComplexDialogBotAccessors
 {
-    /// <summary>Gets the options for the top-level dialog.</summary>
-    public static List<WelcomeChoice> WelcomeOptions { get; } = new List<WelcomeChoice>
-    {
-        new WelcomeChoice { Description = "Order dinner", DialogName = Dialogs.OrderDinner },
-        new WelcomeChoice { Description = "Reserve a table", DialogName = Dialogs.ReserveTable },
-    };
-
-    private static readonly List<string> _welcomeList = WelcomeOptions.Select(x => x.Description).ToList();
-
-    /// <summary>Gets the choices to present in the choice prompt for the top-level dialog.</summary>
-    public static IList<Choice> WelcomeChoices { get; } = ChoiceFactory.ToChoices(_welcomeList);
-
-    /// <summary>Gets the reprompt action for the top-level dialog.</summary>
-    public static Activity WelcomeReprompt
-    {
-        get
-        {
-            var reprompt = MessageFactory.SuggestedActions(_welcomeList, "Please choose an option");
-            reprompt.AttachmentLayout = AttachmentLayoutTypes.List;
-            return reprompt as Activity;
-        }
-    }
-
-    /// <summary>Gets the options for the food-selection dialog.</summary>
-    public static List<MenuChoice> MenuOptions { get; } = new List<MenuChoice>
-    {
-        new MenuChoice { Name = "Potato Salad", Price = 5.99 },
-        new MenuChoice { Name = "Tuna Sandwich", Price = 6.89 },
-        new MenuChoice { Name = "Clam Chowder", Price = 4.50 },
-        new MenuChoice { Name = MenuChoice.Process, Price = double.NaN },
-        new MenuChoice { Name = MenuChoice.Cancel, Price = double.NaN },
-    };
-
-    private static readonly List<string> _menuList = MenuOptions.Select(x => x.Description).ToList();
-
-    /// <summary>Gets the choices to present in the choice prompt for the food-selection dialog.</summary>
-    public static IList<Choice> MenuChoices { get; } = ChoiceFactory.ToChoices(_menuList);
-
-    /// <summary>Gets the reprompt action for the food-selection dialog.</summary>
-    public static Activity MenuReprompt
-    {
-        get
-        {
-            var reprompt = MessageFactory.SuggestedActions(_menuList, "Please choose an option");
-            reprompt.AttachmentLayout = AttachmentLayoutTypes.List;
-            return reprompt as Activity;
-        }
-    }
-}
-```
-
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-
-Dans le fichier **bot.js**, créez une constante **dinnerMenu** pour contenir les informations.
-
-```javascript
-const dinnerMenu = {
-    choices: ["Potato Salad - $5.99", "Tuna Sandwich - $6.89", "Clam Chowder - $4.50",
-        "Process order", "Cancel"],
-    "Potato Salad - $5.99": {
-        Description: "Potato Salad",
-        Price: 5.99
-    },
-    "Tuna Sandwich - $6.89": {
-        Description: "Tuna Sandwich",
-        Price: 6.89
-    },
-    "Clam Chowder - $4.50": {
-        Description: "Clam Chowder",
-        Price: 4.50
-    }
-}
-```
-
----
-
-### <a name="create-the-welcome-dialog"></a>Créer le dialogue d’accueil
-
-Ce dialogue utilise un `ChoicePrompt` pour afficher le menu et attend que l’utilisateur choisisse une option. Lorsque l’utilisateur choisit `Order dinner` ou `Reserve a table`, il démarre le dialogue approprié. Lorsque le dialogue enfant est terminé, au lieu de simplement terminer le dialogue de la dernière étape et laisser l’utilisateur se demander ce qu’il se passe, le dialogue `mainMenu` se répète en redémarrant le dialogue `mainMenu`. Avec cette structure simple, le bot affichera toujours le menu et l’utilisateur connaîtra ainsi tous les choix à sa disposition.
-
-Le dialogue `mainMenu` contient ces étapes en cascade :
-
-* Dans la première étape de la cascade, nous initialisons ou supprimons l’état du dialogue, accueillons l’invité et lui demandons de choisir parmi les options disponibles : `Order dinner` ou `Reserve a table`.
-* Dans la deuxième étape, nous récupérons son choix et commençons le dialogue enfant associé à ce choix. Une fois le dialogue enfant terminé, il reprendra à l’étape précédente.
-* Dans la dernière étape, nous utilisons la méthode _replace dialog_ pour remplacer ce dialogue par une nouvelle instance de lui-même, qui fera du dialogue d’accueil un menu en boucle.
-
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-
-Dans le constructeur, ajoutez le dialogue en cascade. Définissez ensuite les étapes de la cascade. Ici, nous les avons définies dans une classe imbriquée.
-
-Dans le constructeur **HotelDialogs**.
-
-```csharp
-// Define the steps for and add the main welcome dialog.
-WaterfallStep[] welcomeDialogSteps = new WaterfallStep[]
-{
-    MainDialogSteps.PresentMenuAsync,
-    MainDialogSteps.ProcessInputAsync,
-    MainDialogSteps.RepeatMenuAsync,
-};
-
-Add(new WaterfallDialog(MainMenu, welcomeDialogSteps));
-```
-
-Dans la classe **HotelDialogs**, ajoutez les définitions de l’étape.
-
-```csharp
-/// <summary>
-/// Contains the waterfall dialog steps for the order-dinner dialog.
-/// </summary>
-private static class MainDialogSteps
-{
-    public static async Task<DialogTurnResult> PresentMenuAsync(
-        WaterfallStepContext stepContext,
-        CancellationToken cancellationToken)
-    {
-        // Greet the guest and ask them to choose an option.
-        await stepContext.Context.SendActivityAsync(
-            "Welcome to Contoso Hotel and Resort.",
-            cancellationToken: cancellationToken);
-        return await stepContext.PromptAsync(
-            Inputs.Choice,
-            new PromptOptions
-            {
-                Prompt = MessageFactory.Text("How may we serve you today?"),
-                RetryPrompt = Lists.WelcomeReprompt,
-                Choices = Lists.WelcomeChoices,
-            },
-            cancellationToken);
-    }
-
-    public static async Task<DialogTurnResult> ProcessInputAsync(
-        WaterfallStepContext stepContext,
-        CancellationToken cancellationToken)
-    {
-        // Begin a child dialog associated with the chosen option.
-        var choice = (FoundChoice)stepContext.Result;
-        var dialogId = Lists.WelcomeOptions[choice.Index].DialogName;
-
-        return await stepContext.BeginDialogAsync(dialogId, null, cancellationToken);
-    }
-
-    public static async Task<DialogTurnResult> RepeatMenuAsync(
-        WaterfallStepContext stepContext,
-        CancellationToken cancellationToken)
-    {
-        // Start this dialog over again.
-        return await stepContext.ReplaceDialogAsync(MainMenu, null, cancellationToken);
-    }
-}
-```
-
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-
-Dans le constructeur du bot, ajoutez le dialogue en cascade `mainMenu`.
-
-```javascript
-// Display a menu and ask user to choose a menu item. Direct user to the item selected otherwise, show
-// the menu again.
-this.dialogSet.add(new WaterfallDialog('mainMenu', [
-    async function (step) {
-        // Welcome the user and send a prompt.
-        await step.context.sendActivity("Welcome to Contoso Hotel and Resort.");
-        return await step.prompt('choicePrompt', "How may we serve you today?", ['Order Dinner', 'Reserve a table']);
-    },
-    async function (step) {
-        // Handle the user's response to the previous prompt and branch the dialog.
-        if (step.result.value.match(/order dinner/ig)) {
-            return await step.beginDialog('orderDinner');
-        } else if (step.result.value.match(/reserve a table/ig)) {
-            return await step.beginDialog('reserveTable');
-        }
-    },
-    async function (step) {
-        // Calling replaceDialog will loop the main menu
-        return await step.replaceDialog('mainMenu');
-    }
-]));
-```
-
----
-
-### <a name="create-the-order-dinner-dialog"></a>Créer un dialogue de commande de menu
-
-Dans le dialogue de commande, nous accueillons l’invité pour le « service de commande » et démarrons immédiatement le dialogue de choix du repas, que nous aborderons dans la prochaine section. Plus important, si l’invité demande au service de procéder à la commande, le dialogue de choix du repas renvoie la liste des éléments de la commande. Pour terminer le processus, ce dialogue demande ensuite le numéro de chambre pour livrer le repas, puis envoie un message de confirmation. Si l’invité annule la commande, ce dialogue ne demande pas de numéro de chambre et se termine immédiatement.
-
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-
-Pour la classe **HotelDialog**, ajoutez une structure de données que nous pouvons utiliser pour suivre la commande de l’invité. Étant donné que ces informations sont conservées dans l’état du dialogue, la classe a besoin d’un constructeur par défaut pour la sérialisation.
-
-```csharp
-/// <summary>Contains the guest's dinner order.</summary>
-private class OrderCart : List<MenuChoice>
-{
-    public OrderCart() : base() { }
-
-    public OrderCart(OrderCart other) : base(other) { }
-}
-```
-
-Dans le constructeur, ajoutez le dialogue en cascade. Définissez ensuite les étapes de la cascade. Ici, nous les avons définies dans une classe imbriquée.
-
-Dans le constructeur **HotelDialogs**.
-
-```csharp
-// Define the steps for and add the order-dinner dialog.
-WaterfallStep[] orderDinnerDialogSteps = new WaterfallStep[]
-{
-    OrderDinnerSteps.StartFoodSelectionAsync,
-    OrderDinnerSteps.GetRoomNumberAsync,
-    OrderDinnerSteps.ProcessOrderAsync,
-};
-
-Add(new WaterfallDialog(Dialogs.OrderDinner, orderDinnerDialogSteps));
-```
-
-Dans la classe **HotelDialogs**, ajoutez les définitions de l’étape.
-
-* Dans la première étape, nous envoyons un message d’accueil et démarrons le dialogue de choix du repas.
-* Dans la deuxième étape, nous vérifions si le dialogue de choix du repas renvoie un panier de commande.
-  * Si c’est le cas, nous demandons le numéro de sa chambre et enregistrons les informations du panier.
-  * Sinon, nous supposons qu’il a annulé sa commande, et appelons la méthode _end dialog_ pour terminer le dialogue.
-* Dans la dernière étape, nous enregistrons le numéro de sa chambre et lui envoyons un message de confirmation avant de terminer. Il s’agit de l’étape où votre bot enverra la commande à un service de traitement.
-
-```csharp
-/// <summary>
-/// Contains the waterfall dialog steps for the order-dinner dialog.
-/// </summary>
-private static class OrderDinnerSteps
-{
-    public static async Task<DialogTurnResult> StartFoodSelectionAsync(
-        WaterfallStepContext stepContext,
-        CancellationToken cancellationToken)
-    {
-        await stepContext.Context.SendActivityAsync(
-            "Welcome to our Dinner order service.",
-            cancellationToken: cancellationToken);
-
-        // Start the food selection dialog.
-        return await stepContext.BeginDialogAsync(Dialogs.OrderPrompt, null, cancellationToken);
-    }
-
-    public static async Task<DialogTurnResult> GetRoomNumberAsync(
-        WaterfallStepContext stepContext,
-        CancellationToken cancellationToken)
-    {
-        if (stepContext.Result != null && stepContext.Result is OrderCart cart)
-        {
-            // If there are items in the order, record the order and ask for a room number.
-            stepContext.Values[Outputs.OrderCart] = cart;
-            return await stepContext.PromptAsync(
-                Inputs.Number,
-                new PromptOptions
-                {
-                    Prompt = MessageFactory.Text("What is your room number?"),
-                    RetryPrompt = MessageFactory.Text("Please enter your room number."),
-                },
-                cancellationToken);
-        }
-        else
-        {
-            // Otherwise, assume the order was cancelled by the guest and exit.
-            return await stepContext.EndDialogAsync(null, cancellationToken);
-        }
-    }
-
-    public static async Task<DialogTurnResult> ProcessOrderAsync(
-        WaterfallStepContext stepContext,
-        CancellationToken cancellationToken)
-    {
-        // Get and save the guest's answer.
-        var roomNumber = (int)stepContext.Result;
-        stepContext.Values[Outputs.RoomNumber] = roomNumber;
-
-        // Process the dinner order using the collected order cart and room number.
-
-        await stepContext.Context.SendActivityAsync(
-            $"Thank you. Your order will be delivered to room {roomNumber} within 45 minutes.",
-            cancellationToken: cancellationToken);
-        return await stepContext.EndDialogAsync(null, cancellationToken);
-    }
-}
-```
-
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-
-Dans le constructeur du bot, ajoutez le dialogue en cascade `orderDinner`.
-
-```javascript
-// Order dinner:
-// Help user order dinner from a menu
-this.dialogSet.add(new WaterfallDialog('orderDinner', [
-    async function (step) {
-        await step.context.sendActivity("Welcome to our dinner order service.");
-
-        return await step.beginDialog('orderPrompt', step.values.orderCart = {
-            orders: [],
-            total: 0
-        }); // Prompt for orders
-    },
-    async function (step) {
-        if (step.result == "Cancel") {
-            return await step.endDialog();
-        } else {
-            return await step.prompt('numberPrompt', "What is your room number?");
-        }
-    },
-    async function (step) {
-        await step.context.sendActivity(`Thank you. Your order will be delivered to room ${step.result} within 45 minutes.`);
-        return await step.endDialog();
-    }
-]));
-```
-
----
-
-### <a name="create-the-order-prompt-dialog"></a>Créer le dialogue de l’invite de commande
-
-Dans le dialogue du choix du repas, nous présenterons à l’invité une liste d’options incluant les repas qu’il peut commander et les deux requêtes de traitement de commandes. Ce dialogue est en boucle jusqu’à ce que l’invité choisisse de traiter la commande ou annule sa commande.
-
-* Lorsqu’il sélectionner un repas, nous l’ajoutons à son _panier_.
-* Si l’invité choisit de traiter sa commande, nous vérifions d’abord si le panier est vide.
-  * S’il est vide, nous envoyons un message d’erreur et la boucle continue.
-  * Sinon, nous terminons le dialogue et renvoyons les informations du panier dans le dialogue parent.
-* Si l’invité choisit d’annuler sa commande, nous terminons le dialogue sans renvoyer d’informations.
-
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-
-Dans le constructeur, ajoutez le dialogue en cascade. Définissez ensuite les étapes de la cascade. Ici, nous les avons définies dans une classe imbriquée.
-
-Dans le constructeur **HotelDialogs**.
-
-```csharp
-// Define the steps for and add the order-prompt dialog.
-WaterfallStep[] orderPromptDialogSteps = new WaterfallStep[]
-{
-    OrderPromptSteps.PromptForItemAsync,
-    OrderPromptSteps.ProcessInputAsync,
-};
-
-Add(new WaterfallDialog(Dialogs.OrderPrompt, orderPromptDialogSteps));
-```
-
-* Dans la première étape, nous initialisons l’état du dialogue. Si les arguments d’entrée du dialogue contiennent les informations du panier, nous les enregistrons dans l’état du dialogue ; sinon, nous créons un panier vide pour les y ajouter. Nous demandons ensuite à l’invité de choisir dans le menu.
-* Dans l’étape suivante, nous regardons l’option choisie par l’invité :
-  * S’il s’agit d’une requête pour traiter la commande, nous vérifions si le panier contient des éléments.
-    * Si c’est le cas, nous terminons le dialogue en renvoyant le contenu du panier.
-    * Sinon, nous envoyons un message d’erreur à l’invité et recommençons au début du dialogue.
-  * S’il s’agit d’une requête d’annulation de la commande, nous terminons le dialogue en renvoyant un dictionnaire vide.
-  * S’il s’agit d’un repas, nous l’ajoutons au panier, envoyons un message de statut et redémarrons le dialogue, en passant l’état actuel de la commande.
-
-Dans la classe **HotelDialogs**, ajoutez les définitions de l’étape.
-
-```csharp
-/// <summary>
-/// Contains the waterfall dialog steps for the order-prompt dialog.
-/// </summary>
-private static class OrderPromptSteps
-{
-    public static async Task<DialogTurnResult> PromptForItemAsync(
-        WaterfallStepContext stepContext,
-        CancellationToken cancellationToken)
-    {
-        // First time through, options will be null.
-        var cart = (stepContext.Options is OrderCart oldCart && oldCart != null)
-            ? new OrderCart(oldCart) : new OrderCart();
-
-        stepContext.Values[Outputs.OrderCart] = cart;
-        stepContext.Values[Outputs.OrderTotal] = cart.Sum(item => item.Price);
-
-        return await stepContext.PromptAsync(
-            Inputs.Choice,
-            new PromptOptions
-            {
-                Prompt = MessageFactory.Text("What would you like?"),
-                RetryPrompt = Lists.MenuReprompt,
-                Choices = Lists.MenuChoices,
-            },
-            cancellationToken);
-    }
-
-    public static async Task<DialogTurnResult> ProcessInputAsync(
-        WaterfallStepContext stepContext,
-        CancellationToken cancellationToken)
-    {
-        // Get the guest's choice.
-        var choice = (FoundChoice)stepContext.Result;
-        var menuOption = Lists.MenuOptions[choice.Index];
-
-        // Get the current order from dialog state.
-        var cart = (OrderCart)stepContext.Values[Outputs.OrderCart];
-
-        if (menuOption.Name is MenuChoice.Process)
-        {
-            if (cart.Count > 0)
-            {
-                // If there are any items in the order, then exit this dialog,
-                // and return the list of selected food items.
-                return await stepContext.EndDialogAsync(cart, cancellationToken);
-            }
-            else
-            {
-                // Otherwise, send an error message and restart from
-                // the beginning of this dialog.
-                await stepContext.Context.SendActivityAsync(
-                    "Your cart is empty. Please add at least one item to the cart.",
-                    cancellationToken: cancellationToken);
-                return await stepContext.ReplaceDialogAsync(Dialogs.OrderPrompt, null, cancellationToken);
-            }
-        }
-        else if (menuOption.Name is MenuChoice.Cancel)
-        {
-            await stepContext.Context.SendActivityAsync(
-                "Your order has been cancelled.",
-                cancellationToken: cancellationToken);
-
-            // Exit this dialog, returning null.
-            return await stepContext.EndDialogAsync(null, cancellationToken);
-        }
-        else
-        {
-            // Add the selected food item to the order and update the order total.
-            cart.Add(menuOption);
-            var total = (double)stepContext.Values[Outputs.OrderTotal] + menuOption.Price;
-            stepContext.Values[Outputs.OrderTotal] = total;
-
-            await stepContext.Context.SendActivityAsync(
-                $"Added {menuOption.Name} (${menuOption.Price:0.00}) to your order." +
-                    Environment.NewLine + Environment.NewLine +
-                    $"Your current total is ${total:0.00}.",
-                cancellationToken: cancellationToken);
-
-            // Present the order options again, passing in the current order state.
-            return await stepContext.ReplaceDialogAsync(Dialogs.OrderPrompt, cart);
-        }
-    }
-}
-```
-
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-
-Dans le constructeur du bot, ajoutez le dialogue en cascade `orderPrompt`.
-
-```javascript
-// Helper dialog to repeatedly prompt user for orders
-this.dialogSet.add(new WaterfallDialog('orderPrompt', [
-    async function (step) {
-        // Define a new cart of one does not exists
-        step.values.orderCart = step.options;
-
-        return await step.prompt('choicePrompt', "What would you like?", dinnerMenu.choices);
-    },
-    async function (step) {
-        const choice = step.result;
-        if (choice.value.match(/process order/ig)) {
-            if (step.values.orderCart.orders.length > 0) {
-                // Process the order
-                await step.context.sendActivity("Processing your order.");
-                // ...
-                step.values.orderCart = undefined; // Reset cart
-                return await step.endDialog();
-            } else {
-                await step.context.sendActivity("Your cart was empty. Please add at least one item to the cart.");
-                // Ask again
-                return await step.replaceDialog('orderPrompt', step.values.orderCart);
-            }
-        } else if (choice.value.match(/cancel/ig)) {
-            await step.context.sendActivity("Your order has been canceled.");
-            return await step.endDialog(choice.value);
-        } else {
-            var item = dinnerMenu[choice.value];
-
-            // Only proceed if user chooses an item from the menu
-            if (!item) {
-                await step.context.sendActivity("Sorry, that is not a valid item. Please pick one from the menu.");
-
-                // Ask again
-                return await step.replaceDialog('orderPrompt', step.values.orderCart);
-            } else {
-                // Add the item to cart
-                step.values.orderCart.orders.push(item);
-                step.values.orderCart.total += item.Price;
-
-                await step.context.sendActivity(`Added to cart: ${choice.value}. <br/>Current total: $${step.values.orderCart.total}`);
-
-                // Ask again
-                return await step.replaceDialog('orderPrompt', step.values.orderCart);
-            }
-        }
-    }
-]));
-```
-
-L’exemple de code ci-dessus montre que le dialogue `orderDinner` principal utilise un dialogue d’assistance nommé `orderPrompt` pour traiter les choix de l’utilisateur. Le dialogue `orderPrompt` affiche le menu, invite l’utilisateur à choisir un article, ajoute celui-ci au panier, puis invite à nouveau l’utilisateur en créant une boucle. Cela permet à l’utilisateur d’ajouter plusieurs articles à sa commande. Le dialogue se répète en boucle jusqu’à ce que l’utilisateur choisisse `Process order` ou `Cancel`. À ce moment-là, l’exécution est rendue au dialogue parent (le dialogue `orderDinner`). Le dialogue `orderDinner` fait un ménage de dernière minute si l’utilisateur souhaite traiter la commande. Autrement, il se termine et rend l’exécution à son dialogue parent (par exemple, `mainMenu`). Le dialogue `mainMenu` continue à son tour l’exécution de la dernière étape qui consiste simplement à réafficher les choix du menu principal.
-
----
-
-### <a name="create-the-reserve-table-dialog"></a>Créer le dialogue de réservation d’une table
-
-<!-- TODO: Update the "Manage simple conversation flows" topic to use a reserveTable dialog, and then reference that from here. -->
-
-Pour que l’exemple reste simple, nous ne montrons ici qu’une implémentation minimale du dialogue `reserveTable`.
-
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-
-Dans le constructeur, ajoutez le dialogue en cascade. Définissez ensuite les étapes de la cascade. Ici, nous les avons définies dans une classe imbriquée.
-
-Dans le constructeur **HotelDialogs**.
-
-```csharp
-// Define the steps for and add the reserve-table dialog.
-WaterfallStep[] reserveTableDialogSteps = new WaterfallStep[]
-{
-    ReserveTableSteps.StubAsync,
-};
-
-Add(new WaterfallDialog(Dialogs.ReserveTable, reserveTableDialogSteps));
-```
-
-Dans la classe **HotelDialogs**, ajoutez les définitions de l’étape.
-
-```csharp
-/// <summary>
-/// Contains the waterfall dialog steps for the reserve-table dialog.
-/// </summary>
-private static class ReserveTableSteps
-{
-    public static async Task<DialogTurnResult> StubAsync(
-        WaterfallStepContext stepContext,
-        CancellationToken cancellationToken)
-    {
-        await stepContext.Context.SendActivityAsync(
-            "Your table has been reserved.",
-            cancellationToken: cancellationToken);
-
-        return await stepContext.EndDialogAsync(null, cancellationToken);
-    }
-}
-```
-
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-
-Dans le constructeur du bot, ajoutez le dialogue en cascade `reserveTable`.
-
-```javascript
-// Reserve a table:
-// Help the user to reserve a table
-this.dialogSet.add(new WaterfallDialog('reserveTable', [
-    // Replace this waterfall with your reservation steps.
-    async function(step){
-        await step.context.sendActivity("Your table has been reserved");
-        await step.endDialog();
-    }
-]));
-```
-
----
-
-### <a name="update-the-bot-code-to-call-the-dialogs"></a>Mettre à jour le code du bot pour l’appel des dialogues
-
-Mettez à jour le code du gestionnaire de tour du bot pour appeler le dialogue.
-
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-
-Renommez **EchoBotAccessors.cs** en **BotAccessors.cs** et remplacez également le nom de classe `EchoBotAccessors` par `BotAccessors`. Mettez à jour les instructions using et la définition de classe pour fournir l’accesseur de propriété d’état dont nous avons besoin pour ce bot.
-
-```csharp
-using System;
-using Microsoft.Bot.Builder;
-using Microsoft.Bot.Builder.Dialogs;
-```
-
-```csharp
-/// <summary>
-/// This class is created as a Singleton and passed into the IBot-derived constructor.
-///  - See <see cref="EchoWithCounterBot"/> constructor for how that is injected.
-///  - See the Startup.cs file for more details on creating the Singleton that gets
-///    injected into the constructor.
-/// </summary>
-public class BotAccessors
-{
-    /// <summary>
-    /// Initializes a new instance of the <see cref="BotAccessors"/> class.
-    /// Contains the <see cref="ConversationState"/> and associated <see cref="IStatePropertyAccessor{T}"/>.
-    /// </summary>
-    /// <param name="conversationState">The state object that stores the counter.</param>
-    public BotAccessors(ConversationState conversationState)
+    public ComplexDialogBotAccessors(ConversationState conversationState, UserState userState)
     {
         ConversationState = conversationState ?? throw new ArgumentNullException(nameof(conversationState));
+        UserState = userState ?? throw new ArgumentNullException(nameof(userState));
     }
 
-    /// <summary>
-    /// Gets the <see cref="IStatePropertyAccessor{T}"/> name used for the <see cref="DialogState"/> accessor.
-    /// </summary>
-    /// <remarks>Accessors require a unique name.</remarks>
-    /// <value>The accessor name for the dialog state accessor.</value>
-    public static string DialogStateAccessorName { get; } = $"{nameof(BotAccessors)}.DialogState";
-
-    /// <summary>
-    /// Gets or sets the DialogState property accessor.
-    /// </summary>
-    /// <value>
-    /// The DialogState property accessor.
-    /// </value>
     public IStatePropertyAccessor<DialogState> DialogStateAccessor { get; set; }
+    public IStatePropertyAccessor<UserProfile> UserProfileAccessor { get; set; }
 
-    /// <summary>
-    /// Gets the <see cref="ConversationState"/> object for the conversation.
-    /// </summary>
-    /// <value>The <see cref="ConversationState"/> object.</value>
     public ConversationState ConversationState { get; }
+    public UserState UserState { get; }
 }
 ```
 
-Mettez à jour le fichier **Startup.cs** pour configurer le singleton `BotAccessors`.
+Créez l’objet de gestion d’état et inscrivez la classe d’accesseurs dans la méthode `ConfigureServices` de la classe `Statup`.
 
-1. Mettez à jour les instructions using.
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    // Register the bot.
 
-    ```csharp
-    using System;
-    using System.Linq;
-    using Microsoft.AspNetCore.Builder;
-    using Microsoft.AspNetCore.Hosting;
-    using Microsoft.Bot.Builder;
-    using Microsoft.Bot.Builder.Dialogs;
-    using Microsoft.Bot.Builder.Integration;
-    using Microsoft.Bot.Builder.Integration.AspNet.Core;
-    using Microsoft.Bot.Configuration;
-    using Microsoft.Bot.Connector.Authentication;
-    using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.Extensions.Logging;
-    using Microsoft.Extensions.Options;
-    ```
+    // Create conversation and user state management objects, using memory storage.
+    IStorage dataStore = new MemoryStorage();
+    var conversationState = new ConversationState(dataStore);
+    var userState = new UserState(dataStore);
 
-1. Mettez à jour la partie de la méthode `ConfigureServices` qui enregistre les accesseurs de propriété d’état du bot.
-
-    ```csharp
-    // Create and register state accesssors.
-    // Acessors created here are passed into the IBot-derived class on every turn.
-    services.AddSingleton<BotAccessors>(sp =>
+    // Create and register state accessors.
+    // Accessors created here are passed into the IBot-derived class on every turn.
+    services.AddSingleton<ComplexDialogBotAccessors>(sp =>
     {
-        var options = sp.GetRequiredService<IOptions<BotFrameworkOptions>>().Value;
-        var conversationState = options.State.OfType<ConversationState>().FirstOrDefault();
-
         // Create the custom state accessor.
         // State accessors enable other components to read and write individual properties of state.
-        var accessors = new BotAccessors(conversationState)
+        var accessors = new ComplexDialogBotAccessors(conversationState, userState)
         {
-            DialogStateAccessor = conversationState.CreateProperty<DialogState>(BotAccessors.DialogStateAccessorName),
+            DialogStateAccessor = conversationState.CreateProperty<DialogState>("DialogState"),
+            UserProfileAccessor = userState.CreateProperty<UserProfile>("UserProfile"),
         };
 
         return accessors;
     });
-    ```
+}
+```
 
-Renommez le fichier EchoWithCounterBot.cs en HotelBot.cs, et remplacez la classe EchoWithCounterBot par HotelBot.
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-1. Mettez à jour le code d’initialisation du bot.
+Dans le fichier **index.js**, nous définissons les objets de gestion d’état.
 
-    ```csharp
-    private readonly BotAccessors _accessors;
-    private readonly HotelDialogs _dialogs;
-    private readonly ILogger _logger;
+```javascript
+const { BotFrameworkAdapter, MemoryStorage, UserState, ConversationState } = require('botbuilder');
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="HotelBot"/> class.
-    /// </summary>
-    /// <param name="accessors">A class containing <see cref="IStatePropertyAccessor{T}"/> used to manage state.</param>
-    /// <param name="loggerFactory">A <see cref="ILoggerFactory"/> that is hooked to the Azure App Service provider.</param>
-    public HotelBot(BotAccessors accessors, ILoggerFactory loggerFactory)
+// ...
+
+// Define state store for your bot.
+const memoryStorage = new MemoryStorage();
+
+// Create user and conversation state with in-memory storage provider.
+const userState = new UserState(memoryStorage);
+const conversationState = new ConversationState(memoryStorage);
+
+// Create the bot.
+const myBot = new MyBot(conversationState, userState);
+```
+
+Le constructeur du bot crée les accesseurs de propriété d’état pour le bot.
+
+---
+
+## <a name="initialize-your-bot"></a>Initialiser votre bot
+
+Créez un _ensemble de dialogues_ pour le bot, auquel nous ajouterons tous les dialogues de cet exemple.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Créez l’ensemble de dialogues au sein du constructeur du bot en ajoutant les invites et les deux dialogues en cascade à l’ensemble.
+
+Ici, nous définissons chacune des étapes en tant que méthode distincte. Nous les implémenterons dans la section suivante.
+
+```csharp
+public class ComplexDialogBot : IBot
+{
+    // Define constants for the bot...
+
+    // Define properties for the bot's accessors and dialog set.
+    private readonly ComplexDialogBotAccessors _accessors;
+    private readonly DialogSet _dialogs;
+
+    // Initialize the bot and add dialogs and prompts to the dialog set.
+    public ComplexDialogBot(ComplexDialogBotAccessors accessors)
     {
-        _logger = loggerFactory.CreateLogger<HotelBot>();
-        _logger.LogTrace("EchoBot turn start.");
-        _accessors = accessors;
-        _dialogs = new HotelDialogs(_accessors.DialogStateAccessor);
+        _accessors = accessors ?? throw new ArgumentNullException(nameof(accessors));
+
+        // Create a dialog set for the bot. It requires a DialogState accessor, with which
+        // to retrieve the dialog state from the turn context.
+        _dialogs = new DialogSet(accessors.DialogStateAccessor);
+
+        // Add the prompts we need to the dialog set.
+        _dialogs
+            .Add(new TextPrompt(NamePrompt))
+            .Add(new NumberPrompt<int>(AgePrompt))
+            .Add(new ChoicePrompt(SelectionPrompt));
+
+        // Add the dialogs we need to the dialog set.
+        _dialogs.Add(new WaterfallDialog(TopLevelDialog)
+            .AddStep(NameStepAsync)
+            .AddStep(AgeStepAsync)
+            .AddStep(StartSelectionStepAsync)
+            .AddStep(AcknowledgementStepAsync));
+
+        _dialogs.Add(new WaterfallDialog(ReviewSelectionDialog)
+            .AddStep(SelectionStepAsync)
+            .AddStep(LoopStepAsync));
     }
-    ```
 
-1. Mettez à jour le gestionnaire de tour du bot, afin qu’il exécute le dialogue.
+    // Turn handler and other supporting methods...
+}
+```
 
-    ```csharp
-    public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken = default(CancellationToken))
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Dans le fichier **bot.js**, définissez et créez l’ensemble de dialogues au sein du constructeur du bot en ajoutant les invites et les dialogues en cascade à l’ensemble.
+
+Ici, nous définissons chacune des étapes en tant que méthode distincte. Nous les implémenterons dans la section suivante.
+
+```javascript
+const { ActivityTypes } = require('botbuilder');
+const { DialogSet, WaterfallDialog, TextPrompt, NumberPrompt, ChoicePrompt, DialogTurnStatus } = require('botbuilder-dialogs');
+
+// Define constants for the bot...
+
+class MyBot {
+    constructor(conversationState, userState) {
+        // Create the state property accessors and save the state management objects.
+        this.dialogStateAccessor = conversationState.createProperty(DIALOG_STATE_PROPERTY);
+        this.userProfileAccessor = userState.createProperty(USER_PROFILE_PROPERTY);
+        this.conversationState = conversationState;
+        this.userState = userState;
+
+        // Create a dialog set for the bot. It requires a DialogState accessor, with which
+        // to retrieve the dialog state from the turn context.
+        this.dialogs = new DialogSet(this.dialogStateAccessor);
+
+        // Add the prompts we need to the dialog set.
+        this.dialogs
+            .add(new TextPrompt(NAME_PROMPT))
+            .add(new NumberPrompt(AGE_PROMPT))
+            .add(new ChoicePrompt(SELECTION_PROMPT));
+
+        // Add the dialogs we need to the dialog set.
+        this.dialogs.add(new WaterfallDialog(TOP_LEVEL_DIALOG)
+            .addStep(this.nameStep.bind(this))
+            .addStep(this.ageStep.bind(this))
+            .addStep(this.startSelectionStep.bind(this))
+            .addStep(this.acknowledgementStep.bind(this)));
+
+        this.dialogs.add(new WaterfallDialog(REVIEW_SELECTION_DIALOG)
+            .addStep(this.selectionStep.bind(this))
+            .addStep(this.loopStep.bind(this)));
+    }
+
+    // Turn handler and other supporting methods...
+}
+```
+
+---
+
+## <a name="implement-the-steps-for-the-waterfall-dialogs"></a>Implémenter les étapes pour les dialogues en cascade
+
+Nous allons à présent implémenter les étapes de nos deux dialogues.
+
+### <a name="the-top-level-dialog"></a>Dialogue de niveau supérieur
+
+Le dialogue initial de niveau supérieur comporte quatre étapes :
+
+1. Demander le nom de l’utilisateur.
+1. Demander l’âge de l’utilisateur.
+1. Choisir une branche en fonction de l’âge de l’utilisateur.
+1. Enfin, remercier l’utilisateur pour sa participation et retourner les informations collectées.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+```csharp
+// The first step of the top-level dialog.
+private static async Task<DialogTurnResult> NameStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
+{
+    // Create an object in which to collect the user's information within the dialog.
+    stepContext.Values[UserInfo] = new UserProfile();
+
+    // Ask the user to enter their name.
+    return await stepContext.PromptAsync(
+        NamePrompt,
+        new PromptOptions { Prompt = MessageFactory.Text("Please enter your name.") },
+        cancellationToken);
+}
+
+// The second step of the top-level dialog.
+private async Task<DialogTurnResult> AgeStepAsync(
+    WaterfallStepContext stepContext,
+    CancellationToken cancellationToken)
+{
+    // Set the user's name to what they entered in response to the name prompt.
+    ((UserProfile)stepContext.Values[UserInfo]).Name = (string)stepContext.Result;
+
+    // Ask the user to enter their age.
+    return await stepContext.PromptAsync(
+        AgePrompt,
+        new PromptOptions { Prompt = MessageFactory.Text("Please enter your age.") },
+        cancellationToken);
+}
+
+// The third step of the top-level dialog.
+private async Task<DialogTurnResult> StartSelectionStepAsync(
+    WaterfallStepContext stepContext,
+    CancellationToken cancellationToken)
+{
+    // Set the user's age to what they entered in response to the age prompt.
+    int age = (int)stepContext.Result;
+    ((UserProfile)stepContext.Values[UserInfo]).Age = age;
+
+    if (age < 25)
     {
-        var dc = await _dialogs.CreateContextAsync(turnContext, cancellationToken);
+        // If they are too young, skip the review-selection dialog, and pass an empty list to the next step.
+        await stepContext.Context.SendActivityAsync(
+            MessageFactory.Text("You must be 25 or older to participate."),
+            cancellationToken);
+        return await stepContext.NextAsync(new List<string>(), cancellationToken);
+    }
+    else
+    {
+        // Otherwise, start the review-selection dialog.
+        return await stepContext.BeginDialogAsync(ReviewSelectionDialog, null, cancellationToken);
+    }
+}
 
-        if (turnContext.Activity.Type == ActivityTypes.Message)
+// The final step of the top-level dialog.
+private async Task<DialogTurnResult> AcknowledgementStepAsync(
+    WaterfallStepContext stepContext,
+    CancellationToken cancellationToken)
+{
+    // Set the user's company selection to what they entered in the review-selection dialog.
+    List<string> list = stepContext.Result as List<string>;
+    ((UserProfile)stepContext.Values[UserInfo]).CompaniesToReview = list ?? new List<string>();
+
+    // Thank them for participating.
+    await stepContext.Context.SendActivityAsync(
+        MessageFactory.Text($"Thanks for participating, {((UserProfile)stepContext.Values[UserInfo]).Name}."),
+        cancellationToken);
+
+    // Exit the dialog, returning the collected user information.
+    return await stepContext.EndDialogAsync(stepContext.Values[UserInfo], cancellationToken);
+}
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+async nameStep(stepContext) {
+    // Create an object in which to collect the user's information within the dialog.
+    stepContext.values[USER_INFO] = {};
+
+    // Ask the user to enter their name.
+    return await stepContext.prompt(NAME_PROMPT, 'Please enter your name.');
+}
+
+async ageStep(stepContext) {
+    // Set the user's name to what they entered in response to the name prompt.
+    stepContext.values[USER_INFO].name = stepContext.result;
+
+    // Ask the user to enter their age.
+    return await stepContext.prompt(AGE_PROMPT, 'Please enter your age.');
+}
+
+async startSelectionStep(stepContext) {
+    // Set the user's age to what they entered in response to the age prompt.
+    stepContext.values[USER_INFO].age = stepContext.result;
+
+    if (stepContext.result < 25) {
+        // If they are too young, skip the review-selection dialog, and pass an empty list to the next step.
+        await stepContext.context.sendActivity('You must be 25 or older to participate.');
+        return await stepContext.next([]);
+    } else {
+        // Otherwise, start the review-selection dialog.
+        return await stepContext.beginDialog(REVIEW_SELECTION_DIALOG);
+    }
+}
+
+async acknowledgementStep(stepContext) {
+    // Set the user's company selection to what they entered in the review-selection dialog.
+    const list = stepContext.result || [];
+    stepContext.values[USER_INFO].companiesToReview = list;
+
+    // Thank them for participating.
+    await stepContext.context.sendActivity(`Thanks for participating, ${stepContext.values[USER_INFO].name}.`);
+
+    // Exit the dialog, returning the collected user information.
+    return await stepContext.endDialog(stepContext.values[USER_INFO]);
+}
+```
+
+---
+
+### <a name="the-review-selection-dialog"></a>Dialogue de sélection de l’évaluation
+
+Le dialogue de sélection de l’évaluation comporte deux étapes :
+
+1. Demander à l’utilisateur de choisir une entreprise à évaluer ou choisir `done` pour terminer.
+1. Répéter ce dialogue ou en sortir selon le cas.
+
+Dans cette conception, le dialogue de niveau supérieur précède toujours le dialogue de sélection de l’évaluation sur la pile, et le dialogue de sélection de l’évaluation peut être considéré comme un enfant du dialogue de niveau supérieur.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+```csharp
+// The first step of the review-selection dialog.
+private async Task<DialogTurnResult> SelectionStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
+{
+    // Continue using the same selection list, if any, from the previous iteration of this dialog.
+    List<string> list = stepContext.Options as List<string> ?? new List<string>();
+    stepContext.Values[CompaniesSelected] = list;
+
+    // Create a prompt message.
+    string message;
+    if (list.Count is 0)
+    {
+        message = $"Please choose a company to review, or `{DoneOption}` to finish.";
+    }
+    else
+    {
+        message = $"You have selected **{list[0]}**. You can review an additional company, " +
+            $"or choose `{DoneOption}` to finish.";
+    }
+
+    // Create the list of options to choose from.
+    List<string> options = _companyOptions.ToList();
+    options.Add(DoneOption);
+    if (list.Count > 0)
+    {
+        options.Remove(list[0]);
+    }
+
+    // Prompt the user for a choice.
+    return await stepContext.PromptAsync(
+        SelectionPrompt,
+        new PromptOptions
         {
-            await dc.ContinueDialogAsync(cancellationToken);
-            if (!turnContext.Responded)
-            {
-                await dc.BeginDialogAsync(HotelDialogs.MainMenu, null, cancellationToken);
-            }
-        }
-        else if (turnContext.Activity.Type == ActivityTypes.ConversationUpdate)
+            Prompt = MessageFactory.Text(message),
+            RetryPrompt = MessageFactory.Text("Please choose an option from the list."),
+            Choices = ChoiceFactory.ToChoices(options),
+        },
+        cancellationToken);
+}
+
+// The final step of the review-selection dialog.
+private async Task<DialogTurnResult> LoopStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
+{
+    // Retrieve their selection list, the choice they made, and whether they chose to finish.
+    List<string> list = stepContext.Values[CompaniesSelected] as List<string>;
+    FoundChoice choice = (FoundChoice)stepContext.Result;
+    bool done = choice.Value == DoneOption;
+
+    if (!done)
+    {
+        // If they chose a company, add it to the list.
+        list.Add(choice.Value);
+    }
+
+    if (done || list.Count is 2)
+    {
+        // If they're done, exit and return their list.
+        return await stepContext.EndDialogAsync(list, cancellationToken);
+    }
+    else
+    {
+        // Otherwise, repeat this dialog, passing in the list from this iteration.
+        return await stepContext.ReplaceDialogAsync(ReviewSelectionDialog, list, cancellationToken);
+    }
+}
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+async selectionStep(stepContext) {
+    // Continue using the same selection list, if any, from the previous iteration of this dialog.
+    const list = Array.isArray(stepContext.options) ? stepContext.options : [];
+    stepContext.values[COMPANIES_SELECTED] = list;
+
+    // Create a prompt message.
+    let message;
+    if (list.length === 0) {
+        message = 'Please choose a company to review, or `' + DONE_OPTION + '` to finish.';
+    } else {
+        message = `You have selected **${list[0]}**. You can review an addition company, ` +
+            'or choose `' + DONE_OPTION + '` to finish.';
+    }
+
+    // Create the list of options to choose from.
+    const options = list.length > 0
+        ? COMPANY_OPTIONS.filter(function (item) { return item !== list[0] })
+        : COMPANY_OPTIONS.slice();
+    options.push(DONE_OPTION);
+
+    // Prompt the user for a choice.
+    return await stepContext.prompt(SELECTION_PROMPT, {
+        prompt: message,
+        retryPrompt: 'Please choose an option from the list.',
+        choices: options
+    });
+}
+
+async loopStep(stepContext) {
+    // Retrieve their selection list, the choice they made, and whether they chose to finish.
+    const list = stepContext.values[COMPANIES_SELECTED];
+    const choice = stepContext.result;
+    const done = choice.value === DONE_OPTION;
+
+    if (!done) {
+        // If they chose a company, add it to the list.
+        list.push(choice.value);
+    }
+
+    if (done || list.length > 1) {
+        // If they're done, exit and return their list.
+        return await stepContext.endDialog(list);
+    } else {
+        // Otherwise, repeat this dialog, passing in the list from this iteration.
+        return await stepContext.replaceDialog(REVIEW_SELECTION_DIALOG, list);
+    }
+}
+```
+
+---
+
+## <a name="update-the-bots-turn-handler"></a>Mettre à jour le gestionnaire de tour du bot
+
+Le gestionnaire de tour du bot répète le flux de conversation défini par ces dialogues.
+Quand nous recevons un message de l’utilisateur :
+
+1. Continuer le dialogue actif, le cas échéant.
+   - Si aucun dialogue n’est actif, nous effaçons le profil utilisateur et démarrons le dialogue de niveau supérieur.
+   - Si le dialogue actif est terminé, nous collectons et enregistrons les informations retournées, puis affichons un message d’état.
+   - Sinon, le dialogue actif est toujours en cours de traitement, et il n’y a rien d’autre à faire pour le moment.
+1. Enregistrer l’état de la conversation pour rendre persistante toute mise à jour de l’état du dialogue.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+```csharp
+public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken = default(CancellationToken))
+{
+    if (turnContext == null)
+    {
+        throw new ArgumentNullException(nameof(turnContext));
+    }
+
+    if (turnContext.Activity.Type == ActivityTypes.Message)
+    {
+        // Run the DialogSet - let the framework identify the current state of the dialog from
+        // the dialog stack and figure out what (if any) is the active dialog.
+        DialogContext dialogContext = await _dialogs.CreateContextAsync(turnContext, cancellationToken);
+        DialogTurnResult results = await dialogContext.ContinueDialogAsync(cancellationToken);
+        switch (results.Status)
         {
-            var activity = turnContext.Activity.AsConversationUpdateActivity();
-            if (activity.MembersAdded.Any(member => member.Id != activity.Recipient.Id))
-            {
-                await dc.BeginDialogAsync(HotelDialogs.MainMenu, null, cancellationToken);
-            }
+            case DialogTurnStatus.Cancelled:
+            case DialogTurnStatus.Empty:
+                // If there is no active dialog, we should clear the user info and start a new dialog.
+                await _accessors.UserProfileAccessor.SetAsync(turnContext, new UserProfile(), cancellationToken);
+                await _accessors.UserState.SaveChangesAsync(turnContext, false, cancellationToken);
+                await dialogContext.BeginDialogAsync(TopLevelDialog, null, cancellationToken);
+                break;
+
+            case DialogTurnStatus.Complete:
+                // If we just finished the dialog, capture and display the results.
+                UserProfile userInfo = results.Result as UserProfile;
+                string status = "You are signed up to review "
+                    + (userInfo.CompaniesToReview.Count is 0
+                        ? "no companies"
+                        : string.Join(" and ", userInfo.CompaniesToReview))
+                    + ".";
+                await turnContext.SendActivityAsync(status);
+                await _accessors.UserProfileAccessor.SetAsync(turnContext, userInfo, cancellationToken);
+                await _accessors.UserState.SaveChangesAsync(turnContext, false, cancellationToken);
+                break;
+
+            case DialogTurnStatus.Waiting:
+                // If there is an active dialog, we don't need to do anything here.
+                break;
         }
 
         await _accessors.ConversationState.SaveChangesAsync(turnContext, false, cancellationToken);
     }
-    ```
+
+    // Processes ConversationUpdate Activities to welcome the user.
+    else if (turnContext.Activity.Type == ActivityTypes.ConversationUpdate)
+    {
+        // Welcome new users...
+    }
+    else
+    {
+        // Give a default reply for all other activity types...
+    }
+}
+```
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 async onTurn(turnContext) {
-    let dc = await this.dialogSet.createContext(turnContext);
-
-    // See https://aka.ms/about-bot-activity-message to learn more about the message and other activity types.
     if (turnContext.activity.type === ActivityTypes.Message) {
-
-        await dc.continueDialog();
-
-        if (!turnContext.responded) {
-            await dc.beginDialog('mainMenu');
+        // Run the DialogSet - let the framework identify the current state of the dialog from
+        // the dialog stack and figure out what (if any) is the active dialog.
+        const dialogContext = await this.dialogs.createContext(turnContext);
+        const results = await dialogContext.continueDialog();
+        switch (results.status) {
+            case DialogTurnStatus.cancelled:
+            case DialogTurnStatus.empty:
+                // If there is no active dialog, we should clear the user info and start a new dialog.
+                await this.userProfileAccessor.set(turnContext, {});
+                await this.userState.saveChanges(turnContext);
+                await dialogContext.beginDialog(TOP_LEVEL_DIALOG);
+                break;
+            case DialogTurnStatus.complete:
+                // If we just finished the dialog, capture and display the results.
+                const userInfo = results.result;
+                const status = 'You are signed up to review '
+                    + (userInfo.companiesToReview.length === 0 ? 'no companies' : userInfo.companiesToReview.join(' and '))
+                    + '.';
+                await turnContext.sendActivity(status);
+                await this.userProfileAccessor.set(turnContext, userInfo);
+                await this.userState.saveChanges(turnContext);
+                break;
+            case DialogTurnStatus.waiting:
+                // If there is an active dialog, we don't need to do anything here.
+                break;
         }
+        await this.conversationState.saveChanges(turnContext);
     } else if (turnContext.activity.type === ActivityTypes.ConversationUpdate) {
-        // Do we have any new members added to the conversation?
-        if (turnContext.activity.membersAdded.length !== 0) {
-            // Iterate over all new members added to the conversation
-            for (var idx in turnContext.activity.membersAdded) {
-                // Greet anyone that was not the target (recipient) of this message.
-                // Since the bot is the recipient for events from the channel,
-                // context.activity.membersAdded === context.activity.recipient.Id indicates the
-                // bot was added to the conversation, and the opposite indicates this is a user.
-                if (turnContext.activity.membersAdded[idx].id !== turnContext.activity.recipient.id) {
-                    // Start the dialog.
-                    await dc.beginDialog('mainMenu');
-                }
-            }
-        }
+        // Welcome new users...
+    } else {
+        // Give a default reply for all other activity types...
     }
-
-    // Save state changes
-    await this.conversationState.saveChanges(turnContext);
 }
 ```
 
 ---
 
+## <a name="test-your-dialog"></a>Tester votre dialogue
+
+1. Exécutez l’exemple en local sur votre machine. Si vous avez besoin d’instructions, consultez le fichier LISEZ-MOI pour l’exemple en [C# ](https://aka.ms/cs-complex-dialog-sample) ou en [JS](https://aka.ms/js-complex-dialog-sample).
+1. Utilisez l’émulateur pour tester le bot comme indiqué ci-dessous.
+
+![exemple de dialogue complexe à des fins de test](~/media/emulator-v4/test-complex-dialog.png)
+
+## <a name="additional-resources"></a>Ressources supplémentaires
+
+Pour obtenir une introduction sur la façon d’implémenter un dialogue, consultez [Implémenter un flux de conversation séquentiel](bot-builder-dialog-manage-conversation-flow.md). Cet article utilise un dialogue unique en cascade et quelques invites pour créer une interaction simple qui pose à l’utilisateur une série de questions.
+
+La bibliothèque de dialogues inclut la validation de base des invites. Vous pouvez également ajouter une validation personnalisée. Pour plus d’informations, consultez [Collecter les entrées utilisateur avec une invite de dialogue](bot-builder-prompts.md).
+
+Pour simplifier votre code de dialogue et le réutiliser dans plusieurs bots, vous pouvez définir chaque partie d’un ensemble de dialogues comme une classe distincte.
+Pour plus d’informations, consultez [Réutiliser des dialogues](bot-builder-compositcontrol.md).
+
 ## <a name="next-steps"></a>Étapes suivantes
 
-Vous pouvez améliorer ce bot en offrant d’autres options comme « plus d’informations » ou « aide » comme choix du menu. Pour en savoir plus sur l’implémentation de ce type d’interruptions, consultez [Gérer les interruptions utilisateur](bot-builder-howto-handle-user-interrupt.md).
-
-À présent que vous avez appris à utiliser des dialogues, des invites et des cascades pour gérer des flux de conversation complexes, voyons comment décomposer les dialogues (comme les dialogues `orderDinner` et `reserveTable`) en objets distincts au lieu de les regrouper tous dans un seul jeu de dialogues important.
+Vous pouvez améliorer vos bots de manière à ce qu’il réagissent à des entrées supplémentaires, comme « aide » ou « annuler », qui peuvent interrompre le flux normal de la conversation.
 
 > [!div class="nextstepaction"]
-> [Créer une logique modulaire de bot avec contrôle composite](bot-builder-compositcontrol.md)
+> [Gérer les interruptions de l’utilisateur](bot-builder-howto-handle-user-interrupt.md)

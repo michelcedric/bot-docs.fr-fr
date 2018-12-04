@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ea507bbdf916ff1955aea0db17b765791432f430
-ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
+ms.openlocfilehash: 319700f8b7b236ce74058bac5fabb84f21e04d69
+ms.sourcegitcommit: 6c719b51c9e4e84f5642100a33fe346b21360e8a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51645579"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52452011"
 ---
 # <a name="enterprise-bot-template---customize-your-bot"></a>Modèle de bot d’entreprise - Personnaliser votre bot
 
@@ -36,7 +36,13 @@ La structure du dossier de votre bot est indiquée ci-dessous et représente nos
     | - CognitiveModels     
         | - LUIS            // .LU file containing base conversational intents (Greeting, Help, Cancel)
         | - QnA             // .LU file containing example QnA items
-    | - DeploymentScripts   // msbot clone recipe for deployment
+    | - DeploymentScripts   // msbot clone recipes for deployment
+        | - de              // Deployment files for German
+        | - en              // Deployment files for English        
+        | - es              // Deployment files for Spanish
+        | - fr              // Deployment files for French
+        | - it              // Deployment files for Italian
+        | - zh              // Deployment files for Chinese
     | - Dialogs             // All Bot dialogs sit under this folder
         | - Main            // Root Dialog for all messages
             | - MainDialog.cs       // Dialog Logic
@@ -69,26 +75,26 @@ Cette approche prend en charge les réponses multilingues à l’aide de l’app
 
 ## <a name="updating-your-cognitive-models"></a>Mise à jour de vos modèles cognitifs
 
-Deux modèles cognitifs sont inclus par défaut dans le modèle d’entreprise, un exemple de base de connaissances QnAMaker FAQ et un modèle LUIS pour les intentions générales (salutations, aide, annulation, etc.). Ces modèles peuvent être personnalisés pour répondre à vos besoins. Vous pouvez également ajouter des modèles LUIS et des bases de connaissances QnAMaker pour étendre les capacités de votre bot.
+Deux modèles cognitifs sont inclus par défaut dans le modèle d’entreprise, un exemple de base de connaissances QnA Maker FAQ et un modèle LUIS pour les intentions générales (salutations, aide, annulation, etc.). Ces modèles peuvent être personnalisés pour répondre à vos besoins. Vous pouvez également ajouter des modèles LUIS et des bases de connaissances QnA Maker pour étendre les capacités de votre bot.
 
 ### <a name="updating-an-existing-luis-model"></a>Mise à jour d’un modèle LUIS existant
 Afin de mettre à jour un modèle LUIS existant pour le modèle d’entreprise, procédez comme suit :
 1. Modifiez le modèle LUIS dans le [portail LUIS](http://luis.ai) ou via les outils de CLI [LuDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown) et [Luis](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS). 
 2. Exécutez la commande suivante pour mettre à jour votre modèle Dispatch pour qu’il reflète vos modifications (garantit un routage des messages approprié) :
 ```shell
-    dispatch refresh --bot "YOURBOT.bot" --secret YOURSECRET
+    dispatch refresh --bot "YOUR_BOT.bot" --secret YOUR_SECRET
 ```
 3. Exécutez la commande suivante à partir de la racine de votre projet pour chaque modèle mis à jour, afin de mettre à jour leurs classes LuisGen associées : 
 ```shell
     luis export version --appId [LUIS_APP_ID] --versionId [LUIS_APP_VERSION] --authoringKey [YOUR_LUIS_AUTHORING_KEY] | luisgen --cs [CS_FILE_NAME] -o "\Dialogs\Shared\Resources"
 ```
 
-### <a name="updating-an-existing-qnamaker-knowledge-base"></a>Mise à jour d’une base de connaissances QnAMaker existante
-Pour mettre à jour une base de connaissances QnAMaker existante, procédez comme suit :
-1. Modifiez votre base de connaissances QnAMaker via les outils de CLI [LuDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown) et [QnAMaker](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/QnAMaker) ou le [portail QnAMaker](https://qnamaker.ai).
+### <a name="updating-an-existing-qna-maker-knowledge-base"></a>Mise à jour d’une base de connaissances QnA Maker existante
+Pour mettre à jour une base de connaissances QnA Maker existante, effectuez les étapes suivantes :
+1. Modifiez votre base de connaissances QnA Maker par le biais des outils de CLI [LuDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown) et [QnA Maker](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/QnAMaker) ou le [portail QnA Maker](https://qnamaker.ai).
 2. Exécutez la commande suivante pour mettre à jour votre modèle Dispatch pour qu’il reflète vos modifications (garantit un routage des messages approprié) :
 ```shell
-    dispatch refresh --bot "YOURBOT.bot" --secret YOURSECRET
+    dispatch refresh --bot "YOUR_BOT.bot" --secret YOUR_SECRET
 ```
 
 ### <a name="adding-a-new-luis-model"></a>Ajout d’un modèle LUIS
@@ -101,28 +107,28 @@ Dans les scénarios où vous souhaitez ajouter un modèle LUIS à votre projet, 
 ```
 3. Ajoutez ce nouveau modèle LUIS à Dispatcher via la commande suivante
 ```shell
-    dispatch add -t luis -id YOUR_LUIS_APPID -bot "YOURBOT.bot" -secret YOURSECRET
+    dispatch add -t luis -id LUIS_APP_ID -bot "YOUR_BOT.bot" -secret YOURSECRET
 ```
 4. Actualisez le modèle dispatch pour qu’il reflète les modifications du modèle LUIS via la commande suivante
 ```shell
-    dispatch refresh -bot "YOURBOT.bot" -secret YOURSECRET
+    dispatch refresh -bot "YOUR_BOT.bot" -secret YOUR_SECRET
 ```
 
-### <a name="adding-an-additional-qnamaker-knowledgebase"></a>Ajout d’une base de connaissances QnAMaker supplémentaire
+### <a name="adding-an-additional-qna-maker-knowledge-base"></a>Ajout d’une base de connaissances QnA Maker supplémentaire
 
-Dans certains scénarios, vous souhaiterez ajouter une base de connaissances QnAMaker supplémentaire à votre bot. Cette opération peut être effectuée en suivant la procédure ci-après.
+Dans certains scénarios, vous souhaiterez ajouter une base de connaissances QnA Maker supplémentaire à votre bot. Cette opération peut être effectuée en suivant la procédure ci-après.
 
-1. Créer une base de connaissances QnAMaker à partir d’un fichier JSON à l’aide de la commande suivante, exécutée dans le répertoire de votre assistant
+1. Créer une base de connaissances QnA Maker à partir d’un fichier JSON à l’aide de la commande suivante, exécutée dans le répertoire de votre assistant
 ```shell
-qnamaker create kb --in <KB.json> --msbot | msbot connect qna --stdin --bot "YOURBOT.bot" --secret YOURSECRET
+qnamaker create kb --in <KB.json> --msbot | msbot connect qna --stdin --bot "YOUR_BOT.bot" --secret YOURSECRET
 ```
 2. Exécuter la commande suivante pour mettre à jour votre modèle Dispatch pour qu’il reflète vos modifications
 ```shell
-dispatch refresh --bot "YOURBOT.bot" --secret YOURSECRET
+dispatch refresh --bot "YOUR_BOT.bot" --secret YOUR_SECRET
 ```
 3. Mettre à jour la classe Dispatch fortement typée pour refléter la nouvelle source de QnA
 ```shell
-msbot get dispatch --bot "YOURBOT.bot" | luis export version --stdin > dispatch.json
+msbot get dispatch --bot "YOUR_BOT.bot" | luis export version --stdin > dispatch.json
 luisgen dispatch.json -cs Dispatch -o Dialogs\Shared
 ```
 4.  Mettez à jour le fichier `Dialogs\Main\MainDialog.cs` pour inclure l’intention Dispatch correspondant à votre nouvelle source QnA en suivant l’exemple fourni.
@@ -141,52 +147,57 @@ Pour ajouter un dialogue à votre bot, vous devez d’abord créer un dossier so
 - Définissez l’élément InitialDialogId pour le premier dialogue que le composant doit exécuter
 
 ```
-InitialDialogId = nameof(OnboardingDialog);
+    InitialDialogId = nameof(OnboardingDialog);
 
-var onboarding = new WaterfallStep[]
-{
-    AskForName,
-    AskForEmail,
-    AskForLocation,
-    FinishOnboardingDialog,
-};
+    var onboarding = new WaterfallStep[]
+    {
+        AskForName,
+        AskForEmail,
+        AskForLocation,
+        FinishOnboardingDialog,
+    };
 
-AddDialog(new WaterfallDialog(InitialDialogId, onboarding));
-AddDialog(new TextPrompt(NamePrompt));
-AddDialog(new TextPrompt(EmailPrompt));
-AddDialog(new TextPrompt(LocationPrompt));
+    AddDialog(new WaterfallDialog(InitialDialogId, onboarding));
+    AddDialog(new TextPrompt(DialogIds.NamePrompt));
+    AddDialog(new TextPrompt(DialogIds.EmailPrompt));
+    AddDialog(new TextPrompt(DialogIds.LocationPrompt));
 ```
 
 Ensuite, vous devez créer le gestionnaire de modèles pour gérer les réponses. Créez une classe et dérivez à partir de TemplateManager, un exemple est fourni dans le fichier OnboardingResponses.cs et un extrait est illustré ci-dessous.
 
-```
-public const string _namePrompt = "namePrompt";
-public const string _haveName = "haveName";
-public const string _emailPrompt = "emailPrompt";
-      
-private static LanguageTemplateDictionary _responseTemplates = new LanguageTemplateDictionary
-{
-    ["default"] = new TemplateIdMap
-    {
-        {
-            _namePrompt,
-            (context, data) => OnboardingStrings.NAME_PROMPT
-        },
-        {
-            _haveName,
-            (context, data) => string.Format(OnboardingStrings.HAVE_NAME, data.name)
-        },
-        {
-            _emailPrompt,
-            (context, data) => OnboardingStrings.EMAIL_PROMPT
-        },
+```    
+ ["default"] = new TemplateIdMap
+            {
+                { ResponseIds.EmailPrompt,
+                    (context, data) =>
+                    MessageFactory.Text(
+                        text: OnboardingStrings.EMAIL_PROMPT,
+                        ssml: OnboardingStrings.EMAIL_PROMPT,
+                        inputHint: InputHints.ExpectingInput)
+                },
+                { ResponseIds.HaveEmailMessage,
+                    (context, data) =>
+                    MessageFactory.Text(
+                        text: string.Format(OnboardingStrings.HAVE_EMAIL, data.email),
+                        ssml: string.Format(OnboardingStrings.HAVE_EMAIL, data.email),
+                        inputHint: InputHints.IgnoringInput)
+                },
+                { ResponseIds.HaveLocationMessage,
+                    (context, data) =>
+                    MessageFactory.Text(
+                        text: string.Format(OnboardingStrings.HAVE_LOCATION, data.Name, data.Location),
+                        ssml: string.Format(OnboardingStrings.HAVE_LOCATION, data.Name, data.Location),
+                        inputHint: InputHints.IgnoringInput)
+                },
+                
+                ...
 ```
 
 Afin d’afficher les réponses, vous pouvez utiliser une instance du gestionnaire de modèles pour accéder à ces réponses via `ReplyWith` ou `RenderTemplate` pour les invites. Des exemples sont présentés ci-dessous.
 
 ```
-Prompt = await _responder.RenderTemplate(sc.Context, "en", OnboardingResponses._namePrompt),
-await _responder.ReplyWith(sc.Context, OnboardingResponses._haveName, new { name });
+Prompt = await _responder.RenderTemplate(sc.Context, sc.Context.Activity.Locale, OnboardingResponses.ResponseIds.NamePrompt)
+await _responder.ReplyWith(sc.Context, OnboardingResponses.ResponseIds.HaveNameMessage, new { name });
 ```
 
 La dernière partie de l’infrastructure Dialogue est la création d’une classe d’état limitée à votre dialogue uniquement. Créez une classe et assurez-vous qu’elle dérive de `DialogState`
@@ -195,4 +206,3 @@ Une fois que votre dialogue est terminé, vous devez ajouter le dialogue à votr
 
 ## <a name="conversational-insights-using-powerbi-dashboard-and-application-insights"></a>Insights conversationnelles à l’aide du tableau de bord Power BI et d’Application Insights
 - Pour commencer à obtenir des insights conversationnelles, poursuivez avec l’article [Enterprise Bot Template - Conversational Analytics using PowerBI Dashboard and Application Insights](bot-builder-enterprise-template-powerbi.md) (Modèle de bot d’entreprise - Analytique de conversation à l’aide du tableau de bord PowerBI et d’Application Insights).
-

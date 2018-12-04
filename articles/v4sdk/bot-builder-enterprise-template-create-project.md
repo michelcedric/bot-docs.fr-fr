@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4b85b0e2d3c1ae8c30ea9d5d9fa62783c2968744
-ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
+ms.openlocfilehash: bb2f8abccc75fcc1c63589bc41289443cf1fc211
+ms.sourcegitcommit: 6c719b51c9e4e84f5642100a33fe346b21360e8a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51645483"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52452001"
 ---
 # <a name="enterprise-bot-template---creating-a-new-project"></a>Modèle de bot d’entreprise - Création d’un projet
 
@@ -49,7 +49,8 @@ Pour créer un projet de bot à l’aide du modèle, ouvrez simplement Visual St
 
 Maintenant que votre projet est créé, la prochaine étape consiste à créer l’infrastructure de prise en charge Azure et à effectuer des opérations de configuration/déploiement pour permettre au bot d’être tout de suite opérationnel. Poursuivez avec l’article [Enterprise Bot Template - Deploying your Bot](bot-builder-enterprise-template-deployment.md) (Modèle de bot d’entreprise - Déploiement de votre bot).
 
-> Vous devez effectuer cette étape, sinon l’initialisation du bot (AppInsights) et les dépendances LUIS ne seront pas disponibles.
+> Vous devez exécuter cette étape ; sinon, les dépendances de votre bot (Azure Bot Service, Application Insights, LUIS, etc.) ne seront pas disponibles.
+
 ## <a name="customize-your-bot"></a>Personnaliser votre bot
 
 Après vous être assuré du bon déploiement du bot prédéfini, vous pouvez le personnaliser en fonction de votre scénario et de vos besoins. Poursuivre avec la [personnalisation du bot](bot-builder-enterprise-template-customize.md)

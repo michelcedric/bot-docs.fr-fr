@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/15/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 366a985e839c8a79fcd8794c139e2e8130a05335
-ms.sourcegitcommit: 6cb37f43947273a58b2b7624579852b72b0e13ea
+ms.openlocfilehash: 940dba389205ff339b80f741b8a8aec87ff54f1d
+ms.sourcegitcommit: bcde20bd4ab830d749cb835c2edb35659324d926
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52288871"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52338562"
 ---
 # <a name="managing-state"></a>Gestion de l’état
 
@@ -33,7 +33,13 @@ En ce qui concerne les bots, il existe quelques couches concernant l’utilisati
 
 Notre *couche de stockage* commence sur le serveur principal; où les informations d’état sont réellement stockées. Cela peut être considéré comme notre stockage physique, comme un serveur en mémoire, Azure, ou tiers.
 
-Le Kit de développement logiciel de Bot Framework fournit des implémentations de la couche de stockage, comme le stockage en mémoire, pour un test local, et le stockage Azure ou CosmosDB, pour les tests et le déploiement vers le cloud.
+Le SDK Bot Framework inclut des implémentations pour la couche de stockage :
+
+- **Stockage en mémoire** implémente le stockage en mémoire à des fins de test. Le stockage de données en mémoire est uniquement destiné aux tests locaux, car il est volatile et temporaire. Les données sont effacées chaque fois que le bot est redémarré.
+- **Stockage Blob Azure** se connecte à une base de données d’objets Stockage Blob Azure.
+- **Stockage Azure Cosmos DB** se connecte à une base de données NoSQL Cosmos DB.
+
+Pour obtenir des instructions sur la façon de se connecter à d’autres options de stockage, consultez [Écrire directement dans le stockage](bot-builder-howto-v4-storage.md).
 
 ## <a name="state-management"></a>Gestion de l'état
 
@@ -45,7 +51,7 @@ Ces propriétés d’état sont localisées dans des « compartiments » délimi
 - État des conversations
 - État des conversations privées
 
-Ces compartiments sont des sous-classes de la classe *état du bot*, et peuvent être exploités pour définir d’autres types de compartiments.
+Ces compartiments sont tous des sous-classes de la classe *bot state*, et peuvent être exploités pour définir d’autres types de compartiments avec des portées différentes.
 
 Ces compartiments prédéfinis sont limités à une certaine visibilité, en fonction du compartiment :
 
@@ -53,13 +59,40 @@ Ces compartiments prédéfinis sont limités à une certaine visibilité, en fon
 - L’état des conversations est disponible à chaque tour d’une conversation spécifique, quel que soit l’utilisateur (par exemple, les conversations de groupe)
 - L’état des conversations privées est limité à la fois la conversation spécifique et à un utilisateur spécifique
 
+> [!TIP]
+> L’état d’utilisateur et l’état de conversation sont limités par canal.
+> Une même personne utilisant différents canaux pour accéder à votre bot entraîne l’apparition de plusieurs utilisateurs, un par canal, chacun ayant son propre état d’utilisateur.
+
 Les clés utilisées pour chacun de ces compartiments prédéfinis sont spécifiques à l’utilisateur ou à la conversation, ou aux deux. Lorsque vous définissez la valeur de la propriété de votre état, la clé est définie pour vous en interne avec les informations contenues dans le contexte du tour pour assurer que chaque utilisateur ou conversation est placé dans le compartiment et la propriété corrects. Plus précisément, les clés sont définies comme suit :
 
 - L’état utilisateur crée une clé à l’aide de l’*ID de canal* et de l’*ID d’origine*. Par exemple, _{Activity.ChannelId}/users/{Activity.From.Id}#YourPropertyName_
 - L’état des conversations crée une clé à l’aide de l’*ID de canal* et de l’*ID de conversation*. Par exemple, _{Activity.ChannelId}/conversations/{Activity.Conversation.Id}#YourPropertyName_
 - L’état des conversations privées crée une clé à l’aide de l’*ID de canal*, l’*ID d’origine* et de l’*ID de conversation*. Par exemple, _{Activity.ChannelId}/conversations/{Activity.Conversation.Id}/users/{Activity.From.Id}#YourPropertyName_
 
+### <a name="when-to-use-each-type-of-state"></a>Quand utiliser chaque type d’état
+
+L’état de conversation permet de suivre le contexte de la conversation, notamment :
+
+- Le bot a-t-il posé une question à l’utilisateur et laquelle ?
+- Quel est le sujet actuel de la conversation ou quel était le dernier ?
+
+L’état d’utilisateur permet de suivre des informations sur l’utilisateur, notamment :
+
+- Des informations non critiques sur l’utilisateur, comme son nom et ses préférences, un paramètre d’alarme ou une préférence d’alerte
+- Des informations sur la dernière conversation avec le bot
+  - Par exemple, un bot de support produit peut suivre les produits sur lesquels l’utilisateur s’est informé.
+
+L’état de conversation privée convient aux canaux prenant en charge les conversations de groupe où vous souhaitez suivre des informations spécifiques à un utilisateur et à une conversation. Prenons l’exemple du bot d’un système de réponse en classe (ou « clicker ») :
+
+- Le bot peut agréger et afficher les réponses des étudiants à une question donnée.
+- Le bot peut agréger les performances de chaque étudiant et leur relayer en privé ces informations au terme de la session.
+
 Pour plus d’informations sur l’utilisation de ces compartiments prédéfinis, consultez [l’article de procédure d’état](bot-builder-howto-v4-state.md).
+
+### <a name="connecting-to-multiple-databases"></a>Connexion à plusieurs bases de données
+
+Si votre bot doit se connecter à plusieurs bases de données, créez une couche de stockage pour chaque base de données.
+Pour chaque couche de stockage, créez les objets de gestion d’état dont vous avez besoin pour prendre en charge vos propriétés d’état.
 
 ## <a name="state-property-accessors"></a>Accesseurs de propriété d’état
 
@@ -78,15 +111,14 @@ Pour rendre persistantes les modifications apportées à la propriété d’éta
 
 Les méthodes d’accesseur constituent le moyen principal pour que votre bot interagisse avec l’état. La façon dont chacune fonctionne et l’interaction des couches sous-jacentes sont comme suit :
 
-- Méthode *get* de l’accesseur
-    - L’accesseur demande une propriété du cache d’état
-    - Si la propriété est dans le cache, elle est retournée. Sinon, obtenez-la à partir de l’objet de gestion d’état.
-        - Si elle n’est pas encore dans l’état, utilisez la méthode de fabrique fournie dans l’appel *get* de l’accesseur.
-- Méthode *set* de l’accesseur
-    - Mettez à jour le cache d’état avec la nouvelle valeur de propriété.
-- Méthode *Enregistrer les modifications* de l’objet de gestion d’état
-    - Vérifiez les modifications apportées à la propriété dans le cache d’état.
-    - Écrivez cette propriété dans le stockage.
+- La méthode *get* de l’accesseur :
+  - L’accesseur demande une propriété du cache d’état.
+  - Si la propriété est dans le cache, elle est retournée. Sinon, obtenez-la à partir de l’objet de gestion d’état.
+    Si elle n’est pas encore dans l’état, utilisez la méthode de fabrique fournie dans l’appel *get* de l’accesseur. -La méthode *set* de l’accesseur :
+  - Mettez à jour le cache d’état avec la nouvelle valeur de propriété.
+- La méthode *Enregistrer les changements* de l’objet de gestion d’état :
+  - Vérifiez les modifications apportées à la propriété dans le cache d’état.
+  - Écrivez cette propriété dans le stockage.
 
 ## <a name="saving-state"></a>Enregistrement de l’état
 

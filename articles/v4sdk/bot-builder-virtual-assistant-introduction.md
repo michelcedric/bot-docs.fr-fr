@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 13/12/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: e93f7d24396b4e35fc81960d42148dd8942362d7
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 3a3074ff9e8de36d7a7cf7b86fef62979bc53fa8
+ms.sourcegitcommit: 958a28bbab7dd29b384bb2e2d58d866e88f53316
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998958"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52500650"
 ---
 # <a name="virtual-assistant-solution-overview"></a>Présentation de la solution d’assistant virtuel
 
@@ -24,7 +24,7 @@ Nous avons la conviction que nos clients doivent entretenir et enrichir leurs re
 
 La portée de l’assistant virtuel est vaste et celui-ci offre généralement aux utilisateurs finals une large gamme de fonctionnalités. Pour accroître la productivité des développeurs et créer un écosystème dynamique d’expériences conversationnelles réutilisables, nous fournissons aux développeurs des exemples initiaux de compétences conversationnelles réutilisables. Ces compétences peuvent être ajoutées à l’application conversationnelle pour éclairer une expérience de conversation spécifique, comme la recherche d’un point d’intérêt, l’interaction avec le calendrier, les tâches, les e-mails et de nombreux autres scénarios. Les compétences sont entièrement personnalisables et se composent de différents modèles de langage, de dialogues et de code.
 
-Nous exécutons actuellement une préversion initiale et travaillons en étroite collaboration avec des clients et partenaires initiaux au sein d’un référentiel open source pour créer les premières expériences et proposer cette version à un public plus large dans les mois à venir.
+Nous travaillons actuellement en étroite collaboration avec des clients et partenaires initiaux au sein d’un dépôt open source pour donner vie aux premières expériences.
 
 ![Schéma d’assistant virtuel](./media/enterprise-template/customassistantdiagram.jpg)
 
@@ -97,5 +97,5 @@ Tous les aspects de chaque compétence (modèle de langage, dialogues, code d’
 
 ## <a name="getting-started"></a>Mise en route
 
-Nous exécutons actuellement une préversion initiale et travaillons en étroite collaboration avec des clients et partenaires initiaux au sein d’un référentiel open source pour créer les premières expériences et proposer cette version à un public plus large dans les mois à venir. Pour faire part de votre intérêt et commencer, veuillez remplir [ce formulaire](https://aka.ms/customassistantpreviewform) pour que nous puissions vous contacter.
+La solution d’assistant virtuel est disponible dans [ce dépôt GitHub](https://github.com/Microsoft/AI/tree/master/solutions/Virtual-Assistant) qui est régulièrement mis à jour par l’équipe en charge de la solution. Ce dépôt contient également une documentation plus détaillée. Pour nous faire part de vos problèmes ou de votre avis, utilisez directement les mécanismes de formulation de commentaires de GitHub. Si vous souhaitez discuter avec nous d’un scénario clé, remplissez [ce formulaire](https://aka.ms/customassistantpreviewform) pour que nous puissions vous contacter.
 

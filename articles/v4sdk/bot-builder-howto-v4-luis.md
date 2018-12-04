@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: cognitive-services
-ms.date: 11/16/18
+ms.date: 11/28/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: faf26b1c4ba87061631f217ee074283759f77c97
-ms.sourcegitcommit: 392c581aa2f59cd1798ee2136b6cfee56aa3ee6d
+ms.openlocfilehash: a512cb92f35374b457c4d4cef05667edbd8d2f1f
+ms.sourcegitcommit: 892bf81d306ba607c293ee8639d5c6b66ab3710a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52156698"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52460008"
 ---
 # <a name="add-natural-language-understanding-to-your-bot"></a>Ajouter la compréhension du langage naturel à votre bot
 
@@ -33,7 +33,7 @@ Connectez-vous au portail LUIS pour créer votre propre version de l’exemple d
 
 1. Sélectionnez **Importer une nouvelle application**. 
 1. Cliquez sur **Choisir un fichier d’application (format JSON)...** 
-1. Sélectionnez le fichier `reminders.json` situé dans le dossier `CognitiveModels` de l’exemple. Dans **Nom facultatif**, entrez **LuisBot**. Ce fichier contient trois intentions : Calendar-Add, Calendar-Find et None. Nous allons utiliser ces intentions pour comprendre ce que l’utilisateur voulait dire lorsqu’il envoie un message au bot. 
+1. Sélectionnez le fichier `reminders.json` situé dans le dossier `CognitiveModels` de l’exemple. Dans **Nom facultatif**, entrez **LuisBot**. Ce fichier contient trois intentions : Calendar_Add, Calendar_Find et None. Nous allons utiliser ces intentions pour comprendre ce que l’utilisateur voulait dire lorsqu’il envoie un message au bot. Si vous souhaitez inclure des entités, consultez la [section facultative](#optional---extract-entities) à la fin de cet article.
 1. Effectuez l’[apprentissage](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/luis-how-to-train) de l’application.
 1. [Publiez](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/publishapp) l’application dans un environnement de *production*.
 
@@ -83,7 +83,7 @@ Ajoutez les informations requises pour accéder à votre application LUIS, notam
 ```
 # <a name="ctabcs"></a>[C#](#tab/cs)
 
-## <a name="configure-your-bot-to-use-your-luis-app"></a>Configurer votre bot pour qu’il utilise votre application LUIS
+### <a name="configure-your-bot-to-use-your-luis-app"></a>Configurer votre bot pour qu’il utilise votre application LUIS
 
 Ensuite, nous allons initialiser une nouvelle instance de la classe BotService en `BotServices.cs`, qui extrait les informations ci-dessus à partir de votre fichier `.bot`. Le service externe est configuré à l’aide de la classe `BotConfiguration`.
 
@@ -241,7 +241,7 @@ server.post('/api/messages', (req, res) => {
 
 LUIS est maintenant configuré pour votre bot. Ensuite, examinons la façon dont nous allons obtenir l’intention de LUIS.
 
-## <a name="get-the-intent-by-calling-luis"></a>Obtenir l’intention en appelant LUIS
+### <a name="get-the-intent-by-calling-luis"></a>Obtenir l’intention en appelant LUIS
 
 Votre bot obtient des résultats de LUIS en appelant le module de reconnaissance LUIS.
 
@@ -351,106 +351,166 @@ Le module de reconnaissance LUIS retourne des informations sur le degré de corr
 
 ---
 
-<!--
-## Extract entities
-
-Besides recognizing intent, a LUIS app can also extract entities, which are important words for fulfilling a user's request. For example, for a weather bot, the LUIS app might be able to extract the location for the weather report from the user's message.
-
-A common way to structure your conversation is to identify any entities in the user's message, and prompt for any of the required entities that are not found. Then, the subsequent steps handle the response to the prompt.
-
-
-# [C#](#tab/cs)
-
-Let's say the message from the user was "What's the weather in Seattle"? The [LuisRecognizer](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.ai.luis.luisrecognizer) gives you a [RecognizerResult](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.core.extensions.recognizerresult) with an [`Entities` property](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.core.extensions.recognizerresult#properties-) that has this structure:
-
-```json
-{
-"$instance": {
-    "Weather_Location": [
-        {
-            "startIndex": 22,
-            "endIndex": 29,
-            "text": "seattle",
-            "score": 0.8073087
-        }
-    ]
-},
-"Weather_Location": [
-        "seattle"
-    ]
-}
-```
-
-The following helper function can be added to your bot to get entities out of the `RecognizerResult` from LUIS. It will require the use of the `Newtonsoft.Json.Linq` library, which you'll have to add to your **using** statements.
-
-```cs
-// Get entities from LUIS result
-private T GetEntity<T>(RecognizerResult luisResult, string entityKey)
-{
-    var data = luisResult.Entities as IDictionary<string, JToken>;
-    if (data.TryGetValue(entityKey, out JToken value))
-    {
-        return value.First.Value<T>();
-    }
-    return default(T);
-}
-```
-
-When gathering information like entities from multiple steps in a conversation, it can be helpful to save the information you need in your state. If an entity is found, it can be added to the appropriate state field. In your conversation if the current step already has the associated field completed, the step to prompt for that information can be skipped.
-
-# [JavaScript](#tab/js)
-
-Let's say the message from the user was "What's the weather in Seattle"? The [LuisRecognizer](https://docs.microsoft.com/en-us/javascript/api/botbuilder-ai/luisrecognizer) gives you a [RecognizerResult](https://docs.microsoft.com/en-us/javascript/api/botbuilder-core-extensions/recognizerresult) with an `entities` property that has this structure:
-
-```json
-{
-"$instance": {
-    "Weather_Location": [
-        {
-            "startIndex": 22,
-            "endIndex": 29,
-            "text": "seattle",
-            "score": 0.8073087
-        }
-    ]
-},
-"Weather_Location": [
-        "seattle"
-    ]
-}
-```
-
-This `findEntities` function looks for any entities recognized by the LUIS app that match the incoming `entityName`.
-
-```javascript
-// Helper function for finding a specified entity
-// entityResults are the results from LuisRecognizer.get(context)
-function findEntities(entityName, entityResults) {
-    let entities = []
-    if (entityName in entityResults) {
-        entityResults[entityName].forEach(entity => {
-            entities.push(entity);
-        });
-    }
-    return entities.length > 0 ? entities : undefined;
-}
-
-
-When gathering information like entities from multiple steps in a conversation, it can be helpful to save the information you need in your state. If an entity is found, it can be added to the appropriate state field. In your conversation if the current step already has the associated field completed, the step to prompt for that information can be skipped.
-
-/Snip -->
-
-## <a name="test-the-bot"></a>Tester le bot
+### <a name="test-the-bot"></a>Tester le bot
 
 1. Exécutez l’exemple en local sur votre machine. Si vous avez besoin d’instructions, consultez le fichier Lisez-moi pour l’exemple [ C# ](https://github.com/Microsoft/BotBuilder-Samples/blob/master/samples/csharp_dotnetcore/12.nlp-with-luis/README.md) ou [JS](https://github.com/Microsoft/BotBuilder-Samples/blob/master/samples/javascript_nodejs/12.nlp-with-luis/README.md).
 
 1. Dans l’émulateur, tapez un message, comme indiqué ci-dessous. 
 
-![exemple de NLP de test](~/media/emulator-v4/nlp-luis-sample-testing.png)
+![exemple d’entrée en langage naturel à des fins de test](./media/nlp-luis-sample-message.png)
 
-Le bot répondra avec l’intention ayant le score le plus élevé, l’intention `Calendar-Add` dans notre cas. N’oubliez pas que le fichier `reminders.json` importé dans le portail LUIS.AI a défini les intentions.
+Le bot répond avec l’intention ayant le score le plus élevé, « Calendar_Add » dans ce cas. N’oubliez pas que le fichier `reminders.json` importé dans le portail LUIS.AI a défini les intentions « Calendar_Add », « Calendar_Find » et « None ». 
+
+![exemple de réponse en langage naturel à des fins de test](./media/nlp-luis-sample-response.png) 
 
 Un score de prédiction indique le degré de confiance que LUIS a dans les résultats de prédiction. Un score de prédiction est compris entre zéro (0) et un (1). Un exemple de score LUIS de grande confiance est égal à 0,99. Un exemple de score faible confiance est égal à 0,01. 
+
+## <a name="optional---extract-entities"></a>Facultatif - Extraire les entités
+
+En plus de reconnaître l’intention de l’utilisateur, une application LUIS peut également retourner des entités. Les entités sont des mots importants liés à l’intention et peuvent parfois s’avérer essentielles pour répondre à la demande d’un utilisateur ou permettre à un bot de se comporter de manière plus intelligente. 
+
+### <a name="why-use-entities"></a>Pourquoi utiliser des entités
+
+Les entités LUIS permettent à votre bot de comprendre intelligemment certains éléments ou événements qui diffèrent des intentions standard. Vous pouvez ainsi collecter des informations supplémentaires auprès de l’utilisateur, ce qui permet à votre bot de répondre plus intelligemment ou même d’ignorer certaines questions visant à obtenir ces mêmes informations. Par exemple, dans un bot météo, l’application LUIS peut utiliser une entité de _localisation_ pour extraire la localisation du rapport météo demandé à partir du message de l’utilisateur. Votre bot n’est donc pas obligé de demander à l’utilisateur où il se trouve, ce qui permet d’avoir conversation plus pertinente et plus concise avec l’utilisateur.
+
+### <a name="prerequisites"></a>Prérequis
+
+Pour utiliser des entités avec cet exemple, vous devez créer une application LUIS qui inclut des entités. Suivez les étapes décrites dans la section ci-dessus pour [créer votre application LUIS](#create-a-luis-app-in-the-luis-portal), mais au lieu d’utiliser le fichier `reminders.json`, utilisez le fichier[reminders-with-entities.json](https://github.com/Microsoft/BotFramework-Samples/tree/master/SDKV4-Samples/dotnet_core/nlp-with-luis) pour générer votre application LUIS. Ce fichier fournit les mêmes intentions ainsi que trois entités supplémentaires : Appointment, Meeting et Schedule. Ces entités aident LUIS à déterminer l’intention du message de l’utilisateur. 
+
+### <a name="extract-and-display-entities"></a>Extraire et afficher des entités
+Vous pouvez ajouter le code facultatif suivant à cet exemple d’application pour extraire les informations d’entité et les afficher quand une entité est utilisée par LUIS pour mieux identifier l’intention de l’utilisateur. 
+
+# <a name="ctabcs"></a>[C#](#tab/cs)
+
+La fonction d’assistance suivante peut être ajoutée à votre bot pour obtenir des entités de `RecognizerResult` à partir de LUIS. La bibliothèque `Newtonsoft.Json.Linq` doit être utilisée ; vous devez l’ajouter à vos instructions **using**. Si des informations d’entité sont trouvées durant l’analyse du code JSON retourné par LUIS, la fonction Newtonsoft _DeserializeObject_ convertit ce code JSON en objet dynamique, fournissant l’accès aux informations d’entité.
+
+```cs
+using Newtonsoft.Json.Linq;
+
+private string ParseLuisForEntities(RecognizerResult recognizerResult)
+{
+   var result = string.Empty;
+
+   // recognizerResult.Entities returns type JObject.
+   foreach (var entity in recognizerResult.Entities)
+   {
+       // Parse JObject for a known entity types: Appointment, Meeting, and Schedule.
+       var appointFound = JObject.Parse(entity.Value.ToString())["Appointment"];
+       var meetingFound = JObject.Parse(entity.Value.ToString())["Meeting"];
+       var schedFound = JObject.Parse(entity.Value.ToString())["Schedule"];
+
+       // We will return info on the first entity found.
+       if (appointFound != null)
+       {
+           // use JsonConvert to convert entity.Value to a dynamic object.
+           dynamic o = JsonConvert.DeserializeObject<dynamic>(entity.Value.ToString());
+           if (o.Appointment[0] != null)
+           {
+              // Find and return the entity type and score.
+              var entType = o.Appointment[0].type;
+              var entScore = o.Appointment[0].score;
+              result = "Entity: " + entType + ", Score: " + entScore + ".";
+              
+              return result;
+            }
+        }
+
+        if (meetingFound != null)
+        {
+            // use JsonConvert to convert entity.Value to a dynamic object.
+            dynamic o = JsonConvert.DeserializeObject<dynamic>(entity.Value.ToString());
+            if (o.Meeting[0] != null)
+            {
+                // Find and return the entity type and score.
+                var entType = o.Meeting[0].type;
+                var entScore = o.Meeting[0].score;
+                result = "Entity: " + entType + ", Score: " + entScore + ".";
+                
+                return result;
+            }
+        }
+
+        if (schedFound != null)
+        {
+            // use JsonConvert to convert entity.Value to a dynamic object.
+            dynamic o = JsonConvert.DeserializeObject<dynamic>(entity.Value.ToString());
+            if (o.Schedule[0] != null)
+            {
+                // Find and return the entity type and score.
+                var entType = o.Schedule[0].type;
+                var entScore = o.Schedule[0].score;
+                result = "Entity: " + entType + ", Score: " + entScore + ".";
+                
+                return result;
+            }
+        }
+    }
+
+    // No entities were found, empty string returned.
+    return result;
+}
+```
+
+Ces informations d’entité détectées ainsi que l’intention identifiée de l’utilisateur peuvent ensuite être affichées. Pour afficher ces informations, ajoutez les quelques lignes de code suivantes dans la tâche _OnTurnAsync_ de l’exemple de code, juste après l’affichage des informations d’intention.
+
+```cs
+// See if LUIS found and used an entity to determine user intent.
+var entityFound = ParseLuisForEntities(recognizerResult);
+
+// Inform the user if LUIS used an entity.
+if (entityFound.ToString() != string.Empty)
+{
+   await turnContext.SendActivityAsync($"==>LUIS Entity Found: {entityFound}\n");
+}
+else
+{
+   await turnContext.SendActivityAsync($"==>No LUIS Entities Found.\n");
+}
+```
+# <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+
+Vous pouvez ajouter le code suivant à votre bot pour extraire des informations d’entité du résultat `luisRecognizer` retourné par LUIS. Au sein de l’opération de traitement `onTurn` de l’exemple de fichier de code bot.js, ajoutez la ligne suivante juste après la déclaration de la constante _topIntent_. Toute information d’entité retournée est alors capturée : 
+
+```javascript
+// Since the LuisRecognizer was configured to include the raw results, get returned entity data.
+var entityData = results.luisResult.entities;
+
+```
+
+Pour montrer à l’utilisateur les informations d’entité retournées, ajoutez les lignes de code suivantes juste après l’appel _sendActivity_, lequel est utilisé dans l’exemple de code pour informer l’utilisateur qu’un topIntent a été trouvé.
+
+```javascript
+// See if LUIS found and used an entity to determine user intent.
+if (entityData.length > 0)
+{
+   if ((entityData[0].type == "Appointment") || (entityData[0].type == "Meeting") || (entityData[0].type == "Schedule") )
+   {
+      // inform user if LUIS used an entity.
+      await turnContext.sendActivity(`LUIS Entity Found: Entity: ${entityData[0].entity}, Score: ${entityData[0].score}.`);
+   }
+}
+else{
+       await turnContext.sendActivity(`No LUIS Entities Found.`);
+}
+```
+
+Ce code vérifie d’abord si LUIS a retourné des informations d’entité dans le résultat retourné et, le cas échéant, affiche des informations concernant la première entité détectée.
+
+---
+
+### <a name="test-bot-with-entities"></a>Tester le bot avec des entités
+
+1. Pour tester votre bot qui inclut des entités, exécutez l’exemple localement comme expliqué [ci-dessus](#test-the-bot).
+
+1. Dans l’émulateur, entrez le message indiqué ci-dessous. 
+
+![exemple d’entrée en langage naturel à des fins de test](./media/nlp-luis-sample-message.png)
+
+Le bot répond désormais avec l’intention ayant le score le plus élevé, « Calendar_Add », et avec l’entité « Meetings » utilisée par LUIS pour déterminer l’intention de l’utilisateur.
+
+![exemple de réponse en langage naturel à des fins de test](./media/nlp-luis-sample-entity-response.png) 
+
+La détection d’entités peut contribuer à améliorer les performances globales de votre bot. Par exemple, la détection de l’entité « Meeting » (illustrée ci-dessus) peut permettre à votre application d’appeler une fonction spécialisée conçue pour créer une réunion dans le calendrier de l’utilisateur.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

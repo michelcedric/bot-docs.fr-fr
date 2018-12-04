@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/8/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: bd431da58d13f3024617900bbeabd8007a2e3bb8
-ms.sourcegitcommit: 6cb37f43947273a58b2b7624579852b72b0e13ea
+ms.openlocfilehash: dacf952e6554eb76e0a41418791fb954e82d4f38
+ms.sourcegitcommit: 6c719b51c9e4e84f5642100a33fe346b21360e8a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52288799"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52452061"
 ---
 # <a name="middleware"></a>Middlewares
 
@@ -34,9 +34,9 @@ La question suivante revient souvent : « Quand dois-je implémenter des actions
 Nombreux sont les cas où votre bot doit intervenir sur chaque activité, ou sur chaque activité d’un certain type. Par exemple, vous souhaitez peut-être journaliser chaque activité de message que votre bot reçoit ou fournir une réponse de repli si le bot n’a pas généré de réponse à l’occasion de ce tour. Avec leur capacité à agir à la fois avant et après l’exécution du reste de la logique de bot, les middlewares sont parfaits pour cela.
 
 ### <a name="modifying-or-enhancing-the-turn-context"></a>Modification ou amélioration du contexte de tour
-Certaines conversations peuvent être beaucoup plus fructueuses si le bot a plus d’informations que ce qui est fourni dans l’activité. Dans ce cas, les intergiciels peuvent examiner les informations d’état de conversation dont ils disposent jusqu’ici, interroger une source de données externe et l’ajouter à l’objet de [contexte de tour](~/v4sdk/bot-builder-basics.md#defining-a-turn) avant de transmettre l’exécution à la logique du bot. 
+Certaines conversations peuvent être beaucoup plus fructueuses si le bot a plus d’informations que ce qui est fourni dans l’activité. Dans ce cas, les middlewares peuvent examiner les informations d’état de conversation dont ils disposent jusqu’ici, interroger une source de données externe et l’ajouter à l’objet de [contexte de tour](~/v4sdk/bot-builder-basics.md#defining-a-turn) avant de transmettre l’exécution à la logique du bot. 
 
-Le Kit de développement logiciel (SDK) définit un intergiciel de journalisation qui peut enregistrer des activités entrantes et sortantes, mais vous pouvez également définir votre propre intergiciel.
+Le SDK définit un middleware de journalisation qui peut enregistrer des activités entrantes et sortantes, mais vous pouvez également définir votre propre middleware.
 
 ## <a name="the-bot-middleware-pipeline"></a>Pipeline de middlewares de bot
 Pour chaque activité, l’adaptateur appelle les intergiciels dans l’ordre dans lequel vous les avez ajoutés. L’adaptateur transmet l’objet de contexte pour le tour et un délégué _next_, puis le middleware appelle le délégué pour passer le contrôle au middleware suivant dans le pipeline. Les middlewares peuvent également effectuer des opérations une fois que le délégué _next_ a retourné le contrôle avant la fin de la méthode. Vous pouvez considérer que chaque objet de middleware a une occasion unique d’agir par rapport aux objets de middleware qui le suivent dans le pipeline.
@@ -82,7 +82,7 @@ En plus de la logique d’application et d’intergiciel, vous pouvez ajouter de
 > Veillez à ne pas appeler une méthode de réponse d’activité à partir de son propre gestionnaire d’événements de réponse, par exemple, en appelant la méthode d’envoi d’activité depuis un gestionnaire écoutant les envois d’activité. Cela peut générer une boucle infinie.
 
 Rappelez-vous que chaque nouvelle activité obtient un nouveau thread sur lequel s’exécuter. Quand le thread destiné à traiter l’activité est créé, la liste des gestionnaires de cette activité est copiée sur ce nouveau thread. Aucun gestionnaire ajouté après ce point n’est exécuté pour cet événement d’activité spécifique.
-Les gestionnaires inscrits sur un objet de contexte sont traités de façon très semblable à celle dont l’adaptateur gère le pipeline d’intergiciels. Concrètement, les gestionnaires sont appelés dans l’ordre dans lequel ils sont ajoutés, et l’appel du délégué suivant transmet le contrôle au gestionnaire d’événements inscrit suivant. Si un gestionnaire n’appelle pas le délégué suivant, aucun des gestionnaires d’événements suivants n’est appelé ; l’événement est victime d’un court-circuitage, ce qui empêche l’adaptateur d’envoyer la réponse au canal.
+Les gestionnaires inscrits sur un objet de contexte sont traités de façon très semblable à celle dont l’adaptateur gère le pipeline de middlewares. Concrètement, les gestionnaires sont appelés dans l’ordre dans lequel ils sont ajoutés, et l’appel du délégué suivant transmet le contrôle au gestionnaire d’événements inscrit suivant. Si un gestionnaire n’appelle pas le délégué suivant, aucun des gestionnaires d’événements suivants n’est appelé ; l’événement est victime d’un court-circuitage, ce qui empêche l’adaptateur d’envoyer la réponse au canal.
 
 ## <a name="handling-state-in-middleware"></a>Gestion de l’état dans le middleware
 

@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/21/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 1c69b438c739ac9c47d40e53f1300a4773fc1a1d
-ms.sourcegitcommit: 6cb37f43947273a58b2b7624579852b72b0e13ea
+ms.openlocfilehash: 9d8caf19a98fb595e4b1e27b0635d2a752b88390
+ms.sourcegitcommit: bbfb171f515c50a3c8bba5ca898daf25cf764378
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52288788"
+ms.lasthandoff: 11/23/2018
+ms.locfileid: "52293601"
 ---
 # <a name="gather-user-input-using-a-dialog-prompt"></a>Collecter les entrées utilisateur avec une invite de dialogue
 
@@ -24,28 +24,10 @@ ms.locfileid: "52288788"
 Pour interagir avec les utilisateurs, un bot collecte généralement des informations en posant des questions. La bibliothèque de *boîtes de dialogue* vous permet de poser des questions facilement et de valider la réponse pour vous assurer qu’elle correspond à un type de données spécifique ou répond aux règles de validation personnalisées. Cette rubrique décrit en détail comment créer et appeler des invites à partir d’une boîte de dialogue en cascade.
 
 ## <a name="prerequisites"></a>Prérequis
-- Le code dans cet article est basé sur l’exemple d’invite de boîte de dialogue. Vous aurez besoin d’une copie de l’exemple en [ C# ](https://aka.ms/dialog-prompt-cs) ou en [JS](https://aka.ms/dialog-prompt-js).
+
+- Le code de cet article est basé sur l’exemple **DialogPromptBot**. Vous aurez besoin d’une copie de l’exemple en [C# ](https://aka.ms/dialog-prompt-cs) ou en [JS](https://aka.ms/dialog-prompt-js).
 - Une connaissance élémentaire de la [bibliothèque de boîtes de dialogue](bot-builder-concept-dialog.md) et de la façon de [gérer les conversations](bot-builder-dialog-manage-conversation-flow.md) est nécessaire. 
 - [Émulateur Bot Framework](https://github.com/Microsoft/BotFramework-Emulator) pour le test.
-
-## <a name="about-prompt-types"></a>À propos des types d’invites
-
-Dans les coulisses, les invites constituent une boîte de dialogue en deux étapes. Tout d’abord, l’invite demande une entrée. Ensuite, elle retourne la valeur valide, ou redémarre depuis le début avec une nouvelle invite. La bibliothèque de dialogues propose diverses invites de base, chacune étant utilisée pour recueillir un type de réponse différent. Les invites de base peuvent interpréter une entrée de langage naturel, comme « dix » ou « une dizaine » pour un nombre, ou « demain » ou un « vendredi à 10 h » pour une date-heure.
-
-| Prompt | Description | Retours |
-|:----|:----|:----|
-| _Invite de pièce jointe_ | Demande une ou plusieurs pièces jointes, un document ou une image par exemple. | Une collection d’objets _Pièce jointe_. |
-| _Invite de choix_ | Demande un choix à partir d’un ensemble d’options. | Un objet de _choix trouvé_. |
-| _Invite de confirmation_ | Demande une confirmation. | Valeur booléenne. |
-| _Invite de date et d’heure_ | Demande une date et une heure. | Une collection d’objets de _résolution de date / heure_. |
-| _Invite de nombre_ | Demande un nombre. | Une valeur numérique. |
-| _Invite de texte_ | Demande une saisie de texte générale. | Une chaîne. |
-
-Pour inviter un utilisateur à saisir une entrée, définissez une invite à l’aide de l’une des classes intégrées, _text prompt_, par exemple, et ajoutez-la à votre ensemble de dialogues. Les invites ont des ID fixes devant être uniques au sein d’un ensemble de boîte de dialogue. Vous pouvez avoir un validateur personnalisé pour chaque invite, et pour certaines d’entre elles, vous pouvez spécifier des _paramètres régionaux par défaut_. 
-
-### <a name="prompt-locale"></a>Paramètres régionaux d’invite
-
-Les paramètres régionaux sont utilisés pour déterminer le comportement spécifique à la langue des invites **choix**, **confirmer**, **date-heure**, et **nombre**. Pour toute entrée donnée de l’utilisateur, si le canal fournit une propriété _paramètres régionaux_ dans le message de l’utilisateur, elle est utilisée. Sinon, les _paramètres régionaux par défaut_ de l’invite sont utilisés s’ils sont définis, soit en les fournissant lors de l’appel du constructeur de l’invite ou bien en les définissant ultérieurement. Si aucun paramètre n’est fourni, l’anglais (« en-us ») est utilisé. Remarque : Les paramètres régionaux sont des codes ISO 639 de 2, 3 ou 4 caractères qui représentent une langue ou une famille de langues.
 
 ## <a name="using-prompts"></a>Utilisation des invites
 

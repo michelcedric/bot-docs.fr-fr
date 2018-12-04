@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservices: sdk
 ms.date: 10/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a7a8b7088e65d015f22438ee2050f97823b72e49
-ms.sourcegitcommit: 49a76dd34d4c93c683cce6c2b8b156ce3f53280e
+ms.openlocfilehash: 2c493a27d7829e7c7be21b6ce70cb6f046dad616
+ms.sourcegitcommit: 6c719b51c9e4e84f5642100a33fe346b21360e8a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50134781"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52452091"
 ---
 # <a name="debug-your-bot-using-transcript-files"></a>Déboguer votre bot à l’aide de fichiers de transcription
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
@@ -50,8 +50,8 @@ Pour récupérer un fichier de transcription de bot à l’aide de Framework Bot
 ![récupérer la transcription enregistrée](./media/emulator_transcript_retrieve.png)
 
 ## <a name="debug-using-transcript-file"></a>Déboguer à l’aide d’un fichier de transcription
-Une fois votre fichier de transcription chargé, vous êtes prêt à déboguer les interactions que vous avez capturées entre un utilisateur et votre bot. Pour ce faire, il suffit de cliquer sur n’importe quel événement ou n’importe quelle activité dans la section _LOG (JOURNAL)_ affichée dans la partie inférieure droite de l’émulateur. Dans l’exemple ci-dessous, nous avons sélectionné la première itération de l’utilisateur, lorsqu’il a envoyé le message « Hello ». Ce faisant, toutes les informations de votre fichier de transcription concernant cette interaction s’affichent dans la fenêtre _INSPECTOR (INSPECTEUR)_ au format JSON. En examinant certaines de ces valeurs du bas vers le haut, voici ce que nous voyons :
-* Type d’itération _message_.
+Une fois votre fichier de transcription chargé, vous êtes prêt à déboguer les interactions que vous avez capturées entre un utilisateur et votre bot. Pour ce faire, il suffit de cliquer sur n’importe quel événement ou n’importe quelle activité dans la section _LOG (JOURNAL)_ affichée dans la partie inférieure droite de l’émulateur. Dans l’exemple ci-dessous, nous avons sélectionné la première interaction de l’utilisateur, quand il a envoyé le message « Hello ». Ce faisant, toutes les informations de votre fichier de transcription concernant cette interaction s’affichent dans la fenêtre _INSPECTOR (INSPECTEUR)_ au format JSON. En examinant certaines de ces valeurs du bas vers le haut, voici ce que nous voyons :
+* Type d’interaction _message_.
 * Heure d’envoi du message.
 * Texte brut « Hello » envoyé.
 * Message envoyé à notre bot.
