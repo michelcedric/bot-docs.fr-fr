@@ -345,7 +345,7 @@ Pour créer un message Kik natif, définissez la propriété des données du can
 
 | Propriété | Description |
 |----|----|
-| Cloud vers appareil | Un tableau de messages Kik. Pour obtenir des informations détaillées sur le format des messages Kik, consultez <a href="https://dev.kik.com/#/docs/messaging#message-formats" target="_blank">Formats des messages Kik</a>. |
+|  Cloud vers appareil | Un tableau de messages Kik. Pour obtenir des informations détaillées sur le format des messages Kik, consultez <a href="https://dev.kik.com/#/docs/messaging#message-formats" target="_blank">Formats des messages Kik</a>. |
 
 Cet extrait de code montre un exemple de la propriété `channelData` pour un message Kik natif.
 
