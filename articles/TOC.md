@@ -55,9 +55,9 @@
 ### [Node.JS](nodejs/TOC.md)
 ## [Déboguer](debug/TOC.md)
 ## Déployer
-### [Télécharger et redéployer le code d’un bot](bot-service-build-download-source-code.md)
+### [Déployer votre bot sur Azure](bot-builder-howto-deploy-azure.md)
+<!-- ### [Download and redeploy bot code](bot-service-build-download-source-code.md) -->
 ### [Configurer un déploiement continu](bot-service-build-continuous-deployment.md)
-### [Déployer votre bot C# dans Azure](bot-builder-howto-deploy-azure.md)
 ## [Gérer](manage/TOC.md)
 # Informations de référence
 ## [Kit de développement logiciel (SDK) .NET v4](https://aka.ms/dotnetsdk4)
