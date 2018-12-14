@@ -6,11 +6,12 @@
 ## Créer un bot localement
 ### [.NET](dotnet/bot-builder-dotnet-sdk-quickstart.md)
 ### [JavaScript](javascript/bot-builder-javascript-quickstart.md)
-# Didacticiels
+# Tutoriels
 ## [Utiliser plusieurs modèles Language Understanding Intelligent Service et QnA](v4sdk/bot-builder-tutorial-dispatch.md)
 ## [Ajouter l’authentification à votre bot](bot-builder-tutorial-authentication.md)
 # Exemples
-## [Exemples de référentiels sur GitHub](https://github.com/Microsoft/BotBuilder-Samples/blob/master/README.md)
+## [Dépôt botbuilder-samples sur GitHub](https://github.com/Microsoft/BotBuilder-Samples/blob/master/README.md)
+## [Déployer des bots à partir du dépôt botbuilder-samples](bot-builder-deploy-samples.md)
 # Concepts
 ## [Fonctionnement des bots](v4sdk/bot-builder-basics.md)
 ## [Gestion de l’état](v4sdk/bot-builder-concept-state.md)
