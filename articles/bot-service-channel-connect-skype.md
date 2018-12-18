@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 10/11/2018
-ms.openlocfilehash: 58c8145d359d292dd33972a3dd59af997e7b8393
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: f52c8fd668299486eccda3920181df971f475a90
+ms.sourcegitcommit: 75f32b3325dd0fc4d8128dee6c22ebf91e5785b3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999506"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53120656"
 ---
 # <a name="connect-a-bot-to-skype"></a>Connecter un bot à Skype
 
@@ -51,6 +51,9 @@ Cette section permet de configurer si le bot peut être ajouté à un groupe et 
 Cette section permet de configurer les paramètres de publication du bot. Tous les champs marqués d’un * sont obligatoires.
 
 Les bots en **Préversion** sont limités à 100 contacts. Si vous avez besoin de plus de 100 contacts, soumettez votre bot à une validation. Cliquez sur **Soumettre à validation** pour ajouter automatiquement à votre bot la possibilité de recherche dans Skype en cas d’acceptation. Si votre demande n’est pas approuvée, il sera précisé ce qu’il faut modifier pour qu’elle puisse l’être.
+
+> [!TIP]
+> Si vous voulez soumettre votre bot à une validation, n’oubliez pas qu’il doit respecter la [liste de vérification de certification Skype](https://github.com/Microsoft/skype-dev-bots/blob/master/certification/CHECKLIST.md) pour être accepté.
 
 Après avoir terminé la configuration, cliquez sur **Enregistrer** et acceptez les **Conditions d’utilisation du service**. Le canal Skype est désormais ajouté à votre bot.
 

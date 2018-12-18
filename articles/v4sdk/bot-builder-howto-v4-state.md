@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/26/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 8f979aed3bc1c4bb4c74629bcffb258e139ce77d
-ms.sourcegitcommit: bcde20bd4ab830d749cb835c2edb35659324d926
+ms.openlocfilehash: 8c3aad54a9e80e8a046a6e31a5109a1de8c61a8b
+ms.sourcegitcommit: 91156d0866316eda8d68454a0c4cd74be5060144
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52338552"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53010504"
 ---
 # <a name="save-user-and-conversation-data"></a>Enregistrer les données d’utilisateur et de conversation
 
@@ -382,13 +382,13 @@ async onTurn(turnContext) {
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-**Confidentialité** : si vous prévoyez de stocker les données personnelles de l’utilisateur, vous devez veiller au respect du [Règlement général sur la protection des données](https://blog.botframework.com/2018/04/23/general-data-protection-regulation-gdpr).
+**Confidentialité :** Si vous prévoyez de stocker les données personnelles de l’utilisateur, vous devez veiller au respect du [Règlement général sur la protection des données](https://blog.botframework.com/2018/04/23/general-data-protection-regulation-gdpr).
 
-**Gestion d’état** : tous les appels de gestion d’état sont asynchrones et, par défaut, le dernier qui écrit gagne (last-writer-wins). Dans la pratique, vous devez obtenir, définir et enregistrer l’état dans votre bot de la façon la plus rapprochée possible.
+**Gestion de l’état :** Tous les appels de gestion d’état sont asynchrones et, par défaut, le dernier qui écrit gagne (last-writer-wins). Dans la pratique, vous devez obtenir, définir et enregistrer l’état dans votre bot de la façon la plus rapprochée possible.
 
-**Données métier critiques** : utilisez l’état du bot pour stocker les préférences, le nom d’utilisateur ou le dernier élément commandé, mais ne l’utilisez pas pour stocker des données métiers critiques. Pour les données critiques, [créez vos propres composants de stockage](bot-builder-custom-storage.md) ou écrivez directement dans le [stockage](bot-builder-howto-v4-storage.md).
+**Données critique sur l’activité :** Utilisez l’état du bot pour stocker les préférences, le nom d’utilisateur ou le dernier élément commandé. En revanche, ne l’utilisez pas pour stocker des données critiques. Pour les données critiques, [créez vos propres composants de stockage](bot-builder-custom-storage.md) ou écrivez directement dans le [stockage](bot-builder-howto-v4-storage.md).
 
-**Recognizers-Text** : l’exemple utilise les bibliothèques Microsoft/Recognizers-Text pour analyser et valider les entrées utilisateur. Pour plus d’informations, consultez la page de [présentation](https://github.com/Microsoft/Recognizers-Text#microsoft-recognizers-text-overview).
+**Recognizers-Text :** L’exemple utilise les bibliothèques Microsoft/Recognizers-Text pour analyser et valider les entrées utilisateur. Pour plus d’informations, consultez la page de [présentation](https://github.com/Microsoft/Recognizers-Text#microsoft-recognizers-text-overview).
 
 ## <a name="next-step"></a>Étape suivante
 

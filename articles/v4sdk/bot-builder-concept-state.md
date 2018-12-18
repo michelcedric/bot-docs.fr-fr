@@ -1,6 +1,6 @@
 ---
 title: Gestion d’un état | Microsoft Docs
-description: Décrit le fonctionnement de l’état dans le Kit de développement logiciel (SDK) Bot Builder.
+description: Décrit le fonctionnement de l’état dans le kit SDK Bot Builder.
 keywords: état, état de bot, état de conversation, état d’utilisateur
 author: ivorb
 ms.author: v-ivorb
@@ -10,24 +10,28 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/15/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 940dba389205ff339b80f741b8a8aec87ff54f1d
-ms.sourcegitcommit: bcde20bd4ab830d749cb835c2edb35659324d926
+ms.openlocfilehash: bf7d6a574cc4e63d22e3f34462a1ec00dbdac75e
+ms.sourcegitcommit: 91156d0866316eda8d68454a0c4cd74be5060144
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52338562"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53010537"
 ---
 # <a name="managing-state"></a>Gestion de l’état
 
 Un état au sein d’un bot suit les mêmes paradigmes que les applications web modernes et le Kit de développement logiciel de Bot Framework offre certaines abstractions pour faciliter la gestion d’un état.
 
-Comme avec les applications web, un bot est fondamentalement sans état ; une autre instance de votre bot peut gérer n’importe quel tour de la conversation. Pour certains bots, cette simplicité est préférée : le robot peut fonctionner sans informations supplémentaires ou bien la présence des informations requises dans le message entrant est garantie. Pour d’autres, l’état (tel que là où nous en sommes dans la conversation ou bien des données relatives à l’utilisateur reçues précédemment) est nécessaire pour que le bot ait une conversation utile.
+Comme avec les applications web, un bot est fondamentalement sans état ; une autre instance de votre bot peut gérer n’importe quel tour de la conversation. Pour certains bots, cette simplicité est préférée : le bot peut fonctionner sans informations supplémentaires ou bien la présence des informations requises dans le message entrant est garantie. Pour d’autres, l’état (tel que là où nous en sommes dans la conversation ou bien des données relatives à l’utilisateur reçues précédemment) est nécessaire pour que le bot ait une conversation utile.
 
 **Pourquoi ai-je besoin d’un état ?**
 
 Le maintien d’un état permet à votre bot d’avoir des conversations plus pertinentes en mémorisant certaines choses concernant un utilisateur ou une conversation. Par exemple, si vous avez déjà parlé à un utilisateur, vous pouvez enregistrer les informations les concernant, pour ne pas être obligé de les demander à nouveau. L’état conserve également les données plus longtemps que le tour en cours, afin que votre bot puisse conserver des informations durant une conversation à plusieurs tours.
 
-En ce qui concerne les bots, il existe quelques couches concernant l’utilisation de l’état que nous aborderons ici : la couche de stockage, la gestion d’état et les accesseurs de propriété d’état.
+En ce qui concerne les bots, il existe quelques couches liées à l’utilisation de l’état que nous abordons ici : la couche de stockage, la gestion d’état (comprise dans l’état de bot indiqué dans le diagramme ci-dessous) et les accesseurs de propriété d’état. Ce diagramme illustre une partie de la séquence d’interaction entre ces couches, les flèches pleines représentant un appel de méthode et les flèches en pointillés représentant la réponse (avec ou sans valeur de retour).
+
+![état de bot](media/bot-builder-state.png)
+
+Le flux de ce diagramme est expliqué dans les sections suivantes avec des détails de chacune de ces couches.
 
 ## <a name="storage-layer"></a>Couche de stockage
 

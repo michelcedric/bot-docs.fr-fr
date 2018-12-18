@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/15/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 15cd6c998abf37b1c7b9a9e2659b7390370f7f10
-ms.sourcegitcommit: d92fd6233295856052305e0d9e3cba29c9ef496e
+ms.openlocfilehash: c4d4879f7ad127838de9d2563dee8f8d7320d61e
+ms.sourcegitcommit: 91156d0866316eda8d68454a0c4cd74be5060144
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51715123"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53010574"
 ---
 # <a name="how-bots-work"></a>Fonctionnement des bots
 
@@ -27,11 +27,11 @@ Un bot est une application avec laquelle les utilisateurs interagissent par le b
 
 Voici les deux types d’activités illustrés ici : *mise à jour de conversation* et *message*.
 
-Le service Bot Framework peut envoyer une mise à jour de conversation lorsque quelqu’un rejoint la conversation. Par exemple, au démarrage d’une conversation avec l’émulateur Bot Framework, vous verrez deux activités de mise à jour de conversation (une pour l’utilisateur rejoignant la conversation et l’autre pour le bot rejoignant la conversation). Pour distinguer ces activités de mise à jour de conversation, vérifiez si la propriété *members added* inclut un membre autre que le robot. 
+Le service Bot Framework peut envoyer une mise à jour de conversation lorsque quelqu’un rejoint la conversation. Par exemple, au démarrage d’une conversation avec l’émulateur Bot Framework, vous verrez deux activités de mise à jour de conversation (une pour l’utilisateur rejoignant la conversation et l’autre pour le bot rejoignant la conversation). Pour distinguer ces activités de mise à jour de conversation, vérifiez si la propriété *members added* inclut un membre autre que le bot. 
 
 L’activité de message transfère les informations de conversation entre les parties. Dans un exemple de bot d’écho, les activités de message transfèrent du texte simple et le canal rend ce texte. L’activité de message peut également contenir du texte à prononcer, des actions suggérées ou des cartes à afficher.
 
-Dans cet exemple, le bot crée et envoie une activité de message en réponse à l’activité de message entrant reçu. Toutefois, un robot peut répondre par d’autres moyens à une activité de message reçu. Il n’est pas rare qu’un robot répondre à une activité de mise à jour de conversation en envoyant un texte de bienvenue dans une activité de message. La section [Accueillir l’utilisateur](bot-builder-welcome-user.md) fournit plus d’informations à ce sujet.
+Dans cet exemple, le bot crée et envoie une activité de message en réponse à l’activité de message entrant reçu. Toutefois, un bot peut répondre par d’autres moyens à une activité de message reçu. Il n’est pas rare qu’un bot réponde à une activité de mise à jour de conversation en envoyant un texte de bienvenue dans une activité de message. La section [Accueillir l’utilisateur](bot-builder-welcome-user.md) fournit plus d’informations à ce sujet.
 
 ### <a name="http-details"></a>Détails HTTP
 
@@ -45,7 +45,7 @@ Dans une conversation, les gens parlent un à la fois, tour à tour. En généra
 
 L’objet de *contexte de tour* fournit des informations sur l’activité, comme l’expéditeur et le destinataire, le canal, et d’autres données nécessaires pour traiter l’activité. Il permet également d’ajouter des informations pendant le tour entre les différentes couches du bot.
 
-Le contexte de tour est l’une des abstractions les plus importantes du SDK. Il transfère non seulement l’activité entrante à tous les composants d’intergiciel et à la logique d’application, mais il fournit également le mécanisme par lequel les composants d’intergiciel et la logique d’application peuvent envoyer des activités sortantes.
+Le contexte de tour est l’une des abstractions les plus importantes du SDK. Il transfère non seulement l’activité entrante à tous les composants de middleware et à la logique d’application, mais il fournit également le mécanisme par lequel les composants de middleware et la logique d’application peuvent envoyer des activités sortantes.
 
 ## <a name="the-activity-processing-stack"></a>Pile de traitement d’une activité
 
@@ -55,13 +55,13 @@ Nous allons explorer le diagramme précédent en nous concentrant sur l’arriv�
 
 Dans l’exemple ci-dessus, le bot a répondu à l’activité de message avec une autre activité de message contenant le même message texte. Le traitement commence par la requête HTTP POST. Les informations de l’activité sont transportées sous la forme d’une charge JSON arrivant sur le serveur Web. En C#, il s’agit généralement d’un projet ASP.NET. Dans un projet JavaScript Node.js, il s’agit souvent d’une infrastructure populaire comme Express ou Restify.
 
-L’*adaptateur*, un composant intégré du Kit de développement logiciel (SDK), est l’élément central du runtime du Kit de développement logiciel (SDK). L’activité est transmise sous forme de code JSON dans le corps HTTP POST. Ce code JSON est désérialisé pour créer l’objet d’activité qui est ensuite transmis à l’adaptateur en appelant la méthode de *traitement d’activité*. Lors de la réception de l’activité, l’adaptateur crée un *contexte de tour* et appelle l’intergiciel. Le nom *contexte de tour* utilise le terme « tour » pour décrire l’ensemble du traitement associé à l’arrivée d’une activité. Le contexte de tour est l’une des abstractions les plus importantes dans le Kit de développement logiciel (SDK), puisqu’il transfère non seulement l’activité entrante à tous les composants d’intergiciel et à la logique d’application, mais il fournit également le mécanisme nécessaire aux composants d’intergiciel et à la logique d’application pour envoyer des activités sortantes. Le contexte de tour fournit des méthodes de réponse _d’envoi, de mise à jour et de suppression d’activité_ pour répondre à une activité. Chaque méthode de réponse s’exécute dans un processus asynchrone. 
+L’*adaptateur*, un composant intégré du Kit de développement logiciel (SDK), est l’élément central du runtime du Kit de développement logiciel (SDK). L’activité est transmise sous forme de code JSON dans le corps HTTP POST. Ce code JSON est désérialisé pour créer l’objet d’activité qui est ensuite transmis à l’adaptateur en appelant la méthode de *traitement d’activité*. Lors de la réception de l’activité, l’adaptateur crée un *contexte de tour* et appelle le middleware. Le nom *contexte de tour* utilise le terme « tour » pour décrire l’ensemble du traitement associé à l’arrivée d’une activité. Le contexte de tour est l’un des concepts les plus importants du kit SDK, puisqu’il transfère non seulement l’activité entrante à tous les composants de middleware et à la logique d’application, mais il fournit également le mécanisme nécessaire aux composants de middleware et à la logique d’application pour envoyer des activités sortantes. Le contexte de tour fournit des méthodes de réponse _d’envoi, de mise à jour et de suppression d’activité_ pour répondre à une activité. Chaque méthode de réponse s’exécute dans un processus asynchrone. 
 
 [!INCLUDE [alert-await-send-activity](../includes/alert-await-send-activity.md)]
 
 
 ## <a name="middleware"></a>Middlewares
-Les intergiciels sont très similaires à n’importe quel autre intergiciel de messagerie, et comprennent un ensemble linéaire de composants qui sont exécutés dans un ordre précis, ce qui donne à chacun une chance d’agir sur l’activité. La dernière étape du pipeline d’intergiciels est un rappel destiné à la fonction du gestionnaire de tours (`OnTurnAsync` dans C# et `onTurn` dans JS) sur la classe du bot sur laquelle l’application est inscrite avec l’adaptateur. Le gestionnaire de tours prend un contexte de tour comme argument, en général la logique d’application s’exécutant sur la fonction du gestionnaire de tours traite le contenu de l’activité entrante et génère une ou plusieurs activités en réponse, en les envoyant via la fonction *d’envoi d’activité* sur le contexte de tour. Appelez l’*envoi d’activité* sur le contexte de tour entraîne l’appel des composants des intergiciels sur les activités sortantes. Les composants des intergiciels s’exécutent avant et après la fonction du gestionnaire de tours du bot. Par nature, l’exécution est imbriquée, à l’image d’une poupée russe. Pour plus d’informations sur les intergiciels, consultez [la rubrique consacrée aux intergiciels](~/v4sdk/bot-builder-concept-middleware.md).
+Les middlewares sont très similaires à n’importe quel autre middleware de messagerie, et comprennent un ensemble linéaire de composants qui sont exécutés dans un ordre précis, ce qui donne à chacun une chance d’agir sur l’activité. La dernière étape du pipeline de middlewares est un rappel destiné à la fonction du gestionnaire de tours (`OnTurnAsync` dans C# et `onTurn` dans JS) sur la classe du bot sur laquelle l’application est inscrite avec l’adaptateur. Le gestionnaire de tours prend un contexte de tour comme argument, en général la logique d’application s’exécutant sur la fonction du gestionnaire de tours traite le contenu de l’activité entrante et génère une ou plusieurs activités en réponse, en les envoyant via la fonction *d’envoi d’activité* sur le contexte de tour. Appelez l’*envoi d’activité* sur le contexte de tour entraîne l’appel des composants de middleware sur les activités sortantes. Les composants de middleware s’exécutent avant et après la fonction du gestionnaire de tours du bot. Par nature, l’exécution est imbriquée, à l’image d’une poupée russe. Pour plus d’informations sur les middlewares, consultez [la rubrique consacrée aux middlewares](~/v4sdk/bot-builder-concept-middleware.md).
 
 ## <a name="bot-structure"></a>Structure du bot
 Dans les sections suivantes, nous examinons les éléments clés d’un bot.
@@ -424,9 +424,6 @@ Le fichier **.bot** contient des informations, notamment le point de terminaison
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-Pour comprendre le rôle qu’un fichier bot joue dans la gestion des ressources, consultez [fichier de bot](bot-file-basics.md).
-
-## <a name="next-steps"></a>Étapes suivantes
-
-> [!div class="nextstepaction"]
-> [Créer un robot](~/bot-service-quickstart.md)
+- Pour comprendre le rôle de l’état dans les bots, consultez [Gestion de l’état](bot-builder-concept-state.md).
+- Pour comprendre le rôle d’un fichier .bot dans la gestion des ressources, consultez [Gérer les ressources avec un fichier .bot](bot-file-basics.md).
+- Pour créer votre premier bot, consultez l’un des guides de démarrage rapide : [Utilisation d’Azure Bot Service](../bot-service-quickstart.md), [Utilisation de C# ](../dotnet/bot-builder-dotnet-sdk-quickstart.md) ou [Utilisation de JavaScript](../javascript/bot-builder-javascript-quickstart.md).

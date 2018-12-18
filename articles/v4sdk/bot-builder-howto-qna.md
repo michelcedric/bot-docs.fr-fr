@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: cognitive-services
 ms.date: 11/19/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 2c25ce4ed815e33a7bdc10c1cc2c1c59dad7fda3
-ms.sourcegitcommit: 6c719b51c9e4e84f5642100a33fe346b21360e8a
+ms.openlocfilehash: 0708244b9f9e4859ba069ed463cef83a0ecdf20d
+ms.sourcegitcommit: b9482670285295a2af0dfbb8f4b7e543c1c10542
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52451961"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53327155"
 ---
 # <a name="use-qna-maker-to-answer-questions"></a>Utiliser QnA Maker pour répondre aux questions
 
@@ -35,13 +35,13 @@ Dans cette rubrique, nous allons créer une base de connaissances et l’utilise
 1. Tout d’abord, vous devez créer un [service QnA Maker](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/how-to/set-up-qnamaker-service-azure).
 1. Ensuite, vous allez créer une base de connaissances à l’aide du fichier `smartLightFAQ.tsv` situé dans le dossier CognitiveModels du projet. Les étapes permettant de créer, de former et de publier votre [base de connaissances](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base) QnA Maker sont répertoriés dans la documentation de QnA Maker. Pendant que vous suivez ces étapes, nommez votre base de connaissances `qna`et utilisez le fichier `smartLightFAQ.tsv` pour la remplir.
 
-## <a name="obtain-values-to-connect-to-your-connect-your-bot-to-the-knowledge-base"></a>Obtenir les valeurs pour connecter votre robot à la base de connaissances
+## <a name="obtain-values-to-connect-to-your-connect-your-bot-to-the-knowledge-base"></a>Obtenir les valeurs pour connecter votre bot à la base de connaissances
 1. Sur le site [QnA Maker](https://www.qnamaker.ai/), sélectionnez votre base de connaissances.
 1. Ouvrez votre base de connaissances et sélectionnez **Settings** (Paramètres). Enregistrez la valeur indiquée pour _service name_ (nom du service) en tant que <your_kb_name>.
 1. Faites défiler la page jusqu’à la section **Deployment details** (Informations sur le déploiement) et enregistrez les valeurs suivantes :
    - POST /knowledgebases/<your_knowledge_base_id>/generateAnswer
    - Host: https://<you_hostname>.azurewebsites.net/qnamaker
-   - Authorization: EndpointKey <your_endpoint_key>
+   - Autorisation : EndpointKey <your_endpoint_key>
 
 ## <a name="update-the-bot-file"></a>Mettre à jour le fichier bot
 Tout d’abord, ajoutez les informations requises pour accéder à votre base de connaissances, notamment le nom d’hôte,la clé de point de terminaison et l’ID de la base de connaissances (KbId) dans `qnamaker.bot`. Il s’agit des valeurs que vous avez enregistrées à partir des paramètres (**Settings**) de votre base de connaissances dans QnA Maker.
@@ -63,8 +63,9 @@ Tout d’abord, ajoutez les informations requises pour accéder à votre base de
       "type": "qna",
       "name": "QnABot",
       "KbId": "<YOUR_KNOWLEDGE_BASE_ID>",
-      "Hostname": "https://<YOUR_HOSTNAME>.azurewebsites.net/qnamaker",
-      "EndpointKey": "<YOUR_ENDPOINT_KEY>"
+      "subscriptionKey": "<Your_Azure_Subscription_Key>", // Used when creating your QnA service.
+      "endpointKey": "<Your_Recorded_Endpoint_Key>",
+      "hostname": "<Your_Recorded_Hostname>",
       "id": "117"
     }
   ],

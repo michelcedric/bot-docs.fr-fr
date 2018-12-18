@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/21/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9d8caf19a98fb595e4b1e27b0635d2a752b88390
-ms.sourcegitcommit: bbfb171f515c50a3c8bba5ca898daf25cf764378
+ms.openlocfilehash: a8a0976e6f553e52e13ae13bbb719dd7bdead8f6
+ms.sourcegitcommit: 91156d0866316eda8d68454a0c4cd74be5060144
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/23/2018
-ms.locfileid: "52293601"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53010538"
 ---
 # <a name="gather-user-input-using-a-dialog-prompt"></a>Collecter les entrées utilisateur avec une invite de dialogue
 
@@ -168,7 +168,7 @@ public DialogPromptBot(DialogPromptBotAccessors accessors, ILoggerFactory logger
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Dans le constructeur, créez des accesseurs de propriété d’état. 
+Dans le constructeur, créez des accesseurs de propriété d’état.
 
 ```javascript
 constructor(conversationState) {
@@ -192,6 +192,7 @@ Ensuite, créez l’ensemble de boîte de dialogue et ajoutez les invites, notam
 ```
 
 Définissez ensuite les étapes de la boîte de dialogue en cascade, puis ajoutez-les à l’ensemble.
+
 ```javascript
     // ...
     this.dialogSet.add(new WaterfallDialog(RESERVATION_DIALOG, [
@@ -207,11 +208,11 @@ Définissez ensuite les étapes de la boîte de dialogue en cascade, puis ajoute
 
 ### <a name="implement-dialog-steps"></a>Implémenter des étapes de boîte de dialogue
 
-Dans le fichier principal du bot, nous implémentons chacune de ses étapes de la boîte de dialogue en cascade. Une fois qu’une invite est ajoutée, nous l’appelons dans une seule étape d’une boîte de dialogue en cascade et obtenons le résultat de l’invite à l’étape suivante de la boîte de dialogue. Pour appeler une invite à partir d’une étape en cascade, appelez la méthode _invite_ du _contexte de l’étape en cascade_ de l’objet. Le premier paramètre est l’ID de l’invite à utiliser, et le deuxième paramètre contient les options pour l’invite, comme le texte utilisé pour demander une entrée à l’utilisateur.     
+Dans le fichier principal du bot, nous implémentons chacune de ses étapes de la boîte de dialogue en cascade. Une fois qu’une invite est ajoutée, nous l’appelons dans une seule étape d’une boîte de dialogue en cascade et obtenons le résultat de l’invite à l’étape suivante de la boîte de dialogue. Pour appeler une invite à partir d’une étape en cascade, appelez la méthode _invite_ du _contexte de l’étape en cascade_ de l’objet. Le premier paramètre est l’ID de l’invite à utiliser, et le deuxième paramètre contient les options pour l’invite, comme le texte utilisé pour demander une entrée à l’utilisateur.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-Dans le fichier DialogPromptBot.cs, nous implémentons les étapes `PromptForPartySizeAsync`, `PromptForLocationAsync`, `PromptForReservationDateAsync`, et `AcknowledgeReservationAsync` de la boîte de dialogue en cascade.
+Dans le fichier DialogPromptBot.cs, nous implémentons les étapes `PromptForPartySizeAsync`, `PromptForLocationAsync`, `PromptForReservationDateAsync` et `AcknowledgeReservationAsync` du dialogue en cascade.
 
 Ici, nous présentons uniquement `PromptForPartySizeAsync` et `PromptForLocationAsync` qui sont deux étapes consécutives déléguées d’une boîte de dialogue en cascade.
 
@@ -250,6 +251,7 @@ private async Task<DialogTurnResult> PromptForLocationAsync(WaterfallStepContext
         cancellationToken);
 }
 ```
+
 L’exemple ci-dessus montre comment utiliser une invite de choix, en fournissant les trois propriétés. La méthode `PromptForLocationAsync` est utilisée comme une étape dans une boîte de dialogue en cascade et notre ensemble de boîte de dialogue contient la boîte de dialogue en cascade et une invite de choix avec un ID de `locationPrompt`.
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
@@ -291,8 +293,6 @@ Vous devez toujours spécifier l’activité prompt initiale à envoyer à l’u
 Spécifier une nouvelle invite est utile lorsque l’entrée de l’utilisateur est incapable de valider, soit parce que son format ne peut pas être analysé par l’invite, par exemple « demain » en réponse à une invite numérique, ou parce que l’entrée ne remplit pas un critère de validation. Dans ce cas, si aucune nouvelle invite n’a été fournie, l’invite utilisera l’activité prompt initiale pour redemander une saisie à l’utilisateur.
 
 Pour une invite de choix, vous devez toujours fournir la liste des choix disponibles.
-
-
 
 ## <a name="custom-validation"></a>Validation personnalisée
 
@@ -470,14 +470,13 @@ Mettez à jour le gestionnaire de tour du bot pour démarrer la boîte de dialog
    1. Le contrôle passe à l’étape suivante dans la boîte de dialogue active, le second tour de l’invite.
    1. L’invite valide l’entrée de l’utilisateur.
 
-      
 **Gestion des résultats des invites**
 
 L’action que vous effectuez avec le résultat de l’invite dépend de la raison pour laquelle vous avez demandé les informations à l’utilisateur. Options disponibles :
 
-* Utilisez les informations pour contrôler le flux de votre boîte de dialogue, par exemple lorsque l’utilisateur répond à une invite de confirmation ou de choix.
-* Mettez en cache les informations contenues dans l’état de la boîte de dialogue, comme la définition d’une valeur dans la propriété _valeurs_ du contexte d’étape en cascade, puis renvoyez ensuite les informations collectées lorsque la boîte de dialogue se termine.
-* Enregistrez les informations dans l’état du bot. Cela vous oblige à concevoir votre boîte de dialogue de façon à avoir accès aux accesseurs de la propriété d’état du bot. 
+- Utilisez les informations pour contrôler le flux de votre boîte de dialogue, par exemple lorsque l’utilisateur répond à une invite de confirmation ou de choix.
+- Mettez en cache les informations contenues dans l’état de la boîte de dialogue, comme la définition d’une valeur dans la propriété _valeurs_ du contexte d’étape en cascade, puis renvoyez ensuite les informations collectées lorsque la boîte de dialogue se termine.
+- Enregistrez les informations dans l’état du bot. Cela vous oblige à concevoir votre boîte de dialogue de façon à avoir accès aux accesseurs de la propriété d’état du bot.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -600,17 +599,17 @@ async onTurn(turnContext) {
 
 ---
 
-
-
 Vous pouvez utiliser des techniques similaires pour valider les réponses à tout type d’invite.
 
-## <a name="test-your-bot"></a>Tester votre robot
+## <a name="test-your-bot"></a>Tester votre bot
+
 1. Exécutez l’exemple en local sur votre machine. Si vous avez besoin d’instructions, consultez le fichier LISEZ-MOI pour [ C# ](https://aka.ms/dialog-prompt-cs) ou [JS](https://aka.ms/dialog-prompt-js).
 2. Démarrez l’émulateur, envoyez des messages comme indiqué ci-dessous pour tester le bot.
 
 ![exemple d’invite de boîte de dialogue de test](~/media/emulator-v4/test-dialog-prompt.png)
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
+
 Pour appeler une invite de commandes directement à partir de votre gestionnaire de tour, consultez l’exemple de _validations d’invite_ pour [ C# ](https://aka.ms/cs-prompt-validation-sample) ou [JS](https://aka.ms/js-prompt-validation-sample).
 
 La bibliothèque de boîte de dialogue inclut également une _invite OAuth_ pour obtenir un _jeton OAuth_ permettant d’accéder à une autre application pour le compte de l’utilisateur. Pour plus d’informations sur l’authentification, consultez comment [ajouter l’authentification](bot-builder-authentication.md) à votre bot.

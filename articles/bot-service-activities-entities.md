@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 03/01/2018
-ms.openlocfilehash: d329fcbe5b4a34cb3e9c1fbf0160c5248020a508
-ms.sourcegitcommit: cb0b70d7cf1081b08eaf1fddb69f7db3b95b1b09
+ms.openlocfilehash: 818017a81b497b13ee181dbb6b87c03a0182736d
+ms.sourcegitcommit: 75f32b3325dd0fc4d8128dee6c22ebf91e5785b3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51332963"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53120676"
 ---
 # <a name="entities-and-activity-types"></a>Entités et types d’activités
 
@@ -166,13 +166,18 @@ Les activités peuvent être de différents types, au-delà du **message** le pl
 | [message](#message) | IMessageActivity (C#) <br> Activité (JS) | Représente une communication entre le bot et l’utilisateur. |
 | [contactRelationUpdate](#contactrelationupdate) | IContactRelationUpdateActivity (C#) <br> Activité (JS) | Indique que le bot a été ajouté ou supprimé de la liste des contacts d’un utilisateur. |
 | [conversationUpdate](#conversationupdate) | IConversationUpdateActivity (C#) <br> Activité (JS) | Indique que le bot a été ajouté à une conversation, que d’autres membres ont été ajoutés ou supprimés de la conversation, ou que les métadonnées de la conversation ont changé. |
-| [deleteUserData](#deleteuserdata) | n/a | Indique à un robot qu’un utilisateur lui a demandé de supprimer toutes les données utilisateur qu’il a stockées. |
+| [deleteUserData](#deleteuserdata) | n/a | Indique à un bot qu’un utilisateur lui a demandé de supprimer toutes les données utilisateur qu’il a stockées. |
 | [endOfConversation](#endofconversation) | IEndOfConversationActivity (C#) <br> Activité (JS) | Indique la fin d’une conversation. |
 | [event](#event) | IEventActivity (C#) <br> Activité (JS) | Représente une communication envoyée à un bot non visible par l’utilisateur. |
 | [installationUpdate](#installationupdate) | IInstallationUpdateActivity (C#) <br> Activité (JS) | Représente une installation ou désinstallation d’un bot au sein d’une unité d’organisation (par exemple un locataire client ou une « équipe ») d’un canal. |
 | [invoke](#invoke) | IInvokeActivity (C#) <br> Activité (JS) | Représente une communication envoyée à un bot pour lui demander d’effectuer une opération spécifique. Ce type d’activité est réservé à un usage interne par Microsoft Bot Framework. |
 | [messageReaction](#messagereaction) | IMessageReactionActivity (C#) <br> Activité (JS) | Indique qu’un utilisateur a réagi à une activité existante. Par exemple, un utilisateur clique sur le bouton « J’aime » sur un message. |
-| [typing](#typing) | ITypingActivity (C#) <br> Activité (JS) | Indique que l’utilisateur ou le robot à l’autre extrémité de la conversation prépare une réponse. |
+| [typing](#typing) | ITypingActivity (C#) <br> Activité (JS) | Indique que l’utilisateur ou le bot à l’autre extrémité de la conversation prépare une réponse. |
+| messageUpdate | IMessageUpdateActivity (C#) <br> Activité (JS) | Indique une demande de mise à jour d’une activité de message précédente dans une conversation. |
+| messageDelete | IMessageDeleteActivity (C#) <br> Activité (JS) | Indique une demande de suppression d’une activité de message précédente dans une conversation. |
+| suggestion | ISuggestionActivity (C#) <br> Activité (JS) | Indique une suggestion privée faite au destinataire à propos d’une autre activité spécifique. |
+| trace | ITraceActivity (C#) <br> Activité (JS) | Activité selon laquelle un bot peut journaliser des informations internes dans une transcription de conversation journalisée. |
+| handoff | IHandoffActivity (C#) <br> Activité (JS) | Le contrôle de la conversation a été transféré ou une demande de transfert du contrôle de la conversation a été faite. |
 
 ## <a name="message"></a>Message
 
@@ -181,7 +186,7 @@ Les activités peuvent être de différents types, au-delà du **message** le pl
 ::: moniker range="azure-bot-service-3.0"
 
 Votre bot enverra des activités de message pour communiquer des informations et recevoir des activités de message de la part des utilisateurs.
-Certains messages peuvent consister simplement en un texte brut, tandis que d’autres peuvent avoir un contenu plus riche, par exemple un texte à énoncer, des [actions suggérées](v4sdk/bot-builder-howto-add-suggested-actions.md), des [pièces jointes multimédias](v4sdk/bot-builder-howto-add-media-attachments.md), des [cartes riches](v4sdk/bot-builder-howto-add-media-attachments.md#send-a-hero-card) et des [données spécifiques du canal](~/dotnet/bot-builder-dotnet-channeldata.md).
+Certains messages peuvent consister simplement en un texte brut, tandis que d’autres peuvent contenir un contenu plus riche, par exemple un texte à énoncer, des [actions suggérées](v4sdk/bot-builder-howto-add-suggested-actions.md), des [pièces jointes multimédias](v4sdk/bot-builder-howto-add-media-attachments.md), des [cartes riches](v4sdk/bot-builder-howto-add-media-attachments.md#send-a-hero-card) et des [données spécifiques du canal](~/dotnet/bot-builder-dotnet-channeldata.md).
 
 ::: moniker-end
 
