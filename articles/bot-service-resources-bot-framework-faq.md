@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 08/28/2018
-ms.openlocfilehash: 2a78ec6f8c453bfcfa3b6aba0d73257f35db76b8
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 660c10c400bb68e807f39eb1b7ccc38f500991e6
+ms.sourcegitcommit: 0f65857943d318da48df0a8654cde53e9a699116
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997216"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53389312"
 ---
 # <a name="bot-framework-frequently-asked-questions"></a>Bot Framework : Forum Aux Questions
 
@@ -26,6 +26,38 @@ Alors que l’interface utilisateur conversationnelle est déjà à notre porté
 ### <a name="what-is-the-v4-sdk"></a>Qu’est-ce que le Kit de développement logiciel (SDK) v4 ?
 Le Kit de développement logiciel (SDK) Bot Builder v4 s’appuie sur les commentaires et les enseignements tirés des SDK Bot Builder précédents. Il offre des niveaux d’abstraction appropriés et assure une grande modularité des blocs de construction de bot. Vous pouvez commencer avec un bot simple et le sophistiquer progressivement à l’aide d’une infrastructure modulaire et extensible. Vous trouverez un [FAQ](https://github.com/Microsoft/botbuilder-dotnet/wiki/FAQ) sur le Kit de développement logiciel (SDK) sur GitHub.
 
+## <a name="bot-framework-sdk-version-3-lifetime-support"></a>Prise en charge de la durée de vie du kit SDK version 3 du Bot Framework 
+Les bots du SDK V3 continuent de s’exécuter et d’être pris en charge par Azure Bot Service.  Depuis la publication du SDK V4 du Bot Framework, comme avec d’autres frameworks, nous continuons de prendre en charge le SDK V3 en appliquant les correctifs de bogues de sécurité haute priorité et les mises à jour de la couche connecteur / protocole.  Les clients peuvent compter sur la prise en charge de v3 pendant toute l’année 2019.
+
+### <a name="what-is-microsoft-plan-for-supporting-existing-v3-bots-what-happens-to-my-v3-bots-will-my-v3-bots-stop-working"></a>Qu’est-ce que prévoit Microsoft pour prendre en charge les bots V3 existants ? Qu’advient-il de mes bots V3 ? Mes bots V3 vont-ils s’arrêter de fonctionner ?
+Les bots du SDK V3 continuent de s’exécuter et d’être pris en charge par Azure Bot Service.  Depuis la publication du SDK V4 du Bot Framework, comme avec d’autres frameworks, nous continuons de prendre en charge le SDK V3 en appliquant les correctifs de bogues de sécurité haute priorité et les mises à jour de la couche connecteur / protocole.  Les clients peuvent compter sur la prise en charge de v3 pendant toute l’année 2019.
+- Azure Bot Service et Bot Framework V3 sont deux produits en disponibilité générale (GA) et sont entièrement pris en charge. Les bibliothèques de protocoles et de connecteurs Bot Framework sous-jacentes n’ont pas changé et sont partagées entre les SDK V3 et V4.  
+- Les bots créés avec le SDK V3 du Bot Framework (BotBuilder) continuent d’être pris en charge tout au long de l’année 2019. 
+- Les clients peuvent continuer à créer des bots V3 en utilisant le portail Azure ou les outils Azure CLI.
+
+### <a name="what-happens-to-my-bot-written-to-rest--bot-framework-protocol-31"></a>Qu’advient-il de mes bots écrits avec REST et Bot Framework Protocol 3.1 ?
+- Azure Bot Service et Bot Framework V3 sont deux produits en disponibilité générale (GA) et sont entièrement pris en charge.
+- Le protocole Bot Framework n’a pas changé et est partagé entre les SDK V3 et V4.  
+
+### <a name="will-there-be-more-updates-additional-development-for-the-v3-sdk-or-just-bugfixes"></a>D’autres mises à jour ou développements sont-ils prévus pour le SDK V3, ou juste des correctifs de bogues ?  
+- Nous allons mettre à jour V3 avec des améliorations mineures, principalement au niveau de la couche connecteur, et avec des correctifs de bogues de sécurité haute priorité.  
+- Les mises à jour pour V3 seront publiées deux fois par an selon les besoins, en fonction des correctifs de bogues et/ou des changements de protocole obligatoires. 
+- Nous prévoyons actuellement de publier des versions correctives mineures de V3 sur NuGet et NPM pour nos kits SDK C# et JavaScript.
+
+### <a name="why-v4-is-not-backwards-compatible-with-v3"></a>Pourquoi V4 n’est pas rétrocompatible avec V3 ?
+- Au niveau protocole, la communication entre votre application de conversation (c’est-à-dire votre bot) et les différents canaux utilise le protocole Bot Framework Activity qui est le même entre V3 et V4. La même infrastructure Azure Bot Service (AZURE BOT SERVICE) sous-jacente prend en charge à la fois les bots V3 et les bots V4.
+- Le SDK V4 du Bot Framework offre une expérience de développement de conversation avec une architecture de SDK modulaire et extensible, permettant aux développeurs de créer des applications de conversation robustes et sophistiquées. La conception extensible de V4 est basée sur le feedback des clients qui suggérait que les modèles et les primitives de dialogue du SDK V3 étaient trop rigides et limitaient l’extensibilité.  
+
+### <a name="what-is-the-general-migration-strategy-i-have-a-v3-bot-how-can-i-migrate-it-to-v4-can-i-migrate-my-v3-bot-to-v4"></a>Quelle est la stratégie de migration générale ? J’ai un bot V3, comment le migrer vers V4 / puis-je migrer mon bot V3 vers V4 ?
+- Actuellement, l’aide permettant de migrer des bots créés avec un SDK V3 vers le SDK V4 se présente sous forme de documentations et d’exemples. Nous n’avons pas prévu de fournir de couche de compatibilité de SDK V3 dans le SDK V4 qui permettrait aux bots créés avec V3 de fonctionner dans un bot V4. 
+- Si vous avez déjà des bots du SDK V3 du Bot Framework en production, ne vous inquiétez pas, ils continueront de fonctionner de la même façon dans un avenir prévisible. 
+- Le SDK V4 du Bot Framework est une évolution du très apprécié SDK V3. V4 est une version majeure contenant des changements cassants qui empêchent les bots V3 de s’exécuter sur le SDK V4 plus récent. 
+
+### <a name="should-i-build-new-a-bot-using-v3-or-v4"></a>Est-il préférable de créer un bot avec V3 ou V4 ?
+- Pour les nouvelles expériences de conversation, nous vous recommandons de commencer un nouveau bot avec le SDK V4 du Bot Framework.
+- Si vous êtes déjà familiarisé avec le SDK V3 du Bot Framework, prenez le temps de découvrir la nouvelle version et les fonctionnalités offertes dans le nouveau [SDK V4 du Bot Framework](http://aka.ms/botframeowrkoverview).
+- Si vous avez déjà des bots du SDK V3 du Bot Framework en production, ne vous inquiétez pas, ils continueront de fonctionner de la même façon dans un avenir prévisible.
+- Vous pouvez créer des bots avec le SDK V4 du Bot Framework et avec le SDK V3 plus ancien dans le portail Azure et la ligne de commande Azure. 
 
 ## <a name="channels"></a>Canaux
 ### <a name="when-will-you-add-more-conversation-experiences-to-the-bot-framework"></a>Quand allez-vous ajouter des expériences de conversation au Bot Framework ?
@@ -68,7 +100,7 @@ Si vous disposez d’un pare-feu pour le trafic sortant qui bloque le trafic ver
 - *.botframework.com (canaux)
 
 ### <a name="can-i-block-all-traffic-to-my-bot-except-traffic-from-the-bot-connector-service"></a>Puis-je bloquer la totalité du trafic en direction de mon bot, à l’exception du trafic émanant du service Bot Connector ?
-Non. Ce type de mise en liste verte d’adresses IP ou de DNS est irréaliste. Le service Bot Framework Connector est hébergé dans les centres de données Azure du monde entier, et la liste des adresses IP Azure évolue constamment. La mise en liste verte de certaine adresses IP peut donc cesser de fonctionner du jour au lendemain lorsque les adresses IP Azure changent.
+ Non. Ce type de mise en liste verte d’adresses IP ou de DNS est irréaliste. Le service Bot Framework Connector est hébergé dans les centres de données Azure du monde entier, et la liste des adresses IP Azure évolue constamment. La mise en liste verte de certaine adresses IP peut donc cesser de fonctionner du jour au lendemain lorsque les adresses IP Azure changent.
  
 ### <a name="what-keeps-my-bot-secure-from-clients-impersonating-the-bot-framework-connector-service"></a>De quelle manière mon bot est-il protégé contre les clients qui empruntent l’identité du service Bot Framework Connector ?
 1. L’URL du service (ServiceUrl) est encodée dans le jeton de sécurité qui accompagne chaque requête adressée à votre bot ; autrement dit, même si un attaquant parvient à accéder au jeton, ils ne peut pas rediriger la conversation vers une nouvelle URL ServiceUrl. Cette approche est appliquée par toutes les implémentations du Kit de développement logiciel (SDK) et documentée dans nos articles de [référence](https://docs.microsoft.com/en-us/azure/bot-service/rest-api/bot-framework-rest-connector-authentication?view=azure-bot-service-3.0#bot-to-connector) concernant l’authentification.

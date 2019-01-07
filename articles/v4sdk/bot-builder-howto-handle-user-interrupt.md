@@ -11,12 +11,12 @@ ms.subservice: sdk
 ms.date: 09/20/2018
 ms.reviewer: ''
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 74d4bb07274643d61da332d6ee1cdfb1a14372dc
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: af659dd1c2a75af03cfa45df54a815d2dd2306fc
+ms.sourcegitcommit: 561185b9c83f3e082e8b7aba1122b1706e431540
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998426"
+ms.lasthandoff: 12/26/2018
+ms.locfileid: "53785422"
 ---
 # <a name="handle-user-interruptions"></a>Gérer les interruptions par l’utilisateur
 
@@ -34,17 +34,17 @@ Un flux de conversation procédural repose sur un ensemble d’étapes clés à 
 
 **Réservation de table** Dans un bot de réservation de table, les principales étapes pourraient consister à demander à l’utilisateur la date et l’heure de la réservation, le nombre d’invités et le nom auquel effectuer la réservation. Dans ce processus, vous pouvez anticiper certaines interruptions, notamment :
 
-* `cancel` : pour quitter le processus.
-* `help` : pour fournir une assistance supplémentaire concernant ce processus.
-* `more info` : pour donner des conseils et des suggestions ou pour proposer d’autres moyens de réserver une table (par exemple, à l’aide d’une adresse e-mail ou d’un numéro de téléphone).
-* `show list of available tables` : le cas échéant, pour afficher une liste des tables disponibles à date et à l’heure souhaitées par l’utilisateur.
+* `cancel`: pour quitter le processus.
+* `help`: pour fournir une assistance supplémentaire concernant ce processus.
+* `more info`: pour donner des conseils et des suggestions ou pour proposer d’autres moyens de réserver une table (par exemple, à l’aide d’une adresse e-mail ou d’un numéro de téléphone).
+* `show list of available tables`: le cas échéant, pour afficher une liste des tables disponibles à la date et à l’heure souhaitées par l’utilisateur.
 
 **Commande d’un dîner** Dans un bot de commande de dîner, les principales étapes pourraient consister à fournir une liste de plats et à permettre à l’utilisateur d’en ajouter à son panier. Dans ce processus, vous pouvez anticiper certaines interruptions, notamment :
 
-* `cancel` : pour quitter le processus de commande.
-* `more info` : pour fournir des informations diététiques sur chaque plat.
-* `help` : pour fournir une aide sur l’utilisation du système.
-* `process order` : pour traiter la commande.
+* `cancel`: pour quitter le processus de commande.
+* `more info`: pour fournir des informations diététiques sur chaque plat.
+* `help`: pour fournir une aide sur l’utilisation du système.
+* `process order`: pour traiter la commande.
 
 Vous pouvez mettre ces options à la disposition de l’utilisateur sous la forme d’une liste **d’actions suggérées** ou de conseils, de sorte que l’utilisateur connaisse au moins les commandes qu’il peut envoyer et que le bot comprendra.
 
@@ -463,7 +463,7 @@ Vous pouvez changer de sujet et basculer vers le flux de commande de dîner, ou 
 
 Pour les interruptions ne correspondant pas au scénario, vous pouvez essayer de deviner l’intention de l’utilisateur. Pour cela, vous pouvez utiliser des services d’intelligence artificielle comme QnA Maker, LUIS ou votre logique personnalisée, puis proposer des suggestions quant aux intentions de l’utilisateur envisagées par le bot.
 
-Par exemple, au milieu du flux de réservation de table, l’utilisateur dit « Je veux commander un burger ». Le bot ne sait pas comment gérer cette situation dans le cadre de ce flux de conversation. Étant donné que le flux actuel n’a rien à voir avec une procédure de commande et que l’autre commande de conversation du bot est « Commander un dîner », le bot ne sait pas comment gérer cette entrée. Si vous appliquez le service LUIS, par exemple, vous pouvez former le modèle de sorte qu’il reconnaisse que l’utilisateur souhaite commander un repas (par exemple, LUIS peut retourner une intention « orderFood »). Par conséquent, le bot peut répondre « Vous souhaitez certainement commander un repas. Souhaitez-vous basculer vers notre processus de commande de dîner ? » Pour plus d’informations sur la formation de LUIS et sur la détection des intentions de l’utilisateur, consultez l’article [Utilisation de LUIS pour la compréhension langagière](bot-builder-howto-v4-luis.md).
+Par exemple, au milieu du flux de réservation de table, l’utilisateur dit « Je veux commander un burger ». Le bot ne sait pas comment gérer cette situation dans le cadre de ce flux de conversation. Étant donné que le flux actuel n’a rien à voir avec une procédure de commande et que l’autre commande de conversation du bot est « Commander un dîner », le bot ne sait pas comment gérer cette entrée. Si vous appliquez le service LUIS, par exemple, vous pouvez entraîner le modèle de sorte qu’il reconnaisse que l’utilisateur souhaite commander à manger (par exemple, LUIS peut retourner une intention « orderFood »). Par conséquent, le bot peut répondre « Vous souhaitez certainement commander un repas. Souhaitez-vous basculer vers notre processus de commande de dîner ? » Pour plus d’informations sur la formation de LUIS et sur la détection des intentions de l’utilisateur, consultez l’article [Utilisation de LUIS pour la compréhension langagière](bot-builder-howto-v4-luis.md).
 
 ### <a name="default-response"></a>Réponse par défaut
 
@@ -471,7 +471,7 @@ Si tout le reste échoue, envoyez une réponse par défaut au lieu de ne rien fa
 
 Vous pouvez consulter l’indicateur de contexte **responded** à la fin de la logique du bot pour voir si le bot a renvoyé quelque chose à l’utilisateur durant ce tour. Si le bot traite l’entrée de l’utilisateur mais ne répond pas, il est probable qu’il ne sache pas comment gérer l’entrée. Dans ce cas, vous pouvez l’intercepter et envoyer un message par défaut à l’utilisateur.
 
-L’action par défaut de votre bot consiste à présenter à l’utilisateur le dialogue `mainMenu`. C’est à vous de décider de l’expérience dont bénéficiera votre utilisateur dans cette situation avec votre bot.
+Si par défaut votre bot donne à l’utilisateur un dialogue `mainMenu`, vous devez décider quelle expérience de bot a votre utilisateur dans ce cas.
 
 # <a name="ctabcsharptab"></a>[C#](#tab/csharptab)
 

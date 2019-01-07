@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/21/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a8a0976e6f553e52e13ae13bbb719dd7bdead8f6
-ms.sourcegitcommit: 91156d0866316eda8d68454a0c4cd74be5060144
+ms.openlocfilehash: 4acb12a5e06032db898a651c6c8bf1dae06765ef
+ms.sourcegitcommit: f7a8f05fc05ff4a7212a437d540485bf68831604
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53010538"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53735969"
 ---
 # <a name="gather-user-input-using-a-dialog-prompt"></a>Collecter les entrées utilisateur avec une invite de dialogue
 
@@ -314,6 +314,32 @@ Le résultat du module de reconnaissance de l’invite a les propriétés suivan
 
 ### <a name="implement-validation-code"></a>Implémenter le code de validation
 
+Vous associez une validation personnalisée à une invite de commandes au moment de l’initialisation dans le constructeur du bot.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+```csharp
+// ...
+_dialogSet = new DialogSet(_accessors.DialogStateAccessor);
+_dialogSet.Add(new NumberPrompt<int>(PartySizePrompt, PartySizeValidatorAsync));
+_dialogSet.Add(new ChoicePrompt(LocationPrompt));
+_dialogSet.Add(new DateTimePrompt(ReservationDatePrompt, DateValidatorAsync));
+// ...
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+// ...
+this.dialogSet = new DialogSet(this.dialogStateAccessor);
+this.dialogSet.add(new NumberPrompt(PARTY_SIZE_PROMPT, this.partySizeValidator));
+this.dialogSet.add(new ChoicePrompt (LOCATION_PROMPT));
+this.dialogSet.add(new DateTimePrompt(RESERVATION_DATE_PROMPT, this.dateValidator));
+// ...
+```
+
+---
+
 **Validateur de taille de tiers**
 
 Nous limitons les réservations aux parties de 6 à 20 personnes.
@@ -601,7 +627,7 @@ async onTurn(turnContext) {
 
 Vous pouvez utiliser des techniques similaires pour valider les réponses à tout type d’invite.
 
-## <a name="test-your-bot"></a>Tester votre bot
+## <a name="test-your-bot"></a>Tester votre robot
 
 1. Exécutez l’exemple en local sur votre machine. Si vous avez besoin d’instructions, consultez le fichier LISEZ-MOI pour [ C# ](https://aka.ms/dialog-prompt-cs) ou [JS](https://aka.ms/dialog-prompt-js).
 2. Démarrez l’émulateur, envoyez des messages comme indiqué ci-dessous pour tester le bot.

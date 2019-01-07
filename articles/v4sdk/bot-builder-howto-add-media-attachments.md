@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 10/25/2018
+ms.date: 12/17/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: fcbe28110ec71da7263d125e79ca59d15efa9d5f
-ms.sourcegitcommit: 15f7fa40b7e0a05507cdc66adf75bcfc9533e781
+ms.openlocfilehash: fd908335c69aab7c8b68925b8ecdece79e89ab4b
+ms.sourcegitcommit: f7a8f05fc05ff4a7212a437d540485bf68831604
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50916776"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53735959"
 ---
 # <a name="add-media-to-messages"></a>Ajouter des médias aux messages
 
@@ -60,7 +60,9 @@ Pour envoyer à l’utilisateur un seul élément de contenu comme une image ou 
 
 ```javascript
 const { ActionTypes, ActivityTypes, CardFactory } = require('botbuilder');
+
 // Call function to get an attachment.
+const reply = { type: ActivityTypes.Message };
 reply.attachments = [this.getInternetAttachment()];
 reply.text = 'This is an internet attachment.';
 // Send the activity to the user.
@@ -130,30 +132,32 @@ const card = CardFactory.heroCard('', undefined,
 buttons, { text: 'You can upload an image or select one of the following choices.' });
 
 // add card to Activity.
+const reply = { type: ActivityTypes.Message };
 reply.attachments = [card];
 
 // Send hero card to the user.
 await turnContext.sendActivity(reply);
 ```
+
 ---
 
 ## <a name="process-events-within-rich-cards"></a>Traiter des événements dans les cartes enrichies
 
-Pour traiter les événements dans les cartes enrichies, utilisez les objets _card action_ pour spécifier ce qui doit se produire quand l’utilisateur clique sur un bouton ou appuie sur une section de la carte.
+Pour traiter les événements dans les cartes enrichies, utilisez les objets _card action_ pour spécifier ce qui doit se produire quand l’utilisateur clique sur un bouton ou appuie sur une section de la carte. Chaque action de la carte a un _type_ et une _valeur_.
 
-Pour fonctionner correctement, assignez un type d’action à chaque élément interactif de la carte. Ce tableau répertorie les valeurs valides pour la propriété type d’un objet card action et décrit le contenu attendu de la propriété value pour chaque type.
+Pour fonctionner correctement, assignez un type d’action à chaque élément interactif de la carte. Ce tableau liste et décrit les types d’actions disponibles, et ce qui doit se trouver dans la propriété de valeur associée.
 
-| type | Valeur |
-| :---- | :---- |
-| openUrl | URL à ouvrir dans le navigateur intégré. Répond à Appuyer ou Cliquer en ouvrant l’URL. |
-| imBack | Texte du message à envoyer au bot (de la part de l’utilisateur qui a cliqué sur le bouton ou appuyé sur la carte). Ce message (de l’utilisateur au bot) sera visible par tous les participants à la conversation par le biais de l’application cliente qui héberge la conversation. |
-| postBack | Texte du message à envoyer au bot (de la part de l’utilisateur qui a cliqué sur le bouton ou appuyé sur la carte). Certaines applications clientes peuvent afficher ce texte dans le flux de messages, où il sera visible par tous les participants à la conversation. |
-| appel | Destination d’un appel téléphonique au format suivant : `tel:123123123123`. Répond à Appuyer ou Cliquer en lançant un appel.|
-| playAudio | URL du fichier audio à lire. Répond à Appuyer ou Cliquer en lisant le fichier audio. |
-| playVideo | URL du fichier vidéo à lire. Répond à Appuyer ou Cliquer en lisant le fichier vidéo. |
-| showImage | URL de l’image à afficher. Répond à Appuyer ou Cliquer en affichant l’image. |
-| downloadFile | URL du fichier à télécharger.  Répond à Appuyer ou Cliquer en téléchargeant le fichier. |
-| signin | URL du flux OAuth à démarrer. Répond à Appuyer ou Cliquer en démarrant la connexion. |
+| type | Description | Valeur |
+| :---- | :---- | :---- |
+| openUrl | Ouvre une URL dans le navigateur intégré. | URL à ouvrir. |
+| imBack | Envoie un message au bot et publie une réponse visible dans la conversation. | Texte du message à envoyer. |
+| postBack | Envoie un message au bot et ne publie pas une réponse visible dans la conversation. | Texte du message à envoyer. |
+| call | Procède à un appel téléphonique. | Destination d’un appel téléphonique au format suivant : `tel:123123123123`. |
+| playAudio | Lit le contenu audio. | URL du contenu audio à lire. |
+| playVideo | Lit une vidéo. | URL de la vidéo à lire. |
+| showImage | Affiche une image. | URL de l’image à afficher. |
+| downloadFile | Télécharge un fichier. | URL du fichier à télécharger. |
+| signin | Lance un processus de connexion OAuth. | URL du flux OAuth à lancer. |
 
 ## <a name="hero-card-using-various-event-types"></a>Carte de héros utilisant différents types d’événements
 
@@ -360,5 +364,5 @@ await context.sendActivity(messageWithCarouselOfCards);
 
 Pour plus d’informations sur le schéma de la carte, consultez le [schéma de carte Bot Framework](https://aka.ms/botSpecs-cardSchema).
 
-Vous trouverez ici le code source pour les cartes ([C#](https://aka.ms/bot-cards-sample-code)/[JS](https://aka.ms/bot-cards-js-sample-code)), les cartes adaptatives ([C#](https://aka.ms/bot-adaptive-cards-sample-code)/[JS](https://aka.ms/bot-adaptive-cards-js-sample-code)), les pièces jointes ([C#](https://aka.ms/bot-attachments-sample-code)/[JS](https://aka.ms/bot-attachments-sample-code-js)) et les actions suggérées ([C#](https://aka.ms/SuggestedActionsCSharp)/[JS](https://aka.ms/SuggestedActionsJS)).
+Un exemple de code est disponible ici pour les cartes : [C#](https://aka.ms/bot-cards-sample-code)/[JS](https://aka.ms/bot-cards-js-sample-code), cartes adaptatives : [C#](https://aka.ms/bot-adaptive-cards-sample-code)/[JS](https://aka.ms/bot-adaptive-cards-js-sample-code), pièces jointes : [C#](https://aka.ms/bot-attachments-sample-code)/[JS](https://aka.ms/bot-attachments-sample-code-js) et actions suggérées : [C#](https://aka.ms/SuggestedActionsCSharp)/[JS](https://aka.ms/SuggestedActionsJS).
 Pour obtenir plus d’exemples, consultez le référentiel d’exemples Bot Builder sur [GitHub](https://aka.ms/bot-samples-readme).

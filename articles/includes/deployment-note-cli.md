@@ -4,10 +4,11 @@ Il est vivement recommandé d’utiliser l’option `verbose` permettant de rés
 
 | Arguments    | Description |
 |--------------|-------------|
-| `folder`     | Emplacement du fichier `bot.receipe`. Par défaut, le fichier receipe est créé dans le `DeploymentsScript/MSBotClone`. NE MODIFIEZ PAS ce fichier.|
+| `folder`     | Emplacement du fichier `bot.recipe`. Par défaut, le fichier recipe est créé dans le `DeploymentsScript/MSBotClone`. NE MODIFIEZ PAS ce fichier.|
 | `location`   | Emplacement géographique utilisé pour créer les ressources de service du bot. Par exemple, eastus, westus, westus2, etc.|
 | `proj-file`  | Pour un bot C#, il s’agit du fichier .csproj. Pour un bot JS, il s’agit du nom de fichier du projet de démarrage (par exemple, index.js) de votre bot local.|
-| `name`       | Nom unique utilisé pour déployer le bot dans Azure. Il peut s’agir du même nom que celui de votre bot local. N’incluez PAS d’espaces dans le nom.|
+| `name`       | Nom unique utilisé pour déployer le bot dans Azure. Il peut s’agir du même nom que celui de votre bot local. N’incluez PAS d’espaces ni de traits de soulignement dans le nom.|
+| `luisAuthoringKey` | Votre clé de création pour la région de création LUIS appropriée aux ressources LUIS. |
 
 Pour pouvoir créer des ressources Azure, vous devrez d’abord vous authentifier. Suivez les instructions qui s’affichent à l’écran pour effectuer cette étape.
 

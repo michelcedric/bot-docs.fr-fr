@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3b4c16478e9d6f4f1c1a33315fb8c6c772c37b71
-ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
+ms.openlocfilehash: b337614b37142dc15f6cf085388dace9f4b7cafe
+ms.sourcegitcommit: 66769e697d94f7bf5e0441dfacf2c0e3768845ea
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51645619"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53654970"
 ---
 # <a name="enterprise-template---detailed-overview"></a>Modèle d’entreprise – Présentation détaillée
 
@@ -32,9 +32,9 @@ Vous disposez d’un exemple de carte de présentation simple qui est fourni de 
 
 Chaque bot doit disposer d’un niveau de base pour la compréhension du langage conversationnel. Par exemple, tous les bots doivent pouvoir traiter les messages d’accueil sans difficulté. En règle générale, les développeurs ont besoin de créer ces intentions de base et de fournir des données d’apprentissage initiales pour commencer. Le modèle de bot d’entreprise contient des exemples de fichiers LU pour vous aider à démarrer. Ainsi, vous n’avez pas besoin de les créer pour chaque projet et vous avez l’assurance de disposer, par défaut, d’un niveau de fonctionnalité de base.
 
-Les fichiers LU fournissent les intentions suivantes en allemand, anglais, espagnol, français et italien.
+Les fichiers LU fournissent les intentions suivantes en allemand, anglais, chinois, espagnol, français et italien.
 
-> Greeting, Help, Cancel, Restart, Escalate, ConfirmYes, ConfirmNo, ConfirmMore, Next, Goodbye
+> Cancel, Confirm, Escalate, FinishTask, GoBack, Help, Reject, Repeat, SelectAny, SelectItem, SelectNone, ShowNext, ShowPrevious, StartOver, Stop
 
 Le format [LU](https://github.com/Microsoft/botbuilder-tools/blob/master/packages/Ludown/docs/lu-file-format.md) ressemble au format MarkDown. Par conséquent, la modification et le contrôle de la source sont facilités. L’outil [LuDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown) est ensuite utilisé pour convertir les fichiers .LU dans les modèles LUIS. Vous pouvez ensuite publier ces modèles dans votre abonnement LUIS via le portail ou l’outil de ligne de commande [LUIS](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS) associé.
 
@@ -46,37 +46,37 @@ Grâce au composant d’intergiciel fourni, les textes sont filtrés et analysé
 
 ## <a name="telemetry"></a>Télémétrie
 
-Fournir des insights sur l’engagement des utilisateurs de votre bot s’est révélé être un avantage de taille. Ces insights peuvent vous aider à comprendre les niveaux d’engagement utilisateur, les fonctionnalités du bot qui sont sollicitées (intentions), ainsi que les questions auxquelles le bot ne peut pas répondre. Vous identifiez ainsi les lacunes du bot et pouvez les combler à l’aide de nouveaux articles QnAMaker par exemple.
+Fournir des insights sur l’engagement des utilisateurs de votre bot s’est révélé être un avantage de taille. Ces insights peuvent vous aider à comprendre les niveaux d’engagement utilisateur, les fonctionnalités du bot qui sont sollicitées (intentions), ainsi que les questions auxquelles le bot ne peut pas répondre. Vous identifiez ainsi les lacunes du bot et pouvez les combler à l’aide de nouveaux articles QnA Maker par exemple.
 
-L’intégration d’Application Insights apporte des informations opérationnelles et techniques importantes de manière prédéfinie. Cette fonctionnalité peut également servir à capturer des événements spécifiques associés au bot (des messages envoyés et reçus avec les opérations LUIS et QnAMaker).
+L’intégration d’Application Insights apporte des informations opérationnelles et techniques importantes de manière prédéfinie. Cette fonctionnalité peut également servir à capturer des événements spécifiques associés au bot (des messages envoyés et reçus avec les opérations LUIS et QnA Maker).
 
 Intrinsèquement, le niveau de télémétrie du bot est lié aux données de télémétrie techniques et opérationnelles, ce qui vous permet d’examiner la façon dont est traitée la question d’un utilisateur et vice versa.
 
-Un composant d’intergiciel associé à une classe wrapper autour des classes SDK QnAMaker et LuisRecognizer fournit un bon moyen pour collecter un ensemble cohérent d’événements. Ces événements cohérents peuvent ensuite être utilisés par les outils Application Insights avec des outils tels que Power BI.
+Un composant de middleware associé à une classe wrapper autour des classes SDK QnA Maker et LuisRecognizer offre un bon moyen de collecter un ensemble cohérent d’événements. Ces événements cohérents peuvent ensuite être utilisés par les outils Application Insights avec des outils tels que Power BI.
 
 Chaque projet créé à l’aide du modèle de bot d’entreprise contient un exemple de tableau de bord Power BI. Pour en savoir plus, consultez la section [PowerBI](bot-builder-enterprise-template-powerbi.md).
 
 ## <a name="dispatcher"></a>Répartiteur
 
-Pour obtenir un bon rendu lors de la première vague d’expériences conversationnelles, le modèle de conception clé tire parti de Language Understanding (LUIS) et de QnAMaker. L’apprentissage de LUIS est basé sur des tâches que votre bot peut effectuer pour un utilisateur final et l’apprentissage de QnAMaker est basé sur des connaissances plus générales.
+Pour obtenir un bon rendu lors de la première vague d’expériences conversationnelles, le modèle de conception clé tire parti de Language Understanding (LUIS) et de QnA Maker. LUIS est entraîné avec des tâches que votre bot peut effectuer pour un utilisateur final et QnA Maker est entraîné avec des connaissances plus générales.
 
-Tous les énoncés entrants (questions) sont acheminés vers LUIS pour l’analyse. Si l’intention d’un énoncé donné n’a pas été identifiée, ce dernier ne porte aucune intention (None). Ensuite, QnAMaker est utilisé pour tenter de trouver une réponse à donner à l’utilisateur final.
+Tous les énoncés entrants (questions) sont acheminés vers LUIS pour l’analyse. Si l’intention d’un énoncé donné n’a pas été identifiée, ce dernier ne porte aucune intention (None). Ensuite, QnA Maker est utilisé pour tenter de trouver une réponse à donner à l’utilisateur final.
 
 Ce schéma fonctionne bien. Toutefois, il rencontre des problèmes dans deux scénarios principaux.
 
-- Parfois, les énoncés du modèle LUIS et de QnAMaker se chevauchent légèrement. On remarque alors un comportement étrange où LUIS essaie de traiter une question qui aurait dû être dirigée vers QnaMaker.
+- Parfois, les énoncés du modèle LUIS et de QnA Maker se recoupent légèrement, ce qui peut donner un comportement étrange où LUIS essaie de traiter une question qui aurait dû être dirigée vers QnA Maker.
 - Lorsque deux modèles LUIS ou plus coexistent, le bot doit appeler chacun d’eux et effectuer une comparaison pour évaluer les intentions afin de déterminer où envoyer tel ou tel énoncé. Comme il n’existe aucune comparaison commune des scores de base entre les modèles, ce schéma ne fonctionne pas efficacement et offre une expérience utilisateur de qualité médiocre.
 
-Le [répartiteur](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=csaddref%2Ccsbotconfig) remédie efficacement à ce problème en extrayant des énoncés de chaque modèle LUIS configuré et des questions de QnAMaker, puis en créant un modèle LUIS de répartition centrale.
+Le [répartiteur](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=csaddref%2Ccsbotconfig) remédie efficacement à ce problème en extrayant des énoncés de chaque modèle LUIS configuré et des questions de QnA Maker, puis en créant un modèle LUIS de répartition centrale.
 
-Ainsi, le bot peut rapidement identifier le modèle LUIS ou le composant qui doit gérer un énoncé donné et il garantit que les données QnAMaker sont placées au plus haut niveau d’intention, pas seulement une intention neutre (None) comme avant.
+Ainsi, le bot peut rapidement identifier le modèle LUIS ou le composant qui doit gérer un énoncé spécifique et garantit que les données QnA Maker sont placées au plus haut niveau d’intention, pas seulement une intention neutre (None) comme avant.
 
-Cet outil de répartition offre également une fonctionnalité d’évaluation qui met en évidence les confusions et les chevauchements entre les modèles LUIS et les bases de connaissances QnAMaker. Ainsi, les problèmes sont détectés avant le déploiement.
+Cet outil de répartition offre également une fonctionnalité d’évaluation qui met en évidence les confusions et les recoupements entre les modèles LUIS et les bases de connaissances QnA Maker. Ainsi, les problèmes sont détectés avant le déploiement.
 
 Le répartiteur est utilisé au cœur de chaque projet créé à l’aide du modèle de bot d’entreprise. Le modèle de répartition est utilisé dans la classe `MainDialog` pour déterminer si la cible correspond à un modèle LUIS ou QnA. Pour LUIS, le modèle LUIS secondaire est appelé et renvoie les intentions et les entités à son habitude.
 
-## <a name="qnamaker"></a>QnAMaker
+## <a name="qna-maker"></a>QnA Maker
 
-[QnAMaker](https://www.qnamaker.ai/) offre la possibilité aux non-développeurs d’organiser des connaissances générales sous la forme de paires de questions et réponses. Ces connaissances peuvent être importées depuis des sources de données (FAQ, manuels), mais aussi de manière interactive au sein du portail QnaMaker.
+[QnA Maker](https://www.qnamaker.ai/) offre la possibilité aux non-développeurs d’organiser des connaissances générales sous la forme de paires de questions-réponses. Ces connaissances peuvent être importées depuis des sources de données (FAQ, manuels), mais aussi de manière interactive au sein du portail QnaMaker.
 
-Un exemple de jeu d’entrées QnA est fourni dans le format de fichier [LU](https://github.com/Microsoft/botbuilder-tools/blob/master/packages/Ludown/docs/lu-file-format.md) dans le dossier QnA de CogSvcModels. [LuDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown) est ensuite utilisé dans le cadre du script de déploiement pour créer un fichier JSON QnAMaker. L’outil de ligne de commande [QnAMaker](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/QnAMaker) l’utilise ensuite pour publier des éléments dans la base de connaissances QnAMaker.
+Deux exemples de modèles QnA Maker sont fournis au format de fichier [LU](https://github.com/Microsoft/botbuilder-tools/blob/master/packages/Ludown/docs/lu-file-format.md) dans le dossier QnA de CognitiveModels, un pour les FAQ et un pour les échanges. [LuDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown) est ensuite utilisé dans le cadre du script de déploiement pour créer un fichier JSON QnA Maker, dont se servira par la suite l’outil de ligne de commande [QnA Maker](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/QnAMaker) pour publier des éléments dans la base de connaissances QnA Maker.
