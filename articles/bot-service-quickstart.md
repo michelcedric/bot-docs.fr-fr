@@ -8,13 +8,13 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
-ms.date: 11/15/2018
-ms.openlocfilehash: 3c5b12bb804477ae41cf70d2ce955066801f5916
-ms.sourcegitcommit: d92fd6233295856052305e0d9e3cba29c9ef496e
+ms.date: 01/08/2019
+ms.openlocfilehash: fd852a75b911f57743b40d252b24c6ef33b0420d
+ms.sourcegitcommit: ddc8c116887ada67642d49ee5166e7f1ae287263
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51715133"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54114893"
 ---
 ::: moniker range="azure-bot-service-3.0"
 
@@ -81,6 +81,7 @@ Cet article vous a appris à créer un bot Web App Bot/Functions Bot **De base**
 ::: moniker range="azure-bot-service-4.0"
 
 # <a name="create-a-bot-with-azure-bot-service"></a>Créer un bot avec Azure Bot Service
+
 [!INCLUDE [pre-release-label](includes/pre-release-label.md)]
 
 Azure Bot Service fournit les principaux composants pour la création de bots, notamment le Kit de développement logiciel (SDK) Bot Builder pour le développement de bots, ainsi que Bot Service pour la connexion des bots aux canaux. Dans cet article, vous serez en mesure de choisir le modèle .NET ou Node.js pour créer un bot à l’aide du Kit de développement logiciel (SDK) Bot Builder v4.
@@ -126,6 +127,15 @@ Dans la section **Gestion du bot**, cliquez sur **Tester dans la Discussion Web*
 ![Test de discussion web Azure](./media/azure-bot-quickstarts/azure-webchat-test.png)
 
 Entrez un message ; votre bot devrait répondre.
+
+## <a name="download-code"></a>Télécharger le code
+Vous pouvez télécharger le code pour l’utiliser localement. 
+1. Dans la section **Gestion du bot**, cliquez sur **Créer**. 
+1. Cliquez sur le lien **Download Bot source code** (Télécharger le code source du bot) dans le volet droit. 
+1. Suivez les invites pour télécharger le code, puis décompressez le dossier.
+
+Le code que vous avez téléchargé utilise un [fichier .bot](./v4sdk/bot-file-basics.md) chiffré. Vous devrez mettre à jour les entrées `botFilePath` et `botFileSecret` dans le fichier appsettings.json ou .env. 
+Pour ce faire, accédez au portail Azure. Sélectionnez votre bot dans le portail, puis sous **Paramètres App Service**, cliquez sur **Paramètres de l’application**. Dans le volet **Paramètres de l’application**, vous voyez les valeurs `botFilePath` et `botFileSecret`. Copiez ces valeurs et mettez à jour le fichier .env ou appsettings.json. 
 
 ## <a name="next-steps"></a>Étapes suivantes
 
