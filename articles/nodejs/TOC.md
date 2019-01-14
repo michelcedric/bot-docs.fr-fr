@@ -1,4 +1,4 @@
-# [Kit de développement logiciel Bot Builder pour Node.js](bot-builder-nodejs-overview.md)
+# [SDK Bot Framework pour Node.js](bot-builder-nodejs-overview.md)
 # [Concepts clés](bot-builder-nodejs-concepts.md)
 # Dialogues
 ## [Vue d’ensemble des boîtes de dialogue](bot-builder-nodejs-dialog-overview.md)
