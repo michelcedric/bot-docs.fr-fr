@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 08/28/2018
-ms.openlocfilehash: 660c10c400bb68e807f39eb1b7ccc38f500991e6
-ms.sourcegitcommit: 0f65857943d318da48df0a8654cde53e9a699116
+ms.openlocfilehash: 9b77f05b77017b17ba63e83fa2a8b58e483f9bf8
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53389312"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225804"
 ---
 # <a name="bot-framework-frequently-asked-questions"></a>Bot Framework : Forum Aux Questions
 
@@ -24,7 +24,7 @@ Cet article répond à certaines questions fréquemment posées sur le Bot Frame
 Alors que l’interface utilisateur conversationnelle est déjà à notre portée, peu de développeurs disposent actuellement de l’expertise et des outils nécessaires pour créer de nouvelles expériences conversationnelles ou doter les applications et services existants d’une interface conversationnelle pour les utilisateurs. Nous avons créé le Bot Framework pour aider les développeurs à générer des bots exceptionnels et à les connecter avec les utilisateurs, et ce, quel que soit le lieu de la conversation, y compris sur les canaux de haute qualité Microsoft.
 
 ### <a name="what-is-the-v4-sdk"></a>Qu’est-ce que le Kit de développement logiciel (SDK) v4 ?
-Le Kit de développement logiciel (SDK) Bot Builder v4 s’appuie sur les commentaires et les enseignements tirés des SDK Bot Builder précédents. Il offre des niveaux d’abstraction appropriés et assure une grande modularité des blocs de construction de bot. Vous pouvez commencer avec un bot simple et le sophistiquer progressivement à l’aide d’une infrastructure modulaire et extensible. Vous trouverez un [FAQ](https://github.com/Microsoft/botbuilder-dotnet/wiki/FAQ) sur le Kit de développement logiciel (SDK) sur GitHub.
+Le kit SDK Bot Framework v4 s’appuie sur les commentaires et les enseignements tirés des précédents kits SDK Bot Framework. Il offre des niveaux d’abstraction appropriés et assure une grande modularité des blocs de construction de bot. Vous pouvez commencer avec un bot simple et le sophistiquer progressivement à l’aide d’une infrastructure modulaire et extensible. Vous trouverez un [FAQ](https://github.com/Microsoft/botbuilder-dotnet/wiki/FAQ) sur le Kit de développement logiciel (SDK) sur GitHub.
 
 ## <a name="bot-framework-sdk-version-3-lifetime-support"></a>Prise en charge de la durée de vie du kit SDK version 3 du Bot Framework 
 Les bots du SDK V3 continuent de s’exécuter et d’être pris en charge par Azure Bot Service.  Depuis la publication du SDK V4 du Bot Framework, comme avec d’autres frameworks, nous continuons de prendre en charge le SDK V3 en appliquant les correctifs de bogues de sécurité haute priorité et les mises à jour de la couche connecteur / protocole.  Les clients peuvent compter sur la prise en charge de v3 pendant toute l’année 2019.
@@ -73,7 +73,7 @@ Nous n’avons pas fourni aux développeurs de mécanisme général pour ajouter
 
 Le Bot Framework est conçu pour générer, connecter et déployer des bots réactifs, performants et évolutifs de haute qualité pour Skype et de nombreux autres canaux. Vous pouvez utiliser le Kit de développement logiciel (SDK) pour créer des bots prenant en charge le texte, les sms, les images, les boutons et les cartes (utilisés aujourd’hui pour la majorité des interactions de bot dans le cadre d’expériences conversationnelles), ainsi que des interactions de bot spécifiques à Skype, comme des expériences audio et vidéo enrichies.
 
-Si vous disposez déjà d’un excellent bot et que vous souhaitez atteindre les utilisateurs de Skype, vous pouvez le connecter facilement à Skype (ou à tout autre canal pris en charge) par le biais du Bot Builder pour l’API REST (dans la mesure où il dispose d’un point de terminaison REST accessible par Internet).
+Si vous disposez déjà d’un excellent bot et que vous souhaitez toucher les utilisateurs de Skype, vous pouvez le connecter facilement à Skype (ou à tout autre canal pris en charge) par le biais de l’API REST Bot Framework (dans la mesure où il dispose d’un point de terminaison REST accessible par Internet).
 
 ## <a name="security-and-privacy"></a>Sécurité et confidentialité
 ### <a name="do-the-bots-registered-with-the-bot-framework-collect-personal-information-if-yes-how-can-i-be-sure-the-data-is-safe-and-secure-what-about-privacy"></a>Les bots inscrits auprès du Bot Framework collectent-ils des informations personnelles ? Si c’est le cas, comment puis-je m’assurer qu’elles sont protégées et sécurisées ? Qu’en est-il de la confidentialité ?

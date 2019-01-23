@@ -1,6 +1,6 @@
 ---
 title: Reconnaître les intentions et les entités avec LUIS | Microsoft Docs
-description: Découvrez comment permettre à votre bot de comprendre le langage naturel à l’aide des dialogues LUIS dans le Kit de développement logiciel (SDK) Bot Builder pour .NET.
+description: Découvrez comment permettre à votre bot de comprendre le langage naturel en utilisant des dialogues LUIS dans le kit SDK Bot Framework pour .NET.
 author: DeniseMak
 ms.author: v-demak
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: cognitive-services
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: ec3c93bfca1ec8554655934d9165e436d88b9466
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 26b23c9beda872b71defd779563531328b63a0c8
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997726"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225374"
 ---
 # <a name="recognize-intents-and-entities-with-luis"></a>Reconnaître les intentions et les entités avec LUIS 
 
@@ -59,7 +59,7 @@ Le bot répond : « Vous vous trouvez dans l’intention Salutations. Vous avez
 
 Connectez-vous à [https://www.luis.ai](https://www.luis.ai) avec le même compte que celui que vous utilisez pour vous connecter à Azure. Cliquer sur **Mes applications**. Dans la liste des applications, trouvez l’application commençant par le **nom d’application** indiqué dans le panneau **Bot Service** lorsque vous avez créé le Bot Service. 
 
-L’application LUIS se lance avec 4 intentions : annulation, accueil, aide et aucun. <!-- picture -->
+L’application LUIS part de 4 intentions : Cancel (Annulation), Greeting (Message d’accueil), Help (Aide) et None (Aucune). <!-- picture -->
 
 Les étapes suivantes permettent d’ajouter les intentions Note.Create, Note.ReadAloud et Note.Delete : 
 
@@ -388,7 +388,7 @@ Le test de votre bot vous permet de comprendre la manière dont les tâches sont
 - [Dialogues](bot-builder-dotnet-dialogs.md)
 - [Gérer un flux de conversation avec des dialogues](bot-builder-dotnet-manage-conversation-flow.md)
 - <a href="https://www.luis.ai" target="_blank">LUIS</a>
-- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Documentation de référence concernant le Kit de développement logiciel (SDK) Bot Builder pour .NET</a>
+- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Informations de référence sur le kit SDK Bot Framework pour .NET</a>
 
 [LUIS]: https://www.luis.ai/
 [NotesSample]: https://github.com/Microsoft/BotFramework-Samples/tree/master/docs-samples/CSharp/Simple-LUIS-Notes-Sample

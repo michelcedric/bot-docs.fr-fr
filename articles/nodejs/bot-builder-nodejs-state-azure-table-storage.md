@@ -1,6 +1,6 @@
 ---
 title: Gérer les données d’état personnalisé avec le stockage de table Azure | Microsoft Docs
-description: Découvrez comment enregistrer et récupérer des données d’état avec le stockage de table Azure par le biais du kit SDK Bot Builder pour Node.js.
+description: Découvrez comment enregistrer et récupérer des données d’état en utilisant Stockage Table Azure avec le kit SDK Bot Framework pour Node.js.
 author: DucVo
 ms.author: v-ducvo
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 5bf308c440e08cb3c9d4730212fbba3053de459d
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 5c2b8832401ccc9260c9aa872c0848b3a3e8445b
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998330"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225714"
 ---
 # <a name="manage-custom-state-data-with-azure-table-storage-for-nodejs"></a>Gérer les données d’état personnalisé avec le stockage de table Azure pour Node.js
 
@@ -24,7 +24,7 @@ Dans cet article, vous implémentez le stockage de table Azure pour stocker et g
 
 - Débit d’API d’état plus élevé (meilleur contrôle des performances)
 - Latence inférieure pour la distribution géographique
-- Contrôle de l’endroit où les données sont stockées (par exemple, USA Ouest ou USA Est)
+- Contrôle de l’emplacement de stockage des données (ex. : USA Ouest OU USA Est)
 - Accès aux données d’état réelles
 - Base de données d’état non partagée avec d’autres robots
 - Stockage de plus de 32 Ko

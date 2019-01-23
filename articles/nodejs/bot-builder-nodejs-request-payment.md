@@ -1,6 +1,6 @@
 ---
 title: Demander un paiement | Microsoft Docs
-description: Découvrez comment envoyer une demande de paiement à l’aide du kit SDK Bot Builder pour Node.js.
+description: Découvrez comment envoyer une demande de paiement à l’aide du kit SDK Bot Framework pour Node.js.
 author: v-ducvo
 ms.author: v-ducvo
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 5bdb699e242784883f7c1a5dda895a31ff80efb1
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 296004c654cfd59de6c245bf9702a80024526140
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999159"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225744"
 ---
 # <a name="request-payment"></a>Demander un paiement
 
@@ -24,11 +24,11 @@ ms.locfileid: "49999159"
 > - [.NET](../dotnet/bot-builder-dotnet-request-payment.md)
 > - [Node.JS](../nodejs/bot-builder-nodejs-request-payment.md)
 
-Si votre bot permet aux utilisateurs d’acheter des articles, il peut demander le paiement en incluant un type spécial de bouton dans une [carte enrichie](bot-builder-nodejs-send-rich-cards.md). Cet article explique comment envoyer une demande de paiement à l’aide du kit SDK Bot Builder pour Node.js.
+Si votre bot permet aux utilisateurs d’acheter des articles, il peut demander le paiement en incluant un type spécial de bouton dans une [carte enrichie](bot-builder-nodejs-send-rich-cards.md). Cet article explique comment envoyer une demande de paiement à l’aide du kit SDK Bot Framework pour Node.js.
 
 ## <a name="prerequisites"></a>Prérequis
 
-Avant de pouvoir envoyer une demande de paiement à l’aide du kit SDK Bot Builder pour Node.js, vous devez effectuer les tâches requises suivantes.
+Avant de pouvoir envoyer une demande de paiement à l’aide du kit SDK Bot Framework pour Node.js, vous devez au préalable effectuer les tâches requises suivantes.
 
 ### <a name="register-and-configure-your-bot"></a>Inscrire et configurer votre bot
 

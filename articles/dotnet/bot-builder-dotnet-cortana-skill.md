@@ -1,7 +1,7 @@
 ---
 title: Générer une compétence Cortana avec .NET | Microsoft Docs
-description: Découvrez les concepts essentiels liés à la création d’une compétence Cortana dans le Kit SDK Bot Builder pour .NET.
-keywords: Bot Framework, Compétence Cortana, reconnaissance vocale, .NET, Bot Builder, kit SDK, concepts clés, concepts de base
+description: Découvrez les concepts de base de création d’une compétence Cortana dans le kit SDK Bot Framework pour .NET.
+keywords: Bot Framework, compétence Cortana, reconnaissance vocale, .NET, SDK, concepts clés, concepts de base
 author: DeniseMak
 manager: kamrani
 ms.topic: article
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 030d17fa25a436ee8e8a1d093924e61f12e14e18
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 98fc10a806a4c8d1a4d6563934d92b0e0cdbb771
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998304"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224774"
 ---
 # <a name="build-a-speech-enabled-bot-with-cortana-skills"></a>Créer un bot à reconnaissance vocale avec des compétences Cortana
 
@@ -25,7 +25,7 @@ ms.locfileid: "49998304"
 > - [Node.JS](../nodejs/bot-builder-nodejs-cortana-skill.md)
 
 
-Le kit SDK Bot Builder pour .NET vous permet de créer un bot à reconnaissance vocale en le connectant par le biais du canal Cortana en tant que compétence Cortana. 
+Le kit SDK Bot Framework pour .NET vous permet de créer un bot à reconnaissance vocale en le connectant au canal Cortana en tant que compétence Cortana. 
 
 
 > [!TIP]
@@ -38,7 +38,7 @@ La création d’une compétence Cortana avec Bot Framework nécessite très peu
 
 ## <a name="adding-speech-to-your-bot"></a>Ajout de la reconnaissance vocale à votre bot
 
-Les messages parlés à partir de votre bot sont représentés en SSML (Speech Synthesis Markup Language). Le kit SDK Bot Builder vous permet d’inclure le SSML dans les réponses de votre bot afin de contrôler ce qu’il dit, en plus de ce qu’il affiche.  Vous pouvez également contrôler l’état du microphone de Cortana en précisant si votre bot accepte, attend ou ignore l’entrée utilisateur.
+Les messages parlés à partir de votre bot sont représentés en SSML (Speech Synthesis Markup Language). Le kit SDK Bot Framework vous permet d’inclure le SSML dans les réponses de votre bot, afin de contrôler ce qu’il dit, en plus de ce qu’il affiche.  Vous pouvez également contrôler l’état du microphone de Cortana en précisant si votre bot accepte, attend ou ignore l’entrée utilisateur.
 
 Définissez la propriété `Speak` de l’objet `IMessageActivity` pour indiquer un message à faire dire par Cortana. Si vous spécifiez le format texte brut, Cortana détermine la façon dont les mots sont prononcés. 
 
@@ -335,7 +335,7 @@ Si votre bot s’exécute localement ou qu’il est déployé dans le cloud, vou
 * [Bonnes pratiques de conception de cartes pour Cortana][CardDesign]
 * [Centre de développement Java][CortanaDevCenter]
 * [Bonnes pratiques de test et de débogage pour Cortana][Cortana-TestBestPractice]
-* <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Kit SDK Bot Builder pour .NET</a>
+* <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Informations de référence sur le kit SDK Bot Framework pour .NET</a>
 
 [CortanaGetStarted]: /cortana/getstarted
 [BFPortal]: https://dev.botframework.com/

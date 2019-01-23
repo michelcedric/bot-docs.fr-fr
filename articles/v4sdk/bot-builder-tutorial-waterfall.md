@@ -1,16 +1,16 @@
 ---
 redirect_url: /bot-framework/bot-builder-prompts
-ms.openlocfilehash: e7cfbad19290b3ef61d40dc90493db8f530a9a4e
-ms.sourcegitcommit: 4661b9bb31d74731dbbb16e625be088b44ba5899
+ms.openlocfilehash: d45ec888a0082ee17718c93fc34a3df99431a254
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51826936"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225414"
 ---
 <a name="--"></a><!--
 ---
-titre: Poser des questions à l’utilisateur | Description Microsoft Docs : Découvrez comment utiliser le modèle en cascade pour demander à utilisateur plusieurs entrées dans le kit de développement logiciel (SDK) Bot Builder.
-mots clés : cascade, boîtes de dialogue, poser une question, invites auteur : v-ducvo ms.auteur : v-ducvo responsable : kamrani ms.rubrique : article ms.service: bot-service ms.sous-service : sdk ms.date : 5/10/2018 monikerRange: 'azure-bot-service-4.0'
+titre : Poser des questions à l’utilisateur | Microsoft Docs Description : Apprenez à utiliser le modèle en cascade pour demander à un utilisateur plusieurs entrées dans le kit SDK Bot Framework.
+mots clés : cascades, dialogues, poser une question, auteur d’invites : v-ducvo ms.author: v-ducvo manager: kamrani ms.topic: article ms.service: bot-service ms.subservice: sdk ms.date: 5/10/2018 monikerRange : « azure-bot-service-4.0'
 ---
 
 # <a name="ask-the-user-questions"></a>Poser des questions à l’utilisateur
@@ -19,9 +19,9 @@ mots clés : cascade, boîtes de dialogue, poser une question, invites auteur : 
 
 Fondamentalement, un bot repose sur la conversation avec un utilisateur. Une conversation peut prendre de [nombreuses formes](bot-builder-conversations.md) ; elle peut être courte ou plus complexe, poser des questions ou répondre à des questions. La forme que prend la conversation dépend de plusieurs facteurs, mais ils impliquent tous une conversation.
 
-Ce tutoriel vous guide tout au long de la création d’une conversation, d’une simple question posée à un bot à plusieurs tours. Notre exemple concernera la réservation d’une table, mais vous pouvez imaginer une conversation à plusieurs tours où un bot fait des choses variées, par exemple passer une commande, répondre à des questions dans une FAQ, faire des réservations, etc.
+Ce tutoriel vous guide tout au long de la création d’une conversation, d’une simple question posée à un bot à plusieurs tours. Notre exemple concernera la réservation d’une table, mais vous pouvez imaginer une conversation à plusieurs tours où un bot fait des choses variées, comme par exemple passer une commande, répondre à des questions dans une FAQ, faire des réservations, etc.
 
-Un bot conversationnel interactif peut répondre à une entrée utilisateur ou lui demander une entrée spécifique. Ce tutoriel vous explique comment poser une question à un utilisateur à l’aide de la bibliothèque `Prompts`, qui fait partie de `Dialogs`. Les [boîtes de dialogue](../bot-service-design-conversation-flow.md) peuvent être considérées comme le conteneur qui définit la structure d’une conversation, et les invites des boîtes de dialogue sont traitées plus en détail dans leur propre [article de procédure](bot-builder-prompts.md).
+Un bot conversationnel interactif peut répondre à une entrée utilisateur ou lui demander une entrée spécifique. Ce tutoriel vous explique comment poser une question à un utilisateur à l’aide de la bibliothèque `Prompts`, qui fait partie de `Dialogs`. Les [ dialogues](../bot-service-design-conversation-flow.md) peuvent être considérés comme le conteneur qui définit la structure d’une conversation, et les invites des dialogues sont traitées plus en détail dans leur propre [article de procédure](bot-builder-prompts.md).
 
 ## <a name="prerequisite"></a>Configuration requise
 
@@ -46,7 +46,7 @@ npm install --save botbuilder-dialogs@preview
 
 # <a name="ctabcstab"></a>[C#](#tab/cstab)
 
-Ajoutez une référence, tant aux boîtes de dialogue qu’aux invites de votre code de bot.
+Ajoutez une référence aussi bien aux dialogues qu’aux invites de votre code de bot.
 
 ```cs
 // ...
@@ -66,11 +66,11 @@ const botbuilder_dialogs = require('botbuilder-dialogs');
 
 ---
 
-Cela vous donnera accès aux bibliothèques `DialogSet` et `Prompts`, que vous utiliserez pour poser des questions à l’utilisateur. `DialogSet` est simplement une collection de boîtes de dialogue que nous structurons dans un modèle **en cascade**. Cela signifie simplement qu’une boîte de dialogue en suit une autre.
+Cela vous donnera accès aux bibliothèques `DialogSet` et `Prompts`, que vous utiliserez pour poser des questions à l’utilisateur. `DialogSet` est simplement une collection de dialogues que nous structurons dans un modèle **en cascade**. Cela signifie simplement qu’un dialogue en suit une autre.
 
-## <a name="instantiate-a-dialogs-object"></a>Instancier un objet de boîte de dialogue
+## <a name="instantiate-a-dialogs-object"></a>Instancier un objet de dialogue
 
-Instancier un objet `dialogs`. Vous utiliserez cet objet de boîte de dialogue pour gérer la question et le processus de réponse.
+Instancier un objet `dialogs`. Vous utiliserez cet objet de dialogue pour gérer la question et le processus de réponse.
 
 # <a name="ctabcstab"></a>[C#](#tab/cstab)
 Déclarez une variable de membre dans votre classe de bot et initialisez-la dans le constructeur de votre bot. 
@@ -93,13 +93,13 @@ const dialogs = new botbuilder_dialogs.DialogSet();
 ```
 ---
 
-## <a name="define-a-waterfall-dialog"></a>Définissez une boîte de dialogue en cascade
+## <a name="define-a-waterfall-dialog"></a>Définir un dialogue en cascade
 
-Pour poser une question, vous aurez besoin d’au moins une boîte de dialogue **en cascade** en deux étapes. Pour cet exemple, vous construirez une boîte de dialogue **en cascade** en deux étapes, où l’on demandera son nom à l’utilisateur lors de la première étape, et où on lui souhaitera la bienvenue par son nom lors de la deuxième étape. 
+Pour poser une question, vous aurez besoin d’au moins un dialogue **en cascade** en deux étapes. Pour cet exemple, vous construirez un dialogue **en cascade** en deux étapes, où l’on demandera son nom à l’utilisateur lors de la première étape, et où on lui souhaitera la bienvenue par son nom lors de la deuxième étape. 
 
 # <a name="ctabcstab"></a>[C#](#tab/cstab)
 
-Modifiez le constructeur de votre bot pour ajouter la boîte de dialogue :
+Modifiez le constructeur de votre bot pour ajouter le dialogue :
 ```csharp
 public MyBot()
 {
@@ -179,7 +179,7 @@ Une fois que l’utilisateur répond à la question, vous pouvez trouver la rép
 ---
 
 
-Maintenant que vous avez défini votre `dialogs` pour poser une question, vous devez appeler la boîte de dialogue pour démarrer le processus d’invite.
+Maintenant que vous avez défini votre `dialogs` pour poser une question, vous devez appeler le dialogue pour démarrer le processus d’invite.
 
 ## <a name="start-the-dialog"></a>Démarrer le dialogue
 
@@ -247,9 +247,9 @@ La logique du bot rentre dans la méthode `processActivity()`. Une fois que l’
 
 
 
-## <a name="define-a-more-complex-waterfall-dialog"></a>Définir une boîte de dialogue en cascade plus complexe
+## <a name="define-a-more-complex-waterfall-dialog"></a>Définir un dialogue en cascade plus complexe
 
-Maintenant que nous avons traité le fonctionnement d’une boîte de dialogue en cascade et la manière d’en créer une, faisons un essai avec une boîte de dialogue plus complexe destinée à la réservation d’une table.
+Maintenant que nous avons traité le fonctionnement d’un dialogue en cascade et la manière d’en créer un, faisons un essai avec un dialogue plus complexe destiné à la réservation d’une table.
 
 Pour gérer la requête de réservation de table, vous devez définir un dialogue **en cascade** de quatre étapes. Dans cette conversation, vous utiliserez également une `DatetimePrompt` et une `NumberPrompt` en plus de l’`TextPrompt`.
 
@@ -279,7 +279,7 @@ namespace CafeBot
 }
 ```
 
-Définissez ensuite votre boîte de dialogue `reserveTable`. Vous pouvez ajouter la boîte de dialogue au constructeur de classe de bot.
+Définissez ensuite votre dialogue `reserveTable`. Vous pouvez ajouter le dialogue au constructeur de classe de bot.
 ```cs
 public CafeBot()
 {
@@ -378,12 +378,12 @@ dialogs.add('reserveTable', [
 
 ---
 
-Le flux de la conversation de la boîte de dialogue `reserveTable` pose à l’utilisateur 3 questions via les trois premières étapes de la cascade. L’étape 4 traite la réponse à la dernière question et envoie la confirmation de la réservation à l’utilisateur.
+Le flux de la conversation du dialogue `reserveTable` pose à l’utilisateur 3 questions via les trois premières étapes de la cascade. L’étape 4 traite la réponse à la dernière question et envoie la confirmation de la réservation à l’utilisateur.
 
 
 
 # <a name="ctabcstab"></a>[C#](#tab/cstab)
-Chaque étape en cascade de la boîte de dialogue `reserveTable` utilise une invite pour demander des informations à l’utilisateur. Le code suivant a été utilisé pour ajouter les invites à l’ensemble de la boîte de dialogue.
+Chaque étape en cascade du dialogue `reserveTable` utilise une invite pour demander des informations à l’utilisateur. Le code suivant a été utilisé pour ajouter les invites à l’ensemble de dialogues.
 
 ```cs
 dialogs.Add("dateTimePrompt", new Microsoft.Bot.Builder.Dialogs.DateTimePrompt(Culture.English));

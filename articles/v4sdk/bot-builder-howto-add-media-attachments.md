@@ -1,6 +1,6 @@
 ---
 title: Ajouter des médias aux messages | Microsoft Docs
-description: Découvrez comment ajouter des médias à l’aide du kit de développement logiciel (SDK) Bot Builder.
+description: Découvrez comment ajouter des médias à l’aide du kit SDK Bot Framework.
 keywords: médias, messages, images, audio, vidéo, fichiers, MessageFactory, cartes enrichies, messages, cartes adaptatives, carte de héros, actions suggérées
 author: ivorb
 ms.author: v-ivorb
@@ -10,18 +10,18 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/17/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: fd908335c69aab7c8b68925b8ecdece79e89ab4b
-ms.sourcegitcommit: f7a8f05fc05ff4a7212a437d540485bf68831604
+ms.openlocfilehash: 1ea9daeb35033e49232d64bfe98a223807dabf75
+ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53735959"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54317599"
 ---
 # <a name="add-media-to-messages"></a>Ajouter des médias aux messages
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-Les messages échangés entre l’utilisateur et le bot peuvent contenir des pièces jointes multimédia, comme des images, des vidéos, des pistes audio et des fichiers. Le Kit de développement logiciel (SDK) Bot Builder prend en charge l’envoi de messages enrichis à l’utilisateur. Pour déterminer le type des messages enrichis pris en charge sur un canal (Facebook, Skype, Slack, etc.), consultez la documentation associée pour en savoir plus sur les limitations. Reportez-vous à [l’expérience utilisateur de conception](../bot-service-design-user-experience.md) pour obtenir la liste des cartes disponibles. 
+Les messages échangés entre l’utilisateur et le bot peuvent contenir des pièces jointes multimédia, comme des images, des vidéos, des pistes audio et des fichiers. Le kit SDK Bot Framework prend en charge l’envoi de messages enrichis à l’utilisateur. Pour déterminer le type des messages enrichis pris en charge sur un canal (Facebook, Skype, Slack, etc.), consultez la documentation associée pour en savoir plus sur les limitations. Reportez-vous à [l’expérience utilisateur de conception](../bot-service-design-user-experience.md) pour obtenir la liste des cartes disponibles. 
 
 ## <a name="send-attachments"></a>Envoyer des pièces jointes
 
@@ -29,7 +29,8 @@ Pour envoyer le contenu de l’utilisateur comme une image ou une vidéo, vous p
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-La propriété `Attachments` de l’objet `Activity` contient un tableau d’objets `Attachment` qui représentent les pièces jointes multimédias et cartes enrichies attachées au message. Pour ajouter une pièce jointe multimédia à un message, créez un objet `Attachment` pour l’activité `message` et définissez les propriétés `ContentType`, `ContentUrl` et `Name`. La propriété `Attachments` de l’objet `Activity` contient un tableau d’objets `Attachment` qui représentent les pièces jointes multimédias et cartes enrichies attachées au message. Pour ajouter une pièce jointe multimédia à un message, utilisez la méthode `Attachment` afin de créer un objet `Attachment` pour l’activité `message`, puis définissez les propriétés `ContentType`, `ContentUrl` et `Name`. Le code source affiché ici repose sur l’exemple [Gestion des pièces jointes](https://aka.ms/bot-attachments-sample-code). 
+La propriété `Attachments` de l’objet `Activity` contient un tableau d’objets `Attachment` qui représentent les pièces jointes multimédias et cartes enrichies attachées au message. Pour ajouter une pièce jointe multimédia à un message, créez un objet `Attachment` pour l’activité `message` et définissez les propriétés `ContentType`, `ContentUrl` et `Name`.
+Le code source affiché ici repose sur l’exemple [Gestion des pièces jointes](https://aka.ms/bot-attachments-sample-code). 
 
 ```csharp
 using Microsoft.Bot.Builder;
@@ -152,7 +153,7 @@ Pour fonctionner correctement, assignez un type d’action à chaque élément i
 | openUrl | Ouvre une URL dans le navigateur intégré. | URL à ouvrir. |
 | imBack | Envoie un message au bot et publie une réponse visible dans la conversation. | Texte du message à envoyer. |
 | postBack | Envoie un message au bot et ne publie pas une réponse visible dans la conversation. | Texte du message à envoyer. |
-| call | Procède à un appel téléphonique. | Destination d’un appel téléphonique au format suivant : `tel:123123123123`. |
+| appel | Procède à un appel téléphonique. | Destination d’un appel téléphonique au format suivant : `tel:123123123123`. |
 | playAudio | Lit le contenu audio. | URL du contenu audio à lire. |
 | playVideo | Lit une vidéo. | URL de la vidéo à lire. |
 | showImage | Affiche une image. | URL de l’image à afficher. |
@@ -219,7 +220,7 @@ await context.sendActivity(hero);
 ## <a name="send-an-adaptive-card"></a>Envoyer une carte adaptative
 Vous pouvez utiliser aussi bien les cartes adaptatives que MessageFactory pour envoyer des messages enrichis contenant du texte, des images, des vidéos, du contenu audio et des fichiers afin de communiquer avec les utilisateurs. Toutefois, il existe certaines différences entre ces deux méthodes. 
 
-Pour commencer, seuls certains canaux prennent en charge les cartes adaptatives et ne le font parfois que partiellement. Par exemple, si vous envoyez une carte adaptative dans Facebook, les boutons sont inopérants, alors que les textes et images fonctionnent parfaitement. MessageFactory est une simple classe d’assistance au sein du Kit de développement logiciel (SDK) Bot Builder qui est destinée à automatiser la procédure de création à votre intention et est prise en charge par la plupart des canaux. 
+Pour commencer, seuls certains canaux prennent en charge les cartes adaptatives et ne le font parfois que partiellement. Par exemple, si vous envoyez une carte adaptative dans Facebook, les boutons sont inopérants, alors que les textes et images fonctionnent parfaitement. MessageFactory est une simple classe d’assistance au sein du kit SDK Bot Framework qui vise à automatiser la procédure de création et qui est prise en charge par la plupart des canaux. 
 
 Ensuite, les cartes adaptatives remettent les messages au format carte, et le canal détermine la disposition de la carte. Le format des messages remis par MessageFactory dépend du canal et ne correspond pas nécessairement au format carte, sauf si la pièce jointe intègre une carte adaptative. 
 

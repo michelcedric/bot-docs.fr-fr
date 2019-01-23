@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/26/2018
+ms.date: 01/15/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 62cf3663a6e1c9b9321d7b74393b95e4a2ed3a69
-ms.sourcegitcommit: fd7781a06303fee5f39a253da5b3a3818d54b2ba
+ms.openlocfilehash: c798c26f108458e1caeb16aa22c02c6e7c70fb61
+ms.sourcegitcommit: 3cc768a8e676246d774a2b62fb9c688bbd677700
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53806770"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54323655"
 ---
 # <a name="use-multiple-luis-and-qna-models"></a>Utiliser plusieurs modèles LUIS et QnA
 
@@ -41,7 +41,7 @@ Vous pouvez suivre les instructions du **README** concernant [C#](https://aka.ms
 
  ### <a name="create-your-bot-using-service-ui"></a>Créer votre bot à l’aide de l’interface utilisateur du service
  
-Pour commencer à créer manuellement votre bot, téléchargez les 4 fichiers suivants qui se trouvent dans le dépôt [BotFramework-Samples](https://github.com/Microsoft/BotFramework-Samples) GitHub dans un dossier local : [home-automation.json](https://aka.ms/dispatch-home-automation-json), [weather.json](https://aka.ms/dispatch-weather-json), [nlp-with-dispatchDispatch.json](https://aka.ms/dispatch-dispatch-json), [QnAMaker.tsv](https://aka.ms/dispatch-qnamaker-tsv)
+Pour commencer à créer votre bot, téléchargez dans un dossier local les 4 fichiers suivants situés dans le dépôt GitHub [BotFramework-Samples](https://aka.ms/botdispatchgitsamples) : [home-automation.json](https://aka.ms/dispatch-home-automation-json), [weather.json ](https://aka.ms/dispatch-weather-json), [nlp-with-dispatchDispatch.json](https://aka.ms/dispatch-dispatch-json), [QnAMaker.tsv](https://aka.ms/dispatch-qnamaker-tsv). Pour ce faire, vous pouvez ouvrir le lien du dépôt GitHub ci-dessus, cliquer sur **BotFramework-Samples**, puis « cloner ou télécharger » le dépôt sur votre ordinateur local. Notez que ces fichiers se trouvent dans un autre dépôt que celui de l’exemple mentionné dans les prérequis.
 
 ### <a name="manually-create-luis-apps"></a>Créer manuellement des applications LUIS
 
@@ -125,7 +125,7 @@ Pour la section "type": "qna", ajoutez les valeurs suivantes :
 
 Quand tous les changements sont en place, enregistrez ce fichier.
 
-### <a name="test-your-bot"></a>Tester votre bot
+### <a name="test-your-bot"></a>Tester votre robot
 
 Exécutez maintenant l’exemple à l’aide de l’émulateur. Une fois que l’émulateur est ouvert, sélectionnez le fichier « nlp-with-dispatch.bot ».
 
@@ -494,7 +494,10 @@ Une fois que votre bot est en cours d’exécution, il est possible d’amélior
 
 Les deux actions ci-dessus réduisent le nombre de fois où votre bot répond à vos utilisateurs avec le message « Réponse introuvable ». 
 
-## <a name="additional-resources"></a>Ressources supplémentaires 
+## <a name="additional-resources"></a>Ressources supplémentaires
+
+**Mettre à jour ou créer un modèle LUIS :** cet exemple est basé sur un modèle LUIS préconfiguré. Vous trouverez [ici](https://aka.ms/create-luis-model#updating-your-cognitive-models
+) des informations complémentaires qui vous aideront à mettre à jour ce modèle ou à créer un modèle LUIS.
 
 **Supprimer les ressources :** cet exemple crée un certain nombre d’applications et de ressources que vous pouvez supprimer à l’aide de la procédure ci-dessous. Veillez toutefois à ne pas supprimer les ressources dont dépendent *d’autres applications ou services*. 
 

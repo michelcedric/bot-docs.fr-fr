@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 41cc36b7e4abc12bf57df7bf4272dd35031cf251
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 1cb9143e5ab2d5eb7e92e263b838cdd9217492ef
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997996"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225354"
 ---
 # <a name="authentication"></a>Authentification
 
@@ -22,7 +22,7 @@ Votre robot communique avec le service Bot Connector en utilisant le protocole H
 > [!IMPORTANT]
 > Si vous créez votre propre code d’authentification, il est essentiel que vous appliquiez correctement toutes les procédures de sécurité. En appliquant toutes les étapes de cet article, vous pouvez réduire le risque qu’un pirate puisse lire les messages envoyés à votre robot, envoyer des messages qui usurpent l’identité de votre robot et voler des clés secrètes. 
 
-Si vous utilisez le [kit de développement logiciel pour .NET](../dotnet/bot-builder-dotnet-overview.md) ou le [kit de développement logiciel pour Node.js](../nodejs/index.md), vous n’avez pas besoin d’appliquer les procédures de sécurité décrites dans cet article, car le kit de développement logiciel le fait automatiquement pour vous. Il vous suffit de configurer votre projet avec l’identifiant de l’application et le mot de passe obtenus pour votre robot lors de [l’enregistrement](../bot-service-quickstart-registration.md). Le kit de développement logiciel s’occupe du reste.
+Si vous utilisez le kit [SDK Bot Framework pour .NET](../dotnet/bot-builder-dotnet-overview.md) ou le kit [SDK Bot Framework pour Node.js](../nodejs/index.md), vous n’avez pas besoin d’implémenter les procédures de sécurité décrites dans cet article, car le kit SDK le fait automatiquement à votre place. Il vous suffit de configurer votre projet avec l’identifiant de l’application et le mot de passe obtenus pour votre robot lors de [l’enregistrement](../bot-service-quickstart-registration.md). Le kit de développement logiciel s’occupe du reste.
 
 > [!WARNING]
 > En décembre 2016, la version 3.1 du protocole de sécurité Bot Framework a modifié plusieurs valeurs utilisées lors de la génération et de la validation des jetons. À la fin de l’automne 2017, la version 3.2 du protocole de sécurité Bot Framework a apporté des modifications aux valeurs utilisées lors de la génération et de la validation des jetons.
@@ -56,7 +56,7 @@ Ce diagramme montre les étapes de l’authentification du robot vers le connect
 > [!IMPORTANT]
 > Si vous ne l’avez pas déjà fait, vous devez [enregistrer votre robot](../bot-service-quickstart-registration.md) auprès de Bot Framework pour obtenir son identifiant d’application et son mot de passe. Pour demander un jeton d’accès, vous devez disposer de l’identifiant d’application et du mot de passe du robot.
 
-### <a name="step-1-request-an-access-token-from-the-msaaad-v2-login-service"></a>Étape 1 : Demander un jeton d’accès au service de connexion MSA/AAD v2
+### <a name="step-1-request-an-access-token-from-the-msaaad-v2-login-service"></a>Étape 1 : Demander un jeton d’accès au service de connexion MSA/AAD v2
 
 Pour demander un jeton d’accès au service de connexion MSA/AAD v2, envoyez la requête suivante en remplaçant **MICROSOFT-APP-ID** et **MICROSOFT-APP-PASSWORD** par l’identifiant d’application et le mot de passe que vous avez obtenus lorsque vous avez [enregistré](../bot-service-quickstart-registration.md) votre robot avec Bot Framework.
 
@@ -68,7 +68,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=client_credentials&client_id=MICROSOFT-APP-ID&client_secret=MICROSOFT-APP-PASSWORD&scope=https%3A%2F%2Fapi.botframework.com%2F.default
 ```
 
-### <a name="step-2-obtain-the-jwt-token-from-the-msaaad-v2-login-service-response"></a>Étape 2 : Récupérer le jeton JWT dans la réponse du service de connexion MSA/AAD v2
+### <a name="step-2-obtain-the-jwt-token-from-the-msaaad-v2-login-service-response"></a>Étape 2 : Récupérer le jeton JWT dans la réponse du service de connexion MSA/AAD v2
 
 Si votre application est autorisée par le service de connexion MSA/AAD v2, le corps de réponse JSON indiquera votre clé d’accès, son type et son délai d’expiration (en secondes). 
 
@@ -90,7 +90,7 @@ HTTP/1.1 200 OK
 }
 ```
 
-### <a name="step-3-specify-the-jwt-token-in-the-authorization-header-of-requests"></a>Étape 3 : Indiquer le jeton JWT dans l’en-tête d’autorisation des requêtes
+### <a name="step-3-specify-the-jwt-token-in-the-authorization-header-of-requests"></a>Étape 3 : Spécifier le jeton JWT dans l’en-tête d’autorisation des requêtes
 
 Lorsque vous envoyez une requête API au service Bot Connector, indiquez le jeton d’accès dans l’en-tête `Authorization` de la requête, au format suivant :
 
@@ -179,7 +179,7 @@ Pour obtenir la liste des clés de signature valides, envoyez une requête `GET`
 GET https://login.botframework.com/v1/.well-known/keys
 ```
 
-Le corps de la réponse indique le document au format [JWK](https://tools.ietf.org/html/rfc7517). Il inclut également une propriété supplémentaire pour chaque clé : `endorsements`. La liste des clés est relativement stable. Il est possible de la mettre en cache pendant de longues périodes de temps (par défaut, 5 jours dans le kit de développement logiciel Bot Builder).
+Le corps de la réponse indique le document au format [JWK](https://tools.ietf.org/html/rfc7517). Il inclut également une propriété supplémentaire pour chaque clé : `endorsements`. La liste des clés est relativement stable et peut être mise en cache sur de longues périodes (par défaut, 5 jours dans le kit SDK Bot Framework).
 
 La propriété `endorsements` de chaque clé contient une ou plusieurs chaînes d’approbation que vous pouvez utiliser pour vérifier l’authenticité de l’identifiant de canal indiqué dans la propriété `channelId` dans l’objet [Activité][Activity] de la requête entrante. La liste des identifiants de canal nécessitant une approbation est configurable dans chaque robot. Par défaut, la liste contient tous les identifiants des canaux publiés. Les développeurs de robots peuvent néanmoins remplacer les valeurs des identifiants des canaux sélectionnés. Si l’identifiant du canal nécessite une approbation :
 
@@ -323,9 +323,9 @@ payload:
 ## <a name="security-protocol-changes"></a>Modifications du protocole de sécurité
 
 > [!WARNING]
-> La version 3.0 du protocole de sécurité n’est plus prise en charge depuis le **31 juillet 2017**. Si vous avez créé votre propre code d’authentification (c’est-à-dire que vous n’avez pas utilisé le kit de développement logiciel Bot Builder pour créer votre robot), vous devez effectuer une mise à niveau vers la version 3.1 du protocole de sécurité en mettant à jour votre application afin d’utiliser les valeurs de la version v3.1 énumérées ci-dessous. 
+> La version 3.0 du protocole de sécurité n’est plus prise en charge depuis le **31 juillet 2017**. Si vous avez créé votre propre code d’authentification (c’est-à-dire que vous n’avez pas utilisé le kit SDK Bot Framework pour créer votre bot), vous devez effectuer une mise à niveau vers la version 3.1 du protocole de sécurité en mettant à jour votre application pour qu’elle utilise les valeurs de la version 3.1 listées ci-dessous. 
 
-### <a name="bot-to-connector-authenticationbot-to-connector"></a>[Authentification du robot vers le connecteur](#bot-to-connector)
+### <a name="bot-to-connector-authenticationbot-to-connector"></a>[Authentification du bot vers le connecteur](#bot-to-connector)
 
 #### <a name="oauth-login-url"></a>URL de connexion OAuth
 
@@ -339,7 +339,7 @@ payload:
 |----|----|
 | v3.1 et v3.2 |  `https://api.botframework.com/.default` |
 
-### <a name="connector-to-bot-authenticationconnector-to-bot"></a>[Authentification du connecteur vers le robot](#connector-to-bot)
+### <a name="connector-to-bot-authenticationconnector-to-bot"></a>[Authentification du connecteur vers le bot](#connector-to-bot)
 
 #### <a name="openid-metadata-document"></a>Document de métadonnées OpenID
 
@@ -353,7 +353,7 @@ payload:
 |----|----|
 | v3.1 et v3.2 | `https://api.botframework.com` |
 
-### <a name="emulator-to-bot-authenticationemulator-to-bot"></a>[Authentification de l’émulateur vers le robot](#emulator-to-bot)
+### <a name="emulator-to-bot-authenticationemulator-to-bot"></a>[Authentification de l’émulateur vers le bot](#emulator-to-bot)
 
 #### <a name="oauth-login-url"></a>URL de connexion OAuth
 
@@ -365,13 +365,13 @@ payload:
 
 | Version du protocole | Valeur valide |
 |----|----|
-| v3.1 et v3.2 |  Identificateur de l’application Microsoft de votre robot + `/.default` |
+| v3.1 et v3.2 |  Identificateur de l’application Microsoft de votre bot + `/.default` |
 
 #### <a name="jwt-audience"></a>Public JWT
 
 | Version du protocole | Valeur valide |
 |----|----|
-| v3.1 et v3.2 | Identificateur de l’application Microsoft de votre robot |
+| v3.1 et v3.2 | Identificateur de l’application Microsoft de votre bot |
 
 #### <a name="jwt-issuer"></a>Émetteur JWT
 

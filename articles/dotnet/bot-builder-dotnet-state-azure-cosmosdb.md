@@ -1,6 +1,6 @@
 ---
 title: Gérer les données d’état personnalisé avec Azure Cosmos DB | Microsoft Docs
-description: Découvrir comment enregistrer et récupérer des données d’état avec Azure Cosmos DB par le biais du kit SDK Bot Builder pour .NET
+description: Découvrez comment enregistrer et récupérer des données d’état en utilisant Azure Cosmos DB avec le kit SDK Bot Framework pour .NET.
 author: kaiqb
 manager: kamrani
 ms.topic: article
@@ -8,12 +8,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 76eff2bb7b862dad148d6741a2049e4f827fe731
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 19b44fbb09af69bde803b9b884d58108c248ebe5
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999046"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224827"
 ---
 # <a name="manage-custom-state-data-with-azure-cosmos-db-for-net"></a>Gérer les données d’état personnalisé avec Azure Cosmos DB pour .NET
 

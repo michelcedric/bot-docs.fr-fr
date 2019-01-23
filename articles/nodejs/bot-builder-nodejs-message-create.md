@@ -1,6 +1,6 @@
 ---
 title: Créer des messages | Microsoft Docs
-description: Découvrez comment créer des messages avec le Kit SDK Bot Builder pour Node.js.
+description: Découvrez comment créer des messages avec le kit SDK Bot Framework pour Node.js.
 author: v-ducvo
 ms.author: v-ducvo
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 09/7/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 8011611aa11e81cf322ba841f616fa2797038e84
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 3a4f9e1dc3c5598c3aa79996b01f11e8b1339fe2
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998166"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225214"
 ---
 # <a name="create-messages"></a>Créer des messages
 
@@ -26,7 +26,7 @@ Cet article décrit certaines des méthodes de messages courantes que vous pouve
 
 ## <a name="default-message-handler"></a>Gestionnaire de messages par défaut
 
-Le Kit SDK Bot Builder pour Node.js est fourni avec un gestionnaire de messages par défaut intégré à l’objet [`session`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html). Ce gestionnaire de messages vous permet d’envoyer et de recevoir des messages texte entre le bot et l’utilisateur.
+Le kit SDK Bot Framework pour Node.js est fourni avec un gestionnaire de messages par défaut intégré à l’objet [`session`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html). Ce gestionnaire de messages vous permet d’envoyer et de recevoir des messages texte entre le bot et l’utilisateur.
 
 ### <a name="send-a-text-message"></a>Envoyer un message texte
 

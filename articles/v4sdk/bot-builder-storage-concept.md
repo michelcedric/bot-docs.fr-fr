@@ -1,16 +1,16 @@
 ---
 redirect_url: /bot-framework/bot-builder-howto-v4-state
-ms.openlocfilehash: cdbe139f6b901cf812356358deecc61394eae2a5
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: a0d2b1295be1271e827d617ad09878ee8cfcd356
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998896"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54223914"
 ---
 <a name="--"></a><!--
 ---
-titre : État et stockage | Microsoft Docs description : Description du gestionnaire d’état, de l’état de la conversation et de l’état utilisateur au sein du SDK Bot Builder.
-mots clés : LUIS, état de la conversation, état utilisateur, stockage, gérer l’état auteur : DeniseMak ms.author : v-demak responsable : kamrani ms.topic : article ms.service : bot-service ms.sous-service : 15/02/2018 monikerRange : 'azure-bot-service-4.0'
+titre : État et stockage | Microsoft Docs Description : Découvrez ce que sont le gestionnaire d’état, l’état de la conversation et l’état utilisateur au sein du kit SDK Bot Framework.
+Mots clés : LUIS, état de la conversation, état utilisateur, stockage, gérer l’état auteur : DeniseMak ms.author: v-demak manager: kamrani ms.topic: article ms.service: bot-service ms.subservice: sdk ms.date: 02/15/2018 monikerRange: 'azure-bot-service-4.0'
 ---
 
 # <a name="state-and-storage"></a>État et stockage
@@ -18,7 +18,7 @@ mots clés : LUIS, état de la conversation, état utilisateur, stockage, gérer
 
 Une bonne conception de bot passe notamment par le suivi du contexte d’une conversation, afin que le bot se souvienne de choses telles que les réponses aux questions précédentes.
 Selon ce pour quoi votre bot est utilisé, vous pouvez même être amené à effectuer le suivi de l’état ou à stocker des informations plus longtemps que la durée de vie de la conversation.
-*L’état* d’un bot représente des informations dont il se souvient pour répondre correctement aux messages entrants. Le SDK Bot Builder fournit des classes pour stocker et récupérer des données d’état sous la forme d’un objet associé à un utilisateur ou une conversation.
+*L’état* d’un bot représente des informations dont il se souvient pour répondre correctement aux messages entrants. Le kit SDK Bot Framework propose des classes pour stocker et récupérer des données d’état sous forme d’objet associé à un utilisateur ou une conversation.
 
 * Les **propriétés de la conversation** permettent au bot d’effectuer le suivi de la conversation en cours entre lui-même et l’utilisateur. Si votre bot doit exécuter une séquence d’étapes ou basculer entre des sujets de conversation, vous pouvez utiliser les propriétés de la conversation pour gérer les étapes d’une séquence ou effectuer le suivi du sujet actuel. Étant donné que les propriétés de la conversation reflètent l’état de la conversation actuelle, vous les effacez généralement à la fin d’une conversation, quand le bot reçoit une activité _fin de conversation_.
 * Les **propriétés utilisateur** peuvent servir à de nombreuses fins, par exemple pour déterminer l’endroit où une conversation précédente de l’utilisateur s’était arrêtée ou simplement pour accueillir un utilisateur régulier par son nom. Si vous stockez les préférences d’un utilisateur, vous pouvez utiliser ces informations pour personnaliser la prochaine conversation. Par exemple, vous pourriez avertir l’utilisateur de la publication d’un article sur un sujet qui l’intéresse ou bien l’informer de la disponibilité d’une date de rendez-vous. Vous devez les effacer si le bot reçoit une activité _supprimer les données utilisateur_.
@@ -46,7 +46,7 @@ Bots built using Azure Table Storage can be designed to be stateless and scalabl
 
 ## Writing directly to storage
 
-You can also use the Bot Builder SDK to read and write data directly to storage, without using middleware or without using the bot context. This can be appropriate to data that your bot uses, that comes from a source outside your bot's conversation flow.
+You can also use the Bot Framework SDK to read and write data directly to storage, without using middleware or without using the bot context. This can be appropriate to data that your bot uses, that comes from a source outside your bot's conversation flow.
 
 For example, let's say your bot allows the user to ask for the weather report, and your bot retrieves the weather report for a specified date, by reading it from an external database. The content of the weather database isn't dependent on user information or the conversation context, so you could just read it directly from storage instead of using the state manager.  See [How to write directly to storage](bot-builder-howto-v4-storage.md) for an example.
 

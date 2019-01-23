@@ -1,6 +1,6 @@
 ---
 title: Ajouter des conseils de saisie aux messages | Microsoft Docs
-description: Découvrez comment ajouter des conseils de saisie aux messages à l’aide du Kit SDK Bot Builder pour .NET.
+description: Découvrez comment ajouter des conseils de saisie aux messages à l’aide du kit SDK Bot Framework pour .NET.
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: a88461e8a03ac941671cc78080e38efecc26aa30
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: b9b210ad215e091801456750237978babd029696
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998396"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224644"
 ---
 # <a name="add-input-hints-to-messages"></a>Ajouter des conseils de saisie aux messages
 
@@ -62,7 +62,7 @@ await connector.Conversations.ReplyToActivityAsync(reply);
 
 ## <a name="default-values-for-input-hint"></a>Valeurs par défaut pour le conseil de saisie
 
-Si vous ne définissez pas de conseil de saisie pour un message, le Kit SDK Bot Builder le fera automatiquement pour vous en suivant cette logique :
+Si vous ne définissez pas de conseil de saisie pour un message, le kit SDK Bot Framework le fait automatiquement en suivant cette logique :
 
 - Si votre bot envoie une invite, le conseil de saisie pour le message spécifie que votre bot **attend une entrée**.</li>
 - Si votre bot envoie un message simple, le conseil de saisie pour le message spécifie que votre bot **accepte une entrée**.</li>

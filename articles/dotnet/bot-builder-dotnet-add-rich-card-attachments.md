@@ -1,6 +1,6 @@
 ---
 title: Ajouter des pièces jointes de cartes enrichies aux messages | Microsoft Docs
-description: Découvrez comment ajouter des cartes enrichies aux messages à l’aide du kit de développement logiciel Bot Builder pour .NET.
+description: Découvrez comment ajouter des cartes enrichies aux messages à l’aide du kit SDK Bot Framework pour .NET.
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f5687cc7faf4201485ced9535f2e98b0b4c2225a
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 5a6fc63005797a1c645de7506a8f15df2dcd0557
+ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998176"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54317674"
 ---
 # <a name="add-rich-card-attachments-to-messages"></a>Ajouter des pièces jointes de cartes enrichies aux messages
 
@@ -112,7 +112,7 @@ Cet exemple de code illustre comment créer un message de réponse contenant une
 
 La carte adaptive peut inclure n’importe quelle combinaison de texte, données vocales, images, boutons et champs d’entrée. Les cartes adaptatives sont créées à l’aide du format JSON spécifié sur le site <a href="http://adaptivecards.io" target="_blank">Adaptive Cards</a> (Cartes adaptatives), ce qui vous donne un contrôle total sur le contenu et le format de la carte. 
 
-Pour créer une carte adaptative à l’aide de .NET, installez le package NuGet `Microsoft.AdaptiveCards`. Tirez ensuite profit des informations fournies par le site <a href="http://adaptivecards.io" target="_blank">Adaptive Cards</a> (Cartes adaptatives) pour comprendre le schéma de carte adaptative, explorer les éléments de carte adaptative et découvrir des exemples JSON qui permettent de créer des cartes présentant différents types de compositions et niveaux de complexité. En outre, vous pouvez utiliser le visualiseur interactif pour concevoir des charges utiles de carte adaptative et afficher un aperçu de la sortie des cartes.
+Pour créer une carte adaptative à l’aide de .NET, installez le package NuGet `AdaptiveCards`. Tirez ensuite profit des informations fournies par le site <a href="http://adaptivecards.io" target="_blank">Adaptive Cards</a> (Cartes adaptatives) pour comprendre le schéma de carte adaptative, explorer les éléments de carte adaptative et découvrir des exemples JSON qui permettent de créer des cartes présentant différents types de compositions et niveaux de complexité. En outre, vous pouvez utiliser le visualiseur interactif pour concevoir des charges utiles de carte adaptative et afficher un aperçu de la sortie des cartes.
 
 Cet exemple de code indique comment créer un message contenant une carte adaptative pour un rappel du Calendrier : 
 

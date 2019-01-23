@@ -1,6 +1,6 @@
 ---
 title: Intercepter des messages | Microsoft Docs
-description: Apprenez à créer des journaux ou d’autres enregistrements en interceptant et traitant des échanges d’informations à l’aide du Kit de développement logiciel (SDK) Bot Builder pour Node.js.
+description: Découvrez comment créer des journaux ou d’autres enregistrements en interceptant et traitant des échanges d’informations à l’aide du kit SDK Bot Framework pour Node.js.
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/02/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 31380961f117a2b4a3ffaae3c82d682a63001c0c
-ms.sourcegitcommit: 984705927561cc8d6a84f811ff24c8c71b71c76b
+ms.openlocfilehash: b262e936cd48bb73d7b5aa3fa4f7b6318ea7c2a0
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50965677"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225624"
 ---
 # <a name="intercept-messages"></a>Intercepter des messages
 
@@ -28,7 +28,7 @@ ms.locfileid: "50965677"
 
 ## <a name="example"></a>Exemples
 
-L’exemple de code suivant montre comment intercepter des messages échangés entre un utilisateur et robot en utilisant le concept d’**intergiciel (middleware)** dans le Kit de développement logiciel (SDK) Bot Builder pour Node.js. 
+L’exemple de code suivant montre comment intercepter des messages échangés entre un utilisateur et un bot en utilisant le concept d’**intergiciel (middleware)** dans le kit SDK Bot Framework pour Node.js. 
 
 Tout d’abord, configurez le gestionnaire pour les messages entrants (`botbuilder`) et le gestionnaire pour les messages sortants (`send`).
 
@@ -65,4 +65,4 @@ Dans cet exemple, le robot imprime simplement des informations sur chaque messag
 
 ## <a name="sample-code"></a>Exemple de code
 
-Pour obtenir un exemple complet montrant comment intercepter et journaliser les messages à l’aide du Kit de développement logiciel (SDK) Bot Builder pour Node.js, voir l’<a href="https://aka.ms/v3-js-capability-middlewareLogging" target="_blank">exemple d’intergiciel (middleware) et de journalisation</a> dans GitHub.
+Pour obtenir un exemple complet qui montre comment intercepter et journaliser les messages à l’aide du kit SDK Bot Framework pour Node.js, consultez l’<a href="https://aka.ms/v3-js-capability-middlewareLogging" target="_blank">exemple Middleware and Logging</a> dans GitHub.

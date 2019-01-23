@@ -1,6 +1,6 @@
 ---
 title: Envoyer des messages proactifs | Microsoft Docs
-description: Découvrez comment interrompre le flux de conversation actuel avec un message proactif en utilisant le Kit de développement logiciel (SDK) Bot Builder pour Node.js
+description: Découvrez comment interrompre le flux de conversation actif par un message proactif à l’aide du kit SDK Bot Framework pour Node.js.
 author: v-ducvo
 ms.author: v-ducvo
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 4ca33d59c967bc4eebc2f88fa4ddd67a9a6af6d7
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 8ca8043c5680a993fa27e2febb9740206691884c
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997152"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225574"
 ---
 # <a name="send-proactive-messages"></a>Envoyer des messages proactifs
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "49997152"
 
 ## <a name="send-an-ad-hoc-proactive-message"></a>Envoyer un message proactif ad hoc
 
-Les exemples de code suivants montrent comment envoyer un message proactif ad hoc à l’aide du Kit de développement logiciel (SDK) Bot Builder pour Node.js.
+Les exemples de code suivants montrent comment envoyer un message proactif ad hoc à l’aide du kit SDK Bot Framework pour Node.js.
 
 Pour pouvoir envoyer un message ad hoc à un utilisateur, le robot doit d’abord collecter et enregistrer des informations sur l’utilisateur à partir de la conversation en cours. La propriété **adresse** du message inclut toutes les informations dont le robot aura besoin pour envoyer un message ad hoc à l’utilisateur ultérieurement. 
 
@@ -71,7 +71,7 @@ function sendProactiveMessage(address) {
 
 ## <a name="send-a-dialog-based-proactive-message"></a>Envoyer un message proactif basé sur un dialogue
 
-Les exemples de code suivants montrent comment envoyer un message proactif basé sur un dialogue à l’aide du Kit de développement logiciel (SDK) Bot Builder pour Node.js. L’exemple fonctionnel complet se trouve dans le dossier [Microsoft/BotBuilder-Samples/Node/core-proactiveMessages/startNewDialog](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-proactiveMessages/startNewDialog).
+Les exemples de code suivants montrent comment envoyer un message proactif basé sur un dialogue à l’aide du kit SDK Bot Framework pour Node.js. L’exemple fonctionnel complet se trouve dans le dossier [Microsoft/BotBuilder-Samples/Node/core-proactiveMessages/startNewDialog](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-proactiveMessages/startNewDialog).
 
 Pour pouvoir envoyer un message basé sur un dialogue à un utilisateur, le robot doit d’abord collecter et enregistrer les informations de la conversation en cours. L’objet `session.message.address` inclut toutes les informations dont le robot aura besoin pour envoyer à l’utilisateur un message proactif basé sur un dialogue. 
 
@@ -122,7 +122,7 @@ bot.dialog('survey', function (session, args, next) {
 
 ## <a name="sample-code"></a>Exemple de code
 
-Pour obtenir un exemple complet montrant comment envoyer des messages proactifs à l’aide du Kit de développement logiciel (SDK) Bot Builder pour Node.js, voir les <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-proactiveMessages" target="_blank">exemples de messages proactifs</a> dans GitHub. Dans les exemples de messages proactifs, <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-proactiveMessages/simpleSendMessage" target="_blank">simpleSendMessage</a> montre comment envoyer un message proactif ad hoc, et <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-proactiveMessages/startNewDialog" target="_blank"> startNewDialog </a> comment envoyer un message proactif basé sur un dialogue.
+Pour obtenir un exemple complet montrant comment envoyer des messages proactifs à l’aide du kit SDK Bot Framework pour Node.js, consultez l’<a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-proactiveMessages" target="_blank">exemple Proactive Messages</a> dans GitHub. Dans les exemples de messages proactifs, <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-proactiveMessages/simpleSendMessage" target="_blank">simpleSendMessage</a> montre comment envoyer un message proactif ad hoc, et <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-proactiveMessages/startNewDialog" target="_blank"> startNewDialog </a> comment envoyer un message proactif basé sur un dialogue.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

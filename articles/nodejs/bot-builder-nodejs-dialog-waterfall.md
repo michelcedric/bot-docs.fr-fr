@@ -1,6 +1,6 @@
 ---
 title: Définir des étapes de conversation avec des cascades | Microsoft Docs
-description: Découvrez comment utiliser des cascades pour définir les étapes d’une conversation avec le Kit de développement logiciel (SDK) Bot Builder pour Node.js.
+description: Découvrez comment utiliser des cascades pour définir les étapes d’une conversation avec le kit SDK Bot Framework pour Node.js.
 author: v-ducvo
 ms.author: v-ducvo
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 2fa857e57d5be4751476874b8c193c7053a1bf39
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 526091d61f10ac0c241b994aa3ea99c1d2a70074
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000276"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225324"
 ---
 # <a name="define-conversation-steps-with-waterfalls"></a>Définir des étapes de conversation avec des cascades
 
@@ -45,7 +45,7 @@ bot.dialog('greetings', [
 ]);
 ```
 
-Cela est rendu possible grâce à l’utilisation d’invites. Le Kit de développement logiciel Bot Builder pour Node.js fournit plusieurs types différents d’[invites](bot-builder-nodejs-dialog-prompt.md) intégrées que vous pouvez utiliser pour demander à l’utilisateur différents types d’informations.
+Cela est rendu possible grâce à l’utilisation d’invites. Le kit SDK Bot Framework pour Node.js propose plusieurs types d’[invites](bot-builder-nodejs-dialog-prompt.md) intégrées que vous pouvez utiliser pour demander à l’utilisateur différents types d’informations.
 
 L’exemple de code suivant montre un dialogue utilisant des invites pour recueillir divers éléments d’information de l’utilisateur au fil d’une cascade en 4 étapes.
 
@@ -164,9 +164,9 @@ bot.dialog('ensureProfile', [
 
 Un dialogue créé en utilisant une cascade doit être terminé explicitement. Autrement, le robot répète la cascade indéfiniment. Vous pouvez terminer une cascade en utilisant l’une des méthodes suivantes :
 
-* `session.endDialog` : utilisez cette méthode pour terminer la cascade s’il n’y a aucune donnée à retourner au dialogue appelant.
+* `session.endDialog` : utilisez cette méthode pour terminer la cascade s’il n’y a aucune donnée à retourner au dialogue appelant.
 
-* `session.endDialogWithResult` : utilisez cette méthode pour terminer la cascade s’il y a des donnée à retourner au dialogue appelant. L’argument `response` retourné peut être un objet JSON ou tout type de données primitives JavaScript. Par exemple : 
+* `session.endDialogWithResult` : utilisez cette méthode pour terminer la cascade s’il y a des données à retourner au dialogue appelant. L’argument `response` retourné peut être un objet JSON ou tout type de données primitives JavaScript. Par exemple : 
   ```javascript
   session.endDialogWithResult({
     response: { name: session.dialogData.name, company: session.dialogData.company }

@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/17
-ms.openlocfilehash: 0fdd196716c0fffb36583c0df894481b032dd83e
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 2335ac34292e224f44a09820574f3bd9de00eda4
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999406"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224654"
 ---
 # <a name="troubleshooting-bot-framework-authentication"></a>Résoudre les problèmes d’authentification du Bot Framework
 
@@ -30,7 +30,7 @@ Si ce n’est déjà fait, [déployez votre bot sur Azure](~/bot-builder-howto-d
 > [!NOTE]
 > Pour trouver les paramètres **AppID** et **AppPassword** d’un bot déjà déployé, consultez la rubrique [MicrosoftAppID et MicrosoftAppPassword](bot-service-manage-overview.md#microsoftappid-and-microsoftapppassword).
 
-## <a name="step-1-disable-security-and-test-on-localhost"></a>Étape 1 : Désactiver la sécurité et tester le bot sur localhost
+## <a name="step-1-disable-security-and-test-on-localhost"></a>Étape 1 : Désactiver la sécurité et tester le bot sur localhost
 
 Cette étape consiste à vérifier que votre bot est accessible et fonctionnel sur localhost lorsque la sécurité est désactivée. 
 
@@ -43,7 +43,7 @@ Pour désactiver la sécurité pour votre bot, modifiez ses paramètres de confi
 
 ::: moniker range="azure-bot-service-3.0"
 
-Si vous utilisez le Kit de développement logiciel (SDK) Bot Builder pour .NET, modifiez ces paramètres dans votre fichier Web.config : 
+Si vous utilisez le kit SDK Bot Framework pour .NET, modifiez ces paramètres dans votre fichier Web.config : 
 
 ```xml
 <appSettings>
@@ -52,7 +52,7 @@ Si vous utilisez le Kit de développement logiciel (SDK) Bot Builder pour .NET, 
 </appSettings>
 ```
 
-Si vous utilisez le Kit de développement logiciel (SDK) Bot Builder pour Node.js, modifiez ces valeurs (ou mettez à jour les variables d’environnement correspondantes) :
+Si vous utilisez le kit SDK Bot Framework pour Node.js, modifiez ces valeurs (ou mettez à jour les variables d’environnement correspondantes) :
 
 ```javascript
 var connector = new builder.ChatConnector({
@@ -65,16 +65,18 @@ var connector = new builder.ChatConnector({
 
 ::: moniker range="azure-bot-service-4.0"
 
-Si vous utilisez le Kit de développement logiciel (SDK) Bot Builder pour .NET, modifiez ces paramètres dans votre fichier `appsettings.config` :
+Si vous utilisez le kit SDK Bot Framework pour .NET, modifiez ces paramètres dans votre fichier `.bot` :
 
-```xml
-<appSettings>
-  <add key="MicrosoftAppId" value="" />
-  <add key="MicrosoftAppPassword" value="" />
-</appSettings>
+```json
+"services": [
+  {
+    "appId": "<your app ID>",
+    "appPassword": "<your app password>",
+  }
+]
 ```
 
-Si vous utilisez le Kit de développement logiciel (SDK) Bot Builder pour Node.js, modifiez ces valeurs (ou mettez à jour les variables d’environnement correspondantes) :
+Si vous utilisez le kit SDK Bot Framework pour Node.js, modifiez ces valeurs (ou mettez à jour les variables d’environnement correspondantes) :
 
 ```javascript
 const adapter = new BotFrameworkAdapter({
@@ -121,6 +123,9 @@ Ces instructions expliquent comment utiliser [cURL](https://curl.haxx.se/downloa
 
 Pour vérifier que l’ID et le mot de passe d’application de votre bot sont valides, émettez la requête suivante à l’aide de **cURL** en remplaçant `APP_ID` et `APP_PASSWORD` par l’ID et le mot de passe d’application de votre bot.
 
+> [!TIP]
+> Il se peut que votre mot de passe contienne des caractères spéciaux qui rendent l’appel suivant non valide. Dans ce cas, essayez de convertir votre mot de passe en encodage d’URL.
+
 ```cmd
 curl -k -X POST https://login.microsoftonline.com/botframework.com/oauth2/v2.0/token -d "grant_type=client_credentials&client_id=APP_ID&client_secret=APP_PASSWORD&scope=https%3A%2F%2Fapi.botframework.com%2F.default"
 ```
@@ -141,9 +146,9 @@ Si vous recevez une erreur en réponse à la requête, examinez la réponse pour
 
 ### <a id="enable-security-localhost"></a> Activer la sécurité
 
-La sécurité de votre bot s’appuie sur les services Microsoft, même lorsque votre bot s’exécute uniquement sur localhost. Pour activer la sécurité pour votre bot, modifiez ses paramètres de configuration pour renseigner l’ID et le mot de passe d’application avec les valeurs que vous avez vérifiées à [l’étape 2](#step-2).
+La sécurité de votre bot s’appuie sur les services Microsoft, même lorsque votre bot s’exécute uniquement sur localhost. Pour activer la sécurité pour votre bot, modifiez ses paramètres de configuration pour renseigner l’ID et le mot de passe d’application avec les valeurs que vous avez vérifiées à [l’étape 2](#step-2).  Par ailleurs, vérifiez que vos packages sont à jour, en particulier `System.IdentityModel.Tokens.Jwt` et `Microsoft.IdentityModel.Tokens`.
 
-Si vous utilisez le Kit de développement logiciel (SDK) Bot Builder pour .NET, renseignez ces paramètres dans votre fichier `.bot` ou `appsettings.config` :
+Si vous utilisez le kit SDK Bot Framework pour .NET, renseignez ces paramètres dans votre fichier `appsettings.config` ou les valeurs correspondantes dans votre fichier `.bot` :
 
 ```xml
 <appSettings>
@@ -152,7 +157,7 @@ Si vous utilisez le Kit de développement logiciel (SDK) Bot Builder pour .NET, 
 </appSettings>
 ```
 
-Si vous utilisez le Kit de développement logiciel (SDK) Bot Builder pour Node.js, renseignez ces valeurs (ou mettez à jour les variables d’environnement correspondantes) :
+Si vous utilisez le kit SDK Bot Framework pour Node.js, renseignez ces paramètres (ou mettez à jour les variables d’environnement correspondantes) :
 
 ```javascript
 var connector = new builder.ChatConnector({
@@ -162,7 +167,7 @@ var connector = new builder.ChatConnector({
 ```
 
 > [!NOTE]
-> Pour trouver les paramètres **AppID** et **AppPassword** de votre bot, consultez la section [MicrosoftAppID and MicrosoftAppPassword](bot-service-manage-overview.md#microsoftappid-and-microsoftapppassword) (MicrosoftAppID et MicrosoftAppPassword).
+> Pour trouver les paramètres **AppID** et **AppPassword** de votre bot, consultez la rubrique [MicrosoftAppID and MicrosoftAppPassword](bot-service-manage-overview.md#microsoftappid-and-microsoftapppassword) (MicrosoftAppID et MicrosoftAppPassword).
 
 ### <a name="test-your-bot-on-localhost"></a>Tester votre bot sur localhost 
 

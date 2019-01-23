@@ -1,6 +1,6 @@
 ---
-title: Conversations dans le SDK Bot Builder | Microsoft Docs
-description: Décrit ce qu’est une conversation dans le SDK Bot Builder.
+title: Conversations dans le kit SDK Bot Framework | Microsoft Docs
+description: Découvrez ce qu’est une conversation dans le kit SDK Bot Framework.
 keywords: flux de la conversation, reconnaître une intention, tour unique, plusieurs tours, conversation de bot
 author: jonathanfingold
 ms.author: jonathanfingold
@@ -10,19 +10,19 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 09/01/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 19f0b67454a8c0a4bf171579f8e481e630db83ac
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: b94150e168942370a38d39742157e57d0118f0eb
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998916"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225078"
 ---
 # <a name="conversation-flow"></a>Flux de la conversation
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 Quand vous concevez le flux de conversation d’un bot, vous devez déterminer la façon dont celui-ci doit répondre à ce que lui dit l’utilisateur. Tout d’abord, un bot reconnaît la tâche ou le sujet de la conversation en fonction d’un message de l’utilisateur. Pour déterminer la tâche ou le sujet (connu sous le nom *d’intention*) associé au message d’un utilisateur, le bot peut rechercher des mots ou des modèles dans le texte du message ou il peut tirer parti de services tels que [Language Understanding](bot-builder-concept-luis.md) et [QnA Maker](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/overview/overview).
 
-Une fois que le bot a reconnu l’intention de l’utilisateur, suivant le scénario, il peut répondre à la demande de l’utilisateur avec une réponse unique, effectuant la conversation en un seul tour, ou nécessiter une série de tours. Pour les flux de conversation à plusieurs tours, le SDK Bot Builder fournit la [gestion d’état](./bot-builder-howto-v4-state.md) pour le suivi d’une conversation, des [invites](bot-builder-prompts.md) pour les demandes d’informations et des [dialogues](bot-builder-dialog-manage-conversation-flow.md) pour l’encapsulation des flux de conversation.
+Une fois que le bot a reconnu l’intention de l’utilisateur, suivant le scénario, il peut répondre à la demande de l’utilisateur avec une réponse unique, effectuant la conversation en un seul tour, ou nécessiter une série de tours. Pour les flux de conversation à plusieurs tours, le kit SDK Bot Framework propose la [gestion d’état](./bot-builder-howto-v4-state.md) pour assurer le suivi d’une conversation, des [invites](bot-builder-prompts.md) pour demander des informations et des [dialogues](bot-builder-dialog-manage-conversation-flow.md) pour encapsuler des flux de conversation.
 
 Dans un bot complexe avec plusieurs sous-systèmes, il se peut que vous utilisiez plusieurs services pour reconnaître une intention, à raison d’un par sous-composant du bot. [L’outil Dispatch](bot-builder-tutorial-dispatch.md) obtient les résultats de plusieurs services au même endroit quand vous combinez des sous-systèmes conversationnels dans un même bot.
 
@@ -73,7 +73,7 @@ Vous pouvez concevoir votre bot pour gérer plusieurs types de tâche. Par exemp
 
 ### <a name="recognize-intent"></a>Reconnaître une intention
 
-Le Kit de développement logiciel (SDK) Bot Builder fournit des _modules de reconnaissance_ qui peuvent traiter un message pour déterminer l’intention, afin que votre bot puisse démarrer le flux conversationnel approprié. Appelez la méthode asynchrone _recognize_ du module de reconnaissance pour déterminer l’intention de l’utilisateur à partir du contenu de son message. Vous pouvez ensuite appeler la méthode _get top scoring intent_ sur le résultat pour obtenir la prédiction principale du module de reconnaissance.
+Le kit SDK Bot Framework propose des _modules de reconnaissance_ qui peuvent traiter un message pour déterminer l’intention, ce qui permet à votre bot d’initier le flux conversationnel approprié. Appelez la méthode asynchrone _recognize_ du module de reconnaissance pour déterminer l’intention de l’utilisateur à partir du contenu de son message. Vous pouvez ensuite appeler la méthode _get top scoring intent_ sur le résultat pour obtenir la prédiction principale du module de reconnaissance.
 
 Un module de reconnaissance peut utiliser des expressions régulières, la compréhension langagière ou toute autre logique que vous développez. Voici quelques exemples de modules de reconnaissance possibles :
 
@@ -111,7 +111,7 @@ Si vous stockez des informations sur la conversation, vous pouvez les effacer qu
 <!--  Types of conversations -->
 
 Votre bot peut prendre en charge les interactions avec plusieurs tours où il invite les utilisateurs à fournir différentes informations. Il peut se concentrer sur une tâche très spécifique ou prendre en charge plusieurs types de tâches.
-Le Kit de développement logiciel (SDK) Bot Builder a une prise en charge intégrée pour la compréhension langagière (LUIS) et QnA Maker pour l’ajout de fonctionnalités de « questions et réponses » en langage naturel à votre bot.
+Le kit SDK Bot Framework intègre une prise en charge de la compréhension du langage (LUIS) et QnA Maker permet d’ajouter des fonctionnalités de « questions et réponses » en langage naturel à votre bot.
 
 ## <a name="conversations-channels-and-users"></a>Conversations, canaux et utilisateurs
 

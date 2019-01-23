@@ -1,6 +1,6 @@
 ---
 title: Gestion d’un état | Microsoft Docs
-description: Décrit le fonctionnement de l’état dans le kit SDK Bot Builder.
+description: Décrit le fonctionnement de l’état dans le kit SDK Bot Framework.
 keywords: état, état de bot, état de conversation, état d’utilisateur
 author: ivorb
 ms.author: v-ivorb
@@ -10,18 +10,18 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/15/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: bf7d6a574cc4e63d22e3f34462a1ec00dbdac75e
-ms.sourcegitcommit: 91156d0866316eda8d68454a0c4cd74be5060144
+ms.openlocfilehash: dfbc9f4ed0f08c7349d758147460b8268c49e372
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53010537"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225864"
 ---
 # <a name="managing-state"></a>Gestion de l’état
 
 Un état au sein d’un bot suit les mêmes paradigmes que les applications web modernes et le Kit de développement logiciel de Bot Framework offre certaines abstractions pour faciliter la gestion d’un état.
 
-Comme avec les applications web, un bot est fondamentalement sans état ; une autre instance de votre bot peut gérer n’importe quel tour de la conversation. Pour certains bots, cette simplicité est préférée : le bot peut fonctionner sans informations supplémentaires ou bien la présence des informations requises dans le message entrant est garantie. Pour d’autres, l’état (tel que là où nous en sommes dans la conversation ou bien des données relatives à l’utilisateur reçues précédemment) est nécessaire pour que le bot ait une conversation utile.
+Comme avec les applications web, un bot est fondamentalement sans état ; une autre instance de votre bot peut gérer n’importe quel tour de la conversation. Pour certains bots, cette simplicité est préférée : le robot peut fonctionner sans informations supplémentaires ou bien la présence des informations requises dans le message entrant est garantie. Pour d’autres, l’état (tel que là où nous en sommes dans la conversation ou bien des données relatives à l’utilisateur reçues précédemment) est nécessaire pour que le bot ait une conversation utile.
 
 **Pourquoi ai-je besoin d’un état ?**
 

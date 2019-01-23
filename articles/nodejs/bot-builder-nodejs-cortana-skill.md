@@ -1,6 +1,6 @@
 ---
-title: Créer un bot à fonctionnalité vocale avec des compétences Cortana | Microsoft Docs
-description: Découvrez comment créer un bot à fonctionnalité vocale avec des compétences Cortana et le Kit SDK Bot Builder pour Node.js.
+title: Créer un bot à reconnaissance vocale avec des compétences Cortana | Microsoft Docs
+description: Découvrez comment créer un bot à reconnaissance vocale avec des compétences Cortana et le kit SDK Bot Framework pour Node.js.
 author: DeniseMak
 manager: kamrani
 ms.topic: article
@@ -8,12 +8,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: e728a3999c484d19a78f03bd8eb7b8bd8833c39f
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: e00128ca82ec8b97502d8f2fbf42be10cc91ade6
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998036"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225297"
 ---
 # <a name="build-a-speech-enabled-bot-with-cortana-skills"></a>Créer un bot à reconnaissance vocale avec des compétences Cortana
 
@@ -23,7 +23,7 @@ ms.locfileid: "49998036"
 > - [.NET](../dotnet/bot-builder-dotnet-cortana-skill.md)
 > - [Node.JS](../nodejs/bot-builder-nodejs-cortana-skill.md)
 
-Le Kit SDK Bot Builder pour Node.js vous permet de créer un bot à fonctionnalité vocale en le connectant au canal Cortana en tant que compétence Cortana. Les compétences Cortana vous permettent de fournir des fonctionnalités via Cortana en réponse à l’entrée vocale d’un utilisateur.
+Le kit SDK Bot Framework pour Node.js vous permet de créer un bot à reconnaissance vocale en le connectant au canal Cortana en tant que compétence Cortana. Les compétences Cortana vous permettent de fournir des fonctionnalités via Cortana en réponse à l’entrée vocale d’un utilisateur.
 
 > [!TIP]
 > Pour plus d’informations sur la définition d’une compétence et ses possibilités, consultez le [Kit de compétences Cortana][CortanaGetStarted].
@@ -35,7 +35,7 @@ La création d’une compétence Cortana avec Bot Framework nécessite très peu
 
 ## <a name="adding-speech-to-your-bot"></a>Ajout de la reconnaissance vocale à votre bot
 
-Les messages parlés à partir de votre bot sont représentés en SSML (Speech Synthesis Markup Language). Le Kit SDK Bot Builder vous permet d’inclure le SSML dans les réponses de votre bot, afin de contrôler ce qu’il dit, en plus de ce qu’il affiche.
+Les messages parlés à partir de votre bot sont représentés en SSML (Speech Synthesis Markup Language). Le kit SDK Bot Framework vous permet d’inclure le SSML dans les réponses de votre bot, afin de contrôler ce qu’il dit, en plus de ce qu’il affiche.
 
 ### <a name="sessionsay"></a>session.say
 

@@ -1,6 +1,6 @@
 ---
 title: Création d’une compétence Cortana à l’aide de Node.js | Microsoft Docs
-description: Découvrez les concepts de base liés à la création d’une compétence Cortana dans le Kit de développement logiciel (SDK) Bot Builder pour Node.js.
+description: Découvrez les concepts de base liés à la création d’une compétence Cortana dans le kit SDK Bot Framework pour Node.js.
 keywords: Bot Framework, compétence Cortana, voix, Node.js, Bot Builder, Kit de développement logiciel (SDK), concepts clés, concepts fodamentaux
 author: DeniseMak
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 99254c5f2de8b524212d8f6a268dbc37c128ab5e
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 909294243abe00ac95e8f5d89d6babc2edc4f994
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49996472"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225681"
 ---
 # <a name="key-concepts-for-building-a-bot-for-cortana-skills-using-nodejs"></a>Concepts clés pour la création d’un robot pour Compétence Cortana à l’aide de Node.js
  
@@ -23,7 +23,7 @@ ms.locfileid: "49996472"
 > [!NOTE]
 > Cet article est un contenu préliminaire qui sera mis à jour.
 
-Cet article présente les concepts clés pour la création d’une compétence Cortana dans le Kit de développement logiciel (SDK) Bot Builder pour Node.js. 
+Cet article présente les concepts clés de création d’une compétence Cortana dans le kit SDK Bot Framework pour Node.js. 
 
 ## <a name="what-is-a-cortana-skill"></a>Qu’est qu’une compétence Cortana ?
 Une compétence Cortana est un robot que vous pouvez appeler à l’aide d’un client Cortana, tel que celui intégré à Windows 10. L’utilisateur lance le robot en disant des mots clés ou des expressions associées au robot. Vous utilisez le portail Bot Framework pour configurer les mots clés utilisés pour lancer votre robot. 
@@ -62,21 +62,21 @@ Agent: **Okay**, what's next?
 Degrés de fondement, du plus faible au plus fort :
 1. Attention continue
 2. Prochaine contribution pertinente
-3. Accusé de réception : réponse minimale : « Oui », « OK », « d’accord », « super »
-4. Démontrer : marquer la compréhension en la reformulant ou en la complétant.
-5. Afficher : répéter en totalité ou en partie.
+3. Accusé de réception : réponse minimale : « Oui », « OK », « d’accord », « super »
+4. Démonstration : marquer la compréhension par une reformulation, une finalisation.
+5. Affichage : répéter en tout ou partie.
 
 #### <a name="acknowledgement-and-next-relevant-contribution"></a>Accusé de réception et contribution pertinents suivante
 Utilisateur : ... Je dois voyager en mai.
-Agent : **Et** quel jour en mai voulez-vous voyager ?
-Utilisateur : Je dois être là-bas du 12 au 15.
-Agent : **Et** quelle est votre destination ?
+Agent : **Et**, quel jour de mai vouliez-vous voyager ?
+Utilisateur : OK, je dois être là-bas du 12 au 15 ?
+Agent : **Et**, quelle est votre destination ?
 
 #### <a name="grounding-by-demonstration"></a>Fondement par démonstration
 Utilisateur : ... Je dois voyager en mai.
-Agent : Et **quel jour** en mai voulez-vous voyager ?
-Utilisateur : Je dois être là-bas du 12 au 15.
-Agent : **Et** quelle est votre destination ?
+Agent : Et, **quel jour** de mai vouliez-vous voyager ?
+Utilisateur : OK, je dois être là-bas du 12 au 15 ?
+Agent : **Et**, quelle est votre destination ?
 
 
 ### <a name="closure"></a>Fermeture

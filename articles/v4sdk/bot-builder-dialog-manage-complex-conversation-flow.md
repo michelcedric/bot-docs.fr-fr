@@ -1,6 +1,6 @@
 ---
 title: Créer des flux de conversation avancés à l’aide de branches et de boucles | Microsoft Docs
-description: Découvrez comment gérer un flux de conversation complexe avec des dialogues dans le SDK Bot Builder.
+description: Découvrez comment gérer un flux de conversation complexe avec des dialogues dans le kit SDK Bot Framework.
 keywords: flux de conversation complexe, répétition, boucle, menu, dialogues, invites, cascades, jeu de dialogues
 author: JonathanFingold
 ms.author: v-jofing
@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/28/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: da891fad019fc1725242404905565bb1072f8540
-ms.sourcegitcommit: 4db09039effc5259feba163128f4e9a3ccdd3d0d
+ms.openlocfilehash: 27bcd53e9f3d582a1206c5ed74cc844acab795b4
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52585890"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225884"
 ---
 # <a name="create-advanced-conversation-flow-using-branches-and-loops"></a>Créer des flux de conversation avancés à l’aide de branches et de boucles
 

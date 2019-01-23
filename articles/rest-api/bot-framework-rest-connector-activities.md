@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: b246e9e07243e4064f92e72ee3909541f642714e
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: db09888c5f782b065ff6bd108ce93379cd42527a
+ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999926"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54317670"
 ---
 # <a name="activities-overview"></a>Vue d’ensemble des activités
 
-Le service Bot Connector échange des informations entre robot et canal (utilisateur) en transmettant un objet [Activité][Activity]. Le type d’activité le plus courant est **message**, mais il existe d’autres types d’activités qui peuvent être utilisés pour communiquer différents types d’informations à un bot ou à un canal. 
+Le service Bot Connector échange des informations entre bot et canal (utilisateur) en transmettant un objet [Activity][Activity]. Le type d’activité le plus courant est **message**, mais il existe d’autres types d’activités qui peuvent être utilisés pour communiquer différents types d’informations à un bot ou à un canal. 
 
 ## <a name="activity-types-in-the-bot-connector-service"></a>Types d’activités dans le service Bot Connector
 

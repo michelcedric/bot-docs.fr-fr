@@ -6,14 +6,15 @@ ms.author: JonathanFingold
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
+ROBOTS: NOINDEX
 ms.date: 10/04/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 9b9a3594e3a1f6a93ce3d9b3314880c78b88a9c5
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 33c6f22696038ed5e9d2ae09ad2ec99d401f6a60
+ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998906"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54317709"
 ---
 [!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
 
@@ -32,7 +33,7 @@ Cette API offre les fonctionnalités suivantes :
 - Des améliorations des canaux pour prendre en charge de nouvelles fonctionnalités d’authentification, telles que les nouvelles bibliothèques WebChat et DirectLineJS visant à éliminer la nécessité de la vérification du code magique à 6 chiffres.
 - Des améliorations du portail Azure pour ajouter, supprimer et configurer les paramètres de connexion à divers fournisseurs d’identité OAuth.
 - La prise en charge d’une variété de fournisseurs d’identité prêts à l’emploi, dont Azure AD (points de terminaison v1 et v2) et GitHub.
-- Des mises à jour des SDK Bot Builder C# et Node.js permettant de récupérer des jetons, de créer des cartes OAuthCards et de gérer les événements TokenResponse.
+- Des mises à jour des kits SDK Bot Framework C# et Node.js permettant de récupérer des jetons, de créer des cartes OAuthCards et de gérer les événements TokenResponse.
 - Des exemples montrant comment créer un bot qui s’authentifie auprès d’Azure AD (points de terminaison v1 et v2) et de GitHub.
 
 Vous pouvez vous appuyer sur les étapes décrites dans cet article pour ajouter des fonctionnalités à un bot existant. Les exemples de bots suivants illustrent les nouvelles fonctionnalités d’authentification.
@@ -317,7 +318,7 @@ private async Task SendOAuthCardAsync(IDialogContext context, Activity activity)
 
 ### <a name="wait-for-a-tokenresponseevent"></a>Attendre un TokenResponseEvent
 
-Dans ce code, la classe de dialogue du bot attend un `TokenResponseEvent` (nous abordons plus bas son acheminement vers la pile de dialogue). La méthode `WaitForToken` détermine d’abord si cet événement a été envoyé. S’il a été envoyé, il peut être utilisé par le bot. Sinon, la méthode `WaitForToken` prend le texte qui a été envoyé au bot et le transmet à `GetUserTokenAsync`. En effet, certains clients (tels qu’un webchat) n’ont pas besoin de code de vérification du code magique, ce qui leur permet d’envoyer directement le jeton dans le `TokenResponseEvent`. D’autres clients nécessitent toujours le code magique (tels que Facebook ou Slack). Azure Bot Service présente à ces clients un code magique à six chiffres et demande à l’utilisateur de le taper dans la fenêtre de conversation. Bien que cela ne soit pas l’idéal, il s’agit du comportement « de repli » ; ainsi, si `WaitForToke`n reçoit un code, le bot peut envoyer ce code à Azure Bot Service et obtenir un jeton. Si cet appel échoue également, vous pouvez décider de signaler une erreur ou faire autre chose. Cependant, dans la plupart des cas, le bot dispose désormais d’un jeton d’utilisateur.
+Dans ce code, la classe de dialogue du bot attend un `TokenResponseEvent` (nous abordons plus bas son acheminement vers la pile de dialogue). La méthode `WaitForToken` détermine d’abord si cet événement a été envoyé. S’il a été envoyé, il peut être utilisé par le bot. Sinon, la méthode `WaitForToken` prend le texte qui a été envoyé au bot et le transmet à `GetUserTokenAsync`. En effet, certains clients (tels qu’un webchat) n’ont pas besoin de code de vérification du code magique, ce qui leur permet d’envoyer directement le jeton dans le `TokenResponseEvent`. D’autres clients nécessitent toujours le code magique (tels que Facebook ou Slack). Azure Bot Service présente à ces clients un code magique à six chiffres et demande à l’utilisateur de le taper dans la fenêtre de conversation. Bien que cela ne soit pas l’idéal, il s’agit du comportement « de repli » ; ainsi, si `WaitForToken` reçoit un code, le bot peut envoyer ce code à Azure Bot Service et obtenir un jeton. Si cet appel échoue également, vous pouvez décider de signaler une erreur ou faire autre chose. Cependant, dans la plupart des cas, le bot dispose désormais d’un jeton d’utilisateur.
 
 Si vous consultez le fichier **MessageController.cs**, vous pouvez voir que les activités `Event` de ce type sont également acheminées vers la pile de dialogue.
 
@@ -363,4 +364,4 @@ else if(message.Type == ActivityTypes.Event)
 }
 ```
 ## <a name="additional-resources"></a>Ressources supplémentaires
-[SDK Bot Builder](https://github.com/microsoft/botbuilder)
+[Kit SDK Bot Framework](https://github.com/microsoft/botbuilder)

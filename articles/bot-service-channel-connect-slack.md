@@ -2,19 +2,19 @@
 title: Connecter un bot à Slack | Microsoft Docs
 description: Découvrez comment configurer la connexion d’un bot à Slack.
 keywords: connecter un bot, canal de bot, bot Slack, application de messagerie Slack
-author: RobStand
-ms.author: kamrani
+author: JonathanFingold
+ms.author: v-jofing
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/13/2017
-ms.openlocfilehash: f69cfa4c67a1f628d835f0d96903065b8b033d32
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.date: 01/09/2019
+ms.openlocfilehash: 3573103e1d1c55e3ad648ad68d84674a98b397f7
+ms.sourcegitcommit: 8161753641368567f239e24a35ad61768acccd8e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000126"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54202558"
 ---
 # <a name="connect-a-bot-to-slack"></a>Connecter un bot à Slack
 
@@ -68,9 +68,11 @@ Suivez ces étapes pour vous abonner à six événements de bot spécifiques. Lo
 
 1. Sélectionnez l’onglet **Event Subscriptions** (Abonnements à des événements).
 2. Définissez l’option **Enable Events** (Activer des événements) sur **On** (Activé).
-3. Sous **Request URL** (URL de demande), entrez cette URL, mais remplacez `{YourBotHandle}` par le descripteur de votre bot. Le descripteur de bot utilisé dans ce didacticiel est testChannels.
-        `https://slack.botframework.com/api/Events/{YourBotHandle}`
-4. Dans la section **Subscribe to Workspace Events** (S’abonner à des événements Workplace), cliquez sur **Add Workspace Event** (Ajouter un événement Workplace).
+3. Dans **Request URL** (URL de la demande), entrez `https://slack.botframework.com/api/Events/{YourBotHandle}`, où `{YourBotHandle}` est le descripteur de votre bot, sans les accolades. Le descripteur du bot utilisé dans cet exemple est **ContosoBot**.
+
+   ![S’abonner à des événements : haut](~/media/channels/slack-SubscribeEvents-a.png)
+
+4. Sous **Subscribe to Bot Events** (S’abonner à des événements de bot), cliquez sur **Add Bot User Event** (Ajouter un événement d’utilisateur de bot).
 5. Dans la liste des événements, sélectionnez ces six types d’événements :
     * `member_joined_channel`
     * `member_left_channel`
@@ -79,8 +81,11 @@ Suivez ces étapes pour vous abonner à six événements de bot spécifiques. Lo
     * `message.im`
     * `message.mpim`
 
-![S’abonner à des événements](~/media/channels/slack-SubscribeEvents.png)
+   ![S’abonner à des événements : milieu](~/media/channels/slack-SubscribeEvents-b.png)
+
 6. Cliquez sur **Enregistrer les modifications**.
+
+   ![S’abonner à des événements : bas](~/media/channels/slack-SubscribeEvents-c.png)
 
 ## <a name="add-and-configure-interactive-messages-optional"></a>Ajouter et configurer des messages interactifs (facultatif)
 

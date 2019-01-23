@@ -1,6 +1,6 @@
 ---
 title: Personnaliser l’expérience utilisateur avec le langage du modèle | Microsoft Docs
-description: Découvrez comment personnaliser les invites FormFlow et remplacer des modèles FormFlow à l’aide du langage du modèle avec le Kit SDK Bot Builder pour .NET.
+description: Découvrez comment personnaliser les invites FormFlow et remplacer des modèles FormFlow en utilisant le langage du modèle avec le kit SDK Bot Framework pour .NET.
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: bc0a2819f3adea63b53e464808f3bbaf5b93814a
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: f3d46431191638cc41026f6c020a5f04de21ff0d
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998046"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225634"
 ---
 # <a name="customize-user-experience-with-pattern-language"></a>Personnaliser l’expérience utilisateur avec le langage du modèle
 
@@ -144,7 +144,7 @@ What kind of sandwich would you like?
 - [Personnaliser un formulaire à l’aide de FormBuilder](bot-builder-dotnet-formflow-formbuilder.md)
 - [Localiser le contenu d’un formulaire](bot-builder-dotnet-formflow-localize.md)
 - [Définir un formulaire à l’aide d’un schéma JSON](bot-builder-dotnet-formflow-json-schema.md)
-- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Référence sur le Kit SDK Bot Builder pour .NET</a>
+- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Informations de référence sur le kit SDK Bot Framework pour .NET</a>
 
 [promptAttribute]: /dotnet/api/microsoft.bot.builder.formflow.promptattribute
 

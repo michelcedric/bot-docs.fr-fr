@@ -1,6 +1,6 @@
 ---
 title: Créer des expériences pilotées par les données avec Recherche Azure | Microsoft Docs
-description: Découvrez comment créer des expériences pilotées par les données avec Recherche Azure, et permettre aux utilisateurs de faire naviguer de grandes quantités de contenu dans un bot au moyen du kit SDK Bot Builder pour .NET et de Recherche Azure.
+description: Découvrez comment créer des expériences pilotées par les données avec Recherche Azure et permettre aux utilisateurs de parcourir de grandes quantités de contenu dans un bot à l’aide du kit SDK Bot Framework pour .NET et de Recherche Azure.
 author: matthewshim-ms
 ms.author: v-shimma
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 8205f40053b2b3d0e62d9b9ce622f59432e059a4
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: ef2cb33e8d2ab7d8db291e3c6e051630d6af0394
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999006"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224544"
 ---
 # <a name="create-data-driven-experiences-with-azure-search"></a>Créer des expériences pilotées par les données avec Recherche Azure 
 
@@ -173,11 +173,11 @@ Les résultats de la recherche sont affichés pour l’utilisateur, et vous vene
 
 ## <a name="samples"></a>Exemples
 
-Pour voir deux exemples complets qui détaillent la prise en charge de Recherche Azure par des bots à l’aide du kit SDK Bot Builder pour .NET, consultez l’[exemple de bot Real Estate](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/demo-Search/RealEstateBot) (Immobilier) ou l’[exemple de bot Job Listing](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/demo-Search/JobListingBot) (Liste des tâches) dans GitHub. 
+Pour obtenir deux exemples complets qui montrent comment prendre en charge Recherche Azure avec des bots à l’aide du kit SDK Bot Framework pour .NET, consultez l’[exemple de bot Real Estate](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/demo-Search/RealEstateBot) ou l’[exemple de bot Job Listing](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/demo-Search/JobListingBot) dans GitHub. 
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 * [Recherche Azure][search]
-* [Vue d’ensemble des boîtes de dialogue](bot-builder-dotnet-dialogs.md)
+* [Vue d’ensemble des dialogues](bot-builder-dotnet-dialogs.md)
 * [Exemples de bot Recherche Azure](https://github.com/Microsoft/botBuilder-Samples/tree/master/CSharp/demo-Search)
 
 [search]: /azure/search/search-what-is-azure-search

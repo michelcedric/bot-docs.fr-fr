@@ -1,6 +1,6 @@
 ---
 title: Enregistrer les données d’utilisateur et de conversation | Microsoft Docs
-description: Découvrez comment enregistrer et récupérer des données d’état avec le SDK Bot Builder.
+description: Découvrez comment enregistrer et récupérer des données d’état avec le kit SDK Bot Framework.
 keywords: état de conversation, état d’utilisateur, conversation, enregistrement de l’état, gestion de l’état d’un bot
 author: ivorb
 ms.author: v-ivorb
@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/26/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 8c3aad54a9e80e8a046a6e31a5109a1de8c61a8b
-ms.sourcegitcommit: 91156d0866316eda8d68454a0c4cd74be5060144
+ms.openlocfilehash: 8c3696d0642e1b1ce9c3d3e23118a7bd9ab0023b
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53010504"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224584"
 ---
 # <a name="save-user-and-conversation-data"></a>Enregistrer les données d’utilisateur et de conversation
 

@@ -1,6 +1,6 @@
 ---
 title: Ajouter des actions suggérées aux messages | Microsoft Docs
-description: Découvrez comment envoyer des actions suggérées au sein des messages à l’aide du Kit de développement logiciel (SDK) Bot Builder pour Node.js.
+description: Découvrez comment envoyer des actions suggérées dans des messages à l’aide du kit SDK Bot Framework pour Note.js.
 author: v-ducvo
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 06/06/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 1be5423de3859b32416b5acf9ba7b9d8e92ecb14
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 975496786e66a4d9b1de5c6ead6d8257687f23b7
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997246"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224524"
 ---
 # <a name="add-suggested-actions-to-messages"></a>Ajouter des actions suggérées aux messages
 

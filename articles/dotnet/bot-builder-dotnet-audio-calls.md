@@ -1,6 +1,6 @@
 ---
 title: Passer des appels audio avec Skype | Microsoft Docs
-description: Découvrez comment passer des appels audio avec Skype en utilisant le Kit de développement logiciel Bot Builder pour .NET.
+description: Découvrez comment passer des appels audio avec Skype en utilisant le kit SDK Bot Framework pour .NET.
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 0d0489c23cd24a7323ba0160d5e8e5e914be3011
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 72b2c42acb4743c67c63f158fa37c2bdd0e09ab9
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998848"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224415"
 ---
 # <a name="conduct-audio-calls-with-skype"></a>Passer des appels audio avec Skype
 
@@ -22,7 +22,7 @@ ms.locfileid: "49998848"
 
 [!INCLUDE [Introduction to conducting audio calls](../includes/snippet-audio-call-intro.md)]
 
-L’architecture pour un bot qui prend en charge les appels audio est très similaire à celle d’un bot classique. Les exemples de code suivants montrent comment activer la prise en charge des appels audio via Skype avec le Kit de développement logiciel Bot Builder pour .NET. 
+L’architecture pour un bot qui prend en charge les appels audio est très similaire à celle d’un bot classique. Les exemples de code suivants montrent comment activer la prise en charge des appels audio via Skype avec le kit SDK Bot Framework pour .NET. 
 
 ## <a name="enable-support-for-audio-calls"></a>Activer la prise en charge des appels audio
 
@@ -169,9 +169,9 @@ private async Task OnRecordCompleted(RecordOutcomeEvent recordOutcomeEvent)
 
 ## <a name="sample-code"></a>Exemple de code
 
-Pour obtenir un exemple complet qui montre comment prendre en charge les appels audio avec Skype en utilisant le Kit de développement logiciel Bot Builder pour .NET, consultez la page <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/skype-CallingBot" target="_blank">Skype Calling Bot sample</a> (exemple de Bot Skype Calling) dans GitHub.
+Pour un exemple complet qui montre comment prendre en charge les appels audio avec Skype à l’aide du kit SDK Bot Framework pour .NET, consultez l’<a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/skype-CallingBot" target="_blank">exemple Skype Calling Bot</a> dans GitHub.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Documentation de référence concernant le Kit de développement logiciel (SDK) Bot Builder pour .NET</a>
+- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Informations de référence sur le kit SDK Bot Framework pour .NET</a>
 - <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/skype-CallingBot" target="_blank">Skype Calling Bot sample (GitHub)</a> (Exemple de Bot Skype Calling)

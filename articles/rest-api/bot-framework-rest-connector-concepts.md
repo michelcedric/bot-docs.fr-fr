@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 20ae641a23399f5ee10aed9b31c4521f355903cf
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: a3d6bd957b835a0b8d86e47595ce28506c32d636
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998950"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224554"
 ---
 # <a name="key-concepts"></a>Concepts clés
 
@@ -44,10 +44,10 @@ Les services Bot Connector et Bot State permettent l’authentification à l’a
 
 Le Bot Framework fournit des bibliothèques clientes utilisables pour générer des robots en C# ou Node.js. 
 
-- Pour générer un robot à l’aide de C#, utilisez le [Kit de développement logiciel (SDK) Bot Builder pour C#](../dotnet/bot-builder-dotnet-overview.md). 
-- Pour générer un robot à l’aide de Node.js, utilisez le [Kit de développement logiciel (SDK) Bot Builder pour Node.js](../nodejs/index.md). 
+- Pour créer un bot en C#, utilisez le kit [SDK Bot Framework pour C#](../dotnet/bot-builder-dotnet-overview.md). 
+- Pour créer un bot en utilisant Node.js, utilisez le kit [SDK Bot Framework pour Node.js](../nodejs/index.md). 
 
-En plus de la modélisation des services Bot Connector et Bot State, chaque Kit de développement logiciel (SDK) Bot Builder fournit un système puissant pour générer des dialogues qui encapsulent une logique conversationnelle, des invites intégrées pour des choses aussi simples que Oui ou Non, des chaînes, des nombres, des énumérations, la prise en charge intégrée de puissantes infrastructures d’intelligence artificielle telles que <a href="https://www.luis.ai/" target="_blank"> LUIS </a>, et bien plus. 
+En plus de la modélisation des services Bot Connector et Bot State, chaque kit SDK Bot Framework propose aussi un système puissant capable de générer des dialogues qui encapsulent une logique conversationnelle, des invites intégrées pour des choses aussi simples que Oui ou Non, des chaînes, des nombres, des énumérations, la prise en charge intégrée de puissantes infrastructures d’intelligence artificielle telles que <a href="https://www.luis.ai/" target="_blank"> LUIS </a>, et bien plus. 
 
 > [!NOTE]
 > Au lieu d’utiliser les kits de développement logiciel (SDK) C# ou Node.js, vous pouvez générer votre propre bibliothèque cliente dans la langue de votre choix en utilisant le <a href="https://raw.githubusercontent.com/Microsoft/BotBuilder/master/CSharp/Library/Microsoft.Bot.Connector.Shared/Swagger/ConnectorAPI.json" target="_blank">fichier Swagger de Bot Connector</a> et le <a href="https://raw.githubusercontent.com/Microsoft/BotBuilder/master/CSharp/Library/Microsoft.Bot.Connector.Shared/Swagger/StateAPI.json" target="_blank">fichier Swagger de Bot State</a>.

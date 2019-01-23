@@ -1,6 +1,6 @@
 ---
 title: Envoyer des messages proactifs | Microsoft Docs
-description: Découvrez comment des messages proactifs à l’aide du kit de développement logiciel (SDK) Bot Builder pour .NET.
+description: Découvrez comment envoyer des messages proactifs à l’aide du kit SDK Bot Framework pour .NET.
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 201f1aa1aca0d75190335fa114ef8a26caed2a03
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: d86ee290ebf33dbfd13017c3fe882ecfdd9102e4
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998338"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225724"
 ---
 # <a name="send-proactive-messages"></a>Envoyer des messages proactifs
 
@@ -32,7 +32,7 @@ ms.locfileid: "49998338"
 
 ## <a name="send-an-ad-hoc-proactive-message"></a>Envoyer un message proactif ad hoc
 
-Les exemples de code suivants montrent comment envoyer un message proactif ad hoc à l’aide du Kit de développement logiciel (SDK) Bot Builder pour .NET.
+Les exemples de code suivants montrent comment envoyer un message proactif ad hoc avec le kit SDK Bot Framework pour .NET.
 
 Pour pouvoir envoyer un message ad hoc à un utilisateur, le robot doit d’abord collecter et stocker des informations sur l’utilisateur à partir de la conversation en cours. 
 
@@ -97,7 +97,7 @@ await connector.Conversations.SendToConversationAsync((Activity)message);
 
 ## <a name="send-a-dialog-based-proactive-message"></a>Envoyer un message proactif basé sur un dialogue
 
-Les exemples de code suivants montrent comment envoyer un message proactif basé sur un dialogue à l’aide du Kit de développement logiciel (SDK) Bot Builder pour .NET.
+Les exemples de code suivants montrent comment envoyer un message proactif basé sur un dialogue en utilisant le kit SDK Bot Framework pour .NET.
 
 Pour pouvoir envoyer un message proactif basé sur un dialogue à un utilisateur, le robot doit d’abord collecter et enregistrer les informations de la conversation en cours. 
 
@@ -177,11 +177,11 @@ public class SurveyDialog : IDialog<object>
 
 ## <a name="sample-code"></a>Exemple de code
 
-Pour obtenir un exemple complet montrant comment envoyer des messages proactifs à l’aide du Kit de développement logiciel (SDK) Bot Builder pour .NET, voir les <a href="https://aka.ms/proactive-messaging-cs-v3 " target="_blank">exemples de messages proactifs</a> dans GitHub. Dans les exemples de messages proactifs, <a href="https://aka.ms/proactive-sendmessage-cs-v3 " target="_blank">simpleSendMessage</a> montre comment envoyer un message proactif ad hoc, et <a href="https://aka.ms/proactive-newdialog-cs-v3 " target="_blank"> startNewDialog </a> comment envoyer un message proactif basé sur un dialogue. 
+Pour obtenir un exemple complet qui montre comment envoyer des messages proactifs à l’aide du kit SDK Bot Framework pour .NET, consultez l’<a href="https://aka.ms/proactive-messaging-cs-v3 " target="_blank">exemple Proactive Messages</a> dans GitHub. Dans les exemples de messages proactifs, <a href="https://aka.ms/proactive-sendmessage-cs-v3 " target="_blank">simpleSendMessage</a> montre comment envoyer un message proactif ad hoc, et <a href="https://aka.ms/proactive-newdialog-cs-v3 " target="_blank"> startNewDialog </a> comment envoyer un message proactif basé sur un dialogue. 
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 - [Concevoir et contrôler un flux de conversation](../bot-service-design-conversation-flow.md)
-- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Documentation de référence concernant le Kit de développement logiciel (SDK) Bot Builder pour .NET</a>
+- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Informations de référence sur le kit SDK Bot Framework pour .NET</a>
 - <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-proactiveMessages" target="_blank">Exemples de messages proactifs (GitHub)</a>
 

@@ -1,27 +1,27 @@
 ---
-title: Résolution des problèmes des robots | Microsoft Docs
-description: Résoudre les problèmes généraux dans le développement des robots à l’aide des forums aux questions techniques.
+title: Résolution des problèmes des bots | Microsoft Docs
+description: Résoudre les problèmes généraux dans le développement des bots à l’aide des forums aux questions techniques.
 author: DeniseMak
 ms.author: v-demak
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 09/26/2018
-ms.openlocfilehash: 3d9c41d0c0c51d00dc5ce86dfb774228e53ff3a3
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 34a23910c76a22fe39d1ce5457bb74dd285ca939
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999066"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225517"
 ---
 # <a name="troubleshooting-general-problems"></a>Résolution des problèmes généraux
-Les forums aux questions permettent de résoudre les problèmes les plus courants de développement et de fonctionnement des robots.
+Les forums aux questions permettent de résoudre les problèmes les plus courants de développement et de fonctionnement de bots.
 
-## <a name="how-can-i-troubleshoot-issues-with-my-bot"></a>Comment puis-je résoudre les problèmes de mon robot ?
+## <a name="how-can-i-troubleshoot-issues-with-my-bot"></a>Comment puis-je résoudre les problèmes de mon bot ?
 
 1. Déboguez le code source de votre bot avec [Visual Studio Code](debug-bots-locally-vscode.md) ou [Visual Studio](https://docs.microsoft.com/en-us/visualstudio/debugger/navigating-through-code-with-the-debugger?view=vs-2017).
 2. Testez votre robot à l’aide de l’[émulateur](bot-service-debug-emulator.md) avant de le déployer sur le cloud.
-3. Déployez votre robot sur une plate-forme d’hébergement cloud comme Azure, puis testez la connectivité de votre robot à l’aide du contrôle intégré de la discussion en ligne sur le tableau de bord de votre robot dans le <a href="https://dev.botframework.com" target="_blank">portail Bot Framework</a>. Si vous rencontrez des problèmes avec votre bot après l’avoir déployé sur Azure, pensez à consulter l’article de blog suivant : [Comprendre le support et le dépannage Azure](https://azure.microsoft.com/en-us/blog/understanding-azure-troubleshooting-and-support/).
+3. Déployez votre bot sur une plateforme d’hébergement cloud comme Azure, puis testez la connectivité de votre bot à l’aide du contrôle web chat intégré sur le tableau de bord de votre bot dans le <a href="https://dev.botframework.com" target="_blank">portail Bot Framework</a>. Si vous rencontrez des problèmes avec votre bot après l’avoir déployé dans Azure, consultez cet article de blog : [Understanding Azure troubleshooting and support](https://azure.microsoft.com/en-us/blog/understanding-azure-troubleshooting-and-support/).
 4. Écartez l’[authentification][TroubleshootingAuth] comme problème possible.
 5. Testez votre robot sur Skype. Vous pourrez ainsi valider l’expérience utilisateur de bout en bout.
 6. Pensez à tester votre robot sur des canaux ayant des exigences d’authentification supplémentaires, par exemple Direct Line ou Web Chat.
@@ -30,7 +30,7 @@ Les forums aux questions permettent de résoudre les problèmes les plus courant
 
 Pour en savoir plus sur la résolution des problèmes d’authentification de votre bot, consultez l’article sur la [résolution des problèmes][TroubleshootingAuth] d’authentification Bot Framework.
 
-## <a name="im-using-the-bot-builder-sdk-for-net-how-can-i-troubleshoot-issues-with-my-bot"></a>J’utilise le kit de développement logiciel Bot Builder pour .NET. Comment puis-je résoudre les problèmes de mon robot ?
+## <a name="im-using-the-bot-framework-sdk-for-net-how-can-i-troubleshoot-issues-with-my-bot"></a>J’utilise le kit SDK Bot Framework pour .NET. Comment puis-je résoudre les problèmes de mon robot ?
 
 **Recherche des exceptions.**  
 Dans Visual Studio 2017, accédez à **Débogage** > **Windows** > **Paramètres d’exception**. Dans la fenêtre **Paramètres des exceptions**, cochez la case **Pause au lancement** en regard de **Exceptions Common Language Runtime**. Vous pouvez également afficher le résultat du diagnostic dans votre fenêtre de sortie lorsque des exceptions sont lancées ou non prises en charge.
@@ -81,13 +81,13 @@ Bot Framework conserve autant que possible l’ordre des messages. Par exemple, 
 
 ## <a name="how-can-i-intercept-all-messages-between-the-user-and-my-bot"></a>Comment puis-je intercepter tous les messages entre l’utilisateur et mon robot ?
 
-Le kit de développement logiciel Bot Builder pour.NET permet de fournir des implémentations des interfaces `IPostToBot` et `IBotToUser` au conteneur d’injection de dépendances `Autofac`. Le kit de développement logiciel Bot Builder dans toutes les langues permet d’utiliser l’intergiciel pratiquement dans le même but. Le référentiel [BotBuilder-Azure](https://github.com/Microsoft/BotBuilder-Azure) contient des bibliothèques C# et Node.js qui enregistreront ces données dans une table Azure.
+Le kit SDK Bot Framework pour.NET permet de fournir des implémentations des interfaces `IPostToBot` et `IBotToUser` au conteneur d’injection de dépendances `Autofac`. En utilisant le kit SDK Bot Framework pour n’importe quel langage, vous pouvez utiliser le middleware pratiquement dans le même but. Le dépôt [BotBuilder-Azure](https://github.com/Microsoft/BotBuilder-Azure) contient des bibliothèques C# et Node.js qui enregistreront ces données dans une table Azure.
 
 ## <a name="why-are-parts-of-my-message-text-being-dropped"></a>Pourquoi certaines parties du texte de mon message sont-elles supprimées ?
 
 Bot Framework et de nombreux canaux interprètent le texte comme s’il était formaté avec [Markdown](https://en.wikipedia.org/wiki/Markdown). Vérifiez si votre texte contient des caractères susceptibles d'être interprétés comme de la syntaxe Markdown.
 
-## <a name="how-can-i-support-multiple-bots-at-the-same-bot-service-endpoint"></a>Comment puis-je prendre en charge plusieurs robots sur un même point de terminaison de service de robot ? 
+## <a name="how-can-i-support-multiple-bots-at-the-same-bot-service-endpoint"></a>Comment prendre en charge plusieurs bots sur un même point de terminaison de service de bot ? 
 
 Cet [exemple](https://github.com/Microsoft/BotBuilder/issues/2258#issuecomment-280506334) montre comment configurer `Conversation.Container` avec le bon `MicrosoftAppCredentials` et utiliser un seul `MultiCredentialProvider` pour authentifier plusieurs identifiants d’applications et mots de passe.
 
@@ -133,7 +133,7 @@ Direct Line 3.0 retourne le code d’état HTTP 502 lorsqu’il essaie de commun
 
 ::: moniker range="azure-bot-service-3.0"
 
-## <a name="what-is-the-idialogstackforward-method-in-the-bot-builder-sdk-for-net"></a>En quoi consiste la méthode IDialogStack.Forward dans le kit de développement logiciel Bot Builder pour.NET ?
+## <a name="what-is-the-idialogstackforward-method-in-the-bot-framework-sdk-for-net"></a>En quoi consiste la méthode IDialogStack.Forward dans le kit SDK Bot Framework pour .NET ?
 
 Le but principal de `IDialogStack.Forward` est de réutiliser un dialogue enfant existant qui est souvent « réactif », c’est-à-dire que le dialogue enfant (dans `IDialog.StartAsync`) attend un objet `T` avec un certain gestionnaire `ResumeAfter`. En particulier, si un dialogue enfant attend `IMessageActivity` `T`, vous pouvez transférer le `IMessageActivity` entrant (déjà reçu par certains dialogues parents) à l’aide de la méthode `IDialogStack.Forward`. Par exemple, pour transférer un `IMessageActivity` entrant à un `LuisDialog`, appelez `IDialogStack.Forward` afin de pousser le `LuisDialog` sur la pile de dialogues, exécutez le code dans `LuisDialog.StartAsync` jusqu’à ce qu’il programme une attente pour le message suivant, puis répondez immédiatement à cette attente avec le `IMessageActivity` transféré.
 
@@ -149,7 +149,7 @@ Du point de vue de votre robot, « réactif » signifie que l’utilisateur la
 
 ## <a name="how-can-i-send-proactive-messages-to-the-user"></a>Comment puis-je envoyer des messages proactifs à l’utilisateur ?
 
-Pour voir comment envoyer des messages proactifs, consultez les exemples [C# V4](https://github.com/Microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/16.proactive-messages) et [Node.js V4](https://github.com/Microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/16.proactive-messages) dans le référentiel BotBuilder-Samples sur GitHub.
+Pour voir comment envoyer des messages proactifs, consultez les exemples [C# V4](https://github.com/Microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/16.proactive-messages) et [Node.js V4](https://github.com/Microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/16.proactive-messages) dans le dépôt BotBuilder-Samples sur GitHub.
 
 ## <a name="how-can-i-reference-non-serializable-services-from-my-c-dialogs"></a>Comment puis-je référencer des services non sérialisables à partir de mes dialogues C# ?
 
@@ -166,7 +166,7 @@ Il existe de multiples options :
 
 Les données dans les conteneurs de propriétés de l’utilisateur, des conversations et des conversations privées sont stockées à l’aide de l’interface `IBotState` du connecteur. Chaque conteneur de propriétés est délimité par l’identifiant du robot. Le conteneur de propriétés de l’utilisateur est verrouillé par un identifiant utilisateur, le conteneur de propriétés de conversation est verrouillé par un identifiant de conversation, et le conteneur de propriétés de conversation privée est verrouillé par un identifiant utilisateur et un identifiant de conversation. 
 
-Si vous utilisez le kit de développement logiciel Bot Builder pour.NET ou le kit de développement logiciel Bot Builder pour Node.js pour compiler votre robot, la pile de dialogues et les données de dialogue sont automatiquement stockées en tant qu’entrées dans le conteneur de propriétés de conversation privée. L’implémentation C# utilise la sérialisation binaire, et l’implémentation Node.js utilise la sérialisation JSON.
+Si vous utilisez le kit SDK Bot Framework pour.NET ou le kit SDK Bot Framework pour Node.js pour créer votre bot, la pile de dialogues et les données de dialogue sont automatiquement stockées sous forme d’entrées dans le conteneur de propriétés de conversation privée. L’implémentation C# utilise la sérialisation binaire, et l’implémentation Node.js utilise la sérialisation JSON.
 
 L’interface REST `IBotState` est implémentée par deux services.
 
@@ -193,8 +193,8 @@ La pile de dialogues et l’état sont stockés dans des conteneurs de données 
 
 Le service `IBotState` du connecteur permet de stocker les conteneurs de données du robot (c’est-à-dire ceux de l’utilisateur, de la conversation et du robot privé qui inclut l’état « flux de contrôle » de la pile de dialogues). Le contrôle de la concurrence dans le service `IBotState` est géré par une concurrence optimiste par le biais d’étiquettes d’entité. En cas de conflit de mise à jour (en raison d’une mise à jour simultanée d’un même conteneur de données de robot) lors d’une séquence « lecture-modification-écriture » :
 
-* Si les étiquettes d’entité sont conservées, une erreur avec le code d’état HTTP 412 « Échec de la précondition » est lancée depuis le service `IBotState`. Il s’agit du comportement par défaut du kit de développement logiciel Bot Builder pour .NET.
-* Si les étiquettes d’entité ne sont pas conservées (étiquette d’entité définie à `\*`), alors la stratégie « dernière écriture prévaut » est appliquée, ce qui évite l’erreur « Échec de la précondition », mais entraîne le risque de perdre des données. Il s’agit du comportement par défaut du kit de développement logiciel Bot Builder pour Node.js.
+* Si les étiquettes d’entité sont conservées, une erreur avec le code d’état HTTP 412 « Échec de la précondition » est lancée depuis le service `IBotState`. Il s’agit du comportement par défaut du kit SDK Bot Framework pour .NET.
+* Si les étiquettes d’entité ne sont pas conservées (étiquette d’entité définie à `\*`), alors la stratégie « dernière écriture prévaut » est appliquée, ce qui évite l’erreur « Échec de la précondition », mais entraîne le risque de perdre des données. Il s’agit du comportement par défaut du kit SDK Bot Framework pour .Node.js.
 
 ## <a name="how-can-i-fix-precondition-failed-412-or-conflict-409-errors"></a>Comment puis-je corriger les erreurs « Échec de la précondition » (412) ou « Conflit » (409) ?
 
@@ -202,7 +202,7 @@ Ces erreurs indiquent que votre robot a traité plusieurs messages en même temp
 
 ::: moniker range="azure-bot-service-3.0"
 
-Le kit de développement logiciel Bot Builder pour .NET fournit un mécanisme (classe `LocalMutualExclusion` qui implémente `IScope`) permettant de sérialiser de façon pessimiste la gestion d’une seule conversation avec un sémaphore en mémoire. Vous pouvez étendre cette implémentation à l’utilisation d’un bail Redis délimité par l’adresse de la conversation.
+Le kit SDK Bot Framework pour .NET propose un mécanisme (classe `LocalMutualExclusion` qui implémente `IScope`) qui permet de sérialiser de façon pessimiste la gestion d’une même conversation avec un sémaphore en mémoire. Vous pouvez étendre cette implémentation à l’utilisation d’un bail Redis délimité par l’adresse de la conversation.
 
 Si votre robot n’est pas connecté à des services externes ou si le traitement parallèle des messages d’une même conversation est acceptable, vous pouvez ajouter ce code pour ignorer les conflits qui se produisent dans l’API Bot Stat. La dernière réponse pourra ainsi définir l’état de la conversation.
 
@@ -231,7 +231,7 @@ Oui, chaque magasin d’états (conteneurs de données d’utilisateur, de conve
 Le service d’état permet d’avancer dans les dialogues d’une conversation de sorte qu’un utilisateur peut revenir ultérieurement dans la conversation avec un robot sans perdre sa position. À cette fin, les conteneurs de propriétés des données de robot qui sont stockés via l’API d’état ne sont pas automatiquement effacés lorsque vous modifiez le code du robot. Vous devez déterminer si les données du robot doivent être effacées ou non selon que votre code modifié est compatible ou non avec les versions antérieures de vos données. 
 
 * Si vous voulez réinitialiser manuellement la pile de dialogues et l’état de la conversation pendant le développement de votre robot, vous pouvez utiliser la commande ` /deleteprofile` afin de supprimer les données d’état. Assurez-vous d’inclure l’espace initial dans cette commande pour éviter que le canal ne l’interprète.
-* Une fois que votre robot est déployé en production, vous pouvez adapter la version de vos données de robot de façon à ce que les données d’état associées soient effacées si vous changez de version. Le kit de développement logiciel Bot Builder pour Node.js l’effectue à l’aide d’un intergiciel et le kit de développement logiciel Bot Builder pour.NET l’effectue à l’aide d’une implémentation `IPostToBot`.
+* Une fois que votre bot est déployé en production, vous pouvez adapter la version de vos données de bot de façon à ce que les données d’état associées soient effacées si vous changez de version. Avec le kit SDK Bot Framework pour Node.js, vous pouvez le faire en utilisant un middleware. Avec le kit SDK Bot Framework pour.NET, cette opération est possible en utilisant une implémentation `IPostToBot`.
 
 > [!NOTE]
 > S’il n’est pas possible de désérialiser correctement la pile de dialogues en raison de modifications dans le format de sérialisation ou parce que le code a été trop modifié, l’état de la conversation est réinitialisé.
@@ -248,11 +248,11 @@ Vous pouvez diviser votre modèle et appeler le service LUIS en série ou en par
 
 ## <a name="how-can-i-use-more-than-one-luis-model"></a>Comment puis-je utiliser plusieurs modèles LUIS ?
 
-Le kit de développement logiciel Bot Builder pour Node.js et le kit de développement logiciel Bot Builder pour.NET peuvent appeler plusieurs modèles LUIS à partir d’un seul dialogue d’intention LUIS. Rappelez-vous des avertissements suivants :
+Le kit SDK Bot Framework pour Node.js et le kit SDK Bot Framework pour.NET peuvent appeler plusieurs modèles LUIS à partir d’un seul dialogue d’intention LUIS. Rappelez-vous des avertissements suivants :
 
 * Pour utiliser plusieurs modèles LUIS, leurs ensembles d’intentions ne doivent pas se recouvrir.
 * Pour utiliser plusieurs modèles LUIS, leurs scores doivent être comparables afin de sélectionner « l’intention la mieux adaptée » parmi les différents modèles.
-* L’utilisation de plusieurs modèles LUIS implique que lorsqu’une intention correspond à un modèle, elle correspond aussi fortement à l’intention « aucune » des autres modèles. Dans ce cas, vous pouvez ne pas sélectionner l’intention « aucune » ; le kit de développement logiciel Bot Builder pour Node.js réduit automatiquement le score des intentions « aucune » pour éviter ce problème.
+* L’utilisation de plusieurs modèles LUIS implique que lorsqu’une intention correspond à un modèle, elle correspond aussi fortement à l’intention « aucune » des autres modèles. Dans ce cas, vous pouvez éviter de sélectionner l’intention « none » ; le kit SDK Bot Framework pour Node.js effectue alors un scale-down automatique du score pour les intentions « none » pour éviter ce problème.
 
 ## <a name="where-can-i-get-more-help-on-luis"></a>Où puis-je trouver de l’aide supplémentaire sur LUIS ?
 
@@ -306,7 +306,7 @@ Si vous rencontrez des problèmes lors de la migration de votre robot, c’est p
 ## <a name="where-can-i-get-more-help"></a>Où puis-je trouver de l’aide supplémentaire ?
 
 * Exploitez les réponses aux questions précédentes sur le [dépassement de la capacité de la pile](https://stackoverflow.com/questions/tagged/botframework), ou publiez vos propres questions à l’aide de l’étiquette `botframework`. Veuillez noter que le dépassement de la capacité de la pile comporte certaines exigences telles qu’un titre descriptif, un énoncé complet et concis du problème et suffisamment de précisions pour pouvoir reproduire votre problème. Les requêtes de fonctionnalités ou les questions trop générales sont hors sujet ; les nouveaux utilisateurs doivent visiter le [centre d’aide sur les dépassements de capacité de la pile](https://stackoverflow.com/help/how-to-ask) pour obtenir de plus amples renseignements.
-* Pour obtenir des informations sur les problèmes connus du kit de développement logiciel Bot Builder ou pour signaler un nouveau problème, consultez [Problèmes de BotBuilder](https://github.com/Microsoft/BotBuilder/issues) dans GitHub.
+* Pour en savoir plus sur les problèmes connus du kit SDK Bot Framework ou pour signaler un nouveau problème, consultez [BotBuilder issues](https://github.com/Microsoft/BotBuilder/issues) dans GitHub.
 * Exploitez les informations de la discussion de la communauté BotBuilder sur [Gitter](https://gitter.im/Microsoft/BotBuilder).
 
 

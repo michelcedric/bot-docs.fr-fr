@@ -1,6 +1,6 @@
 ---
 title: Gérer les événements utilisateur et de conversation  | Microsoft Docs
-description: Découvrez comment gérer les événements tels qu’un utilisateur rejoignant une conversation à l’aide du Kit de développement logiciel (SDK) Bot Builder pour Node.js.
+description: Découvrez comment gérer les événements tels qu’un utilisateur rejoignant une conversation à l’aide du kit SDK Bot Framework pour Node.js.
 author: DucVo
 ms.author: v-ducvo
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 2e8cb9661079eafa988af4a7639e3e7dc1580bfa
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 91fd349173dfe469c7b71bc84b8adf9c19e07277
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998136"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54223604"
 ---
 # <a name="handle-user-and-conversation-events"></a>Gérer les événements utilisateur et de conversation
 

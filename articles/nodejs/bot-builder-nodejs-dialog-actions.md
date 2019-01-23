@@ -1,6 +1,6 @@
 ---
 title: Gérer les actions de l’utilisateur | Microsoft Docs
-description: Découvrez comment gérer les actions de l’utilisateur en rendant votre bot capable d’écouter et de gérer les entrées utilisateur qui contiennent certains mots clés, à l’aide du kit SDK Bot Builder pour Node.js.
+description: Découvrez comment gérer les actions de l’utilisateur en rendant votre bot capable d’écouter et de gérer les entrées utilisateur qui contiennent certains mots clés à l’aide du kit SDK Bot Framework pour Node.js.
 author: DucVo
 ms.author: v-ducvo
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 26f6e9520fe5d2ebb83ceb4e6a497a35e9d2611f
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 7ca595b1c24769addfbdf7975c48d3a052c4a2de
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999256"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54226004"
 ---
 # <a name="handle-user-actions"></a>Gérer les actions de l’utilisateur
 
@@ -236,7 +236,7 @@ bot.dialog('orderDinner', [
 
 ### <a name="bind-an-endconversationaction"></a>Lier endConversationAction
 
-Lier `endConversationAction` l’inscrit pour le dialogue. Une fois déclenchée, cette action termine la conversation avec l’utilisateur. Le déclenchement de cette action revient à appeler la méthode [endConversation](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html#endconversation). Lorsqu’une conversation se termine, le kit SDK Bot Builder pour Node.js efface la pile de dialogues et les données d’état persistant. Pour plus d’informations sur les données d’état persistant, consultez [Gérer les données d’état](bot-builder-nodejs-state.md).
+Lier `endConversationAction` l’inscrit pour le dialogue. Une fois déclenchée, cette action termine la conversation avec l’utilisateur. Le déclenchement de cette action revient à appeler la méthode [endConversation](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html#endconversation). Dès qu’une conversation se termine, le kit SDK Bot Framework pour Node.js efface la pile de dialogues et les données d’état persistant. Pour plus d’informations sur les données d’état persistant, consultez [Gérer les données d’état](bot-builder-nodejs-state.md).
 
 L’extrait de code suivant montre comment lier [endConversationAction][endConversationAction] à un dialogue.
 

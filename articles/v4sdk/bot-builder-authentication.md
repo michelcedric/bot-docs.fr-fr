@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: abs
 ms.date: 10/30/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 27e0b54b4e790e76c55deb858e50d8c81507443a
-ms.sourcegitcommit: 91156d0866316eda8d68454a0c4cd74be5060144
+ms.openlocfilehash: 3bfbcb27aa6e38792f96e0d3fe042f02f6e11083
+ms.sourcegitcommit: d385ec5fe61c469ab17e6f21b4a0d50e5110d0fd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53010594"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54298316"
 ---
 # <a name="add-authentication-to-your-bot-via-azure-bot-service"></a>Ajouter l’authentification à votre bot par le biais d’Azure Bot Service
 
@@ -34,7 +34,7 @@ Cette API offre les fonctionnalités suivantes :
 - Des améliorations des canaux pour prendre en charge de nouvelles fonctionnalités d’authentification, telles que les nouvelles bibliothèques WebChat et DirectLineJS visant à éliminer la nécessité de la vérification du code magique à 6 chiffres.
 - Des améliorations du portail Azure pour ajouter, supprimer et configurer les paramètres de connexion à divers fournisseurs d’identité OAuth.
 - La prise en charge d’une variété de fournisseurs d’identité prêts à l’emploi, dont Azure AD (points de terminaison v1 et v2) et GitHub.
-- Des mises à jour des SDK Bot Builder C# et Node.js permettant de récupérer des jetons, de créer des cartes OAuthCards et de gérer les événements TokenResponse.
+- Des mises à jour des SDK Bot Framework C# et Node.js permettant de récupérer des jetons, de créer des cartes OAuthCards et de gérer les événements TokenResponse.
 - Des exemples montrant comment créer un bot qui s’authentifie auprès d’Azure AD.
 
 Vous pouvez vous appuyer sur les étapes décrites dans cet article pour ajouter des fonctionnalités à un bot existant. Les exemples de bots suivants illustrent les nouvelles fonctionnalités d’authentification.
@@ -256,7 +256,8 @@ Vous devez installer [l’émulateur de bot](https://github.com/Microsoft/BotFra
 1. Démarrez votre bot (avec ou sans débogage).
 1. Notez le numéro de port localhost pour la page. Vous aurez besoin de ces informations pour interagir avec votre bot.
 1. Démarrez l’émulateur.
-1. Connectez-vous à votre bot.
+1. Connectez-vous à votre bot. Vérifiez que la configuration du bot utilise l’**ID d’application Microsoft** et le **Mot de passe d’application Microsoft** en cas de recours à l’authentification.
+1. Dans les paramètres de l’émulateur, vérifiez que la case **Use a sign-in verification code for OAuthCards** (Utiliser un code de vérification de la connexion pour cartes OAuthCards) est cochée et que **ngrok** est activé pour permettre à Azure Bot Service de retourner le jeton à l’émulateur quand il devient disponible.
 
    Si vous n’avez pas déjà configuré la connexion, indiquez l’adresse, ainsi que l’ID d’application Microsoft et le mot de passe de votre bot. Ajoutez `/api/messages` à l’URL du bot. Votre URL ressemble à ceci : `http://localhost:portNumber/api/messages`
 
@@ -486,4 +487,4 @@ private isTeamsVerificationInvoke(context: TurnContext): boolean {
 À l’occasion des appels suivants du bot, le jeton n’est jamais mis en cache par cet exemple de bot. En effet, le bot peut toujours demander le jeton à Azure Bot Service. Ainsi le bot n’a pas besoin d’effectuer des opérations telles que la gestion du cycle de vie des jetons ou l’actualisation du jeton, car Azure Bot Service s’en charge.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
-[SDK Bot Builder](https://github.com/microsoft/botbuilder)
+[Kit SDK Bot Framework](https://github.com/microsoft/botbuilder)

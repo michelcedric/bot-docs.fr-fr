@@ -1,6 +1,6 @@
 ---
 title: Implémenter des flux de conversation séquentiels | Microsoft Docs
-description: Découvrez comment gérer un flux de conversation simple avec des dialogues dans le Kit de développement logiciel (SDK) Bot Builder pour Node.js.
+description: Découvrez comment gérer un flux de conversation simple avec des dialogues dans le kit SDK Bot Framework pour Node.js.
 keywords: flux de conversation simple, flux de conversation séquentiel, dialogues, invites, cascades, ensemble de dialogues
 author: JonathanFingold
 ms.author: v-jofing
@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 2264b6927ccb863f153f2feb829cc0fb99c711f7
-ms.sourcegitcommit: 6c719b51c9e4e84f5642100a33fe346b21360e8a
+ms.openlocfilehash: 554d040dd4c9d126fa70c24f1af5a1ac97a39204
+ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52452081"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54317613"
 ---
 # <a name="implement-sequential-conversation-flow"></a>Implémenter des flux de conversation séquentiels
 
@@ -26,7 +26,7 @@ Vous pouvez gérer des flux de conversation simples et complexes avec la bibliot
 ## <a name="prerequisites"></a>Prérequis
 - [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/blob/master/README.md#download)
 - Le code dans cet article est basé sur l’exemple d’**invite à plusieurs tours**. Vous aurez besoin d’une copie de l’exemple en [C# ](https://aka.ms/cs-multi-prompts-sample) ou en [JS](https://aka.ms/js-multi-prompts-sample).
-- Connaissances des [concepts de base des bots](bot-builder-basics.md), de la [bibliothèque de boîtes de dialogue](bot-builder-concept-dialog.md), de [l’état de boîte de dialogue](bot-builder-dialog-state.md), et du fichier [.bot](bot-file-basics.md).
+- Connaissances des [concepts de base des bots](bot-builder-basics.md), de la [bibliothèque de dialogues](bot-builder-concept-dialog.md), de [l’état des dialogues](bot-builder-dialog-state.md) et du fichier [.bot](bot-file-basics.md).
 
 
 Les sections suivantes reflètent les étapes que vous devez suivre pour implémenter des dialogues simples pour la plupart des bots :
@@ -58,7 +58,7 @@ public class MultiTurnPromptsBotAccessors
 }
 ```
 
-Nous inscrivons la classe d’accesseurs dans la méthode `ConfigureServices` de la classe `Statup`.
+Nous inscrivons la classe d’accesseurs dans la méthode `ConfigureServices` de la classe `Startup`.
 Une fois encore, nous appelons uniquement des parties du code.
 
 ```csharp
@@ -117,7 +117,7 @@ Le constructeur du bot va créer les accesseurs de propriété d’état pour le
 
 ## <a name="update-the-bot-turn-handler-to-call-the-dialog"></a>Mettre à jour le gestionnaire de tours du bot pour qu’il appelle le dialogue
 
-Pour exécuter le dialogue, le gestionnaire de tours du bot doit créer un contexte de dialogue pour l’ensemble de dialogues qui contient les dialogues du bot. Un bot peut définir plusieurs ensembles de boîtes de dialogue, mais en règle générale, vous devez simplement en définir un pour votre bot. 
+Pour exécuter le dialogue, le gestionnaire de tours du bot doit créer un contexte de dialogue pour l’ensemble de dialogues qui contient les dialogues du bot. Un bot peut définir plusieurs ensembles de dialogues, mais en règle générale, vous devez simplement en définir un pour votre bot. 
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 

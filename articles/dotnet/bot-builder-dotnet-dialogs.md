@@ -1,6 +1,6 @@
 ---
 title: Vue d’ensemble des dialogues | Microsoft Docs
-description: Découvrez comment utiliser des dialogues dans le Kit de développement logiciel (SDK) Bot Builder pour modéliser des conversations et gérer un flux de conversation.
+description: Découvrez comment utiliser les dialogues dans le kit SDK Bot Framework pour .NET pour modéliser les conversations et gérer le flux de conversation.
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,14 +9,14 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 943b206e4991c52f22928d2113977249ff9d9e04
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 3089e7a073f6a6d9af3a3720954af3a915106888
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997576"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224994"
 ---
-# <a name="dialogs-in-the-bot-builder-sdk-for-net"></a>Dialogues dans le Kit de développement (SDK) Bot Builder pour .NET
+# <a name="dialogs-in-the-bot-framework-sdk-for-net"></a>Dialogues dans le kit SDK Bot Framework pour .NET
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
@@ -24,9 +24,9 @@ ms.locfileid: "49997576"
 > - [.NET](../dotnet/bot-builder-dotnet-dialogs.md)
 > - [Node.JS](../nodejs/bot-builder-nodejs-dialog-overview.md)
 
-Lorsque vous créez un robot en utilisant le Kit de développement logiciel (SDK) Bot Builder pour .NET, vous pouvez utiliser des dialogues pour modéliser une conversation et gérer un [flux de conversation](../bot-service-design-conversation-flow.md). Chaque dialogue est une abstraction qui encapsule son propre état dans une classe C# qui implémente `IDialog`. Un dialogue peut être composé avec d’autres dialogues pour maximiser la réutilisation, et un contexte de dialogue conserve la [pile des dialogues](../bot-service-design-conversation-flow.md#dialog-stack) actifs dans la conversation à un moment quelconque. 
+Quand vous créez un bot à l’aide du kit SDK Bot Framework pour .NET, vous pouvez utiliser des dialogues pour modéliser une conversation et gérer un [flux de conversation](../bot-service-design-conversation-flow.md). Chaque dialogue est une abstraction qui encapsule son propre état dans une classe C# qui implémente `IDialog`. Un dialogue peut être composé avec d’autres dialogues pour maximiser la réutilisation, et un contexte de dialogue conserve la [pile des dialogues](../bot-service-design-conversation-flow.md#dialog-stack) actifs dans la conversation à un moment quelconque. 
 
-Une conversation constituée de dialogues est portable sur divers ordinateurs, ce qui rend possible la mise à l’échelle de votre implémentation de robot. Lorsque vous utilisez des dialogues dans le Kit de développement logiciel (SDK) Bot Builder pour .NET, l’état de la conversation (la pile des dialogues et l’état de chacun d’eux dans la pile) est automatiquement stocké dans le stockage de [données d’état](bot-builder-dotnet-state.md) de votre choix. Cela permet au code de service de votre robot d’être sans état, comme une application web qui n’a pas besoin de stocker l’état de session dans la mémoire du serveur web. 
+Une conversation constituée de dialogues est portable sur divers ordinateurs, permettant ainsi la mise à l’échelle de l’implémentation de votre bot. Quand vous utilisez des dialogues dans le kit SDK Bot Framework pour .NET, l’état de la conversation (la pile de dialogues et l’état de chaque dialogue de la pile) est automatiquement stocké dans le stockage de [données d’état](bot-builder-dotnet-state.md) de votre choix. Cela permet au code de service de votre robot d’être sans état, comme une application web qui n’a pas besoin de stocker l’état de session dans la mémoire du serveur web. 
 
 ## <a name="echo-bot-example"></a>Exemple de robot echo
 
@@ -37,7 +37,7 @@ Considérez cet exemple de robot echo, qui explique comment modifier le robot cr
 
 ### <a name="messagescontrollercs"></a>MessagesController.cs 
 
-Dans le Kit de développement logiciel (SDK) Bot Builder pour .NET, la bibliothèque du [générateur][builderLibrary] vous permet d’implémenter des dialogues. Pour accéder aux classes pertinentes, importez l’espace de noms `Dialogs`.
+Dans le kit SDK Bot Framework pour .NET, la bibliothèque [Builder][builderLibrary] vous permet d’implémenter des dialogues. Pour accéder aux classes pertinentes, importez l’espace de noms `Dialogs`.
 
 [!code-csharp[Using statement](../includes/code/dotnet-dialogs.cs#usingStatement)]
 
@@ -53,17 +53,17 @@ Enfin, rattachez la classe `EchoDialog` à la `Post` méthode en appelant la mé
 
 La méthode `Post` est marquée `async` parce que Bot Builder utilise les fonctions C# pour gérer une communication asynchrone. Elle retourne un objet `Task` qui représente la tâche chargée d’envoyer des réponses au message transmis. S’il existe une exception, la `Task` qui retournée par la méthode contient des informations sur l’exception. 
 
-La méthode `Conversation.SendAsync` est essentielle pour l’implémentation de dialogues avec le Kit de développement logiciel (SDK) Bot Builder pour .NET. Elle suit le <a href="https://en.wikipedia.org/wiki/Dependency_inversion_principle" target="_blank">principe d’inversion de dépendance</a> et effectue les opérations suivantes :
+La méthode `Conversation.SendAsync` est essentielle pour implémenter des dialogues avec le kit SDK Bot Framework pour .NET. Elle suit le <a href="https://en.wikipedia.org/wiki/Dependency_inversion_principle" target="_blank">principe d’inversion de dépendance</a> et effectue les opérations suivantes :
 
 1. Elle instancie les composants requis.  
 2. Elle désérialise l’état de la conversation (la pile de dialogues et l’état de chacun d’eux dans la pile) à partir de `IBotDataStore`.
-3. Elle reprend le processus de conversation là où le robot l’a suspendu et attend un message.
+3. Elle reprend le processus de conversation là où le bot l’a suspendu et attend un message.
 4. Elle envoie les réponses.
 5. Elle sérialise l’état de la conversation mis à jour et le réenregistre dans `IBotDataStore`.
 
-Quand la conversation commence pour la première fois, la boîte de dialogue ne contient pas d’état. Ainsi, `Conversation.SendAsync` construit `EchoDialog` et appelle sa méthode `StartAsync`. La méthode `StartAsync` appelle `IDialogContext.Wait` avec le délégué de continuation pour spécifier la méthode à appeler los de la réception d’un nouveau message (`MessageReceivedAsync`). 
+Quand la conversation commence pour la première fois, le dialogue ne contient pas d’état. Ainsi, `Conversation.SendAsync` construit `EchoDialog` et appelle sa méthode `StartAsync`. La méthode `StartAsync` appelle `IDialogContext.Wait` avec le délégué de continuation pour spécifier la méthode à appeler los de la réception d’un nouveau message (`MessageReceivedAsync`). 
 
-La méthode `MessageReceivedAsync` attend un message, publie une réponse et attend le message suivant. À chaque appel de `IDialogContext.Wait`, le robot entre en état suspendu et peut être redémarré sur tout ordinateur recevant le message. 
+La méthode `MessageReceivedAsync` attend un message, publie une réponse et attend le message suivant. À chaque appel de `IDialogContext.Wait`, le bot entre en état suspendu et peut être redémarré sur tout ordinateur recevant le message. 
 
 Un robot créé à l’aide des exemples de code ci-dessus répond à chaque message envoyé par l’utilisateur en renvoyant simplement ce message préfixé avec le texte « Vous avez dit : ». Le robot étant créé à l’aide de dialogues, il peut évoluer pour prendre en charge des conversations plus complexes sans avoir à gérer explicitement l’état.
 
@@ -81,7 +81,7 @@ Comme dans le premier exemple, la méthode `MessageReceivedAsync` est appelée �
 
 ## <a name="dialog-context"></a>Contexte du dialogue.
 
-L’interface `IDialogContext` transmise à chaque méthode de dialogue donne accès aux services dont un dialogue a besoin pour enregistrer l’état et communiquer avec le canal. L’interface `IDialogContext` comprend trois interfaces : [Internals.IBotData][iBotData], [Internals.IBotToUser][iBotToUser] et [ Internals.IDialogStack][iDialogStack]. 
+L’interface `IDialogContext` transmise à chaque méthode de dialogue donne accès aux services dont un dialogue a besoin pour enregistrer l’état et communiquer avec le canal. L’interface `IDialogContext` comprend trois interfaces : [Internals.IBotData][iBotData], [Internals.IBotToUser][iBotToUser] et [Internals.IDialogStack][iDialogStack]. 
 
 ### <a name="internalsibotdata"></a>Internals.IBotData
 

@@ -1,6 +1,6 @@
 ---
 title: Ajouter des conseils de saisie aux messages | Microsoft Docs
-description: Découvrez comment ajouter des conseils de saisie aux messages à l’aide du Kit SDK Bot Builder pour .NET.
+description: Découvrez comment ajouter des conseils de saisie aux messages à l’aide du kit SDK Bot Framework pour .NET.
 author: v-ducvo
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 8c09ab3c0f863171697bc8026155003274bfc382
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: fa5e2a151bc0b41f160d0b71cb97e24fe1efacaa
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999096"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225794"
 ---
 # <a name="add-input-hints-to-messages"></a>Ajouter des conseils de saisie aux messages
 
@@ -47,7 +47,7 @@ Pour indiquer que votre bot n’est pas prêt à recevoir une entrée de l’uti
 
 ## <a name="default-values-for-input-hint"></a>Valeurs par défaut pour le conseil de saisie
 
-Si vous ne définissez pas de conseil de saisie pour un message, le Kit SDK Bot Builder le fera automatiquement pour vous en suivant cette logique : 
+Si vous ne définissez pas de conseil de saisie pour un message, le kit SDK Bot Framework le fait automatiquement en suivant cette logique : 
 
 - Si votre bot envoie une invite, le conseil de saisie pour le message spécifie que votre bot **attend une entrée**.</li>
 - Si votre bot envoie un message simple, le conseil de saisie pour le message spécifie que votre bot **accepte une entrée**.</li>
@@ -56,7 +56,7 @@ Si vous ne définissez pas de conseil de saisie pour un message, le Kit SDK Bot 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 - [Ajouter la reconnaissance vocale aux messages](bot-builder-nodejs-text-to-speech.md)
-- [Kit de développement logiciel (SDK) Bot Builder pour Node.js][SDKReference]
+- [Informations de référence sur le kit SDK Bot Framework pour Node.js][SDKReference]
 
 [SDKReference]: https://docs.botframework.com/en-us/node/builder/chat-reference/modules/_botbuilder_d_.html
 

@@ -1,6 +1,6 @@
 ---
 title: Utiliser un bouton pour fournir une entrée | Microsoft Docs
-description: Découvrez comment envoyer des actions suggérées au sein des messages à l’aide du Kit SDK Bot Builder pour JavaScript.
+description: Découvrez comment envoyer des actions suggérées dans des messages à l’aide du kit SDK Bot Framework pour JavaScript.
 keywords: actions suggérées, boutons, entrée supplémentaire
 author: Kaiqb
 ms.author: kamrani
@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/08/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 10b9fa9664e8c18cdc5dcd2fcf3ae400296a4abb
-ms.sourcegitcommit: 6c719b51c9e4e84f5642100a33fe346b21360e8a
+ms.openlocfilehash: c462af04f6aaf9b1b4257ca5932c00414f469380
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52451981"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224384"
 ---
 # <a name="use-button-for-input"></a>Utiliser un bouton pour fournir une entrée
 

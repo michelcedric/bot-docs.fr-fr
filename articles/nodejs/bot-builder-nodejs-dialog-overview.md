@@ -1,6 +1,6 @@
 ---
 title: Vue d’ensemble des dialogues | Microsoft Docs
-description: Découvrez comment utiliser les dialogues dans le kit de développement logiciel Bot Builder pour Node.js afin de modéliser les conversations et de gérer le flux de conversation.
+description: Découvrez comment utiliser les dialogues dans le kit SDK Bot Framework pour Node.js pour modéliser les conversations et gérer le flux de conversation.
 author: DucVo
 ms.author: v-ducvo
 manager: kamrani
@@ -9,14 +9,14 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 78f1660aaa91888655515d3402c8ad7702a5b6f6
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: dfa52914b3f0a2e81f4ff3a2f90c7404bfe53d4a
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997126"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225994"
 ---
-# <a name="dialogs-in-the-bot-builder-sdk-for-nodejs"></a>Dialogues dans le kit de développement logiciel Bot Builder pour Node.js
+# <a name="dialogs-in-the-bot-framework-sdk-for-nodejs"></a>Dialogues dans le kit SDK Bot Framework pour Node.js
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
@@ -24,13 +24,13 @@ ms.locfileid: "49997126"
 > - [.NET](../dotnet/bot-builder-dotnet-dialogs.md)
 > - [Node.JS](../nodejs/bot-builder-nodejs-dialog-overview.md)
 
-Les dialogues dans le kit de développement logiciel Bot Builder pour Node.js permettent de modéliser les conversations et de gérer le flux de conversation. Un robot communique avec un utilisateur par le biais de conversations. Les conversations sont organisées en dialogues. Les dialogues peuvent contenir des étapes en cascade et des invites. Lorsque l’utilisateur interagit avec le robot, celui-ci se lance, s’arrête et passe d’un dialogue à un autre pour répondre aux messages de l’utilisateur. Pour concevoir et créer des robots d’excellente qualité, il est essentiel de bien comprendre le fonctionnement des dialogues. 
+Dans le kit SDK Bot Framework pour Node.js, les dialogues permettent de modéliser les conversations et de gérer le flux de conversation. Un robot communique avec un utilisateur par le biais de conversations. Les conversations sont organisées en dialogues. Les dialogues peuvent contenir des étapes en cascade et des invites. Lorsque l’utilisateur interagit avec le robot, celui-ci se lance, s’arrête et passe d’un dialogue à un autre pour répondre aux messages de l’utilisateur. Pour concevoir et créer des robots d’excellente qualité, il est essentiel de bien comprendre le fonctionnement des dialogues. 
 
 Cet article présente les concepts liés aux dialogues. Après avoir lu cet article, suivez les liens qui se trouvent dans la section [Étapes suivantes](#next-steps) afin de mieux comprendre ces concepts.
 
 ## <a name="conversations-through-dialogs"></a>Conversations par le biais de dialogues
 
-Le kit de développement logiciel Bot Builder pour Node.js définit une conversation comme étant la communication entre un robot et un utilisateur par le biais d’un ou de plusieurs dialogues. Au niveau le plus élémentaire, un dialogue est un module réutilisable qui effectue une opération ou recueille des informations auprès d’un utilisateur. Il est possible d’encapsuler la logique complexe du robot dans un code de dialogue réutilisable.
+Le kit SDK Bot Framework pour Node.js définit une conversation comme étant la communication entre un bot et un utilisateur par le biais d’un ou de plusieurs dialogues. Au niveau le plus élémentaire, un dialogue est un module réutilisable qui effectue une opération ou recueille des informations auprès d’un utilisateur. Il est possible d’encapsuler la logique complexe du robot dans un code de dialogue réutilisable.
 
 Il existe plusieurs façons de structurer et de modifier une conversation :
 

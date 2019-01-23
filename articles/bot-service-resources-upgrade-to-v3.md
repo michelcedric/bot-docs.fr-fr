@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 3e99828e7c26b10c39bef4c8db79f92ff5f2b30c
-ms.sourcegitcommit: 49a76dd34d4c93c683cce6c2b8b156ce3f53280e
+ms.openlocfilehash: 8d9b2ea2e2133c86428b537427433f9dd15216ee
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50134709"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225944"
 ---
 # <a name="upgrade-your-bot-to-bot-framework-api-v3"></a>Mettre à niveau votre robot vers l’API Bot Framework v3
 
@@ -21,9 +21,9 @@ Dans le cadre de la Conférence Build 2016, Microsoft a annoncé Microsoft Bot 
 
 En juillet 2016, l’API Bot Framework v3 a été publiée et l’API Bot Framework v1 déconseillée. Les robots qui utilisent l’API v1 ont cessé de fonctionner sur Skype en décembre 2016, et sur tous les autres canaux le 23 février 2017. Si vous avez créé un robot à l’aide de l’API v1 et souhaitez le rendre à nouveau fonctionnel, vous devez le mettre à niveau vers l’API v3 en suivant les instructions de cet article. Pour être certain de comprendre le processus de mise à niveau de bout en bout, lisez attentivement cet article avant de commencer. 
 
-## <a name="step-1-get-your-app-id-and-password-from-the-bot-framework-portal"></a>Étape 1 : obtenir les identifiant et mot de passe de votre application sur le portail Bot Framework
+## <a name="step-1-get-your-app-id-and-password-from-the-bot-framework-portal"></a>Étape 1 : Obtenir les identifiant et mot de passe de votre application sur le portail Bot Framework
 
-Connectez-vous au [portail Bot Framework](https://dev.botframework.com/), cliquez sur **My bots** (Mes robots), puis sélectionnez votre robot pour ouvrir son tableau de bord. Ensuite, cliquez sur le lien **SETTINGS** (PARAMÈTRES) qui se trouve à gauche de la page sous **Bot Management** (Gestion des bots). 
+Connectez-vous au [portail Bot Framework](https://dev.botframework.com/), cliquez sur **My bots**, puis sélectionnez votre bot pour ouvrir son tableau de bord. Ensuite, cliquez sur le lien **SETTINGS** (PARAMÈTRES) qui se trouve à gauche de la page sous **Bot Management** (Gestion des bots). 
 
 Dans la section **Configuration** (Configuration) de la page des paramètres, examinez le contenu du champ **Microsoft App ID** (ID de l’application Microsoft), puis passez aux étapes suivantes.
 
@@ -67,7 +67,7 @@ If the **App ID** field is empty, complete these steps:
    ![Save changes](~/media/upgrade/save-changes.png)
 -->
 
-## <a id="update-code"></a> Étape 2 : Mettre à jour le code de votre bot à la version 4.0
+## <a id="update-code"></a> Étape 2 : Mettre à jour le code de votre bot vers la version 4.0
 
 Les bots v1 ne sont plus compatibles. Pour mettre à jour votre bot, vous devrez en créer un nouveau au niveau de version V3. Si vous souhaitez conserver votre ancien code, vous devrez le migrer manuellement.
 
@@ -84,7 +84,7 @@ Si vous souhaitez conserver votre ancien code, suivez les étapes ci-dessous :
 <!-- TODO: Remove outdated code 
 To update your bot code to version 3.0, complete these steps:
 
-1. Update to the latest version of the [Bot Builder SDK](https://github.com/Microsoft/BotBuilder) for your bot's language.
+1. Update to the latest version of the [Bot Framework SDK](https://github.com/Microsoft/BotBuilder) for your bot's language.
 2. Update your code to apply the necessary changes, according the guidance below.
 3. Use the [Bot Framework Emulator](~/bot-service-debug-emulator.md) to test your bot locally and then in the cloud.
 
@@ -93,10 +93,10 @@ The following sections describe the key differences between API v1 and API v3. A
 
 ### <a name="botbuilder-and-connector-are-now-one-sdk"></a>BotBuilder et le connecteur font désormais partie d’un même Kit de développement logiciel (SDK)
 
-Au lieu de devoir installer des kits de développement logiciel (SDK) distincts pour Builder et le connecteur à l’aide de plusieurs packages NuGet (ou modules NPM), vous pouvez désormais obtenir les deux bibliothèques dans un Kit de développement logiciel (SDK) Bot Builder unique :
+Au lieu de devoir installer des kits SDK distincts pour Builder et Connector en utilisant plusieurs packages NuGet (ou modules NPM), vous pouvez désormais obtenir les deux bibliothèques dans un même kit SDK Bot Framework :
 
-- Kit de développement logiciel (SDK) Bot Builder pour .NET : `Microsoft.Bot.Builder` package NuGet
-- Kit de développement logiciel (SDK) Bot Builder pour Node.js : `botbuilder` module NPM
+- SDK Bot Framework pour .NET : package NuGet `Microsoft.Bot.Builder`
+- SDK Bot Framework pour Node.js : module NPM `botbuilder`
 
 Le Kit de développement logiciel (SDK) `Microsoft.Bot.Connector` autonome est désormais déconseillé et n’est plus conservé.
 
@@ -163,7 +163,7 @@ L’API Bot Framework v3 stocke les propriétés d’authentification avec ces c
 - `MicrosoftAppID`
 - `MicrosoftAppPassword`
 
-## <a id="step-3"></a> Étape 3 : Déployer votre bot de mise à jour dans Azure.
+## <a id="step-3"></a> Étape 3 : Déployer votre bot de mise à jour dans Azure
 
 Après avoir mis à niveau le code votre bot vers l’API v3, déployez le bot dans Azure en suivant ces [instructions](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-deploy-azure?view=azure-bot-service-4.0). Comme V1 n’est plus pris en charge, tous les bots utilisent automatiquement l’API V3 lors du déploiement sur les services Azure.
 

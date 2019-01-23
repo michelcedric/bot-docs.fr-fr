@@ -1,6 +1,6 @@
 ---
 title: Demander un paiement | Microsoft Docs
-description: Découvrez comment envoyer une demande de paiement à l’aide du Kit SDK Bot Builder pour .NET.
+description: Découvrez comment envoyer une demande de paiement à l’aide du kit SDK Bot Framework pour .NET.
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/17
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: b3d1a1cea450d1fe821a90951a7a319ca863dfed
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: f9e693d8bd5aad03930259422939f5572a22ff0a
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997686"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225454"
 ---
 # <a name="request-payment"></a>Demander un paiement
 
@@ -24,11 +24,11 @@ ms.locfileid: "49997686"
 > - [.NET](../dotnet/bot-builder-dotnet-request-payment.md)
 > - [Node.JS](../nodejs/bot-builder-nodejs-request-payment.md)
 
-Si votre bot permet aux utilisateurs d’acheter des articles, il peut demander le paiement en incluant un type spécial de bouton dans une [carte enrichie](bot-builder-dotnet-add-rich-card-attachments.md). Cet article explique comment envoyer une demande de paiement à l’aide du Kit SDK Bot Builder pour .NET.
+Si votre bot permet aux utilisateurs d’acheter des articles, il peut demander le paiement en incluant un type spécial de bouton dans une [carte enrichie](bot-builder-dotnet-add-rich-card-attachments.md). Cet article explique comment envoyer une demande de paiement à l’aide du kit SDK Bot Framework pour .NET.
 
 ## <a name="prerequisites"></a>Prérequis
 
-Avant de pouvoir envoyer une demande de paiement à l’aide du Kit SDK Bot Builder pour .NET, vous devez effectuer ces tâches préalables.
+Avant de pouvoir envoyer une demande de paiement à l’aide du kit SDK Bot Framework pour .NET, vous devez au préalable effectuer les tâches requises suivantes.
 
 ### <a name="update-webconfig"></a>Mettre à jour Web.config
 
@@ -126,5 +126,5 @@ Dans l’exemple <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/m
 - <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/sample-payments" target="_blank">Exemple de bot de paiement</a>
 - [Vue d’ensemble des activités](bot-builder-dotnet-activities.md)
 - [Ajouter des cartes détaillées aux messages](bot-builder-dotnet-add-rich-card-attachments.md)
-- <a href="http://www.w3.org/Payments/" target="_blank">Paiements Web sur W3C</a> 
-- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Référence sur le Kit SDK Bot Builder pour .NET</a>
+- <a href="http://www.w3.org/Payments/" target="_blank">Paiements web sur W3C</a> 
+- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Informations de référence sur le kit SDK Bot Framework pour .NET</a>

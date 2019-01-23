@@ -1,6 +1,6 @@
 ---
 title: Conserver les données utilisateur | Microsoft Docs
-description: Découvrez comment enregistrer les données d’état utilisateur sur un stockage dans le SDK Bot Builder.
+description: Découvrez comment enregistrer les données d’état utilisateur sur un stockage dans le kit SDK Bot Framework.
 keywords: conserver les données utilisateur, stockage, données de conversation
 author: v-ducvo
 ms.author: v-ducvo
@@ -10,18 +10,18 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 09/19/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 36e8efefb276e5b9fb45ba6243b1b472476d5046
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 97a89744282ca1e31a99aa0e45345656e43f5cd0
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997946"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225314"
 ---
 # <a name="persist-user-data"></a>Conserver les données utilisateur
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-Quand le bot invite l’utilisateur à entrer des informations, il est possible que vous souhaitiez conserver une partie de ces informations sur un stockage sous une forme ou une autre. Le SDK Bot Builder vous permet de stocker des entrées utilisateur à l’aide d’un *stockage en mémoire* ou d’un stockage de base de données tel que *CosmosDB*. Les types de stockage local sont principalement utilisés lors du test ou du prototypage de votre bot. Toutefois, les types de stockage persistant (le stockage de base de données, par exemple) sont plus adaptés aux bots de production.
+Quand le bot invite l’utilisateur à entrer des informations, il est possible que vous souhaitiez conserver une partie de ces informations sur un stockage sous une forme ou une autre. Le SDK Bot Framework vous permet de stocker les entrées utilisateur en utilisant un *stockage en mémoire* ou un stockage de base de données comme *CosmosDB*. Les types de stockage local sont principalement utilisés lors du test ou du prototypage de votre bot. Toutefois, les types de stockage persistant (le stockage de base de données, par exemple) sont plus adaptés aux bots de production.
 
 Cette rubrique vous explique comment définir votre objet de stockage et enregistrer les entrées utilisateur dans l’objet de stockage afin de les rendre persistantes. Si nous ne disposons pas déjà de cette information, nous utiliserons un dialogue pour demander son nom à l’utilisateur. Quel que soit le type de stockage que vous choisissez d’utiliser, le processus de traitement et de conservation des données est le même. Dans le code de cette rubrique, le stockage `CosmosDB` est utilisé pour conserver les données.
 
@@ -60,7 +60,7 @@ Installez ces packages supplémentaires à partir du gestionnaire de paquets NuG
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Nous allons partir d’un modèle EchoBot de base. Pour obtenir des instructions, consultez le [démarrage rapide pour JavaScript](~/javascript/bot-builder-javascript-quickstart.md).
+Nous allons partir d’un modèle EchoBot de base. Pour obtenir des instructions, consultez les instructions de [démarrage rapide pour JavaScript](~/javascript/bot-builder-javascript-quickstart.md).
 
 Installez ces packages npm supplémentaires.
 

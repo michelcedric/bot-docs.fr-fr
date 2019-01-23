@@ -1,6 +1,6 @@
 ---
-title: Créer des messages avec le Kit SDK Bot Builder pour .NET | Microsoft Docs
-description: En savoir plus sur les propriétés de message couramment utilisées au sein du kit de développement logiciel (SDK) pour .NET.
+title: Créer des messages avec le kit SDK Bot Framework pour .NET | Microsoft Docs
+description: Découvrez les propriétés de message couramment utilisées au sein du kit SDK Bot Framework pour .NET.
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f3f40e41605bfd309d480465a05b91acf5a52d5c
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 96a0c63575b1e77418262a22050013413f39141f
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000386"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225914"
 ---
 # <a name="create-messages"></a>Créer des messages
 

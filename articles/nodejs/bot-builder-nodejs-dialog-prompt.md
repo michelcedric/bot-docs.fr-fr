@@ -1,6 +1,6 @@
 ---
 title: Demander par invite aux utilisateurs d’entrer des informations | Microsoft Docs
-description: Découvrez comment utiliser les invites pour recueillir des entrées utilisateur avec le kit SDK Bot Builder pour Node.js.
+description: Découvrez comment utiliser des invites pour recueillir des entrées utilisateur avec le kit SDK Bot Framework pour Node.js.
 author: v-ducvo
 ms.author: v-ducvo
 manager: kamrani
@@ -9,18 +9,18 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 0926c15d2c62bfa74ddb465d8c816dee7c8fb576
-ms.sourcegitcommit: 6c719b51c9e4e84f5642100a33fe346b21360e8a
+ms.openlocfilehash: 0ee70c1e775780bf884c4237e47cff4edb8934a9
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52451971"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224784"
 ---
 # <a name="prompt-for-user-input"></a>Demander par invite aux utilisateurs d’entrer des informations
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
-Le kit SDK Bot Builder pour Node.js fournit un ensemble d’invites intégrées pour simplifier la collecte d’entrées auprès d’un utilisateur. 
+Le kit SDK Bot Framework pour Node.js fournit un ensemble d’invites intégrées pour simplifier la collecte d’entrées d’un utilisateur. 
 
 Une *invite* est utilisée chaque fois qu’un bot a besoin d’une entrée provenant de l’utilisateur. Vous pouvez utiliser les invites pour demander à un utilisateur toute une série d’entrées en chaînant ces invites en cascade. Vous pouvez vous servir des invites conjointement avec une [cascade](bot-builder-nodejs-dialog-waterfall.md) pour vous aider à [gérer le flux de la conversation](bot-builder-nodejs-manage-conversation-flow.md) dans votre bot. 
 
@@ -49,7 +49,7 @@ bot.dialog('greetings', [
 
 ## <a name="prompt-results"></a>Résultats des invites 
 
-Les invites intégrées sont implémentées en tant que [dialogues](bot-builder-nodejs-dialog-overview.md) retournant la réponse de l’utilisateur dans le champ `results.response`. Pour les objets JSON, les réponses sont retournées dans le champ `results.response.entity`. N’importe quel type de [Gestionnaire de boîte de dialogue](bot-builder-nodejs-dialog-overview.md#dialog-handlers) peut recevoir le résultat d’une invite. Lorsque le bot reçoit une réponse, il peut la consommer, ou la retransmettre au dialogue appelant par un appel à la méthode [`session.endDialogWithResult`][EndDialogWithResult].
+Les invites intégrées sont implémentées en tant que [dialogues](bot-builder-nodejs-dialog-overview.md) retournant la réponse de l’utilisateur dans le champ `results.response`. Pour les objets JSON, les réponses sont retournées dans le champ `results.response.entity`. N’importe quel type de [Gestionnaire de dialogue](bot-builder-nodejs-dialog-overview.md#dialog-handlers) peut recevoir le résultat d’une invite. Lorsque le bot reçoit une réponse, il peut la consommer, ou la retransmettre au dialogue appelant par un appel à la méthode [`session.endDialogWithResult`][EndDialogWithResult].
 
 L’exemple de code suivant montre comment retourner un résultat d’invite au dialogue appelant, par le biais de la méthode `session.endDialogWithResult`. Dans cet exemple, le dialogue `greetings` utilise le résultat de l’invite que le dialogue `askName` retourne pour accueillir l’utilisateur par son nom.
 
@@ -74,7 +74,7 @@ bot.dialog('askName', [
 ```
 
 ## <a name="prompt-types"></a>Types d’invites
-Le kit SDK Bot Builder pour Node.js inclut différents types d’invites intégrées. 
+Le kit SDK Bot Framework pour Node.js comprend plusieurs types d’invites intégrées. 
 
 |**Type d’invite**     | **Description** |     
 | ------------------ | --------------- |

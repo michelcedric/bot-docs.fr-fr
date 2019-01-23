@@ -1,6 +1,6 @@
 ---
 title: Créer des expériences pilotées par les données avec Recherche Azure | Microsoft Docs
-description: Découvrez comment créer des expériences pilotées par les données avec Recherche Azure, et permettre aux utilisateurs naviguer dans de grandes quantités de contenu dans un robot au moyen du Kit de développement logiciel (SDK) Bot Builder pour Node.js et de Recherche Azure.
+description: Découvrez comment créer des expériences pilotées par les données avec Recherche Azure et permettre aux utilisateurs de parcourir de grandes quantités de contenu dans un bot avec le kit SDK Bot Framework pour Node.js et Recherche Azure.
 author: matthewshim-ms
 ms.author: v-shimma
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 204fb5d8f4838c78d771bfad5c0ed6511b27932b
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: ac4597e93f8cdaa4c9b015a4136ab09e9b7adc95
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999996"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224714"
 ---
 # <a name="create-data-driven-experiences-with-azure-search"></a>Créer des expériences pilotées par les données avec Recherche Azure 
 
@@ -85,7 +85,7 @@ En plus de stocker tous les dialogues associés votre recherche, la `SearchLibra
 
 ## <a name="create-a-search-dialog"></a>Créer une dialogue de recherche
 
-Vous pouvez choisir de structurer vos dialogues comme vous le souhaitez. La seule exigence pour configurer un dialogue de Recherche Azure est d’appeler la méthode `.begin` à partir de l’objet `SearchLibrary`, en passant l’objet `session` généré par le Kit de développement logiciel (SDK) Bot Builder. 
+Vous pouvez choisir de structurer vos dialogues comme vous le souhaitez. La seule exigence pour configurer un dialogue Recherche Azure est d’appeler la méthode `.begin` à partir de l’objet `SearchLibrary`, en passant l’objet `session` généré par le kit SDK Bot Framework. 
 
 ```javascript
 function (session) {
@@ -151,7 +151,7 @@ function searchHitAsCard(showSave, searchHit) {
 
 ## <a name="sample-code"></a>Exemple de code
 
-Pour voir deux exemples complets qui montrent comment prendre en charge Recherche Azure avec des robots à l’aide du Kit de développement logiciel (SDK) Bot Builder pour Node.js, voir l’[exemple de robot Real Estate](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-Search/RealEstateBot) (Immobilier) ou l’[exemple de robot Job Listing](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-Search/JobListingBot) (Liste des tâches) dans GitHub. 
+Pour obtenir deux exemples complets qui montrent comment prendre en charge Recherche Azure avec les bots en utilisant le kit SDK Bot Framework pour Node.js, consultez l’[exemple Real Estate Bot](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-Search/RealEstateBot) ou l’[exemple Job Listing Bot](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-Search/JobListingBot) dans GitHub. 
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

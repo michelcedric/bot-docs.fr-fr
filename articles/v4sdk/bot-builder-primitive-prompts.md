@@ -1,6 +1,6 @@
 ---
 title: Créer vos propres invites pour collecter des entrées utilisateur | Microsoft Docs
-description: Découvrez comment gérer un flux de conversation avec des invites primitives dans le Kit de développement logiciel (SDK) Bot Builder.
+description: Découvrez comment gérer un flux de conversation avec des invites primitives dans le kit SDK Bot Framework.
 keywords: flux de conversation, invites, état de conversation, état utilisateur, invites personnalisées
 author: JonathanFingold
 ms.author: v-jofing
@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/20/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: e308457e9fb228dd141ec081ac3c5daa5fd54cac
-ms.sourcegitcommit: 6cb37f43947273a58b2b7624579852b72b0e13ea
+ms.openlocfilehash: 2e591f19f7df8fa6281573c0ac7f1330d95f4c53
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52288818"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225434"
 ---
 # <a name="create-your-own-prompts-to-gather-user-input"></a>Créer vos propres invites pour collecter des entrées utilisateur
 
@@ -485,7 +485,7 @@ static validateDate(input) {
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-La [bibliothèque de boîtes de dialogue](bot-builder-concept-dialog.md) fournit des classes qui automatisent de nombreux aspects de la gestion des conversations. 
+La [bibliothèque de dialogues](bot-builder-concept-dialog.md) fournit des classes qui automatisent de nombreux aspects de la gestion des conversations. 
 
 ## <a name="next-step"></a>Étape suivante
 

@@ -1,6 +1,6 @@
 ---
 title: Exigences et considérations relatives aux bots multimédias en temps réel| Microsoft Docs
-description: Découvrez les exigences et considérations importantes en matière de création de bots multimédias en temps réel pour Skype à l’aide du Kit de développement logiciel (SDK) Bot Builder pour .NET.
+description: Appréhendez les exigences et les considérations importantes en matière de création de bots multimédias en temps réel pour Skype en utilisant le kit SDK Bot Framework pour .NET.
 author: ssulzer
 ms.author: ssulzer
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/17
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 209fb3d16310754d192d66c8f757b354b99b643b
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: d8cd326a3027fe5fcb440d9b205ba7d32a8b1640
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997326"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224934"
 ---
 # <a name="requirements-and-considerations-for-real-time-media-bots"></a>Exigences et considérations relatives aux bots multimédias en temps réel
 

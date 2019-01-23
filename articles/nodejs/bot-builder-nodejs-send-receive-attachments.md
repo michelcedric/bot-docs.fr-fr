@@ -1,6 +1,6 @@
 ---
 title: Envoyer et recevoir des pièces jointes | Microsoft Docs
-description: Découvrez comment envoyer et recevoir des messages contenant des pièces jointes à l’aide du kit SDK Bot Builder pour Node.js.
+description: Découvrez comment envoyer et recevoir des messages contenant des pièces jointes à l’aide du kit SDK Bot Framework pour Node.js.
 author: DeniseMak
 ms.author: v-demak
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 41e1e9e6fe59f00b8b8c873c2dd5fd2d698dabcb
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 1911a5b0f8e8f8b53de6f661c0a939767df1efbb
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998186"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224694"
 ---
 # <a name="send-and-receive-attachments"></a>Envoyer et recevoir des pièces jointes
 
@@ -27,8 +27,8 @@ ms.locfileid: "49998186"
 
 Un échange de messages entre l’utilisateur et le bot peut contenir des pièces jointes multimédias, telles que des images, des vidéos, de l’audio et des fichiers. Les types de pièces jointes qui peuvent être envoyés varient selon le canal, mais voici les types de base :
 
-* **Multimédia et fichiers** : vous pouvez envoyer des fichiers tels que des images, de l’audio et des vidéos en affectant à **contentType** le type MIME de [l’objet IAttachment][IAttachment], puis en passant un lien vers le fichier dans **contentUrl**.
-* **Cartes** : vous pouvez envoyer un ensemble complet de cartes visuelles <!-- and custom keyboards --> en affectant à **contentType** le type de carte souhaité, puis en passant le JSON pour la carte. Si vous utilisez l’une des classes du générateur de cartes enrichies comme **HeroCard**, la pièce jointe est automatiquement renseignée pour vous. Consultez [Envoyer une carte enrichie](bot-builder-nodejs-send-rich-cards.md) pour obtenir un exemple.
+* **Médias et fichiers** : vous pouvez envoyer des fichiers image, audio et vidéo en affectant à **contentType** le type MIME de l’[objet IAttachment][IAttachment], puis en passant un lien au fichier dans **contentUrl**.
+* **Cartes** : vous pouvez envoyer un ensemble complet de cartes visuelles <!-- and custom keyboards --> en affectant à **contentType** le type de carte souhaité, puis en passant le JSON pour la carte. Si vous utilisez l’une des classes du générateur de cartes enrichies comme **HeroCard**, la pièce jointe est automatiquement renseignée pour vous. Consultez [Envoyer une carte enrichie](bot-builder-nodejs-send-rich-cards.md) pour obtenir un exemple.
 
 ## <a name="add-a-media-attachment"></a>Ajouter une pièce jointe multimédia
 L’objet du message est censé être une instance d’un [IMessage][IMessage] et il est particulièrement utile d’envoyer à l’utilisateur un message en tant qu’objet quand vous souhaitez inclure une pièce jointe comme une image. Utilisez la méthode [session.send()][SessionSend] pour envoyer des messages sous la forme d’un objet JSON. 

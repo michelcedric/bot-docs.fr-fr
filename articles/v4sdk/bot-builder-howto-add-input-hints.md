@@ -1,6 +1,6 @@
 ---
 title: Ajouter des conseils de saisie aux messages | Microsoft Docs
-description: Découvrez comment ajouter des conseils de saisie aux messages à l’aide du SDK Bot Builder.
+description: Découvrez comment ajouter des conseils de saisie aux messages à l’aide du kit SDK Bot Framework.
 keywords: conseils de saisie, acceptation d’entrées, attente d’entrée, ignorer l’entrée, reconnaissance vocale
 author: ivorb
 ms.author: v-ivorb
@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 08/24/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: d55accd5ad9ad7db12d0b0e6865e04dcf7718110
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 751d5067d2e4b6b6ad21e1a4fd0ccb3818385d06
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49996737"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224874"
 ---
 # <a name="add-input-hints-to-messages"></a>Ajouter des conseils de saisie aux messages
 
@@ -118,7 +118,7 @@ await context.sendActivity(basicMessage);
 
 ## <a name="default-values-for-input-hint"></a>Valeurs par défaut pour le conseil de saisie
 
-Si vous ne définissez pas de conseil de saisie pour un message, le Kit SDK Bot Builder le fera automatiquement pour vous en suivant cette logique :
+Si vous ne définissez pas de conseil de saisie pour un message, le kit SDK Bot Framework le fait automatiquement en suivant cette logique :
 
 - Si votre bot envoie une invite, le conseil de saisie pour le message spécifie que votre bot **attend une entrée**.</li>
 - Si votre bot envoie un message simple, le conseil de saisie pour le message spécifie que votre bot **accepte une entrée**.</li>

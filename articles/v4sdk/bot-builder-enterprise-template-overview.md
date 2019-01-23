@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3abfb82f555f458bc9cdd5125fafa1cfa70921cb
-ms.sourcegitcommit: 66769e697d94f7bf5e0441dfacf2c0e3768845ea
+ms.openlocfilehash: a0b56b77990c095d1cf8bb28235d06444837d164
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53654960"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224595"
 ---
 # <a name="enterprise-bot-template"></a>Modèle de bot d’entreprise 
 
@@ -22,7 +22,7 @@ ms.locfileid: "53654960"
 
 La création d’une expérience conversationnelle de haute qualité nécessite un ensemble de fonctionnalités de base. Pour vous aider à créer des expériences conversationnelles optimales, nous avons créé un modèle de bot d’entreprise. Ce modèle réunit toutes les meilleures pratiques et tous les composants de prise en charge que nous avons identifiés lors de la création d’expériences conversationnelles. 
 
-Il simplifie considérablement la création d’un nouveau projet de bot. Le modèle fournit les fonctionnalités suivantes prêtes à l’emploi, grâce à l’utilisation du [SDK Bot Builder v4](https://github.com/Microsoft/botbuilder) et des [outils Bot Builder](https://github.com/Microsoft/botbuilder-tools).
+Il simplifie considérablement la création d’un nouveau projet de bot. Le modèle propose les fonctionnalités prêtes à l’emploi suivantes, tirant parti du kit [SDK Bot Framework v4](https://github.com/Microsoft/botbuilder) et de [Bot Framework Tools](https://github.com/Microsoft/botbuilder-tools).
 
 Fonctionnalité | Description |
 ------------ | -------------

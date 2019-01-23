@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: e3833595003edda46a6ffd1d508237262aad94e1
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 20ca2864b6498b0d80bea13ce97ffffc4cf1f22d
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999226"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225924"
 ---
 # <a name="integrate-your-bot-with-a-web-browser"></a>Intégrer votre bot dans un navigateur web
 
@@ -73,7 +73,7 @@ Le nombre magique doit être un nombre aléatoire généré à l’aide d’une 
 
 ### <a id="website-signal-to-bot"></a> Comment le site web « signale-t-il » le bot ?
 
-Lorsque le bot [génère le lien hypertexte](#generate-hyperlink) sur lequel l’utilisateur cliquera pour initier le flux du site web, il contient, par le biais de paramètres de chaîne de requête dans l’URL cible, des informations sur le contexte de la conversation actuelle, telles que l’ID de conversation, l’ID de canal et l’ID d’utilisateur dans le canal. Le site web peut ensuite utiliser ces informations afin de lire et d’écrire des variables d’état pour cet utilisateur ou cette conversation à l’aide du kit de développement logiciel (SDK) Bot Builder ou des API REST. Consultez l’[étape 6](#signal-to-bot) ci-dessus pour avoir un exemple de la manière dont le site web « signale » au bot que le flux du site Web est terminé.
+Lorsque le bot [génère le lien hypertexte](#generate-hyperlink) sur lequel l’utilisateur cliquera pour initier le flux du site web, il contient, par le biais de paramètres de chaîne de requête dans l’URL cible, des informations sur le contexte de la conversation actuelle, telles que l’ID de conversation, l’ID de canal et l’ID d’utilisateur dans le canal. Le site web peut ensuite utiliser ces informations pour lire et écrire des variables d’état pour cet utilisateur ou cette conversation à l’aide du kit SDK Bot Framework ou des API REST. Consultez l’[étape 6](#signal-to-bot) ci-dessus pour avoir un exemple de la manière dont le site web « signale » au bot que le flux du site Web est terminé.
 
 ## <a name="sample-code"></a>Exemple de code
 

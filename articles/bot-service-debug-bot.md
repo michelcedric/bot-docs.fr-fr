@@ -3,18 +3,18 @@ title: Déboguer un bot | Microsoft Docs
 description: Découvrez comment déboguer un bot créé à l’aide de Bot Service.
 author: v-ducvo
 ms.author: v-ducvo
-keywords: Kit de développement logiciel (SDK) Bot Builder, déboguer un bot, tester un bot, émulateur de bot, émulateur
+keywords: Kit SDK Bot Framework, déboguer un bot, tester un bot, émulateur de bot, émulateur
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/13/2018
-ms.openlocfilehash: fcda5c57a96b6f93aad965e868c824577616f630
-ms.sourcegitcommit: 6c719b51c9e4e84f5642100a33fe346b21360e8a
+ms.openlocfilehash: b445ce7796c3f7f3180b15fd6dfac1ef82b808ae
+ms.sourcegitcommit: d385ec5fe61c469ab17e6f21b4a0d50e5110d0fd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52452041"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54298296"
 ---
 # <a name="debug-a-bot"></a>Déboguer un bot
 
@@ -32,6 +32,7 @@ Pour exécuter un bot JavaScript en utilisant la ligne de commande et en le test
 1. Démarrez l’émulateur et connectez-vous au point de terminaison du bot (par exemple : **http://localhost:3978/api/messages**). Si vous exécutez le bot pour la première fois, cliquez sur **Fichier > Nouveau bot** et suivez les instructions à l’écran. Sinon, cliquez sur **Fichier > Ouvrir un bot** pour ouvrir un bot existant. Dans la mesure où ce bot est exécuté localement sur votre ordinateur, vous pouvez laisser vides les champs **ID d’application MSA** et **Mot de passe d’application MSA**. Pour plus d’informations, consultez [Déboguer avec l’émulateur](bot-service-debug-emulator.md).
 1. À partir de l’émulateur, envoyez un message à votre bot (par exemple : le message « Salut »). 
 1. Utilisez les panneaux **Inspector** et **Log** à droite de la fenêtre de l’émulateur pour déboguer votre bot. Par exemple, cliquer sur une bulle de messages (par exemple, la bulle du message « Hi » dans la capture d’écran ci-dessous) affiche les détails de ce message dans le panneau **Inspector**. Vous pouvez l’utiliser pour afficher les demandes et réponses à mesure que des messages sont échangés entre l’émulateur et le bot. Vous pouvez également cliquer sur le texte lié dans le panneau **Log** pour afficher les détails dans le panneau **Inspecteur**.
+
 
    ![Panneau Inspector sur l’émulateur](~/media/bot-service-debug-bot/emulator_inspector.png)
 

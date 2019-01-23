@@ -9,18 +9,18 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/20/2018
-ms.openlocfilehash: 18350c7ea6fb7390796567b1754cd88be6b9be61
-ms.sourcegitcommit: 561185b9c83f3e082e8b7aba1122b1706e431540
+ms.openlocfilehash: 8a3ff4a30e3041937ba831efc237343c9aa27e62
+ms.sourcegitcommit: 8161753641368567f239e24a35ad61768acccd8e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/26/2018
-ms.locfileid: "53785412"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54202545"
 ---
 # <a name="troubleshoot-bot-configuration-issues"></a>Résoudre les problèmes de configuration de bot
 
 La première étape de la résolution des problèmes d’un bot consiste à tester celui-ci dans Web Chat. Vous pourrez ainsi déterminer si le problème est spécifique à votre bot (le bot ne fonctionne dans aucun canal) ou à un canal particulier (le bot fonctionne dans certains canaux mais pas dans d’autres).
 
-## <a name="test-in-web-chat"></a>Tester dans Web Chat
+## <a name="test-in-web-chat"></a>Tester dans la Discussion Web
 
 1. Ouvrez votre ressource bot dans le [portail Azure](http://portal.azure.com/).
 1. Ouvrez le volet **Tester dans Web Chat**.
@@ -28,7 +28,7 @@ La première étape de la résolution des problèmes d’un bot consiste à test
 
 ![Tester dans Web Chat](./media/test-in-webchat.png)
 
-Si le bot répond avec la sortie attendue, accédez à [Le bot ne fonctionne pas dans Web Chat](#bot-does-not-work-in-web-chat). Dans le cas contraire, accédez à [Le bot fonctionne dans Web Chat, mais pas dans les autres canaux](#bot-works-in-web-chat-but-not-in-other-channels).
+Si le bot ne répond pas avec la sortie attendue, accédez à [Le bot ne fonctionne pas dans Web Chat](#bot-does-not-work-in-web-chat). Dans le cas contraire, accédez à [Le bot fonctionne dans Web Chat, mais pas dans les autres canaux](#bot-works-in-web-chat-but-not-in-other-channels).
 
 ## <a name="bot-does-not-work-in-web-chat"></a>Le bot ne fonctionne pas dans Web Chat
 

@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: tools
 ms.date: 10/31/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 8a59c0a8b7ee664cdb38ab9d0cb186114938d73f
-ms.sourcegitcommit: 782b3a2e788c25effd7d150a070bd2819ea92dad
+ms.openlocfilehash: 4b09ca152f99faa66d2da55ebeb93fb9cce090db
+ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50743663"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54317689"
 ---
 # <a name="create-bots-with-azure-cli"></a>Créer des bots avec l’interface de ligne de commande Azure
 
@@ -35,7 +35,7 @@ Pour que vous puissiez utiliser ces outils à partir de la ligne de commande, No
 
 ## <a name="1-install-tools"></a>1. Installer des outils
 1. [Installez](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) la version la plus récente de l’interface de ligne de commande Azure.
-2. [Installez](https://aka.ms/botbuilder-tools-readme) les outils Bot Builder.
+2. [Installez](https://aka.ms/botbuilder-tools-readme) Bot Framework Tools.
 
 Vous pouvez désormais gérer les bots à l’aide de l’interface de ligne de commande Azure comme n’importe quelle autre ressource Azure.
 
@@ -64,12 +64,12 @@ az bot [command]
 ```
 |Commandes|  |
 |----|----|
-| create      |ajouter une ressource|
-| delete     |cloner une ressource|
-| télécharger   | télécharger le code source du bit|
-| Publier   |publier sur un service de bot existant|
-| show |afficher les ressources bot existantes.|
-| update| mettre à jour un service bot existant|
+| create      |Créer un bot|
+| delete     |Supprimer un bot existant|
+| download   |Télécharger un bot existant|
+| publish   |Publier sur le service d’application associé du bot|
+| show |Obtenir un bot existant|
+| update|Mettre à jour un bot existant|
 
 Pour créer un bot à partir de l’interface CLI, vous devez sélectionner un [groupe de ressources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) existant ou en créer un. 
 
@@ -160,10 +160,10 @@ Cette commande récupère le point de terminaison actuel, ainsi que l’ID et le
 
 ## <a name="5-manage-update-or-create-luis-and-qna-services-with--new-botbuilder-tools"></a>5. Gérer, mettre à jour ou créer des services LUIS et de questions/réponses avec les nouveaux outils Bot Builder
 
-Les [outils Bot Builder](https://aka.ms/botbuilder-tools) sont un nouvel ensemble d’outils vous permettant de gérer vos ressources de bot et d’interagir avec elles directement à partir de la ligne de commande.
+[Bot Framework Tools](https://aka.ms/botbuilder-tools) est un nouvel ensemble d’outils qui vous permet de gérer vos ressources de bot et d’interagir avec elles directement à partir de la ligne de commande.
 
 >[!TIP]
-> Chaque outil Bot Builder inclut une commande d’aide globale, que vous pouvez exécuter à partir de la ligne de commande en entrant **-h** ou **--help**. Cette commande est disponible à tout moment à partir de n’importe quelle action, affichant les options disponibles, ainsi que leurs descriptions.
+> Chaque outil Bot Framework inclut une commande d’aide globale à laquelle vous pouvez accéder à partir de la ligne de commande en entrant **-h** ou **--help**. Cette commande est disponible à tout moment à partir de n’importe quelle action, affichant les options disponibles, ainsi que leurs descriptions.
 
 ### <a name="ludown"></a>LUDown
 
@@ -333,5 +333,5 @@ az bot publish --name "my-bot-name" --resource-group "my-resource-group"
 ```
 
 ## <a name="references"></a>Références
-- [Outils Bot Builder](https://aka.ms/botbuilder-tools-readme)
+- [Bot Framework Tools](https://aka.ms/botbuilder-tools-readme)
 - [Interface de ligne de commande Azure](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)

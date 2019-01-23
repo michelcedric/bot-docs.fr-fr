@@ -9,20 +9,15 @@ layout: LandingPage
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 01/16/2019
-ms.openlocfilehash: 5c7851bdc05180605d20698f3e94e07c9bcace2b
-ms.sourcegitcommit: bdb981c0b11ee99d128e30ae0462705b2dae8572
-ms.translationtype: HT
-ms.contentlocale: fr-FR
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360769"
 ---
 ::: moniker range="azure-bot-service-3.0"
 
-> [!NOTE]
-> Cette rubrique s’applique à la **version précédente du kit de développement logiciel (SDK) (v3)**. La documentation de la version actuelle du kit de développement logiciel (SDK) (v4) est disponible [ici.](https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-4.0)
-
 <div class="content">
     <h1>Documentation d’Azure Bot Service</h1>
+    <div class="alert is-info">
+        <p class="alert-title"><span class="docon docon-status-error-outline"></span> Remarque</p>
+        <p>Cette rubrique s’applique à la <strong>version précédente du kit de développement logiciel (SDK) (v3)</strong>. La documentation de la version actuelle du kit de développement logiciel (SDK) (v4) est disponible <a href="https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-4.0" data-linktype="external">ici.</a></p>
+    </div>
     <div class="intro" style="min-width: 200px">
         <p>Bot Service fournit un environnement intégré sur mesure pour le développement de bots, vous permettant de créer, connecter, tester, déployer et gérer des bots intelligents, tout cela depuis un seul et même endroit. Azure Bot Service optimise le SDK Bot Framework avec une prise en charge de .NET et de Node.js. Découvrez comment utiliser Bot Service avec nos démarrages rapides et nos exemples.</p>
     </div>
@@ -67,11 +62,12 @@ ms.locfileid: "54360769"
 
 ::: moniker range="azure-bot-service-4.0"
 
-> [!NOTE] 
-> Cette rubrique concerne la version actuelle du kit de développement logiciel (SDK) (v4). La documentation de l’ancienne version du Kit de développement logiciel (SDK) (v3) est disponible [ici.](https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-3.0)
-
 <div class="content">
     <h1>Documentation d’Azure Bot Service</h1>
+    <div class="alert is-info">
+        <p class="alert-title"><span class="docon docon-status-error-outline"></span> Remarque</p>
+        <p>Cette rubrique concerne la version actuelle du kit de développement logiciel (SDK) (v4). La documentation de l’ancienne version du Kit de développement logiciel (SDK) (v3) est disponible <a href="https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-3.0" data-linktype="external">ici.</a></p>
+    </div>
     <div class="intro" style="min-width: 200px">
         <p>Azure Bot Service fournit un environnement intégré sur mesure pour le développement de bots, vous permettant de créer, connecter, tester, déployer et gérer des bots intelligents, tout cela depuis un seul et même endroit. Azure Bot Service optimise le SDK Bot Framework avec une prise en charge de C# et JavaScript. Découvrez comment utiliser Bot Service avec nos démarrages rapides, nos didacticiels et nos exemples.
 </p>

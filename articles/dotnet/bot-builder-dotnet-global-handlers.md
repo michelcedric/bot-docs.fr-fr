@@ -1,6 +1,6 @@
 ---
 title: Implémenter des gestionnaires de messages globaux | Microsoft Docs
-description: Découvrez comment permettre à votre robot d’écouter et de gérer les entrées utilisateur qui contiennent certains mots clés à l’aide du Kit de développement logiciel (SDK) Bot Builder pour .NET.
+description: Découvrez comment permettre à votre bot d’écouter et de gérer les entrées utilisateur contenant certains mots clés à l’aide du kit SDK Bot Framework pour .NET.
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 3f180e721dc6ca2cf1ca85f5ff54137f16b36be5
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 86964bc39a95a23f397af649cfac6e2784dd588a
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998363"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224364"
 ---
 # <a name="implement-global-message-handlers"></a>Implémenter des gestionnaires de messages globaux
 
@@ -24,7 +24,7 @@ ms.locfileid: "49998363"
 
 ## <a name="listen-for-keywords-in-user-input"></a>Écouter des mots clés dans les entrées utilisateur
 
-Le guide suivant montre comment implémenter des gestionnaires de messages globaux à l’aide du Kit de développement logiciel (SDK) Bot Builder pour .NET.
+La procédure pas à pas suivante montre comment implémenter des gestionnaires de messages globaux à l’aide du kit SDK Bot Framework pour .NET.
 
 Tout d’abord, `Global.asax.cs` inscrit `GlobalMessageHandlersBotModule`, qui est implémentée comme indiqué ici. Dans cet exemple, le module enregistre deux dialogues scorables : l’un pour gérer une demande de modification de paramètres (`SettingsScorable`), et un autre pour gérer une demande d’annulation (`CancelScoreable`).
 
@@ -92,10 +92,10 @@ protected override async Task PostAsync(IActivity item, string state, Cancellati
 
 ## <a name="sample-code"></a>Exemple de code
 
-Pour obtenir un exemple complet qui montre comment implémenter des gestionnaires de messages globaux en utilisant le Kit de développement logiciel (SDK) Bot Builder pour .NET, voir les <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-GlobalMessageHandlers" target="_blank">Exemples de gestionnaires de messages globaux</a> dans GitHub.
+Pour obtenir un exemple complet qui montre comment implémenter des gestionnaires de messages globaux à l’aide du kit SDK Bot Framework pour .NET, consultez l’<a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-GlobalMessageHandlers" target="_blank">exemple Global Message Handlers</a> dans GitHub.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 - [Concevoir et contrôler un flux de conversation](../bot-service-design-conversation-flow.md)
-- <a href="/dotnet/api/?view=botbuilder-3.12.2.4" target="_blank">Documentation de référence concernant le Kit de développement logiciel (SDK) Bot Builder pour .NET</a>
+- <a href="/dotnet/api/?view=botbuilder-3.12.2.4" target="_blank">Informations de référence sur le kit SDK Bot Framework pour .NET</a>
 - <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-GlobalMessageHandlers" target="_blank">Exemples de gestionnaires de messages globaux (GitHub)</a>

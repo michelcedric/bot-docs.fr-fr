@@ -1,25 +1,25 @@
 ---
 title: Tester une compétence Cortana | Microsoft Docs
 description: Découvrez comment tester un bot Cortana en appelant une compétence Cortana.
-keywords: Kit de développement logiciel (SDK) Bot Builder, inscrire votre bot, cortana
+keywords: Kit SDK Bot Framework, inscrire un bot, cortana
 author: v-ducvo
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 05/01/18
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 15711999271d1bb8e93c1ad72eb0bc4b6acb484a
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: acf4f73ea83646878e08d14e036d0d2d66686756
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999966"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224954"
 ---
 # <a name="test-a-cortana-skill"></a>Tester une compétence Cortana
 
 [!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
  
-Si vous avez créé une compétence Cortana à l’aide du Kit de développement logiciel (SDK) Bot Builder, vous pouvez la tester en l’appelant à partir de Cortana. Les instructions ci-après vous guident tout au long de la procédure requise pour tester votre compétence Cortana.
+Si vous avez créé une compétence Cortana à l’aide du kit SDK Bot Framework, vous pouvez la tester en l’appelant à partir de Cortana. Les instructions ci-après vous guident tout au long de la procédure requise pour tester votre compétence Cortana.
 
 ## <a name="register-your-bot"></a>Inscrire votre bot
 Si vous avez [créé votre bot](~/bot-service-quickstart.md) à l’aide du service de robot dans Azure, votre bot est déjà inscrit, et vous pouvez donc ignorer cette étape.

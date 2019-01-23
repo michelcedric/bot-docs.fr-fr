@@ -1,6 +1,6 @@
 ---
-title: Ajouter des fonctionnalités vocales aux messages | Microsoft Docs
-description: Découvrez comment ajouter du discours aux messages à l’aide du Kit SDK Bot Builder pour .NET.
+title: Ajouter la reconnaissance vocale aux messages | Microsoft Docs
+description: Découvrez comment ajouter la reconnaissance vocale aux messages à l’aide du kit SDK Bot Framework pour .NET.
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: dc542c7e85b3a79e1071edebea65d93c99742beb
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 3eef1ec583764449554a223ec9dc339ff505ace6
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000357"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225594"
 ---
 # <a name="add-speech-to-messages"></a>Ajouter de la reconnaissance vocale aux messages
 
@@ -29,7 +29,7 @@ Si vous générez un bot pour un canal où sont activées les fonctionnalités v
 
 ## <a name="specify-text-to-be-spoken-by-your-bot"></a>Spécifier le texte à énoncer par votre bot
 
-Utilisez le Kit SDK Bot Builder pour .NET. Il existe plusieurs manières de spécifier le texte à énoncer par votre bot sur un canal à fonctionnalités vocales. Vous pouvez définir la propriété `Speak` du [message][IMessageActivity], appeler la méthode `IDialogContext.SayAsync()`, ou spécifier les options d’invite `speak` et `retrySpeak` lors de l’envoi d’un message à l’aide d’une invite intégrée.
+Avec le kit SDK Bot Framework pour .NET, il existe plusieurs façons de spécifier le texte que doit prononcer le bot sur un canal à reconnaissance vocale. Vous pouvez définir la propriété `Speak` du [message][IMessageActivity], appeler la méthode `IDialogContext.SayAsync()`, ou spécifier les options d’invite `speak` et `retrySpeak` lors de l’envoi d’un message à l’aide d’une invite intégrée.
 
 ### <a id="message-speak"></a> IMessageActivity.Speak
 
@@ -59,7 +59,7 @@ Lorsque vous envoyez un message sur le canal de reconnaissance vocale, vous pouv
 
 ## <a name="sample-code"></a>Exemple de code 
 
-Pour obtenir un exemple complet qui montre comment créer un bot à fonctionnalité vocale en utilisant le Kit SDK Bot Builder pour .NET, consultez l’<a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp" target="_blank">exemple de compétence Roller</a> dans GitHub.
+Pour un exemple complet qui montre comment créer un bot à reconnaissance vocale à l’aide du kit SDK Bot Framework pour .NET, consultez l’<a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp" target="_blank">exemple Roller Skill</a> dans GitHub.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

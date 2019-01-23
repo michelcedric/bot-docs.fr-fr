@@ -7,13 +7,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 10/31/2018
-ms.openlocfilehash: 616c3bfd5fcb36c06f4e2acf032ba3cf5fc125d3
-ms.sourcegitcommit: a496714fb72550a743d738702f4f79e254c69d06
+ms.date: 1/10/2019
+ms.openlocfilehash: 4e11ecfa2d42b93b85d186a5078b612ef64e7cdd
+ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50736697"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54317649"
 ---
 ::: moniker range="azure-bot-service-3.0"
 
@@ -88,12 +88,15 @@ Les bots sont comparables à des applications web modernes. Ils résident sur In
 
 Les bots peuvent effectuer les mêmes opérations que d’autres types de logiciels : lire et écrire des fichiers, utiliser des bases de données et des API, et réaliser des tâches de calcul classiques. Ce qui rend les bots uniques, c’est leur utilisation de mécanismes généralement réservés à la communication entre humains. 
 
-Les bots comprennent généralement les composants suivants :
+Azure Bot Service offre les fonctionnalités suivantes :
+- Kit SDK Bot Framework pour le développement de bots
+- Bot Framework Tools pour couvrir l’ensemble du workflow de développement de bot
+- Bot Framework Service (BFS) pour l’envoi et la réception de messages et d’événements entre bots et canaux
+- Déploiement de bot et configuration de canal dans Azure
 
-- Un serveur web, dans la plupart des cas disponible sur l’Internet public
-- Le SDK et les outils Bot Builder qui fournissent une interface pour le développement de bots
-- Azure Cognitive Services
-- Stockage Azure
+Par ailleurs, les bots peuvent utiliser d’autres services Azure comme :
+- Azure Cognitive Services pour créer des applications intelligentes 
+- Stockage Azure comme solution de stockage cloud
 
 ## <a name="building-a-bot"></a>Création d’un bot 
 
@@ -105,7 +108,7 @@ Azure Bot Service propose un ensemble intégré d’outils et de services permet
 Comme avec n’importe quel type de logiciel, il est important pour le processus de création d’un bot réussi de disposer d’une compréhension approfondie des objectifs, des processus et des besoins des utilisateurs. Avant d’écrire votre code, consultez les [instructions relatives à la conception](bot-service-design-principles.md)  des bots, pour connaître les bonnes pratiques et déterminer les besoins de votre bot. Vous pouvez créer un bot simple ou inclure des fonctionnalités plus élaborées, telles que des fonctions vocales, la compréhension du langage naturel ou la capacité de répondre aux questions.
 
 ### <a name="build"></a>Créer
-Votre bot est un service web qui implémente une interface de conversation et communique avec Bot Framework Service pour envoyer et recevoir des messages et des événements. Vous pouvez créer des bots dans divers environnements et langages. Vous pouvez commencer le développement de votre bot dans le [portail Azure](bot-service-quickstart.md), ou utiliser des modèles [[C#](dotnet/bot-builder-dotnet-sdk-quickstart.md) | [JavaScript](javascript/bot-builder-javascript-quickstart.md)] pour un développement local.
+Votre bot est un service web qui implémente une interface de conversation et communique avec Bot Framework Service pour envoyer et recevoir des messages et des événements. Bot Framework Service est l’un des composants d’Azure Bot Service. Vous pouvez créer des bots dans divers environnements et langages. Vous pouvez commencer le développement de votre bot dans le [portail Azure](bot-service-quickstart.md), ou utiliser des modèles [[C#](dotnet/bot-builder-dotnet-sdk-quickstart.md) | [JavaScript](javascript/bot-builder-javascript-quickstart.md)] pour un développement local.
 
 Dans le cadre d’Azure Bot Service, nous proposons des composants supplémentaires que vous pouvez utiliser pour étendre les fonctionnalités de votre bot
 
@@ -137,7 +140,7 @@ Lorsque vous êtes prêt à rendre votre bot accessible sur le Web, publiez-le d
 Connectez votre bot aux canaux tels que Facebook, Messenger, Kik, Skype, Slack, Microsoft Teams, Telegram, SMS, Twilio, Cortana et Skype. Bot Framework effectue la plupart des opérations nécessaires pour envoyer et recevoir des messages de l’ensemble de ces différentes plateformes : l’application de votre bot reçoit un flux unifié et normalisé de messages, quels que soient le nombre et le type de canaux auxquels il est connecté. Pour plus d’informations sur l’ajout de canaux, consultez la rubrique [Canaux](bot-service-manage-channels.md).
 
 ### <a name="evaluate"></a>Évaluer 
-Utilisez les données collectées dans le portail Azure pour identifier les opportunités d’améliorer les fonctionnalités et les performances de votre bot. Vous pouvez obtenir des données relatives au service et à l’instrumentation, comme le trafic, la latence et les intégrations. L’outil d’analyse permet également de créer des rapports de conversation à partir des données sur les utilisateurs, les messages et les canaux. Pour plus d’informations, consultez la rubrique expliquant [comment rassembler les données d’analyse](bot-service-manage-analytics.md).
+Utilisez les données collectées dans le portail Azure pour identifier les opportunités d’améliorer les fonctionnalités et les performances de votre bot. Vous pouvez obtenir des données relatives au service et à l’instrumentation, comme le trafic, la latence et les intégrations. L’outil d’analyse permet également de créer des rapports de conversation à partir des données sur les utilisateurs, les messages et les canaux. Pour plus d’informations, consultez la rubrique expliquant [comment collecter des données d’analyse](bot-service-manage-analytics.md).
 
 
 ## <a name="next-steps"></a>Étapes suivantes

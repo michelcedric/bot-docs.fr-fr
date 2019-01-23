@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/17
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: deb184483bf7e0963f827b20377291ab971c1516
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 455ee87f31e70470d8d118f010c77327347c032d
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997336"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224884"
 ---
 # <a name="secure-your-bot"></a>Sécuriser votre bot
 
@@ -40,7 +40,7 @@ Spécifiez l’appID et le mot de passe du bot dans le fichier web.config de vot
 </appSettings>
 ```
 
-Ensuite, utilisez l’attribut `[BotAuthentication]` pour spécifier les informations d’authentification requises lorsque vous créez votre bot à l’aide du Kit de développement logiciel (SDK) Bot Builder pour .NET. 
+Ensuite, utilisez l’attribut `[BotAuthentication]` pour spécifier des informations d’authentification quand vous créez votre bot à l’aide du kit SDK Bot Framework pour .NET. 
 
 Pour utiliser les informations d’authentification stockées dans le fichier web.config, spécifiez l’attribut `[BotAuthentication]` sans paramètres.
 
@@ -52,6 +52,6 @@ Pour utiliser d’autres valeurs pour les informations d’authentification, sp�
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-- [Kit de développement logiciel Bot Builder pour .NET](bot-builder-dotnet-overview.md)
+- [SDK Bot Framework pour .NET](bot-builder-dotnet-overview.md)
 - [Key concepts in the bot Builder SDK for .NET](bot-builder-dotnet-concepts.md) (Concepts clés du Kit de développement logiciel (SDK) Bot Builder pour .NET)
 - [Register a bot with the Bot Framework](~/bot-service-quickstart-registration.md) (Inscrire un bot auprès du Bot Framework)

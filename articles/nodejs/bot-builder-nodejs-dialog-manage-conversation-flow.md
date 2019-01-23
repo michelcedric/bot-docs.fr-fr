@@ -1,6 +1,6 @@
 ---
 title: Gérer un flux de conversation avec des dialogues | Microsoft Docs
-description: Découvrez comment gérer une conversation avec des dialogues entre un bot et un utilisateur dans le Kit de développement logiciel (SDK) Bot Builder pour Node.js.
+description: Découvrez comment gérer une conversation avec des dialogues entre un bot et un utilisateur dans le kit SDK Bot Framework pour Node.js.
 author: v-ducvo
 ms.author: v-ducvo
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 133f085a857d1bb8bf7622e7adab19374902327d
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 96c28101c3ea72c70c6ad53b06306f4ea00b2929
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997766"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225604"
 ---
 # <a name="manage-conversation-flow-with-dialogs"></a>Gérer un flux de conversation avec des dialogues
 
@@ -24,9 +24,9 @@ ms.locfileid: "49997766"
 > - [.NET](../dotnet/bot-builder-dotnet-manage-conversation-flow.md)
 > - [Node.JS](../nodejs/bot-builder-nodejs-dialog-manage-conversation-flow.md)
 
-La gestion de flux de conversation est une tâche essentielle dans la création de bots. Un bot doit être en mesure de s’acquitter des tâches principales en finesse et de traiter les interruptions de manière appropriée. Le Kit de développement logiciel (SDK) Bot Builder pour Node.js vous permet de gérer un flux de conversation avec des dialogues.
+La gestion de flux de conversation est une tâche essentielle dans la création de bots. Un bot doit être en mesure de s’acquitter des tâches principales en finesse et de traiter les interruptions de manière appropriée. Le kit SDK Bot Framework pour Node.js vous permet de gérer un flux de conversation en utilisant des dialogues.
 
-Un dialogue est comparable à une fonction dans un programme. Il est généralement conçu pour effectuer une opération spécifique, et peut être appelé aussi souvent que nécessaire. Vous pouvez enchaîner plusieurs dialogues afin de prendre en charge quasiment tous les flux de conversation que votre bot doit pouvoir traiter. Le Kit de développement logiciel (SDK) Bot Builder pour Node.js intègre différentes fonctionnalités, telles que des [invites](bot-builder-nodejs-dialog-prompt.md) et des [cascades](bot-builder-nodejs-dialog-waterfall.md), conçues pour vous aider à gérer un flux de conversation.
+Un dialogue est comparable à une fonction dans un programme. Il est généralement conçu pour effectuer une opération spécifique, et peut être appelé aussi souvent que nécessaire. Vous pouvez enchaîner plusieurs dialogues afin de gérer pratiquement tout flux de conversation que votre bot doit pouvoir gérer. Le kit SDK Bot Framework pour Node.js propose des fonctionnalités intégrées comme des [invites](bot-builder-nodejs-dialog-prompt.md) et des [cascades](bot-builder-nodejs-dialog-waterfall.md) pour vous aider à gérer un flux de conversation.
 
 Cet article fournit une série d’exemples expliquant comment prendre en charge des flux de conversation simples ou complexes, dans lesquels votre bot peut traiter les interruptions et reprendre le flux correctement à l’aide de dialogues. Ces exemples reposent sur les scénarios suivants : 
 
@@ -95,7 +95,7 @@ La capture d’écran ci-après illustre les résultats de l’exécution de ce 
 
 Chaque étape de cet exemple utilise une invite demandant à l’utilisateur de saisir une entrée. Une invite est un type spécial de dialogue qui demande une entrée utilisateur, attend une réponse et renvoie cette dernière à l’étape suivante de la cascade. Pour plus d’informations sur les différents types d’invites que vous pouvez utiliser dans votre bot, consultez l’article [Demander aux utilisateurs d’effectuer une saisie](bot-builder-nodejs-dialog-prompt.md).
 
-Dans cet exemple, le bot utilise l’élément `Prompts.text()` pour solliciter une réponse en forme libre de la part de l’utilisateur au format texte. L’utilisateur peut répondre par un texte quelconque, et le bot doit décider comment traiter la réponse. `Prompts.time()` utilise la bibliothèque [Chrono](https://github.com/wanasit/chrono) pour analyser les informations de date et d’heure d’une chaîne. Cette approche accroît la quantité de langage naturel en matière de date et d’heure que peut comprendre votre bot. Par exemple : « 6 octobre 2018 à 21:00 », «Aujourd’hui à 19:30 », « lundi prochain à 18:00 », etc.
+Dans cet exemple, le bot utilise l’élément `Prompts.text()` pour solliciter une réponse en forme libre de la part de l’utilisateur au format texte. L’utilisateur peut répondre par un texte quelconque, et le bot doit décider comment traiter la réponse. `Prompts.time()` utilise la bibliothèque [Chrono](https://github.com/wanasit/chrono) pour analyser les informations de date et d’heure d’une chaîne. Cette approche accroît la quantité de langage naturel en matière de date et d’heure que peut comprendre votre bot. Par exemple :  « 6 juin 2017 à 9:00 », « Aujourd’hui à 17:30 », « lundi prochain à 18:00 », etc.
 
 > [!TIP] 
 > L’heure entrée par l’utilisateur est convertie en heure UTC en fonction du fuseau horaire auquel appartient le serveur qui héberge le bot. Étant donné que le serveur peut se trouver dans un autre fuseau horaire que celui de l’utilisateur, veillez à tenir compte des fuseaux horaires. Pour convertir la date et l’heure en heure locale de l’utilisateur, prévoyez de demander à l’utilisateur le fuseau horaire auquel il appartient.
@@ -174,7 +174,7 @@ Cette technique vous permet de séparer le flux de conversion de la logique des 
 
 Pour le processus de guidage de l’utilisateur dans l’exécution d’une série de tâches, vous devez déterminer comment traiter les éventuelles questions ou demandes de complément d’informations émanant de l’utilisateur. Par exemple, quel que soit le stade de la conversation auquel se trouve l’utilisateur, comment le bot doit-il répondre si l’utilisateur entre les termes « Help » (Aide), « Support » (Support) ou « Cancel » (Annuler) ? Que doit-il se passer si l’utilisateur souhaite obtenir un complément d’informations au sujet d’une étape ? Et si l’utilisateur change d’avis et souhaite abandonner la tâche actuelle pour démarrer une tâche complètement différente ?
 
-Le Kit de développement logiciel (SDK) Bot Builder pour Node.js permet à un bot d’écouter une entrée spécifique dans un contexte global ou local dans le cadre du dialogue actuel. Ces entrées sont appelées [actions](bot-builder-nodejs-dialog-actions.md) et permettent au bot d’écouter les entrées utilisateur basées sur une clause `matches`. La manière de réagir aux différentes entrées utilisateur est déterminée par le bot.
+Le kit SDK Bot Framework pour Node.js permet à un bot d’écouter une entrée spécifique dans un contexte global ou local dans le cadre du dialogue actuel. Ces entrées sont appelées [actions](bot-builder-nodejs-dialog-actions.md) et permettent au bot d’écouter les entrées utilisateur basées sur une clause `matches`. La manière de réagir aux différentes entrées utilisateur est déterminée par le bot.
 
 ### <a name="handle-global-action"></a>Traiter une action globale
 

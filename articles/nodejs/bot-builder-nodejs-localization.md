@@ -1,6 +1,6 @@
 ---
 title: Localisation de la prise en charge | Microsoft Docs
-description: Découvrez comment déterminer l’endroit où se trouve l’utilisateur et comment activer les fonctionnalités de localisation avec le kit SDK Bot Builder pour Node.js.
+description: Apprenez à déterminer la localisation de l’utilisateur et à activer les fonctionnalités de localisation à l’aide du kit SDK Bot Framework pour Node.js.
 author: DeniseMak
 ms.author: v-demak
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 5ac9fabcb0c6626e1b0133b7718b135a88d4c846
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: d592aa8b37e1d73e3cf9003209b985b8ca0f03f8
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998061"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224394"
 ---
 # <a name="support-localization"></a>Localisation de la prise en charge
 
@@ -111,9 +111,9 @@ var bot = new builder.UniversalBot(connector, {
 ```
 
 ## <a name="localize-prompts"></a>Localiser les invites
-Le système de localisation par défaut du kit SDK Bot Builder est basé sur des fichiers, et permet à un bot de prendre en charge plusieurs langues au moyen de fichiers JSON stockés sur le disque. Par défaut, le système de localisation recherche les invites du bot dans le fichier **./locale/<IETF TAG>/index.json**, où <IETF TAG> est une [balise de langue IETF][IEFT] valide représentant les paramètres régionaux par défaut pour lesquels rechercher des invites. 
+Le système de localisation par défaut du kit SDK Bot Framework est basé sur des fichiers et permet à un bot de prendre en charge plusieurs langues en utilisant les fichiers JSON stockés sur disque. Par défaut, le système de localisation recherche les invites du bot dans le fichier **./locale/<IETF TAG>/index.json**, où <IETF TAG> est une [balise de langue IETF][IEFT] valide représentant les paramètres régionaux par défaut pour lesquels rechercher des invites. 
 
-La capture d’écran suivante montre la structure de répertoire d’un bot prenant en charge trois langues : l’anglais, l’italien et l’espagnol.
+La capture d’écran suivante montre la structure de répertoire d’un bot qui prend en charge trois langues : l’anglais, l’italien et l’espagnol.
 
 ![Structure de répertoire pour les trois paramètres régionaux](../media/locale-dir.png)
 
