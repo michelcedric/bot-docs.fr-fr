@@ -7,13 +7,13 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/13/2017
-ms.openlocfilehash: a3d6bd957b835a0b8d86e47595ce28506c32d636
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.date: 01/16/2019
+ms.openlocfilehash: 7464e6f19ac1cd1a5744af845bd62c3a48cd2eb8
+ms.sourcegitcommit: c6ce4c42fc56ce1e12b45358d2c747fb77eb74e2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224554"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54453823"
 ---
 # <a name="key-concepts"></a>Concepts clés
 
@@ -50,7 +50,7 @@ Le Bot Framework fournit des bibliothèques clientes utilisables pour générer 
 En plus de la modélisation des services Bot Connector et Bot State, chaque kit SDK Bot Framework propose aussi un système puissant capable de générer des dialogues qui encapsulent une logique conversationnelle, des invites intégrées pour des choses aussi simples que Oui ou Non, des chaînes, des nombres, des énumérations, la prise en charge intégrée de puissantes infrastructures d’intelligence artificielle telles que <a href="https://www.luis.ai/" target="_blank"> LUIS </a>, et bien plus. 
 
 > [!NOTE]
-> Au lieu d’utiliser les kits de développement logiciel (SDK) C# ou Node.js, vous pouvez générer votre propre bibliothèque cliente dans la langue de votre choix en utilisant le <a href="https://raw.githubusercontent.com/Microsoft/BotBuilder/master/CSharp/Library/Microsoft.Bot.Connector.Shared/Swagger/ConnectorAPI.json" target="_blank">fichier Swagger de Bot Connector</a> et le <a href="https://raw.githubusercontent.com/Microsoft/BotBuilder/master/CSharp/Library/Microsoft.Bot.Connector.Shared/Swagger/StateAPI.json" target="_blank">fichier Swagger de Bot State</a>.
+> Au lieu d’utiliser les kits de développement logiciel (SDK) C# ou Node.js, vous pouvez générer votre propre bibliothèque cliente dans la langue de votre choix en utilisant le <a href="https://aka.ms/connector-swagger-file" target="_blank">fichier Swagger de Bot Connector</a> et le <a href="https://aka.ms/state-swagger-file" target="_blank">fichier Swagger de Bot State</a>.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
