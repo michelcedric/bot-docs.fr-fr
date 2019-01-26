@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/28/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: fc44701d7739ecfca662d27cad4f521caa7f4d6d
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 31a0497f1422cee8c4966e59d94a89ae359a5cb7
+ms.sourcegitcommit: c6ce4c42fc56ce1e12b45358d2c747fb77eb74e2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225484"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54453933"
 ---
 # <a name="dialogs-library"></a>Bibliothèque des dialogues
 
@@ -41,11 +41,11 @@ Quand un dialogue se termine, il peut retourner un *résultat du dialogue* avec 
 
 Les dialogues constituent une approche pour l’implémentation de conversation à plusieurs tours. En ce sens, il s’agit d’une fonctionnalité du Kit de développement logiciel (SDK) qui repose sur un état persistant à plusieurs tours. Sans aucun état dans les dialogues, votre bot ne saurait pas où il se trouve dans le jeu de dialogues ni quelles informations il a déjà recueillies.
 
-Un bot basé sur des dialogues comporte généralement une collection d’ensemble de boîtes de dialogue en tant que variable de membre dans son implémentation de bot. Cet ensemble de dialogues est créé avec un descripteur sur un objet appelé accesseur qui fournit un accès à l’état persistant. Pour plus d’informations sur l’état au sein des bots, consultez [gestion de l’état](bot-builder-concept-state.md).
+Un bot basé sur des dialogues comporte généralement une collection d’ensemble de boîtes de dialogue en tant que variable de membre dans son implémentation de bot. Cet ensemble de boîtes de dialogue est créé avec un descripteur vers un objet nommé accesseur qui fournit un accès à l’état persistant. Pour plus d’informations sur l’état au sein des bots, consultez [gestion de l’état](bot-builder-concept-state.md).
 
-Au sein de son gestionnaire de tour, le bot initialise le sous-système de dialogue en appelant *create context* sur le jeu de dialogues, qui retourne le *contexte du dialogue*. Ce contexte de dialogue contient les informations nécessaires au dialogue.
+Au sein de son gestionnaire de tour, le bot initialise le sous-système de dialogue en appelant *create context* sur le jeu de dialogues, qui retourne le *contexte du dialogue*. Ce contexte de boîte de dialogue contient les informations nécessaires à la boîte de dialogue.
 
-La création d’un contexte de dialogue nécessite un état, accessible avec l’accesseur fourni lors de la création de l’ensemble de dialogues. Avec cet accesseur, le jeu de dialogues peut obtenir l’état du dialogue approprié. Vous trouverez plus d’informations sur les accesseurs d’état dans [Enregistrer les données de la conversation et de l’utilisateur](bot-builder-howto-v4-state.md).
+La création d’un contexte de boîte de dialogue requiert que l’état, accessible avec l’accesseur fourni lors de la création de l’ensemble de boîtes de dialogue. Avec cet accesseur, le jeu de dialogues peut obtenir l’état du dialogue approprié. Vous trouverez plus d’informations sur les accesseurs d’état dans [Enregistrer les données de la conversation et de l’utilisateur](bot-builder-howto-v4-state.md).
 
 ## <a name="dialog-types"></a>Types de dialogues
 
@@ -57,7 +57,7 @@ Les dialogues sont fournis dans différents types : invites, dialogues en casca
 
 Les invites, au sein de la bibliothèque de dialogues, offrent un moyen simple de demander des informations à l’utilisateur et d’évaluer sa réponse. Par exemple, dans le cas d’une *invite numérique*, vous spécifiez la question posée ou les informations demandées, puis l’invite vérifie automatiquement si la réponse reçue est bien un nombre valide. Si c’est le cas, la conversation peut continuer ; sinon, l’utilisateur est de nouveau invité à donner une réponse valide.
 
-Dans les coulisses, les invites constituent un dialogue en deux étapes. Tout d’abord, l’invite demande une entrée. Ensuite, elle retourne la valeur valide ou redémarre depuis le début avec une nouvelle invite.
+Dans les coulisses, les invites constituent une boîte de dialogue en deux étapes. Tout d’abord, l’invite demande une entrée. Ensuite, elle retourne la valeur valide ou redémarre depuis le début avec une nouvelle invite.
 
 Les invites comportent des *options* qui sont proposées lorsqu’elles sont appelées. Ces options vous permettent de spécifier le texte des invites, les invites de nouvelle tentative en cas d’échec de validation et les possibilités de réponse.
 
@@ -69,7 +69,7 @@ Pour des exemples d’utilisation des diverses invites, intéressez-vous à la m
 
 #### <a name="prompt-types"></a>Types d’invites
 
-Dans les coulisses, les invites constituent un dialogue en deux étapes. Tout d’abord, l’invite demande une entrée. Ensuite, elle retourne la valeur valide, ou redémarre depuis le début avec une nouvelle invite. La bibliothèque de dialogues propose diverses invites de base, chacune étant utilisée pour recueillir un type de réponse différent. Les invites de base peuvent interpréter une entrée de langage naturel, comme « dix » ou « une dizaine » pour un nombre, ou « demain » ou un « vendredi à 10 h » pour une date-heure.
+Dans les coulisses, les invites constituent une boîte de dialogue en deux étapes. Tout d’abord, l’invite demande une entrée. Ensuite, elle retourne la valeur valide, ou redémarre depuis le début avec une nouvelle invite. La bibliothèque de dialogues propose diverses invites de base, chacune étant utilisée pour recueillir un type de réponse différent. Les invites de base peuvent interpréter une entrée de langage naturel, comme « dix » ou « une dizaine » pour un nombre, ou « demain » ou un « vendredi à 10 h » pour une date-heure.
 
 | Prompt | Description | Retours |
 |:----|:----|:----|
@@ -80,7 +80,7 @@ Dans les coulisses, les invites constituent un dialogue en deux étapes. Tout d�
 | _Invite de nombre_ | Demande un nombre. | Une valeur numérique. |
 | _Invite de texte_ | Demande une saisie de texte générale. | Une chaîne. |
 
-Pour inviter un utilisateur à saisir une entrée, définissez une invite à l’aide de l’une des classes intégrées, _text prompt_, par exemple, et ajoutez-la à votre ensemble de dialogues. Les invites ont des ID fixes devant être uniques au sein d’un ensemble de dialogues. Vous pouvez avoir un validateur personnalisé pour chaque invite, et pour certaines d’entre elles, vous pouvez spécifier des _paramètres régionaux par défaut_. 
+Pour inviter un utilisateur à saisir une entrée, définissez une invite à l’aide de l’une des classes intégrées, _text prompt_, par exemple, et ajoutez-la à votre ensemble de dialogues. Les invites ont des ID fixes devant être uniques au sein d’un ensemble de boîte de dialogue. Vous pouvez avoir un validateur personnalisé pour chaque invite, et pour certaines d’entre elles, vous pouvez spécifier des _paramètres régionaux par défaut_. 
 
 #### <a name="prompt-locale"></a>Paramètres régionaux d’invite
 
@@ -121,7 +121,7 @@ Vous pouvez utiliser le contexte du dialogue pour démarrer, continuer, remplace
 
 Les dialogues peuvent être considérés comme une pile programmatique, que nous appelons *pile de dialogues*, avec le gestionnaire de tour comme dirigeant et comme élément de secours si la pile est vide. L’élément le plus haut dans cette pile est considéré comme le *dialogue actif*. Le contexte du dialogue dirige toutes les entrées vers ce dialogue actif.
 
-Dès qu’un dialogue commence, il est placé sur le dessus de la pile et devient le dialogue actif. Il reste dialogue actif jusqu’à ce qu’il se termine, qu’il soit supprimé par la méthode [replace dialog](#repeating-a-dialog) ou qu’un autre dialogue soit placé sur le dessus de la pile (par le gestionnaire de tour ou le dialogue lui-même) et devienne dialogue actif. Lorsque ce nouveau dialogue se termine, il est sorti de la pile (dépilé) et le dialogue situé juste en dessous redevient dialogue actif. Ainsi, il est possible de créer des [branches et des boucles](#looping-and-branching), comme décrit ci-dessous.
+Dès qu’un dialogue commence, il est placé sur le dessus de la pile et devient le dialogue actif. Il reste dialogue actif jusqu’à ce qu’il se termine, qu’il soit supprimé par la méthode [replace dialog](#repeating-a-dialog) ou qu’un autre dialogue soit placé sur le dessus de la pile (par le gestionnaire de tour ou le dialogue lui-même) et devienne dialogue actif. Quand ce nouveau dialogue se termine, il est sorti de la pile (dépilé) et le dialogue situé juste en dessous redevient dialogue actif. Ainsi, il est possible de créer des [branches et des boucles](#looping-and-branching), comme décrit ci-dessous.
 
 ### <a name="create-the-dialog-context"></a>Créer le contexte du dialogue
 
@@ -131,11 +131,22 @@ Le jeu de dialogues oblige à utiliser un *accesseur de propriété d’état* p
 
 ### <a name="to-start-a-dialog"></a>Pour démarrer un dialogue
 
-Pour démarrer un dialogue, transmettez l’*ID du dialogue* à démarrer à la méthode *begin dialog*, *prompt* ou *replace dialog* du contexte du dialogue. La méthode begin dialog envoie (push) le dialogue en haut de la pile, tandis que la méthode replace dialog dépile le dialogue actuel et envoie le dialogue de remplacement dans la pile.
+Pour démarrer un dialogue, transmettez l’*ID du dialogue* à démarrer à la méthode *begin dialog*, *prompt* ou *replace dialog* du contexte du dialogue.
+
+* La méthode begin dialog envoie (push) le dialogue en haut de la pile.
+* La méthode replace dialog fait sortir le dialogue actuel de la pile, puis envoie le dialogue de remplacement en haut de la pile. Le dialogue remplacé est annulé et les informations contenues dans cette instance sont supprimées.
+
+Utilisez le paramètre _options_ pour passer les informations à la nouvelle instance du dialogue.
+Les options transférées dans le nouveau dialogue sont accessibles via la propriété *options* du contexte de n’importe quelle étape du dialogue.
+Consultez la procédure [Créer des flux de conversation avancés à l’aide de branches et de boucles](bot-builder-dialog-manage-complex-conversation-flow.md) pour obtenir un exemple de code.
 
 ### <a name="to-continue-a-dialog"></a>Pour continuer un dialogue
 
 Pour continuer un dialogue, appelez la méthode *continue dialog*. La méthode continue permet toujours de continuer le dialogue le plus haut dans la pile (dialogue actif), s’il existe. Si le dialogue continué se termine, le contrôle est transmis au contexte parent qui continue au sein du même tour.
+
+Utilisez la propriété *values* du contexte d’étape pour conserver l’état entre les tours.
+Toute valeur ajoutée à cette collection dans un tour précédent reste disponible dans les tours suivants.
+Consultez la procédure [Créer des flux de conversation avancés à l’aide de branches et de boucles](bot-builder-dialog-manage-complex-conversation-flow.md) pour obtenir un exemple de code.
 
 ### <a name="to-end-a-dialog"></a>Pour terminer un dialogue
 
@@ -152,14 +163,15 @@ Si vous souhaitez dépiler tous les dialogues, vous pouvez effacer la pile de di
 
 ### <a name="repeating-a-dialog"></a>Répéter un dialogue
 
-Pour répéter un dialogue, utilisez la méthode de *remplacement de dialogue*. La méthode *replace dialog* du contexte de dialogue fait sortir le dialogue actif actuel de la pile (sans y mettre fin normalement), puis envoie le dialogue de remplacement en haut de la pile et démarre ce dialogue. Il s’agit là d’un excellent moyen de traiter des [interactions complexes](~/v4sdk/bot-builder-dialog-manage-complex-conversation-flow.md) et de gérer les menus. Vous pouvez utiliser cette méthode pour créer une boucle en remplaçant un dialogue par lui-même.
+Vous pouvez remplacer un dialogue par lui-même, ce qui crée une boucle.
+Il s’agit là d’un excellent moyen de traiter des [interactions complexes](~/v4sdk/bot-builder-dialog-manage-complex-conversation-flow.md) et de gérer les menus.
 
 > [!NOTE]
-> Si vous avez besoin de conserver l’état interne du dialogue actuel, vous devez transmettre les informations à la nouvelle instance du dialogue lors de l’appel à la méthode *replace dialog*. Ensuite, vous devez initialiser le dialogue de manière appropriée. Les options transférées dans le nouveau dialogue sont accessibles via la propriété *options* du contexte de n’importe quelle étape du dialogue.
+> Si vous avez besoin de conserver l’état interne du dialogue actuel, vous devez transmettre les informations à la nouvelle instance du dialogue lors de l’appel à la méthode *replace dialog*. Ensuite, vous devez initialiser le dialogue de manière appropriée.
 
 ### <a name="branch-a-conversation"></a>Créer une branche de conversation
 
-Le contexte du dialogue maintient la pile de dialogue et suit l’étape suivante de chaque dialogue sur la pile. Sa méthode *begin dialog* crée un enfant et envoie un dialogue par push sur le dessus de la pile, et sa méthode *end dialog* fait sortir de la pile le dialogue du dessus. La méthode *end dialog* est généralement appelée dans le dialogue qui se termine.
+Le contexte du dialogue maintient la pile de dialogue et suit l’étape suivante de chaque dialogue sur la pile. Sa méthode *begin dialog* crée un enfant et envoie un dialogue par push sur le dessus de la pile, et sa méthode *end dialog* fait sortir de la pile le dialogue du dessus. La méthode *end dialog* est généralement appelée dans la boîte de dialogue qui se termine.
 
 Un dialogue peut démarrer un nouveau dialogue au sein du même ensemble en appelant la méthode de *démarrage de dialogue* du contexte et en fournissant l’ID du nouveau dialogue. Le nouveau dialogue devient alors le dialogue actuellement actif. Le dialogue original est toujours sur la pile, mais les appels de la méthode de *poursuite du dialogue* du contexte de dialogue ne sont envoyés qu’au dialogue du dessus de la pile, le *dialogue actif*. Lorsqu’un dialogue est sorti de la pile, le contexte du dialogue passe à la prochaine étape sur la cascade sur la pile, là où il a laissé le dialogue original.
 

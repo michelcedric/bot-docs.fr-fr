@@ -9,19 +9,18 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 09/22/2018
-ms.openlocfilehash: a00e1d0d70e48b1af9cf10fd4e47ea86ae4908e9
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 0430562fd615aef67b4ba95538d390cf2223fb45
+ms.sourcegitcommit: c6ce4c42fc56ce1e12b45358d2c747fb77eb74e2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224254"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54453903"
 ---
 # <a name="connect-a-bot-to-channels"></a>Connecter un bot à des canaux
 
 Un canal est une connexion entre le bot et les applications de communication. Vous configurez un bot pour le connecter aux canaux sur lesquels vous souhaitez le rendre disponible. Bot Framework Service, configuré via le portail Azure, connecte votre bot à ces canaux et facilite la communication entre votre bot et l’utilisateur. Vous pouvez vous connecter à de nombreux services populaires tels que [Cortana](bot-service-channel-connect-cortana.md), [Facebook Messenger](bot-service-channel-connect-facebook.md), [Kik](bot-service-channel-connect-kik.md) et [Slack](bot-service-channel-connect-slack.md), entre autres. [Skype](https://dev.skype.com/bots) et Web Chat sont préconfigurés pour vous. En plus des canaux standard fournis avec le service Bot Connector, vous pouvez utiliser Direct Line comme canal pour connecter votre bot à votre propre application cliente.
 
-Bot Framework Service vous permet de développer votre bot indépendamment du canal en normalisant les messages envoyés par le bot à un canal. Cela suppose de le convertir du schéma Bot Framework vers le schéma du canal. Cependant, si le canal ne prend pas en charge tous les aspects du schéma Bot Framework, le service tente de convertir le message dans un format que le canal prend en charge. Par exemple, si le bot envoie au canal SMS un message qui contient une carte avec des boutons d’action, le connecteur peut envoyer la carte en tant qu’image et inclure les actions sous forme de liens dans le texte du message.
-
+Bot Framework Service vous permet de développer votre bot indépendamment du canal en normalisant les messages envoyés par le bot à un canal. Cela suppose de le convertir du schéma Bot Framework vers le schéma du canal. Cependant, si le canal ne prend pas en charge tous les aspects du schéma Bot Framework, le service tente de convertir le message dans un format que le canal prend en charge. Par exemple, si le bot envoie au canal e-mail un message qui contient une carte avec des boutons d’action, le connecteur peut envoyer la carte comme image et inclure les actions sous forme de liens dans le texte du message.
 
 
 Pour la plupart des canaux, vous devez fournir les informations de configuration de canal afin d’exécuter votre bot sur le canal. La plupart des canaux nécessitent que votre bot dispose d’un compte sur le canal, tandis que d’autres, par exemple Facebook Messenger, nécessitent que votre bot utilise également une application inscrite avec le canal.

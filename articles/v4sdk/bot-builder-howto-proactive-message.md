@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/15/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 82811d202e0e20169ae2ebb348949366009d2421
-ms.sourcegitcommit: 4661b9bb31d74731dbbb16e625be088b44ba5899
+ms.openlocfilehash: 7a9a2e4f30d1e9b293e51a921afce57d243376d7
+ms.sourcegitcommit: c6ce4c42fc56ce1e12b45358d2c747fb77eb74e2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51826926"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54453963"
 ---
 # <a name="get-notification-from-bots"></a>Recevoir les notifications de bots
 
@@ -33,12 +33,13 @@ Lorsque vous implémentez des messages proactifs dans votre bot :
 - N’envoyez pas plusieurs messages proactifs dans un court laps de temps. Certains canaux appliquent des restrictions concernant la fréquence à laquelle un bot peut envoyer des messages à l’utilisateur, et désactivent le bot si ce dernier enfreint ces restrictions.
 - N’envoyez pas des messages proactifs aux utilisateurs qui ont n’a pas préalablement interagi avec le bot ou sollicité un contact avec le bot par un autre moyen, tel qu’un message électronique ou un SMS.
 
-Un message proactif ad hoc constitue le type de message proactif le plus simple. Le bot injecte simplement le message dans la conversation chaque fois qu’il est déclenché, que l’utilisateur soit ou non déjà engagé dans un autre sujet de conversation avec le bot, et ne tentera pas de modifier la conversation d’une quelconque manière.
+Un message proactif ad hoc constitue le type de message proactif le plus simple. Le bot injecte simplement le message dans la conversation chaque fois qu’il est déclenché, que l’utilisateur soit ou non déjà engagé dans une autre sujet de conversation avec le bot, et ne tentera pas de modifier la conversation d’une quelconque manière.
 
 Pour gérer plus facilement les notifications, pensez à d’autres méthodes pour intégrer la notification dans le flux de messages. Par exemple, vous pouvez définir un indicateur dans l’état de la conversation ou ajouter la notification à une file d’attente.
 
 ## <a name="prerequisites"></a>Prérequis
-- Comprendre les [concepts de base des bots](bot-builder-basics.md). 
+
+- Comprendre les [concepts de base des bots](bot-builder-basics.md) et avoir des notions de la [gestion de l’état](bot-builder-concept-state.md).
 - Une copie de l’**exemple de messages proactifs** en [C#](https://aka.ms/proactive-sample-cs) ou [JS](https://aka.ms/proactive-sample-js). Cet exemple est utilisé pour expliquer la messagerie proactive dans cet article. 
 
 ## <a name="about-the-sample-code"></a>Au sujet de l’exemple de code
@@ -48,9 +49,12 @@ L’exemple de messages proactifs modélise des tâches d’utilisateur dont la 
 ## <a name="define-job-data-and-state"></a>Définir l’état et des données des travaux
 
 Dans ce scénario, nous suivons des travaux arbitraires qui peuvent être créés par divers utilisateurs dans différentes conversations. Il faudra stocker des informations sur chaque travail, y compris la référence de la conversation et l’identificateur du travail. Ce dont nous avons besoin :
+
 - La référence de la conversation pour pouvoir envoyer le message proactif à la bonne conversation.
 - Un moyen d’identifier les travaux. Dans cet exemple, nous utilisons un horodatage.
 - Pour stocker l’état du travail séparément de l’état de la conversation ou de l’utilisateur.
+
+Nous étendrons l’_état du bot_ pour définir notre propre objet de gestion de l’état du bot. Le framework du bot utilise la _clé de stockage_ et le contexte du tour pour récupérer et conserver l’état. Pour plus d’informations, consultez [Gestion de l’état](bot-builder-concept-state.md).
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -77,9 +81,9 @@ public class JobLog : Dictionary<long, JobLog.JobData>
 }
 ```
 
-### <a name="define-a-state-middleware-class"></a>Définir une classe de middleware d’état
+### <a name="define-a-state-management-class"></a>Définir une classe de gestion de l’état
 
-La classe `JobState` gère l’état du travail, indépendamment de l’état de la conversation ou de l’utilisateur.
+La classe `JobState` gérera l’état du travail, indépendamment de l’état de la conversation ou de l’utilisateur.
 
 ```csharp
 using Microsoft.Bot.Builder;
@@ -129,11 +133,10 @@ public void ConfigureServices(IServiceCollection services)
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Un bot a besoin d’un système de stockage d’état pour conserver l’état de boîte de dialogue et d’utilisateur entre les messages, qui dans ce cas est défini à l’aide du fournisseur de stockage en mémoire. 
+Un bot a besoin d’un système de stockage d’état pour conserver l’état de boîte de dialogue et d’utilisateur entre les messages, qui dans ce cas est défini à l’aide du fournisseur de stockage en mémoire.
 
 ```javascript
-// index.js 
-
+// index.js
 
 const memoryStorage = new MemoryStorage();
 const botState = new BotState(memoryStorage, () => 'proactiveBot.botState');
@@ -173,8 +176,6 @@ Le bot a diversaspects :
 - méthodes de création et de finalisation de travaux
 
 ### <a name="declare-the-class"></a>Déclarer la classe
-
-Chaque interaction de l’utilisateur crée une instance de la classe `ProactiveBot`. Le processus de création d’un service chaque fois qu’il est nécessaire est appelé « service de durée de vie temporaire ». Les objets coûteux à construire ou ayant une durée de vie allant au-delà du tour unique, doivent être gérés soigneusement.
 
 Chaque interaction de l’utilisateur crée une instance de la classe `ProactiveBot`. Le processus de création d’un service chaque fois qu’il est nécessaire est appelé « service de durée de vie temporaire ». Les objets coûteux à construire ou ayant une durée de vie allant au-delà du tour unique, doivent être gérés soigneusement.
 

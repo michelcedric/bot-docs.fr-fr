@@ -8,20 +8,20 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/17/2018
+ms.date: 01/16/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 1ea9daeb35033e49232d64bfe98a223807dabf75
-ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
+ms.openlocfilehash: 4805e1a3c86ce28833054ce374a57c5c40b717e1
+ms.sourcegitcommit: c6ce4c42fc56ce1e12b45358d2c747fb77eb74e2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54317599"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54453863"
 ---
 # <a name="add-media-to-messages"></a>Ajouter des médias aux messages
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-Les messages échangés entre l’utilisateur et le bot peuvent contenir des pièces jointes multimédia, comme des images, des vidéos, des pistes audio et des fichiers. Le kit SDK Bot Framework prend en charge l’envoi de messages enrichis à l’utilisateur. Pour déterminer le type des messages enrichis pris en charge sur un canal (Facebook, Skype, Slack, etc.), consultez la documentation associée pour en savoir plus sur les limitations. Reportez-vous à [l’expérience utilisateur de conception](../bot-service-design-user-experience.md) pour obtenir la liste des cartes disponibles. 
+Les messages échangés entre l’utilisateur et le bot peuvent contenir des pièces jointes multimédia, comme des images, des vidéos, des pistes audio et des fichiers. Le kit SDK Bot Framework prend en charge l’envoi de messages enrichis à l’utilisateur. Pour déterminer le type des messages enrichis pris en charge sur un canal (Facebook, Skype, Slack, etc.), consultez la documentation associée pour en savoir plus sur les limitations. Reportez-vous à [l’expérience utilisateur de conception](../bot-service-design-user-experience.md) pour obtenir la liste des cartes disponibles.
 
 ## <a name="send-attachments"></a>Envoyer des pièces jointes
 
@@ -84,11 +84,11 @@ Si la pièce jointe est une image, un contenu audio ou une vidéo, le service Co
 
 ## <a name="send-a-hero-card"></a>Envoyer une carte de héros
 
-Outre les simples pièces jointes image ou vidéo, vous pouvez attacher une **carte de héros**, qui vous permet de combiner des images et des boutons dans un seul objet à envoyer à l’utilisateur.
+Outre les simples pièces jointes image ou vidéo, vous pouvez attacher une **carte de héros**, qui vous permet de combiner des images et des boutons dans un seul objet à envoyer à l’utilisateur. Markdown est pris en charge pour la plupart des champs de texte, mais sa prise en charge varie selon le canal.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-Pour composer un message avec un bouton et une carte de héros, vous pouvez joindre `HeroCard` à un message. Le code source affiché ici repose sur l’exemple [Gestion des pièces jointes](https://aka.ms/bot-attachments-sample-code). 
+Pour composer un message avec un bouton et une carte de héros, vous pouvez joindre `HeroCard` à un message. Le code source affiché ici repose sur l’exemple [Gestion des pièces jointes](https://aka.ms/bot-attachments-sample-code).
 
 ```csharp
 using Microsoft.Bot.Builder;
@@ -363,7 +363,7 @@ await context.sendActivity(messageWithCarouselOfCards);
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-Pour plus d’informations sur le schéma de la carte, consultez le [schéma de carte Bot Framework](https://aka.ms/botSpecs-cardSchema).
+Pour plus d’informations sur le schéma, consultez le [schéma de carte Bot Framework](https://aka.ms/botSpecs-cardSchema) et la [section sur l’activité de message](https://aka.ms/botSpecs-activitySchema#message-activity) dans le schéma d’activité Bot Framework.
 
 Un exemple de code est disponible ici pour les cartes : [C#](https://aka.ms/bot-cards-sample-code)/[JS](https://aka.ms/bot-cards-js-sample-code), cartes adaptatives : [C#](https://aka.ms/bot-adaptive-cards-sample-code)/[JS](https://aka.ms/bot-adaptive-cards-js-sample-code), pièces jointes : [C#](https://aka.ms/bot-attachments-sample-code)/[JS](https://aka.ms/bot-attachments-sample-code-js) et actions suggérées : [C#](https://aka.ms/SuggestedActionsCSharp)/[JS](https://aka.ms/SuggestedActionsJS).
 Pour obtenir plus d’exemples, consultez le référentiel d’exemples Bot Builder sur [GitHub](https://aka.ms/bot-samples-readme).

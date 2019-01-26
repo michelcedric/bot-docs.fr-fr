@@ -1,0 +1,1 @@
+Créer un bot avec Azure Bot Service et créer un bot localement sont deux façons indépendantes parallèles de créer un bot.

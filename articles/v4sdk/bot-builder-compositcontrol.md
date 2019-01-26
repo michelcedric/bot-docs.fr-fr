@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/08/2018
+ms.date: 01/16/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3f4b2dd49b738132affd19fea8fd5dbfbd6ff99e
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 0a931ad73ed4d7a71978555df0e77d6b2bd2dbbc
+ms.sourcegitcommit: c6ce4c42fc56ce1e12b45358d2c747fb77eb74e2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224564"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54453923"
 ---
 # <a name="reuse-dialogs"></a>Réutiliser des dialogues
 
@@ -230,6 +230,14 @@ const myBot = new MyBot(conversationState, userState);
 ```
 
 ---
+
+## <a name="about-component-dialogs"></a>Présentation des dialogues composants
+
+Avec les dialogues composants, vous pouvez créer des dialogues indépendants pour gérer des scénarios spécifiques, en divisant un jeu de dialogues en éléments plus petits et donc plus faciles à gérer. Chacun de ces éléments a son propre jeu de dialogues, ce qui permet d’éviter toute collision de nom avec le jeu de dialogues qui le contient.
+
+Utilisez la méthode _add dialog_ pour ajouter des dialogues et des invites au dialogue composant.
+Le premier élément que vous ajoutez avec cette méthode est défini comme dialogue initial, mais vous pouvez le changer en définissant explicitement la propriété _initial dialog_ dans le constructeur du dialogue composant.
+Quand vous démarrez un dialogue composant, celui-ci démarre son _dialogue initial_.
 
 ## <a name="define-the-check-in-component-dialog"></a>Définir le dialogue composant d’enregistrement
 
@@ -604,9 +612,9 @@ class SetAlarmDialog extends ComponentDialog {
         this.initialDialogId = dialogId;
 
         // Define the prompts used in this conversation flow.
-        this.dialogs.add(new DateTimePrompt('datePrompt'));
+        this.addDialog(new DateTimePrompt('datePrompt'));
 
-        this.dialogs.add(new WaterfallDialog(dialogId, [
+        this.addDialog(new WaterfallDialog(dialogId, [
             async function (step) {
                 step.values.wakeUp = {};
                 if (step.options && step.options.roomNumber) {
