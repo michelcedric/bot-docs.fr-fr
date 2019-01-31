@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: dd52376e049f1f0e09216e0065ced7443b6eb02a
-ms.sourcegitcommit: c6ce4c42fc56ce1e12b45358d2c747fb77eb74e2
+ms.openlocfilehash: c9a462c1ff9a1de8bc7929cb11368191aafd031a
+ms.sourcegitcommit: 1ed179ae48bd2e28920a3f1e270e59d15d86fbf7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54453883"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54892982"
 ---
 # <a name="enterprise-bot-template---deploying-your-bot"></a>Modèle de bot d’entreprise – Déployer votre bot
 
@@ -87,7 +87,10 @@ Dans le projet que vous avez créé, le fichier README.md contient un exemple de
 msbot clone services --name "YOUR-BOT-NAME" --luisAuthoringKey "YOUR_AUTHORING_KEY" --folder "DeploymentScripts\LOCALE_FOLDER" --location "REGION"
 ```
 
-> Certains utilisateurs peuvent rencontrer un problème connu, dans lequel l’erreur suivante apparaît lors du déploiement `ERROR: Unable to provision MSA id automatically. Please pass them in as parameters and try again`. Dans ce cas, accédez à https://apps.dev.microsoft.com et créez manuellement une nouvelle application pour récupérer l’ID d’application et le mot de passe/secret. Exécutez la commande msbot clone services ci-dessus, mais indiquez les deux nouveaux arguments `appId` et `appSecret` avec les valeurs que vous venez de récupérer. Vérifiez que vous placez le secret entre guillemets pour éviter les problèmes d’analyse, par exemple : `-appSecret "YOUR_SECRET"`
+> Certains utilisateurs peuvent rencontrer un problème connu, dans lequel l’erreur suivante apparaît lors du déploiement `ERROR: Unable to provision MSA id automatically. Please pass them in as parameters and try again`. Dans ce cas, accédez à https://apps.dev.microsoft.com et créez manuellement une nouvelle application pour récupérer l’ID d’application et le mot de passe/secret. Exécutez la commande msbot clone services ci-dessus, mais indiquez les deux nouveaux arguments `appId` et `appSecret` avec les valeurs que vous venez de récupérer. Vous devez échapper les caractères spéciaux du mot de passe, qui risqueraient d’être interprétés par le shell comme une commande :
+>   - Pour l’*invite de commandes Windows*, entourez appSecret de guillemets doubles. ex : msbt clone services --name xxxx --luisAuthoringKey xxxx --location xxxx --folder bot.recipt ***--appSecret "!|%gr%"***
+>   - Pour *Windows PowerShell, essayez de passer dans appSecret après l’argument --%. ex : msbot clone services --name xxxx --luisAuthoringKey xxxx --location xxxx --folder bot.recipt ***--% --appSecret "!|%gr%"***
+>   - Pour *Mac OS ou Linux*, entourez appSecret de guillemets simples. ex : msbot clone services --name xxxx --luisAuthoringKey xxxx --location xxxx --folder bot.recipt ***--appSecret '!|%gr%'***
 
 L’outil msbot décrit le plan de déploiement, notamment l’emplacement et le SKU. Vérifiez ces informations avec de continuer.
 
