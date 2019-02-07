@@ -1,5 +1,5 @@
 # API REST Bot Framework
-## [Vue d’ensemble](bot-framework-rest-overview.md)
+## [Vue d'ensemble](bot-framework-rest-overview.md)
 ## [Concepts clés](bot-framework-rest-connector-concepts.md)
 ## [Créer un bot avec REST](~/rest-api/bot-framework-rest-connector-quickstart.md)
 ## [Informations de référence sur l'API](bot-framework-rest-connector-api-reference.md)
@@ -24,6 +24,7 @@
 ## [Recevoir des activités du bot](bot-framework-rest-direct-line-3-0-receive-activities.md)
 ## [Mettre fin à une conversation](bot-framework-rest-direct-line-3-0-end-conversation.md)
 ## [Informations de référence sur l'API](bot-framework-rest-direct-line-3-0-api-reference.md)
+## [Fichier Swagger](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-protocol/directline-3.0.json)
 # API Direct Line 1.1
 ## [Concepts clés](bot-framework-rest-direct-line-1-1-concepts.md)
 ## [Authentification](bot-framework-rest-direct-line-1-1-authentication.md)
@@ -31,3 +32,4 @@
 ## [Envoyer un message au bot](bot-framework-rest-direct-line-1-1-send-message.md)
 ## [Recevoir des messages du robot](bot-framework-rest-direct-line-1-1-receive-messages.md)
 ## [Informations de référence sur l'API](bot-framework-rest-direct-line-1-1-api-reference.md)
+## [Fichier Swagger](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-protocol/directline-1.1.json)

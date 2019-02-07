@@ -6,7 +6,7 @@
 ## Créer un bot localement
 ### [.NET](dotnet/bot-builder-dotnet-sdk-quickstart.md)
 ### [JavaScript](javascript/bot-builder-javascript-quickstart.md)
-# Didacticiels
+# Tutoriels
 ## [Créer et déployer un bot de base](v4sdk/bot-builder-tutorial-basic-deploy.md)
 ## [Ajouter QnA Maker et redéployer un bot](v4sdk/bot-builder-tutorial-add-qna.md)
 ## [Ajouter l’authentification à votre bot](bot-builder-tutorial-authentication.md)
@@ -53,6 +53,7 @@
 ### [Écrire directement dans le stockage](v4sdk/bot-builder-howto-v4-storage.md)
 ### [Ajouter l’authentification à votre bot](v4sdk/bot-builder-authentication.md)
 ### [Implémenter un stockage personnalisé pour votre bot](v4sdk/bot-builder-custom-storage.md)
+### [Ajouter la télémétrie à votre bot](v4sdk/bot-builder-telemetry.md)
 ### [Gérer les bots à l’aide des outils CLI](bot-builder-tools.md)
 ### [.NET](dotnet/TOC.md)
 ### [Node.JS](nodejs/TOC.md)
@@ -63,6 +64,7 @@
 <!-- ### [Download and redeploy bot code](bot-service-build-download-source-code.md) -->
 ### [Configurer un déploiement continu](bot-service-build-continuous-deployment.md)
 ## [Gérer](manage/TOC.md)
+## [Migrer](v4sdk/migration/TOC.md)
 # Informations de référence
 ## [Kit de développement logiciel (SDK) .NET v4](https://aka.ms/dotnetsdk4)
 ## [Kit de développement logiciel (SDK) JavaScript v4](https://aka.ms/jssdk4)
