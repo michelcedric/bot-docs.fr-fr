@@ -7,14 +7,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/13/2017
+ms.date: 1/28/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: ef2cb33e8d2ab7d8db291e3c6e051630d6af0394
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 6169ed28fb765e84aaf31cf9e7d2ca404294bcad
+ms.sourcegitcommit: c7d2e939ec71f46f48383c750fddaf6627b6489d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224544"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55783358"
 ---
 # <a name="create-data-driven-experiences-with-azure-search"></a>Créer des expériences pilotées par les données avec Recherche Azure 
 
@@ -173,11 +173,10 @@ Les résultats de la recherche sont affichés pour l’utilisateur, et vous vene
 
 ## <a name="samples"></a>Exemples
 
-Pour obtenir deux exemples complets qui montrent comment prendre en charge Recherche Azure avec des bots à l’aide du kit SDK Bot Framework pour .NET, consultez l’[exemple de bot Real Estate](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/demo-Search/RealEstateBot) ou l’[exemple de bot Job Listing](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/demo-Search/JobListingBot) dans GitHub. 
+Pour obtenir deux exemples complets qui montrent comment prendre en charge Recherche Azure avec des bots à l’aide du kit SDK Bot Framework pour .NET, consultez l’[exemple de bot Real Estate](https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/demo-Search/RealEstateBot) ou l’[exemple de bot Job Listing](https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/demo-Search/JobListingBot) dans GitHub. 
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 * [Recherche Azure][search]
 * [Vue d’ensemble des dialogues](bot-builder-dotnet-dialogs.md)
-* [Exemples de bot Recherche Azure](https://github.com/Microsoft/botBuilder-Samples/tree/master/CSharp/demo-Search)
 
 [search]: /azure/search/search-what-is-azure-search

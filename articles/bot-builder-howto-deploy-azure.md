@@ -9,12 +9,12 @@ ms.topic: get-started-article
 ms.service: bot-service
 ms.subservice: abs
 ms.date: 12/08/2018
-ms.openlocfilehash: ac4e5f2ea385cb8318ad59e04c8ca8787480f5c8
-ms.sourcegitcommit: 77664484e1b0780a15f686ef08bd23716b049b4a
+ms.openlocfilehash: eb559418bc2925ec6fb64902086dede50e485414
+ms.sourcegitcommit: 32615b88e4758004c8c99e9d564658a700c7d61f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121785"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55712013"
 ---
 # <a name="deploy-your-c-bot-using-visual-studio"></a>Déployer votre bot C# avec Visual Studio
 
@@ -26,7 +26,6 @@ Dans cet article, nous allons vous montrer comment déployer un bot C# à l’ai
 
 ## <a name="prerequisites"></a>Prérequis
 - Installez [Bot Framework Emulator](https://aka.ms/Emulator-wiki-getting-started).
-- Installez et configurez [ngrok](https://github.com/Microsoft/BotFramework-Emulator/wiki/Tunneling-%28ngrok%29).
 - Familiarisez-vous avec ce qu’est un fichier [.bot](v4sdk/bot-file-basics.md).
 
 ## <a name="deploy-your-bot-in-app-service"></a>Déployer votre bot dans App Service
@@ -154,7 +153,7 @@ Lorsque vous déployez un bot, ces ressources sont généralement créées dans 
 
 | Ressources      | Description |
 |----------------|-------------|
-| Bot Web App | Bot Azure Bot Service déployé sur Azure App Service.|
+| Robot Web App | Bot Azure Bot Service déployé sur Azure App Service.|
 | [App Service](https://docs.microsoft.com/en-us/azure/app-service/)| Permet de générer et héberger des applications web.|
 | [Plan App Service](https://docs.microsoft.com/en-us/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview)| Définit un ensemble de ressources de calcul nécessaires à l’exécution d’une application web.|
 | [Application Insights](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-overview)| Fournit des outils pour collecter et analyser des données de télémétrie.|
