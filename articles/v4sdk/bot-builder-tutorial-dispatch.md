@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 01/15/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: c798c26f108458e1caeb16aa22c02c6e7c70fb61
-ms.sourcegitcommit: 3cc768a8e676246d774a2b62fb9c688bbd677700
+ms.openlocfilehash: bec6f44db929eab43cfcbbd6b2920b79924b7576
+ms.sourcegitcommit: 32615b88e4758004c8c99e9d564658a700c7d61f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54323655"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55712003"
 ---
 # <a name="use-multiple-luis-and-qna-models"></a>Utiliser plusieurs modèles LUIS et QnA
 
@@ -23,7 +23,7 @@ ms.locfileid: "54323655"
 
 Dans ce tutoriel, nous vous montrons comment utiliser le service Dispatch pour router des énoncés quand un bot prend en charge plusieurs modèles LUIS et services QnA Maker pour différents scénarios. Dans ce cas, nous configurons Dispatch avec plusieurs modèles LUIS pour des conversations portant sur la domotique et la météo, plus le service QnA Maker pour répondre aux questions basées sur un fichier texte FAQ comme entrée. Cet exemple combine les services suivants.
 
-| NOM | Description |
+| Nom | Description |
 |------|------|
 | HomeAutomation | Application LUIS qui reconnaît une intention domotique avec les données d’entité associées.|
 | Météo | Application LUIS qui reconnaît les intentions `Weather.GetForecast` et `Weather.GetCondition` avec des données de localisation.|
@@ -183,7 +183,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 
 ```
-Le code suivant initialise les références du bot aux services externes. Par exemple, les services LUIS et QnA Maker sont créés ici. Ces services externes sont configurés à l’aide de la classe `BotConfiguration`, en fonction du contenu de votre fichier « .bot ».
+Le code suivant initialise les références du bot aux services externes. Par exemple, les services LUIS et QnA Maker sont créés ici. Ces services externes sont configurés à l’aide de la classe `BotConfiguration` (en fonction du contenu de votre fichier `.bot`).
 
 ```csharp
 private static BotServices InitBotServices(BotConfiguration config)
@@ -237,7 +237,8 @@ private static BotServices InitBotServices(BotConfiguration config)
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-L’exemple de code utilise des constantes de nommage prédéfinies pour identifier les différentes sections de votre fichier .bot. Si vous avez modifié des noms de section prédéfinis dans votre fichier _nlp-with-dispatch.bot_, veillez à placer la déclaration de constante associée dans le fichier **bot.js**,  **homeAutomation.js**, **qna.js** ou **weather.js** et à remplacer cette entrée par le nom modifié.  
+L’exemple de code utilise des constantes de nommage prédéfinies pour identifier les différentes sections de votre fichier `.bot`. Si vous avez modifié des noms de section prédéfinis dans votre fichier _nlp-with-dispatch.bot_, veillez à placer la déclaration de constante associée dans le fichier **bot.js**,  **homeAutomation.js**, **qna.js** ou **weather.js** et à remplacer cette entrée par le nom modifié.  
+
 ```javascript
 // In file bot.js
 // this is the LUIS service type entry in the .bot file.
@@ -432,8 +433,11 @@ switch (dispatchTopIntent) {
        await turnContext.sendActivity(`I do not understand that.`);
        await turnContext.sendActivity(`I can help with weather forecast, turning devices on and off and answer general questions like 'hi', 'who are you' etc.`);
  }
+ ```
+
+ Dans `homeAutomation.js`
  
- // In homeAutomation.js
+ ```javascript
  async onTurn(turnContext) {
     // make call to LUIS recognizer to get home automation intent + entities
     const homeAutoResults = await this.luisRecognizer.recognize(turnContext);
@@ -448,8 +452,11 @@ switch (dispatchTopIntent) {
          await turnContext.sendActivity(`HomeAutomation dialog cannot fulfill this request.`);
     }
 }
-    
-// In weather.js
+```
+
+Dans `weather.js`
+
+```javascript
 async onTurn(turnContext) {
    // Call weather LUIS model.
    const weatherResults = await this.luisRecognizer.recognize(turnContext);
@@ -470,8 +477,11 @@ async onTurn(turnContext) {
          wait turnContext.sendActivity(`Weather dialog cannot fulfill this request.`);
    }
 }
-    
-// In qna.js
+```
+
+Dans `qna.js`
+
+```javascript
 async onTurn(turnContext) {
    // Call QnA Maker and get results.
    const qnaResult = await this.qnaRecognizer.generateAnswer(turnContext.activity.text, QNA_TOP_N, QNA_CONFIDENCE_THRESHOLD);

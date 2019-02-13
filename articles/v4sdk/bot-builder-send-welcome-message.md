@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/20/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 7e6ea963ce018833b362be3f413f15da4d4bf658
-ms.sourcegitcommit: f7a8f05fc05ff4a7212a437d540485bf68831604
+ms.openlocfilehash: 8198e5d23975780b313dc49bb78d44374a1fd106
+ms.sourcegitcommit: 32615b88e4758004c8c99e9d564658a700c7d61f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53735939"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55711963"
 ---
 # <a name="send-welcome-message-to-users"></a>Envoyer un message de bienvenue aux utilisateurs
 
@@ -49,7 +49,7 @@ L’exemple suivant surveille les nouvelles activités de *mise à jour de la co
 
 ## <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-Nous devons créer un objet d’état pour un utilisateur donné dans une conversation et son accesseur.
+Dans l’exemple de code C#, Startup.cs a défini « WelcomeUserStateAccessors » comme service/singleton et ajouté « UserState » à l’état de l’application. Nous allons maintenant les utiliser pour créer un objet d’état pour un utilisateur donné dans une conversation et son accesseur.
 
 ```csharp
 /// The state object is used to keep track of various state related to a user in a conversation.

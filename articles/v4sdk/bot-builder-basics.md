@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 1/10/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a1b155db3ec717a1084ae0e098e8f22997a80b0e
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 70f333cdce15f1d1e908b73d21e706f1af33454b
+ms.sourcegitcommit: c7d2e939ec71f46f48383c750fddaf6627b6489d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225934"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55783378"
 ---
 # <a name="how-bots-work"></a>Fonctionnement des bots
 
@@ -67,7 +67,7 @@ Les intergiciels sont très similaires à n’importe quel autre intergiciel de 
 Dans les sections suivantes, nous examinons les éléments clés d’un bot.
 
 ### <a name="prerequisites"></a>Prérequis
-- Une copie de l’exemple **EchoBotWithCounter** en [C#](https://aka.ms/EchoBotWithStateCSharp) ou [JS](https://aka.ms/EchoBotWithStateJS). Seul le code correspondant est illustré ici, mais vous pouvez vous référer à l’exemple comme code source complet.
+- Une copie de l’exemple **EchoBotWithCounter** en **[C#](https://aka.ms/EchoBotWithStateCSharp) ou en [JS](https://aka.ms/EchoBotWithStateJS)**. Seul le code correspondant est illustré ici, mais vous pouvez vous référer à l’exemple comme code source complet.
 
 # <a name="ctabcs"></a>[C#](#tab/cs)
 

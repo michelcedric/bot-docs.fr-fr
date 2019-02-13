@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: abs
 ms.date: 01/15/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 78e960357d6c4dc1c9751a9921a2338f552738b0
-ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
+ms.openlocfilehash: 3ca8ac4bfe14ed20f11a0ab26d8102ac21e60e2b
+ms.sourcegitcommit: 32615b88e4758004c8c99e9d564658a700c7d61f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54317612"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55711953"
 ---
 # <a name="deploy-bots-from-botbuilder-samples-repo"></a>Déployer des bots à partir du dépôt botbuilder-samples
 
@@ -101,6 +101,7 @@ cd <local-bot-folder>
 Si vous utilisez un compte e-mail [MSA](https://en.wikipedia.org/wiki/Microsoft_account), vous devez créer les valeurs appId et appSecret à utiliser avec la commande `msbot clone services`.
 
 - Connectez-vous au [portail d’inscription des applications](https://apps.dev.microsoft.com/). Cliquez sur **Ajouter une application** pour inscrire votre application, créez un **ID d’application**, puis **générez un nouveau mot de passe**.
+> REMARQUE : Si le mot de passe généré contient le caractère « | », ce mot de passe est rejeté par Azure. Pour résoudre ce problème, générez un autre mot de passe.
 - Enregistrez l’ID d’application et le nouveau mot de passe que vous venez de générer, pour pouvoir les utiliser avec la commande `msbot clone services`.
 - Pour effectuer le déploiement, utilisez la commande applicable à votre bot.
 
