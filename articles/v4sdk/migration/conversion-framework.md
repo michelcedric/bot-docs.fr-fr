@@ -8,30 +8,35 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 02/04/2019
+ms.date: 02/11/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 8bcb2e545cea640f74a37cac20f16b288c690956
-ms.sourcegitcommit: fd60ad0ff51b92fa6495b016e136eaf333413512
+ms.openlocfilehash: 1904bb09d8bd387cc5cec0d85f82df24d1f6ec9d
+ms.sourcegitcommit: 7f418bed4d0d8d398f824e951ac464c7c82b8c3e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55764186"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56240175"
 ---
-# <a name="migrate-a-bot-within-the-same-net-framework-project"></a>Migrer un bot au sein du même projet .NET Framework
+# <a name="migrate-a-net-sdk-v3-bot-to-v4"></a>Migrer un bot du SDK .NET v3 vers v4
 
-Le kit SDK Bot Framework v4 est basé sur la même API REST sous-jacente que le kit SDK v3. Toutefois, le kit SDK v4 est une refactorisation de la version précédente du kit pour offrir aux développeurs plus de flexibilité et de contrôle sur leurs bots. Les principaux changements du kit SDK sont notamment les suivants : <!--TODO: Replace with a snippet summary of changes that includes a link to the concept topic.-->
+Dans cet article, nous allons convertir [ContosoHelpdeskChatBot](https://github.com/Microsoft/intelligent-apps/tree/master/ContosoHelpdeskChatBot/ContosoHelpdeskChatBot) v3 en bot v4 _sans convertir le type de projet_. Il restera un projet .NET Framework.
+Cette conversion est décomposée en plusieurs étapes :
+
+1. Mettre à jour et installer les packages NuGet
+1. Mettre à jour votre fichier Global.asax.cs
+1. Mettre à jour votre classe MessagesController
+1. Convertir vos dialogues
+
+<!--TODO: Link to the converted bot...[ContosoHelpdeskChatBot](https://github.com/EricDahlvang/intelligent-apps/tree/v4netframework/ContosoHelpdeskChatBot).-->
+
+Le kit SDK Bot Framework v4 est basé sur la même API REST sous-jacente que le kit SDK v3. Toutefois, le kit SDK v4 est une refactorisation de la version précédente du kit pour offrir aux développeurs plus de flexibilité et de contrôle sur leurs bots. Les principaux changements du kit SDK sont notamment les suivants :
 
 - L’état est géré via des objets de gestion d’état et des accesseurs de propriété.
 - La configuration du gestionnaire de tour et la transmission des activités à ce dernier ont changé.
 - Les dialogues scorables n’existent plus. Vous pouvez rechercher des commandes « globales » dans le gestionnaire de tour, avant de passer le contrôle à vos dialogues.
 - Nouvelle bibliothèque de dialogues qui est très différente de celle de la version précédente. Vous devez convertir les anciens dialogues dans le nouveau système de dialogues à l’aide de dialogues composants et en cascade ainsi que de l’implémentation de la communauté de dialogues Formflow pour v4.
 
-Dans cet article, nous allons nous concentrer sur le bot [ContosoHelpdeskChatBot](https://github.com/Microsoft/intelligent-apps/tree/master/ContosoHelpdeskChatBot/ContosoHelpdeskChatBot) v3 et le convertir en un bot v4. <!--TODO: Link to the converted bot...[ContosoHelpdeskChatBot](https://github.com/EricDahlvang/intelligent-apps/tree/v4netframework/ContosoHelpdeskChatBot).--> Comme nous convertissons le bot sans convertir le type de projet, cela reste un projet .NET Framework. Cette conversion est décomposée en plusieurs étapes :
-
-1. Mettre à jour et installer les packages NuGet
-1. Mettre à jour votre fichier Global.asax.cs
-1. Mettre à jour votre classe MessagesController
-1. Convertir vos dialogues
+Pour plus d’informations sur des changements spécifiques, consultez [Différences entre le SDK .NET v3 et v4](migration-about.md).
 
 ## <a name="update-and-install-nuget-packages"></a>Mettre à jour et installer les packages NuGet
 
@@ -343,7 +348,6 @@ Remarques concernant le code v4 :
 - Les étapes en cascade ont un paramètre `WaterfallStepContext`, qui dérive de `DialogContext`.
 - Toutes les classes de dialogue et d’invite concrètes dérivent de la classe `Dialog` abstraite.
 - Vous affectez un ID quand vous créez un dialogue composant. Chaque dialogue d’un jeu de dialogues doit recevoir un ID unique dans ce jeu.
-- Nous allons implémenter les méthodes d’extension `PostAsync` et `Done` pour donner à nos dialogues convertis un aspect v3. Vous pouvez ajouter des méthodes d’extension supplémentaires pour atténuer davantage le processus de conversion, ou vous pouvez ignorer cette opération afin de conserver un aspect v4 à votre code migré.
 
 ### <a name="update-the-root-dialog"></a>Mettre à jour le dialogue racine
 
