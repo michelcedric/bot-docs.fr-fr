@@ -8,13 +8,13 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
-ms.date: 01/17/2019
-ms.openlocfilehash: 515ef592e4ce7f159890db4cb5f61f97cccf3786
-ms.sourcegitcommit: c6ce4c42fc56ce1e12b45358d2c747fb77eb74e2
+ms.date: 02/07/2019
+ms.openlocfilehash: 2648058456677fb009e3fe76c4215f8028aac6bf
+ms.sourcegitcommit: 8183bcb34cecbc17b356eadc425e9d3212547e27
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54453943"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55971509"
 ---
 # <a name="create-a-bot-with-azure-bot-service"></a>Créer un bot avec Azure Bot Service
 
@@ -138,10 +138,6 @@ Le code que vous avez téléchargé utilise un [fichier .bot](./v4sdk/bot-file-b
 Pour ce faire, accédez au portail Azure. Sélectionnez votre bot dans le portail, puis sous **Paramètres App Service**, cliquez sur **Paramètres de l’application**. Dans le volet **Paramètres de l’application**, vous voyez les valeurs `botFilePath` et `botFileSecret`. Copiez ces valeurs et mettez à jour le fichier .env ou appsettings.json. 
 
 ## <a name="next-steps"></a>Étapes suivantes
-
-Dans cet article, vous avez appris à créer un bot d’application web **Écho** en utilisant Azure Bot Service et à vérifier le bon fonctionnement du bot à l’aide du contrôle Discussion Web. À présent, découvrez comment gérer votre bot et commencer à utiliser son code source.
-
-> [!div class="nextstepaction"]
-> [Fonctionnement des bots](~/v4sdk/bot-builder-basics.md)
+Après avoir téléchargé le code, vous pouvez continuer à développer le bot localement sur votre ordinateur. Après avoir testé le bot, suivez les instructions fournies dans la section [Configuration d’un dépôt](./bot-builder-deploy-az-cli.md#setup-a-repository) de la rubrique de déploiement pour charger le code du bot dans le portail Azure.
 
 ::: moniker-end

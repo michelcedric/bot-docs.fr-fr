@@ -1,21 +1,18 @@
 ---
-title: Déployer votre bot C# avec Visual Studio | Microsoft Docs
-description: Déployez votre bot sur le cloud Azure.
-keywords: déployer bot, azure déployer, publier bot, az déployer bot, visual studio déployer bot, msbot publier, clone msbot
-author: ivorb
-ms.author: v-ivorb
-manager: kamrani
-ms.topic: get-started-article
-ms.service: bot-service
-ms.subservice: abs
-ms.date: 12/08/2018
-ms.openlocfilehash: eb559418bc2925ec6fb64902086dede50e485414
-ms.sourcegitcommit: 32615b88e4758004c8c99e9d564658a700c7d61f
+redirect_url: /bot-framework/bot-builder-deploy-az-cli
+ms.openlocfilehash: a300d6602a59c5e7d7cebdf14bb4f720a30ecbf8
+ms.sourcegitcommit: 8183bcb34cecbc17b356eadc425e9d3212547e27
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55712013"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55971469"
 ---
+<a name="--"></a><!--
+---
+titre : Déployer votre bot C# avec Visual Studio | Microsoft Docs description: Déployez votre bot sur le cloud Azure.
+keywords: déployer bot, déployer azure, publier bot, déployer bot az, déployer bot visual studio, publier msbot, cloner msbot author: ivorb ms.author: v-ivorb manager: kamrani ms.topic: get-started-article ms.service: bot-service ms.subservice: abs ms.date: 07/02/2019
+---
+
 # <a name="deploy-your-c-bot-using-visual-studio"></a>Déployer votre bot C# avec Visual Studio
 
 [!INCLUDE [pre-release-label](./includes/pre-release-label.md)]
@@ -28,7 +25,16 @@ Dans cet article, nous allons vous montrer comment déployer un bot C# à l’ai
 - Installez [Bot Framework Emulator](https://aka.ms/Emulator-wiki-getting-started).
 - Familiarisez-vous avec ce qu’est un fichier [.bot](v4sdk/bot-file-basics.md).
 
+
+## <a name="update-bot-file-properties"></a>Mettre à jour les propriétés du fichier .bot
+
+Avant de commencer le processus de déploiement, mettez à jour les propriétés du fichier .bot suivantes dans Visual Studio :
+- **Action de build : Contenu**
+- **Copier dans le répertoire de sortie : Toujours copier**
+
+
 ## <a name="deploy-your-bot-in-app-service"></a>Déployer votre bot dans App Service
+
 Vous allez tout d’abord déployer le bot sur Azure App Service à partir de Visual Studio. Ensuite, vous allez configurer votre bot avec Azure Bot Service à l’aide de Bot Channels Registration.
 
 **Remarque : Si le nom de votre projet Visual Studio comporte des espaces, les étapes de déploiement décrites ci-dessous ne fonctionnent pas.**
@@ -164,3 +170,4 @@ Si vous ne connaissez pas le groupe de ressources Azure, consultez cette rubriqu
 ## <a name="next-steps"></a>Étapes suivantes
 > [!div class="nextstepaction"]
 > [Configurer le déploiement continu](bot-service-build-continuous-deployment.md)
+-->

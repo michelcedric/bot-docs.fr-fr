@@ -7,13 +7,13 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/13/2017
-ms.openlocfilehash: 812ad04232629e889b0ab5472af07ff986ca787b
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.date: 2/09/2019
+ms.openlocfilehash: 45675e612553e79f51edde60eaee6bf14df0e44d
+ms.sourcegitcommit: 8183bcb34cecbc17b356eadc425e9d3212547e27
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000306"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55971399"
 ---
 # <a name="reconnect-to-a-conversation"></a>Se reconnecter à une conversation
 
@@ -59,6 +59,8 @@ HTTP/1.1 200 OK
 ## <a name="reconnect-to-the-conversation"></a>Se reconnecter à la conversation
 
 Le client doit utiliser la nouvelle URL de flux WebSocket pour [se reconnecter à la conversation](bot-framework-rest-direct-line-3-0-receive-activities.md#connect-via-websocket) sous 60 secondes. Si la connexion ne peut pas être établie avant la fin de ce délai, le client doit émettre une autre requête de reconnexion pour générer une nouvelle URL de flux.
+
+Si l’option d’authentification renforcée est activée dans les paramètres Direct Line, vous pouvez obtenir l’erreur 400 « MissingProperty », indiquant qu’aucun identifiant utilisateur n’a été spécifié.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

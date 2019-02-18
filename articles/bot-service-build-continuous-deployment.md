@@ -1,20 +1,17 @@
 ---
-title: Configurer le déploiement continu pour un service de bot | Microsoft Docs
-description: Découvrez comment configurer le déploiement continu à partir du contrôle de code source pour un service de bot.
-keywords: déploiement continu, publier, déployer, portail azure
-author: ivorb
-ms.author: v-ivorb
-manager: kamrani
-ms.topic: article
-ms.service: bot-service
-ms.date: 12/06/2018
-ms.openlocfilehash: ffbc3ef83c8fe1cd6f04697a3fff9e229df9956f
-ms.sourcegitcommit: 080b9633925ffe381f2c3cf11c8f8ca4b37e2046
+redirect_url: /bot-framework/bot-builder-deploy-az-cli
+ms.openlocfilehash: 8149471553658df6778e2983bae114e80c846c9b
+ms.sourcegitcommit: 8183bcb34cecbc17b356eadc425e9d3212547e27
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53068712"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55971423"
 ---
+<a name="--"></a><!--
+---
+titre : Configurer le déploiement continu pour Bot Service | Microsoft Docs description: Découvrez comment configurer le déploiement continu à partir du contrôle de code source pour un service de bot. keywords: déploiement continu, publier, déployer, portail azure author: ivorb ms.author: v-ivorb manager: kamrani ms.topic: article ms.service: bot-service ms.date: 06/12/2018
+---
+
 # <a name="set-up-continuous-deployment"></a>Configurer un déploiement continu
 Si votre code est archivé dans **GitHub** ou **Azure DevOps (anciennement Visual Studio Team Services)**, utilisez le déploiement continu pour déployer automatiquement les modifications de code à partir de votre référentiel source vers Azure. Dans cette rubrique, nous parlerons de la configuration du déploiement continu pour **GitHub** et **Azure DevOps**.
 
@@ -71,3 +68,6 @@ Pour désactiver le déploiement continu, procédez comme suit :
 
 ## <a name="additional-information"></a>Informations supplémentaires
 - Visual Studio Team Services s’appelle désormais [Azure DevOps Services](https://docs.microsoft.com/en-us/azure/devops/?view=vsts)
+
+
+-->
