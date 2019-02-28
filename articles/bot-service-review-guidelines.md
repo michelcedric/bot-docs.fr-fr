@@ -25,8 +25,6 @@ L’intégration de votre application et les métadonnées qui y sont associées
 
 - Si votre intégration de votre application gère des informations personnelles des utilisateurs (toutes informations ou données identifiant ou utilisables pour identifier une personne, ou associées à de telles informations ou données). Exemples d’informations personnelles : nom et adresse, numéro de téléphone, identificateurs biométriques, emplacement, contacts, photos, enregistrements audio et vidéo, documents, SMS, e-mail ou autre communication textuelle, captures d’écran et, dans certains cas, historique de navigation combiné. Vous devez fournir un lien bien visible entre votre intégration d’application et une politique de confidentialité applicable, laquelle doit être conforme à l’ensemble des lois, réglementations et exigences en matière de politique applicables. Cette politique doit couvrir les données que vous collectez ou transmettez, ce que vous allez en faire et, les personnes avec lesquelles vous allez les partager. Si vous ne disposez pas d’une déclaration de confidentialité, voici quelques ressources tierces * qui pourraient vous aider :
 
-OCDE - [Générateur de déclaration de confidentialité](http://www.oecd.org/internet/ieconomy/oecdprivacystatementgenerator.htm)
-
 Future of Privacy Forum : [Générateur de politique de confidentialité d’application](http://www.applicationprivacy.org/do-tools/privacy-policy-generator/)
 
 Iubenda : [Générateur de politique de confidentialité](http://www.iubenda.com/en)
