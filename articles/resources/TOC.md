@@ -9,6 +9,7 @@
 ## [Vue d'ensemble](../v4sdk/bot-builder-virtual-assistant-introduction.md)
 # [FORUM AUX QUESTIONS](../bot-service-resources-bot-framework-faq.md)
 # [Obtenir de l'aide](../bot-service-resources-links-help.md)
+# [Informations de référence sur les chaînes](../bot-service-channels-reference.md)
 # [Guide des identificateurs](../bot-service-resources-identifiers-guide.md)
 # [Éléments clés d’App Insights](../bot-service-resources-app-insights-keys.md)
 # [Requêtes utilisateur-agent](../bot-service-resources-user-agent.md)
