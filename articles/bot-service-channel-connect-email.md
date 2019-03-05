@@ -8,13 +8,13 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 10/10/2018
-ms.openlocfilehash: bd18edb87cdff502ed66177f92f88a8488135431
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.date: 02/08/2019
+ms.openlocfilehash: e77f6cddac07cdcc06d6d35cda98544f33dd1d43
+ms.sourcegitcommit: 05ddade244874b7d6e2fc91745131b99cc58b0d6
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225704"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56591180"
 ---
 # <a name="connect-a-bot-to-office-365-email"></a>Connecter un bot au courrier Office 365
 
@@ -70,6 +70,10 @@ Pour plus d’informations sur l’utilisation de `channelData`, consultez l’e
 ::: moniker range="azure-bot-service-4.0"
 Pour plus d’informations sur l’utilisation de `channelData`, consultez l’article portant sur [l’implémentation de fonctionnalités spécifiques du canal](~/v4sdk/bot-builder-channeldata.md).
 ::: moniker-end
+
+## <a name="other-considerations"></a>Autres points à considérer
+
+Si votre bot ne retourne pas un code d’état HTTP 200 OK dans les 15 secondes en réponse à un e-mail entrant, le canal de messagerie tente de renvoyer le message, et votre bot peut recevoir la même activité d’e-mail plusieurs fois. Pour plus d’informations, consultez la section [Détails HTTP](v4sdk/bot-builder-basics.md#http-details) dans **Fonctionnement des bots** et l’article de procédure de[Résolution des erreurs de dépassement de délai d’attente](https://github.com/daveta/analytics/blob/master/troubleshooting_timeout.md).
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

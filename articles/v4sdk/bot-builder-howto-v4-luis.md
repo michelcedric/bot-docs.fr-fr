@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: cognitive-services
 ms.date: 11/28/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4c43426f508d629c325889da6a9f7b06cac7e846
-ms.sourcegitcommit: c6ce4c42fc56ce1e12b45358d2c747fb77eb74e2
+ms.openlocfilehash: a30a3f5dfe4693d67a4cd42a50d35893f8888e07
+ms.sourcegitcommit: 05ddade244874b7d6e2fc91745131b99cc58b0d6
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54453893"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56591037"
 ---
 # <a name="add-natural-language-understanding-to-your-bot"></a>Ajouter la compréhension du langage naturel à votre bot
 
@@ -25,7 +25,7 @@ La capacité à comprendre ce que veut dire votre utilisateur du point de vue de
 ## <a name="prerequisites"></a>Prérequis
 - Compte [luis.ai](https://www.luis.ai)
 - [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/blob/master/README.md#download)
-- Le code de cet article est basé sur l’exemple **de traitement du langage naturel avec LUIS**. Vous aurez besoin d’une copie de l’exemple en [ C# ](https://aka.ms/cs-luis-sample) ou en [JS](https://aka.ms/js-luis-sample). 
+- Le code de cet article est basé sur l’exemple **de traitement du langage naturel avec LUIS**. Vous aurez besoin d’une copie de l’exemple dans [Exemple C#](https://aka.ms/cs-luis-sample) ou [Exemple JS](https://aka.ms/js-luis-sample). 
 - Connaissances des [concepts de base des bots](bot-builder-basics.md), du [traitement en langage naturel](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/what-is-luis), et du fichier [.bot](bot-file-basics.md).
 
 ## <a name="create-a-luis-app-in-the-luis-portal"></a>Créer une application LUIS dans le portail LUIS
@@ -84,10 +84,14 @@ Ajoutez les informations requises pour accéder à votre application LUIS, notam
 # <a name="ctabcs"></a>[C#](#tab/cs)
 
 ### <a name="configure-your-bot-to-use-your-luis-app"></a>Configurer votre bot pour qu’il utilise votre application LUIS
+Vérifiez que le package NuGet **Microsoft.Bot.Builder.AI.Luis** est installé pour votre projet.
 
 Ensuite, nous allons initialiser une nouvelle instance de la classe BotService en `BotServices.cs`, qui extrait les informations ci-dessus à partir de votre fichier `.bot`. Le service externe est configuré à l’aide de la classe `BotConfiguration`.
 
 ```csharp
+using Microsoft.Bot.Builder.AI.Luis;
+using Microsoft.Bot.Configuration;
+
 public class BotServices
 {
     // Initializes a new instance of the BotServices class
@@ -131,10 +135,9 @@ public void ConfigureServices(IServiceCollection services)
     var botConfig = BotConfiguration.Load(botFilePath ?? @".\nlp-with-luis.bot", secretKey);
     services.AddSingleton(sp => botConfig ?? throw new InvalidOperationException($"The .bot config file could not be loaded. ({botConfig})"));
 
-    // Initialize Bot Connected Services clients.
+    // Initialize Bot Connected Services client.
     var connectedServices = new BotServices(botConfig);
     services.AddSingleton(sp => connectedServices);
-    services.AddSingleton(sp => botConfig);
 
     services.AddBot<LuisBot>(options =>
     {

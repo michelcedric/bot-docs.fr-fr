@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 8ca8043c5680a993fa27e2febb9740206691884c
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: e5f8ec76e5711371653e75e11ac6fcc447b4f2e1
+ms.sourcegitcommit: 05ddade244874b7d6e2fc91745131b99cc58b0d6
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225574"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56590935"
 ---
 # <a name="send-proactive-messages"></a>Envoyer des messages proactifs
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
@@ -71,7 +71,7 @@ function sendProactiveMessage(address) {
 
 ## <a name="send-a-dialog-based-proactive-message"></a>Envoyer un message proactif basé sur un dialogue
 
-Les exemples de code suivants montrent comment envoyer un message proactif basé sur un dialogue à l’aide du kit SDK Bot Framework pour Node.js. L’exemple fonctionnel complet se trouve dans le dossier [Microsoft/BotBuilder-Samples/Node/core-proactiveMessages/startNewDialog](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-proactiveMessages/startNewDialog).
+Les exemples de code suivants montrent comment envoyer un message proactif basé sur un dialogue à l’aide du kit SDK Bot Framework pour Node.js. Vous trouverez l’exemple complet opérationnel dans le dossier [startNewDialog](https://aka.ms/js-startnewdialog-sample-v3).
 
 Pour pouvoir envoyer un message basé sur un dialogue à un utilisateur, le robot doit d’abord collecter et enregistrer les informations de la conversation en cours. L’objet `session.message.address` inclut toutes les informations dont le robot aura besoin pour envoyer à l’utilisateur un message proactif basé sur un dialogue. 
 
@@ -103,9 +103,9 @@ function startProactiveDialog(address) {
 ```
 
 > [!NOTE]
-> L’exemple de code ci-dessus nécessite un fichier personnalisé, **botadapter.js**, que vous pouvez [télécharger à partir de GitHub](https://github.com/Microsoft/BotBuilder-Samples/blob/master/Node/core-proactiveMessages/startNewDialog/botadapter.js).
+> L’exemple de code ci-dessus nécessite un fichier personnalisé, **botadapter.js**, que vous pouvez [télécharger à partir de GitHub](https://aka.ms/js-botadaptor-file-v3).
 
-La boîte d’enquête contrôle la conversation jusqu’à la fin. Ensuite, il se ferme (en appelant `session.endDialog()`), en rendant le contrôle au dialogue précédent. 
+Le dialogue de l’enquête contrôle la conversation jusqu’à la fin. Ensuite, il se ferme (en appelant `session.endDialog()`), en rendant le contrôle au dialogue précédent. 
 
 
 ```javascript
@@ -122,7 +122,7 @@ bot.dialog('survey', function (session, args, next) {
 
 ## <a name="sample-code"></a>Exemple de code
 
-Pour obtenir un exemple complet montrant comment envoyer des messages proactifs à l’aide du kit SDK Bot Framework pour Node.js, consultez l’<a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-proactiveMessages" target="_blank">exemple Proactive Messages</a> dans GitHub. Dans les exemples de messages proactifs, <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-proactiveMessages/simpleSendMessage" target="_blank">simpleSendMessage</a> montre comment envoyer un message proactif ad hoc, et <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-proactiveMessages/startNewDialog" target="_blank"> startNewDialog </a> comment envoyer un message proactif basé sur un dialogue.
+Pour obtenir un exemple complet montrant comment envoyer des messages proactifs à l’aide du kit SDK Bot Framework pour Node.js, consultez l’<a href="https://aka.ms/js-proactivemessages-sample-v3" target="_blank">exemple Proactive Messages</a> dans GitHub. Dans les exemples de messages proactifs, <a href="https://aka.ms/js-simplesendmessage-sample-v3" target="_blank">simpleSendMessage</a> montre comment envoyer un message proactif ad hoc, et <a href="https://aka.ms/js-startnewdialog-sample-v3" target="_blank"> startNewDialog </a> comment envoyer un message proactif basé sur un dialogue.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
