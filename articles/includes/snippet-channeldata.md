@@ -1,5 +1,3 @@
-# <a name="implement-channel-specific-functionality"></a>Implémenter une fonctionnalité spécifique du canal
-
 Certains canaux fournissent des fonctionnalités qui ne peuvent pas être implémentées uniquement à l’aide de SMS et de pièces jointes. Pour implémenter une fonctionnalité spécifique à un canal, vous pouvez transmettre des métadonnées natives à un canal dans la propriété des _données du canal_ de l’objet d’activité. Par exemple, votre bot peut utiliser la propriété des données du canal pour indiquer à Telegram d’envoyer un autocollant, ou pour demander à Office 365 d’envoyer un e-mail.
 
 Cet article explique comment utiliser une propriété des données du canal de l’activité de message pour implémenter cette fonctionnalité propre au canal :
@@ -370,6 +368,72 @@ Cet extrait de code montre un exemple de la propriété `channelData` pour un me
                 }
         }
     ]
+}
+```
+
+## <a name="create-a-line-message"></a>Créer un message LINE
+
+Pour créer un message qui implémente des types de messages spécifiques à LINE (par exemple Sticker, Template ou des types d’actions spécifiques à LINE, comme l’ouverture de l’appareil photo du téléphone), définissez la propriété data du canal de l’objet d’activité sur un objet JSON qui spécifie les types de messages et les types d’actions de LINE. 
+
+| Propriété | Description |
+|----|----|
+| Type | Nom du type d’action/message LINE |
+
+Ces types de messages LINE sont pris en charge :
+* Sticker
+* Imagemap 
+* Template (Button, Confirm, Carousel) 
+* Flex 
+
+Ces actions LINE peuvent être spécifiées dans le champ Action de l’objet JSON du type de message : 
+* Postback 
+* Message 
+* URI 
+* Datetimerpicker 
+* Caméra 
+* Pellicule 
+* Lieu 
+
+Pour plus d’informations sur ces méthodes LINE et leurs paramètres, consultez la [documentation de l’API Bot LINE](https://developers.line.biz/en/docs/messaging-api/). 
+
+Cet extrait de code montre un exemple d’une propriété `channelData` qui spécifie un type de message de canal `ButtonTemplate` et 3 types d’actions : camera, cameraRoll, Datetimepicker. 
+
+```json
+"channelData": { 
+    "type": "ButtonsTemplate", 
+    "altText": "This is a buttons template", 
+    "template": { 
+        "type": "buttons", 
+        "thumbnailImageUrl": "https://example.com/bot/images/image.jpg", 
+        "imageAspectRatio": "rectangle", 
+        "imageSize": "cover", 
+        "imageBackgroundColor": "#FFFFFF", 
+        "title": "Menu", 
+        "text": "Please select", 
+        "defaultAction": { 
+            "type": "uri", 
+            "label": "View detail", 
+            "uri": "http://example.com/page/123" 
+        }, 
+        "actions": [{ 
+                "type": "cameraRoll", 
+                "label": "Camera roll" 
+            }, 
+            { 
+                "type": "camera", 
+                "label": "Camera" 
+            }, 
+            { 
+                "type": "datetimepicker", 
+                "label": "Select date", 
+                "data": "storeId=12345", 
+                "mode": "datetime", 
+                "initial": "2017-12-25t00:00", 
+                "max": "2018-01-24t23:59", 
+                "min": "2017-12-25t00:00" 
+            } 
+        ] 
+    } 
 }
 ```
 
