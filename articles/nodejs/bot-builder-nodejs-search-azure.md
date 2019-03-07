@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: ac4597e93f8cdaa4c9b015a4136ab09e9b7adc95
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 259f709ae460fde13cdf25ce6d7cbf5dd44a333d
+ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224714"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57224857"
 ---
 # <a name="create-data-driven-experiences-with-azure-search"></a>Créer des expériences pilotées par les données avec Recherche Azure 
 
@@ -151,7 +151,7 @@ function searchHitAsCard(showSave, searchHit) {
 
 ## <a name="sample-code"></a>Exemple de code
 
-Pour obtenir deux exemples complets qui montrent comment prendre en charge Recherche Azure avec les bots en utilisant le kit SDK Bot Framework pour Node.js, consultez l’[exemple Real Estate Bot](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-Search/RealEstateBot) ou l’[exemple Job Listing Bot](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-Search/JobListingBot) dans GitHub. 
+Pour obtenir deux exemples complets qui montrent comment prendre en charge Recherche Azure avec les bots en utilisant le kit SDK Bot Framework pour Node.js, consultez l’[exemple Real Estate Bot](https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/Node/demo-Search/RealEstateBot) ou l’[exemple Job Listing Bot](https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/Node/demo-Search/JobListingBot) dans GitHub. 
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
