@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservices: sdk
-ms.date: 10/18/2018
+ms.date: 2/26/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 2c493a27d7829e7c7be21b6ce70cb6f046dad616
-ms.sourcegitcommit: 6c719b51c9e4e84f5642100a33fe346b21360e8a
+ms.openlocfilehash: 997ad82e15a0fcd67d47b2fd6495c8e88a5ea127
+ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52452091"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57224817"
 ---
 # <a name="debug-your-bot-using-transcript-files"></a>Déboguer votre bot à l’aide de fichiers de transcription
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
@@ -65,9 +65,10 @@ Ce niveau détaillé d’informations vous permet de suivre par à pas les inter
 L’utilisation des fichiers de transcription et du Bot Framework Emulator n’est que l’un des nombreux outils à votre disposition pour vous aider à tester et déboguer le code de votre bot et les interactions utilisateur. Pour d’autres méthodes de test et de débogage de votre bot, consultez les ressources indiquées ci-dessous.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
+
 Pour des informations complémentaires sur le test et le débogage, consultez :
+
 * [Recommandations en matière de test et de débogage](./bot-builder-testing-debugging.md)
 * [Déboguer avec l’émulateur](../bot-service-debug-emulator.md)
+* [Résoudre les problèmes généraux](../bot-service-troubleshoot-bot-configuration.md) ainsi que les autres articles de résolution des problèmes de cette section.
 * [Débogage dans Visual Studio](https://docs.microsoft.com/en-us/visualstudio/debugger/index)
-
-

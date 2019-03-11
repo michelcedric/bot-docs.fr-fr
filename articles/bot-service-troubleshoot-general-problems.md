@@ -1,30 +1,31 @@
 ---
-title: Résolution des problèmes des bots | Microsoft Docs
-description: Résoudre les problèmes généraux dans le développement des bots à l’aide des forums aux questions techniques.
+title: Résolution des problèmes des robots | Microsoft Docs
+description: Résoudre les problèmes généraux dans le développement des robots à l’aide des forums aux questions techniques.
 author: DeniseMak
 ms.author: v-demak
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 09/26/2018
-ms.openlocfilehash: 34a23910c76a22fe39d1ce5457bb74dd285ca939
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.date: 02/26/2019
+ms.openlocfilehash: 48a0a42d193b0e561a484330222217c18a611e8d
+ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225517"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57224947"
 ---
 # <a name="troubleshooting-general-problems"></a>Résolution des problèmes généraux
-Les forums aux questions permettent de résoudre les problèmes les plus courants de développement et de fonctionnement de bots.
+Les forums aux questions permettent de résoudre les problèmes les plus courants de développement et de fonctionnement des robots.
 
-## <a name="how-can-i-troubleshoot-issues-with-my-bot"></a>Comment puis-je résoudre les problèmes de mon bot ?
+## <a name="how-can-i-troubleshoot-issues-with-my-bot"></a>Comment puis-je résoudre les problèmes de mon robot ?
 
 1. Déboguez le code source de votre bot avec [Visual Studio Code](debug-bots-locally-vscode.md) ou [Visual Studio](https://docs.microsoft.com/en-us/visualstudio/debugger/navigating-through-code-with-the-debugger?view=vs-2017).
-2. Testez votre robot à l’aide de l’[émulateur](bot-service-debug-emulator.md) avant de le déployer sur le cloud.
-3. Déployez votre bot sur une plateforme d’hébergement cloud comme Azure, puis testez la connectivité de votre bot à l’aide du contrôle web chat intégré sur le tableau de bord de votre bot dans le <a href="https://dev.botframework.com" target="_blank">portail Bot Framework</a>. Si vous rencontrez des problèmes avec votre bot après l’avoir déployé dans Azure, consultez cet article de blog : [Understanding Azure troubleshooting and support](https://azure.microsoft.com/en-us/blog/understanding-azure-troubleshooting-and-support/).
-4. Écartez l’[authentification][TroubleshootingAuth] comme problème possible.
-5. Testez votre robot sur Skype. Vous pourrez ainsi valider l’expérience utilisateur de bout en bout.
-6. Pensez à tester votre robot sur des canaux ayant des exigences d’authentification supplémentaires, par exemple Direct Line ou Web Chat.
+1. Testez votre robot à l’aide de l’[émulateur](bot-service-debug-emulator.md) avant de le déployer sur le cloud.
+1. Déployez votre robot sur une plate-forme d’hébergement cloud comme Azure, puis testez la connectivité de votre robot à l’aide du contrôle intégré de la discussion en ligne sur le tableau de bord de votre robot dans le <a href="https://dev.botframework.com" target="_blank">portail Bot Framework</a>. Si vous rencontrez des problèmes avec votre bot après l’avoir déployé dans Azure, consultez cet article de blog : [Understanding Azure troubleshooting and support](https://azure.microsoft.com/en-us/blog/understanding-azure-troubleshooting-and-support/).
+1. Écartez l’[authentification][TroubleshootingAuth] comme problème possible.
+1. Testez votre robot sur Skype. Vous pourrez ainsi valider l’expérience utilisateur de bout en bout.
+1. Pensez à tester votre robot sur des canaux ayant des exigences d’authentification supplémentaires, par exemple Direct Line ou Web Chat.
+1. Consultez la procédure [Déboguer un bot](bot-service-debug-bot.md) ainsi que les autres articles de débogage de cette section.
 
 ## <a name="how-can-i-troubleshoot-authentication-issues"></a>Comment puis-je résoudre les problèmes d’authentification ?
 
@@ -81,13 +82,13 @@ Bot Framework conserve autant que possible l’ordre des messages. Par exemple, 
 
 ## <a name="how-can-i-intercept-all-messages-between-the-user-and-my-bot"></a>Comment puis-je intercepter tous les messages entre l’utilisateur et mon robot ?
 
-Le kit SDK Bot Framework pour.NET permet de fournir des implémentations des interfaces `IPostToBot` et `IBotToUser` au conteneur d’injection de dépendances `Autofac`. En utilisant le kit SDK Bot Framework pour n’importe quel langage, vous pouvez utiliser le middleware pratiquement dans le même but. Le dépôt [BotBuilder-Azure](https://github.com/Microsoft/BotBuilder-Azure) contient des bibliothèques C# et Node.js qui enregistreront ces données dans une table Azure.
+Le kit SDK Bot Framework pour.NET permet de fournir des implémentations des interfaces `IPostToBot` et `IBotToUser` au conteneur d’injection de dépendances `Autofac`. En utilisant le kit SDK Bot Framework pour n’importe quel langage, vous pouvez utiliser le middleware pratiquement dans le même but. Le référentiel [BotBuilder-Azure](https://github.com/Microsoft/BotBuilder-Azure) contient des bibliothèques C# et Node.js qui enregistreront ces données dans une table Azure.
 
 ## <a name="why-are-parts-of-my-message-text-being-dropped"></a>Pourquoi certaines parties du texte de mon message sont-elles supprimées ?
 
 Bot Framework et de nombreux canaux interprètent le texte comme s’il était formaté avec [Markdown](https://en.wikipedia.org/wiki/Markdown). Vérifiez si votre texte contient des caractères susceptibles d'être interprétés comme de la syntaxe Markdown.
 
-## <a name="how-can-i-support-multiple-bots-at-the-same-bot-service-endpoint"></a>Comment prendre en charge plusieurs bots sur un même point de terminaison de service de bot ? 
+## <a name="how-can-i-support-multiple-bots-at-the-same-bot-service-endpoint"></a>Comment puis-je prendre en charge plusieurs robots sur un même point de terminaison de service de robot ? 
 
 Cet [exemple](https://github.com/Microsoft/BotBuilder/issues/2258#issuecomment-280506334) montre comment configurer `Conversation.Container` avec le bon `MicrosoftAppCredentials` et utiliser un seul `MultiCredentialProvider` pour authentifier plusieurs identifiants d’applications et mots de passe.
 
@@ -149,7 +150,7 @@ Du point de vue de votre robot, « réactif » signifie que l’utilisateur la
 
 ## <a name="how-can-i-send-proactive-messages-to-the-user"></a>Comment puis-je envoyer des messages proactifs à l’utilisateur ?
 
-Pour voir comment envoyer des messages proactifs, consultez les exemples [C# V4](https://github.com/Microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/16.proactive-messages) et [Node.js V4](https://github.com/Microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/16.proactive-messages) dans le dépôt BotBuilder-Samples sur GitHub.
+Pour voir comment envoyer des messages proactifs, consultez les exemples [C# V4](https://github.com/Microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/16.proactive-messages) et [Node.js V4](https://github.com/Microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/16.proactive-messages) dans le référentiel BotBuilder-Samples sur GitHub.
 
 ## <a name="how-can-i-reference-non-serializable-services-from-my-c-dialogs"></a>Comment puis-je référencer des services non sérialisables à partir de mes dialogues C# ?
 
@@ -231,7 +232,7 @@ Oui, chaque magasin d’états (conteneurs de données d’utilisateur, de conve
 Le service d’état permet d’avancer dans les dialogues d’une conversation de sorte qu’un utilisateur peut revenir ultérieurement dans la conversation avec un robot sans perdre sa position. À cette fin, les conteneurs de propriétés des données de robot qui sont stockés via l’API d’état ne sont pas automatiquement effacés lorsque vous modifiez le code du robot. Vous devez déterminer si les données du robot doivent être effacées ou non selon que votre code modifié est compatible ou non avec les versions antérieures de vos données. 
 
 * Si vous voulez réinitialiser manuellement la pile de dialogues et l’état de la conversation pendant le développement de votre robot, vous pouvez utiliser la commande ` /deleteprofile` afin de supprimer les données d’état. Assurez-vous d’inclure l’espace initial dans cette commande pour éviter que le canal ne l’interprète.
-* Une fois que votre bot est déployé en production, vous pouvez adapter la version de vos données de bot de façon à ce que les données d’état associées soient effacées si vous changez de version. Avec le kit SDK Bot Framework pour Node.js, vous pouvez le faire en utilisant un middleware. Avec le kit SDK Bot Framework pour.NET, cette opération est possible en utilisant une implémentation `IPostToBot`.
+* Une fois que votre robot est déployé en production, vous pouvez adapter la version de vos données de robot de façon à ce que les données d’état associées soient effacées si vous changez de version. Avec le kit SDK Bot Framework pour Node.js, vous pouvez le faire en utilisant un middleware. Avec le kit SDK Bot Framework pour.NET, cette opération est possible en utilisant une implémentation `IPostToBot`.
 
 > [!NOTE]
 > S’il n’est pas possible de désérialiser correctement la pile de dialogues en raison de modifications dans le format de sérialisation ou parce que le code a été trop modifié, l’état de la conversation est réinitialisé.

@@ -8,13 +8,13 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 2/09/2019
-ms.openlocfilehash: 3aae1e212759dd70226fab3b0567ba5b4e345a30
-ms.sourcegitcommit: 8183bcb34cecbc17b356eadc425e9d3212547e27
+ms.date: 2/26/2019
+ms.openlocfilehash: 1e806358ffdba90848f0c8124c8315fd4e2dec76
+ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55971449"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57224837"
 ---
 # <a name="debug-a-bot"></a>Déboguer un bot
 
@@ -131,8 +131,10 @@ En outre, vous pouvez afficher les détails du journal dans la fenêtre de conso
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-Pour en savoir plus sur le débogage des bots en production, consultez le billet de blog [Debug any channel locally using ngrok](https://blog.botframework.com/2017/10/19/debug-channel-locally-using-ngrok/).
+- Consultez [Résoudre les problèmes généraux](bot-service-troubleshoot-bot-configuration.md) ainsi que les autres articles de résolution des problèmes de cette section.
+- Consultez le billet de blog [Debug any Channel locally using ngrok](https://blog.botframework.com/2017/10/19/debug-channel-locally-using-ngrok/).
 
 ## <a name="next-steps"></a>Étapes suivantes
+
 > [!div class="nextstepaction"]
-> [Déboguer votre bot à l’aide de fichiers de transcription](~/v4sdk/bot-builder-debug-transcript.md).
+> [Déboguer votre bot à l’aide de fichiers de transcription](v4sdk/bot-builder-debug-transcript.md).

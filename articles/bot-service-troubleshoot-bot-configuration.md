@@ -8,13 +8,13 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/20/2018
-ms.openlocfilehash: 8a3ff4a30e3041937ba831efc237343c9aa27e62
-ms.sourcegitcommit: 8161753641368567f239e24a35ad61768acccd8e
+ms.date: 2/26/2019
+ms.openlocfilehash: 53cb392dea5ee0e355451e7455a16512f22ebbaa
+ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54202545"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57224847"
 ---
 # <a name="troubleshoot-bot-configuration-issues"></a>Résoudre les problèmes de configuration de bot
 
@@ -87,3 +87,7 @@ Voici quelques liens supplémentaires qui peuvent aider sur chacun des canaux :
 Parfois, certains canaux peuvent connaître une interruption de service. En règle générale, ces pannes ne durent pas longtemps. Toutefois, si vous soupçonnez une panne, consultez le réseau social ou le site web du canal.
 
 Une autre façon de déterminer si un canal subit une panne consiste à créer un bot de test (par exemple, un bot Écho simple) et à ajouter un canal. Si le bot de test fonctionne avec certains canaux mais pas avec d’autres, cela indique que le problème n’est pas dans votre bot de production.
+
+## <a name="additional-resources"></a>Ressources supplémentaires
+
+Consultez la procédure [Déboguer un bot](bot-service-debug-bot.md) ainsi que les autres articles de débogage de cette section.

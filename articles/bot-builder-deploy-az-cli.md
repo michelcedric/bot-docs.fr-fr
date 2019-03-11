@@ -9,12 +9,12 @@ ms.topic: get-started-article
 ms.service: bot-service
 ms.subservice: abs
 ms.date: 02/13/2019
-ms.openlocfilehash: 53889703d58983a87a7a2d16622f1298d56c87db
-ms.sourcegitcommit: 05ddade244874b7d6e2fc91745131b99cc58b0d6
+ms.openlocfilehash: 2ee66ac335ab9e34d7a73996d44da939e74d5b87
+ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56591027"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57224917"
 ---
 # <a name="deploy-your-bot"></a>Déployer votre bot
 
@@ -64,12 +64,11 @@ Le code source que vous avez téléchargé à partir du portail Azure inclut un 
 1. Ouvrez les **Paramètres d’application** du bot.
 1. Faites défiler la fenêtre **Paramètres d’application** jusqu’à **Paramètres d’application**.
 1. Recherchez le **botFileSecret** et copiez sa valeur.
+1. Utilisez `msbot cli` pour déchiffrer le fichier.
 
-Utilisez `msbot cli` pour déchiffrer le fichier.
-
-```cmd
-msbot secret --bot <name-of-bot-file> --secret "<bot-file-secret>" --clear
-```
+    ```cmd
+    msbot secret --bot <name-of-bot-file> --secret "<bot-file-secret>" --clear
+    ```
 
 ### <a name="update-your-local-bot-file"></a>Mettre à jour votre fichier .bot local
 
@@ -128,18 +127,24 @@ Ouvrez le fichier .bot que vous avez déchiffré. Copiez **toutes** les entrées
 
 Enregistrez le fichier .
 
+Vous pouvez utiliser l’outil msbot pour générer un nouveau secret et chiffrer le fichier .bot avant de publier. Si vous rechiffrez votre fichier .bot, mettez à jour le **botFileSecret** du bot dans le portail Azure pour qu’il contienne le nouveau secret.
+
+```cmd
+msbot secret --bot <name-of-bot-file> --new
+```
+
 ### <a name="setup-a-repository"></a>Configurer un dépôt
 
-Pour prendre en charge le déploiement continu, créez un dépôt Git en utilisant votre fournisseur de contrôle de code source Git favori. Validez votre code dans le dépôt. 
+Pour prendre en charge le déploiement continu, créez un dépôt Git en utilisant votre fournisseur de contrôle de code source Git favori. Validez votre code dans le dépôt.
 
 Vérifiez que la racine de votre dépôt contient les fichiers corrects, comme décrit sous [Préparer votre dépôt](https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment#prepare-your-repository).
 
 ### <a name="update-app-settings-in-azure"></a>Mettre à jour les paramètres d’application dans Azure
-Le bot local n’utilise pas de fichier .bot chiffré, mais le portail Azure en a un que vous ne déployez pas 
+Le bot local n’utilise pas de fichier .bot chiffré, mais le portail Azure est configuré pour en utiliser un. Vous pouvez résoudre ce problème en supprimant le **botFileSecret** qui est stocké dans les paramètres du bot Azure.
 1. Dans le portail Azure, ouvrez la ressource **Web App Bot** pour votre bot.
 1. Ouvrez les **Paramètres d’application** du bot.
 1. Faites défiler la fenêtre **Paramètres d’application** jusqu’à **Paramètres d’application**.
-1. Recherchez le **botFileSecret** et supprimez-le.
+1. Recherchez le **botFileSecret** et supprimez-le. Si vous rechiffrez votre fichier .bot, vérifiez que le **botFileSecret** contient le nouveau secret et **ne supprimez pas** le paramètre.
 1. Mettez à jour le nom du fichier bot pour qu’il corresponde à celui du fichier archivé dans le dépôt.
 1. Enregistrez les changements.
 

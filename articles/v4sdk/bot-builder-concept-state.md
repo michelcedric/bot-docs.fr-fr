@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/15/2018
+ms.date: 02/25/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: dfbc9f4ed0f08c7349d758147460b8268c49e372
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 06982f1790bd573e7300cee249042e6e3d60e912
+ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225864"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57224907"
 ---
 # <a name="managing-state"></a>Gestion de l’état
 
@@ -118,7 +118,8 @@ Les méthodes d’accesseur constituent le moyen principal pour que votre bot in
 - La méthode *get* de l’accesseur :
   - L’accesseur demande une propriété du cache d’état.
   - Si la propriété est dans le cache, elle est retournée. Sinon, obtenez-la à partir de l’objet de gestion d’état.
-    Si elle n’est pas encore dans l’état, utilisez la méthode de fabrique fournie dans l’appel *get* de l’accesseur. -La méthode *set* de l’accesseur :
+    Si elle n’est pas encore dans l’état, utilisez la méthode de fabrique fournie dans l’appel *get* de l’accesseur.
+- La méthode *set* de l’accesseur :
   - Mettez à jour le cache d’état avec la nouvelle valeur de propriété.
 - La méthode *Enregistrer les changements* de l’objet de gestion d’état :
   - Vérifiez les modifications apportées à la propriété dans le cache d’état.
