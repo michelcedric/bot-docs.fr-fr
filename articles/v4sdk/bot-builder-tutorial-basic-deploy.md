@@ -10,14 +10,14 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 1/9/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: dbde6eba946e27aaa6b883f1e9205adc63cb22f8
-ms.sourcegitcommit: bdb981c0b11ee99d128e30ae0462705b2dae8572
+ms.openlocfilehash: 7927ab97dc88657a198c8f1d8e56bcb1ddf0fabe
+ms.sourcegitcommit: b2245df2f0a18c5a66a836ab24a573fd70c7d272
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360943"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57568236"
 ---
-# <a name="tutorial-create-and-deploy-a-basic-bot"></a>Tutoriel : Créer et déployer un bot de base
+# <a name="tutorial-create-and-deploy-a-basic-bot"></a>Didacticiel : Créer et déployer un bot de base
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
@@ -80,6 +80,8 @@ Si vous utilisez un compte e-mail [MSA](https://en.wikipedia.org/wiki/Microsoft_
 
 Ensuite, téléchargez le bot que vous venez de créer. 
 [!INCLUDE [download bot snippet](~/includes/deploy/snippet-download-bot.md)]
+
+[!INCLUDE [download keys snippet](~/includes/snippet-abs-key-download.md)]
 
 ### <a name="decrypt-the-downloaded-bot-file-and-use-in-your-project"></a>Déchiffrer le fichier .bot téléchargé et l’utiliser dans votre projet
 

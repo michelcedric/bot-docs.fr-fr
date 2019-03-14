@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
 ms.date: 12/13/2017
-ms.openlocfilehash: 38b26ed5a50409de64518562faabf532f45c857e
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 65de0e4e4be129c9fa467cd8610cf0f0b13e5965
+ms.sourcegitcommit: b2245df2f0a18c5a66a836ab24a573fd70c7d272
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999146"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57568176"
 ---
 # <a name="publish-a-bot-to-bot-service"></a>Publier un robot sur Service Bot
 
@@ -34,6 +34,7 @@ Si vous n’avez pas configuré le déploiement continu, vous pouvez modifier vo
 Pour configurer la publication à partir de Visual Studio à l’aide du fichier `.PublishSettings`, procédez comme suit :
 
 1. Dans le portail Azure, cliquez sur votre Service Bot, sur l’onglet **BUILD**, puis sur **Télécharger le fichier zip**.
+    1. [!INCLUDE [download keys snippet](~/includes/snippet-abs-key-download.md)]
 3. Extrayez le contenu du fichier zip téléchargé dans un dossier local.
 4. Dans l’Explorateur, recherchez le fichier Solution Visual Studio (.sln) pour votre robot, puis double-cliquez dessus.
 4. Dans Visual Studio, cliquez sur **Afficher**, puis sur **Explorateur de solutions**.
@@ -66,6 +67,7 @@ Cette section décrit comment activer le déploiement continu pour un robot que 
 Suivez ces étapes si vous souhaitez utiliser un service de contrôle de code source *autre que* Visual Studio Online ou Github. Visual Studio Online et Github extrayant le code source pour votre robot à partir d’Azure, les utilisateurs de ces deux services peuvent ignorer ces étapes.
 
 3. Pour un robot dans un plan App Service, recherchez la page de votre robot sur Azure, cliquez sur l’onglet **BUILD**, recherchez la section **Télécharger le code source**, puis cliquez sur **Télécharger le fichier zip**.
+    1. [!INCLUDE [download keys snippet](~/includes/snippet-abs-key-download.md)]
 1. Créez un dépôt vide au sein d’un des systèmes de contrôle de code source pris en charge par Azure.
 
     ![Système de contrôle de code source](~/media/continuous-integration-sourcecontrolsystem.png)

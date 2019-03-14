@@ -8,20 +8,19 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 02/7/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: d472cbe7c0235862f8dcff1bcc2d53d977bb7657
-ms.sourcegitcommit: 8183bcb34cecbc17b356eadc425e9d3212547e27
+ms.openlocfilehash: 115c81bef6f555bb3404dfb2249dc751d7eed7e5
+ms.sourcegitcommit: b2245df2f0a18c5a66a836ab24a573fd70c7d272
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55971489"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57568206"
 ---
 # <a name="enterprise-bot-template---customize-your-bot"></a>Modèle de bot d’entreprise - Personnaliser votre bot
 
 > [!NOTE]
 > Cet article s’applique à la version v4 du Kit de développement logiciel (SDK). 
 
-## <a name="net"></a>.NET
-Après avoir déployé le modèle de bot d’entreprise et vérifié qu’il fonctionne complètement, comme indiqué dans les instructions [ici](bot-builder-enterprise-template-deployment.md), vous pouvez facilement personnaliser votre bot en fonction de votre scénario et de vos besoins. L’objectif du modèle consiste à fournir une base solide sur laquelle créer votre expérience de conversation.
+Après avoir déployé le modèle de bot d’entreprise et vérifié qu’il fonctionne complètement, comme indiqué dans les instructions [ici](bot-builder-enterprise-template-getting-started.md), vous pouvez facilement personnaliser votre bot en fonction de votre scénario et de vos besoins. L’objectif du modèle consiste à fournir une base solide sur laquelle créer votre expérience de conversation.
 
 ## <a name="project-structure"></a>Structure du projet
 
@@ -81,56 +80,56 @@ Deux modèles cognitifs sont inclus par défaut dans le modèle d’entreprise, 
 Afin de mettre à jour un modèle LUIS existant pour le modèle d’entreprise, procédez comme suit :
 1. Modifiez le modèle LUIS dans le [portail LUIS](http://luis.ai) ou via les outils de CLI [LuDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown) et [Luis](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS). 
 2. Exécutez la commande suivante pour mettre à jour votre modèle Dispatch pour qu’il reflète vos modifications (garantit un routage des messages approprié) :
-```shell
+    ```shell
     dispatch refresh --bot "YOUR_BOT.bot" --secret YOUR_SECRET
-```
+    ```
 3. Exécutez la commande suivante à partir de la racine de votre projet pour chaque modèle mis à jour, afin de mettre à jour leurs classes LuisGen associées : 
-```shell
+    ```shell
     luis export version --appId [LUIS_APP_ID] --versionId [LUIS_APP_VERSION] --authoringKey [YOUR_LUIS_AUTHORING_KEY] | luisgen --cs [CS_FILE_NAME] -o "\Dialogs\Shared\Resources"
-```
+    ```
 
 ### <a name="updating-an-existing-qna-maker-knowledge-base"></a>Mise à jour d’une base de connaissances QnA Maker existante
 Pour mettre à jour une base de connaissances QnA Maker existante, effectuez les étapes suivantes :
 1. Modifiez votre base de connaissances QnA Maker par le biais des outils de CLI [LuDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown) et [QnA Maker](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/QnAMaker) ou le [portail QnA Maker](https://qnamaker.ai).
 2. Exécutez la commande suivante pour mettre à jour votre modèle Dispatch pour qu’il reflète vos modifications (garantit un routage des messages approprié) :
-```shell
+    ```shell
     dispatch refresh --bot "YOUR_BOT.bot" --secret YOUR_SECRET
-```
+    ```
 
 ### <a name="adding-a-new-luis-model"></a>Ajout d’un modèle LUIS
 
 Dans les scénarios où vous souhaitez ajouter un modèle LUIS à votre projet, vous devez mettre à jour la configuration du bot et Dispatcher pour vous assurer qu’ils prennent en compte le nouveau modèle. 
 1. Créez votre modèle LUIS via les outils de CLI LuDown/LUIS ou via le portail LUIS
 2. Exécutez la commande suivante pour connecter votre nouvelle application LUIS à votre fichier .bot :
-```shell
+    ```shell
     msbot connect luis --appId [LUIS_APP_ID] --authoringKey [LUIS_AUTHORING_KEY] --subscriptionKey [LUIS_SUBSCRIPTION_KEY] 
-```
+    ```
 3. Ajoutez ce nouveau modèle LUIS à Dispatcher via la commande suivante
-```shell
+    ```shell
     dispatch add -t luis -id LUIS_APP_ID -bot "YOUR_BOT.bot" --secret YOURSECRET
-```
+    ```
 4. Actualisez le modèle dispatch pour qu’il reflète les modifications du modèle LUIS via la commande suivante
-```shell
+    ```shell
     dispatch refresh -bot "YOUR_BOT.bot" --secret YOUR_SECRET
-```
+    ```
 
 ### <a name="adding-an-additional-qna-maker-knowledge-base"></a>Ajout d’une base de connaissances QnA Maker supplémentaire
 
 Dans certains scénarios, vous souhaiterez ajouter une base de connaissances QnA Maker supplémentaire à votre bot. Cette opération peut être effectuée en suivant la procédure ci-après.
 
 1. Créer une base de connaissances QnA Maker à partir d’un fichier JSON à l’aide de la commande suivante, exécutée dans le répertoire de votre assistant
-```shell
-qnamaker create kb --in <KB.json> --msbot | msbot connect qna --stdin --bot "YOUR_BOT.bot" --secret YOURSECRET
-```
+    ```shell
+    qnamaker create kb --in <KB.json> --msbot | msbot connect qna --stdin --bot "YOUR_BOT.bot" --secret YOURSECRET
+    ```
 2. Exécuter la commande suivante pour mettre à jour votre modèle Dispatch pour qu’il reflète vos modifications
-```shell
-dispatch refresh --bot "YOUR_BOT.bot" --secret YOUR_SECRET
-```
+    ```shell
+    dispatch refresh --bot "YOUR_BOT.bot" --secret YOUR_SECRET
+    ```
 3. Mettre à jour la classe Dispatch fortement typée pour refléter la nouvelle source de QnA
-```shell
-msbot get dispatch --bot "YOUR_BOT.bot" | luis export version --stdin > dispatch.json
-luisgen dispatch.json -cs Dispatch -o Dialogs\Shared
-```
+    ```shell
+    msbot get dispatch --bot "YOUR_BOT.bot" | luis export version --stdin > dispatch.json
+    luisgen dispatch.json -cs Dispatch -o Dialogs\Shared
+    ```
 4.  Mettez à jour le fichier `Dialogs\Main\MainDialog.cs` pour inclure l’intention Dispatch correspondant à votre nouvelle source QnA en suivant l’exemple fourni.
 
 Vous devez maintenant être en mesure d’utiliser plusieurs sources QnA dans votre bot.
@@ -203,6 +202,3 @@ await _responder.ReplyWith(sc.Context, OnboardingResponses.ResponseIds.HaveNameM
 La dernière partie de l’infrastructure Dialogue est la création d’une classe d’état limitée à votre dialogue uniquement. Créez une classe et assurez-vous qu’elle dérive de `DialogState`
 
 Une fois que votre dialogue est terminé, vous devez ajouter le dialogue à votre composant `MainDialog` à l’aide de `AddDialog`. Pour utiliser votre nouveau dialogue, appelez `dc.BeginDialogAsync()` depuis votre méthode `RouteAsync`, qui se déclenche avec l’intention LUIS si vous le souhaitez.
-
-## <a name="conversational-insights-using-powerbi-dashboard-and-application-insights"></a>Insights conversationnelles à l’aide du tableau de bord Power BI et d’Application Insights
-- Pour commencer à obtenir des insights conversationnelles, poursuivez avec l’article [Enterprise Bot Template - Conversational Analytics using PowerBI Dashboard and Application Insights](bot-builder-enterprise-template-powerbi.md) (Modèle de bot d’entreprise - Analytique de conversation à l’aide du tableau de bord PowerBI et d’Application Insights).

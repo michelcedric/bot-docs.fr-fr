@@ -9,12 +9,12 @@ ms.topic: get-started-article
 ms.service: bot-service
 ms.subservice: abs
 ms.date: 02/13/2019
-ms.openlocfilehash: 2ee66ac335ab9e34d7a73996d44da939e74d5b87
-ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
+ms.openlocfilehash: 9cd2ed67110aa1611c41c33c31874f103e24b14d
+ms.sourcegitcommit: b2245df2f0a18c5a66a836ab24a573fd70c7d272
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57224917"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57568196"
 ---
 # <a name="deploy-your-bot"></a>Déployer votre bot
 
@@ -55,6 +55,7 @@ Après avoir créé le bot Web App cible, vous devez télécharger le code du bo
 1. Dans la section **Gestion du bot**, cliquez sur **Créer**.
 1. Cliquez sur le lien **Download Bot source code** (Télécharger le code source du bot) dans le volet droit.
 1. Suivez les invites pour télécharger le code, puis décompressez le dossier.
+    1. [!INCLUDE [download keys snippet](~/includes/snippet-abs-key-download.md)]
 
 ### <a name="decrypt-the-bot-file"></a>Déchiffrer le fichier .bot
 
@@ -201,6 +202,8 @@ If you are using an [MSA](https://en.wikipedia.org/wiki/Microsoft_account) email
 
 Next, download the bot you just created. 
 [!INCLUDE [download bot snippet](~/includes/deploy/snippet-download-bot.md)]
+
+[!INCLUDE [download keys snippet](~/includes/snippet-abs-key-download.md)]
 
 ### Decrypt the downloaded .bot file and use in your project
 
