@@ -84,6 +84,10 @@ Si vous utilisez le kit SDK Bot Framework pour .NET, définissez les valeurs de 
 * MicrosoftAppId
 * MicrosoftAppPassword
 
+Si vous utilisez le kit SDK Bot Framework dans un projet en .Net core, définissez les valeurs de clé suivantes (sous le endpoint correspondant) dans le fichier *.bot :
+* appId
+* appPassword
+
 ## <a name="test-the-bot"></a>Tester le bot
 
 Maintenant que votre service de bot est créé, [testez-le dans la Discussion Web](bot-service-manage-test-webchat.md). Entrez un message ; votre bot devrait répondre.
